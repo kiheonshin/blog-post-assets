@@ -191,6 +191,17 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 .serieslinks a{display:block}
 .serieslinks .self{color:var(--ink);text-decoration:none;cursor:default}
 
+/* 원자료 안내 — 목록 페이지, 세 편의 글, 원자료 페이지가 함께 쓴다 */
+.sources{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:1rem}
+@media(min-width:48rem){.sources{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.sources a{display:grid;gap:.3rem;padding:.9rem 1rem;border:1px solid var(--rule);
+  text-decoration:none;color:var(--ink)}
+.sources a:hover{border-color:var(--accent)}
+.sources .k{font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em;
+  color:var(--accent);display:flex;justify-content:space-between;gap:.5rem}
+.sources .t{font-size:.9375rem;font-weight:600;line-height:1.4}
+.sources .s{font-size:.8125rem;line-height:1.55;color:var(--ink-muted)}
+
 .site-footer{margin-block-start:5rem;background:var(--inverse);color:var(--inverse-ink)}
 .site-footer__in{width:min(100%,90rem);margin-inline:auto;padding:2.5rem var(--gutter);
   display:flex;flex-wrap:wrap;gap:.75rem 2rem;justify-content:space-between;
@@ -221,6 +232,7 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
          width="1600" height="800" decoding="async">
     <ol class="banner__cards"><li><a href="import-post1.html"><span class="row"><span class="n">01</span><span class="go" aria-hidden="true">→</span></span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (1)</span><span class="s">실력과 노력의 가치는 어디로 가는가</span></a></li><li><a href="import-post2.html"><span class="row"><span class="n">02</span><span class="go" aria-hidden="true">→</span></span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (2)</span><span class="s">프롬프트를 넘어, 작업의 흐름을 설계하는 일</span></a></li><li><a href="import-post3.html"><span class="row"><span class="n">03</span><span class="go" aria-hidden="true">→</span></span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (3)</span><span class="s">현실과 가상의 경계면에서</span></a></li></ol>
   </figure>
+  <section class="prose"><h2><span>원자료</span></h2><p>세 편의 글이 나온 자리다. 발표에서 쓴 슬라이드와 영상, 그 앞에 있던 연구 노트를 손대지 않고 그대로 옮겨 두었다.</p><ul class="sources"><li><a href="source-research.html"><span class="k"><span>SOURCE · 연구 노트</span><span>→</span></span><span class="t">AI 시대의 예술, 인간 고유의 창의성이란 무엇인가</span><span class="s">2025.09.09 · 발표의 바탕이 된 사전 조사 전문</span></a></li><li><a href="source-slides.html"><span class="k"><span>SOURCE · 발표 자료</span><span>→</span></span><span class="t">AIGC 시장 트렌드 및 창작자 패러다임의 변화</span><span class="s">2025.11.21 · 슬라이드 162장과 현장에서 재생한 영상 55편</span></a></li></ul></section>
   <div class="foot">
     <p>이 글은 신기헌의 타임캡슐 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.</p>
     <p class="en">Written and edited 100% by an AI agent from the Kiheon Shin Timecapsule project.</p>
