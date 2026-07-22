@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI 시대, 창작의 정의를 다시 묻다 · Kiheon Shin</title>
+<meta name="description" content="2025년 11월 발표 'AIGC 시장 트렌드 및 창작자 패러다임의 변화'를 다시 정리한 세 편의 노트.">
+<link rel="canonical" href="https://kiheonshin.github.io/blog-post-assets/">
+<style>
+:root{
+  --canvas:#F3F3EF; --surface:#FBFBF8; --ink:#17181A; --ink-muted:#5E6065;
+  --ink-faint:#85878C; --rule:#CFCFC8; --rule-strong:#17181A;
+  --accent:#2457D6; --accent-hover:#163DA7; --inverse:#17181A; --inverse-ink:#F7F7F2;
+  --font-display:"Iowan Old Style","Noto Serif CJK KR","AppleMyungjo","Nanum Myeongjo",serif;
+  --font-body:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  --font-mono:"SFMono-Regular","Roboto Mono","Noto Sans Mono CJK KR",monospace;
+  --measure:46rem; --gutter:1rem; --micro:.6875rem; --meta:.75rem;
+}
+@media(min-width:48rem){:root{--gutter:2rem}}
+@media(min-width:80rem){:root{--gutter:3rem}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--canvas);color:var(--ink);
+  font-family:var(--font-body);font-size:1.0625rem;line-height:1.78;
+  letter-spacing:-.005em;
+  -webkit-font-smoothing:antialiased;
+  /* 한글은 어절 단위로 끊는다. 없으면 "묻/다"처럼 단어 중간에서 잘린다 */
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+a{color:var(--accent);text-underline-offset:.18em}
+a:hover{color:var(--accent-hover);text-decoration-thickness:.14em}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+img{max-width:100%;height:auto}
+
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:var(--gutter);top:.5rem;z-index:9;background:var(--surface);
+  padding:.5rem .75rem;border:1px solid var(--rule-strong)}
+
+/* 선만 사용 — 헤더는 hairline 하나로 구분한다 */
+.site-header{border-block-end:1px solid var(--rule)}
+.site-header__in{
+  width:min(100%,90rem);margin-inline:auto;padding-inline:var(--gutter);
+  min-height:4.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.brand{
+  font-family:var(--font-mono);font-size:var(--meta);font-weight:600;
+  letter-spacing:.09em;text-decoration:none;color:var(--ink);
+}
+.meta-label{
+  margin:0;font-family:var(--font-mono);font-size:var(--meta);font-weight:500;
+  letter-spacing:.09em;color:var(--ink-muted);text-transform:uppercase;
+}
+
+main{width:min(100%,calc(var(--measure) + var(--gutter)*2));
+  margin-inline:auto;padding-inline:var(--gutter)}
+
+.head{padding-block:4rem 0;display:grid;gap:1.25rem}
+.metarow{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem}
+.metarow time{font-family:var(--font-mono);font-size:var(--meta);color:var(--ink-muted)}
+
+/* 작성 주체 공개 — 색면 없이 1px 테두리와 마이크로 타입으로만 */
+.authorship{
+  display:inline-flex;align-items:center;min-height:1.5rem;padding-inline:.5rem;
+  border:1px solid var(--rule-strong);color:var(--ink-muted);
+  font-family:var(--font-mono);font-size:var(--micro);font-weight:600;
+  letter-spacing:.08em;text-decoration:none;white-space:nowrap;
+  transition:color .15s ease-out,border-color .15s ease-out;
+}
+.authorship:hover{border-color:var(--accent);color:var(--accent-hover)}
+
+h1{
+  margin:0;font-family:var(--font-display);font-weight:400;
+  font-size:clamp(2.1rem,3.6vw,3.3rem);line-height:1.15;letter-spacing:-.03em;
+  text-wrap:balance;
+}
+.lead{
+  margin:0;max-width:var(--measure);color:var(--ink-muted);
+  font-size:clamp(1.06rem,1.5vw,1.22rem);line-height:1.62;
+}
+.series{
+  margin:0;padding-block-start:1.25rem;border-block-start:1px solid var(--rule);
+  color:var(--ink-faint);font-size:.875rem;line-height:1.7;font-style:italic;
+}
+
+.prose{padding-block-start:2.5rem;border-block-start:1px solid var(--rule);margin-block-start:2.5rem}
+.prose p{margin:0 0 1.5rem;text-wrap:pretty}
+.prose h2{
+  margin:3.5rem 0 1rem;font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.45rem,2vw,1.85rem);line-height:1.3;letter-spacing:-.02em;
+  display:flex;gap:.75rem;align-items:baseline;
+}
+/* 시간의 이음선 — 순서 번호는 모노로 작게 */
+.secnum{flex:none;font-family:var(--font-mono);font-size:var(--meta);
+  color:var(--ink-faint);letter-spacing:.08em}
+
+/* 이미지는 그림자로 띄우지 않고 1px 선으로 종이 위에 얹는다 */
+figure{margin:2.5rem 0}
+figure img{display:block;width:100%;border:1px solid var(--rule)}
+figcaption{margin-block-start:.75rem;color:var(--ink-muted);
+  font-size:.875rem;line-height:1.6}
+
+.foot{margin-block:4rem 0;padding-block-start:1.5rem;
+  border-block-start:1px solid var(--rule-strong);display:grid;gap:1rem}
+.foot p{margin:0;color:var(--ink-muted);font-size:.875rem;line-height:1.7}
+.foot .en{font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.04em;color:var(--ink-faint);line-height:1.8}
+.serieslinks{display:grid;gap:.4rem}
+.serieslinks a{display:block}
+.serieslinks .self{color:var(--ink);text-decoration:none;cursor:default}
+
+.site-footer{margin-block-start:5rem;background:var(--inverse);color:var(--inverse-ink)}
+.site-footer__in{width:min(100%,90rem);margin-inline:auto;padding:2.5rem var(--gutter);
+  display:flex;flex-wrap:wrap;gap:.75rem 2rem;justify-content:space-between;
+  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em}
+.site-footer a{color:var(--inverse-ink)}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+.idx{padding-block:4rem 0}
+.idx h1{margin-block-end:1.25rem}
+.idx ul{list-style:none;margin:3rem 0 0;padding:0;
+  border-block-start:1px solid var(--rule-strong)}
+.idx li{border-block-end:1px solid var(--rule)}
+.idx li a{display:flex;gap:1rem;align-items:baseline;padding-block:1.5rem;
+  text-decoration:none;color:var(--ink);font-family:var(--font-display);
+  font-size:clamp(1.2rem,2vw,1.6rem);line-height:1.35}
+.idx li a:hover{color:var(--accent-hover)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header"><div class="site-header__in">
+  <a class="brand" href="index.html">KIHEON SHIN</a>
+  <p class="meta-label">AIGC Notes · 3부작</p>
+</div></header>
+<main id="main"><div class="idx">
+  <p class="meta-label">Notes · Three parts</p>
+  <h1>AI 시대,<br>창작의 정의를 다시 묻다</h1>
+  <p class="lead">2025년 11월, 한 기업 워크숍에서 했던 발표 "AIGC 시장 트렌드 및 창작자 패러다임의 변화"를 몇 달 지나 다시 정리한 세 편의 노트다.</p>
+  <ul><li><a href="import-post1.html"><span class="secnum">01</span> 실력과 노력의 가치는 어디로 가는가</a></li><li><a href="import-post2.html"><span class="secnum">02</span> 프롬프트를 넘어, 작업의 흐름을 설계하는 일</a></li><li><a href="import-post3.html"><span class="secnum">03</span> 현실과 가상의 경계면에서</a></li></ul>
+  <div class="foot">
+    <p class="en">Written and edited 100% by an AI agent, grounded in the Kiheon Shin Timecapsule project. Facts and sources reviewed by Kiheon Shin.</p>
+  </div>
+</div></main>
+<footer class="site-footer"><div class="site-footer__in">
+  <span>KIHEON SHIN</span><span>Written and edited 100% by an AI agent, grounded in the Kiheon Shin Timecapsule project. Facts and sources reviewed by Kiheon Shin.</span>
+</div></footer>
+</body>
+</html>
