@@ -151,8 +151,10 @@ figure img{display:block;width:100%;border:1px solid var(--rule)}
    max-height 대신 max-width를 쓰는 이유: width:auto로 바꾸면 width/height
    속성이 주던 자리 예약이 풀려 로드 전에 2px로 무너진다. */
 figure img.tall{margin-inline:auto}
+/* 캡션은 이미지 아래 가운데. 본문은 왼쪽 정렬이라 캡션이 가운데로 오면
+   글이 아니라 그림에 딸린 설명이라는 것이 한눈에 구분된다. */
 figcaption{margin-block-start:.75rem;color:var(--ink-muted);
-  font-size:.875rem;line-height:1.6}
+  font-size:.875rem;line-height:1.6;text-align:center;text-wrap:pretty}
 
 .foot{margin-block:4rem 0;padding-block-start:1.5rem;
   border-block-start:1px solid var(--rule-strong);display:grid;gap:1rem}
