@@ -180,6 +180,9 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
   text-decoration:none;color:var(--ink);font-family:var(--font-display);
   font-size:clamp(1.2rem,2vw,1.6rem);line-height:1.35}
 .idx li a:hover{color:var(--accent-hover)}
+/* 목록이 이미 아래쪽 선으로 닫힌다. 여기에 foot의 시작선까지 겹치면
+   가운데가 빈 상자처럼 읽힌다. 선을 지우고 여백만 둔다. */
+.idx .foot{margin-block-start:2.5rem;padding-block-start:0;border-block-start:0}
 </style>
 </head>
 <body>
@@ -194,11 +197,12 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
   <p class="lead">2025년 11월, 한 기업 워크숍에서 했던 발표 "AIGC 시장 트렌드 및 창작자 패러다임의 변화"를 몇 달 지나 다시 정리한 세 편의 노트다.</p>
   <ul><li><a href="import-post1.html"><span class="secnum">01</span> 실력과 노력의 가치는 어디로 가는가</a></li><li><a href="import-post2.html"><span class="secnum">02</span> 프롬프트를 넘어, 작업의 흐름을 설계하는 일</a></li><li><a href="import-post3.html"><span class="secnum">03</span> 현실과 가상의 경계면에서</a></li></ul>
   <div class="foot">
+    <p>이 글은 신기헌의 타임캡슐 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.</p>
     <p class="en">Written and edited 100% by an AI agent from the Kiheon Shin Timecapsule project.</p>
   </div>
 </div></main>
 <footer class="site-footer"><div class="site-footer__in">
-  <span>KIHEON SHIN</span><span>Written and edited 100% by an AI agent from the Kiheon Shin Timecapsule project.</span>
+  <span>KIHEON SHIN</span><span>AIGC Notes · 3부작</span>
 </div></footer>
 </body>
 </html>
