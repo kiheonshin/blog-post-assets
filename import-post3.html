@@ -99,8 +99,27 @@ main{width:min(100%,calc(var(--measure) + var(--gutter)*2));
 }
 .banner__cards a:hover{border-color:var(--accent);color:var(--accent-hover)}
 .banner__cards .card{border-color:var(--rule-strong)}
+.banner__cards .row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
 .banner__cards .n{font-family:var(--font-mono);font-size:var(--micro);
   letter-spacing:.1em;color:var(--accent)}
+/* 카드가 눌리는 것임을 알리는 표시. 현재 글 카드에는 붙이지 않는다 */
+.banner__cards .go{font-family:var(--font-mono);font-size:var(--micro);color:var(--accent)}
+.banner__cards a:hover .go{color:var(--accent-hover)}
+
+/* 상위 목록으로 돌아가는 버튼. 브랜드명과 맨 아래 바에만 링크가 있으면
+   찾지 못한다. 선만 쓰는 규범 안에서 버튼 형태로 세운다. */
+.uplink{
+  display:inline-flex;align-items:center;gap:.5rem;min-height:2.25rem;
+  padding-inline:.9rem;border:1px solid var(--rule-strong);
+  font-family:var(--font-mono);font-size:var(--micro);font-weight:600;
+  letter-spacing:.08em;color:var(--ink);text-decoration:none;white-space:nowrap;
+  transition:color .15s ease-out,border-color .15s ease-out;
+}
+.uplink:hover{border-color:var(--accent);color:var(--accent-hover)}
+.uplink::after{content:"→"}
+.uplink--head{border:0;padding-inline:0;color:var(--ink-muted);
+  font-weight:500;letter-spacing:.09em;text-transform:uppercase;font-size:var(--meta)}
+.uplink--head:hover{border:0;color:var(--accent-hover)}
 .banner__cards .t{font-size:.8125rem;line-height:1.35}
 .banner__cards .s{font-size:var(--micro);line-height:1.45;color:var(--ink-muted)}
 
@@ -183,7 +202,7 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 <header class="site-header"><div class="site-header__in">
   <a class="brand" href="index.html">KIHEON SHIN</a>
-  <p class="meta-label">AIGC Notes · 3부작</p>
+  <a class="uplink uplink--head" href="index.html">AIGC Notes · 3부작</a>
 </div></header>
 <main id="main">
 <article>
@@ -203,7 +222,7 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
   <figure class="banner">
     <img src="series-banner.jpg" alt="세 편의 키 비주얼이 하나로 이어진 파노라마"
          width="1600" height="800" loading="lazy" decoding="async">
-    <ol class="banner__cards"><li><a href="import-post1.html"><span class="n">01</span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (1)</span><span class="s">실력과 노력의 가치는 어디로 가는가</span></a></li><li><a href="import-post2.html"><span class="n">02</span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (2)</span><span class="s">프롬프트를 넘어, 작업의 흐름을 설계하는 일</span></a></li><li><span class="card" aria-current="page"><span class="n">03</span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (3)</span><span class="s">현실과 가상의 경계면에서</span></span></li></ol>
+    <ol class="banner__cards"><li><a href="import-post1.html"><span class="row"><span class="n">01</span><span class="go" aria-hidden="true">→</span></span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (1)</span><span class="s">실력과 노력의 가치는 어디로 가는가</span></a></li><li><a href="import-post2.html"><span class="row"><span class="n">02</span><span class="go" aria-hidden="true">→</span></span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (2)</span><span class="s">프롬프트를 넘어, 작업의 흐름을 설계하는 일</span></a></li><li><span class="card" aria-current="page"><span class="row"><span class="n">03</span></span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (3)</span><span class="s">현실과 가상의 경계면에서</span></span></li></ol>
   </figure>
   <p class="series">시리즈 안내 : 2025년 11월, 한 기업 워크숍에서 했던 발표 "AIGC 시장 트렌드 및 창작자 패러다임의 변화"를 다시 정리하는 세 편의 노트 중 마지막이다. 1편은 실력과 노력의 가치, 2편은 프롬프트에서 워크플로우로 넘어가는 창작 방식의 변화를 다뤘다. 이번 편은 발표의 마지막 장, 그리고 현장의 질문들이다.</p>
   <div class="prose">
@@ -211,6 +230,7 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
   </div>
 </article>
 <footer class="foot" id="authorship">
+  <p style="margin:0"><a class="uplink" href="index.html">세 편 모두 보기</a></p>
   <div class="serieslinks"><a href="import-post1.html">(1) 실력과 노력의 가치는 어디로 가는가</a><a href="import-post2.html">(2) 프롬프트를 넘어, 작업의 흐름을 설계하는 일</a><a class="self" aria-current="page">(3) 현실과 가상의 경계면에서</a></div>
   
   <p>이 글은 신기헌의 타임캡슐 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.</p>

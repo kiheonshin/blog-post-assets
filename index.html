@@ -94,8 +94,27 @@ main{width:min(100%,calc(var(--measure) + var(--gutter)*2));
 }
 .banner__cards a:hover{border-color:var(--accent);color:var(--accent-hover)}
 .banner__cards .card{border-color:var(--rule-strong)}
+.banner__cards .row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
 .banner__cards .n{font-family:var(--font-mono);font-size:var(--micro);
   letter-spacing:.1em;color:var(--accent)}
+/* 카드가 눌리는 것임을 알리는 표시. 현재 글 카드에는 붙이지 않는다 */
+.banner__cards .go{font-family:var(--font-mono);font-size:var(--micro);color:var(--accent)}
+.banner__cards a:hover .go{color:var(--accent-hover)}
+
+/* 상위 목록으로 돌아가는 버튼. 브랜드명과 맨 아래 바에만 링크가 있으면
+   찾지 못한다. 선만 쓰는 규범 안에서 버튼 형태로 세운다. */
+.uplink{
+  display:inline-flex;align-items:center;gap:.5rem;min-height:2.25rem;
+  padding-inline:.9rem;border:1px solid var(--rule-strong);
+  font-family:var(--font-mono);font-size:var(--micro);font-weight:600;
+  letter-spacing:.08em;color:var(--ink);text-decoration:none;white-space:nowrap;
+  transition:color .15s ease-out,border-color .15s ease-out;
+}
+.uplink:hover{border-color:var(--accent);color:var(--accent-hover)}
+.uplink::after{content:"→"}
+.uplink--head{border:0;padding-inline:0;color:var(--ink-muted);
+  font-weight:500;letter-spacing:.09em;text-transform:uppercase;font-size:var(--meta)}
+.uplink--head:hover{border:0;color:var(--accent-hover)}
 .banner__cards .t{font-size:.8125rem;line-height:1.35}
 .banner__cards .s{font-size:var(--micro);line-height:1.45;color:var(--ink-muted)}
 
@@ -175,15 +194,8 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 
 .idx{padding-block:4rem 0}
 .idx h1{margin-block-end:1.25rem}
-.idx ul{list-style:none;margin:3rem 0 0;padding:0;
-  border-block-start:1px solid var(--rule-strong)}
-.idx li{border-block-end:1px solid var(--rule)}
-.idx li a{display:flex;gap:1rem;align-items:baseline;padding-block:1.5rem;
-  text-decoration:none;color:var(--ink);font-family:var(--font-display);
-  font-size:clamp(1.2rem,2vw,1.6rem);line-height:1.35}
-.idx li a:hover{color:var(--accent-hover)}
-/* 목록이 이미 아래쪽 선으로 닫힌다. 여기에 foot의 시작선까지 겹치면
-   가운데가 빈 상자처럼 읽힌다. 선을 지우고 여백만 둔다. */
+/* 배너가 아래쪽을 닫는다. 여기에 foot의 시작선까지 겹치면 가운데가
+   빈 상자처럼 읽힌다. 선을 지우고 여백만 둔다. */
 .idx .foot{margin-block-start:2.5rem;padding-block-start:0;border-block-start:0}
 </style>
 </head>
@@ -197,7 +209,11 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
   <p class="meta-label">Notes · Three parts</p>
   <h1>AI 시대,<br>창작의 정의를 다시 묻다</h1>
   <p class="lead">2025년 11월, 한 기업 워크숍에서 했던 발표 "AIGC 시장 트렌드 및 창작자 패러다임의 변화"를 몇 달 지나 다시 정리한 세 편의 노트다.</p>
-  <ul><li><a href="import-post1.html"><span class="secnum">01</span> 실력과 노력의 가치는 어디로 가는가</a></li><li><a href="import-post2.html"><span class="secnum">02</span> 프롬프트를 넘어, 작업의 흐름을 설계하는 일</a></li><li><a href="import-post3.html"><span class="secnum">03</span> 현실과 가상의 경계면에서</a></li></ul>
+  <figure class="banner">
+    <img src="series-banner.jpg" alt="세 편의 키 비주얼이 하나로 이어진 파노라마"
+         width="1600" height="800" decoding="async">
+    <ol class="banner__cards"><li><a href="import-post1.html"><span class="row"><span class="n">01</span><span class="go" aria-hidden="true">→</span></span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (1)</span><span class="s">실력과 노력의 가치는 어디로 가는가</span></a></li><li><a href="import-post2.html"><span class="row"><span class="n">02</span><span class="go" aria-hidden="true">→</span></span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (2)</span><span class="s">프롬프트를 넘어, 작업의 흐름을 설계하는 일</span></a></li><li><a href="import-post3.html"><span class="row"><span class="n">03</span><span class="go" aria-hidden="true">→</span></span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (3)</span><span class="s">현실과 가상의 경계면에서</span></a></li></ol>
+  </figure>
   <div class="foot">
     <p>이 글은 신기헌의 타임캡슐 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.</p>
     <p class="en">Written and edited 100% by an AI agent from the Kiheon Shin Timecapsule project.</p>
