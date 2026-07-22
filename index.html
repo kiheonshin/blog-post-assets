@@ -57,6 +57,39 @@ main{width:min(100%,calc(var(--measure) + var(--gutter)*2));
   margin-inline:auto;padding-inline:var(--gutter)}
 
 .head{padding-block:4rem 0;display:grid;gap:1.25rem}
+
+.hero{margin:2rem 0 2.5rem}
+.hero img{display:block;width:100%;border:1px solid var(--rule)}
+
+/* 시리즈 배너. 텍스트 박스를 이미지에 굽지 않고 여기서 얹는다.
+   그래야 글자가 선택·검색되고 확대해도 깨지지 않으며, 현재 글 표시와
+   이동 링크를 붙일 수 있다. */
+.banner{position:relative;margin:2.5rem 0}
+.banner img{display:block;width:100%;border:1px solid var(--rule)}
+.banner__cards{
+  position:absolute;inset:auto 0 0 0;display:grid;
+  grid-template-columns:repeat(3,1fr);gap:0 2.5%;
+  margin:0;padding:0 3.5% 4%;list-style:none;
+}
+.banner__cards a,.banner__cards .card{
+  display:grid;gap:.15rem;padding:.55rem .7rem;
+  /* 사진 위에서 글자가 읽히려면 바탕이 필요하다. 그림자나 블러 대신
+     종이색을 옅게 깔고 테두리는 선 하나로 둔다(7장 규범 유지). */
+  border:1px solid rgba(23,24,26,.25);background:rgba(243,243,239,.87);
+  text-decoration:none;color:var(--ink);
+}
+.banner__cards a:hover{border-color:var(--accent);color:var(--accent-hover)}
+.banner__cards .card{border-color:var(--rule-strong)}
+.banner__cards .n{font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.1em;color:var(--accent)}
+.banner__cards .t{font-size:.8125rem;line-height:1.35}
+.banner__cards .s{font-size:var(--micro);line-height:1.45;color:var(--ink-muted)}
+
+@media(max-width:47.99rem){
+  /* 좁은 화면에서 이미지 위에 얹으면 글자가 읽히지 않는다. 아래로 내린다 */
+  .banner__cards{position:static;grid-template-columns:1fr;gap:.5rem;padding:.75rem 0 0}
+  .banner__cards a,.banner__cards .card{background:none;border-color:var(--rule)}
+}
 .metarow{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem}
 .metarow time{font-family:var(--font-mono);font-size:var(--meta);color:var(--ink-muted)}
 
@@ -98,6 +131,12 @@ h1{
 /* 이미지는 그림자로 띄우지 않고 1px 선으로 종이 위에 얹는다 */
 figure{margin:2.5rem 0}
 figure img{display:block;width:100%;border:1px solid var(--rule)}
+/* 정사각에 가까운 미디어는 읽기 폭을 채우면 슬라이드의 1.8배 높이로 솟아
+   읽기 흐름을 끊는다. 슬라이드와 같은 높이가 되도록 폭 상한을 비율로 계산해
+   인라인으로 걸고(빌드 시점) 가운데 정렬한다.
+   max-height 대신 max-width를 쓰는 이유: width:auto로 바꾸면 width/height
+   속성이 주던 자리 예약이 풀려 로드 전에 2px로 무너진다. */
+figure img.tall{margin-inline:auto}
 figcaption{margin-block-start:.75rem;color:var(--ink-muted);
   font-size:.875rem;line-height:1.6}
 
@@ -141,11 +180,11 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
   <p class="lead">2025년 11월, 한 기업 워크숍에서 했던 발표 "AIGC 시장 트렌드 및 창작자 패러다임의 변화"를 몇 달 지나 다시 정리한 세 편의 노트다.</p>
   <ul><li><a href="import-post1.html"><span class="secnum">01</span> 실력과 노력의 가치는 어디로 가는가</a></li><li><a href="import-post2.html"><span class="secnum">02</span> 프롬프트를 넘어, 작업의 흐름을 설계하는 일</a></li><li><a href="import-post3.html"><span class="secnum">03</span> 현실과 가상의 경계면에서</a></li></ul>
   <div class="foot">
-    <p class="en">Written and edited 100% by an AI agent, grounded in the Kiheon Shin Timecapsule project. Facts and sources reviewed by Kiheon Shin.</p>
+    <p class="en">Written and edited 100% by an AI agent from the Kiheon Shin Timecapsule project.</p>
   </div>
 </div></main>
 <footer class="site-footer"><div class="site-footer__in">
-  <span>KIHEON SHIN</span><span>Written and edited 100% by an AI agent, grounded in the Kiheon Shin Timecapsule project. Facts and sources reviewed by Kiheon Shin.</span>
+  <span>KIHEON SHIN</span><span>Written and edited 100% by an AI agent from the Kiheon Shin Timecapsule project.</span>
 </div></footer>
 </body>
 </html>
