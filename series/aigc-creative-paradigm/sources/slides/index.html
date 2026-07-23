@@ -411,17 +411,16 @@ button.frame{padding:0;cursor:zoom-in}
 .tno .tag{border:1px solid var(--rule);padding:0 .3rem;color:var(--accent)}
 .tcell{scroll-margin-top:1.5rem}
 
-/* 챕터 표지 CTA — 그 챕터 페이지를 작은 썸네일로 모은다. 가운데 문장 아래에서
-   시작해 페이지 수만큼 아래로 흐르고, 슬라이드 경계를 넘어갈 수 있다. 아래 큰
-   썸네일과 구분되게 더 작은 8열. 눌러도 열리지 않고 그 페이지로 스크롤만 한다.
-   -24% 는 표지 이미지(16:9) 높이의 약 57% 지점, 곧 가운데 문장 바로 아래에서
-   격자가 시작하도록 위로 끌어올린 값이다. */
-.chap__cta{position:relative;z-index:1;margin:-24% 0 0;padding:0 2.5%;pointer-events:none}
-.chap__cta-h{display:inline-block;margin:0 0 .45rem;font-family:var(--font-mono);
+/* 챕터 표지 CTA — 그 챕터 페이지를 작은 썸네일로 모은다. 아래 큰 썸네일과
+   구분되게 더 작은 12열. 눌러도 열리지 않고 그 페이지로 스크롤만 한다.
+   margin-top 음수 값은 CTA를 표지 위로 끌어올려, 3번째 줄 썸네일의 세로
+   중앙이 표지(16:9) 아래 경계에 걸리도록 맞춘 값이다(데스크톱 폭 기준). */
+.chap__cta{position:relative;z-index:1;margin:-15.85% 0 0;padding:0 2.5%;pointer-events:none}
+.chap__cta-h{display:inline-block;margin:0 0 .4rem;font-family:var(--font-mono);
   font-size:var(--micro);letter-spacing:.05em;color:rgba(247,247,242,.92);
   background:rgba(11,12,13,.55);padding:.14rem .45rem}
 .chap__ctagrid{list-style:none;margin:0;padding:0;display:grid;
-  grid-template-columns:repeat(8,1fr);gap:4px}
+  grid-template-columns:repeat(12,1fr);gap:3px}
 .chap__ct{position:relative;display:block;border:1px solid rgba(150,150,150,.45);
   background:#000;text-decoration:none;pointer-events:auto}
 .chap__ct:hover{border-color:var(--accent);outline:1px solid var(--accent)}
