@@ -98,20 +98,26 @@ main{width:min(100%,calc(var(--measure) + var(--gutter)*2));
   margin:0;padding:0 3.5% 4%;list-style:none;
 }
 .banner__cards a,.banner__cards .card{
-  display:grid;gap:.15rem;padding:.55rem .7rem;
-  /* 사진 위에서 글자가 읽히려면 바탕이 필요하다. 그림자나 블러 대신
-     종이색을 옅게 깔고 테두리는 선 하나로 둔다(7장 규범 유지). */
-  border:1px solid rgba(23,24,26,.25);background:rgba(243,243,239,.87);
+  display:grid;gap:.35rem;padding:.7rem .8rem;
+  /* 사진 위에서 글자가 읽히려면 바탕이 필요하다. 그림자·블러 대신 종이색을
+     또렷이 깔고 테두리는 선 하나로 둔다(7장 규범 유지). 각 카드가 눌러서
+     읽는 개별 글임이 분명하도록 바탕을 진하게, '글 읽기 →'를 상시 노출한다. */
+  border:1px solid rgba(23,24,26,.4);background:rgba(243,243,239,.94);
   text-decoration:none;color:var(--ink);
 }
-.banner__cards a:hover{border-color:var(--accent);color:var(--accent-hover)}
+.banner__cards a{transition:border-color .15s ease-out,background .15s ease-out}
+.banner__cards a:hover{border-color:var(--accent);background:rgba(243,243,239,.99)}
+.banner__cards a:hover .t{text-decoration:underline;text-underline-offset:.16em}
 .banner__cards .card{border-color:var(--rule-strong)}
 .banner__cards .row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
 .banner__cards .n{font-family:var(--font-mono);font-size:var(--micro);
-  letter-spacing:.1em;color:var(--accent)}
-/* 카드가 눌리는 것임을 알리는 표시. 현재 글 카드에는 붙이지 않는다 */
-.banner__cards .go{font-family:var(--font-mono);font-size:var(--micro);color:var(--accent)}
+  letter-spacing:.08em;color:var(--accent)}
+/* 눌러서 읽는 글임을 늘 알리는 표시. 현재 글 카드에는 붙이지 않는다 */
+.banner__cards .go{font-family:var(--font-mono);font-size:var(--micro);
+  font-weight:600;letter-spacing:.03em;color:var(--accent)}
 .banner__cards a:hover .go{color:var(--accent-hover)}
+.banner__cards .cur{font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.03em;color:var(--ink-faint)}
 
 /* 상위 목록으로 돌아가는 버튼. 브랜드명과 맨 아래 바에만 링크가 있으면
    찾지 못한다. 선만 쓰는 규범 안에서 버튼 형태로 세운다. */
@@ -127,8 +133,9 @@ main{width:min(100%,calc(var(--measure) + var(--gutter)*2));
 .uplink--head{border:0;padding-inline:0;color:var(--ink-muted);
   font-weight:500;letter-spacing:.09em;text-transform:uppercase;font-size:var(--meta)}
 .uplink--head:hover{border:0;color:var(--accent-hover)}
-.banner__cards .t{font-size:.8125rem;line-height:1.35}
-.banner__cards .s{font-size:var(--micro);line-height:1.45;color:var(--ink-muted)}
+/* 글 제목이 카드의 주인공. 길이가 달라도 두 줄까지만 잡아 높이를 맞춘다 */
+.banner__cards .t{font-size:.9375rem;font-weight:600;line-height:1.3;color:var(--ink);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
 @media(max-width:47.99rem){
   /* 좁은 화면에서 이미지 위에 얹으면 글자가 읽히지 않는다. 아래로 내린다 */
@@ -243,7 +250,7 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
   <figure class="banner">
     <img src="series-banner.jpg" alt="세 편의 키 비주얼이 하나로 이어진 파노라마"
          width="1600" height="800" loading="lazy" decoding="async">
-    <ol class="banner__cards"><li><a href="import-post1.html"><span class="row"><span class="n">01</span><span class="go" aria-hidden="true">→</span></span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (1)</span><span class="s">실력과 노력의 가치는 어디로 가는가</span></a></li><li><a href="import-post2.html"><span class="row"><span class="n">02</span><span class="go" aria-hidden="true">→</span></span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (2)</span><span class="s">프롬프트를 넘어, 작업의 흐름을 설계하는 일</span></a></li><li><span class="card" aria-current="page"><span class="row"><span class="n">03</span></span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (3)</span><span class="s">현실과 가상의 경계면에서</span></span></li></ol>
+    <ol class="banner__cards"><li><a href="import-post1.html"><span class="row"><span class="n">1편</span><span class="go">글 읽기 <span aria-hidden="true">→</span></span></span><span class="t">실력과 노력의 가치는 어디로 가는가</span></a></li><li><a href="import-post2.html"><span class="row"><span class="n">2편</span><span class="go">글 읽기 <span aria-hidden="true">→</span></span></span><span class="t">프롬프트를 넘어, 작업의 흐름을 설계하는 일</span></a></li><li><span class="card" aria-current="page"><span class="row"><span class="n">3편</span><span class="cur">지금 보는 글</span></span><span class="t">현실과 가상의 경계면에서</span></span></li></ol>
   </figure>
   <p class="series">시리즈 안내 : 2025년 11월, 한 기업 워크숍에서 했던 발표 "AIGC 시장 트렌드 및 창작자 패러다임의 변화"를 다시 정리하는 세 편의 노트 중 마지막이다. 1편은 실력과 노력의 가치, 2편은 프롬프트에서 워크플로우로 넘어가는 창작 방식의 변화를 다뤘다. 이번 편은 발표의 마지막 장, 그리고 현장의 질문들이다.</p>
   <div class="prose">
