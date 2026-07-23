@@ -194,7 +194,10 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 /* 원자료 안내 — 목록 페이지, 세 편의 글, 원자료 페이지가 함께 쓴다 */
 .sources{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:1rem}
 @media(min-width:48rem){.sources{grid-template-columns:repeat(2,minmax(0,1fr))}}
-.sources a{display:grid;gap:.3rem;padding:.9rem 1rem;border:1px solid var(--rule);
+/* 한 줄에 놓인 카드는 가장 긴 것에 높이를 맞춘다. align-content:start 로
+   글자는 위에 붙이고 남는 높이는 아래를 비운다. */
+.sources a{display:grid;gap:.3rem;align-content:start;height:100%;
+  padding:.9rem 1rem;border:1px solid var(--rule);
   text-decoration:none;color:var(--ink)}
 .sources a:hover{border-color:var(--accent)}
 .sources .k{font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em;
@@ -227,7 +230,8 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
   font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint)}
 .essays{list-style:none;margin:0;padding:0;display:grid;gap:1rem}
 @media(min-width:48rem){.essays{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.essays a{display:grid;gap:.4rem;padding:.9rem 1rem;border:1px solid var(--rule);
+.essays a{display:grid;gap:.4rem;align-content:start;height:100%;
+  padding:.9rem 1rem;border:1px solid var(--rule);
   text-decoration:none;color:var(--ink)}
 .essays a:hover{border-color:var(--accent)}
 .essays .en{display:flex;justify-content:space-between;font-family:var(--font-mono);
