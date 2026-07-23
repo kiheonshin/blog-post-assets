@@ -3,23 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI 시대, 창작의 정의를 다시 묻다 · Kiheon Shin</title>
-<meta name="description" content="2025년 11월 발표 'AIGC 시장 트렌드 및 창작자 패러다임의 변화'를 중심으로, 그 원자료와 다시 쓴 세 편의 글을 한자리에 모았다.">
+<title>시리즈 · Kiheon Shin</title>
+<meta name="description" content="신기헌의 글과 원자료를 주제별 시리즈로 묶어 읽는 아카이브.">
 <link rel="canonical" href="https://kiheonshin.github.io/blog-post-assets/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kiheon Shin">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:title" content="AI 시대, 창작의 정의를 다시 묻다">
-<meta property="og:description" content="2025년 11월 발표 'AIGC 시장 트렌드 및 창작자 패러다임의 변화'를 중심으로, 그 원자료와 다시 쓴 세 편의 글을 한자리에 모았다.">
+<meta property="og:title" content="시리즈 · Kiheon Shin">
+<meta property="og:description" content="글과 원자료를 주제별 시리즈로 묶어 읽는 아카이브.">
 <meta property="og:url" content="https://kiheonshin.github.io/blog-post-assets/">
-<meta property="og:image" content="https://kiheonshin.github.io/blog-post-assets/series-banner.jpg">
-<meta property="og:image:secure_url" content="https://kiheonshin.github.io/blog-post-assets/series-banner.jpg">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1600">
-<meta property="og:image:height" content="800">
-<meta property="og:image:alt" content="세 편의 키 비주얼이 하나로 이어진 파노라마">
+<meta property="og:image" content="https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/assets/series-banner.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://kiheonshin.github.io/blog-post-assets/series-banner.jpg">
+<link rel="stylesheet" href="assets/site.css">
+<script type="module" src="assets/series-nav.js"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQYBGPJFJ4"></script>
 <script>
 window.dataLayer=window.dataLayer||[];
@@ -27,305 +23,27 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-SQYBGPJFJ4');
 </script>
-<style>
-:root{
-  --canvas:#F3F3EF; --surface:#FBFBF8; --ink:#17181A; --ink-muted:#5E6065;
-  --ink-faint:#85878C; --rule:#CFCFC8; --rule-strong:#17181A;
-  --accent:#2457D6; --accent-hover:#163DA7; --inverse:#17181A; --inverse-ink:#F7F7F2;
-  --font-display:"Iowan Old Style","Noto Serif CJK KR","AppleMyungjo","Nanum Myeongjo",serif;
-  --font-body:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
-  --font-mono:"SFMono-Regular","Roboto Mono","Noto Sans Mono CJK KR",monospace;
-  --measure:46rem; --gutter:1rem; --micro:.6875rem; --meta:.75rem;
-}
-@media(min-width:48rem){:root{--gutter:2rem}}
-@media(min-width:80rem){:root{--gutter:3rem}}
-*,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
-body{
-  margin:0;background:var(--canvas);color:var(--ink);
-  font-family:var(--font-body);font-size:1.0625rem;line-height:1.78;
-  letter-spacing:-.005em;
-  -webkit-font-smoothing:antialiased;
-  /* 한글은 어절 단위로 끊는다. 없으면 "묻/다"처럼 단어 중간에서 잘린다 */
-  word-break:keep-all;
-  overflow-wrap:break-word;
-}
-a{color:var(--accent);text-underline-offset:.18em}
-a:hover{color:var(--accent-hover);text-decoration-thickness:.14em}
-a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-img{max-width:100%;height:auto}
-
-.skip{position:absolute;left:-9999px}
-.skip:focus{left:var(--gutter);top:.5rem;z-index:9;background:var(--surface);
-  padding:.5rem .75rem;border:1px solid var(--rule-strong)}
-
-/* 선만 사용 — 헤더는 hairline 하나로 구분한다 */
-.site-header{border-block-end:1px solid var(--rule)}
-.site-header__in{
-  width:min(100%,90rem);margin-inline:auto;padding-inline:var(--gutter);
-  min-height:4.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;
-}
-.brand{
-  font-family:var(--font-mono);font-size:var(--meta);font-weight:600;
-  letter-spacing:.09em;text-decoration:none;color:var(--ink);
-}
-.meta-label{
-  margin:0;font-family:var(--font-mono);font-size:var(--meta);font-weight:500;
-  letter-spacing:.09em;color:var(--ink-muted);text-transform:uppercase;
-}
-
-main{width:min(100%,calc(var(--measure) + var(--gutter)*2));
-  margin-inline:auto;padding-inline:var(--gutter)}
-
-.head{padding-block:4rem 0;display:grid;gap:1.25rem}
-
-.hero{margin:2rem 0 2.5rem}
-.hero img{display:block;width:100%;border:1px solid var(--rule)}
-
-/* 시리즈 배너. 텍스트 박스를 이미지에 굽지 않고 여기서 얹는다.
-   그래야 글자가 선택·검색되고 확대해도 깨지지 않으며, 현재 글 표시와
-   이동 링크를 붙일 수 있다. */
-.banner{position:relative;margin:2.5rem 0}
-.banner img{display:block;width:100%;border:1px solid var(--rule)}
-.banner__cards{
-  position:absolute;inset:auto 0 0 0;display:grid;
-  grid-template-columns:repeat(3,1fr);gap:0 2.5%;
-  margin:0;padding:0 3.5% 4%;list-style:none;
-}
-.banner__cards a,.banner__cards .card{
-  display:grid;gap:.35rem;padding:.7rem .8rem;
-  /* 사진 위에서 글자가 읽히려면 바탕이 필요하다. 그림자·블러 대신 종이색을
-     또렷이 깔고 테두리는 선 하나로 둔다(7장 규범 유지). 각 카드가 눌러서
-     읽는 개별 글임이 분명하도록 바탕을 진하게, '글 읽기 →'를 상시 노출한다. */
-  border:1px solid rgba(23,24,26,.4);background:rgba(243,243,239,.94);
-  text-decoration:none;color:var(--ink);
-}
-.banner__cards a{transition:border-color .15s ease-out,background .15s ease-out}
-.banner__cards a:hover{border-color:var(--accent);background:rgba(243,243,239,.99)}
-.banner__cards a:hover .t{text-decoration:underline;text-underline-offset:.16em}
-.banner__cards .card{border-color:var(--rule-strong)}
-.banner__cards .row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
-.banner__cards .n{font-family:var(--font-mono);font-size:var(--micro);
-  letter-spacing:.08em;color:var(--accent)}
-/* 눌러서 읽는 글임을 늘 알리는 표시. 현재 글 카드에는 붙이지 않는다 */
-.banner__cards .go{font-family:var(--font-mono);font-size:var(--micro);
-  font-weight:600;letter-spacing:.03em;color:var(--accent)}
-.banner__cards a:hover .go{color:var(--accent-hover)}
-.banner__cards .cur{font-family:var(--font-mono);font-size:var(--micro);
-  letter-spacing:.03em;color:var(--ink-faint)}
-
-/* 상위 목록으로 돌아가는 버튼. 브랜드명과 맨 아래 바에만 링크가 있으면
-   찾지 못한다. 선만 쓰는 규범 안에서 버튼 형태로 세운다. */
-.uplink{
-  display:inline-flex;align-items:center;gap:.5rem;min-height:2.25rem;
-  padding-inline:.9rem;border:1px solid var(--rule-strong);
-  font-family:var(--font-mono);font-size:var(--micro);font-weight:600;
-  letter-spacing:.08em;color:var(--ink);text-decoration:none;white-space:nowrap;
-  transition:color .15s ease-out,border-color .15s ease-out;
-}
-.uplink:hover{border-color:var(--accent);color:var(--accent-hover)}
-.uplink::after{content:"→"}
-.uplink--head{border:0;padding-inline:0;color:var(--ink-muted);
-  font-weight:500;letter-spacing:.09em;text-transform:uppercase;font-size:var(--meta)}
-.uplink--head:hover{border:0;color:var(--accent-hover)}
-/* 글 제목이 카드의 주인공. 길이가 달라도 두 줄까지만 잡아 높이를 맞춘다 */
-.banner__cards .t{font-size:.9375rem;font-weight:600;line-height:1.3;color:var(--ink);
-  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-
-@media(max-width:47.99rem){
-  /* 좁은 화면에서 이미지 위에 얹으면 글자가 읽히지 않는다. 아래로 내린다 */
-  .banner__cards{position:static;grid-template-columns:1fr;gap:.5rem;padding:.75rem 0 0}
-  .banner__cards a,.banner__cards .card{background:none;border-color:var(--rule)}
-}
-.metarow{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem}
-.metarow time{font-family:var(--font-mono);font-size:var(--meta);color:var(--ink-muted)}
-
-/* 작성 주체 공개 — 색면 없이 1px 테두리와 마이크로 타입으로만 */
-.authorship{
-  display:inline-flex;align-items:center;min-height:1.5rem;padding-inline:.5rem;
-  border:1px solid var(--rule-strong);color:var(--ink-muted);
-  font-family:var(--font-mono);font-size:var(--micro);font-weight:600;
-  letter-spacing:.08em;text-decoration:none;white-space:nowrap;
-  transition:color .15s ease-out,border-color .15s ease-out;
-}
-.authorship:hover{border-color:var(--accent);color:var(--accent-hover)}
-
-h1{
-  margin:0;font-family:var(--font-display);font-weight:400;
-  font-size:clamp(2.1rem,3.6vw,3.3rem);line-height:1.15;letter-spacing:-.03em;
-  text-wrap:balance;
-}
-.lead{
-  margin:0;max-width:var(--measure);color:var(--ink-muted);
-  font-size:clamp(1.06rem,1.5vw,1.22rem);line-height:1.62;
-}
-.series{
-  margin:0;padding-block-start:1.25rem;border-block-start:1px solid var(--rule);
-  color:var(--ink-faint);font-size:.875rem;line-height:1.7;font-style:italic;
-}
-
-.prose{padding-block-start:2.5rem;border-block-start:1px solid var(--rule);margin-block-start:2.5rem}
-.prose p{margin:0 0 1.5rem;text-wrap:pretty}
-.prose h2{
-  margin:3.5rem 0 1rem;font-family:var(--font-display);font-weight:400;
-  font-size:clamp(1.45rem,2vw,1.85rem);line-height:1.3;letter-spacing:-.02em;
-  display:flex;gap:.75rem;align-items:baseline;
-}
-/* 시간의 이음선 — 순서 번호는 모노로 작게 */
-.secnum{flex:none;font-family:var(--font-mono);font-size:var(--meta);
-  color:var(--ink-faint);letter-spacing:.08em}
-
-/* 이미지는 그림자로 띄우지 않고 1px 선으로 종이 위에 얹는다 */
-figure{margin:2.5rem 0}
-figure img{display:block;width:100%;border:1px solid var(--rule)}
-/* 정사각에 가까운 미디어는 읽기 폭을 채우면 슬라이드의 1.8배 높이로 솟아
-   읽기 흐름을 끊는다. 슬라이드와 같은 높이가 되도록 폭 상한을 비율로 계산해
-   인라인으로 걸고(빌드 시점) 가운데 정렬한다.
-   max-height 대신 max-width를 쓰는 이유: width:auto로 바꾸면 width/height
-   속성이 주던 자리 예약이 풀려 로드 전에 2px로 무너진다. */
-figure img.tall{margin-inline:auto}
-/* 캡션은 이미지 아래 가운데. 본문은 왼쪽 정렬이라 캡션이 가운데로 오면
-   글이 아니라 그림에 딸린 설명이라는 것이 한눈에 구분된다. */
-figcaption{margin-block-start:.75rem;color:var(--ink-muted);
-  font-size:.875rem;line-height:1.6;text-align:center;text-wrap:pretty}
-
-.foot{margin-block:4rem 0;padding-block-start:1.5rem;
-  border-block-start:1px solid var(--rule-strong);display:grid;gap:1rem}
-.foot p{margin:0;color:var(--ink-muted);font-size:.875rem;line-height:1.7}
-.foot .en{font-family:var(--font-mono);font-size:var(--micro);
-  letter-spacing:.04em;color:var(--ink-faint);line-height:1.8}
-.serieslinks{display:grid;gap:.4rem}
-.serieslinks a{display:block}
-.serieslinks .self{color:var(--ink);text-decoration:none;cursor:default}
-
-/* 원자료 안내 — 목록 페이지, 세 편의 글, 원자료 페이지가 함께 쓴다 */
-.sources{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:1rem}
-@media(min-width:48rem){.sources{grid-template-columns:repeat(2,minmax(0,1fr))}}
-/* 한 줄에 놓인 카드는 가장 긴 것에 높이를 맞춘다. align-content:start 로
-   글자는 위에 붙이고 남는 높이는 아래를 비운다. */
-.sources a{display:grid;gap:.3rem;align-content:start;height:100%;
-  padding:.9rem 1rem;border:1px solid var(--rule);
-  text-decoration:none;color:var(--ink)}
-.sources a:hover{border-color:var(--accent)}
-.sources .k{font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em;
-  color:var(--accent);display:flex;justify-content:space-between;gap:.5rem}
-.sources .t{font-size:.9375rem;font-weight:600;line-height:1.4}
-.sources .s{font-size:.8125rem;line-height:1.55;color:var(--ink-muted)}
-
-.site-footer{margin-block-start:5rem;background:var(--inverse);color:var(--inverse-ink)}
-.site-footer__in{width:min(100%,90rem);margin-inline:auto;padding:2.5rem var(--gutter);
-  display:flex;flex-wrap:wrap;gap:.75rem 2rem;justify-content:space-between;
-  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em}
-.site-footer a{color:var(--inverse-ink)}
-
-@media(prefers-reduced-motion:reduce){*{transition:none!important}}
-
-.idx{padding-block:3.5rem 0}
-.idx > .meta-label{margin-block-end:.5rem}
-.idx h1{margin:0 0 2rem}
-main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
-
-/* 두 칸 — 본문(CTA·원자료·소개) 왼쪽, 가상의 신기헌 조작대 오른쪽.
-   좁으면 조작대가 CTA 바로 밑으로 내려온다. */
-.idx-grid{display:grid;gap:2.25rem}
-@media(min-width:70rem){
-  .idx-grid{grid-template-columns:minmax(0,1fr) 17rem;column-gap:3rem;align-items:start}
-  .idx-grid > .cta{grid-column:1;grid-row:1}
-  .idx-grid > .struct{grid-column:1;grid-row:2}
-  .idx-grid > .about{grid-column:1;grid-row:3}
-  .idx-grid > .idx-rail{grid-column:2;grid-row:1 / span 3;
-    position:sticky;top:2rem;align-self:start}
-}
-/* CTA — 배너 위에 세 편의 글. 카드가 이미지를 덮으므로 바깥 여백만 정리 */
-.idx-grid > .cta{margin:0}
-.cta .banner{margin:0}
-.cta > .grouplabel{margin-block-end:.6rem}
-
-/* 원자료 — CTA를 받치는 자리 */
-.struct{margin:0}
-.grouplabel{margin:0 0 .75rem;font-family:var(--font-mono);font-size:var(--micro);
-  font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint)}
-
-/* 소개 — 아래로 내린 설명. 부차적인 자리라 글자를 한 급 줄인다 */
-.about{margin:0;padding-block-start:2rem;border-block-start:1px solid var(--rule)}
-.about .lead{margin:0;max-width:var(--measure);font-size:.9375rem;line-height:1.7}
-.summary{max-width:var(--measure);margin-block:1.25rem 0;padding-inline-start:1.1rem;
-  border-inline-start:2px solid var(--rule-strong)}
-.summary p{margin:0 0 .85rem;font-size:.9375rem;line-height:1.75}
-.summary p:last-child{margin-block-end:0}
-
-/* 가상의 신기헌 조작대 (미리보기) — 선만 쓰는 규범 안에서 토글을 세운다 */
-.idx-rail{border:1px solid var(--rule);padding:1.1rem}
-.rail-kicker{margin:0 0 .3rem;font-family:var(--font-mono);font-size:var(--micro);
-  font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
-.rail-sub{margin:0;font-size:.8125rem;line-height:1.55;color:var(--ink-muted)}
-/* 지금은 비활성 — 눌러도 켜지지 않으므로 손가락 커서를 주지 않는다 */
-.feat{display:flex;gap:.75rem;align-items:flex-start;justify-content:space-between;
-  margin-block-start:1rem;padding-block-start:1rem;
-  border-block-start:1px solid var(--rule);cursor:default}
-.feat__main{display:grid;gap:.25rem;min-width:0}
-.feat__t{font-size:.9375rem;font-weight:600;line-height:1.35}
-.feat__d{font-size:.75rem;line-height:1.5;color:var(--ink-muted)}
-.sw{flex:none;margin-block-start:.15rem}
-.sw input{position:absolute;width:1px;height:1px;opacity:0;margin:-1px;
-  overflow:hidden;white-space:nowrap}
-.sw__track{display:block;width:2.6rem;height:1.3rem;border:1px solid var(--rule-strong);
-  background:var(--surface);position:relative;transition:border-color .15s,background .15s}
-.sw__k{position:absolute;top:2px;bottom:2px;left:2px;width:1.05rem;
-  background:var(--ink-muted);transition:left .16s ease-out,background .15s}
-.sw input:checked + .sw__track{border-color:var(--accent);background:rgba(36,87,214,.1)}
-.sw input:checked + .sw__track .sw__k{left:calc(100% - 1.05rem - 2px);background:var(--accent)}
-.sw input:focus-visible + .sw__track{outline:2px solid var(--accent);outline-offset:2px}
-.sw input:disabled + .sw__track{opacity:.5}
-.rail-note{margin:1rem 0 0;padding-block-start:.8rem;border-block-start:1px solid var(--rule);
-  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.03em;
-  line-height:1.6;color:var(--ink-faint)}
-
-.idx .foot{margin-block-start:3rem;padding-block-start:1.5rem;
-  border-block-start:1px solid var(--rule-strong)}
-</style>
 </head>
-<body>
+<body class="library-page">
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 <header class="site-header"><div class="site-header__in">
-  <a class="brand" href="index.html">KIHEON SHIN</a>
-  <p class="meta-label">AIGC Notes</p>
+  <a class="brand" href="./">KIHEON SHIN</a>
+  <p class="meta-label">Series Archive</p>
 </div></header>
-<main id="main" class="idx-wide"><div class="idx">
-  <p class="meta-label">AIGC Notes</p>
-  <h1>AI 시대,<br>창작의 정의를 다시 묻다</h1>
-  <div class="idx-grid">
-    <div class="cta">
-      <p class="grouplabel">세 편의 글 · 표지를 눌러 각 편으로</p>
-      <figure class="banner">
-        <img src="series-banner.jpg" alt="세 편의 키 비주얼이 하나로 이어진 파노라마"
-             width="1600" height="800" decoding="async">
-        <ol class="banner__cards"><li><a href="import-post1.html"><span class="row"><span class="n">1편</span><span class="go">글 읽기 <span aria-hidden="true">→</span></span></span><span class="t">실력과 노력의 가치는 어디로 가는가</span></a></li><li><a href="import-post2.html"><span class="row"><span class="n">2편</span><span class="go">글 읽기 <span aria-hidden="true">→</span></span></span><span class="t">프롬프트를 넘어, 작업의 흐름을 설계하는 일</span></a></li><li><a href="import-post3.html"><span class="row"><span class="n">3편</span><span class="go">글 읽기 <span aria-hidden="true">→</span></span></span><span class="t">현실과 가상의 경계면에서</span></a></li></ol>
-      </figure>
-    </div>
-    <aside class="idx-rail" aria-label="가상의 신기헌 미리보기">
-      <p class="rail-kicker">미리보기 · 가상의 신기헌</p>
-      <p class="rail-sub">읽는 동안 곁에 둘 두 가지.</p>
-      <label class="feat"><span class="feat__main"><span class="feat__t">도움말 켜기</span><span class="feat__d">읽는 대목을 목소리로 짚어 준다.</span></span><span class="sw"><input type="checkbox" disabled><span class="sw__track"><span class="sw__k"></span></span></span></label><label class="feat"><span class="feat__main"><span class="feat__t">실시간 대화</span><span class="feat__d">궁금한 것을 바로 묻는다.</span></span><span class="sw"><input type="checkbox" disabled><span class="sw__track"><span class="sw__k"></span></span></span></label>
-      <p class="rail-note">아직 준비 중인 기능입니다.</p>
-    </aside>
-    <section class="struct">
-      <p class="grouplabel">원자료 · 이 글들을 받치는 두 자료</p>
-      <ul class="sources"><li><a href="source-research.html"><span class="k"><span>SOURCE · 연구 노트</span><span>→</span></span><span class="t">AI 시대의 예술, 인간 고유의 창의성이란 무엇인가</span><span class="s">2025.09.09 · 발표의 바탕이 된 사전 조사 전문</span></a></li><li><a href="source-slides.html"><span class="k"><span>SOURCE · 발표 자료</span><span>→</span></span><span class="t">AIGC 시장 트렌드 및 창작자 패러다임의 변화</span><span class="s">2025.11.21 · 슬라이드 162장과 발표 중 재생한 영상 59편</span></a></li></ul>
-    </section>
-    <section class="about">
-      <p class="grouplabel">소개</p>
-      <p class="lead">2025년 11월, 한 기업 워크숍에서 한 발표 "AIGC 시장 트렌드 및 창작자 패러다임의 변화". 그 발표와 그 앞의 연구 노트, 그리고 몇 달 지나 다시 쓴 세 편의 글을 한자리에 두었다.</p>
-      <div class="summary"><p>발표는 하나의 물음에서 출발한다. AI가 무엇이든 만들어내는 시대에 인간의 실력과 노력은 여전히 값어치가 있는가. 발표는 답을 내놓는 대신 전제를 바꾼다. AI는 더 빠르고 값싼 도구가 아니라, 사진이나 영화가 그랬듯 고유한 문법을 지닌 완전히 새로운 매체라는 것이다.</p><p>사진이 회화를 밀어내지 않고 기록의 의무에서 풀어주었듯, 새 매체는 창작자의 자리를 지우기보다 옮긴다. 손이 맡던 실행은 줄고, 무엇을 요구하고 무엇을 고를지 아는 판단이 그 자리를 대신한다. 프롬프트라는 새 언어에서 실시간 협업으로, 다시 현실과 가상의 경계가 흐려지는 세계로 이어지는 여섯 장이 그 이동을 따라간다.</p></div>
-    </section>
-  </div>
-  <div class="foot">
-    <p>이 글은 신기헌의 디지털 트윈 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.</p>
-    <p class="en">Written and edited 100% by an AI agent from the Kiheon Shin Digital Twin project.</p>
-  </div>
-</div></main>
+<main id="main" class="library-main">
+  <header class="library-head">
+    <p class="meta-label">Series</p>
+    <h1>질문이 이어지는<br>글의 묶음</h1>
+    <p class="lead">하나의 질문에서 갈라져 나온 글과 원자료를 시리즈 단위로 모읍니다.</p>
+  </header>
+  <section class="library-section" aria-labelledby="published-series">
+    <h2 id="published-series" class="library-section__label">공개된 시리즈</h2>
+    <series-library></series-library>
+    <noscript><p>시리즈 목록을 보려면 JavaScript를 켜 주세요.</p></noscript>
+  </section>
+</main>
 <footer class="site-footer"><div class="site-footer__in">
-  <span>KIHEON SHIN</span><span>AIGC Notes</span>
+  <span>KIHEON SHIN</span><span>SERIES ARCHIVE</span>
 </div></footer>
 </body>
 </html>
