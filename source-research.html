@@ -224,6 +224,9 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 
 :root{--measure-wide:74rem}
+/* 차례·챕터 CTA의 앵커 이동을 부드럽게. 모션 최소화 설정은 존중한다 */
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 main.wide{width:min(100%,calc(var(--measure-wide) + var(--gutter)*2))}
 /* 글 판은 목차(14rem)와 간격(4rem)을 본문 46rem 바깥에 두어야
    읽기 폭이 깎이지 않는다 */
@@ -313,8 +316,11 @@ th{font-weight:600;background:var(--surface)}
   font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1.25;letter-spacing:-.02em}
 .chap__p{margin:0;max-width:var(--measure);color:var(--ink-muted);
   font-size:.9375rem;line-height:1.75}
-.chap__div{margin:1.75rem 0 0;border:1px solid var(--rule)}
-.chap__div img{display:block;width:100%}
+.chap__div{position:relative;margin:1.75rem 0 0}
+.chap__divimg{display:block;width:100%;padding:0;border:1px solid var(--rule);
+  background:#000;cursor:pointer}
+.chap__divimg:hover{border-color:var(--accent)}
+.chap__divimg img{display:block;width:100%}
 
 .scene{margin-block-start:3rem}
 .scene__h{display:flex;gap:.75rem;align-items:baseline;margin:0 0 .5rem}
