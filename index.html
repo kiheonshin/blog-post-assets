@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI 시대, 창작의 정의를 다시 묻다 · Kiheon Shin</title>
-<meta name="description" content="2025년 11월 발표 'AIGC 시장 트렌드 및 창작자 패러다임의 변화'를 다시 정리한 세 편의 노트.">
+<meta name="description" content="2025년 11월 발표 'AIGC 시장 트렌드 및 창작자 패러다임의 변화'를 중심으로, 그 원자료와 다시 쓴 세 편의 글을 한자리에 모았다.">
 <link rel="canonical" href="https://kiheonshin.github.io/blog-post-assets/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kiheon Shin">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:title" content="AI 시대, 창작의 정의를 다시 묻다">
-<meta property="og:description" content="2025년 11월 발표 'AIGC 시장 트렌드 및 창작자 패러다임의 변화'를 다시 정리한 세 편의 노트.">
+<meta property="og:description" content="2025년 11월 발표 'AIGC 시장 트렌드 및 창작자 패러다임의 변화'를 중심으로, 그 원자료와 다시 쓴 세 편의 글을 한자리에 모았다.">
 <meta property="og:url" content="https://kiheonshin.github.io/blog-post-assets/">
 <meta property="og:image" content="https://kiheonshin.github.io/blog-post-assets/series-banner.jpg">
 <meta property="og:image:secure_url" content="https://kiheonshin.github.io/blog-post-assets/series-banner.jpg">
@@ -212,34 +212,62 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 
 .idx{padding-block:4rem 0}
 .idx h1{margin-block-end:1.25rem}
-/* 배너가 아래쪽을 닫는다. 여기에 foot의 시작선까지 겹치면 가운데가
-   빈 상자처럼 읽힌다. 선을 지우고 여백만 둔다. */
-.idx .foot{margin-block-start:2.5rem;padding-block-start:0;border-block-start:0}
+/* 발표 핵심 요약 — 색면 없이 왼쪽 선 하나로만 묶는다 */
+.summary{max-width:var(--measure);margin-block:1.75rem 0;padding-inline-start:1.1rem;
+  border-inline-start:2px solid var(--rule-strong)}
+.summary p{margin:0 0 1rem;font-size:1.0625rem;line-height:1.8}
+.summary p:last-child{margin-block-end:0}
+/* 전체 구조 — 원자료 둘과 세 편의 글을 한 판에서 나란히 */
+.struct{margin-block-start:3.5rem;padding-block-start:2.5rem;border-block-start:1px solid var(--rule)}
+.struct h2{margin:0 0 .75rem;font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.45rem,2vw,1.85rem);letter-spacing:-.02em}
+.struct__lead{margin:0 0 2rem;max-width:var(--measure);color:var(--ink-muted);
+  font-size:.9375rem;line-height:1.7}
+.grouplabel{margin:1.75rem 0 .75rem;font-family:var(--font-mono);font-size:var(--micro);
+  font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint)}
+.essays{list-style:none;margin:0;padding:0;display:grid;gap:1rem}
+@media(min-width:48rem){.essays{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.essays a{display:grid;gap:.4rem;padding:.9rem 1rem;border:1px solid var(--rule);
+  text-decoration:none;color:var(--ink)}
+.essays a:hover{border-color:var(--accent)}
+.essays .en{display:flex;justify-content:space-between;font-family:var(--font-mono);
+  font-size:var(--micro);letter-spacing:.09em;color:var(--accent)}
+.essays .t{font-size:1rem;font-weight:600;line-height:1.35}
+.essays .s{font-size:.8125rem;line-height:1.55;color:var(--ink-muted)}
+.idx .foot{margin-block-start:3rem;padding-block-start:1.5rem;
+  border-block-start:1px solid var(--rule-strong)}
 </style>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
 <header class="site-header"><div class="site-header__in">
   <a class="brand" href="index.html">KIHEON SHIN</a>
-  <p class="meta-label">AIGC Notes · 3부작</p>
+  <p class="meta-label">AIGC Notes</p>
 </div></header>
 <main id="main"><div class="idx">
-  <p class="meta-label">Notes · Three parts</p>
+  <p class="meta-label">AIGC Notes</p>
   <h1>AI 시대,<br>창작의 정의를 다시 묻다</h1>
-  <p class="lead">2025년 11월, 한 기업 워크숍에서 했던 발표 "AIGC 시장 트렌드 및 창작자 패러다임의 변화"를 몇 달 지나 다시 정리한 세 편의 노트다.</p>
+  <p class="lead">2025년 11월, 한 기업 워크숍에서 한 발표 "AIGC 시장 트렌드 및 창작자 패러다임의 변화". 그 발표와 그 앞의 연구 노트, 그리고 몇 달 지나 다시 쓴 세 편의 글을 한자리에 두었다.</p>
+  <div class="summary"><p>발표는 하나의 물음에서 출발한다. AI가 무엇이든 만들어내는 시대에 인간의 실력과 노력은 여전히 값어치가 있는가. 발표는 답을 내놓는 대신 전제를 바꾼다. AI는 더 빠르고 값싼 도구가 아니라, 사진이나 영화가 그랬듯 고유한 문법을 지닌 완전히 새로운 매체라는 것이다.</p><p>사진이 회화를 밀어내지 않고 기록의 의무에서 풀어주었듯, 새 매체는 창작자의 자리를 지우기보다 옮긴다. 손이 맡던 실행은 줄고, 무엇을 요구하고 무엇을 고를지 아는 판단이 그 자리를 대신한다. 프롬프트라는 새 언어에서 실시간 협업으로, 다시 현실과 가상의 경계가 흐려지는 세계로 이어지는 여섯 장이 그 이동을 따라간다.</p></div>
   <figure class="banner">
     <img src="series-banner.jpg" alt="세 편의 키 비주얼이 하나로 이어진 파노라마"
          width="1600" height="800" decoding="async">
-    <ol class="banner__cards"><li><a href="import-post1.html"><span class="row"><span class="n">01</span><span class="go" aria-hidden="true">→</span></span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (1)</span><span class="s">실력과 노력의 가치는 어디로 가는가</span></a></li><li><a href="import-post2.html"><span class="row"><span class="n">02</span><span class="go" aria-hidden="true">→</span></span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (2)</span><span class="s">프롬프트를 넘어, 작업의 흐름을 설계하는 일</span></a></li><li><a href="import-post3.html"><span class="row"><span class="n">03</span><span class="go" aria-hidden="true">→</span></span><span class="t">AI 시대, 창작의 정의를 다시 묻다 (3)</span><span class="s">현실과 가상의 경계면에서</span></a></li></ol>
   </figure>
-  <section class="prose"><h2><span>원자료</span></h2><p>세 편의 글이 나온 자리다. 발표에서 쓴 슬라이드와 영상, 그 앞에 있던 연구 노트를 손대지 않고 그대로 옮겨 두었다.</p><ul class="sources"><li><a href="source-research.html"><span class="k"><span>SOURCE · 연구 노트</span><span>→</span></span><span class="t">AI 시대의 예술, 인간 고유의 창의성이란 무엇인가</span><span class="s">2025.09.09 · 발표의 바탕이 된 사전 조사 전문</span></a></li><li><a href="source-slides.html"><span class="k"><span>SOURCE · 발표 자료</span><span>→</span></span><span class="t">AIGC 시장 트렌드 및 창작자 패러다임의 변화</span><span class="s">2025.11.21 · 슬라이드 162장과 현장에서 재생한 영상 55편</span></a></li></ul></section>
+  <section class="struct">
+    <h2><span>전체 구조</span></h2>
+    <p class="struct__lead">모두 하나의 발표에서 나왔다. 앞에 놓인 원자료 둘과, 그것을 다시 읽어 쓴 세 편의 글이 한 묶음이다.</p>
+    <p class="grouplabel">원자료 · 발표와 그 앞의 연구</p>
+    <ul class="sources"><li><a href="source-research.html"><span class="k"><span>SOURCE · 연구 노트</span><span>→</span></span><span class="t">AI 시대의 예술, 인간 고유의 창의성이란 무엇인가</span><span class="s">2025.09.09 · 발표의 바탕이 된 사전 조사 전문</span></a></li><li><a href="source-slides.html"><span class="k"><span>SOURCE · 발표 자료</span><span>→</span></span><span class="t">AIGC 시장 트렌드 및 창작자 패러다임의 변화</span><span class="s">2025.11.21 · 슬라이드 162장과 발표 중 재생한 영상 59편</span></a></li></ul>
+    <p class="grouplabel">세 편의 글 · 다시 쓴 노트</p>
+    <ol class="essays"><li><a href="import-post1.html"><span class="en"><span>01</span><span>→</span></span><span class="t">실력과 노력의 가치는 어디로 가는가</span><span class="s">AI가 다 만들어내는 시대에 실력과 노력은 어디로 가는가</span></a></li><li><a href="import-post2.html"><span class="en"><span>02</span><span>→</span></span><span class="t">프롬프트를 넘어, 작업의 흐름을 설계하는 일</span><span class="s">새 언어가 된 프롬프트, 그리고 실시간으로 짜는 작업의 흐름</span></a></li><li><a href="import-post3.html"><span class="en"><span>03</span><span>→</span></span><span class="t">현실과 가상의 경계면에서</span><span class="s">창작 커뮤니티와 플랫폼, 현실과 가상이 섞이는 세계</span></a></li></ol>
+  </section>
   <div class="foot">
     <p>이 글은 신기헌의 디지털 트윈 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.</p>
     <p class="en">Written and edited 100% by an AI agent from the Kiheon Shin Digital Twin project.</p>
   </div>
 </div></main>
 <footer class="site-footer"><div class="site-footer__in">
-  <span>KIHEON SHIN</span><span>AIGC Notes · 3부작</span>
+  <span>KIHEON SHIN</span><span>AIGC Notes</span>
 </div></footer>
 </body>
 </html>
