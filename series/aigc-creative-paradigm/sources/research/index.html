@@ -248,16 +248,19 @@ main.wide--text{--measure-wide:64rem}
 .toc h2{margin:0 0 .75rem;font-family:var(--font-mono);font-size:var(--micro);
   font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-muted)}
 .toc ol{margin:0;padding:0;list-style:none;display:grid;gap:.1rem}
-.toc a{display:block;padding:.28rem 0;font-size:.8125rem;line-height:1.45;
-  color:var(--ink);text-decoration:none;border-block-end:1px solid transparent}
+.toc a{display:block;padding:.28rem 0 .28rem .55rem;font-size:.8125rem;line-height:1.45;
+  color:var(--ink);text-decoration:none;border-inline-start:2px solid transparent}
 .toc a:hover{color:var(--accent-hover)}
-.toc .lv2{padding-inline-start:.9rem;color:var(--ink-muted);font-size:.78125rem}
+.toc .lv2{padding-inline-start:1.4rem;color:var(--ink-muted);font-size:.78125rem}
 .toc .part{margin-block-start:.9rem;padding-block-start:.7rem;
   border-block-start:1px solid var(--rule);font-family:var(--font-mono);
   font-size:var(--micro);letter-spacing:.08em;color:var(--ink-faint)}
-.toc a[aria-current="true"]{color:var(--accent);border-block-end-color:var(--accent)}
+/* 현재 읽는 위치 — 위쪽 경계선(가로)과 겹치지 않게 왼쪽 세로 막대로 */
+.toc a[aria-current="true"]{color:var(--accent);border-inline-start-color:var(--accent)}
 .toc a:not(.lv2){display:flex;gap:.55rem;align-items:baseline}
-.toc .tocnum{flex:none;font-family:var(--font-mono);font-weight:600;font-size:1.15rem;line-height:1;color:var(--accent)}
+/* 섹션 번호 — 색 빼고 옅게(덜 강조). 현재 위치일 때만 강조색으로 */
+.toc .tocnum{flex:none;font-family:var(--font-mono);font-weight:500;font-size:1rem;line-height:1;color:var(--ink-faint)}
+.toc a[aria-current="true"] .tocnum{color:var(--accent)}
 
 .doc .body{min-width:0;max-width:var(--measure)}
 .doc .body h2{margin:3.5rem 0 1rem;font-family:var(--font-display);font-weight:400;
@@ -493,5 +496,28 @@ button.frame{padding:0;cursor:zoom-in}
 <footer class="site-footer"><div class="site-footer__in">
   <span>KIHEON SHIN</span><a href="../../">AIGC Notes</a>
 </div></footer>
+<script>
+// 목차의 현재 읽는 위치 표시(스크롤 스파이). 슬라이드 페이지와 같은 방식.
+(function(){
+  var toc = document.querySelector('.toc');
+  if (!toc) return;
+  var links = {};
+  toc.querySelectorAll('a[href^="#p"]').forEach(function(a){
+    links[a.getAttribute('href').slice(1)] = a;
+  });
+  var heads = document.querySelectorAll('.doc .body h2[id], .doc .body h3[id]');
+  if (!heads.length) return;
+  var obs = new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if (!en.isIntersecting) return;
+      var cur = links[en.target.id];
+      if (!cur) return;
+      Object.keys(links).forEach(function(k){ links[k].removeAttribute('aria-current'); });
+      cur.setAttribute('aria-current', 'true');
+    });
+  }, { rootMargin: '-12% 0px -78% 0px' });
+  heads.forEach(function(h){ obs.observe(h); });
+})();
+</script>
 </body>
 </html>

@@ -248,14 +248,15 @@ main.wide--text{--measure-wide:64rem}
 .toc h2{margin:0 0 .75rem;font-family:var(--font-mono);font-size:var(--micro);
   font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-muted)}
 .toc ol{margin:0;padding:0;list-style:none;display:grid;gap:.1rem}
-.toc a{display:block;padding:.28rem 0;font-size:.8125rem;line-height:1.45;
-  color:var(--ink);text-decoration:none;border-block-end:1px solid transparent}
+.toc a{display:block;padding:.28rem 0 .28rem .55rem;font-size:.8125rem;line-height:1.45;
+  color:var(--ink);text-decoration:none;border-inline-start:2px solid transparent}
 .toc a:hover{color:var(--accent-hover)}
-.toc .lv2{padding-inline-start:.9rem;color:var(--ink-muted);font-size:.78125rem}
+.toc .lv2{padding-inline-start:1.4rem;color:var(--ink-muted);font-size:.78125rem}
 .toc .part{margin-block-start:.9rem;padding-block-start:.7rem;
   border-block-start:1px solid var(--rule);font-family:var(--font-mono);
   font-size:var(--micro);letter-spacing:.08em;color:var(--ink-faint)}
-.toc a[aria-current="true"]{color:var(--accent);border-block-end-color:var(--accent)}
+/* 현재 읽는/보는 위치 — 위쪽 경계선(가로)과 겹치지 않게 왼쪽 세로 막대로 */
+.toc a[aria-current="true"]{color:var(--accent);border-inline-start-color:var(--accent)}
 
 .doc .body{min-width:0;max-width:var(--measure)}
 .doc .body h2{margin:3.5rem 0 1rem;font-family:var(--font-display);font-weight:400;
@@ -414,7 +415,7 @@ button.frame{padding:0;cursor:zoom-in}
 /* 챕터 표지 CTA — 그 챕터 페이지를 작은 썸네일로 모은다. 아래 큰 썸네일과
    구분되게 더 작은 12열. 눌러도 열리지 않고 그 페이지로 스크롤만 한다.
    margin-top 음수 값은 CTA를 표지 위로 끌어올린 값(데스크톱 폭 기준). */
-.chap__cta{position:relative;z-index:1;margin:-18% 0 0;padding:0 2.5%;pointer-events:none}
+.chap__cta{position:relative;z-index:1;margin:-20.3% 0 0;padding:0 2.5%;pointer-events:none}
 .chap__cta-h{display:inline-block;margin:0 0 .4rem;font-family:var(--font-mono);
   font-size:var(--micro);letter-spacing:.05em;color:rgba(247,247,242,.92);
   background:rgba(11,12,13,.55);padding:.14rem .45rem}
