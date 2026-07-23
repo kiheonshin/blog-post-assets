@@ -413,12 +413,20 @@ button.frame{padding:0;cursor:zoom-in}
 
 /* 챕터 표지 CTA — 그 챕터 페이지를 작은 썸네일로 모은다. 아래 큰 썸네일과
    구분되게 더 작은 12열. 눌러도 열리지 않고 그 페이지로 스크롤만 한다.
-   margin-top 음수 값은 CTA를 표지 위로 끌어올려, 3번째 줄 썸네일의 세로
-   중앙이 표지(16:9) 아래 경계에 걸리도록 맞춘 값이다(데스크톱 폭 기준). */
-.chap__cta{position:relative;z-index:1;margin:-15.85% 0 0;padding:0 2.5%;pointer-events:none}
+   margin-top 음수 값은 CTA를 표지 위로 끌어올린 값(데스크톱 폭 기준). */
+.chap__cta{position:relative;z-index:1;margin:-18% 0 0;padding:0 2.5%;pointer-events:none}
 .chap__cta-h{display:inline-block;margin:0 0 .4rem;font-family:var(--font-mono);
   font-size:var(--micro);letter-spacing:.05em;color:rgba(247,247,242,.92);
   background:rgba(11,12,13,.55);padding:.14rem .45rem}
+/* 썸네일 창 — 두 줄 정도만 두고 위·아래를 그래디언트 마스크로 서서히 가린다.
+   창 높이·페이드 두께는 JS가 줄 높이를 재서 설정하고, 스크롤 위치에 따라
+   위(--ft)·아래(--fb) 마스크를 켠다. 두 줄 이하 챕터는 창이 내용에 딱 맞아
+   마스크가 켜지지 않는다. */
+.chap__ctascroll{position:relative;pointer-events:auto;overflow-y:auto;
+  scrollbar-width:none;-ms-overflow-style:none;--ft:0px;--fb:0px;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 var(--ft),#000 calc(100% - var(--fb)),transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0,#000 var(--ft),#000 calc(100% - var(--fb)),transparent 100%)}
+.chap__ctascroll::-webkit-scrollbar{display:none}
 .chap__ctagrid{list-style:none;margin:0;padding:0;display:grid;
   grid-template-columns:repeat(12,1fr);gap:3px}
 .chap__ct{position:relative;display:block;border:1px solid rgba(150,150,150,.45);
@@ -808,6 +816,45 @@ window.DECK={"chapters": [{"n": 1, "t": "AI 시대, 실력과 노력의 가치",
     });
   }, {rootMargin: '-10% 0px -80% 0px'});
   document.querySelectorAll('.chap').forEach(function(s){ obs.observe(s); });
+
+  // 챕터 표지 썸네일: 두 줄 창 + 위·아래 페이드 마스크 + 스크롤.
+  // 격자를 런타임에 스크롤 창으로 감싸므로 HTML 구조는 그대로 둔다.
+  document.querySelectorAll('.chap__ctagrid').forEach(function(grid){
+    var wrap = document.createElement('div');
+    wrap.className = 'chap__ctascroll';
+    grid.parentNode.insertBefore(wrap, grid);
+    wrap.appendChild(grid);
+    function upd(){
+      var fade = +wrap.dataset.fade || 0;
+      var top = wrap.scrollTop > 1;
+      var bot = wrap.scrollTop + wrap.clientHeight < wrap.scrollHeight - 1;
+      wrap.style.setProperty('--ft', top ? fade + 'px' : '0px');
+      wrap.style.setProperty('--fb', bot ? fade + 'px' : '0px');
+    }
+    function measure(){
+      var cells = grid.children;
+      if (cells.length < 2){ return; }
+      var cols = getComputedStyle(grid).gridTemplateColumns.split(' ').length;
+      var gtop = grid.getBoundingClientRect().top;
+      var r0 = cells[0].getBoundingClientRect();
+      var rowH = cells[cols] ? (cells[cols].getBoundingClientRect().top - r0.top) : r0.height;
+      if (rowH < 8){ return; }              // 아직 레이아웃 전이면 건너뛴다
+      // 마지막 칸 바닥으로 실제 내용 높이를 잰다(scrollHeight 는 타이밍에 흔들린다)
+      var gridH = Math.ceil(cells[cells.length - 1].getBoundingClientRect().bottom - gtop);
+      var fade = Math.round(rowH * 0.85);
+      wrap.dataset.fade = fade;
+      // 두 줄 + 페이드 한 겹. 내용이 그보다 낮으면(두 줄 이하) 딱 맞춰 마스크·스크롤이 없다.
+      wrap.style.height = Math.min(Math.round(rowH * 2 + fade), gridH) + 'px';
+      upd();
+    }
+    wrap.addEventListener('scroll', upd, { passive: true });
+    measure();
+    setTimeout(measure, 80);               // 레이아웃 안정 후 한 번 더
+    window.addEventListener('resize', measure);
+    grid.querySelectorAll('img').forEach(function(im){
+      if (!im.complete) im.addEventListener('load', measure, { once: true });
+    });
+  });
 })();
 
 </script>
