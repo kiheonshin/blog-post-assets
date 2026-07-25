@@ -270,17 +270,26 @@ series-library {
 .library-main {
   width: min(100%, calc(var(--wide) + var(--gutter) * 2));
   margin-inline: auto;
-  padding: var(--space-16) var(--gutter) 0;
+  /* 3.5rem은 시리즈 랜딩 .idx와 같은 값 — 홈↔시리즈를 오갈 때 표제가 흔들리지 않게 */
+  padding: 3.5rem var(--gutter) 0;
 }
 
 .library-head {
   display: grid;
   max-width: var(--measure);
-  gap: var(--space-4);
+}
+
+/* 아래 세 여백도 시리즈 랜딩(.idx > .meta-label / .idx h1 / .idx > .lead)과 같은 수치 */
+.library-head > .meta-label {
+  margin-block-end: 0.5rem;
+}
+
+.library-head .lead {
+  margin: 0 0 var(--space-8);
 }
 
 .library-head h1 {
-  margin: 0;
+  margin: 0 0 var(--space-4);
   font-family: var(--font-display);
   font-size: clamp(2.1rem, 3.6vw, 3.3rem);
   font-weight: 400;
@@ -290,14 +299,14 @@ series-library {
 }
 
 .library-head .lead {
-  margin: 0;
   color: var(--ink-muted);
   font-size: clamp(1.06rem, 1.5vw, 1.22rem);
   line-height: 1.62;
 }
 
+/* 리드가 2rem을 이미 쓰므로 여기서 2rem만 더해 전체 4rem을 유지한다 */
 .library-section {
-  margin-block-start: var(--space-16);
+  margin-block-start: var(--space-8);
 }
 
 .library-section__label {
@@ -319,8 +328,16 @@ series-library {
   list-style: none;
 }
 
+/* 시리즈가 둘 이상이면 카드 높이를 한 줄에서 맞춘다.
+   ol > li > article > a 네 겹이라 li·article도 grid로 늘려야 a까지 전달된다 */
+.library-grid > li,
+.library-card {
+  display: grid;
+}
+
 .library-card a {
   display: grid;
+  grid-template-rows: auto 1fr;
   border: 1px solid var(--rule);
   background: var(--surface);
   color: var(--ink);
@@ -340,6 +357,8 @@ series-library {
 
 .library-card__copy {
   display: grid;
+  /* 메타·제목·설명·액션 — 설명이 여백을 흡수해 액션이 항상 바닥에 붙는다 */
+  grid-template-rows: auto auto 1fr auto;
   gap: var(--space-3);
   padding: var(--space-4);
 }

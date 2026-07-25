@@ -191,7 +191,9 @@ class SeriesLibrary extends HTMLElement {
         makeElement(
           "span",
           "",
-          `${series.period} · ${series.posts.length}편 · 원자료 ${series.sources?.length ?? 0}`,
+          // 원자료 페이지가 없는 시리즈에 "원자료 0"을 찍지 않는다
+          `${series.period} · ${series.posts.length}편` +
+            (series.sources?.length ? ` · 원자료 ${series.sources.length}` : ""),
         ),
       );
       copy.append(

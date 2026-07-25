@@ -3,23 +3,23 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI 시대, 창작의 정의를 다시 묻다 · Kiheon Shin</title>
-<meta name="description" content="2025년 11월 발표 'AIGC 시장 트렌드 및 창작자 패러다임의 변화'를 중심으로, 그 원자료와 다시 쓴 세 편의 글을 한자리에 모았다.">
-<link rel="canonical" href="https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/">
+<title>AI를 가로막지 않을수록 선명해지는 창작자의 자리 · Kiheon Shin</title>
+<meta name="description" content="2026년 6월 뉴타입 엔터 서밋 대담을 1인칭으로 다시 정리한 세 편의 글. 가로막지 않는 협업, 취향을 재현하는 엔진 IP, 그리고 이미 가진 능력.">
+<link rel="canonical" href="https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kiheon Shin">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:title" content="AI 시대, 창작의 정의를 다시 묻다">
-<meta property="og:description" content="2025년 11월 발표 'AIGC 시장 트렌드 및 창작자 패러다임의 변화'를 중심으로, 그 원자료와 다시 쓴 세 편의 글을 한자리에 모았다.">
-<meta property="og:url" content="https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/">
-<meta property="og:image" content="https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/assets/series-banner.jpg">
-<meta property="og:image:secure_url" content="https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/assets/series-banner.jpg">
+<meta property="og:title" content="AI를 가로막지 않을수록 선명해지는 창작자의 자리">
+<meta property="og:description" content="2026년 6월 뉴타입 엔터 서밋 대담을 1인칭으로 다시 정리한 세 편의 글. 가로막지 않는 협업, 취향을 재현하는 엔진 IP, 그리고 이미 가진 능력.">
+<meta property="og:url" content="https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/">
+<meta property="og:image" content="https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/assets/series-banner.jpg">
+<meta property="og:image:secure_url" content="https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/assets/series-banner.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1600">
 <meta property="og:image:height" content="800">
 <meta property="og:image:alt" content="세 편의 키 비주얼이 하나로 이어진 파노라마">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/assets/series-banner.jpg">
+<meta name="twitter:image" content="https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/assets/series-banner.jpg">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQYBGPJFJ4"></script>
 <script>
 window.dataLayer=window.dataLayer||[];
@@ -225,16 +225,15 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 .idx h1{margin:0 0 2rem}
 main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
 
-/* 두 칸 — 본문(CTA·원자료·소개·공개문) 왼쪽, 가상의 신기헌 조작대 오른쪽.
+/* 두 칸 — 본문(CTA·소개·공개문) 왼쪽, 가상의 신기헌 조작대 오른쪽.
    좁으면 조작대가 공개문 아래 맨 끝으로 내려간다(DOM 순서 그대로). */
 .idx-grid{display:grid;gap:2.25rem}
 @media(min-width:70rem){
   .idx-grid{grid-template-columns:minmax(0,1fr) 17rem;column-gap:3rem;align-items:start}
   .idx-grid > .cta{grid-column:1;grid-row:1}
-  .idx-grid > .struct{grid-column:1;grid-row:2}
-  .idx-grid > .about{grid-column:1;grid-row:3}
-  .idx-grid > .foot{grid-column:1 / -1;grid-row:4}
-  .idx-grid > .idx-rail{grid-column:2;grid-row:1 / span 3;
+  .idx-grid > .about{grid-column:1;grid-row:2}
+  .idx-grid > .foot{grid-column:1 / -1;grid-row:3}
+  .idx-grid > .idx-rail{grid-column:2;grid-row:1 / span 2;
     position:sticky;top:2rem;align-self:start}
 }
 /* CTA — 배너 위에 세 편의 글. 카드가 이미지를 덮으므로 바깥 여백만 정리 */
@@ -285,6 +284,11 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
 .idx-grid > .foot{margin-block-start:.75rem}
 .idx .foot{margin-block-start:0;padding-block-start:1.5rem;
   border-block-start:1px solid var(--rule-strong)}
+
+/* 이 시리즈에는 원자료 페이지가 없다(대담 원문은 공개하지 않는다).
+   조작대는 시리즈 01과 같은 오른쪽 열에 선다 — 한 칸으로 덮던 규칙은 폐기. */
+.idx h1{margin:0 0 1rem}
+.idx > .lead{margin:0 0 2rem;max-width:var(--measure)}
 </style>
 <link rel="stylesheet" href="../../assets/site.css">
 <script type="module" src="../../assets/series-nav.js"></script>
@@ -296,18 +300,16 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
   <a class="uplink uplink--head" href="../../">전체 시리즈</a>
 </div></header>
 <main id="main" class="idx-wide"><div class="idx">
-  <p class="meta-label">시리즈 01</p>
-  <h1>AI 시대,<br>창작의 정의를 다시 묻다</h1>
+  <p class="meta-label">시리즈 02</p>
+  <h1>AI를 가로막지 않을수록<br>선명해지는 창작자의 자리</h1>
+  <p class="lead">가로막지 않는 협업, 취향을 재현하는 엔진 IP, 그리고 이미 가진 능력</p>
   <div class="idx-grid">
     <div class="cta">
-      <series-nav data-series="aigc-creative-paradigm"></series-nav>
+      <series-nav data-series="newtype-ip-dialogue"></series-nav>
     </div>
-    <section class="struct">
-      <series-sources data-series="aigc-creative-paradigm"></series-sources>
-    </section>
     <section class="about">
-      <p class="lead">2025년 11월, 한 기업 워크숍에서 한 발표 "AIGC 시장 트렌드 및 창작자 패러다임의 변화". 그 발표와 그 앞의 연구 노트, 그리고 몇 달 지나 다시 쓴 세 편의 글을 한자리에 두었다.</p>
-      <div class="summary"><p>발표는 하나의 물음에서 출발한다. AI가 무엇이든 만들어내는 시대에 인간의 실력과 노력은 여전히 값어치가 있는가. 발표는 답을 내놓는 대신 전제를 바꾼다. AI는 더 빠르고 값싼 도구가 아니라, 사진이나 영화가 그랬듯 고유한 문법을 지닌 완전히 새로운 매체라는 것이다.</p><p>사진이 회화를 밀어내지 않고 기록의 의무에서 풀어주었듯, 새 매체는 창작자의 자리를 지우기보다 옮긴다. 손이 맡던 실행은 줄고, 무엇을 요구하고 무엇을 고를지 아는 판단이 그 자리를 대신한다. 프롬프트라는 새 언어에서 실시간 협업으로, 다시 현실과 가상의 경계가 흐려지는 세계로 이어지는 여섯 장이 그 이동을 따라간다.</p></div>
+      <p class="lead">2026년 6월 12일, 한남동에서 열린 뉴타입 엔터 서밋 2026에서 'OK, Computer'라는 화두 아래 AI 시대의 IP 비즈니스를 이야기했다. 사회는 차우진이 맡았고, 행사는 엔터문화연구소(영문 이름 Neo Vibe Lab)가 주최했다. 그날 무대에서 한 말을 한 달 반쯤 지나 1인칭으로 다시 정리한 세 편을 한자리에 두었다. 행사 소개는 <a href="https://www.neovibelab.com/summit" target="_blank" rel="noopener">neovibelab.com/summit</a> 에 있다.</p>
+      <div class="summary"><p>세 편은 한 방향을 따라간다. 나는 AI에게서 효율이나 자동화를 크게 기대한 적이 없다. 내가 지켜보는 것은 이전에 할 수 없던 일이 가능해지는 자리이고, 그 자리는 내가 더 똑똑하게 지시할 때가 아니라 내가 AI의 잠재력을 덜 가로막을 때 열렸다. 최소한의 방향만 주고 비켜섰을 때 결과가 더 멀리 갔다는 것이 1편의 이야기다.</p><p>그렇게 만들어진 것들이 한 번 쓰고 버려지는 시대에 무엇이 IP로 남는가. 남는 것은 완성된 결과물이 아니라 그 취향을 언제든 다시 불러낼 수 있는 엔진이라는 것이 2편이고, 그렇게 관점을 바꿔 기술을 바라보는 일이 새로 배울 재주가 아니라 창작자가 원래 지니고 있던 능력이라는 것이 3편이다.</p></div>
     </section>
     <div class="foot">
       <p>이 글은 신기헌의 디지털 트윈 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.</p>
@@ -321,7 +323,7 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
   </div>
 </div></main>
 <footer class="site-footer"><div class="site-footer__in">
-  <span>KIHEON SHIN</span><span>AIGC Notes</span>
+  <span>KIHEON SHIN</span><span>Newtype Dialogue</span>
 </div></footer>
 </body>
 </html>

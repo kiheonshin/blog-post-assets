@@ -47,6 +47,40 @@ export const contentLibrary = {
         },
       ],
     },
+    {
+      slug: "newtype-ip-dialogue",
+      label: "Newtype Dialogue",
+      title: "AI를 가로막지 않을수록 선명해지는 창작자의 자리",
+      description:
+        "2026년 6월 뉴타입 엔터 서밋 대담을 1인칭으로 다시 정리한 세 편의 글.",
+      period: "2026",
+      href: "series/newtype-ip-dialogue/",
+      cover: "series/newtype-ip-dialogue/assets/series-banner.jpg",
+      coverAlt: "세 편의 키 비주얼이 하나로 이어진 파노라마",
+      posts: [
+        {
+          id: "01-not-blocking-potential",
+          label: "1편",
+          title: "AI가 가진 잠재력을 가로막지 않을 때 협업이 시작된다",
+          href: "series/newtype-ip-dialogue/posts/01-not-blocking-potential/",
+        },
+        {
+          id: "02-engine-as-ip",
+          label: "2편",
+          title:
+            "한 번 쓰고 버리는 시대에 남는 IP는 결과물이 아니라 취향을 재현하는 엔진이다",
+          href: "series/newtype-ip-dialogue/posts/02-engine-as-ip/",
+        },
+        {
+          id: "03-already-have-the-eye",
+          label: "3편",
+          title: "AI를 다르게 보는 눈은 새 기술이 아니라 창작자가 원래 가진 능력이다",
+          href: "series/newtype-ip-dialogue/posts/03-already-have-the-eye/",
+        },
+      ],
+      // 대담 원문 스크립트는 공개하지 않는다 — 이 시리즈에 원자료 페이지는 없다
+      sources: [],
+    },
   ],
 };
 
