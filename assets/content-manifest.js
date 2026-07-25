@@ -49,7 +49,7 @@ export const contentLibrary = {
     },
     {
       slug: "newtype-ip-dialogue",
-      label: "Newtype Dialogue",
+      label: "Newtype Summit",
       title: "AI를 가로막지 않을수록 선명해지는 창작자의 자리",
       description:
         "2026년 6월 뉴타입 엔터 서밋 대담을 1인칭으로 다시 정리한 포스팅 세 개.",
