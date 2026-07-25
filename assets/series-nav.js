@@ -2,7 +2,7 @@
    HTML만 새로 받고 모듈은 캐시에서 꺼내 쓰는 일이 생긴다. 그러면 새 시리즈가
    목록에서 빠지고 "시리즈 정보를 불러오지 못했습니다"가 뜬다(2026-07-25 실증).
    페이지의 series-nav.js?v= 값과 반드시 같이 올릴 것. */
-import { contentLibrary, getSeries } from "./content-manifest.js?v=20260725";
+import { contentLibrary, getSeries } from "./content-manifest.js?v=20260725b";
 
 const siteRoot = new URL("../", import.meta.url);
 
@@ -71,14 +71,14 @@ function makeSeriesContextCard(series) {
 
   const meta = makeElement("span", "k");
   meta.append(
-    makeElement("span", "", `NOTES · ${series.posts.length}부작`),
+    makeElement("span", "", `NOTES · 포스팅 ${series.posts.length}개`),
     makeElement("span", "", "→"),
   );
 
   link.append(
     meta,
     makeElement("span", "t", series.title),
-    makeElement("span", "s", "이 원자료를 다시 읽고 쓴 글"),
+    makeElement("span", "s", "이 자료를 다시 읽고 쓴 글"),
   );
   item.append(link);
   return item;
@@ -120,7 +120,7 @@ class SeriesSources extends HTMLElement {
   connectedCallback() {
     const series = getSeries(this.dataset.series);
     if (!series) {
-      this.textContent = "원자료 정보를 불러오지 못했습니다.";
+      this.textContent = "자료 정보를 불러오지 못했습니다.";
       return;
     }
 
@@ -195,9 +195,9 @@ class SeriesLibrary extends HTMLElement {
         makeElement(
           "span",
           "",
-          // 원자료 페이지가 없는 시리즈에 "원자료 0"을 찍지 않는다
-          `${series.period} · ${series.posts.length}편` +
-            (series.sources?.length ? ` · 원자료 ${series.sources.length}` : ""),
+          // 바탕 자료가 없는 시리즈에 "자료 0개"를 찍지 않는다
+          `${series.period} · 포스팅 ${series.posts.length}개` +
+            (series.sources?.length ? ` · 자료 ${series.sources.length}개` : ""),
         ),
       );
       copy.append(

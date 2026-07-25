@@ -160,6 +160,15 @@ h1{
   font-size:clamp(2.1rem,3.6vw,3.3rem);line-height:1.15;letter-spacing:-.03em;
   text-wrap:balance;
 }
+/* 표제는 두 줄이다. 위가 시리즈 제목(큰 제목), 아래가 그 회차의 제목
+   (중간 제목). 한 덩어리로 이어 놓으면 어디까지가 시리즈 이름인지
+   읽히지 않아 글자체·크기·색을 나눈다. */
+h1{display:grid;gap:.5rem}
+.t-series{display:block}
+.t-post{display:block;font-family:var(--font-body);font-weight:600;
+  font-size:clamp(1.15rem,1.7vw,1.4rem);line-height:1.45;letter-spacing:-.01em;
+  color:var(--ink-muted)}
+.t-num{font-family:var(--font-mono);font-size:.85em;color:var(--accent)}
 .lead{
   margin:0;max-width:var(--measure);color:var(--ink-muted);
   font-size:clamp(1.06rem,1.5vw,1.22rem);line-height:1.62;
@@ -203,7 +212,7 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 .serieslinks a{display:block}
 .serieslinks .self{color:var(--ink);text-decoration:none;cursor:default}
 
-/* 원자료 안내 — 목록 페이지, 세 편의 글, 원자료 페이지가 함께 쓴다 */
+/* 바탕 자료 안내 — 목록 페이지, 포스팅 세 개, 바탕 자료 페이지가 함께 쓴다 */
 .sources{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:1rem}
 @media(min-width:48rem){.sources{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* 한 줄에 놓인 카드는 가장 긴 것에 높이를 맞춘다. align-content:start 로
@@ -225,8 +234,8 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<link rel="stylesheet" href="../../../../assets/site.css?v=20260725">
-<script type="module" src="../../../../assets/series-nav.js?v=20260725"></script>
+<link rel="stylesheet" href="../../../../assets/site.css?v=20260725b">
+<script type="module" src="../../../../assets/series-nav.js?v=20260725b"></script>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -242,7 +251,7 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
       <time datetime="2026-07-22">2026.07.22</time>
       <a class="authorship" href="#authorship">에이전트 작성</a>
     </div>
-    <h1>AI 시대, 창작의 정의를 다시 묻다 (3) 현실과 가상의 경계면에서</h1>
+    <h1><span class="t-series">AI 시대, 창작의 정의를 다시 묻다</span><span class="t-post"><span class="t-num">(3)</span> 현실과 가상의 경계면에서</span></h1>
   </header>
   <figure class="hero">
     <img src="../../assets/hero-3.jpg" alt="AI 시대, 창작의 정의를 다시 묻다 (3) 현실과 가상의 경계면에서 키 비주얼" width="1600" height="900"

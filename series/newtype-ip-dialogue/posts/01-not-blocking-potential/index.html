@@ -4,14 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>AI를 가로막지 않을수록 선명해지는 창작자의 자리 (1) AI가 가진 잠재력을 가로막지 않을 때 협업이 시작된다</title>
-<meta name="description" content="나는 AI에게서 효율이나 자동화를 크게 기대한 적이 없다. 내가 지켜보고 있는 것은 다른 쪽이다. 이전에는 할 수 없던 일이 가능해지는 자리. 그 자리는 내가 더 똑똑하게 지시할 때가 아니라, 내가 AI의 잠재력을 덜 가로막을 때 열렸다. 지난 6월 한남동에서 열린 한">
+<meta name="description" content="나는 AI에게서 효율성이나 자동화를 크게 기대한 적이 없다. 내가 지켜보고 있는 것은 다른 쪽이다. 이전에는 할 수 없던 일이 가능해지는 쪽. 그런 일은 내가 더 똑똑하게 지시할 때가 아니라, 내가 AI의 잠재력을 덜 가로막을 때 일어났다. 지난 6월 한남동에서 열린 한">
 <meta name="author" content="Kiheon Shin">
 <link rel="canonical" href="https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/01-not-blocking-potential/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Kiheon Shin">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:title" content="AI를 가로막지 않을수록 선명해지는 창작자의 자리 (1) AI가 가진 잠재력을 가로막지 않을 때 협업이 시작된다">
-<meta property="og:description" content="나는 AI에게서 효율이나 자동화를 크게 기대한 적이 없다. 내가 지켜보고 있는 것은 다른 쪽이다. 이전에는 할 수 없던 일이 가능해지는 자리. 그 자리는 내가 더 똑똑하게 지시할 때가 아니라, 내가 AI의 잠재력을 덜 가로막을 때 열렸다. 지난 6월 한남동에서 열린 한">
+<meta property="og:description" content="나는 AI에게서 효율성이나 자동화를 크게 기대한 적이 없다. 내가 지켜보고 있는 것은 다른 쪽이다. 이전에는 할 수 없던 일이 가능해지는 쪽. 그런 일은 내가 더 똑똑하게 지시할 때가 아니라, 내가 AI의 잠재력을 덜 가로막을 때 일어났다. 지난 6월 한남동에서 열린 한">
 <meta property="og:url" content="https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/01-not-blocking-potential/">
 <meta property="og:image" content="https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/assets/hero-1.jpg">
 <meta property="og:image:secure_url" content="https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/assets/hero-1.jpg">
@@ -23,7 +23,7 @@
 <meta property="og:image:alt" content="AI를 가로막지 않을수록 선명해지는 창작자의 자리 (1) AI가 가진 잠재력을 가로막지 않을 때 협업이 시작된다 키 비주얼">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="AI를 가로막지 않을수록 선명해지는 창작자의 자리 (1) AI가 가진 잠재력을 가로막지 않을 때 협업이 시작된다">
-<meta name="twitter:description" content="나는 AI에게서 효율이나 자동화를 크게 기대한 적이 없다. 내가 지켜보고 있는 것은 다른 쪽이다. 이전에는 할 수 없던 일이 가능해지는 자리. 그 자리는 내가 더 똑똑하게 지시할 때가 아니라, 내가 AI의 잠재력을 덜 가로막을 때 열렸다. 지난 6월 한남동에서 열린 한">
+<meta name="twitter:description" content="나는 AI에게서 효율성이나 자동화를 크게 기대한 적이 없다. 내가 지켜보고 있는 것은 다른 쪽이다. 이전에는 할 수 없던 일이 가능해지는 쪽. 그런 일은 내가 더 똑똑하게 지시할 때가 아니라, 내가 AI의 잠재력을 덜 가로막을 때 일어났다. 지난 6월 한남동에서 열린 한">
 <meta name="twitter:image" content="https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/assets/hero-1.jpg">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQYBGPJFJ4"></script>
 <script>
@@ -160,6 +160,15 @@ h1{
   font-size:clamp(2.1rem,3.6vw,3.3rem);line-height:1.15;letter-spacing:-.03em;
   text-wrap:balance;
 }
+/* 표제는 두 줄이다. 위가 시리즈 제목(큰 제목), 아래가 그 회차의 제목
+   (중간 제목). 한 덩어리로 이어 놓으면 어디까지가 시리즈 이름인지
+   읽히지 않아 글자체·크기·색을 나눈다. */
+h1{display:grid;gap:.5rem}
+.t-series{display:block}
+.t-post{display:block;font-family:var(--font-body);font-weight:600;
+  font-size:clamp(1.15rem,1.7vw,1.4rem);line-height:1.45;letter-spacing:-.01em;
+  color:var(--ink-muted)}
+.t-num{font-family:var(--font-mono);font-size:.85em;color:var(--accent)}
 .lead{
   margin:0;max-width:var(--measure);color:var(--ink-muted);
   font-size:clamp(1.06rem,1.5vw,1.22rem);line-height:1.62;
@@ -203,7 +212,7 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 .serieslinks a{display:block}
 .serieslinks .self{color:var(--ink);text-decoration:none;cursor:default}
 
-/* 원자료 안내 — 목록 페이지, 세 편의 글, 원자료 페이지가 함께 쓴다 */
+/* 바탕 자료 안내 — 목록 페이지, 포스팅 세 개, 바탕 자료 페이지가 함께 쓴다 */
 .sources{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:1rem}
 @media(min-width:48rem){.sources{grid-template-columns:repeat(2,minmax(0,1fr))}}
 /* 한 줄에 놓인 카드는 가장 긴 것에 높이를 맞춘다. align-content:start 로
@@ -225,8 +234,8 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<link rel="stylesheet" href="../../../../assets/site.css?v=20260725">
-<script type="module" src="../../../../assets/series-nav.js?v=20260725"></script>
+<link rel="stylesheet" href="../../../../assets/site.css?v=20260725b">
+<script type="module" src="../../../../assets/series-nav.js?v=20260725b"></script>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -242,13 +251,13 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
       <time datetime="2026-07-25">2026.07.25</time>
       <a class="authorship" href="#authorship">에이전트 작성</a>
     </div>
-    <h1>AI를 가로막지 않을수록 선명해지는 창작자의 자리 (1) AI가 가진 잠재력을 가로막지 않을 때 협업이 시작된다</h1>
+    <h1><span class="t-series">AI를 가로막지 않을수록 선명해지는 창작자의 자리</span><span class="t-post"><span class="t-num">(1)</span> AI가 가진 잠재력을 가로막지 않을 때 협업이 시작된다</span></h1>
   </header>
   <figure class="hero">
     <img src="../../assets/hero-1.jpg" alt="AI를 가로막지 않을수록 선명해지는 창작자의 자리 (1) AI가 가진 잠재력을 가로막지 않을 때 협업이 시작된다 키 비주얼" width="1600" height="900"
          decoding="async">
   </figure>
-  <p class="lead">나는 AI에게서 효율이나 자동화를 크게 기대한 적이 없다. 내가 지켜보고 있는 것은 다른 쪽이다. 이전에는 할 수 없던 일이 가능해지는 자리. 그 자리는 내가 더 똑똑하게 지시할 때가 아니라, 내가 AI의 잠재력을 덜 가로막을 때 열렸다. 지난 6월 한남동에서 열린 한 대담에서 나는 이 이야기를 했고, 한 달 반쯤 지난 지금 그때 무대에서 한 말을 내 언어로 다시 정리한다.</p>
+  <p class="lead">나는 AI에게서 효율성이나 자동화를 크게 기대한 적이 없다. 내가 지켜보고 있는 것은 다른 쪽이다. 이전에는 할 수 없던 일이 가능해지는 쪽. 그런 일은 내가 더 똑똑하게 지시할 때가 아니라, 내가 AI의 잠재력을 덜 가로막을 때 일어났다. 지난 6월 한남동에서 열린 한 대담에서 나는 이 이야기를 했고, 한 달 반쯤 지난 지금 그때 무대에서 한 말을 내 언어로 다시 정리한다.</p>
   <series-nav data-series="newtype-ip-dialogue" data-current="01-not-blocking-potential"></series-nav>
   <p class="series">시리즈 안내 : 이 시리즈는 2026년 6월 12일 한남동에서 열린 뉴타입 엔터 서밋 2026의 대담을 1인칭으로 다시 정리한 것이다. 'OK, Computer'라는 화두 아래 AI 시대의 IP 비즈니스를 다뤘고, 사회는 차우진이 맡았다. 행사는 엔터문화연구소가 주최했으며, 영문 이름은 Neo Vibe Lab이다. 소개는 <a href="https://www.neovibelab.com/summit" target="_blank" rel="noopener">neovibelab.com/summit</a> 에 있다. 이 글은 세 편 중 첫 번째다.</p>
   <div class="prose">
