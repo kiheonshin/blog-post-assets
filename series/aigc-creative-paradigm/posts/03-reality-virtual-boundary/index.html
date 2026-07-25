@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI 시대, 창작의 정의를 다시 묻다 (3) 현실과 가상의 경계면에서</title>
+<title>AI 시대, 창작의 정의를 다시 묻다 Part 3. 현실과 가상의 경계면에서</title>
 <meta name="description" content="가상현실이라는 말에는 순서가 들어 있다. 현실이 먼저 있고, 가상은 그 위에 얹힌다는 순서다. 발표의 마지막 장을 준비하면서 그 순서가 잘 맞지 않는다고 느꼈다. 기억이 생성되고, 픽셀이 현실의 인과를 추론하고, 세계가 실시간으로 만들어져 일상 위에 덧입혀지고 있었다. 창작자가">
 <meta name="author" content="Kiheon Shin">
 <link rel="canonical" href="https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Kiheon Shin">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:title" content="AI 시대, 창작의 정의를 다시 묻다 (3) 현실과 가상의 경계면에서">
+<meta property="og:title" content="AI 시대, 창작의 정의를 다시 묻다 Part 3. 현실과 가상의 경계면에서">
 <meta property="og:description" content="가상현실이라는 말에는 순서가 들어 있다. 현실이 먼저 있고, 가상은 그 위에 얹힌다는 순서다. 발표의 마지막 장을 준비하면서 그 순서가 잘 맞지 않는다고 느꼈다. 기억이 생성되고, 픽셀이 현실의 인과를 추론하고, 세계가 실시간으로 만들어져 일상 위에 덧입혀지고 있었다. 창작자가">
 <meta property="og:url" content="https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/">
 <meta property="og:image" content="https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/assets/hero-3.jpg">
@@ -20,9 +20,9 @@
      썸네일 자리를 잡지 못하고 빈 링크로 보인다 -->
 <meta property="og:image:width" content="1600">
 <meta property="og:image:height" content="900">
-<meta property="og:image:alt" content="AI 시대, 창작의 정의를 다시 묻다 (3) 현실과 가상의 경계면에서 키 비주얼">
+<meta property="og:image:alt" content="AI 시대, 창작의 정의를 다시 묻다 Part 3. 현실과 가상의 경계면에서 키 비주얼">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AI 시대, 창작의 정의를 다시 묻다 (3) 현실과 가상의 경계면에서">
+<meta name="twitter:title" content="AI 시대, 창작의 정의를 다시 묻다 Part 3. 현실과 가상의 경계면에서">
 <meta name="twitter:description" content="가상현실이라는 말에는 순서가 들어 있다. 현실이 먼저 있고, 가상은 그 위에 얹힌다는 순서다. 발표의 마지막 장을 준비하면서 그 순서가 잘 맞지 않는다고 느꼈다. 기억이 생성되고, 픽셀이 현실의 인과를 추론하고, 세계가 실시간으로 만들어져 일상 위에 덧입혀지고 있었다. 창작자가">
 <meta name="twitter:image" content="https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/assets/hero-3.jpg">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQYBGPJFJ4"></script>
@@ -163,12 +163,19 @@ h1{
 /* 표제는 두 줄이다. 위가 시리즈 제목(큰 제목), 아래가 그 회차의 제목
    (중간 제목). 한 덩어리로 이어 놓으면 어디까지가 시리즈 이름인지
    읽히지 않아 글자체·크기·색을 나눈다. */
-h1{display:grid;gap:.5rem}
-.t-series{display:block}
-.t-post{display:block;font-family:var(--font-body);font-weight:600;
-  font-size:clamp(1.15rem,1.7vw,1.4rem);line-height:1.45;letter-spacing:-.01em;
-  color:var(--ink-muted)}
-.t-num{font-family:var(--font-mono);font-size:.85em;color:var(--accent)}
+h1{display:grid;gap:.55rem;margin-block-start:.5rem}
+/* 위가 시리즈 줄(작게), 아래가 그 회차의 제목(크게). 읽는 사람이 실제로 고른
+   것은 이 한 편이므로 편 제목이 표제가 되고 시리즈는 소속을 알리는 줄로 둔다. */
+/* 표제가 먼저 오고, 그 아래에 어느 시리즈의 몇 번째인지를 알리는 줄이 붙는다.
+   위의 메타 줄과 떨어져 있어 강조색 회차 표기를 써도 서로 경쟁하지 않는다. */
+.t-post{display:block}
+/* 크기는 리드 문단과 같은 값을 쓴다. 이보다 작으면 표제에 딸린 줄이 아니라
+   각주처럼 밀려 읽힌다(.lead와 같은 clamp를 의도적으로 공유한다). */
+.t-series{display:block;font-family:var(--font-body);
+  font-size:clamp(1.06rem,1.5vw,1.22rem);
+  font-weight:600;line-height:1.5;letter-spacing:0;color:var(--ink-muted)}
+.t-part{margin-inline-start:.5rem;font-family:var(--font-mono);font-size:var(--meta);
+  font-weight:600;letter-spacing:.09em;color:var(--accent)}
 .lead{
   margin:0;max-width:var(--measure);color:var(--ink-muted);
   font-size:clamp(1.06rem,1.5vw,1.22rem);line-height:1.62;
@@ -251,10 +258,10 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
       <time datetime="2026-07-22">2026.07.22</time>
       <a class="authorship" href="#authorship">에이전트 작성</a>
     </div>
-    <h1><span class="t-series">AI 시대, 창작의 정의를 다시 묻다</span><span class="t-post"><span class="t-num">(3)</span> 현실과 가상의 경계면에서</span></h1>
+    <h1><span class="t-post">현실과 가상의 경계면에서</span><span class="t-series">AI 시대, 창작의 정의를 다시 묻다<span class="t-part">PART 3</span></span></h1>
   </header>
   <figure class="hero">
-    <img src="../../assets/hero-3.jpg" alt="AI 시대, 창작의 정의를 다시 묻다 (3) 현실과 가상의 경계면에서 키 비주얼" width="1600" height="900"
+    <img src="../../assets/hero-3.jpg" alt="AI 시대, 창작의 정의를 다시 묻다 Part 3. 현실과 가상의 경계면에서 키 비주얼" width="1600" height="900"
          decoding="async">
   </figure>
   <p class="lead">가상현실이라는 말에는 순서가 들어 있다. 현실이 먼저 있고, 가상은 그 위에 얹힌다는 순서다. 발표의 마지막 장을 준비하면서 그 순서가 잘 맞지 않는다고 느꼈다. 기억이 생성되고, 픽셀이 현실의 인과를 추론하고, 세계가 실시간으로 만들어져 일상 위에 덧입혀지고 있었다. 창작자가 서게 되는 자리도 현실 쪽도 가상 쪽도 아닌, 그 사이의 얇은 면으로 옮겨가고 있는 것 같다.</p>

@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>AI 시대, 창작의 정의를 다시 묻다 (2) 프롬프트를 넘어, 작업의 흐름을 설계하는 일</title>
+<title>AI 시대, 창작의 정의를 다시 묻다 Part 2. 프롬프트를 넘어, 작업의 흐름을 설계하는 일</title>
 <meta name="description" content="프롬프트를 잘 쓰는 사람이 되어야 한다는 말을 자주 듣는다. 틀린 말은 아니다. 다만 발표를 준비하며 자료를 모으다 보니, 이 말이 담는 범위가 생각보다 빨리 좁아지고 있다는 생각이 들었다. 프롬프트는 여전히 중요한데, 창작의 무게중심은 이미 그 다음으로 넘어가고 있었다. 한 ">
 <meta name="author" content="Kiheon Shin">
 <link rel="canonical" href="https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/posts/02-workflow-design/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Kiheon Shin">
 <meta property="og:locale" content="ko_KR">
-<meta property="og:title" content="AI 시대, 창작의 정의를 다시 묻다 (2) 프롬프트를 넘어, 작업의 흐름을 설계하는 일">
+<meta property="og:title" content="AI 시대, 창작의 정의를 다시 묻다 Part 2. 프롬프트를 넘어, 작업의 흐름을 설계하는 일">
 <meta property="og:description" content="프롬프트를 잘 쓰는 사람이 되어야 한다는 말을 자주 듣는다. 틀린 말은 아니다. 다만 발표를 준비하며 자료를 모으다 보니, 이 말이 담는 범위가 생각보다 빨리 좁아지고 있다는 생각이 들었다. 프롬프트는 여전히 중요한데, 창작의 무게중심은 이미 그 다음으로 넘어가고 있었다. 한 ">
 <meta property="og:url" content="https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/posts/02-workflow-design/">
 <meta property="og:image" content="https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/assets/hero-2.jpg">
@@ -20,9 +20,9 @@
      썸네일 자리를 잡지 못하고 빈 링크로 보인다 -->
 <meta property="og:image:width" content="1600">
 <meta property="og:image:height" content="900">
-<meta property="og:image:alt" content="AI 시대, 창작의 정의를 다시 묻다 (2) 프롬프트를 넘어, 작업의 흐름을 설계하는 일 키 비주얼">
+<meta property="og:image:alt" content="AI 시대, 창작의 정의를 다시 묻다 Part 2. 프롬프트를 넘어, 작업의 흐름을 설계하는 일 키 비주얼">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="AI 시대, 창작의 정의를 다시 묻다 (2) 프롬프트를 넘어, 작업의 흐름을 설계하는 일">
+<meta name="twitter:title" content="AI 시대, 창작의 정의를 다시 묻다 Part 2. 프롬프트를 넘어, 작업의 흐름을 설계하는 일">
 <meta name="twitter:description" content="프롬프트를 잘 쓰는 사람이 되어야 한다는 말을 자주 듣는다. 틀린 말은 아니다. 다만 발표를 준비하며 자료를 모으다 보니, 이 말이 담는 범위가 생각보다 빨리 좁아지고 있다는 생각이 들었다. 프롬프트는 여전히 중요한데, 창작의 무게중심은 이미 그 다음으로 넘어가고 있었다. 한 ">
 <meta name="twitter:image" content="https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/assets/hero-2.jpg">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQYBGPJFJ4"></script>
@@ -163,12 +163,19 @@ h1{
 /* 표제는 두 줄이다. 위가 시리즈 제목(큰 제목), 아래가 그 회차의 제목
    (중간 제목). 한 덩어리로 이어 놓으면 어디까지가 시리즈 이름인지
    읽히지 않아 글자체·크기·색을 나눈다. */
-h1{display:grid;gap:.5rem}
-.t-series{display:block}
-.t-post{display:block;font-family:var(--font-body);font-weight:600;
-  font-size:clamp(1.15rem,1.7vw,1.4rem);line-height:1.45;letter-spacing:-.01em;
-  color:var(--ink-muted)}
-.t-num{font-family:var(--font-mono);font-size:.85em;color:var(--accent)}
+h1{display:grid;gap:.55rem;margin-block-start:.5rem}
+/* 위가 시리즈 줄(작게), 아래가 그 회차의 제목(크게). 읽는 사람이 실제로 고른
+   것은 이 한 편이므로 편 제목이 표제가 되고 시리즈는 소속을 알리는 줄로 둔다. */
+/* 표제가 먼저 오고, 그 아래에 어느 시리즈의 몇 번째인지를 알리는 줄이 붙는다.
+   위의 메타 줄과 떨어져 있어 강조색 회차 표기를 써도 서로 경쟁하지 않는다. */
+.t-post{display:block}
+/* 크기는 리드 문단과 같은 값을 쓴다. 이보다 작으면 표제에 딸린 줄이 아니라
+   각주처럼 밀려 읽힌다(.lead와 같은 clamp를 의도적으로 공유한다). */
+.t-series{display:block;font-family:var(--font-body);
+  font-size:clamp(1.06rem,1.5vw,1.22rem);
+  font-weight:600;line-height:1.5;letter-spacing:0;color:var(--ink-muted)}
+.t-part{margin-inline-start:.5rem;font-family:var(--font-mono);font-size:var(--meta);
+  font-weight:600;letter-spacing:.09em;color:var(--accent)}
 .lead{
   margin:0;max-width:var(--measure);color:var(--ink-muted);
   font-size:clamp(1.06rem,1.5vw,1.22rem);line-height:1.62;
@@ -251,10 +258,10 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
       <time datetime="2026-07-22">2026.07.22</time>
       <a class="authorship" href="#authorship">에이전트 작성</a>
     </div>
-    <h1><span class="t-series">AI 시대, 창작의 정의를 다시 묻다</span><span class="t-post"><span class="t-num">(2)</span> 프롬프트를 넘어, 작업의 흐름을 설계하는 일</span></h1>
+    <h1><span class="t-post">프롬프트를 넘어, 작업의 흐름을 설계하는 일</span><span class="t-series">AI 시대, 창작의 정의를 다시 묻다<span class="t-part">PART 2</span></span></h1>
   </header>
   <figure class="hero">
-    <img src="../../assets/hero-2.jpg" alt="AI 시대, 창작의 정의를 다시 묻다 (2) 프롬프트를 넘어, 작업의 흐름을 설계하는 일 키 비주얼" width="1600" height="900"
+    <img src="../../assets/hero-2.jpg" alt="AI 시대, 창작의 정의를 다시 묻다 Part 2. 프롬프트를 넘어, 작업의 흐름을 설계하는 일 키 비주얼" width="1600" height="900"
          decoding="async">
   </figure>
   <p class="lead">프롬프트를 잘 쓰는 사람이 되어야 한다는 말을 자주 듣는다. 틀린 말은 아니다. 다만 발표를 준비하며 자료를 모으다 보니, 이 말이 담는 범위가 생각보다 빨리 좁아지고 있다는 생각이 들었다. 프롬프트는 여전히 중요한데, 창작의 무게중심은 이미 그 다음으로 넘어가고 있었다. 한 줄의 명령어가 아니라, 생성과 선택과 수정이 이어지는 흐름 전체를 설계하는 일 쪽으로.</p>

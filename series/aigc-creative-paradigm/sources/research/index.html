@@ -235,8 +235,13 @@ main.wide--text{--measure-wide:64rem}
 /* 넓은 판이라도 제목·리드·안내문은 읽기 폭을 넘기지 않는다 */
 .srchead{padding-block:4rem 0;display:grid;gap:1.25rem;max-width:var(--measure)}
 .srchead .kicker{display:flex;flex-wrap:wrap;gap:.5rem .75rem;align-items:baseline}
-.byline{margin:0;color:var(--ink-muted);font-size:.9375rem}
-.byline a{color:var(--ink-muted)}
+/* 지은이는 리드 뒤에 놓는다. 무엇에 관한 글인지가 이름보다 먼저 읽혀야 한다 */
+.byline{margin:0;color:var(--ink-faint);font-size:var(--meta)}
+.byline a{color:var(--ink-faint)}
+/* 날짜는 옆의 'Source · …' 라벨과 한 줄에 서므로 글자체·크기·자간을 맞춘다.
+   기존 규칙은 .metarow time이라 .kicker를 쓰는 원자료 페이지에는 걸리지 않았다. */
+.kicker time{font-family:var(--font-mono);font-size:var(--meta);
+  font-weight:500;letter-spacing:.09em;color:var(--ink-muted)}
 
 /* 문서 뼈대 — 넓은 화면에서만 목차를 옆에 세운다. 좁으면 위로 접는다 */
 .doc{display:grid;gap:3rem;margin-block-start:3rem}
@@ -405,10 +410,10 @@ button.frame{padding:0;cursor:zoom-in}
       <time datetime="2025-09-09">2025.09.09</time>
     </div>
     <h1>AI 시대의 예술, 인간 고유의 창의성이란 무엇인가</h1>
-    <p class="lead">2025년 9월에 정리한 연구 노트. AI 시대의 예술과 창작을 재정의하는 일곱 개의 물음과 다섯 갈래의 제언.</p>
+    <p class="lead">AI 시대의 예술과 창작을 재정의하는 일곱 개의 물음과 다섯 갈래의 제언.
+      2025년 11월 발표 “AIGC 시장 트렌드 및 창작자 패러다임의 변화”의 바탕이 된 사전 조사이고,
+      발표 자료와 세 편의 글은 모두 여기에서 갈라져 나왔다.</p>
     <p class="byline">신기헌 · <a href="mailto:heavenlydesigner@gmail.com">heavenlydesigner@gmail.com</a></p>
-    <p class="series">이 노트는 2025년 11월 발표 “AIGC 시장 트렌드 및 창작자 패러다임의 변화”의
-      바탕이 된 사전 조사다. 발표 자료와 세 편의 글은 모두 여기에서 갈라져 나왔다.</p>
   </header>
   <div class="doc">
     <nav class="toc" aria-label="목차">
