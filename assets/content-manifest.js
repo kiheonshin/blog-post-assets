@@ -81,6 +81,53 @@ export const contentLibrary = {
       // 대담 원문 스크립트는 공개하지 않는다 — 이 시리즈에 바탕 자료 페이지는 없다
       sources: [],
     },
+    {
+      slug: "autonomous-worlds",
+      label: "Autonomous Worlds",
+      title: "자율 세계, 스스로 규칙을 만드는 세계의 등장",
+      description:
+        "2024년 여름 부천 발표와 그 바탕 자료, 그리고 2년 지나 다시 쓴 포스팅 세 개.",
+      period: "2024–2026",
+      href: "series/autonomous-worlds/",
+      cover: "series/autonomous-worlds/assets/series-banner.jpg",
+      coverAlt: "세 포스팅의 키 비주얼이 하나로 이어진 파노라마",
+      posts: [
+        {
+          id: "01-engine-city-to-autonomous-world",
+          label: "포스팅 1",
+          title: "게임 엔진의 도시에서 자율 세계까지",
+          href: "series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/",
+        },
+        {
+          id: "02-more-than-a-mirror",
+          label: "포스팅 2",
+          title: "가상 세계는 더 이상 현실의 보조 수단이 아니다",
+          href: "series/autonomous-worlds/posts/02-more-than-a-mirror/",
+        },
+        {
+          id: "03-what-we-want-to-create",
+          label: "포스팅 3",
+          title: "무엇을 창조하는 존재이고 싶은가",
+          href: "series/autonomous-worlds/posts/03-what-we-want-to-create/",
+        },
+      ],
+      sources: [
+        {
+          id: "talk",
+          label: "SOURCE · 발표 원문",
+          title: "자율 세계의 등장과 새로운 창작 환경",
+          description: "2024.07.07 · BIFAN+ 컨퍼런스 발표 전문",
+          href: "series/autonomous-worlds/sources/talk/",
+        },
+        {
+          id: "slides",
+          label: "SOURCE · 발표 자료",
+          title: "자율 세계의 등장과 새로운 창작 환경",
+          description: "2024.07.07 · 슬라이드 130장과 발표 중 재생한 영상 36편",
+          href: "series/autonomous-worlds/sources/slides/",
+        },
+      ],
+    },
   ],
 };
 

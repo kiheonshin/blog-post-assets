@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 1. 게임 엔진의 도시에서 자율 세계까지</title>
+<meta name="description" content="스스로 규칙을 만들고, 그 안의 존재들이 알아서 살아가는 세계가 생겨나고 있다. 2024년 여름 부천국제판타스틱영화제의 한 무대에서 나는 이 세계에 '자율 세계'라는 이름을 붙여 소개했다. 2년이 지난 지금 그때 무대에서 한 말을 다시 꺼내 정리한다. 그사이 절반쯤은 ">
+<meta name="author" content="Kiheon Shin">
+<link rel="canonical" href="https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Kiheon Shin">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 1. 게임 엔진의 도시에서 자율 세계까지">
+<meta property="og:description" content="스스로 규칙을 만들고, 그 안의 존재들이 알아서 살아가는 세계가 생겨나고 있다. 2024년 여름 부천국제판타스틱영화제의 한 무대에서 나는 이 세계에 '자율 세계'라는 이름을 붙여 소개했다. 2년이 지난 지금 그때 무대에서 한 말을 다시 꺼내 정리한다. 그사이 절반쯤은 ">
+<meta property="og:url" content="https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/">
+<meta property="og:image" content="https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/assets/hero-1.jpg">
+<meta property="og:image:secure_url" content="https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/assets/hero-1.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<!-- 치수를 명시하지 않으면 크롤러가 이미지를 아직 못 받은 첫 공유에서
+     썸네일 자리를 잡지 못하고 빈 링크로 보인다 -->
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta property="og:image:alt" content="자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 1. 게임 엔진의 도시에서 자율 세계까지 키 비주얼">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 1. 게임 엔진의 도시에서 자율 세계까지">
+<meta name="twitter:description" content="스스로 규칙을 만들고, 그 안의 존재들이 알아서 살아가는 세계가 생겨나고 있다. 2024년 여름 부천국제판타스틱영화제의 한 무대에서 나는 이 세계에 '자율 세계'라는 이름을 붙여 소개했다. 2년이 지난 지금 그때 무대에서 한 말을 다시 꺼내 정리한다. 그사이 절반쯤은 ">
+<meta name="twitter:image" content="https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/assets/hero-1.jpg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SQYBGPJFJ4"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SQYBGPJFJ4');
+</script>
+<style>
+:root{
+  --canvas:#F3F3EF; --surface:#FBFBF8; --ink:#17181A; --ink-muted:#5E6065;
+  --ink-faint:#686A6F; --rule:#CFCFC8; --rule-strong:#17181A;
+  --accent:#2457D6; --accent-hover:#163DA7; --inverse:#17181A; --inverse-ink:#F7F7F2;
+  --font-display:"Iowan Old Style","Noto Serif CJK KR","AppleMyungjo","Nanum Myeongjo",serif;
+  --font-body:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  --font-mono:"SFMono-Regular","Roboto Mono","Noto Sans Mono CJK KR",monospace;
+  --measure:46rem; --gutter:1rem; --micro:.6875rem; --meta:.75rem;
+}
+@media(min-width:48rem){:root{--gutter:2rem}}
+@media(min-width:80rem){:root{--gutter:3rem}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--canvas);color:var(--ink);
+  font-family:var(--font-body);font-size:1.0625rem;line-height:1.78;
+  letter-spacing:-.005em;
+  -webkit-font-smoothing:antialiased;
+  /* 한글은 어절 단위로 끊는다. 없으면 "묻/다"처럼 단어 중간에서 잘린다 */
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+a{color:var(--accent);text-underline-offset:.18em}
+a:hover{color:var(--accent-hover);text-decoration-thickness:.14em}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+img{max-width:100%;height:auto}
+
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:var(--gutter);top:.5rem;z-index:9;background:var(--surface);
+  padding:.5rem .75rem;border:1px solid var(--rule-strong)}
+
+/* 선만 사용 — 헤더는 hairline 하나로 구분한다 */
+.site-header{border-block-end:1px solid var(--rule)}
+.site-header__in{
+  width:min(100%,90rem);margin-inline:auto;padding-inline:var(--gutter);
+  min-height:4.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.brand{
+  font-family:var(--font-mono);font-size:var(--meta);font-weight:600;
+  letter-spacing:.09em;text-decoration:none;color:var(--ink);
+}
+.meta-label{
+  margin:0;font-family:var(--font-mono);font-size:var(--meta);font-weight:500;
+  letter-spacing:.09em;color:var(--ink-muted);text-transform:uppercase;
+}
+
+main{width:min(100%,calc(var(--measure) + var(--gutter)*2));
+  margin-inline:auto;padding-inline:var(--gutter)}
+
+.head{padding-block:4rem 0;display:grid;gap:1.25rem}
+
+.hero{margin:2rem 0 2.5rem}
+.hero img{display:block;width:100%;border:1px solid var(--rule)}
+
+/* 시리즈 배너. 텍스트 박스를 이미지에 굽지 않고 여기서 얹는다.
+   그래야 글자가 선택·검색되고 확대해도 깨지지 않으며, 현재 글 표시와
+   이동 링크를 붙일 수 있다. */
+.banner{position:relative;margin:2.5rem 0}
+.banner img{display:block;width:100%;border:1px solid var(--rule)}
+.banner__cards{
+  position:absolute;inset:auto 0 0 0;display:grid;
+  grid-template-columns:repeat(3,1fr);gap:0 2.5%;
+  margin:0;padding:0 3.5% 4%;list-style:none;
+}
+.banner__cards a,.banner__cards .card{
+  display:grid;gap:.35rem;padding:.7rem .8rem;
+  /* 사진 위에서 글자가 읽히려면 바탕이 필요하다. 그림자·블러 대신 종이색을
+     또렷이 깔고 테두리는 선 하나로 둔다(7장 규범 유지). 각 카드가 눌러서
+     읽는 개별 글임이 분명하도록 바탕을 진하게, '글 읽기 →'를 상시 노출한다. */
+  border:1px solid rgba(23,24,26,.4);background:rgba(243,243,239,.94);
+  text-decoration:none;color:var(--ink);
+}
+.banner__cards a{transition:border-color .15s ease-out,background .15s ease-out}
+.banner__cards a:hover{border-color:var(--accent);background:rgba(243,243,239,.99)}
+.banner__cards a:hover .t{text-decoration:underline;text-underline-offset:.16em}
+.banner__cards .card{border-color:var(--rule-strong)}
+.banner__cards .row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.banner__cards .n{font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.08em;color:var(--accent)}
+/* 눌러서 읽는 글임을 늘 알리는 표시. 현재 글 카드에는 붙이지 않는다 */
+.banner__cards .go{font-family:var(--font-mono);font-size:var(--micro);
+  font-weight:600;letter-spacing:.03em;color:var(--accent)}
+.banner__cards a:hover .go{color:var(--accent-hover)}
+.banner__cards .cur{font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.03em;color:var(--ink-faint)}
+
+/* 상위 목록으로 돌아가는 버튼. 브랜드명과 맨 아래 바에만 링크가 있으면
+   찾지 못한다. 선만 쓰는 규범 안에서 버튼 형태로 세운다. */
+.uplink{
+  display:inline-flex;align-items:center;gap:.5rem;min-height:2.25rem;
+  padding-inline:.9rem;border:1px solid var(--rule-strong);
+  font-family:var(--font-mono);font-size:var(--micro);font-weight:600;
+  letter-spacing:.08em;color:var(--ink);text-decoration:none;white-space:nowrap;
+  transition:color .15s ease-out,border-color .15s ease-out;
+}
+.uplink:hover{border-color:var(--accent);color:var(--accent-hover)}
+.uplink::after{content:"→"}
+.uplink--head{border:0;padding-inline:0;color:var(--ink-muted);
+  font-weight:500;letter-spacing:.09em;text-transform:uppercase;font-size:var(--meta)}
+.uplink--head:hover{border:0;color:var(--accent-hover)}
+/* 글 제목이 카드의 주인공. 길이가 달라도 두 줄까지만 잡아 높이를 맞춘다 */
+.banner__cards .t{font-size:.9375rem;font-weight:600;line-height:1.3;color:var(--ink);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+@media(max-width:47.99rem){
+  /* 좁은 화면에서 이미지 위에 얹으면 글자가 읽히지 않는다. 아래로 내린다 */
+  .banner__cards{position:static;grid-template-columns:1fr;gap:.5rem;padding:.75rem 0 0}
+  .banner__cards a,.banner__cards .card{background:none;border-color:var(--rule)}
+}
+.metarow{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem}
+.metarow time{font-family:var(--font-mono);font-size:var(--meta);color:var(--ink-muted)}
+
+/* 작성 주체 공개 — 색면 없이 1px 테두리와 마이크로 타입으로만 */
+.authorship{
+  display:inline-flex;align-items:center;min-height:1.5rem;padding-inline:.5rem;
+  border:1px solid var(--rule-strong);color:var(--ink-muted);
+  font-family:var(--font-mono);font-size:var(--micro);font-weight:600;
+  letter-spacing:.08em;text-decoration:none;white-space:nowrap;
+  transition:color .15s ease-out,border-color .15s ease-out;
+}
+.authorship:hover{border-color:var(--accent);color:var(--accent-hover)}
+
+h1{
+  margin:0;font-family:var(--font-display);font-weight:400;
+  font-size:clamp(2.1rem,3.6vw,3.3rem);line-height:1.15;letter-spacing:-.03em;
+  text-wrap:balance;
+}
+/* 표제는 두 줄이다. 위가 시리즈 제목(큰 제목), 아래가 그 회차의 제목
+   (중간 제목). 한 덩어리로 이어 놓으면 어디까지가 시리즈 이름인지
+   읽히지 않아 글자체·크기·색을 나눈다. */
+h1{display:grid;gap:.55rem;margin-block-start:.5rem}
+/* 위가 시리즈 줄(작게), 아래가 그 회차의 제목(크게). 읽는 사람이 실제로 고른
+   것은 이 한 편이므로 편 제목이 표제가 되고 시리즈는 소속을 알리는 줄로 둔다. */
+/* 표제가 먼저 오고, 그 아래에 어느 시리즈의 몇 번째인지를 알리는 줄이 붙는다.
+   위의 메타 줄과 떨어져 있어 강조색 회차 표기를 써도 서로 경쟁하지 않는다. */
+.t-post{display:block}
+/* 크기는 리드 문단과 같은 값을 쓴다. 이보다 작으면 표제에 딸린 줄이 아니라
+   각주처럼 밀려 읽힌다(.lead와 같은 clamp를 의도적으로 공유한다). */
+.t-series{display:block;font-family:var(--font-body);
+  font-size:clamp(1.06rem,1.5vw,1.22rem);
+  font-weight:600;line-height:1.5;letter-spacing:0;color:var(--ink-muted)}
+.t-part{margin-inline-start:.5rem;font-family:var(--font-mono);font-size:var(--meta);
+  font-weight:600;letter-spacing:.09em;color:var(--accent)}
+.lead{
+  margin:0;max-width:var(--measure);color:var(--ink-muted);
+  font-size:clamp(1.06rem,1.5vw,1.22rem);line-height:1.62;
+}
+.series{
+  margin:0;padding-block-start:1.25rem;border-block-start:1px solid var(--rule);
+  color:var(--ink-faint);font-size:.875rem;line-height:1.7;font-style:italic;
+}
+
+.prose{padding-block-start:2.5rem;border-block-start:1px solid var(--rule);margin-block-start:2.5rem}
+.prose p{margin:0 0 1.5rem;text-wrap:pretty}
+.prose h2{
+  margin:3.5rem 0 1rem;font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.45rem,2vw,1.85rem);line-height:1.3;letter-spacing:-.02em;
+  display:flex;gap:.75rem;align-items:baseline;
+}
+/* 시간의 이음선 — 순서 번호는 모노로 작게 */
+.secnum{flex:none;font-family:var(--font-mono);font-size:var(--meta);
+  color:var(--ink-faint);letter-spacing:.08em}
+
+/* 이미지는 그림자로 띄우지 않고 1px 선으로 종이 위에 얹는다 */
+figure{margin:2.5rem 0}
+figure img{display:block;width:100%;border:1px solid var(--rule)}
+/* 정사각에 가까운 미디어는 읽기 폭을 채우면 슬라이드의 1.8배 높이로 솟아
+   읽기 흐름을 끊는다. 슬라이드와 같은 높이가 되도록 폭 상한을 비율로 계산해
+   인라인으로 걸고(빌드 시점) 가운데 정렬한다.
+   max-height 대신 max-width를 쓰는 이유: width:auto로 바꾸면 width/height
+   속성이 주던 자리 예약이 풀려 로드 전에 2px로 무너진다. */
+figure img.tall{margin-inline:auto}
+/* 캡션은 이미지 아래 가운데. 본문은 왼쪽 정렬이라 캡션이 가운데로 오면
+   글이 아니라 그림에 딸린 설명이라는 것이 한눈에 구분된다. */
+figcaption{margin-block-start:.75rem;color:var(--ink-muted);
+  font-size:.875rem;line-height:1.6;text-align:center;text-wrap:pretty}
+
+.foot{margin-block:4rem 0;padding-block-start:1.5rem;
+  border-block-start:1px solid var(--rule-strong);display:grid;gap:1rem}
+.foot p{margin:0;color:var(--ink-muted);font-size:.875rem;line-height:1.7}
+.foot .en{font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.04em;color:var(--ink-faint);line-height:1.8}
+.serieslinks{display:grid;gap:.4rem}
+.serieslinks a{display:block}
+.serieslinks .self{color:var(--ink);text-decoration:none;cursor:default}
+
+/* 바탕 자료 안내 — 목록 페이지, 포스팅 세 개, 바탕 자료 페이지가 함께 쓴다 */
+.sources{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:1rem}
+@media(min-width:48rem){.sources{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* 한 줄에 놓인 카드는 가장 긴 것에 높이를 맞춘다. align-content:start 로
+   글자는 위에 붙이고 남는 높이는 아래를 비운다. */
+.sources a{display:grid;gap:.3rem;align-content:start;height:100%;
+  padding:.9rem 1rem;border:1px solid var(--rule);
+  text-decoration:none;color:var(--ink)}
+.sources a:hover{border-color:var(--accent)}
+.sources .k{font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em;
+  color:var(--accent);display:flex;justify-content:space-between;gap:.5rem}
+.sources .t{font-size:.9375rem;font-weight:600;line-height:1.4}
+.sources .s{font-size:.8125rem;line-height:1.55;color:var(--ink-muted)}
+
+.site-footer{margin-block-start:5rem;background:var(--inverse);color:var(--inverse-ink)}
+.site-footer__in{width:min(100%,90rem);margin-inline:auto;padding:2.5rem var(--gutter);
+  display:flex;flex-wrap:wrap;gap:.75rem 2rem;justify-content:space-between;
+  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em}
+.site-footer a{color:var(--inverse-ink)}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<link rel="stylesheet" href="../../../../assets/site.css?v=20260726a">
+<script type="module" src="../../../../assets/series-nav.js?v=20260726a"></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header"><div class="site-header__in">
+  <a class="brand" href="../../../../">KIHEON SHIN</a>
+  <a class="uplink uplink--head" href="../../">시리즈 홈</a>
+</div></header>
+<main id="main">
+<article>
+  <header class="head">
+    <div class="metarow">
+      <p class="meta-label">Essay</p>
+      <time datetime="2026-07-26">2026.07.26</time>
+      <a class="authorship" href="#authorship">에이전트 작성</a>
+    </div>
+    <h1><span class="t-post">게임 엔진의 도시에서 자율 세계까지</span><span class="t-series">자율 세계, 스스로 규칙을 만드는 세계의 등장<span class="t-part">PART 1</span></span></h1>
+  </header>
+  <figure class="hero">
+    <img src="../../assets/hero-1.jpg" alt="자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 1. 게임 엔진의 도시에서 자율 세계까지 키 비주얼" width="1600" height="900"
+         decoding="async">
+  </figure>
+  <p class="lead">스스로 규칙을 만들고, 그 안의 존재들이 알아서 살아가는 세계가 생겨나고 있다. 2024년 여름 부천국제판타스틱영화제의 한 무대에서 나는 이 세계에 '자율 세계'라는 이름을 붙여 소개했다. 2년이 지난 지금 그때 무대에서 한 말을 다시 꺼내 정리한다. 그사이 절반쯤은 현실이 됐고, 나머지 절반은 여전히 오고 있는 중이다.</p>
+  <series-nav data-series="autonomous-worlds" data-current="01-engine-city-to-autonomous-world"></series-nav>
+  <p class="series">시리즈 안내 : 이 시리즈는 2024년 7월 7일 부천국제판타스틱영화제 BIFAN+ 컨퍼런스에서 한 발표 "자율 세계의 등장과 새로운 창작 환경"을 2년 뒤에 1인칭으로 다시 정리한 것이다. 무대에서는 '자율 세계를 구축하기 위한 새로운 창작 문화'라는 표현을 가져와 이야기를 열었다. 이 글은 세 편 중 첫 번째다.</p>
+  <div class="prose">
+<h2><span class="secnum">01</span><span>무대에 서기 전에 들은 것</span></h2>
+<p>컨퍼런스 첫째 날과 발표 당일, 나는 같은 무대의 다른 발표들을 틈틈이 들었다. 듣다 보니 이야기가 두 갈래로 나뉘고 있었다. 한쪽에는 새로운 기술을 실제 작업에 붙여 본 경험담이 있었고, 다른 쪽에는 이 변화를 창작자가 어떻게 받아들여야 하는가 하는 생존의 질문이 있었다. 한쪽이 도구를 살피는 이야기라면, 다른 쪽은 사람의 앞날을 걱정하는 이야기였다.</p>
+<p>무대에 오르며 나는 내 자리를 조금 다른 곳에 두기로 했다. 도구를 살피기 전에, 그리고 창작자의 미래를 걱정하기 전에, 지금 무언가 새로운 존재가 생겨나고 있다는 사실 자체를 먼저 직시하자는 것이었다. 스스로 살아가는 세계와 그 안의 존재들. 그것이 무엇인지부터 눈으로 확인하고 나서야 창작자 이야기를 할 수 있다고 생각했다.</p>
+<h2><span class="secnum">02</span><span>빨간 약과 파란 약</span></h2>
+<p>이야기는 익숙한 영화에서 시작했다. 무대 화면에 빨간색과 파란색 알약 두 개를 띄웠다. 매트릭스를 기억하는 사람이라면 뜻을 알아챘을 것이다. 1999년의 1편부터 이어진 트릴로지는 가상 세계에 대한 상상력의 원형 같은 작품이었고, 오랜 공백 끝에 2021년 4편이 나왔다.</p>
+<p>솔직한 소감을 무대에서도 말했다. 18년 만에 다시 만난 매트릭스는 이전만큼의 임팩트가 없었다. 영화가 나빠져서가 아니라, 그사이 초현실적이던 설정들이 우리 일상 쪽으로 너무 가까이 와 버렸기 때문이다. 초월적 가상 세계라는 소재가 더는 상상의 영역이 아니게 됐다는 것. 영화의 감흥이 줄어든 자리에 현실의 실감이 들어와 있었다.</p>
+<p>그 실감을 만든 것 중 하나가 게임 엔진이다. 영화 개봉에 맞춰 공개된 'The Matrix Awakens'는 언리얼 엔진 5로 만든 데모였는데, 영화의 연출 기법을 그대로 따르는 장면들이 사실은 전부 실시간 렌더링이었다. 촬영된 영상을 트는 것이 아니라 지금 이 순간 계산되어 그려지는 세계. 정해진 단방향 서사가 아니라 실시간으로 상호작용하는 스토리텔링이 가능해진 것이다.</p>
+<h2><span class="secnum">03</span><span>살아 있는 도시</span></h2>
+<p>그 데모 안에는 거대한 도시가 통째로 들어 있었다. 도시를 걷는 10만 명이 넘는 사람들과 도로를 달리는 차들은 누가 한 명씩 조종하는 것이 아니라, 주어진 규칙 안에서 스스로 판단하며 움직이는 자율적인 개체들이었다. 시간과 날씨를 바꿀 수 있었고, 건물들은 몇 가지 규칙 안에서 생성되는 프로시저럴 디자인을 따라 무한히 만들어지고 변형될 수 있었다.</p>
+<p>나는 이 대목이 이 이야기 전체의 씨앗이라고 생각한다. 사람이 도시를 한 채씩 지어 넣는 것이 아니라 규칙을 정해 두면 도시가 스스로 자라난다. 사람이 행인 한 명씩을 움직이는 것이 아니라 행인들이 알아서 길을 건넌다. 창작자의 손이 닿는 자리가 사물에서 규칙으로 올라간 셈이다. 이때만 해도 이것은 그래픽 데모의 인상적인 기능이었다. 그런데 이 구조가 이후 몇 년 동안 여러 방향에서 반복해 나타난다.</p>
+<h2><span class="secnum">04</span><span>내 지갑 속의 단역 배우</span></h2>
+<p>그 세계에는 주인공만 있는 것이 아니다. 플레이어가 조종하는 캐릭터가 있고, 그 곁을 스쳐 가는 무수한 NPC가 있다. 매트릭스의 배급사 워너 브라더스는 영화 홍보의 하나로 이 단역들을 NFT로 만들어 팔았다. 메타휴먼으로 생성된 얼굴 하나하나가 고유한 소유물이 된 것이다.</p>
+<p>나도 하나를 샀다. 발표하던 그날에도 그 캐릭터는 내 블록체인 지갑에 들어 있었고, 나는 무대에서 그 사실을 공개하며 상상 하나를 보탰다. 내가 소유한 이 단역 배우가 다른 영화나 게임에 출연하고, 그 수익의 일부가 소유자인 나에게 돌아오는 시스템. 기술적으로는 그때도 충분히 만들 수 있는 구조였다. 얼굴과 신원이 있는 디지털 존재가 소유되고, 출연하고, 정산되는 흐름. 배급사는 약간의 게임 요소 말고는 더 나아가지 않았지만, 나는 그 안에서 소유 가능한 캐릭터가 하나의 IP이자 수익 모델로 자라날 가능성을 봤다.</p>
+<h2><span class="secnum">05</span><span>대본 없는 배우</span></h2>
+<p>외형이 생기고 소유가 생겼으니, 다음 질문은 지능이었다. 무대에서 소개한 Inworld는 AI 캐릭터를 만들어 주는 LLM 기반 솔루션이었다. 캐릭터의 외형에 성격과 배경 이야기를 텍스트로 입력하면, 그 설정대로 말하고 반응하는 NPC가 만들어진다. 미리 써 둔 대사를 재생하는 것이 아니라 매 순간 대화를 생성하는 존재라서, 같은 질문에도 매번 조금씩 다른 답이 돌아온다.</p>
+<p>Inworld의 코파운더는 TED 무대에서 '칼렙'이라는 AI 에이전트를 시연했다. 시연은 연출된 상황극이었지만, 참여자가 말을 걸면 칼렙이 그 음성에 실시간으로 반응하며 장면을 끌고 갔다. 정해진 분기를 고르는 것이 아니라 스토리가 그 자리에서 생성되는 것이다. 나는 이것을 무한 생성 스토리텔링이라고 불렀다. 대본이 있는 세계에서는 이야기의 총량이 대본의 두께로 정해지지만, 대본 없는 배우가 등장하면 이야기는 만나는 사람의 수만큼 생겨난다.</p>
+<h2><span class="secnum">06</span><span>스스로 살림을 꾸리는 캐릭터들</span></h2>
+<p>지능을 얻은 캐릭터에게 남은 것은 제 살림이다. 블록체인이라고 하면 많은 사람이 투자와 자산부터 떠올리지만, 내가 주목한 것은 다른 쪽이었다. 계약, 약정, 거래 같은 신뢰 기반의 상호작용을 디지털 안에서 구현하는 스마트 컨트랙트. 그 성격 때문에 블록체인은 '월드 컴퓨터'라고 불리기도 한다. 세계 하나를 돌리는 데 필요한 규칙과 장부를 대신 맡아 주는 기계라는 뜻이다.</p>
+<p>무대에서 든 사례는 Parallel이라는 IP의 'Colony'라는 게임이었다. 이 세계의 캐릭터들은 하나하나가 NFT로 소유권이 부여되어 있고, 각자 자기 블록체인 지갑을 갖고 있다. 게임 안에서 광물을 캐면 토큰이 쌓이고, 캐릭터들끼리 스마트 컨트랙트로 아이템을 교환한다. 이 살림은 사람의 손을 기다리지 않고 돌아가는 구조였다. 지능이 있고, 소유되고, 자기 재산으로 경제 활동을 하는 캐릭터. 셋이 한 몸에 모인 것이다.</p>
+<h2><span class="secnum">07</span><span>자율 세계라는 이름</span></h2>
+<p>이렇게 구축된 세상을 웹3 쪽에서는 '자율 세계(Autonomous World, AW)'라고 부르기 시작했다. 스스로 규칙을 세우고, 그 안의 존재들이 알아서 관계를 맺으며 살아가는 세계. 기술의 측면에서도 독특하지만 나는 스토리텔링의 측면에서 더 독특한 개념이라고 생각했다. 세계관을 만드는 일과 세계를 만드는 일이 여기서 처음으로 같은 일이 되는 것 아닐까.</p>
+<p>이 글을 다시 정리하는 2026년 여름의 시점에서 보면, 그때의 낯선 조합들은 이제 낯설지 않다. AI 에이전트라는 말은 그 2년 사이에 업계 용어에서 일상어가 됐고, 자기 지갑을 가진 에이전트가 값을 흥정하고 결제하는 구조는 이제 표준을 논의하는 단계까지 왔다. 대본 없는 배우들은 게임 밖으로 나와 온갖 서비스에 들어앉았다. 2024년의 무대에서 나는 이것들을 신기한 조짐으로 소개했는데, 지금은 그 조짐들이 바닥에 깔린 전제가 된 셈이다.</p>
+<p>다만 그날 발표의 순서에는 이유가 있었다. 세계와 존재를 먼저 보여 준 것은, 그다음 질문이 거기서 출발하기 때문이다. 이 세계는 가상에 갇혀 있지 않고 현실 쪽으로 계속 손을 뻗는다. 현실이 통째로 디지털로 복제되고, 그 위에서 에이전트들이 현실의 일을 대신하기 시작할 때, 가상 세계는 더 이상 현실의 보조 수단이 아니게 된다. 다음 편에서 그 이야기를 이어가겠다.</p>
+  </div>
+</article>
+<footer class="foot" id="authorship">
+  <p style="margin:0"><a class="uplink" href="../../">시리즈 홈으로</a></p>
+  <series-post-links data-series="autonomous-worlds" data-current="01-engine-city-to-autonomous-world"></series-post-links>
+
+  <p>이 글은 신기헌의 디지털 트윈 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.</p>
+  <p class="en">Written and edited 100% by an AI agent from the Kiheon Shin Digital Twin project.</p>
+</footer>
+</main>
+<footer class="site-footer"><div class="site-footer__in">
+  <span>KIHEON SHIN</span><a href="../../">Autonomous Worlds</a>
+</div></footer>
+</body>
+</html>

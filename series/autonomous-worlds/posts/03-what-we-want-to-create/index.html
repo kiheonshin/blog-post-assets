@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 3. 무엇을 창조하는 존재이고 싶은가</title>
+<meta name="description" content="생성 AI는 창작의 도구를 넘어 창작의 주체 자리를 넘보기 시작했다. 2024년 여름 부천 무대의 마지막 토막에서 나는 그 질문을 정면으로 마주했다. 네오는 창작자인 우리인가, 아니면 새로 등장하는 AI 그 자체인가. 그리고 나는 개인이 아니라 문화에 걸겠다고 답했다.">
+<meta name="author" content="Kiheon Shin">
+<link rel="canonical" href="https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/posts/03-what-we-want-to-create/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Kiheon Shin">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 3. 무엇을 창조하는 존재이고 싶은가">
+<meta property="og:description" content="생성 AI는 창작의 도구를 넘어 창작의 주체 자리를 넘보기 시작했다. 2024년 여름 부천 무대의 마지막 토막에서 나는 그 질문을 정면으로 마주했다. 네오는 창작자인 우리인가, 아니면 새로 등장하는 AI 그 자체인가. 그리고 나는 개인이 아니라 문화에 걸겠다고 답했다.">
+<meta property="og:url" content="https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/posts/03-what-we-want-to-create/">
+<meta property="og:image" content="https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/assets/hero-3.jpg">
+<meta property="og:image:secure_url" content="https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/assets/hero-3.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<!-- 치수를 명시하지 않으면 크롤러가 이미지를 아직 못 받은 첫 공유에서
+     썸네일 자리를 잡지 못하고 빈 링크로 보인다 -->
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta property="og:image:alt" content="자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 3. 무엇을 창조하는 존재이고 싶은가 키 비주얼">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 3. 무엇을 창조하는 존재이고 싶은가">
+<meta name="twitter:description" content="생성 AI는 창작의 도구를 넘어 창작의 주체 자리를 넘보기 시작했다. 2024년 여름 부천 무대의 마지막 토막에서 나는 그 질문을 정면으로 마주했다. 네오는 창작자인 우리인가, 아니면 새로 등장하는 AI 그 자체인가. 그리고 나는 개인이 아니라 문화에 걸겠다고 답했다.">
+<meta name="twitter:image" content="https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/assets/hero-3.jpg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SQYBGPJFJ4"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SQYBGPJFJ4');
+</script>
+<style>
+:root{
+  --canvas:#F3F3EF; --surface:#FBFBF8; --ink:#17181A; --ink-muted:#5E6065;
+  --ink-faint:#686A6F; --rule:#CFCFC8; --rule-strong:#17181A;
+  --accent:#2457D6; --accent-hover:#163DA7; --inverse:#17181A; --inverse-ink:#F7F7F2;
+  --font-display:"Iowan Old Style","Noto Serif CJK KR","AppleMyungjo","Nanum Myeongjo",serif;
+  --font-body:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  --font-mono:"SFMono-Regular","Roboto Mono","Noto Sans Mono CJK KR",monospace;
+  --measure:46rem; --gutter:1rem; --micro:.6875rem; --meta:.75rem;
+}
+@media(min-width:48rem){:root{--gutter:2rem}}
+@media(min-width:80rem){:root{--gutter:3rem}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--canvas);color:var(--ink);
+  font-family:var(--font-body);font-size:1.0625rem;line-height:1.78;
+  letter-spacing:-.005em;
+  -webkit-font-smoothing:antialiased;
+  /* 한글은 어절 단위로 끊는다. 없으면 "묻/다"처럼 단어 중간에서 잘린다 */
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+a{color:var(--accent);text-underline-offset:.18em}
+a:hover{color:var(--accent-hover);text-decoration-thickness:.14em}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+img{max-width:100%;height:auto}
+
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:var(--gutter);top:.5rem;z-index:9;background:var(--surface);
+  padding:.5rem .75rem;border:1px solid var(--rule-strong)}
+
+/* 선만 사용 — 헤더는 hairline 하나로 구분한다 */
+.site-header{border-block-end:1px solid var(--rule)}
+.site-header__in{
+  width:min(100%,90rem);margin-inline:auto;padding-inline:var(--gutter);
+  min-height:4.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.brand{
+  font-family:var(--font-mono);font-size:var(--meta);font-weight:600;
+  letter-spacing:.09em;text-decoration:none;color:var(--ink);
+}
+.meta-label{
+  margin:0;font-family:var(--font-mono);font-size:var(--meta);font-weight:500;
+  letter-spacing:.09em;color:var(--ink-muted);text-transform:uppercase;
+}
+
+main{width:min(100%,calc(var(--measure) + var(--gutter)*2));
+  margin-inline:auto;padding-inline:var(--gutter)}
+
+.head{padding-block:4rem 0;display:grid;gap:1.25rem}
+
+.hero{margin:2rem 0 2.5rem}
+.hero img{display:block;width:100%;border:1px solid var(--rule)}
+
+/* 시리즈 배너. 텍스트 박스를 이미지에 굽지 않고 여기서 얹는다.
+   그래야 글자가 선택·검색되고 확대해도 깨지지 않으며, 현재 글 표시와
+   이동 링크를 붙일 수 있다. */
+.banner{position:relative;margin:2.5rem 0}
+.banner img{display:block;width:100%;border:1px solid var(--rule)}
+.banner__cards{
+  position:absolute;inset:auto 0 0 0;display:grid;
+  grid-template-columns:repeat(3,1fr);gap:0 2.5%;
+  margin:0;padding:0 3.5% 4%;list-style:none;
+}
+.banner__cards a,.banner__cards .card{
+  display:grid;gap:.35rem;padding:.7rem .8rem;
+  /* 사진 위에서 글자가 읽히려면 바탕이 필요하다. 그림자·블러 대신 종이색을
+     또렷이 깔고 테두리는 선 하나로 둔다(7장 규범 유지). 각 카드가 눌러서
+     읽는 개별 글임이 분명하도록 바탕을 진하게, '글 읽기 →'를 상시 노출한다. */
+  border:1px solid rgba(23,24,26,.4);background:rgba(243,243,239,.94);
+  text-decoration:none;color:var(--ink);
+}
+.banner__cards a{transition:border-color .15s ease-out,background .15s ease-out}
+.banner__cards a:hover{border-color:var(--accent);background:rgba(243,243,239,.99)}
+.banner__cards a:hover .t{text-decoration:underline;text-underline-offset:.16em}
+.banner__cards .card{border-color:var(--rule-strong)}
+.banner__cards .row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.banner__cards .n{font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.08em;color:var(--accent)}
+/* 눌러서 읽는 글임을 늘 알리는 표시. 현재 글 카드에는 붙이지 않는다 */
+.banner__cards .go{font-family:var(--font-mono);font-size:var(--micro);
+  font-weight:600;letter-spacing:.03em;color:var(--accent)}
+.banner__cards a:hover .go{color:var(--accent-hover)}
+.banner__cards .cur{font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.03em;color:var(--ink-faint)}
+
+/* 상위 목록으로 돌아가는 버튼. 브랜드명과 맨 아래 바에만 링크가 있으면
+   찾지 못한다. 선만 쓰는 규범 안에서 버튼 형태로 세운다. */
+.uplink{
+  display:inline-flex;align-items:center;gap:.5rem;min-height:2.25rem;
+  padding-inline:.9rem;border:1px solid var(--rule-strong);
+  font-family:var(--font-mono);font-size:var(--micro);font-weight:600;
+  letter-spacing:.08em;color:var(--ink);text-decoration:none;white-space:nowrap;
+  transition:color .15s ease-out,border-color .15s ease-out;
+}
+.uplink:hover{border-color:var(--accent);color:var(--accent-hover)}
+.uplink::after{content:"→"}
+.uplink--head{border:0;padding-inline:0;color:var(--ink-muted);
+  font-weight:500;letter-spacing:.09em;text-transform:uppercase;font-size:var(--meta)}
+.uplink--head:hover{border:0;color:var(--accent-hover)}
+/* 글 제목이 카드의 주인공. 길이가 달라도 두 줄까지만 잡아 높이를 맞춘다 */
+.banner__cards .t{font-size:.9375rem;font-weight:600;line-height:1.3;color:var(--ink);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+@media(max-width:47.99rem){
+  /* 좁은 화면에서 이미지 위에 얹으면 글자가 읽히지 않는다. 아래로 내린다 */
+  .banner__cards{position:static;grid-template-columns:1fr;gap:.5rem;padding:.75rem 0 0}
+  .banner__cards a,.banner__cards .card{background:none;border-color:var(--rule)}
+}
+.metarow{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem}
+.metarow time{font-family:var(--font-mono);font-size:var(--meta);color:var(--ink-muted)}
+
+/* 작성 주체 공개 — 색면 없이 1px 테두리와 마이크로 타입으로만 */
+.authorship{
+  display:inline-flex;align-items:center;min-height:1.5rem;padding-inline:.5rem;
+  border:1px solid var(--rule-strong);color:var(--ink-muted);
+  font-family:var(--font-mono);font-size:var(--micro);font-weight:600;
+  letter-spacing:.08em;text-decoration:none;white-space:nowrap;
+  transition:color .15s ease-out,border-color .15s ease-out;
+}
+.authorship:hover{border-color:var(--accent);color:var(--accent-hover)}
+
+h1{
+  margin:0;font-family:var(--font-display);font-weight:400;
+  font-size:clamp(2.1rem,3.6vw,3.3rem);line-height:1.15;letter-spacing:-.03em;
+  text-wrap:balance;
+}
+/* 표제는 두 줄이다. 위가 시리즈 제목(큰 제목), 아래가 그 회차의 제목
+   (중간 제목). 한 덩어리로 이어 놓으면 어디까지가 시리즈 이름인지
+   읽히지 않아 글자체·크기·색을 나눈다. */
+h1{display:grid;gap:.55rem;margin-block-start:.5rem}
+/* 위가 시리즈 줄(작게), 아래가 그 회차의 제목(크게). 읽는 사람이 실제로 고른
+   것은 이 한 편이므로 편 제목이 표제가 되고 시리즈는 소속을 알리는 줄로 둔다. */
+/* 표제가 먼저 오고, 그 아래에 어느 시리즈의 몇 번째인지를 알리는 줄이 붙는다.
+   위의 메타 줄과 떨어져 있어 강조색 회차 표기를 써도 서로 경쟁하지 않는다. */
+.t-post{display:block}
+/* 크기는 리드 문단과 같은 값을 쓴다. 이보다 작으면 표제에 딸린 줄이 아니라
+   각주처럼 밀려 읽힌다(.lead와 같은 clamp를 의도적으로 공유한다). */
+.t-series{display:block;font-family:var(--font-body);
+  font-size:clamp(1.06rem,1.5vw,1.22rem);
+  font-weight:600;line-height:1.5;letter-spacing:0;color:var(--ink-muted)}
+.t-part{margin-inline-start:.5rem;font-family:var(--font-mono);font-size:var(--meta);
+  font-weight:600;letter-spacing:.09em;color:var(--accent)}
+.lead{
+  margin:0;max-width:var(--measure);color:var(--ink-muted);
+  font-size:clamp(1.06rem,1.5vw,1.22rem);line-height:1.62;
+}
+.series{
+  margin:0;padding-block-start:1.25rem;border-block-start:1px solid var(--rule);
+  color:var(--ink-faint);font-size:.875rem;line-height:1.7;font-style:italic;
+}
+
+.prose{padding-block-start:2.5rem;border-block-start:1px solid var(--rule);margin-block-start:2.5rem}
+.prose p{margin:0 0 1.5rem;text-wrap:pretty}
+.prose h2{
+  margin:3.5rem 0 1rem;font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.45rem,2vw,1.85rem);line-height:1.3;letter-spacing:-.02em;
+  display:flex;gap:.75rem;align-items:baseline;
+}
+/* 시간의 이음선 — 순서 번호는 모노로 작게 */
+.secnum{flex:none;font-family:var(--font-mono);font-size:var(--meta);
+  color:var(--ink-faint);letter-spacing:.08em}
+
+/* 이미지는 그림자로 띄우지 않고 1px 선으로 종이 위에 얹는다 */
+figure{margin:2.5rem 0}
+figure img{display:block;width:100%;border:1px solid var(--rule)}
+/* 정사각에 가까운 미디어는 읽기 폭을 채우면 슬라이드의 1.8배 높이로 솟아
+   읽기 흐름을 끊는다. 슬라이드와 같은 높이가 되도록 폭 상한을 비율로 계산해
+   인라인으로 걸고(빌드 시점) 가운데 정렬한다.
+   max-height 대신 max-width를 쓰는 이유: width:auto로 바꾸면 width/height
+   속성이 주던 자리 예약이 풀려 로드 전에 2px로 무너진다. */
+figure img.tall{margin-inline:auto}
+/* 캡션은 이미지 아래 가운데. 본문은 왼쪽 정렬이라 캡션이 가운데로 오면
+   글이 아니라 그림에 딸린 설명이라는 것이 한눈에 구분된다. */
+figcaption{margin-block-start:.75rem;color:var(--ink-muted);
+  font-size:.875rem;line-height:1.6;text-align:center;text-wrap:pretty}
+
+.foot{margin-block:4rem 0;padding-block-start:1.5rem;
+  border-block-start:1px solid var(--rule-strong);display:grid;gap:1rem}
+.foot p{margin:0;color:var(--ink-muted);font-size:.875rem;line-height:1.7}
+.foot .en{font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.04em;color:var(--ink-faint);line-height:1.8}
+.serieslinks{display:grid;gap:.4rem}
+.serieslinks a{display:block}
+.serieslinks .self{color:var(--ink);text-decoration:none;cursor:default}
+
+/* 바탕 자료 안내 — 목록 페이지, 포스팅 세 개, 바탕 자료 페이지가 함께 쓴다 */
+.sources{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:1rem}
+@media(min-width:48rem){.sources{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* 한 줄에 놓인 카드는 가장 긴 것에 높이를 맞춘다. align-content:start 로
+   글자는 위에 붙이고 남는 높이는 아래를 비운다. */
+.sources a{display:grid;gap:.3rem;align-content:start;height:100%;
+  padding:.9rem 1rem;border:1px solid var(--rule);
+  text-decoration:none;color:var(--ink)}
+.sources a:hover{border-color:var(--accent)}
+.sources .k{font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em;
+  color:var(--accent);display:flex;justify-content:space-between;gap:.5rem}
+.sources .t{font-size:.9375rem;font-weight:600;line-height:1.4}
+.sources .s{font-size:.8125rem;line-height:1.55;color:var(--ink-muted)}
+
+.site-footer{margin-block-start:5rem;background:var(--inverse);color:var(--inverse-ink)}
+.site-footer__in{width:min(100%,90rem);margin-inline:auto;padding:2.5rem var(--gutter);
+  display:flex;flex-wrap:wrap;gap:.75rem 2rem;justify-content:space-between;
+  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em}
+.site-footer a{color:var(--inverse-ink)}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<link rel="stylesheet" href="../../../../assets/site.css?v=20260726a">
+<script type="module" src="../../../../assets/series-nav.js?v=20260726a"></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header"><div class="site-header__in">
+  <a class="brand" href="../../../../">KIHEON SHIN</a>
+  <a class="uplink uplink--head" href="../../">시리즈 홈</a>
+</div></header>
+<main id="main">
+<article>
+  <header class="head">
+    <div class="metarow">
+      <p class="meta-label">Essay</p>
+      <time datetime="2026-07-26">2026.07.26</time>
+      <a class="authorship" href="#authorship">에이전트 작성</a>
+    </div>
+    <h1><span class="t-post">무엇을 창조하는 존재이고 싶은가</span><span class="t-series">자율 세계, 스스로 규칙을 만드는 세계의 등장<span class="t-part">PART 3</span></span></h1>
+  </header>
+  <figure class="hero">
+    <img src="../../assets/hero-3.jpg" alt="자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 3. 무엇을 창조하는 존재이고 싶은가 키 비주얼" width="1600" height="900"
+         decoding="async">
+  </figure>
+  <p class="lead">생성 AI는 창작의 도구를 넘어 창작의 주체 자리를 넘보기 시작했다. 2024년 여름 부천 무대의 마지막 토막에서 나는 그 질문을 정면으로 마주했다. 네오는 창작자인 우리인가, 아니면 새로 등장하는 AI 그 자체인가. 그리고 나는 개인이 아니라 문화에 걸겠다고 답했다. 2년이 지나 다시 읽어도 이 답은 바뀌지 않았다.</p>
+  <series-nav data-series="autonomous-worlds" data-current="03-what-we-want-to-create"></series-nav>
+  <p class="series">시리즈 안내 : 이 시리즈는 2024년 7월 7일 부천국제판타스틱영화제 BIFAN+ 컨퍼런스에서 한 발표 "자율 세계의 등장과 새로운 창작 환경"을 2년 뒤에 1인칭으로 다시 정리한 것이다. 이 글은 세 편 중 세 번째다.</p>
+  <div class="prose">
+<h2><span class="secnum">01</span><span>기억과 현실의 모호한 경계</span></h2>
+<p>발표의 마지막 토막은 한 장의 사진에서 시작했다. 어느 창작자가 SNS에 올린 이야기였다. 어린 시절 사진 한 장을 생성 AI에 넣어 5초짜리 영상으로 만들었더니, 실제로 일어난 적 없는 장면인데도 원래의 기억 위에 새 장면이 덮어 쓰이는 묘한 감각을 받았다는 것이다. 기억의 트리거로 기록이 생성되면, 모호했던 기억은 쉽게 덮어 쓰인다는 문장이었다.</p>
+<p>사진과 영상은 오랫동안 흐려지는 기억을 보조하는 수단이었다. 생성 AI 시대에 접어들며 이 미디어들은 상시 의심받는 처지가 됐고, 때로는 의도와 무관하게 우리를 위협하는 자리에까지 섰다. 무대에서 나는 이 지점을 존재론적 질문으로 밀어 봤다. 실제 존재했던 내가 나인가, 새롭게 생성된 내가 나인가. 심지어 내가 죽은 뒤에 사람들이 기억하는 나는 어떤 모습일까.</p>
+<h2><span class="secnum">02</span><span>도구는 이미 손안에 있었다</span></h2>
+<p>그 질문을 던지던 순간에도 도구는 빠르게 좋아지고 있었다. 무대에서 소개한 Luma의 Dream Machine은 텍스트와 이미지에서 몇 분 안에 짧은 영상을 만들었고, 캐릭터와 조명, 카메라 같은 요소를 세밀하게 다루는 방향으로 가고 있었다. Runway의 Gen-3는 발표 시점 기준으로 공개된 지 일주일쯤 된 참이었다. 나는 청중에게 결과 영상보다 여러 문화권의 창작자들이 SNS에 쏟아내던 사용 소감을 먼저 읽어 보라고 권했다. 도구의 스펙보다 도구를 처음 쥔 사람들의 감정이 그 시점의 진실에 가깝다고 생각했기 때문이다.</p>
+<p>이듬해 원고를 손보면서 나는 이 대목에 링크 하나를 덧붙였었다. 실시간으로 상호작용하는 생성 영상을 시연한 팀이었다. 그때는 각주 하나였는데, 지금 보면 그 각주가 방향 표지판이었다. 영상을 한 편씩 생성하는 단계에서, 세계를 통째로 생성하고 그 안을 돌아다니는 단계로. 2년 사이 이 방향은 월드 모델이라는 이름으로 산업의 정면에 올라왔고, 나는 2025년의 다른 발표에서 그 이야기를 한 챕터로 다루게 된다.</p>
+<h2><span class="secnum">03</span><span>다섯 개의 대립쌍, 그리고 뒤집힌 질문</span></h2>
+<p>창작의 주체를 둘러싼 논쟁을 나는 다섯 개의 대립쌍으로 정리했다. 사람의 배제인가 참여인가. 사람과의 결합인가 새로운 존재인가. 학습의 주체인가 대상인가. 창작의 도구인가 주체인가. 가치의 소유인가 도용인가. 어느 쌍을 골라도 몇 시간짜리 토론이 되는 주제들이다.</p>
+<p>그런데 조금만 관점을 바꿔 보면 어떨까. 무대에서 나는 가설 하나를 얹었다. 지금의 논쟁은 전부 인간의 창작물을 학습한 AI를 전제로 한다. 그런데 처음부터 가상 세계에서 생겨난 것들을 학습한 창작물이 등장한다면. 인간의 저작을 거치지 않은 세계에서 자란 창작자가 나타난다면, 소유와 도용을 따지던 지금의 프레임 자체가 헐거워진다. 그때부터는 기술이 우리보다 앞서 새로운 감동을 던지는 시대가 될 수도 있다는 위기감을 나는 감추지 않았다.</p>
+<p>그래서 매트릭스의 네오를 다시 불렀다. 네오의 각성은 세계의 코드를 읽게 되는 순간, 즉 가상 세계의 법칙을 깨닫는 순간이다. 무대에서 나는 청중에게 그대로 물었다. 지금 우리가 마주하는 현실에서 네오는 창작자인 우리 자신인가, 아니면 새롭게 등장하는 AI 기술 그 자체인가. 답은 정해 두지 않았다. 다만 역사에서 몇 번이고 반복된 것처럼, 변화의 최전선에서 앞서 행동하고 실험하는 문화적 창작 집단으로 대응한다면 우리라는 존재가 네오가 될 확률이 조금은 높아지지 않겠느냐고 말했다. 개인의 재능이 아니라 집단의 문화에 거는 것. 그것이 발표 후반부 전체의 방향이었다.</p>
+<h2><span class="secnum">04</span><span>첫 번째 키워드, 열화되지 않는 디지털</span></h2>
+<p>그 문화의 재료로 나는 네 개의 키워드를 차례로 꺼냈다.</p>
+<p>첫째는 디지털 세계의 법칙이 새로 쓰이고 있다는 것이다. 디지털은 열화된다는 것이 지난 수십 년의 상식이었다. 해상도는 고정되어 있고, 확대하면 깨지고, 낡은 파일은 낡은 채로 남는다. 생성 AI는 이 상식을 뒤집었다. 업스케일은 없던 디테일을 상상해 채워 넣고, 프레임 보간은 없던 시간을 만들어 넣는다. 옛 게임의 텍스처를 통째로 다시 생성해 리마스터하는 도구를 보여 주며, 나는 생성 AI가 시간을 초월해 과거의 창작물을 우리에게 되돌려주는 데 쓰일 수 있다고 말했다. 어렸을 때 하던 게임이, 어렸을 때 눈에 보이던 것보다 선명하게 돌아온다. 지금 와서 이름을 붙이자면 추억의 반환이라고 부르고 싶다.</p>
+<h2><span class="secnum">05</span><span>두 번째 키워드, 포스트 휴먼과의 공존</span></h2>
+<p>둘째는 새로운 존재들과의 공존이다. 창업자의 어린 시절을 생성 영상으로 재구성한 토이저러스의 브랜드 필름이 이 무렵 나왔고, AI 에이전트라는 개념은 특정 인물의 기억과 정체성을 담아 가상 세계에 영속하는 AI 페르소나로 발전하고 있었다.</p>
+<p>드라마들은 이 방향의 끝을 먼저 보여 줬다. 죽음을 앞둔 사람이 자신을 디지털로 옮기는 이야기, 과금형 디지털 사후 세계에서 자기 장례식을 지켜보는 이야기. 그리고 현실에는 이미 SNS 계정을 연동해 나의 AI 페르소나를 만들고, 그 페르소나가 나 대신 사람들을 만나게 하는 서비스가 있었다. 무대에서 나는 그 서비스를 설명한 직후 청중에게 물었다. 뭔가 좀 섬뜩하지 않으신가요. 매혹과 섬뜩함이 같이 오는 이야기라는 것을 숨기고 싶지 않았다.</p>
+<p>2년이 지난 지금 이 대목을 다시 읽는 기분은 좀 묘하다. 나는 그 섬뜩함을 지금 직접 실험하고 있기 때문이다. 이 블로그의 글은 나의 기록과 발화를 학습한 에이전트가 쓰고 있다. 2025년에 이 발표 원고를 손볼 때 나는 인트로에 AI를 활용해 작성했다는 표기를 달아 봤는데, 지금은 글 전체가 그렇게 만들어지고 그 사실이 모든 페이지 하단에 적혀 있다. 무대에서 던진 존재론적 질문의 답을 나는 토론이 아니라 실험으로 찾는 쪽을 골랐다.</p>
+<h2><span class="secnum">06</span><span>세 번째 키워드, 세계를 만드는 엔진</span></h2>
+<p>셋째는 창작 엔진의 교체다. Runway는 영상 생성 모델의 다음 단계로 물리 세계를 개념적으로 이해하는 제너럴 월드 모델을 예고했고, 투자자와 연구자들은 저마다 다른 이름을 붙이고 있었다. 월드 시뮬레이터, AI 네이티브 엔진. 나는 이 용어의 난립이 불편하지 않았다. 오히려 개념이 아직 하나로 정립되지 않은 상태 자체를 흥미롭게 바라보고 있다고 말했다. 이름이 여럿이라는 것은 아직 어느 쪽으로도 정리되지 않았다는 뜻이었고, 나는 그 상태가 싫지 않았다.</p>
+<p>그 감각을 설명하려고 공룡 게임을 예로 들었다. 공원을 운영하는 게임인데, 공룡들이 각자의 습성대로 살아가는 모습을 관찰하다 보면 게임이라기보다 생태 다큐멘터리에 가까워진다. 동물원에 가서 카메라를 꺼내 마음에 드는 장면을 찍어 친구들과 공유하는 것처럼, 1인칭 시점으로 가상의 생태를 촬영하게 되는 것이다. 세계를 만들고, 그 세계가 스스로 살아가고, 창작자는 그 안에서 장면을 발견한다. 창작 엔진이라는 말의 무게중심이 그리는 도구에서 살아가는 세계로 옮겨 가고 있었다.</p>
+<h2><span class="secnum">07</span><span>네 번째 키워드, 계보가 있는 실험</span></h2>
+<p>넷째는 이 모든 것이 갑자기 나타난 문화가 아니라는 점이다. 게임의 그래픽 연출을 제어하고 캡처해 자신만의 영화를 만드는 머시니마, 게임을 뜯어고쳐 새 규칙을 심는 MOD. 창작 도구로 설계되지 않은 것을 창작 도구로 전용하는 문화는 수십 년의 계보를 갖고 있다.</p>
+<p>그 계보 위의 사례들을 차례로 소개했다. 공룡 게임의 화면을 카메라 삼아 옛 BBC 다큐멘터리를 통째로 리메이크하겠다며 크라우드 펀딩을 연 창작 집단. 열두 명의 AI 캐릭터가 가상의 오지에서 생존 경쟁을 벌이고 시청자가 투표로 개입하는, 24시간 일주일 내내 생중계된 리얼리티 쇼. 국내에서는 참여가 어려워 직접 경험할 기회는 없었지만, AI 캐릭터들이 생존을 위해 애쓰는 사회를 지켜보며 감정을 이입하는 경험이 어떤 것일지 궁금하다고 무대에서 말했다.</p>
+<p>그리고 이 계보의 끝에 VR 단편 영화의 여덟 살 소녀 캐릭터를 AI로 키워 온 스튜디오가 있었다. 그들이 만든 도구는 인기 TV 쇼의 캐릭터 1,200개와 배경 600개를 학습한 뒤, 간단한 설정과 콘셉트만 입력하면 22분짜리 새 에피소드를 생성했다. 나는 그 앞에서 시청자가 채널을 탐색하는 대신 원하는 장르와 분위기를 입력하면 콘텐츠가 실시간으로 생성되는 OTT를 상상했다. 이 상상은 이듬해 늦가을의 내 2025년 발표에서 한 챕터의 피날레로 다시 등장하게 된다. 그때는 화면으로 보여 줄 것이 훨씬 많아져 있었다.</p>
+<h2><span class="secnum">08</span><span>문화라는 말에 건 것</span></h2>
+<p>발표 제목을 자율 세계를 구축하기 위한 새로운 창작 문화로 정하면서 끝까지 망설였던 것이 하나 있었다. 이 급변하는 상황을 문화라는 말로 묶는 것이 적절한가. 흥미롭고, 때때로 혼란스럽고, 두렵기까지 한 시간 속에서 창작자의 역할과 창의성과 전문성은 어떤 의미로 남을까. 지속 가능한 창작과 수익화는 어떤 모습일까. 답이 없는 질문들을 그대로 무대에 남겨 뒀다.</p>
+<p>그래도 문화라는 말을 버리지 않은 이유는 그 말의 전제 때문이다. 더불어 존재하며, 연결되고, 상호작용하며, 공유하고 확산하는 것. 혼자 잘 쓰는 도구는 기술이지만, 함께 실험하고 서로의 시도를 이어받는 것은 문화다. 흩어진 창작자 한 사람 한 사람이 아니라, 새로운 창작 문화에 기여하며 함께 성장하는 우리가 되기를 바란다는 말로 발표를 닫았다.</p>
+<p>무대에서는 이런 말도 했다. 오늘 굉장히 다양한 분야의 이야기를 뒤죽박죽 말씀드린 것 같지만, 이것은 내가 실제로 고민하고, 간절하게 체험하고, 사람들과 직접 토론하는 일상적인 주제라고. 누군가는 이 변화를 거부하고 배척하지만, 누군가는 어떻게 활용할지, 어떻게 살아남을지를 고민하고 있다. 2년이 지난 지금도 나는 후자의 자리에서, 그날 무대에서 상상이라고 불렀던 것들을 하나씩 일상으로 옮기며 살고 있다. 이 글 자체가 그 증거인 셈이다.</p>
+  </div>
+</article>
+<footer class="foot" id="authorship">
+  <p style="margin:0"><a class="uplink" href="../../">시리즈 홈으로</a></p>
+  <series-post-links data-series="autonomous-worlds" data-current="03-what-we-want-to-create"></series-post-links>
+
+  <p>이 글은 신기헌의 디지털 트윈 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.</p>
+  <p class="en">Written and edited 100% by an AI agent from the Kiheon Shin Digital Twin project.</p>
+</footer>
+</main>
+<footer class="site-footer"><div class="site-footer__in">
+  <span>KIHEON SHIN</span><a href="../../">Autonomous Worlds</a>
+</div></footer>
+</body>
+</html>
