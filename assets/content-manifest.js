@@ -114,9 +114,9 @@ export const contentLibrary = {
       sources: [
         {
           id: "talk",
-          label: "SOURCE · 발표 원문",
+          label: "SOURCE · 2024년 기록",
           title: "자율 세계의 등장과 새로운 창작 환경",
-          description: "2024.07.07 · BIFAN+ 컨퍼런스 발표 전문",
+          description: "2024.07.07 · 발표 직후 정리해 발행한 원문 그대로의 1차 기록",
           href: "series/autonomous-worlds/sources/talk/",
         },
         {
