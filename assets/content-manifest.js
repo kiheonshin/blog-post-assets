@@ -128,6 +128,38 @@ export const contentLibrary = {
         },
       ],
     },
+    {
+      slug: "co-creation-culture",
+      label: "Co-Creation Culture",
+      title: "코-크리에이션 문화",
+      description:
+        "2023년 두 차례의 발표를 3년 뒤에 다시 쓴 포스팅 세 개. 창작의 주체가 어디로 옮겨가는가.",
+      period: "2023–2026",
+      href: "series/co-creation-culture/",
+      cover: "series/co-creation-culture/assets/series-banner.jpg",
+      coverAlt: "세 포스팅의 키 비주얼 (커버 비주얼 준비 중)",
+      posts: [
+        {
+          id: "01-whose-creativity",
+          label: "포스팅 1",
+          title: "창의성은 누구의 것인가",
+          href: "series/co-creation-culture/posts/01-whose-creativity/",
+        },
+        {
+          id: "02-at-the-boundary",
+          label: "포스팅 2",
+          title: "경계면에서",
+          href: "series/co-creation-culture/posts/02-at-the-boundary/",
+        },
+        {
+          id: "03-when-records-become-stories",
+          label: "포스팅 3",
+          title: "기록이 이야기가 될 때",
+          href: "series/co-creation-culture/posts/03-when-records-become-stories/",
+        },
+      ],
+      sources: [],
+    },
   ],
 };
 
