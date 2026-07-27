@@ -158,7 +158,22 @@ export const contentLibrary = {
           href: "series/co-creation-culture/posts/03-when-records-become-stories/",
         },
       ],
-      sources: [],
+      sources: [
+        {
+          id: "talk-2023-06",
+          label: "SOURCE · 발표 자료",
+          title: "웹3의 다음 흐름을 주도할 코-크리에이션 문화",
+          description: "2023.06.30 · 그날 넘긴 장표 96장",
+          href: "series/co-creation-culture/sources/talk-2023-06/",
+        },
+        {
+          id: "talk-2023-11",
+          label: "SOURCE · 발표 자료",
+          title: "현실과 가상을 연결하는 블록체인 기반의 스토리텔링",
+          description: "2023.11.09 · 그날 넘긴 장표 71장",
+          href: "series/co-creation-culture/sources/talk-2023-11/",
+        },
+      ],
     },
   ],
 };
