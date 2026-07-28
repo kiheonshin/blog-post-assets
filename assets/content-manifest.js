@@ -120,6 +120,13 @@ export const contentLibrary = {
           href: "series/autonomous-worlds/sources/talk/",
         },
         {
+          id: "script",
+          label: "SOURCE · 발표 원고",
+          title: "자율 세계의 등장과 새로운 창작 환경",
+          description: "2024.07.07 · 무대에 서기 전에 써둔 원고. 발행본과 어디가 다른지 절마다 표시",
+          href: "series/autonomous-worlds/sources/script/",
+        },
+        {
           id: "slides",
           label: "SOURCE · 발표 자료",
           title: "자율 세계의 등장과 새로운 창작 환경",
