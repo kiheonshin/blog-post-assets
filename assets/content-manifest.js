@@ -136,8 +136,8 @@ export const contentLibrary = {
         "2023년 두 차례의 발표를 3년 뒤에 다시 쓴 포스팅 세 개. 창작의 주체가 어디로 옮겨가는가.",
       period: "2023–2026",
       href: "series/co-creation-culture/",
-      cover: "series/co-creation-culture/assets/series-banner.jpg",
-      coverAlt: "세 포스팅의 키 비주얼 (커버 비주얼 준비 중)",
+      cover: "assets/cover-placeholder.jpg",
+      coverAlt: "커버 비주얼 준비 중 임시 이미지",
       posts: [
         {
           id: "01-whose-creativity",
