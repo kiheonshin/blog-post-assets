@@ -167,6 +167,13 @@ export const contentLibrary = {
       ],
       sources: [
         {
+          id: "chronicle",
+          label: "SOURCE · 연표",
+          title: "발표 연표 · 2017–2024",
+          description: "여러 자리에서 한 발표 스무 건. 관심이 어디로 옮겨갔는지 한 화면에",
+          href: "series/co-creation-culture/sources/chronicle/",
+        },
+        {
           id: "slides-2023-06",
           label: "SOURCE · 발표 자료",
           title: "웹3의 다음 흐름을 주도할 코-크리에이션 문화",
