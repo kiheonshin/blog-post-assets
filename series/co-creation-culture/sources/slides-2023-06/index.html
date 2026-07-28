@@ -1,0 +1,939 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>웹3의 다음 흐름을 주도할 코-크리에이션 문화 · 발표 자료</title>
+<meta name="description" content="2023년 6월 말, 웹3의 다음 흐름을 코-크리에이션이라는 한 단어로 놓고 정리한 발표 자료다. 개념을 앞세우는 대신 레고에서 시작해 스테이플버스, CloneX, 나이키 닷스우시, 트리플에스까지 실제 사례를 순서대로 쌓아 올린다. 스스로 번호를 매긴 일곱 개의 절이 창의성의 출발에서 수익 분배와 거버넌스까지 이어진다.">
+<meta name="author" content="Kiheon Shin">
+<link rel="canonical" href="https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/sources/slides-2023-06/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Kiheon Shin">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="웹3의 다음 흐름을 주도할 코-크리에이션 문화 · 발표 자료">
+<meta property="og:description" content="2023년 6월 말, 웹3의 다음 흐름을 코-크리에이션이라는 한 단어로 놓고 정리한 발표 자료다. 개념을 앞세우는 대신 레고에서 시작해 스테이플버스, CloneX, 나이키 닷스우시, 트리플에스까지 실제 사례를 순서대로 쌓아 올린다. 스스로 번호를 매긴 일곱 개의 절이 창의성의 출발에서 수익 분배와 거버넌스까지 이어진다.">
+<meta property="og:url" content="https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/sources/slides-2023-06/">
+<meta property="og:image" content="https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/src-t1/slide-001.jpg">
+<meta property="og:image:secure_url" content="https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/src-t1/slide-001.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta property="og:image:alt" content="웹3의 다음 흐름을 주도할 코-크리에이션 문화 · 발표 자료 표지 장표">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="웹3의 다음 흐름을 주도할 코-크리에이션 문화 · 발표 자료">
+<meta name="twitter:description" content="2023년 6월 말, 웹3의 다음 흐름을 코-크리에이션이라는 한 단어로 놓고 정리한 발표 자료다. 개념을 앞세우는 대신 레고에서 시작해 스테이플버스, CloneX, 나이키 닷스우시, 트리플에스까지 실제 사례를 순서대로 쌓아 올린다. 스스로 번호를 매긴 일곱 개의 절이 창의성의 출발에서 수익 분배와 거버넌스까지 이어진다.">
+<meta name="twitter:image" content="https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/src-t1/slide-001.jpg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SQYBGPJFJ4"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SQYBGPJFJ4');
+</script>
+<style>
+:root{
+  --canvas:#F3F3EF; --surface:#FBFBF8; --ink:#17181A; --ink-muted:#5E6065;
+  --ink-faint:#686A6F; --rule:#CFCFC8; --rule-strong:#17181A;
+  --accent:#2457D6; --accent-hover:#163DA7; --inverse:#17181A; --inverse-ink:#F7F7F2;
+  --font-display:"Iowan Old Style","Noto Serif CJK KR","AppleMyungjo","Nanum Myeongjo",serif;
+  --font-body:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  --font-mono:"SFMono-Regular","Roboto Mono","Noto Sans Mono CJK KR",monospace;
+  --measure:46rem; --gutter:1rem; --micro:.6875rem; --meta:.75rem;
+}
+@media(min-width:48rem){:root{--gutter:2rem}}
+@media(min-width:80rem){:root{--gutter:3rem}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--canvas);color:var(--ink);
+  font-family:var(--font-body);font-size:1.0625rem;line-height:1.78;
+  letter-spacing:-.005em;
+  -webkit-font-smoothing:antialiased;
+  /* 한글은 어절 단위로 끊는다. 없으면 "묻/다"처럼 단어 중간에서 잘린다 */
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+a{color:var(--accent);text-underline-offset:.18em}
+a:hover{color:var(--accent-hover);text-decoration-thickness:.14em}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+img{max-width:100%;height:auto}
+
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:var(--gutter);top:.5rem;z-index:9;background:var(--surface);
+  padding:.5rem .75rem;border:1px solid var(--rule-strong)}
+
+/* 선만 사용 — 헤더는 hairline 하나로 구분한다 */
+.site-header{border-block-end:1px solid var(--rule)}
+.site-header__in{
+  width:min(100%,90rem);margin-inline:auto;padding-inline:var(--gutter);
+  min-height:4.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.brand{
+  font-family:var(--font-mono);font-size:var(--meta);font-weight:600;
+  letter-spacing:.09em;text-decoration:none;color:var(--ink);
+}
+.meta-label{
+  margin:0;font-family:var(--font-mono);font-size:var(--meta);font-weight:500;
+  letter-spacing:.09em;color:var(--ink-muted);text-transform:uppercase;
+}
+
+main{width:min(100%,calc(var(--measure) + var(--gutter)*2));
+  margin-inline:auto;padding-inline:var(--gutter)}
+
+.head{padding-block:4rem 0;display:grid;gap:1.25rem}
+
+.hero{margin:2rem 0 2.5rem}
+.hero img{display:block;width:100%;border:1px solid var(--rule)}
+
+/* 시리즈 배너. 텍스트 박스를 이미지에 굽지 않고 여기서 얹는다.
+   그래야 글자가 선택·검색되고 확대해도 깨지지 않으며, 현재 글 표시와
+   이동 링크를 붙일 수 있다. */
+.banner{position:relative;margin:2.5rem 0}
+.banner img{display:block;width:100%;border:1px solid var(--rule)}
+.banner__cards{
+  position:absolute;inset:auto 0 0 0;display:grid;
+  grid-template-columns:repeat(3,1fr);gap:0 2.5%;
+  margin:0;padding:0 3.5% 4%;list-style:none;
+}
+.banner__cards a,.banner__cards .card{
+  display:grid;gap:.35rem;padding:.7rem .8rem;
+  /* 사진 위에서 글자가 읽히려면 바탕이 필요하다. 그림자·블러 대신 종이색을
+     또렷이 깔고 테두리는 선 하나로 둔다(7장 규범 유지). 각 카드가 눌러서
+     읽는 개별 글임이 분명하도록 바탕을 진하게, '글 읽기 →'를 상시 노출한다. */
+  border:1px solid rgba(23,24,26,.4);background:rgba(243,243,239,.94);
+  text-decoration:none;color:var(--ink);
+}
+.banner__cards a{transition:border-color .15s ease-out,background .15s ease-out}
+.banner__cards a:hover{border-color:var(--accent);background:rgba(243,243,239,.99)}
+.banner__cards a:hover .t{text-decoration:underline;text-underline-offset:.16em}
+.banner__cards .card{border-color:var(--rule-strong)}
+.banner__cards .row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.banner__cards .n{font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.08em;color:var(--accent)}
+/* 눌러서 읽는 글임을 늘 알리는 표시. 현재 글 카드에는 붙이지 않는다 */
+.banner__cards .go{font-family:var(--font-mono);font-size:var(--micro);
+  font-weight:600;letter-spacing:.03em;color:var(--accent)}
+.banner__cards a:hover .go{color:var(--accent-hover)}
+.banner__cards .cur{font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.03em;color:var(--ink-faint)}
+
+/* 상위 목록으로 돌아가는 버튼. 브랜드명과 맨 아래 바에만 링크가 있으면
+   찾지 못한다. 선만 쓰는 규범 안에서 버튼 형태로 세운다. */
+.uplink{
+  display:inline-flex;align-items:center;gap:.5rem;min-height:2.25rem;
+  padding-inline:.9rem;border:1px solid var(--rule-strong);
+  font-family:var(--font-mono);font-size:var(--micro);font-weight:600;
+  letter-spacing:.08em;color:var(--ink);text-decoration:none;white-space:nowrap;
+  transition:color .15s ease-out,border-color .15s ease-out;
+}
+.uplink:hover{border-color:var(--accent);color:var(--accent-hover)}
+.uplink::after{content:"→"}
+.uplink--head{border:0;padding-inline:0;color:var(--ink-muted);
+  font-weight:500;letter-spacing:.09em;text-transform:uppercase;font-size:var(--meta)}
+.uplink--head:hover{border:0;color:var(--accent-hover)}
+/* 글 제목이 카드의 주인공. 길이가 달라도 두 줄까지만 잡아 높이를 맞춘다 */
+.banner__cards .t{font-size:.9375rem;font-weight:600;line-height:1.3;color:var(--ink);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+@media(max-width:47.99rem){
+  /* 좁은 화면에서 이미지 위에 얹으면 글자가 읽히지 않는다. 아래로 내린다 */
+  .banner__cards{position:static;grid-template-columns:1fr;gap:.5rem;padding:.75rem 0 0}
+  .banner__cards a,.banner__cards .card{background:none;border-color:var(--rule)}
+}
+.metarow{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem}
+.metarow time{font-family:var(--font-mono);font-size:var(--meta);color:var(--ink-muted)}
+/* 날짜는 옆의 'Source · …' 라벨과 한 줄에 서므로 글자체·크기·자간을 맞춘다.
+   기존 규칙은 .metarow time이라 .kicker를 쓰는 원자료 페이지에는 걸리지 않았다. */
+.kicker time{font-family:var(--font-mono);font-size:var(--meta);
+  font-weight:500;letter-spacing:.09em;color:var(--ink-muted)}
+
+/* 작성 주체 공개 — 색면 없이 1px 테두리와 마이크로 타입으로만 */
+.authorship{
+  display:inline-flex;align-items:center;min-height:1.5rem;padding-inline:.5rem;
+  border:1px solid var(--rule-strong);color:var(--ink-muted);
+  font-family:var(--font-mono);font-size:var(--micro);font-weight:600;
+  letter-spacing:.08em;text-decoration:none;white-space:nowrap;
+  transition:color .15s ease-out,border-color .15s ease-out;
+}
+.authorship:hover{border-color:var(--accent);color:var(--accent-hover)}
+
+h1{
+  margin:0;font-family:var(--font-display);font-weight:400;
+  font-size:clamp(2.1rem,3.6vw,3.3rem);line-height:1.15;letter-spacing:-.03em;
+  text-wrap:balance;
+}
+.lead{
+  margin:0;max-width:var(--measure);color:var(--ink-muted);
+  font-size:clamp(1.06rem,1.5vw,1.22rem);line-height:1.62;
+}
+.series{
+  margin:0;padding-block-start:1.25rem;border-block-start:1px solid var(--rule);
+  color:var(--ink-faint);font-size:.875rem;line-height:1.7;font-style:italic;
+}
+
+.prose{padding-block-start:2.5rem;border-block-start:1px solid var(--rule);margin-block-start:2.5rem}
+.prose p{margin:0 0 1.5rem;text-wrap:pretty}
+.prose h2{
+  margin:3.5rem 0 1rem;font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.45rem,2vw,1.85rem);line-height:1.3;letter-spacing:-.02em;
+  display:flex;gap:.75rem;align-items:baseline;
+}
+/* 시간의 이음선 — 순서 번호는 모노로 작게 */
+.secnum{flex:none;font-family:var(--font-mono);font-size:var(--meta);
+  color:var(--ink-faint);letter-spacing:.08em}
+
+/* 이미지는 그림자로 띄우지 않고 1px 선으로 종이 위에 얹는다 */
+figure{margin:2.5rem 0}
+figure img{display:block;width:100%;border:1px solid var(--rule)}
+/* 정사각에 가까운 미디어는 읽기 폭을 채우면 슬라이드의 1.8배 높이로 솟아
+   읽기 흐름을 끊는다. 슬라이드와 같은 높이가 되도록 폭 상한을 비율로 계산해
+   인라인으로 걸고(빌드 시점) 가운데 정렬한다.
+   max-height 대신 max-width를 쓰는 이유: width:auto로 바꾸면 width/height
+   속성이 주던 자리 예약이 풀려 로드 전에 2px로 무너진다. */
+figure img.tall{margin-inline:auto}
+/* 캡션은 이미지 아래 가운데. 본문은 왼쪽 정렬이라 캡션이 가운데로 오면
+   글이 아니라 그림에 딸린 설명이라는 것이 한눈에 구분된다. */
+figcaption{margin-block-start:.75rem;color:var(--ink-muted);
+  font-size:.875rem;line-height:1.6;text-align:center;text-wrap:pretty}
+
+.foot{margin-block:4rem 0;padding-block-start:1.5rem;
+  border-block-start:1px solid var(--rule-strong);display:grid;gap:1rem}
+.foot p{margin:0;color:var(--ink-muted);font-size:.875rem;line-height:1.7}
+.foot .en{font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.04em;color:var(--ink-faint);line-height:1.8}
+.serieslinks{display:grid;gap:.4rem}
+.serieslinks a{display:block}
+.serieslinks .self{color:var(--ink);text-decoration:none;cursor:default}
+
+/* 바탕 자료 안내 — 목록 페이지, 포스팅 세 개, 바탕 자료 페이지가 함께 쓴다 */
+.sources{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:1rem}
+@media(min-width:48rem){.sources{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* 한 줄에 놓인 카드는 가장 긴 것에 높이를 맞춘다. align-content:start 로
+   글자는 위에 붙이고 남는 높이는 아래를 비운다. */
+.sources a{display:grid;gap:.3rem;align-content:start;height:100%;
+  padding:.9rem 1rem;border:1px solid var(--rule);
+  text-decoration:none;color:var(--ink)}
+.sources a:hover{border-color:var(--accent)}
+.sources .k{font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em;
+  color:var(--accent);display:flex;justify-content:space-between;gap:.5rem}
+.sources .t{font-size:.9375rem;font-weight:600;line-height:1.4}
+.sources .s{font-size:.8125rem;line-height:1.55;color:var(--ink-muted)}
+
+.site-footer{margin-block-start:5rem;background:var(--inverse);color:var(--inverse-ink)}
+.site-footer__in{width:min(100%,90rem);margin-inline:auto;padding:2.5rem var(--gutter);
+  display:flex;flex-wrap:wrap;gap:.75rem 2rem;justify-content:space-between;
+  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em}
+.site-footer a{color:var(--inverse-ink)}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+:root{--measure-wide:74rem}
+/* 차례·챕터 CTA의 앵커 이동을 부드럽게. 모션 최소화 설정은 존중한다 */
+html{scroll-behavior:smooth}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+main.wide{width:min(100%,calc(var(--measure-wide) + var(--gutter)*2))}
+/* 글 판은 목차(14rem)와 간격(4rem)을 본문 46rem 바깥에 두어야
+   읽기 폭이 깎이지 않는다 */
+main.wide--text{--measure-wide:64rem}
+
+/* 넓은 판이라도 제목·리드·안내문은 읽기 폭을 넘기지 않는다 */
+.srchead{padding-block:4rem 0;display:grid;gap:1.25rem;max-width:var(--measure)}
+.srchead .kicker{display:flex;flex-wrap:wrap;gap:.5rem .75rem;align-items:baseline}
+.byline{margin:0;color:var(--ink-muted);font-size:.9375rem}
+.byline a{color:var(--ink-muted)}
+
+/* 문서 뼈대 — 넓은 화면에서만 목차를 옆에 세운다. 좁으면 위로 접는다 */
+.doc{display:grid;gap:3rem;margin-block-start:3rem}
+@media(min-width:64rem){
+  .doc{grid-template-columns:14rem minmax(0,1fr);gap:4rem;align-items:start}
+  .toc{position:sticky;top:2rem;max-height:calc(100vh - 4rem);overflow:auto}
+}
+.toc{border-block-start:1px solid var(--rule-strong);padding-block-start:1rem}
+.toc h2{margin:0 0 .75rem;font-family:var(--font-mono);font-size:var(--micro);
+  font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-muted)}
+.toc ol{margin:0;padding:0;list-style:none;display:grid;gap:.1rem}
+.toc a{display:block;padding:.28rem 0 .28rem .55rem;font-size:.8125rem;line-height:1.45;
+  color:var(--ink);text-decoration:none;border-inline-start:2px solid transparent}
+.toc a:hover{color:var(--accent-hover)}
+.toc .lv2{padding-inline-start:1.4rem;color:var(--ink-muted);font-size:.78125rem}
+.toc .part{margin-block-start:.9rem;padding-block-start:.7rem;
+  border-block-start:1px solid var(--rule);font-family:var(--font-mono);
+  font-size:var(--micro);letter-spacing:.08em;color:var(--ink-faint)}
+/* 현재 읽는/보는 위치 — 위쪽 경계선(가로)과 겹치지 않게 왼쪽 세로 막대로 */
+.toc a[aria-current="true"]{color:var(--accent);border-inline-start-color:var(--accent)}
+
+.doc .body{min-width:0;max-width:var(--measure)}
+.doc .body h2{margin:3.5rem 0 1rem;font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.45rem,2vw,1.85rem);line-height:1.3;letter-spacing:-.02em;
+  display:flex;gap:.75rem;align-items:baseline;scroll-margin-top:2rem}
+.doc .body h2:first-child{margin-block-start:0}
+.doc .body h3{margin:2.5rem 0 .75rem;font-size:1.0625rem;font-weight:600;
+  line-height:1.45;letter-spacing:-.01em;scroll-margin-top:2rem}
+.doc .body p{margin:0 0 1.5rem;text-wrap:pretty}
+.doc .body ul{margin:0 0 1.5rem;padding-inline-start:1.1rem}
+.doc .body li{margin-block-end:.5rem}
+.parthead{margin:5rem 0 0;padding-block-start:2rem;
+  border-block-start:1px solid var(--rule-strong);scroll-margin-top:2rem}
+.parthead p{margin:0 0 .35rem;font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.09em;text-transform:uppercase;color:var(--ink-faint)}
+.parthead h2{margin:0!important;font-size:clamp(1.6rem,2.4vw,2.1rem)!important}
+
+/* 밑줄 강조는 원문의 표시를 그대로 옮긴 것이다. 색면 대신 선으로만 */
+.u{background:linear-gradient(transparent 60%,rgba(250,224,108,.6) 60%);-webkit-box-decoration-break:clone;box-decoration-break:clone}
+
+/* 참고 링크 — 원문에서 북마크 카드였던 자리 */
+.ref{display:block;margin:0 0 1.5rem;padding:.7rem .9rem;
+  border:1px solid var(--rule);text-decoration:none;color:var(--ink)}
+.ref:hover{border-color:var(--accent)}
+.ref .host{display:block;font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.06em;color:var(--accent);margin-block-end:.15rem}
+.ref .path{display:block;font-size:.8125rem;line-height:1.5;color:var(--ink-muted);
+  overflow-wrap:anywhere}
+
+details{margin:0 0 1.5rem;border:1px solid var(--rule);padding:.7rem .9rem}
+details[open]{border-color:var(--rule-strong)}
+summary{cursor:pointer;font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.08em;color:var(--ink-muted)}
+summary:hover{color:var(--accent-hover)}
+summary .u{background:none}
+details .in{margin-block-start:1rem;padding-block-start:1rem;
+  border-block-start:1px solid var(--rule)}
+details .in p{margin:0 0 1rem;font-size:.9375rem;line-height:1.75;color:var(--ink-muted)}
+details .in p:last-child{margin-block-end:0}
+.attach-note{font-size:.8125rem!important;color:var(--ink-faint)!important;
+  padding-block-start:.6rem;border-block-start:1px solid var(--rule)}
+
+table{width:100%;border-collapse:collapse;margin:0 0 1.5rem;font-size:.875rem}
+th,td{border:1px solid var(--rule);padding:.5rem .6rem;text-align:start;
+  vertical-align:top;line-height:1.55}
+th{font-weight:600;background:var(--surface)}
+.tablewrap{overflow-x:auto;margin:0 0 1.5rem}
+.tablewrap table{margin:0;min-width:32rem}
+
+/* ── 발표 자료 ── */
+.deck{margin-block-start:3rem}
+.chap{margin-block-start:4.5rem;padding-block-start:2rem;
+  border-block-start:1px solid var(--rule-strong);scroll-margin-top:4rem}
+.chap:first-child{margin-block-start:3rem}
+.chap__no{margin:0 0 .4rem;font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.09em;color:var(--accent)}
+.chap__t{margin:0 0 1rem;font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1.25;letter-spacing:-.02em}
+.chap__p{margin:0;max-width:var(--measure);color:var(--ink-muted);
+  font-size:.9375rem;line-height:1.75}
+.chap__div{position:relative;margin:1.75rem 0 0}
+.chap__divimg{display:block;width:100%;padding:0;border:1px solid var(--rule);
+  background:#000;cursor:pointer}
+.chap__divimg:hover{border-color:var(--accent)}
+.chap__divimg img{display:block;width:100%}
+
+.scene{margin-block-start:3rem}
+.scene__h{display:flex;gap:.75rem;align-items:baseline;margin:0 0 .5rem}
+.scene__r{flex:none;font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.08em;color:var(--ink-faint);padding-block-start:.25rem}
+.scene__t{margin:0;font-size:1.0625rem;font-weight:600;line-height:1.45;
+  letter-spacing:-.01em}
+.scene__n{margin:.5rem 0 0;padding-inline-start:1.1rem;max-width:var(--measure);
+  color:var(--ink-muted);font-size:.9375rem;line-height:1.7}
+.scene__n li{margin-block-end:.35rem}
+
+.strip{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:1.75rem 1.5rem}
+/* 2단은 목차(14rem)를 빼고도 한 칸이 27rem 이상 남을 때만 연다.
+   56rem 에서 열면 목차가 붙는 64rem 구간에서 한 칸이 19rem까지 줄어
+   장표 글자가 읽히지 않는다. */
+@media(min-width:80rem){.strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.strip.one{grid-template-columns:minmax(0,1fr);max-width:var(--measure)}
+.cell{margin:0;min-width:0}
+.cell__no{margin:0 0 .35rem;font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.08em;color:var(--ink-faint);display:flex;gap:.5rem;align-items:center}
+.cell__no .tag{border:1px solid var(--rule);padding:0 .35rem;color:var(--accent)}
+.frame{display:block;width:100%;border:1px solid var(--rule);background:var(--ink)}
+button.frame{padding:0;cursor:zoom-in}
+.frame img{display:block;width:100%}
+
+/* 영상 자리 — 포스터 위에 재생 표시를 얹는다. 배너 카드와 같은 규범
+   (종이색 옅은 바탕 + 1px 선)이라 페이지 안에서 낯설지 않다 */
+.vid{position:relative;display:block;width:100%;padding:0;border:1px solid var(--rule);
+  background:var(--ink);cursor:pointer}
+.vid:hover{border-color:var(--accent)}
+.vid img{display:block;width:100%}
+.vid__b{position:absolute;left:.6rem;bottom:.6rem;display:inline-flex;
+  align-items:center;gap:.35rem;padding:.28rem .5rem;
+  border:1px solid rgba(23,24,26,.25);background:rgba(243,243,239,.9);
+  font-family:var(--font-mono);font-size:var(--micro);font-weight:600;
+  letter-spacing:.08em;color:var(--ink)}
+.vid:hover .vid__b{color:var(--accent-hover);border-color:var(--accent)}
+.vid__f{position:relative;width:100%;aspect-ratio:16/9;border:1px solid var(--rule)}
+.vid__f iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.vids{display:grid;gap:.75rem;margin-block-start:.75rem}
+/* 이어지는 유튜브 임베드는 가로로 나란히. 좁으면 위아래로 접는다 */
+.vidrow{display:grid;gap:.9rem;margin:0 0 1.5rem}
+@media(min-width:34rem){.vidrow{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.vidrow .vids{margin:0}
+
+/* 확대 보기 */
+.lb[hidden]{display:none}
+.lb{position:fixed;inset:0;z-index:50;background:rgba(23,24,26,.94);
+  display:grid;grid-template-rows:auto 1fr auto;gap:.75rem;padding:1rem}
+.lb__top{display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em;
+  color:var(--inverse-ink)}
+.lb__fig{display:grid;place-items:center;min-height:0}
+.lb__fig img{max-width:100%;max-height:100%;object-fit:contain;
+  border:1px solid rgba(247,247,242,.25)}
+.lb__cap{margin:0;text-align:center;color:rgba(247,247,242,.75);
+  font-size:.8125rem;line-height:1.5}
+.lb button{background:none;border:1px solid rgba(247,247,242,.4);
+  color:var(--inverse-ink);font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.08em;padding:.35rem .7rem;cursor:pointer}
+.lb button:hover{border-color:var(--inverse-ink)}
+.lb__nav{display:flex;gap:.5rem;justify-content:center}
+
+/* 표지에서 바로 슬라이드쇼로 */
+.cover{position:relative}
+.cover__go{position:absolute;right:1rem;bottom:1rem;padding:.5rem .9rem;
+  border:1px solid rgba(23,24,26,.3);background:rgba(243,243,239,.92);
+  font-family:var(--font-mono);font-size:var(--micro);font-weight:600;
+  letter-spacing:.08em;color:var(--ink);cursor:pointer}
+.cover__go:hover{border-color:var(--accent);color:var(--accent-hover)}
+.tocfoot{margin:1rem 0 0;font-size:.75rem;line-height:1.9;color:var(--ink-faint)}
+.tocfoot__go{margin:.35rem 0;padding:.3rem .6rem;border:1px solid var(--rule-strong);
+  background:none;font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.08em;color:var(--ink);cursor:pointer}
+.tocfoot__go:hover{border-color:var(--accent);color:var(--accent-hover)}
+
+/* 전체 보기 격자 */
+.tgrid{list-style:none;margin:1.25rem 0 0;padding:0;display:grid;gap:1rem .9rem;
+  grid-template-columns:repeat(auto-fill,minmax(11rem,1fr))}
+.tcell{margin:0;min-width:0}
+.tframe{display:block;width:100%;padding:0;border:1px solid var(--rule);
+  background:var(--ink);cursor:pointer}
+.tframe:hover{border-color:var(--accent)}
+.tframe img{display:block;width:100%}
+.tno{margin:.3rem 0 0;display:flex;gap:.4rem;align-items:center;
+  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.08em;
+  color:var(--ink-faint)}
+.tno .tag{border:1px solid var(--rule);padding:0 .3rem;color:var(--accent)}
+.tcell{scroll-margin-top:1.5rem}
+
+/* 챕터 표지 CTA — 그 챕터 페이지를 작은 썸네일로 모은다. 아래 큰 썸네일과
+   구분되게 더 작은 12열. 눌러도 열리지 않고 그 페이지로 스크롤만 한다.
+   표지 이미지 하단선에 절대배치로 고정한다. 음수 마진(흐름 배치)은 CTA가
+   짧은 챕터(2줄)에서 컨테이너 흐름 높이를 이미지보다 줄여 뒤따르는 본문이
+   표지 위로 올라와 겹치게 만든다(2026-07-24 실증). 하단 고정이므로 아래
+   선은 모든 챕터에서 동일하고, 줄 수가 줄면 위쪽이 줄어든다. */
+.chap__cta{position:absolute;left:0;right:0;bottom:3%;z-index:1;margin:0;
+  padding:0 2.5%;pointer-events:none}
+.chap__cta-h{display:inline-block;margin:0 0 .4rem;font-family:var(--font-mono);
+  font-size:var(--micro);letter-spacing:.05em;color:rgba(247,247,242,.92);
+  background:rgba(11,12,13,.55);padding:.14rem .45rem}
+/* 썸네일 창 — 두 줄 정도만 두고 위·아래를 그래디언트 마스크로 서서히 가린다.
+   창 높이·페이드 두께는 JS가 줄 높이를 재서 설정하고, 스크롤 위치에 따라
+   위(--ft)·아래(--fb) 마스크를 켠다. 두 줄 이하 챕터는 창이 내용에 딱 맞아
+   마스크가 켜지지 않는다. */
+.chap__ctascroll{position:relative;pointer-events:auto;overflow-y:auto;
+  scrollbar-width:none;-ms-overflow-style:none;--ft:0px;--fb:0px;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 var(--ft),#000 calc(100% - var(--fb)),transparent 100%);
+  mask-image:linear-gradient(to bottom,transparent 0,#000 var(--ft),#000 calc(100% - var(--fb)),transparent 100%)}
+.chap__ctascroll::-webkit-scrollbar{display:none}
+.chap__ctagrid{list-style:none;margin:0;padding:0;display:grid;
+  grid-template-columns:repeat(12,1fr);gap:3px}
+.chap__ct{position:relative;display:block;border:1px solid rgba(150,150,150,.45);
+  background:#000;text-decoration:none;pointer-events:auto}
+.chap__ct:hover{border-color:var(--accent);outline:1px solid var(--accent)}
+.chap__ct img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.chap__ctn{position:absolute;left:0;bottom:0;padding:0 .2rem;font-family:var(--font-mono);
+  font-size:9px;line-height:1.55;letter-spacing:.02em;color:#F7F7F2;
+  background:rgba(11,12,13,.72)}
+.chap__ctn b{color:#8AB0FF;font-weight:400}
+@media(max-width:47.99rem){
+  /* 좁은 화면에선 표지가 작아 겹치면 뭉갠다. 절대배치를 풀어 이미지 아래
+     일반 흐름으로 내리고 열을 줄인다 */
+  .chap__cta{position:static;margin:.6rem 0 0;padding:0;pointer-events:auto}
+  .chap__ctagrid{grid-template-columns:repeat(5,1fr)}
+  .chap__cta-h{color:var(--ink-muted);background:none;padding:0}
+}
+
+/* ── 슬라이드쇼 ── */
+.pv[hidden]{display:none}
+.pv{position:fixed;inset:0;z-index:60;background:#0B0C0D;color:#F7F7F2;
+  display:grid;grid-template-rows:auto minmax(0,1fr) auto auto}
+.pv__bar{display:flex;align-items:center;gap:.5rem;padding:.6rem .9rem;
+  border-block-end:1px solid rgba(247,247,242,.18);
+  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em}
+.pv__sp{flex:1}
+.pv__id{color:rgba(247,247,242,.55)}
+.pv__ch{color:rgba(247,247,242,.8);overflow:hidden;text-overflow:ellipsis;
+  white-space:nowrap;max-width:22rem}
+.pv__no b{color:#F7F7F2;font-weight:600}
+.pv__no{color:rgba(247,247,242,.55);margin-inline-end:.35rem}
+.pv button{background:none;border:1px solid rgba(247,247,242,.35);color:#F7F7F2;
+  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.08em;
+  padding:.3rem .6rem;cursor:pointer}
+.pv button:hover{border-color:#F7F7F2}
+.pv button[aria-pressed="true"]{background:rgba(247,247,242,.14)}
+
+/* stretch여야 한다. center면 가운데 fit 영역이 내용 높이로만 잡히는데,
+   그 안의 무대 크기를 fit 높이로 계산하므로 서로를 기다리다 0에서 멈춘다. */
+.pv__body{display:flex;align-items:stretch;gap:.5rem;padding:.9rem;min-height:0}
+.pv__arrow{flex:none;align-self:center;width:2.4rem;height:3.4rem;
+  font-size:1.5rem;line-height:1;border-color:rgba(247,247,242,.22)!important}
+.pv__arrow:disabled{opacity:.25;cursor:default}
+
+/* 무대 — 크기는 JS가 픽셀로 정한다(fitStage). CSS의 aspect-ratio + max-height
+   조합은 가로가 넓을 때 높이만 깎여 비율이 깨졌고, object-fit:cover가 그 차이를
+   잘라내 장표 위아래가 사라졌다(2026-07-25 실증). 영상 좌표가 이 사각형 기준의
+   %이므로 무대는 항상 정확히 16:9여야 하고, 그래서 계산으로 굳힌다. */
+.pv__fit{flex:1;min-width:0;min-height:0;display:flex;
+  align-items:center;justify-content:center}
+.pv__stage{position:relative;flex:none;background:#000;overflow:hidden;
+  border:1px solid rgba(247,247,242,.18)}
+.pv__stage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+/* 영상 자리 — 발표 좌표대로 얹은 유튜브 임베드. 장표가 열리면 바로 재생된다 */
+.pv__v{position:absolute;padding:0;background:#000;overflow:hidden}
+.pv__v iframe,.pv__v video{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:fill;background:#000}
+
+/* AI 노트 — 높이를 고정한다. 내용 길이에 따라 늘면 위의 무대가 밀려 올라가
+   장표마다 자리가 달라진다. 넘치는 만큼은 이 안에서 스크롤하고, 잘린 경계는
+   그래디언트로 흐려 아래에 더 있음을 알린다. */
+.pv__notes{padding:.2rem .9rem .9rem;height:8.5rem;overflow:auto;
+  scrollbar-width:thin;
+  --ft:transparent 0,#000 0;
+  --fb:#000 calc(100% - 1.6rem),transparent 100%;
+  -webkit-mask-image:linear-gradient(to bottom,var(--ft)),linear-gradient(to bottom,var(--fb));
+  mask-image:linear-gradient(to bottom,var(--ft)),linear-gradient(to bottom,var(--fb));
+  -webkit-mask-composite:source-in;mask-composite:intersect}
+.pv__notes[data-top="1"]{--ft:transparent 0,#000 1.6rem}
+.pv__notes[data-bot="0"]{--fb:#000 100%,#000 100%}
+.pv__notes ul{margin:0;padding-inline-start:1.1rem;max-width:60rem}
+.pv__notes li{margin-block-end:.3rem;font-size:.8125rem;line-height:1.65;
+  color:rgba(247,247,242,.8)}
+.pv__notes .sc{margin:0 0 .4rem;font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.08em;color:rgba(247,247,242,.5)}
+.pv__notes .none{margin:0;font-size:.8125rem;color:rgba(247,247,242,.55)}
+
+/* 진행 막대 — 챕터 경계에 눈금을 둔다 */
+.pv__rail{display:flex;gap:1px;padding:0 .9rem .8rem}
+.pv__rail span{flex:1;height:3px;background:rgba(247,247,242,.18)}
+.pv__rail span.on{background:rgba(247,247,242,.85)}
+.pv__rail span.cut{margin-inline-start:5px}
+
+/* 전체 보기 — 슬라이드 정렬기. 대화상자 전체를 덮고 스스로 스크롤한다.
+   표시줄 높이가 화면 폭에 따라 바뀌므로 아래를 비우지 않고 통째로 덮는다. */
+.pv__sorter[hidden]{display:none}
+.pv__sorter{position:absolute;inset:0;z-index:3;background:#0B0C0D;
+  display:grid;grid-template-rows:auto minmax(0,1fr)}
+.pv__sortbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  padding:.6rem .9rem;border-block-end:1px solid rgba(247,247,242,.18);
+  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em;
+  color:rgba(247,247,242,.7)}
+.pv__sortbar button{background:none;border:1px solid rgba(247,247,242,.35);
+  color:#F7F7F2;font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.08em;padding:.3rem .6rem;cursor:pointer}
+.pv__sortbar button:hover{border-color:#F7F7F2}
+.pv__sgrid{list-style:none;margin:0;padding:.9rem;overflow:auto;
+  display:grid;gap:.7rem;grid-template-columns:repeat(auto-fill,minmax(9rem,1fr));
+  align-content:start}
+.pv__sc{display:block;width:100%;padding:0;border:1px solid rgba(247,247,242,.18);
+  background:#000;cursor:pointer;position:relative}
+.pv__sc:hover{border-color:rgba(247,247,242,.7)}
+.pv__sc.now{border-color:#F7F7F2;outline:1px solid #F7F7F2}
+.pv__sc img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
+.pv__scn{position:absolute;left:0;bottom:0;padding:.1rem .35rem;
+  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.06em;
+  color:#F7F7F2;background:rgba(11,12,13,.7)}
+.pv__scn b{color:#8AB0FF;font-weight:400}
+
+@media(max-width:47.99rem){
+  .pv__bar{flex-wrap:wrap;gap:.4rem}
+  .pv__ch{order:9;flex-basis:100%;max-width:none}
+  /* 좁은 화면에서는 무대 옆에 화살표를 둘 자리가 없다. 지우지 말고
+     무대 아래로 내린다. 지우면 손가락으로 넘길 방법이 사라진다. */
+  /* 세로 화면에서는 남는 높이가 커서 가운데 정렬하면 무대가 아래로 떠
+     내려간다. 표시줄 바로 아래에 붙인다. */
+  .pv__body{flex-wrap:wrap;justify-content:center;align-content:flex-start;
+    padding:.75rem .5rem}
+  .pv__fit{flex:0 0 100%;order:1}
+  .pv__arrow{order:2;flex:1;width:auto;max-width:10rem;height:2.6rem;
+    margin-block-start:.7rem;font-size:1.1rem}
+}
+</style>
+<script type="module" src="../../../../assets/series-nav.js?v=20260728a"></script>
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header"><div class="site-header__in">
+  <a class="brand" href="../../../../">KIHEON SHIN</a>
+  <a class="uplink uplink--head" href="../../">시리즈 홈</a>
+</div></header>
+<main id="main" class="wide">
+<article>
+  <header class="srchead">
+    <div class="kicker">
+      <p class="meta-label">SOURCE · 발표 자료</p>
+      <time datetime="2023-06-30">2023.06.30</time>
+    </div>
+    <h1>웹3의 다음 흐름을 주도할 코-크리에이션 문화</h1>
+    <p class="lead">2023년 6월 말, 웹3의 다음 흐름을 코-크리에이션이라는 한 단어로 놓고 정리한 발표 자료다. 개념을 앞세우는 대신 레고에서 시작해 스테이플버스, CloneX, 나이키 닷스우시, 트리플에스까지 실제 사례를 순서대로 쌓아 올린다. 스스로 번호를 매긴 일곱 개의 절이 창의성의 출발에서 수익 분배와 거버넌스까지 이어진다.</p>
+  </header>
+  <figure class="hero cover">
+    <img src="../../assets/src-t1/slide-001.jpg" alt="웹3의 다음 흐름을 주도할 코-크리에이션 문화 표지"
+         width="1600" height="900" decoding="async">
+    <button class="cover__go" type="button" data-go="1">슬라이드쇼 시작 →</button>
+  </figure>
+  <p class="series">발표 중에는 장표 위에서 영상이 재생됐다. 원본 파일에 적힌 도형 좌표를 그대로 읽어, 그날 화면에서 영상이 놓였던 자리에 같은 크기로 얹었다. 다른 곳에서 만든 영상은 옮겨 싣지 않아 장표만 남은 자리가 있다. 장표를 누르면 그 자리에서 슬라이드쇼가 열린다.</p>
+  <div class="doc">
+    <nav class="toc" aria-label="차례">
+      <h2>차례</h2>
+      <ol><li><a href="#ch1">1. 모두에게 주어진 창의성</a></li><li><a href="#ch2">2. 코-크리에이션을 통한 창의성의 확장</a></li><li><a href="#ch3">3. 흐릿해지는 현실과 가상의 경계</a></li><li><a href="#ch4">4. 코-크리에이션 플랫폼으로의 발전</a></li><li><a href="#ch5">5. 코-크리에이션을 통한 수익 창출</a></li><li><a href="#ch6">6. 제너레이티브 AI 시대의 새로운 방향성</a></li><li><a href="#ch7">7. 웹3를 통한 지속가능한 거버넌스 구축</a></li><li><a href="#ch8">8. 정리</a></li></ol>
+      <p class="tocfoot">
+        <button class="tocfoot__go" type="button" data-go="1">처음부터 넘겨보기</button>
+      </p>
+    </nav>
+<div class="deck" style="min-width:0"><section class="chap" id="ch1"><p class="chap__no">CHAPTER 01 · 슬라이드 2–8</p><h2 class="chap__t">모두에게 주어진 창의성</h2><p class="chap__p">발표의 출발점을 레고에 둔다. 무한한 조합의 장난감이 완결된 IP 상품으로 바뀌면서 생기는 긴장을 짚고, 레고 아이디어스처럼 기획과 디자인 단계를 사용자에게 여는 방식을 대안으로 제시한다. 마지막 장에서 그 흐름을 웹2에서 웹3로 넘어가는 기술적 조건과 연결한다.</p><div class="chap__div"><button type="button" class="chap__divimg" data-go="2" aria-label="1. 모두에게 주어진 창의성 첫 장부터 슬라이드쇼"><img src="../../assets/src-t1/slide-002.jpg" alt="1. 모두에게 주어진 창의성 챕터 진입 장표" width="1600" height="900" loading="lazy" decoding="async"></button><nav class="chap__cta" aria-label="1. 모두에게 주어진 창의성 각 페이지로 이동"><p class="chap__cta-h">이 챕터 6장 · 눌러서 이동</p><ol class="chap__ctagrid"><li><a class="chap__ct" href="#s3" aria-label="슬라이드 3로 이동"><img src="../../assets/src-t1/thumb-003.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">003</span></a></li><li><a class="chap__ct" href="#s4" aria-label="슬라이드 4로 이동"><img src="../../assets/src-t1/thumb-004.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">004</span></a></li><li><a class="chap__ct" href="#s5" aria-label="슬라이드 5로 이동"><img src="../../assets/src-t1/thumb-005.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">005</span></a></li><li><a class="chap__ct" href="#s6" aria-label="슬라이드 6로 이동"><img src="../../assets/src-t1/thumb-006.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">006</span></a></li><li><a class="chap__ct" href="#s7" aria-label="슬라이드 7로 이동"><img src="../../assets/src-t1/thumb-007.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">007</span></a></li><li><a class="chap__ct" href="#s8" aria-label="슬라이드 8로 이동"><img src="../../assets/src-t1/thumb-008.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">008</span></a></li></ol></nav></div><section class="scene"><div class="scene__h"><span class="scene__r">003–005</span><h3 class="scene__t">레고무비의 마스터빌더와 접착제</h3></div><ul class="scene__n"><li><b>003</b> 2014년 개봉한 레고무비의 한 장면이 화면을 채우고 왼쪽 위에 Lego Movie / Masterbuilder만 적혀 있다. 무한한 창의성을 가진 마스터빌더가 되려는 주인공과 세상을 고착시키려는 쪽의 대립이 이야기의 축이다.</li><li><b>004</b> 영화 후반부의 실사 장면으로, 정교하게 쌓아 올린 레고 도시 앞에 아버지와 아이가 나란히 서 있다. 앞서 본 선악의 대립이 실은 한 집안의 아빠와 아이 사이의 갈등이었음이 드러나는 지점이다.</li><li><b>005</b> 아버지가 완성된 레고에 접착제를 발라 굳히는 장면과, 그 접착제가 영화 속에서 크래글이라는 무기로 등장하는 장면을 나란히 붙였다. 흩어지지 않게 고정하려는 태도가 창의성을 막는 힘으로 그려진다.</li></ul><ul class="tgrid"><li class="tcell" id="s3"><button type="button" class="tframe" data-go="3" aria-label="슬라이드 3 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-003.jpg" alt="슬라이드 3" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>003</span></p></li><li class="tcell" id="s4"><button type="button" class="tframe" data-go="4" aria-label="슬라이드 4 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-004.jpg" alt="슬라이드 4" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>004</span></p></li><li class="tcell" id="s5"><button type="button" class="tframe" data-go="5" aria-label="슬라이드 5 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-005.jpg" alt="슬라이드 5" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>005</span></p></li></ul></section><section class="scene"><div class="scene__h"><span class="scene__r">006–008</span><h3 class="scene__t">레고의 두 갈래 확장 전략과 웹3로의 이행</h3></div><ul class="scene__n"><li><b>006</b> 마블 헐크버스터와 스타워즈 밀레니엄 팔콘 제품 사진 아래 레고의 외부 IP 협업 전략을 정리한다. 해리포터, 디즈니, 마인크래프트 등 다수 IP와의 협업과 아디다스, 이케아, 리바이스 브랜드 협업을 적고, 창의성이라는 핵심 철학이 협업 IP의 완결성과 충돌하는 문제를 함께 짚는다.</li><li><b>007</b> 레고 아이디어스 웹사이트 화면과 그곳에서 채택되어 상품이 된 다이너마이트 세트를 함께 보여준다. 누구나 아이디어를 제안하고 서포터즈 10,000명을 설득하면 채택되는 구조여서, 브릭 조립이 아니라 상품 기획과 디자인 단계에서 창의성을 발휘할 기회가 열린다.</li><li><b>008</b> 웹2에서 웹3로 이어지는 기술적, 문화적 발전 방향을 상호운용성, 결합성, 무신뢰성, 개방성 네 가지 차별요소로 적고, 화살표 하나로 그것들을 코-크리에이션을 통한 창의성의 확장이라는 결론으로 모은다.</li></ul><ul class="tgrid"><li class="tcell" id="s6"><button type="button" class="tframe" data-go="6" aria-label="슬라이드 6 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-006.jpg" alt="슬라이드 6" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>006</span></p></li><li class="tcell" id="s7"><button type="button" class="tframe" data-go="7" aria-label="슬라이드 7 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-007.jpg" alt="슬라이드 7" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>007</span></p></li><li class="tcell" id="s8"><button type="button" class="tframe" data-go="8" aria-label="슬라이드 8 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-008.jpg" alt="슬라이드 8" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>008</span></p></li></ul></section></section><section class="chap" id="ch2"><p class="chap__no">CHAPTER 02 · 슬라이드 9–36</p><h2 class="chap__t">코-크리에이션을 통한 창의성의 확장</h2><p class="chap__p">코-크리에이션을 다수의 창의성을 모으고 기여도에 따라 보상을 나누는 문화로 정의한다. 제프 스테이플의 브랜드가 스니커에서 NFT를 거쳐 스테이플버스라는 세계관으로 확장되는 과정을 따라가며, 사피엔즈의 참여 절차를 일곱 단계로 펼쳐 보인다. 절 끝에서 그 참여를 기술적으로 뒷받침하는 ERC-6551을 소개한다.</p><div class="chap__div"><button type="button" class="chap__divimg" data-go="9" aria-label="2. 코-크리에이션을 통한 창의성의 확장 첫 장부터 슬라이드쇼"><img src="../../assets/src-t1/slide-009.jpg" alt="2. 코-크리에이션을 통한 창의성의 확장 챕터 진입 장표" width="1600" height="900" loading="lazy" decoding="async"></button><nav class="chap__cta" aria-label="2. 코-크리에이션을 통한 창의성의 확장 각 페이지로 이동"><p class="chap__cta-h">이 챕터 27장 · 눌러서 이동</p><ol class="chap__ctagrid"><li><a class="chap__ct" href="#s10" aria-label="슬라이드 10로 이동"><img src="../../assets/src-t1/thumb-010.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">010</span></a></li><li><a class="chap__ct" href="#s11" aria-label="슬라이드 11로 이동"><img src="../../assets/src-t1/thumb-011.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">011</span></a></li><li><a class="chap__ct" href="#s12" aria-label="슬라이드 12로 이동"><img src="../../assets/src-t1/thumb-012.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">012</span></a></li><li><a class="chap__ct" href="#s13" aria-label="슬라이드 13로 이동"><img src="../../assets/src-t1/thumb-013.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">013</span></a></li><li><a class="chap__ct" href="#s14" aria-label="슬라이드 14로 이동"><img src="../../assets/src-t1/thumb-014.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">014</span></a></li><li><a class="chap__ct" href="#s15" aria-label="슬라이드 15로 이동"><img src="../../assets/src-t1/thumb-015.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">015</span></a></li><li><a class="chap__ct" href="#s16" aria-label="슬라이드 16로 이동"><img src="../../assets/src-t1/thumb-016.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">016</span></a></li><li><a class="chap__ct" href="#s17" aria-label="슬라이드 17로 이동"><img src="../../assets/src-t1/thumb-017.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">017</span></a></li><li><a class="chap__ct" href="#s18" aria-label="슬라이드 18로 이동"><img src="../../assets/src-t1/thumb-018.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">018</span></a></li><li><a class="chap__ct" href="#s19" aria-label="슬라이드 19로 이동"><img src="../../assets/src-t1/thumb-019.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">019</span></a></li><li><a class="chap__ct" href="#s20" aria-label="슬라이드 20로 이동"><img src="../../assets/src-t1/thumb-020.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">020</span></a></li><li><a class="chap__ct" href="#s21" aria-label="슬라이드 21로 이동"><img src="../../assets/src-t1/thumb-021.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">021</span></a></li><li><a class="chap__ct" href="#s22" aria-label="슬라이드 22로 이동"><img src="../../assets/src-t1/thumb-022.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">022</span></a></li><li><a class="chap__ct" href="#s23" aria-label="슬라이드 23로 이동"><img src="../../assets/src-t1/thumb-023.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">023</span></a></li><li><a class="chap__ct" href="#s24" aria-label="슬라이드 24로 이동"><img src="../../assets/src-t1/thumb-024.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">024</span></a></li><li><a class="chap__ct" href="#s25" aria-label="슬라이드 25로 이동"><img src="../../assets/src-t1/thumb-025.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">025</span></a></li><li><a class="chap__ct" href="#s26" aria-label="슬라이드 26로 이동"><img src="../../assets/src-t1/thumb-026.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">026</span></a></li><li><a class="chap__ct" href="#s27" aria-label="슬라이드 27로 이동"><img src="../../assets/src-t1/thumb-027.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">027</span></a></li><li><a class="chap__ct" href="#s28" aria-label="슬라이드 28로 이동"><img src="../../assets/src-t1/thumb-028.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">028</span></a></li><li><a class="chap__ct" href="#s29" aria-label="슬라이드 29로 이동"><img src="../../assets/src-t1/thumb-029.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">029</span></a></li><li><a class="chap__ct" href="#s30" aria-label="슬라이드 30로 이동"><img src="../../assets/src-t1/thumb-030.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">030</span></a></li><li><a class="chap__ct" href="#s31" aria-label="슬라이드 31로 이동"><img src="../../assets/src-t1/thumb-031.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">031</span></a></li><li><a class="chap__ct" href="#s32" aria-label="슬라이드 32로 이동"><img src="../../assets/src-t1/thumb-032.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">032</span></a></li><li><a class="chap__ct" href="#s33" aria-label="슬라이드 33로 이동"><img src="../../assets/src-t1/thumb-033.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">033</span></a></li><li><a class="chap__ct" href="#s34" aria-label="슬라이드 34로 이동"><img src="../../assets/src-t1/thumb-034.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">034</span></a></li><li><a class="chap__ct" href="#s35" aria-label="슬라이드 35로 이동"><img src="../../assets/src-t1/thumb-035.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">035</span></a></li><li><a class="chap__ct" href="#s36" aria-label="슬라이드 36로 이동"><img src="../../assets/src-t1/thumb-036.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">036</span></a></li></ol></nav></div><section class="scene"><div class="scene__h"><span class="scene__r">010–013</span><h3 class="scene__t">코-크리에이션의 정의와 제프 스테이플의 출발점</h3></div><ul class="scene__n"><li><b>010</b> 코-크리에이션을 인간 중심으로 회귀하는 문화로 정의한다. 다수 구성원이 가진 창의성의 총합을 활용한다는 점, 각자의 기여도에 대한 공정한 보상과 분배, 웹3 커뮤니티와 거버넌스로 연결될 가능성 세 가지를 근거로 든다.</li><li><b>011</b> 나무로 짠 비둘기장 안에 수십 마리의 비둘기가 빼곡히 앉아 있는 사진이 화면을 가득 채운다. 설명을 붙이지 않은 채, 뒤이어 나올 스테이플 피죤 이야기의 상징을 먼저 던져두는 자리다.</li><li><b>012</b> 같은 비둘기장 사진 위에 제프 스테이플의 온라인 문답 안내 카드를 올렸다. 스테이플 피죤을 만든 디자이너를 소개하면서, 스니커즈가 신는 물건을 넘어 수집품이 된 흐름으로 이야기를 넘긴다.</li><li><b>013</b> 비둘기 사육장 사진 위에 제프 스테이플의 인물 이미지, 나이키 덩크 협업 스니커, 발매 당시의 소동을 전한 SNEAKER RIOT 신문 지면을 겹쳐 놓았다. 스테이플 피죤이 출발한 자리다.</li></ul><ul class="tgrid"><li class="tcell" id="s10"><button type="button" class="tframe" data-go="10" aria-label="슬라이드 10 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-010.jpg" alt="슬라이드 10" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>010</span></p></li><li class="tcell" id="s11"><button type="button" class="tframe" data-go="11" aria-label="슬라이드 11 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-011.jpg" alt="슬라이드 11" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>011</span></p></li><li class="tcell" id="s12"><button type="button" class="tframe" data-go="12" aria-label="슬라이드 12 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-012.jpg" alt="슬라이드 12" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>012</span></p></li><li class="tcell" id="s13"><button type="button" class="tframe" data-go="13" aria-label="슬라이드 13 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-013.jpg" alt="슬라이드 13" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>013</span></p></li></ul></section><section class="scene"><div class="scene__h"><span class="scene__r">014–016</span><h3 class="scene__t">메타 피죤, 스니커 브랜드의 첫 NFT 협업</h3></div><ul class="scene__n"><li><b>014</b> 제프 스테이플과 RTFKT가 함께 만든 메타 피죤. 금속 질감의 기계 비둘기와 그것을 모티브로 옮긴 버추얼 스니커 두 켤레를 흰 배경 렌더링으로 보여준다.</li><li><b>015</b> 메타 피죤과 메타 피죤 OG를 중심에 두고 민트바이알 3개, 클론엑스 3개, 스페이스팟과 MNLTH, 루트팟으로 뻗어나가는 파생 구조를 계보도로 펼쳤다. 아직 공개되지 않은 자리는 물음표로 남아 있다.</li><li><b>016</b> 실물로 제작된 메타 피죤이 리셀 플랫폼 StockX에 올라온 화면. 사이즈별 호가가 452만 원에서 1억 480만 원까지 붙어 있고, 가상에서 만든 디자인이 현실 시장에서 값을 받는 장면으로 쓰인다.</li></ul><ul class="tgrid"><li class="tcell" id="s14"><button type="button" class="tframe" data-go="14" aria-label="슬라이드 14 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-014.jpg" alt="슬라이드 14" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>014</span></p></li><li class="tcell" id="s15"><button type="button" class="tframe" data-go="15" aria-label="슬라이드 15 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-015.jpg" alt="슬라이드 15" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>015</span></p></li><li class="tcell" id="s16"><button type="button" class="tframe" data-go="16" aria-label="슬라이드 16 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-016.jpg" alt="슬라이드 16" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>016</span></p></li></ul></section><section class="scene"><div class="scene__h"><span class="scene__r">017–020</span><h3 class="scene__t">엠파이어 스테이플 피죤즈의 세 클랜과 협업망</h3></div><ul class="scene__n"><li><b>017</b> 스테이플버스의 첫 챕터인 엠파이어 스테이플 피죤즈 사이트. 후드 스쿼드, 피드 클랜, 푸프 갱 세 클랜이 뉴욕 거리에서 세력을 다투고 보유한 NFT가 클랜 혜택과 스토리라인을 결정한다고 적어두었다.</li><li><b>018</b> 피드 클랜 NFT 1만 개가 어떤 모이로 이루어졌는지 늘어놓고, 그것이 65%(3,900/6,000)는 후드 스쿼드 비둘기로, 35%(1,700/5,000)는 푸프 갱 배설물 아트로 갈라지는 경로를 화살표로 정리했다.</li><li><b>019</b> 뉴욕 지도를 배경으로 브랜드 협업 결과물을 모았다. 크록스와 시계, 스니커, 인형과 후드, E.S.P 티셔츠까지 놓이고 행사 현장에서 신발을 들어 보이는 사진이 함께 붙어 있다.</li><li><b>020</b> 크리에이터 협업으로 나온 비둘기 조형물 네 점. 소프트아이스크림처럼 말린 형태가 좌대에 놓이고 전광판에 STAPLEVERSE BLUE, HOOD PIGEON CONCRETE, POOP GANG FLYARREAH, FEED CLAN SWIRL이라는 이름이 떠 있다.</li></ul><ul class="tgrid"><li class="tcell" id="s17"><button type="button" class="tframe" data-go="17" aria-label="슬라이드 17 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-017.jpg" alt="슬라이드 17" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>017</span></p></li><li class="tcell" id="s18"><button type="button" class="tframe" data-go="18" aria-label="슬라이드 18 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-018.jpg" alt="슬라이드 18" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>018</span></p></li><li class="tcell" id="s19"><button type="button" class="tframe" data-go="19" aria-label="슬라이드 19 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-019.jpg" alt="슬라이드 19" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>019</span></p></li><li class="tcell" id="s20"><button type="button" class="tframe" data-go="20" aria-label="슬라이드 20 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-020.jpg" alt="슬라이드 20" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>020</span></p></li></ul></section><section class="scene"><div class="scene__h"><span class="scene__r">021–023</span><h3 class="scene__t">스테이플버스로 넘어가는 브랜드 연표</h3></div><ul class="scene__n"><li><b>021</b> 1997년 스테이플 피죤, 2021년 RTFKT 메타피죤, 2022년 스테이플버스 Phase1-2, 2023년 Phase3로 이어지는 연표. 단독 브랜드에서 다수 협업으로, 피지컬 현실세계에서 디지털 가상세계로 옮겨간 축을 함께 적었다.</li><li><b>022</b> 100년 뒤 뉴욕을 그린 스테이플버스 세계관 이미지. 덩굴과 거목이 뒤덮은 고층 빌딩 사이 옥상에서 인물들이 도시를 내려다보고, 건물 벽에는 네온 로고가 켜져 있다.</li><li><b>023</b> 같은 세계 위에 사피엔즈 컬렉션 배너를 얹었다. 100년 뒤 뉴욕에서 살아가는 인류를 그린 프로필 NFT로, 저마다 다른 의상과 장신구를 걸친 아바타 다섯이 나란히 서 있다.</li></ul><ul class="tgrid"><li class="tcell" id="s21"><button type="button" class="tframe" data-go="21" aria-label="슬라이드 21 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-021.jpg" alt="슬라이드 21" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>021</span></p></li><li class="tcell" id="s22"><button type="button" class="tframe" data-go="22" aria-label="슬라이드 22 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-022.jpg" alt="슬라이드 22" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>022</span></p></li><li class="tcell" id="s23"><button type="button" class="tframe" data-go="23" aria-label="슬라이드 23 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-023.jpg" alt="슬라이드 23" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>023</span></p></li></ul></section><section class="scene"><div class="scene__h"><span class="scene__r">024–031</span><h3 class="scene__t">사피엔즈 코-크리에이션 일곱 단계</h3></div><ul class="scene__n"><li><b>024</b> 코-크리에이션 프로세스의 1단계로 PFP NFT를 통한 계정 소유를 놓았다. 아바타와 아이템 시스템으로 패션, 푸드, 아트, 뮤직까지 경험을 넓히고 ERC-6551 표준의 Token Bound Accounts를 적용한다는 조건을 영상과 함께 제시한다.</li><li><b>025</b> 코-크리에이션 프로세스 2단계. 네 개의 클랜에서 모인 사피엔즈 보유자가 디지털 의상과 아이템을 열쇠로 홀더 전용 어패럴 디자인 워크샵에 참여하는 구조를 도식으로 보여준다.</li><li><b>026</b> 3단계. 스테이플 헬멧을 장착하면 워크샵 등록으로 이어지고, 어패럴 디자인과 비트 프로덕션, 그래픽 디자인 수강 이력이 진행 중과 수료로 계정에 쌓이는 화면을 함께 놓았다.</li><li><b>027</b> 4단계. 워크샵 수료가 학기제로 운영되는 C-DIVISION 선발 확률을 높이는 흐름을 도식화하고, 패턴 도면 위에서 의견을 주고받는 협업 화면과 커뮤니티 반응을 곁들인다.</li><li><b>028</b> 5단계. 지속가능 원단과 업사이클 의류, 비건 레더 중 하나를 고르는 커뮤니티 제품 투표 화면을 다가올 드롭 일정, 분야별 카테고리와 나란히 놓아 참여가 제품으로 이어지는 경로를 보여준다.</li><li><b>029</b> 6단계. 아바타로 접속한 홀더들의 화상 AMA, 업계 인물 인터뷰 시리즈 썸네일, 실시간 채팅이 붙은 라이브 방송 화면을 겹쳐 전문가와 브랜드로 이어지는 통로를 보여준다.</li><li><b>030</b> 나이키와 아디다스, 컨버스, 리바이스, LVMH, HBO, 구글, 코카콜라까지 협업 이력을 로고 격자로만 채워, 앞 단계에서 말한 브랜드 네트워크의 범위를 한 화면에 펼친다.</li><li><b>031</b> 7단계. 스니커즈 매장과 행사장에서 열린 공개 대담 사진 두 장으로, 온라인에서 자란 브랜드가 현장의 대화와 함께 커지는 장면을 보여준다.</li></ul><ul class="tgrid"><li class="tcell" id="s24"><button type="button" class="tframe" data-go="24" aria-label="슬라이드 24 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-024.jpg" alt="슬라이드 24" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>024</span></p></li><li class="tcell" id="s25"><button type="button" class="tframe" data-go="25" aria-label="슬라이드 25 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-025.jpg" alt="슬라이드 25" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>025</span></p></li><li class="tcell" id="s26"><button type="button" class="tframe" data-go="26" aria-label="슬라이드 26 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-026.jpg" alt="슬라이드 26" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>026</span></p></li><li class="tcell" id="s27"><button type="button" class="tframe" data-go="27" aria-label="슬라이드 27 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-027.jpg" alt="슬라이드 27" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>027</span></p></li><li class="tcell" id="s28"><button type="button" class="tframe" data-go="28" aria-label="슬라이드 28 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-028.jpg" alt="슬라이드 28" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>028</span></p></li><li class="tcell" id="s29"><button type="button" class="tframe" data-go="29" aria-label="슬라이드 29 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-029.jpg" alt="슬라이드 29" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>029</span></p></li><li class="tcell" id="s30"><button type="button" class="tframe" data-go="30" aria-label="슬라이드 30 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-030.jpg" alt="슬라이드 30" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>030</span></p></li><li class="tcell" id="s31"><button type="button" class="tframe" data-go="31" aria-label="슬라이드 31 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-031.jpg" alt="슬라이드 31" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>031</span></p></li></ul></section><section class="scene"><div class="scene__h"><span class="scene__r">032–034</span><h3 class="scene__t">매직 화이트 티와 페인트 파티, 커뮤니티 이벤트</h3></div><ul class="scene__n"><li><b>032</b> 매직 화이트 티 익스피리언스 챌린지. 흰 티셔츠 디자인을 토너먼트 대진표에 올리고 트위터 투표로 승자를 가리며, 한 대결은 84표가 모여 28.6 대 71.4로 갈렸다.</li><li><b>033</b> 아티스트 Fewocious의 가상세계 FewoWorld와 Paint Party. 물감 방울을 NFT로 팔고 도시별로 캔버스를 함께 채워가는 방식을 손그림 기획도와 뉴욕 2021 캔버스 여섯 점으로 보여준다.</li><li><b>034</b> FewoWorld와 아디다스의 협업. 작업실의 작가와 아디다스 오리지널스 스니커즈 화보를 모으고 캠페인을 영상으로 보여준다. 구매 기회는 Fewocious의 NFT 홀더에게 먼저 열렸다.</li></ul><ul class="tgrid"><li class="tcell" id="s32"><button type="button" class="tframe" data-go="32" aria-label="슬라이드 32 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-032.jpg" alt="슬라이드 32" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>032</span></p></li><li class="tcell" id="s33"><button type="button" class="tframe" data-go="33" aria-label="슬라이드 33 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-033.jpg" alt="슬라이드 33" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>033</span></p></li><li class="tcell" id="s34"><button type="button" class="tframe" data-go="34" aria-label="슬라이드 34 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-034.jpg" alt="슬라이드 34" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>034</span></p></li></ul></section><section class="scene"><div class="scene__h"><span class="scene__r">035–036</span><h3 class="scene__t">ERC-6551과 토큰 바운드 어카운트</h3></div><ul class="scene__n"><li><b>035</b> ERC-6551과 토큰 바운드 어카운트. 지갑 안에 든 사피엔즈 NFT가 다시 금고가 되어 다른 NFT와 0.42 ETH 같은 토큰을 담는 구조를 두 개의 도식으로 나눠 보여준다.</li><li><b>036</b> 희소성에서 유틸리티를 거쳐 아이덴티티와 멤버십으로 가는 축과, 보관형 지갑에서 EOA를 거쳐 스마트 컨트랙트 월렛으로 가는 축이 ERC-6551에서 만나는 지점을 좌표로 그린다.</li></ul><ul class="tgrid"><li class="tcell" id="s35"><button type="button" class="tframe" data-go="35" aria-label="슬라이드 35 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-035.jpg" alt="슬라이드 35" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>035</span></p></li><li class="tcell" id="s36"><button type="button" class="tframe" data-go="36" aria-label="슬라이드 36 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-036.jpg" alt="슬라이드 36" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>036</span></p></li></ul></section></section><section class="chap" id="ch3"><p class="chap__no">CHAPTER 03 · 슬라이드 37–47</p><h2 class="chap__t">흐릿해지는 현실과 가상의 경계</h2><p class="chap__p">RTFKT와 CloneX를 사례로 디지털 아이템이 현실의 제품과 어떻게 맞물리는지 보여준다. 나이키 제품을 아바타용 웨어러블로 옮긴 포징, 실물 의류의 NFC 태그로 NFT를 리딤하는 칩까지 양방향의 연결을 나열한다. 앞 절의 참여 구조가 물리적 경험으로 이어지는 지점을 다룬다.</p><div class="chap__div"><button type="button" class="chap__divimg" data-go="37" aria-label="3. 흐릿해지는 현실과 가상의 경계 첫 장부터 슬라이드쇼"><img src="../../assets/src-t1/slide-037.jpg" alt="3. 흐릿해지는 현실과 가상의 경계 챕터 진입 장표" width="1600" height="900" loading="lazy" decoding="async"></button><nav class="chap__cta" aria-label="3. 흐릿해지는 현실과 가상의 경계 각 페이지로 이동"><p class="chap__cta-h">이 챕터 10장 · 눌러서 이동</p><ol class="chap__ctagrid"><li><a class="chap__ct" href="#s38" aria-label="슬라이드 38로 이동"><img src="../../assets/src-t1/thumb-038.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">038</span></a></li><li><a class="chap__ct" href="#s39" aria-label="슬라이드 39로 이동"><img src="../../assets/src-t1/thumb-039.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">039</span></a></li><li><a class="chap__ct" href="#s40" aria-label="슬라이드 40로 이동"><img src="../../assets/src-t1/thumb-040.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">040</span></a></li><li><a class="chap__ct" href="#s41" aria-label="슬라이드 41로 이동"><img src="../../assets/src-t1/thumb-041.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">041</span></a></li><li><a class="chap__ct" href="#s42" aria-label="슬라이드 42로 이동"><img src="../../assets/src-t1/thumb-042.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">042 <b>▶</b></span></a></li><li><a class="chap__ct" href="#s43" aria-label="슬라이드 43로 이동"><img src="../../assets/src-t1/thumb-043.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">043 <b>▶</b></span></a></li><li><a class="chap__ct" href="#s44" aria-label="슬라이드 44로 이동"><img src="../../assets/src-t1/thumb-044.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">044</span></a></li><li><a class="chap__ct" href="#s45" aria-label="슬라이드 45로 이동"><img src="../../assets/src-t1/thumb-045.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">045</span></a></li><li><a class="chap__ct" href="#s46" aria-label="슬라이드 46로 이동"><img src="../../assets/src-t1/thumb-046.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">046 <b>▶</b></span></a></li><li><a class="chap__ct" href="#s47" aria-label="슬라이드 47로 이동"><img src="../../assets/src-t1/thumb-047.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">047</span></a></li></ol></nav></div><section class="scene"><div class="scene__h"><span class="scene__r">038–041</span><h3 class="scene__t">RTFKT와 개방형 아바타 CloneX</h3></div><ul class="scene__n"><li><b>038</b> 가상세계 브랜드로 출발해 나이키에 인수된 RTFKT를 소개한다. 퍼피 재킷을 입은 전신 아바타, 은빛으로 마감한 에어포스원 세 컷, 금속 질감의 메타 피존 조형이 한 화면에 놓인다.</li><li><b>039</b> 보라색 조명 아래 여섯 개의 아바타 실루엣이 늘어서 있고 그 가운데 위로 RTFKT 로고가 떠 있다. 개별 수집품에서 전신 아바타 컬렉션으로 넘어가는 대목이다.</li><li><b>040</b> 가상세계 안에서 활용 가능한 개방형 아바타 시스템 CloneX를 소개한다. 아바타 20000개 발행 화면과 얼굴 그리드 옆에, 나이키의 웹3 기반 가상세계 경험에서 중심 역할을 맡고 크리에이터 프로그램으로 2차 창작이 진행 중이라고 적혀 있다.</li><li><b>041</b> 메타 피존 한 개에서 민트바이알과 클론엑스로, 다시 스페이스 포드와 MNLTH 계열로 갈라지는 파생 계보를 도표로 펼친다. 에어드랍, 화이트리스트, 민트, 리빌 네 가지 화살표로 자격이 주어진 경로를 구분한다.</li></ul><ul class="tgrid"><li class="tcell" id="s38"><button type="button" class="tframe" data-go="38" aria-label="슬라이드 38 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-038.jpg" alt="슬라이드 38" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>038</span></p></li><li class="tcell" id="s39"><button type="button" class="tframe" data-go="39" aria-label="슬라이드 39 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-039.jpg" alt="슬라이드 39" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>039</span></p></li><li class="tcell" id="s40"><button type="button" class="tframe" data-go="40" aria-label="슬라이드 40 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-040.jpg" alt="슬라이드 40" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>040</span></p></li><li class="tcell" id="s41"><button type="button" class="tframe" data-go="41" aria-label="슬라이드 41 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-041.jpg" alt="슬라이드 41" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>041</span></p></li></ul></section><section class="scene"><div class="scene__h"><span class="scene__r">042–045</span><h3 class="scene__t">포징 SZN 1, 나이키 제품의 디지털 웨어러블화</h3></div><ul class="scene__n"><li><b>042</b> 에어포스원을 형광 연두와 청록으로 다시 칠한 스니커즈를 영상으로 보여준다. 기존 나이키 제품을 CloneX가 착용할 수 있는 디지털 웨어러블로 재해석한 포징 SZN 1의 첫 화면이다.</li><li><b>043</b> 기계 격납고에서 팔이 신발을 들어 올리는 장면과 연기와 번개 속에 스니커즈가 떠오르는 장면을 두 개의 영상으로 나란히 재생한다. 포징이라는 이름에 맞춘 제조 연출이다.</li><li><b>044</b> 포징 웹사이트 화면 두 장을 나란히 놓는다. 왼쪽은 CLONEX, MURAKAMI, human, ROBOT, DEMON, ANGEL, UNDEAD, ALIEN 등 DNA 테마별 아바타 카드이고, 오른쪽은 같은 테마로 제작된 스니커즈 카드다.</li><li><b>045</b> CLONE X 한 개로 만들 수 있는 아이템 목록을 표로 편다. 양말과 모자를 제외한 모든 포징 아이템에 NFT와 연결되는 NFC 태그가 들어가고, 무라카미 드립을 갖춘 휴먼 클론엑스 보유자는 최대 31개까지 민팅할 수 있다고 적혀 있다.</li></ul><ul class="tgrid"><li class="tcell" id="s42"><button type="button" class="tframe" data-go="42" aria-label="슬라이드 42 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-042.jpg" alt="슬라이드 42" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>042</span><span class="tag">영상 1</span></p></li><li class="tcell" id="s43"><button type="button" class="tframe" data-go="43" aria-label="슬라이드 43 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-043.jpg" alt="슬라이드 43" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>043</span><span class="tag">영상 2</span></p></li><li class="tcell" id="s44"><button type="button" class="tframe" data-go="44" aria-label="슬라이드 44 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-044.jpg" alt="슬라이드 44" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>044</span></p></li><li class="tcell" id="s45"><button type="button" class="tframe" data-go="45" aria-label="슬라이드 45 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-045.jpg" alt="슬라이드 45" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>045</span></p></li></ul></section><section class="scene"><div class="scene__h"><span class="scene__r">046–047</span><h3 class="scene__t">월드 머징 칩과 AR 필터</h3></div><ul class="scene__n"><li><b>046</b> 네온 조명 아래 떠 있는 스니커즈와 스마트폰, NFC 칩 도안을 영상으로 보여준다. 실물 웨어러블에 내장된 태그를 스마트폰으로 인식하고 월렛을 연동해 가상세계에서 사용하거나 거래할 수 있는 NFT를 리딤하는 구조다.</li><li><b>047</b> 파란 머리 아바타가 RTFKT와 NIKE 표기가 들어간 후디를 입고 금속 날개를 펼친 모습을 띄운다. 실물 의류의 이미지를 증강현실 필터로 불러와 현실 위에 가상의 정체성을 겹쳐 보이는 사례다.</li></ul><ul class="tgrid"><li class="tcell" id="s46"><button type="button" class="tframe" data-go="46" aria-label="슬라이드 46 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-046.jpg" alt="슬라이드 46" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>046</span><span class="tag">영상 1</span></p></li><li class="tcell" id="s47"><button type="button" class="tframe" data-go="47" aria-label="슬라이드 47 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-047.jpg" alt="슬라이드 47" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>047</span></p></li></ul></section></section><section class="chap" id="ch4"><p class="chap__no">CHAPTER 04 · 슬라이드 48–61</p><h2 class="chap__t">코-크리에이션 플랫폼으로의 발전</h2><p class="chap__p">홀더가 IP를 직접 쓰도록 열어둔 크리에이터 프로그램과 도구를 정리한다. 3D 모델 배포와 블렌더 플러그인에서 시작해 웨어러블 파생 프로젝트, 오프라인 전시, 포트나이트 에디터로 만든 게임까지 이어지는 확산을 보여준다. 커뮤니티의 창작이 개인 취미를 넘어 플랫폼이 되는 과정이 이 절의 논지다.</p><div class="chap__div"><button type="button" class="chap__divimg" data-go="48" aria-label="4. 코-크리에이션 플랫폼으로의 발전 첫 장부터 슬라이드쇼"><img src="../../assets/src-t1/slide-048.jpg" alt="4. 코-크리에이션 플랫폼으로의 발전 챕터 진입 장표" width="1600" height="900" loading="lazy" decoding="async"></button><nav class="chap__cta" aria-label="4. 코-크리에이션 플랫폼으로의 발전 각 페이지로 이동"><p class="chap__cta-h">이 챕터 13장 · 눌러서 이동</p><ol class="chap__ctagrid"><li><a class="chap__ct" href="#s49" aria-label="슬라이드 49로 이동"><img src="../../assets/src-t1/thumb-049.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">049 <b>▶</b></span></a></li><li><a class="chap__ct" href="#s50" aria-label="슬라이드 50로 이동"><img src="../../assets/src-t1/thumb-050.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">050</span></a></li><li><a class="chap__ct" href="#s51" aria-label="슬라이드 51로 이동"><img src="../../assets/src-t1/thumb-051.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">051</span></a></li><li><a class="chap__ct" href="#s52" aria-label="슬라이드 52로 이동"><img src="../../assets/src-t1/thumb-052.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">052</span></a></li><li><a class="chap__ct" href="#s53" aria-label="슬라이드 53로 이동"><img src="../../assets/src-t1/thumb-053.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">053</span></a></li><li><a class="chap__ct" href="#s54" aria-label="슬라이드 54로 이동"><img src="../../assets/src-t1/thumb-054.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">054</span></a></li><li><a class="chap__ct" href="#s55" aria-label="슬라이드 55로 이동"><img src="../../assets/src-t1/thumb-055.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">055 <b>▶</b></span></a></li><li><a class="chap__ct" href="#s56" aria-label="슬라이드 56로 이동"><img src="../../assets/src-t1/thumb-056.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">056</span></a></li><li><a class="chap__ct" href="#s57" aria-label="슬라이드 57로 이동"><img src="../../assets/src-t1/thumb-057.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">057</span></a></li><li><a class="chap__ct" href="#s58" aria-label="슬라이드 58로 이동"><img src="../../assets/src-t1/thumb-058.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">058 <b>▶</b></span></a></li><li><a class="chap__ct" href="#s59" aria-label="슬라이드 59로 이동"><img src="../../assets/src-t1/thumb-059.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">059</span></a></li><li><a class="chap__ct" href="#s60" aria-label="슬라이드 60로 이동"><img src="../../assets/src-t1/thumb-060.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">060</span></a></li><li><a class="chap__ct" href="#s61" aria-label="슬라이드 61로 이동"><img src="../../assets/src-t1/thumb-061.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">061 <b>▶</b></span></a></li></ol></nav></div><section class="scene"><div class="scene__h"><span class="scene__r">049–053</span><h3 class="scene__t">크리에이터 프로그램과 무료 배포 도구</h3></div><ul class="scene__n"><li><b>049</b> CloneX 크리에이터 프로그램 화면이다. NFT 홀더면 누구나 참여해 IP를 활용한 창작을 지원받고, Explore와 Learn과 Build로 나뉜 세 갈래가 보인다. 홀더들이 만든 영상을 함께 재생한다.</li><li><b>050</b> CloneX 홀더들이 만든 영상의 장면 아홉 개를 격자로 늘어놓았다. 무사, 정원, 사이버펑크 도시로 소재가 제각각이고 각 화면 아래에 CLONE FORCE, J MARINO 같은 제작자 이름이 붙어 있다.</li><li><b>051</b> 크리에이터 툴을 소개한다. 3D 모델을 내려받아 2차 창작에 쓸 수 있고 영상, 게임, AR 필터, Vtuber로 확산 중이라고 적혀 있다. 모션 캡처 장비로 아바타를 실시간으로 움직이는 작업 화면이 함께 놓인다.</li><li><b>052</b> 크리에이터 툴의 작동 구조를 다이어그램 한 장으로 펼쳤다. 블렌더 설치에서 Clone Tools 플러그인과 DLC 팩 내려받기를 거쳐 Style, Posing, Environment, Camera, Rendering 다섯 기능까지 사용자 흐름이 이어진다.</li><li><b>053</b> 같은 다이어그램의 두 지점을 확대한다. 블렌더에 Clone Tools와 DLC를 설치하는 경로, 그리고 사용자가 포즈를 고르면 아바타가 그 자세로 서고 애니메이션까지 적용되는 Posing 기능의 응답이 드러난다.</li></ul><ul class="tgrid"><li class="tcell" id="s49"><button type="button" class="tframe" data-go="49" aria-label="슬라이드 49 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-049.jpg" alt="슬라이드 49" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>049</span><span class="tag">영상 1</span></p></li><li class="tcell" id="s50"><button type="button" class="tframe" data-go="50" aria-label="슬라이드 50 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-050.jpg" alt="슬라이드 50" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>050</span></p></li><li class="tcell" id="s51"><button type="button" class="tframe" data-go="51" aria-label="슬라이드 51 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-051.jpg" alt="슬라이드 51" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>051</span></p></li><li class="tcell" id="s52"><button type="button" class="tframe" data-go="52" aria-label="슬라이드 52 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-052.jpg" alt="슬라이드 52" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>052</span></p></li><li class="tcell" id="s53"><button type="button" class="tframe" data-go="53" aria-label="슬라이드 53 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-053.jpg" alt="슬라이드 53" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>053</span></p></li></ul></section><section class="scene"><div class="scene__h"><span class="scene__r">054–057</span><h3 class="scene__t">파생 웨어러블과 오프라인 전시</h3></div><ul class="scene__n"><li><b>054</b> CREA는 CloneX가 입을 수 있는 웨어러블 NFT다. CHRONOS, PRIVATE, PUBLIC으로 나뉜 민팅 일정과 0.08ETH, 0.1ETH 가격, BASE에서 RARE를 거쳐 LEGENDARY로 올라가는 등급 구성을 함께 보여준다.</li><li><b>055</b> 어두운 전시장 통로를 걸어 들어가는 장면을 영상으로 보여준다. 양옆으로 조명이 켜진 유리 진열장이 줄지어 서 있고 그 안에 스니커즈가 한 켤레씩 놓여 있다.</li><li><b>056</b> 타카시 무라카미를 중심으로 열린 오프라인 이벤트 현장이다. 조명 트러스가 늘어선 전시장, 관람객이 모인 무대, 진열장 속 스니커즈, 이벤트 컬렉션이 올라간 마켓플레이스 화면이 함께 놓인다.</li><li><b>057</b> 같은 이벤트의 전시물을 가까이서 찍은 사진들이다. 크리에이터가 직접 커스텀한 실물 스니커즈와 제작자 소개 패널, 2023년 4월 30일 도쿄 개최를 알리는 안내물이 보인다.</li></ul><ul class="tgrid"><li class="tcell" id="s54"><button type="button" class="tframe" data-go="54" aria-label="슬라이드 54 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-054.jpg" alt="슬라이드 54" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>054</span></p></li><li class="tcell" id="s55"><button type="button" class="tframe" data-go="55" aria-label="슬라이드 55 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-055.jpg" alt="슬라이드 55" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>055</span><span class="tag">영상 1</span></p></li><li class="tcell" id="s56"><button type="button" class="tframe" data-go="56" aria-label="슬라이드 56 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-056.jpg" alt="슬라이드 56" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>056</span></p></li><li class="tcell" id="s57"><button type="button" class="tframe" data-go="57" aria-label="슬라이드 57 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-057.jpg" alt="슬라이드 57" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>057</span></p></li></ul></section><section class="scene"><div class="scene__h"><span class="scene__r">058–061</span><h3 class="scene__t">포트나이트 에디터와 나이키 에어포리아</h3></div><ul class="scene__n"><li><b>058</b> 포트나이트 에디터 UEFN의 제작 화면을 영상으로 보여준다. 게임 안에서 나이키 로고가 박힌 구조물을 편집하는 모습과 언리얼 에디터의 아웃라이너, 콘텐츠 브라우저가 나란히 놓여 있다.</li><li><b>059</b> 나이키 에어포리아의 키 아트다. UEFN으로 구현한 에어포스원 테마 게임이고, 나이키 계정을 연동하면 게임 내 경험에 보상이 돌아온다는 설명과 아일랜드 코드 2118-5342-7190이 함께 적혀 있다.</li><li><b>060</b> 에어포리아의 섬 전경이다. 구름 위에 도시가 떠 있고 낙하산에 매달린 신발 상자들이 하늘을 덮는다. 신발 상자를 쌓아 올린 건물과 스니커즈 모양 구조물을 담은 화면이 곁들여진다.</li><li><b>061</b> 나이키 에어포리아 레벨을 언리얼 에디터 안에서 열어 드론과 체크포인트, 시퀀서 트랙을 만지는 화면을 영상으로 보여준다. 뷰포트에는 신발 상자를 쌓아 만든 건물과 배송 트럭이 서 있다.</li></ul><ul class="tgrid"><li class="tcell" id="s58"><button type="button" class="tframe" data-go="58" aria-label="슬라이드 58 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-058.jpg" alt="슬라이드 58" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>058</span><span class="tag">영상 1</span></p></li><li class="tcell" id="s59"><button type="button" class="tframe" data-go="59" aria-label="슬라이드 59 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-059.jpg" alt="슬라이드 59" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>059</span></p></li><li class="tcell" id="s60"><button type="button" class="tframe" data-go="60" aria-label="슬라이드 60 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-060.jpg" alt="슬라이드 60" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>060</span></p></li><li class="tcell" id="s61"><button type="button" class="tframe" data-go="61" aria-label="슬라이드 61 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-061.jpg" alt="슬라이드 61" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>061</span><span class="tag">영상 1</span></p></li></ul></section></section><section class="chap" id="ch5"><p class="chap__no">CHAPTER 05 · 슬라이드 62–80</p><h2 class="chap__t">코-크리에이션을 통한 수익 창출</h2><p class="chap__p">참여가 수익으로 돌아오는 구조를 세 사례로 비교한다. 제품을 구성 요소로 쪼개 기여자마다 로열티를 분배하는 방식, 구매자가 조합을 확정하고 민팅해 코-크리에이터 자격을 얻는 방식, 브랜드가 커뮤니티의 이야기를 제품 개발에 편입하는 방식이 차례로 나온다. 발표에서 실제 화면과 수치가 가장 많이 모여 있는 절이다.</p><div class="chap__div"><button type="button" class="chap__divimg" data-go="62" aria-label="5. 코-크리에이션을 통한 수익 창출 첫 장부터 슬라이드쇼"><img src="../../assets/src-t1/slide-062.jpg" alt="5. 코-크리에이션을 통한 수익 창출 챕터 진입 장표" width="1600" height="900" loading="lazy" decoding="async"></button><nav class="chap__cta" aria-label="5. 코-크리에이션을 통한 수익 창출 각 페이지로 이동"><p class="chap__cta-h">이 챕터 18장 · 눌러서 이동</p><ol class="chap__ctagrid"><li><a class="chap__ct" href="#s63" aria-label="슬라이드 63로 이동"><img src="../../assets/src-t1/thumb-063.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">063</span></a></li><li><a class="chap__ct" href="#s64" aria-label="슬라이드 64로 이동"><img src="../../assets/src-t1/thumb-064.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">064</span></a></li><li><a class="chap__ct" href="#s65" aria-label="슬라이드 65로 이동"><img src="../../assets/src-t1/thumb-065.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">065</span></a></li><li><a class="chap__ct" href="#s66" aria-label="슬라이드 66로 이동"><img src="../../assets/src-t1/thumb-066.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">066</span></a></li><li><a class="chap__ct" href="#s67" aria-label="슬라이드 67로 이동"><img src="../../assets/src-t1/thumb-067.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">067</span></a></li><li><a class="chap__ct" href="#s68" aria-label="슬라이드 68로 이동"><img src="../../assets/src-t1/thumb-068.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">068</span></a></li><li><a class="chap__ct" href="#s69" aria-label="슬라이드 69로 이동"><img src="../../assets/src-t1/thumb-069.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">069</span></a></li><li><a class="chap__ct" href="#s70" aria-label="슬라이드 70로 이동"><img src="../../assets/src-t1/thumb-070.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">070</span></a></li><li><a class="chap__ct" href="#s71" aria-label="슬라이드 71로 이동"><img src="../../assets/src-t1/thumb-071.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">071</span></a></li><li><a class="chap__ct" href="#s72" aria-label="슬라이드 72로 이동"><img src="../../assets/src-t1/thumb-072.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">072 <b>▶</b></span></a></li><li><a class="chap__ct" href="#s73" aria-label="슬라이드 73로 이동"><img src="../../assets/src-t1/thumb-073.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">073 <b>▶</b></span></a></li><li><a class="chap__ct" href="#s74" aria-label="슬라이드 74로 이동"><img src="../../assets/src-t1/thumb-074.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">074</span></a></li><li><a class="chap__ct" href="#s75" aria-label="슬라이드 75로 이동"><img src="../../assets/src-t1/thumb-075.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">075</span></a></li><li><a class="chap__ct" href="#s76" aria-label="슬라이드 76로 이동"><img src="../../assets/src-t1/thumb-076.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">076</span></a></li><li><a class="chap__ct" href="#s77" aria-label="슬라이드 77로 이동"><img src="../../assets/src-t1/thumb-077.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">077 <b>▶</b></span></a></li><li><a class="chap__ct" href="#s78" aria-label="슬라이드 78로 이동"><img src="../../assets/src-t1/thumb-078.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">078</span></a></li><li><a class="chap__ct" href="#s79" aria-label="슬라이드 79로 이동"><img src="../../assets/src-t1/thumb-079.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">079</span></a></li><li><a class="chap__ct" href="#s80" aria-label="슬라이드 80로 이동"><img src="../../assets/src-t1/thumb-080.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">080 <b>▶</b></span></a></li></ol></nav></div><section class="scene"><div class="scene__h"><span class="scene__r">063–066</span><h3 class="scene__t">메타 자켓에서 시작한 요소별 로열티 분배</h3></div><ul class="scene__n"><li><b>063</b> RTFKT가 처음 선보인 디지털 패션 아이템 메타 자켓. 보라색 바탕에 META JACKET 글자가 반복되고, 홀로그램 광택의 패딩과 뿔 달린 헬멧, 어깨에 붙은 구체 장식을 뒷모습으로 잡았다.</li><li><b>064</b> 메타 자켓에 이어 디자인한 스니커즈를 밤거리에서 로우앵글로 잡은 렌더. 밑창이 푸른빛으로 발광하고 하늘에는 달이 두 개 떠 있어 실재하지 않는 도시를 배경으로 삼는다.</li><li><b>065</b> Digitalax의 도식. 완성된 재킷 네 벌은 ERC-721로, 거기 입혀진 패턴은 ERC-1155 차일드 NFT로 따로 발행되어 각각 아티스트 이름과 발행 번호를 갖는다. 외형과 패턴, 컬러, 이펙트 같은 구성 요소별로 수익이 분배된다.</li><li><b>066</b> 같은 구조를 세 개 층으로 펼쳐 놓은 전체 도식. 1층은 아티스트가 올린 소재와 패턴 라이브러리에서 마스터 의상까지, 2층은 엔진별 파일 변환, 3층은 그 결과물이 실제로 들어가는 게임과 3D 환경들이다.</li></ul><ul class="tgrid"><li class="tcell" id="s63"><button type="button" class="tframe" data-go="63" aria-label="슬라이드 63 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-063.jpg" alt="슬라이드 63" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>063</span></p></li><li class="tcell" id="s64"><button type="button" class="tframe" data-go="64" aria-label="슬라이드 64 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-064.jpg" alt="슬라이드 64" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>064</span></p></li><li class="tcell" id="s65"><button type="button" class="tframe" data-go="65" aria-label="슬라이드 65 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-065.jpg" alt="슬라이드 65" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>065</span></p></li><li class="tcell" id="s66"><button type="button" class="tframe" data-go="66" aria-label="슬라이드 66 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-066.jpg" alt="슬라이드 66" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>066</span></p></li></ul></section><section class="scene"><div class="scene__h"><span class="scene__r">067–075</span><h3 class="scene__t">더 패브리컨트 스튜디오의 조합, 민팅, 재판매</h3></div><ul class="scene__n"><li><b>067</b> 더 패브리컨트 스튜디오의 조합 화면. 가운데 의상을 두고 좌우에 패턴이, 오른쪽에 컬러 팔레트가 놓여 소재와 색을 골라 자기 조합을 만든 뒤 NFT로 발행하는 순서를 보여준다.</li><li><b>068</b> 개념 도식에서 실제 판매 화면으로 넘어간다. XXORIES 프리세일이 열려 있고 남은 수량이 2492/3000으로 표시되며, 화면 아래쪽에는 아직 정체를 알 수 없는 붉은 구체가 놓여 있다.</li><li><b>069</b> 구매 조건을 두 장의 카드로 나눠 보여준다. 2023년 2월 16일 24시간 동안 열리는 프리세일은 95달러로 홀더와 파트너 커뮤니티에 한정되고, 다음 날 72시간 열리는 대기자 판매는 152달러다.</li><li><b>070</b> 파트너 커뮤니티 목록을 띄운 팝업. 민팅이 열릴 때까지 매주 래플 당첨자를 발표한다는 안내 아래 서른 곳이 넘는 커뮤니티 이름이 세 열로 늘어서, 판매가 기존 커뮤니티들과 엮여 진행됨을 보여준다.</li><li><b>071</b> 구매한 XXorie #509의 상세 페이지. 500 플로우에 올라가 있고 희귀도는 아직 공개 전으로 표시된다. 이미지 한 장과 영상 한 편이 담겨 있으며 증강현실로 착용할 수 있다는 설명이 붙어 있다.</li><li><b>072</b> 리빌을 기다리던 아이템이 검은 화면 가운데에서 분홍빛으로 맥동하는 구체로 나타난다. 정해진 시각에 일제히 열리는 리빌의 순간을 영상으로 보여준다.</li><li><b>073</b> 검은 화면에 보석 장식이 층층이 이어진 긴 장신구 두 점이 붉은 빛을 받으며 떠 있다. 민팅한 아이템이 한날한시에 공개될 때 어떤 3D 형태로 드러나는지 영상으로 보여준다.</li><li><b>074</b> 더 패브리컨트 스튜디오의 희소도 등급표. Common 33%부터 Uncommon 20%, Rare 11%, Epic 4%, Legendary 1%까지 다섯 단계를 두고 AR 필터, 게이티드 채널, 독점 이벤트, 이후 드롭의 에어드롭과 코-크리에이션, 우선 판매 권한이 등급마다 어디까지 열리는지 표시한다.</li><li><b>075</b> 보유한 아이템을 2차 마켓플레이스에 등록하는 창이다. 가격을 1000 FLOW로 적으면 로열티 계산기가 가먼트 디자이너 300, 머티리얼 디자이너 300, 플랫폼 100, 판매자 몫 300으로 분배 결과를 바로 계산해 보여준다.</li></ul><ul class="tgrid"><li class="tcell" id="s67"><button type="button" class="tframe" data-go="67" aria-label="슬라이드 67 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-067.jpg" alt="슬라이드 67" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>067</span></p></li><li class="tcell" id="s68"><button type="button" class="tframe" data-go="68" aria-label="슬라이드 68 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-068.jpg" alt="슬라이드 68" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>068</span></p></li><li class="tcell" id="s69"><button type="button" class="tframe" data-go="69" aria-label="슬라이드 69 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-069.jpg" alt="슬라이드 69" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>069</span></p></li><li class="tcell" id="s70"><button type="button" class="tframe" data-go="70" aria-label="슬라이드 70 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-070.jpg" alt="슬라이드 70" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>070</span></p></li><li class="tcell" id="s71"><button type="button" class="tframe" data-go="71" aria-label="슬라이드 71 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-071.jpg" alt="슬라이드 71" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>071</span></p></li><li class="tcell" id="s72"><button type="button" class="tframe" data-go="72" aria-label="슬라이드 72 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-072.jpg" alt="슬라이드 72" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>072</span><span class="tag">영상 1</span></p></li><li class="tcell" id="s73"><button type="button" class="tframe" data-go="73" aria-label="슬라이드 73 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-073.jpg" alt="슬라이드 73" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>073</span><span class="tag">영상 1</span></p></li><li class="tcell" id="s74"><button type="button" class="tframe" data-go="74" aria-label="슬라이드 74 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-074.jpg" alt="슬라이드 74" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>074</span></p></li><li class="tcell" id="s75"><button type="button" class="tframe" data-go="75" aria-label="슬라이드 75 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-075.jpg" alt="슬라이드 75" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>075</span></p></li></ul></section><section class="scene"><div class="scene__h"><span class="scene__r">076–080</span><h3 class="scene__t">나이키 닷스우시와 #YourForce1 챌린지</h3></div><ul class="scene__n"><li><b>076</b> 클론엑스 아바타가 나이키 의류 차림으로 의자에 앉아 있고 .SWOOSH 카드와 JOIN US 부스 이미지가 함께 놓인다. NIKE .SWOOSH를 커뮤니티와 함께 만들어가는 웹3 기반 코-크리에이션 플랫폼으로 소개하고, RTFKT의 NFT를 발판으로 웹3 시장 진출을 실험 중이라고 적어두었다.</li><li><b>077</b> 왼쪽에는 멤버들이 만든 가상 창작물 카드가, 가운데에는 박스·파운데이션·컬러 블록·컬러웨이 같은 속성이 적힌 픽셀 에어 포스 1 카드 네 장이 영상으로 움직이고, 오른쪽에는 버추얼 크리에이션, 마켓플레이스, 커뮤니티 크리에이션, 러닝 센터 네 축이 놓인다.</li><li><b>078</b> 격자 배경 위에 에어 포스 1을 신은 사람들의 사진이 흩어져 있고 그 가운데 YOUR FORCE 1이라는 캠페인 이름이 걸린다. 아래에는 CO-CREATION BY .SWOOSH STUDIO라는 문구가 형광 띠로 붙어 있다.</li><li><b>079</b> 수십 켤레의 에어 포스 1 컬러웨이가 격자 벽을 이루고 그 한가운데에 OUR FORCE 1이라는 이름이 놓인다. 개별 창작물이 모여 하나의 계보가 된다는 구성이다.</li><li><b>080</b> 이름과 .SWOOSH ID, 콘셉트 설명, 색상, 소재, 이미지, 키 테마까지 손으로 채운 응모지 석 장을 늘어놓는다. 우승자 4명에게 각 5,000달러가 주어지고 창작물이 실제 컬렉션에 오르면 코-크리에이션 계약으로 로열티를 받는 절차를 영상과 함께 정리한다.</li></ul><ul class="tgrid"><li class="tcell" id="s76"><button type="button" class="tframe" data-go="76" aria-label="슬라이드 76 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-076.jpg" alt="슬라이드 76" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>076</span></p></li><li class="tcell" id="s77"><button type="button" class="tframe" data-go="77" aria-label="슬라이드 77 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-077.jpg" alt="슬라이드 77" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>077</span><span class="tag">영상 4</span></p></li><li class="tcell" id="s78"><button type="button" class="tframe" data-go="78" aria-label="슬라이드 78 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-078.jpg" alt="슬라이드 78" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>078</span></p></li><li class="tcell" id="s79"><button type="button" class="tframe" data-go="79" aria-label="슬라이드 79 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-079.jpg" alt="슬라이드 79" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>079</span></p></li><li class="tcell" id="s80"><button type="button" class="tframe" data-go="80" aria-label="슬라이드 80 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-080.jpg" alt="슬라이드 80" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>080</span><span class="tag">영상 1</span></p></li></ul></section></section><section class="chap" id="ch6"><p class="chap__no">CHAPTER 06 · 슬라이드 81–86</p><h2 class="chap__t">제너레이티브 AI 시대의 새로운 방향성</h2><p class="chap__p">소유한 아바타에 지능과 목소리를 붙이려는 시도를 다룬다. 클라우드 기반 아바타 엔진을 CloneX에 결합하는 계획과, 텍스트로 성격을 정의해 NPC로 내보내는 개발자 플랫폼의 화면을 이어 붙인다. 아바타가 나를 대신하는 이미지에서 스스로 행동하는 존재로 바뀌는 방향을 짚는다.</p><div class="chap__div"><button type="button" class="chap__divimg" data-go="81" aria-label="6. 제너레이티브 AI 시대의 새로운 방향성 첫 장부터 슬라이드쇼"><img src="../../assets/src-t1/slide-081.jpg" alt="6. 제너레이티브 AI 시대의 새로운 방향성 챕터 진입 장표" width="1600" height="900" loading="lazy" decoding="async"></button><nav class="chap__cta" aria-label="6. 제너레이티브 AI 시대의 새로운 방향성 각 페이지로 이동"><p class="chap__cta-h">이 챕터 5장 · 눌러서 이동</p><ol class="chap__ctagrid"><li><a class="chap__ct" href="#s82" aria-label="슬라이드 82로 이동"><img src="../../assets/src-t1/thumb-082.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">082 <b>▶</b></span></a></li><li><a class="chap__ct" href="#s83" aria-label="슬라이드 83로 이동"><img src="../../assets/src-t1/thumb-083.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">083</span></a></li><li><a class="chap__ct" href="#s84" aria-label="슬라이드 84로 이동"><img src="../../assets/src-t1/thumb-084.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">084</span></a></li><li><a class="chap__ct" href="#s85" aria-label="슬라이드 85로 이동"><img src="../../assets/src-t1/thumb-085.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">085</span></a></li><li><a class="chap__ct" href="#s86" aria-label="슬라이드 86로 이동"><img src="../../assets/src-t1/thumb-086.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">086</span></a></li></ol></nav></div><section class="scene"><div class="scene__h"><span class="scene__r">082–083</span><h3 class="scene__t">아바타에 지능과 목소리를 더하는 시도</h3></div><ul class="scene__n"><li><b>082</b> RTFKT가 NVIDIA GTC 2023에서 내놓은 구상으로, Omniverse ACE를 클론엑스에 적용해 가상세계 아바타에 지능과 목소리를 더한다. 사용자 질문에서 녹음된 답변, Audio2Face, 실시간 클론 응답으로 이어지는 흐름을 도식과 영상으로 보여준다.</li><li><b>083</b> AI 캐릭터 개발자 플랫폼 Inworld가 스팀 넥스트 페스트에 낸 데모 ORIGINS의 화면들이다. 폐허가 된 도시에서 NPC에게 말을 걸면 정해진 스크립트 대신 상황을 설명하는 대사가 돌아오고, 시네마틱 모드로 대화가 이어진다.</li></ul><ul class="tgrid"><li class="tcell" id="s82"><button type="button" class="tframe" data-go="82" aria-label="슬라이드 82 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-082.jpg" alt="슬라이드 82" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>082</span><span class="tag">영상 1</span></p></li><li class="tcell" id="s83"><button type="button" class="tframe" data-go="83" aria-label="슬라이드 83 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-083.jpg" alt="슬라이드 83" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>083</span></p></li></ul></section><section class="scene"><div class="scene__h"><span class="scene__r">084–086</span><h3 class="scene__t">텍스트로 성격을 정의하는 AI 캐릭터 플랫폼</h3></div><ul class="scene__n"><li><b>084</b> 갤러드리엘, 마담 포춘 텔러, 체셔 캣 같은 캐릭터가 늘어선 Inworld 작업 화면에 새 캐릭터 생성 창이 떠 있다. 이름과 짧은 코어 설명만 넣으면 세부 설정이 자동으로 채워지는 구조로, 캐릭터의 성격을 텍스트로 정의하는 방식을 보여준다.</li><li><b>085</b> AI 캐릭터 제작 도구의 편집 화면으로, The Caterpillar의 핵심 설명과 동기를 문장으로 적어 넣는다. 정체성, 성격과 감정, 지식, 목소리, 대화 방식이 각각 따로 정의된다.</li><li><b>086</b> 정의한 캐릭터를 밖으로 내보내는 통합 화면. Unity, 언리얼 엔진, Node.js SDK와 API 키 발급란이 놓여 있어, 만든 캐릭터를 여러 플랫폼에서 NPC로 쓰는 경로를 보여준다.</li></ul><ul class="tgrid"><li class="tcell" id="s84"><button type="button" class="tframe" data-go="84" aria-label="슬라이드 84 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-084.jpg" alt="슬라이드 84" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>084</span></p></li><li class="tcell" id="s85"><button type="button" class="tframe" data-go="85" aria-label="슬라이드 85 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-085.jpg" alt="슬라이드 85" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>085</span></p></li><li class="tcell" id="s86"><button type="button" class="tframe" data-go="86" aria-label="슬라이드 86 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-086.jpg" alt="슬라이드 86" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>086</span></p></li></ul></section></section><section class="chap" id="ch7"><p class="chap__no">CHAPTER 07 · 슬라이드 87–94</p><h2 class="chap__t">웹3를 통한 지속가능한 거버넌스 구축</h2><p class="chap__p">마지막 절에서 참여의 결과가 운영 결정으로 이어지는 사례를 든다. 팬이 활동으로 토큰을 얻고 그 토큰을 투표에 써서 그룹의 방향을 정하는 구조를 앱 화면과 온체인 지표로 함께 보여준다. 창의성에서 시작한 논의가 의사결정 권한의 분배로 닫힌다.</p><div class="chap__div"><button type="button" class="chap__divimg" data-go="87" aria-label="7. 웹3를 통한 지속가능한 거버넌스 구축 첫 장부터 슬라이드쇼"><img src="../../assets/src-t1/slide-087.jpg" alt="7. 웹3를 통한 지속가능한 거버넌스 구축 챕터 진입 장표" width="1600" height="900" loading="lazy" decoding="async"></button><nav class="chap__cta" aria-label="7. 웹3를 통한 지속가능한 거버넌스 구축 각 페이지로 이동"><p class="chap__cta-h">이 챕터 7장 · 눌러서 이동</p><ol class="chap__ctagrid"><li><a class="chap__ct" href="#s88" aria-label="슬라이드 88로 이동"><img src="../../assets/src-t1/thumb-088.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">088</span></a></li><li><a class="chap__ct" href="#s89" aria-label="슬라이드 89로 이동"><img src="../../assets/src-t1/thumb-089.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">089</span></a></li><li><a class="chap__ct" href="#s90" aria-label="슬라이드 90로 이동"><img src="../../assets/src-t1/thumb-090.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">090</span></a></li><li><a class="chap__ct" href="#s91" aria-label="슬라이드 91로 이동"><img src="../../assets/src-t1/thumb-091.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">091</span></a></li><li><a class="chap__ct" href="#s92" aria-label="슬라이드 92로 이동"><img src="../../assets/src-t1/thumb-092.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">092</span></a></li><li><a class="chap__ct" href="#s93" aria-label="슬라이드 93로 이동"><img src="../../assets/src-t1/thumb-093.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">093</span></a></li><li><a class="chap__ct" href="#s94" aria-label="슬라이드 94로 이동"><img src="../../assets/src-t1/thumb-094.jpg" alt="" loading="lazy" decoding="async"><span class="chap__ctn">094</span></a></li></ol></nav></div><section class="scene"><div class="scene__h"><span class="scene__r">088–090</span><h3 class="scene__t">모드하우스와 트리플에스, 오브젝트 수집</h3></div><ul class="scene__n"><li><b>088</b> "모든 가능성의 아이돌"을 내건 그룹 사진 아래, 팬 활동과 기여도에 따라 블록체인 토큰을 나눠 주고 팬이 그 토큰으로 투표하며 그 결과가 그룹 운영의 핵심 방향을 정한다는 세 단계를 적었다.</li><li><b>089</b> 코스모 앱의 실행 화면과 홈 화면. 독점 영상, 1집 ASSEMBLE 예약 판매, 예판 인증 안내가 카드로 쌓이고 하단 탭은 Stan, Collect, Gravity, My로 나뉜다.</li><li><b>090</b> 멤버별 오브젝트를 번호 칸에 채워 모으는 수집 화면과, 한 장 USD 2.99인 오브젝트를 1개 4,400원부터 10개 35,000원까지 묶음으로 파는 상점 화면을 나란히 놓는다.</li></ul><ul class="tgrid"><li class="tcell" id="s88"><button type="button" class="tframe" data-go="88" aria-label="슬라이드 88 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-088.jpg" alt="슬라이드 88" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>088</span></p></li><li class="tcell" id="s89"><button type="button" class="tframe" data-go="89" aria-label="슬라이드 89 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-089.jpg" alt="슬라이드 89" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>089</span></p></li><li class="tcell" id="s90"><button type="button" class="tframe" data-go="90" aria-label="슬라이드 90 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-090.jpg" alt="슬라이드 90" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>090</span></p></li></ul></section><section class="scene"><div class="scene__h"><span class="scene__r">091–092</span><h3 class="scene__t">그래비티 투표로 결정되는 운영 방향</h3></div><ul class="scene__n"><li><b>091</b> 타이틀곡을 팬 투표로 정하는 이벤트 공지 두 장. SONG A부터 H까지 여덟 후보를 토너먼트 대진표에 올리고 2022년 12월 1일부터 7일까지 날짜별로 결과를 연다.</li><li><b>092</b> 투표 규칙과 결과가 앱 안에 그대로 공개된다. 48시간 동안 진행된 팬덤명 투표, SONG B 9,178 COMO와 SONG F 8,849 COMO의 최종 득표, 기여도 상위 참여자 목록이 함께 보인다.</li></ul><ul class="tgrid"><li class="tcell" id="s91"><button type="button" class="tframe" data-go="91" aria-label="슬라이드 91 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-091.jpg" alt="슬라이드 91" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>091</span></p></li><li class="tcell" id="s92"><button type="button" class="tframe" data-go="92" aria-label="슬라이드 92 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-092.jpg" alt="슬라이드 92" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>092</span></p></li></ul></section><section class="scene"><div class="scene__h"><span class="scene__r">093–094</span><h3 class="scene__t">온체인 지표로 본 참여 규모</h3></div><ul class="scene__n"><li><b>093</b> 온체인 지표 대시보드를 한 화면에 모았다. 오브젝트 254,049개, 보유자 29,464명, 투표 이벤트 20,684건, 투표자 9,046명, 사용된 토큰 57,340개가 집계되어 있다.</li><li><b>094</b> 2022년 8월부터 2023년 2월까지 오브젝트 발행량과 신규 보유자 증가를 막대그래프 두 개로 확대해 보여준다. 활동의 규모와 시점이 Dune에서 누구에게나 조회된다.</li></ul><ul class="tgrid"><li class="tcell" id="s93"><button type="button" class="tframe" data-go="93" aria-label="슬라이드 93 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-093.jpg" alt="슬라이드 93" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>093</span></p></li><li class="tcell" id="s94"><button type="button" class="tframe" data-go="94" aria-label="슬라이드 94 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-094.jpg" alt="슬라이드 94" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>094</span></p></li></ul></section></section><section class="chap" id="ch8"><p class="chap__no">CHAPTER 08 · 슬라이드 95–96</p><h2 class="chap__t">정리</h2><p class="chap__p">일곱 절의 제목을 한 화면에 다시 모아 발표 전체의 골격을 보여준다. 창의성에서 출발해 확장, 경계, 플랫폼, 수익, AI, 거버넌스로 이어진 순서를 마지막으로 확인시키고 연락처 한 줄로 닫는다.</p><section class="scene"><div class="scene__h"><span class="scene__r">095–096</span><h3 class="scene__t">일곱 절의 요약과 맺음</h3></div><ul class="scene__n"><li><b>095</b> 일곱 절의 제목을 한 화면에 다시 세운다. 창의성에서 시작해 확장, 경계, 플랫폼, 수익, 제너레이티브 AI, 거버넌스로 이어지는 순서가 그대로 발표의 뼈대다.</li><li><b>096</b> 검은 화면 가운데 End of Document만 놓이고 오른쪽 아래에 연락용 메일 주소가 적혀 있다. 발표를 닫으면서 이후 문의를 받겠다는 표시다.</li></ul><ul class="tgrid"><li class="tcell" id="s95"><button type="button" class="tframe" data-go="95" aria-label="슬라이드 95 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-095.jpg" alt="슬라이드 95" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>095</span></p></li><li class="tcell" id="s96"><button type="button" class="tframe" data-go="96" aria-label="슬라이드 96 슬라이드쇼로 열기"><img src="../../assets/src-t1/thumb-096.jpg" alt="슬라이드 96" width="480" height="270" loading="lazy" decoding="async"></button><p class="tno"><span>096</span></p></li></ul></section></section></div>
+  </div>
+</article>
+<section class="prose"><h2><span>함께 보기</span></h2><series-sources data-series="co-creation-culture" data-current="slides-2023-06" data-include-series></series-sources></section>
+<footer class="foot" id="authorship">
+  <p style="margin:0"><a class="uplink" href="../../">시리즈 홈으로</a></p>
+  <series-post-links data-series="co-creation-culture"></series-post-links>
+  <p>슬라이드는 2023.06.30 발표 자료 원본이다. 고치지 않고 그대로 실었다. 영상 위치는 원본 파일 안 도형 좌표를 그대로 옮겼고, 장표별 설명은 원본과 그날의 녹음을 훑어 정리한 것이다.</p>
+  <p>이 글은 신기헌의 디지털 트윈 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.</p>
+  <p class="en">Written and edited 100% by an AI agent from the Kiheon Shin Digital Twin project.</p>
+</footer>
+</main>
+
+<div class="pv" id="pv" hidden role="dialog" aria-modal="true" aria-label="슬라이드쇼">
+  <div class="pv__bar">
+    <span class="pv__id">코-크리에이션 · 2023.06.30</span>
+    <span class="pv__ch" id="pvch"></span>
+    <span class="pv__sp"></span>
+    <span class="pv__no"><b id="pvno">1</b> / 96</span>
+    <button type="button" id="pvnotes" aria-pressed="false">AI 노트</button>
+    <button type="button" id="pvfull">전체화면</button>
+    <button type="button" id="pvgrid" aria-pressed="false">전체 보기</button>
+    <button type="button" id="pvclose" aria-label="슬라이드쇼 닫기">닫기 ✕</button>
+  </div>
+  <div class="pv__body">
+    <button class="pv__arrow pv__arrow--l" type="button" id="pvprev"
+            aria-label="이전 장표">‹</button>
+    <div class="pv__fit" id="pvfit"><div class="pv__stage" id="pvstage"></div></div>
+    <button class="pv__arrow pv__arrow--r" type="button" id="pvnext"
+            aria-label="다음 장표">›</button>
+  </div>
+  <div class="pv__notes" id="pvnotesbox" hidden></div>
+  <div class="pv__rail" id="pvrail" aria-hidden="true"></div>
+  <div class="pv__sorter" id="pvsorter" hidden>
+    <div class="pv__sortbar">
+      <span>전체 보기 · 슬라이드 96장</span>
+      <button type="button" id="pvsortclose">닫기 ✕</button>
+    </div>
+    <ol class="pv__sgrid" id="pvsgrid"></ol>
+  </div>
+</div>
+<script>
+window.DECK={"chapters":[{"n":1,"t":"모두에게 주어진 창의성","lo":2,"hi":8},{"n":2,"t":"코-크리에이션을 통한 창의성의 확장","lo":9,"hi":36},{"n":3,"t":"흐릿해지는 현실과 가상의 경계","lo":37,"hi":47},{"n":4,"t":"코-크리에이션 플랫폼으로의 발전","lo":48,"hi":61},{"n":5,"t":"코-크리에이션을 통한 수익 창출","lo":62,"hi":80},{"n":6,"t":"제너레이티브 AI 시대의 새로운 방향성","lo":81,"hi":86},{"n":7,"t":"웹3를 통한 지속가능한 거버넌스 구축","lo":87,"hi":94},{"n":8,"t":"정리","lo":95,"hi":96}],"slides":[{"n":1,"c":0,"s":"","k":["검은 화면 가운데 웹3의 다음 흐름을 주도할 코-크리에이션 문화라는 제목과 발표자 이름만 놓인 표지다. 2023년 6월 말, 코-크리에이션 한 단어를 축으로 삼아 발표를 연다."],"v":[]},{"n":2,"c":0,"s":"챕터 진입","k":["첫 번째 장의 제목 장표. 어둠 속에 모두에게 주어진 창의성이라는 문장과 영문 creativity를 병기해, 누구나 창의성을 가지고 태어난다는 전제에서 논의를 시작한다."],"v":[]},{"n":3,"c":0,"s":"레고무비의 마스터빌더와 접착제","k":["2014년 개봉한 레고무비의 한 장면이 화면을 채우고 왼쪽 위에 Lego Movie / Masterbuilder만 적혀 있다. 무한한 창의성을 가진 마스터빌더가 되려는 주인공과 세상을 고착시키려는 쪽의 대립이 이야기의 축이다."],"v":[]},{"n":4,"c":0,"s":"레고무비의 마스터빌더와 접착제","k":["영화 후반부의 실사 장면으로, 정교하게 쌓아 올린 레고 도시 앞에 아버지와 아이가 나란히 서 있다. 앞서 본 선악의 대립이 실은 한 집안의 아빠와 아이 사이의 갈등이었음이 드러나는 지점이다."],"v":[]},{"n":5,"c":0,"s":"레고무비의 마스터빌더와 접착제","k":["아버지가 완성된 레고에 접착제를 발라 굳히는 장면과, 그 접착제가 영화 속에서 크래글이라는 무기로 등장하는 장면을 나란히 붙였다. 흩어지지 않게 고정하려는 태도가 창의성을 막는 힘으로 그려진다."],"v":[]},{"n":6,"c":0,"s":"레고의 두 갈래 확장 전략과 웹3로의 이행","k":["마블 헐크버스터와 스타워즈 밀레니엄 팔콘 제품 사진 아래 레고의 외부 IP 협업 전략을 정리한다. 해리포터, 디즈니, 마인크래프트 등 다수 IP와의 협업과 아디다스, 이케아, 리바이스 브랜드 협업을 적고, 창의성이라는 핵심 철학이 협업 IP의 완결성과 충돌하는 문제를 함께 짚는다."],"v":[]},{"n":7,"c":0,"s":"레고의 두 갈래 확장 전략과 웹3로의 이행","k":["레고 아이디어스 웹사이트 화면과 그곳에서 채택되어 상품이 된 다이너마이트 세트를 함께 보여준다. 누구나 아이디어를 제안하고 서포터즈 10,000명을 설득하면 채택되는 구조여서, 브릭 조립이 아니라 상품 기획과 디자인 단계에서 창의성을 발휘할 기회가 열린다."],"v":[]},{"n":8,"c":0,"s":"레고의 두 갈래 확장 전략과 웹3로의 이행","k":["웹2에서 웹3로 이어지는 기술적, 문화적 발전 방향을 상호운용성, 결합성, 무신뢰성, 개방성 네 가지 차별요소로 적고, 화살표 하나로 그것들을 코-크리에이션을 통한 창의성의 확장이라는 결론으로 모은다."],"v":[]},{"n":9,"c":1,"s":"챕터 진입","k":["두 번째 장의 제목 장표. 코-크리에이션을 통한 창의성의 확장이라는 문장 아래 co-creation을 병기했고, 여기서부터 개념 설명 대신 사례 중심의 전개로 넘어간다."],"v":[]},{"n":10,"c":1,"s":"코-크리에이션의 정의와 제프 스테이플의 출발점","k":["코-크리에이션을 인간 중심으로 회귀하는 문화로 정의한다. 다수 구성원이 가진 창의성의 총합을 활용한다는 점, 각자의 기여도에 대한 공정한 보상과 분배, 웹3 커뮤니티와 거버넌스로 연결될 가능성 세 가지를 근거로 든다."],"v":[]},{"n":11,"c":1,"s":"코-크리에이션의 정의와 제프 스테이플의 출발점","k":["나무로 짠 비둘기장 안에 수십 마리의 비둘기가 빼곡히 앉아 있는 사진이 화면을 가득 채운다. 설명을 붙이지 않은 채, 뒤이어 나올 스테이플 피죤 이야기의 상징을 먼저 던져두는 자리다."],"v":[]},{"n":12,"c":1,"s":"코-크리에이션의 정의와 제프 스테이플의 출발점","k":["같은 비둘기장 사진 위에 제프 스테이플의 온라인 문답 안내 카드를 올렸다. 스테이플 피죤을 만든 디자이너를 소개하면서, 스니커즈가 신는 물건을 넘어 수집품이 된 흐름으로 이야기를 넘긴다."],"v":[]},{"n":13,"c":1,"s":"코-크리에이션의 정의와 제프 스테이플의 출발점","k":["비둘기 사육장 사진 위에 제프 스테이플의 인물 이미지, 나이키 덩크 협업 스니커, 발매 당시의 소동을 전한 SNEAKER RIOT 신문 지면을 겹쳐 놓았다. 스테이플 피죤이 출발한 자리다."],"v":[]},{"n":14,"c":1,"s":"메타 피죤, 스니커 브랜드의 첫 NFT 협업","k":["제프 스테이플과 RTFKT가 함께 만든 메타 피죤. 금속 질감의 기계 비둘기와 그것을 모티브로 옮긴 버추얼 스니커 두 켤레를 흰 배경 렌더링으로 보여준다."],"v":[]},{"n":15,"c":1,"s":"메타 피죤, 스니커 브랜드의 첫 NFT 협업","k":["메타 피죤과 메타 피죤 OG를 중심에 두고 민트바이알 3개, 클론엑스 3개, 스페이스팟과 MNLTH, 루트팟으로 뻗어나가는 파생 구조를 계보도로 펼쳤다. 아직 공개되지 않은 자리는 물음표로 남아 있다."],"v":[]},{"n":16,"c":1,"s":"메타 피죤, 스니커 브랜드의 첫 NFT 협업","k":["실물로 제작된 메타 피죤이 리셀 플랫폼 StockX에 올라온 화면. 사이즈별 호가가 452만 원에서 1억 480만 원까지 붙어 있고, 가상에서 만든 디자인이 현실 시장에서 값을 받는 장면으로 쓰인다."],"v":[]},{"n":17,"c":1,"s":"엠파이어 스테이플 피죤즈의 세 클랜과 협업망","k":["스테이플버스의 첫 챕터인 엠파이어 스테이플 피죤즈 사이트. 후드 스쿼드, 피드 클랜, 푸프 갱 세 클랜이 뉴욕 거리에서 세력을 다투고 보유한 NFT가 클랜 혜택과 스토리라인을 결정한다고 적어두었다."],"v":[]},{"n":18,"c":1,"s":"엠파이어 스테이플 피죤즈의 세 클랜과 협업망","k":["피드 클랜 NFT 1만 개가 어떤 모이로 이루어졌는지 늘어놓고, 그것이 65%(3,900/6,000)는 후드 스쿼드 비둘기로, 35%(1,700/5,000)는 푸프 갱 배설물 아트로 갈라지는 경로를 화살표로 정리했다."],"v":[]},{"n":19,"c":1,"s":"엠파이어 스테이플 피죤즈의 세 클랜과 협업망","k":["뉴욕 지도를 배경으로 브랜드 협업 결과물을 모았다. 크록스와 시계, 스니커, 인형과 후드, E.S.P 티셔츠까지 놓이고 행사 현장에서 신발을 들어 보이는 사진이 함께 붙어 있다."],"v":[]},{"n":20,"c":1,"s":"엠파이어 스테이플 피죤즈의 세 클랜과 협업망","k":["크리에이터 협업으로 나온 비둘기 조형물 네 점. 소프트아이스크림처럼 말린 형태가 좌대에 놓이고 전광판에 STAPLEVERSE BLUE, HOOD PIGEON CONCRETE, POOP GANG FLYARREAH, FEED CLAN SWIRL이라는 이름이 떠 있다."],"v":[]},{"n":21,"c":1,"s":"스테이플버스로 넘어가는 브랜드 연표","k":["1997년 스테이플 피죤, 2021년 RTFKT 메타피죤, 2022년 스테이플버스 Phase1-2, 2023년 Phase3로 이어지는 연표. 단독 브랜드에서 다수 협업으로, 피지컬 현실세계에서 디지털 가상세계로 옮겨간 축을 함께 적었다."],"v":[]},{"n":22,"c":1,"s":"스테이플버스로 넘어가는 브랜드 연표","k":["100년 뒤 뉴욕을 그린 스테이플버스 세계관 이미지. 덩굴과 거목이 뒤덮은 고층 빌딩 사이 옥상에서 인물들이 도시를 내려다보고, 건물 벽에는 네온 로고가 켜져 있다."],"v":[]},{"n":23,"c":1,"s":"스테이플버스로 넘어가는 브랜드 연표","k":["같은 세계 위에 사피엔즈 컬렉션 배너를 얹었다. 100년 뒤 뉴욕에서 살아가는 인류를 그린 프로필 NFT로, 저마다 다른 의상과 장신구를 걸친 아바타 다섯이 나란히 서 있다."],"v":[]},{"n":24,"c":1,"s":"사피엔즈 코-크리에이션 일곱 단계","k":["코-크리에이션 프로세스의 1단계로 PFP NFT를 통한 계정 소유를 놓았다. 아바타와 아이템 시스템으로 패션, 푸드, 아트, 뮤직까지 경험을 넓히고 ERC-6551 표준의 Token Bound Accounts를 적용한다는 조건을 영상과 함께 제시한다."],"v":[]},{"n":25,"c":1,"s":"사피엔즈 코-크리에이션 일곱 단계","k":["코-크리에이션 프로세스 2단계. 네 개의 클랜에서 모인 사피엔즈 보유자가 디지털 의상과 아이템을 열쇠로 홀더 전용 어패럴 디자인 워크샵에 참여하는 구조를 도식으로 보여준다."],"v":[]},{"n":26,"c":1,"s":"사피엔즈 코-크리에이션 일곱 단계","k":["3단계. 스테이플 헬멧을 장착하면 워크샵 등록으로 이어지고, 어패럴 디자인과 비트 프로덕션, 그래픽 디자인 수강 이력이 진행 중과 수료로 계정에 쌓이는 화면을 함께 놓았다."],"v":[]},{"n":27,"c":1,"s":"사피엔즈 코-크리에이션 일곱 단계","k":["4단계. 워크샵 수료가 학기제로 운영되는 C-DIVISION 선발 확률을 높이는 흐름을 도식화하고, 패턴 도면 위에서 의견을 주고받는 협업 화면과 커뮤니티 반응을 곁들인다."],"v":[]},{"n":28,"c":1,"s":"사피엔즈 코-크리에이션 일곱 단계","k":["5단계. 지속가능 원단과 업사이클 의류, 비건 레더 중 하나를 고르는 커뮤니티 제품 투표 화면을 다가올 드롭 일정, 분야별 카테고리와 나란히 놓아 참여가 제품으로 이어지는 경로를 보여준다."],"v":[]},{"n":29,"c":1,"s":"사피엔즈 코-크리에이션 일곱 단계","k":["6단계. 아바타로 접속한 홀더들의 화상 AMA, 업계 인물 인터뷰 시리즈 썸네일, 실시간 채팅이 붙은 라이브 방송 화면을 겹쳐 전문가와 브랜드로 이어지는 통로를 보여준다."],"v":[]},{"n":30,"c":1,"s":"사피엔즈 코-크리에이션 일곱 단계","k":["나이키와 아디다스, 컨버스, 리바이스, LVMH, HBO, 구글, 코카콜라까지 협업 이력을 로고 격자로만 채워, 앞 단계에서 말한 브랜드 네트워크의 범위를 한 화면에 펼친다."],"v":[]},{"n":31,"c":1,"s":"사피엔즈 코-크리에이션 일곱 단계","k":["7단계. 스니커즈 매장과 행사장에서 열린 공개 대담 사진 두 장으로, 온라인에서 자란 브랜드가 현장의 대화와 함께 커지는 장면을 보여준다."],"v":[]},{"n":32,"c":1,"s":"매직 화이트 티와 페인트 파티, 커뮤니티 이벤트","k":["매직 화이트 티 익스피리언스 챌린지. 흰 티셔츠 디자인을 토너먼트 대진표에 올리고 트위터 투표로 승자를 가리며, 한 대결은 84표가 모여 28.6 대 71.4로 갈렸다."],"v":[]},{"n":33,"c":1,"s":"매직 화이트 티와 페인트 파티, 커뮤니티 이벤트","k":["아티스트 Fewocious의 가상세계 FewoWorld와 Paint Party. 물감 방울을 NFT로 팔고 도시별로 캔버스를 함께 채워가는 방식을 손그림 기획도와 뉴욕 2021 캔버스 여섯 점으로 보여준다."],"v":[]},{"n":34,"c":1,"s":"매직 화이트 티와 페인트 파티, 커뮤니티 이벤트","k":["FewoWorld와 아디다스의 협업. 작업실의 작가와 아디다스 오리지널스 스니커즈 화보를 모으고 캠페인을 영상으로 보여준다. 구매 기회는 Fewocious의 NFT 홀더에게 먼저 열렸다."],"v":[]},{"n":35,"c":1,"s":"ERC-6551과 토큰 바운드 어카운트","k":["ERC-6551과 토큰 바운드 어카운트. 지갑 안에 든 사피엔즈 NFT가 다시 금고가 되어 다른 NFT와 0.42 ETH 같은 토큰을 담는 구조를 두 개의 도식으로 나눠 보여준다."],"v":[]},{"n":36,"c":1,"s":"ERC-6551과 토큰 바운드 어카운트","k":["희소성에서 유틸리티를 거쳐 아이덴티티와 멤버십으로 가는 축과, 보관형 지갑에서 EOA를 거쳐 스마트 컨트랙트 월렛으로 가는 축이 ERC-6551에서 만나는 지점을 좌표로 그린다."],"v":[]},{"n":37,"c":2,"s":"챕터 진입","k":["메타버스를 현실 위에 덧입혀지는 가상세계와 가상에서 현실로 되돌아오는 방향 양쪽으로 보고, 그 사이에서 경계가 흐려지는 현상을 다루는 세 번째 장으로 넘어간다."],"v":[]},{"n":38,"c":2,"s":"RTFKT와 개방형 아바타 CloneX","k":["가상세계 브랜드로 출발해 나이키에 인수된 RTFKT를 소개한다. 퍼피 재킷을 입은 전신 아바타, 은빛으로 마감한 에어포스원 세 컷, 금속 질감의 메타 피존 조형이 한 화면에 놓인다."],"v":[]},{"n":39,"c":2,"s":"RTFKT와 개방형 아바타 CloneX","k":["보라색 조명 아래 여섯 개의 아바타 실루엣이 늘어서 있고 그 가운데 위로 RTFKT 로고가 떠 있다. 개별 수집품에서 전신 아바타 컬렉션으로 넘어가는 대목이다."],"v":[]},{"n":40,"c":2,"s":"RTFKT와 개방형 아바타 CloneX","k":["가상세계 안에서 활용 가능한 개방형 아바타 시스템 CloneX를 소개한다. 아바타 20000개 발행 화면과 얼굴 그리드 옆에, 나이키의 웹3 기반 가상세계 경험에서 중심 역할을 맡고 크리에이터 프로그램으로 2차 창작이 진행 중이라고 적혀 있다."],"v":[]},{"n":41,"c":2,"s":"RTFKT와 개방형 아바타 CloneX","k":["메타 피존 한 개에서 민트바이알과 클론엑스로, 다시 스페이스 포드와 MNLTH 계열로 갈라지는 파생 계보를 도표로 펼친다. 에어드랍, 화이트리스트, 민트, 리빌 네 가지 화살표로 자격이 주어진 경로를 구분한다."],"v":[]},{"n":42,"c":2,"s":"포징 SZN 1, 나이키 제품의 디지털 웨어러블화","k":["에어포스원을 형광 연두와 청록으로 다시 칠한 스니커즈를 영상으로 보여준다. 기존 나이키 제품을 CloneX가 착용할 수 있는 디지털 웨어러블로 재해석한 포징 SZN 1의 첫 화면이다."],"v":[{"l":6.75,"t":19.49,"w":86.5,"h":54.15,"y":"l98i2nB7FwE"}]},{"n":43,"c":2,"s":"포징 SZN 1, 나이키 제품의 디지털 웨어러블화","k":["기계 격납고에서 팔이 신발을 들어 올리는 장면과 연기와 번개 속에 스니커즈가 떠오르는 장면을 두 개의 영상으로 나란히 재생한다. 포징이라는 이름에 맞춘 제조 연출이다."],"v":[{"l":12.0,"t":19.21,"w":31.19,"h":55.45,"y":"l98i2nB7FwE"},{"l":56.17,"t":19.22,"w":32.12,"h":55.51,"x":1}]},{"n":44,"c":2,"s":"포징 SZN 1, 나이키 제품의 디지털 웨어러블화","k":["포징 웹사이트 화면 두 장을 나란히 놓는다. 왼쪽은 CLONEX, MURAKAMI, human, ROBOT, DEMON, ANGEL, UNDEAD, ALIEN 등 DNA 테마별 아바타 카드이고, 오른쪽은 같은 테마로 제작된 스니커즈 카드다."],"v":[]},{"n":45,"c":2,"s":"포징 SZN 1, 나이키 제품의 디지털 웨어러블화","k":["CLONE X 한 개로 만들 수 있는 아이템 목록을 표로 편다. 양말과 모자를 제외한 모든 포징 아이템에 NFT와 연결되는 NFC 태그가 들어가고, 무라카미 드립을 갖춘 휴먼 클론엑스 보유자는 최대 31개까지 민팅할 수 있다고 적혀 있다."],"v":[]},{"n":46,"c":2,"s":"월드 머징 칩과 AR 필터","k":["네온 조명 아래 떠 있는 스니커즈와 스마트폰, NFC 칩 도안을 영상으로 보여준다. 실물 웨어러블에 내장된 태그를 스마트폰으로 인식하고 월렛을 연동해 가상세계에서 사용하거나 거래할 수 있는 NFT를 리딤하는 구조다."],"v":[{"l":65.94,"t":35.0,"w":20.05,"h":34.44,"x":1}]},{"n":47,"c":2,"s":"월드 머징 칩과 AR 필터","k":["파란 머리 아바타가 RTFKT와 NIKE 표기가 들어간 후디를 입고 금속 날개를 펼친 모습을 띄운다. 실물 의류의 이미지를 증강현실 필터로 불러와 현실 위에 가상의 정체성을 겹쳐 보이는 사례다."],"v":[]},{"n":48,"c":3,"s":"챕터 진입","k":["하나하나의 행위였던 코-크리에이션이 플랫폼으로 발전해 가는 흐름을 다루는 네 번째 장으로 넘어간다. 검은 화면 가운데 장 제목만 놓여 있다."],"v":[]},{"n":49,"c":3,"s":"크리에이터 프로그램과 무료 배포 도구","k":["CloneX 크리에이터 프로그램 화면이다. NFT 홀더면 누구나 참여해 IP를 활용한 창작을 지원받고, Explore와 Learn과 Build로 나뉜 세 갈래가 보인다. 홀더들이 만든 영상을 함께 재생한다."],"v":[{"l":-0.0,"t":-0.0,"w":100.0,"h":100.0,"x":1}]},{"n":50,"c":3,"s":"크리에이터 프로그램과 무료 배포 도구","k":["CloneX 홀더들이 만든 영상의 장면 아홉 개를 격자로 늘어놓았다. 무사, 정원, 사이버펑크 도시로 소재가 제각각이고 각 화면 아래에 CLONE FORCE, J MARINO 같은 제작자 이름이 붙어 있다."],"v":[]},{"n":51,"c":3,"s":"크리에이터 프로그램과 무료 배포 도구","k":["크리에이터 툴을 소개한다. 3D 모델을 내려받아 2차 창작에 쓸 수 있고 영상, 게임, AR 필터, Vtuber로 확산 중이라고 적혀 있다. 모션 캡처 장비로 아바타를 실시간으로 움직이는 작업 화면이 함께 놓인다."],"v":[]},{"n":52,"c":3,"s":"크리에이터 프로그램과 무료 배포 도구","k":["크리에이터 툴의 작동 구조를 다이어그램 한 장으로 펼쳤다. 블렌더 설치에서 Clone Tools 플러그인과 DLC 팩 내려받기를 거쳐 Style, Posing, Environment, Camera, Rendering 다섯 기능까지 사용자 흐름이 이어진다."],"v":[]},{"n":53,"c":3,"s":"크리에이터 프로그램과 무료 배포 도구","k":["같은 다이어그램의 두 지점을 확대한다. 블렌더에 Clone Tools와 DLC를 설치하는 경로, 그리고 사용자가 포즈를 고르면 아바타가 그 자세로 서고 애니메이션까지 적용되는 Posing 기능의 응답이 드러난다."],"v":[]},{"n":54,"c":3,"s":"파생 웨어러블과 오프라인 전시","k":["CREA는 CloneX가 입을 수 있는 웨어러블 NFT다. CHRONOS, PRIVATE, PUBLIC으로 나뉜 민팅 일정과 0.08ETH, 0.1ETH 가격, BASE에서 RARE를 거쳐 LEGENDARY로 올라가는 등급 구성을 함께 보여준다."],"v":[]},{"n":55,"c":3,"s":"파생 웨어러블과 오프라인 전시","k":["어두운 전시장 통로를 걸어 들어가는 장면을 영상으로 보여준다. 양옆으로 조명이 켜진 유리 진열장이 줄지어 서 있고 그 안에 스니커즈가 한 켤레씩 놓여 있다."],"v":[{"l":-0.0,"t":0.0,"w":100.28,"h":100.0,"x":1}]},{"n":56,"c":3,"s":"파생 웨어러블과 오프라인 전시","k":["타카시 무라카미를 중심으로 열린 오프라인 이벤트 현장이다. 조명 트러스가 늘어선 전시장, 관람객이 모인 무대, 진열장 속 스니커즈, 이벤트 컬렉션이 올라간 마켓플레이스 화면이 함께 놓인다."],"v":[]},{"n":57,"c":3,"s":"파생 웨어러블과 오프라인 전시","k":["같은 이벤트의 전시물을 가까이서 찍은 사진들이다. 크리에이터가 직접 커스텀한 실물 스니커즈와 제작자 소개 패널, 2023년 4월 30일 도쿄 개최를 알리는 안내물이 보인다."],"v":[]},{"n":58,"c":3,"s":"포트나이트 에디터와 나이키 에어포리아","k":["포트나이트 에디터 UEFN의 제작 화면을 영상으로 보여준다. 게임 안에서 나이키 로고가 박힌 구조물을 편집하는 모습과 언리얼 에디터의 아웃라이너, 콘텐츠 브라우저가 나란히 놓여 있다."],"v":[{"l":0.0,"t":0.0,"w":100.0,"h":100.0,"x":1}]},{"n":59,"c":3,"s":"포트나이트 에디터와 나이키 에어포리아","k":["나이키 에어포리아의 키 아트다. UEFN으로 구현한 에어포스원 테마 게임이고, 나이키 계정을 연동하면 게임 내 경험에 보상이 돌아온다는 설명과 아일랜드 코드 2118-5342-7190이 함께 적혀 있다."],"v":[]},{"n":60,"c":3,"s":"포트나이트 에디터와 나이키 에어포리아","k":["에어포리아의 섬 전경이다. 구름 위에 도시가 떠 있고 낙하산에 매달린 신발 상자들이 하늘을 덮는다. 신발 상자를 쌓아 올린 건물과 스니커즈 모양 구조물을 담은 화면이 곁들여진다."],"v":[]},{"n":61,"c":3,"s":"포트나이트 에디터와 나이키 에어포리아","k":["나이키 에어포리아 레벨을 언리얼 에디터 안에서 열어 드론과 체크포인트, 시퀀서 트랙을 만지는 화면을 영상으로 보여준다. 뷰포트에는 신발 상자를 쌓아 만든 건물과 배송 트럭이 서 있다."],"v":[{"l":0.0,"t":0.0,"w":100.0,"h":100.0,"x":1}]},{"n":62,"c":4,"s":"챕터 진입","k":["검은 화면 한가운데 '5. 코-크리에이션을 통한 수익 창출'만 놓인 챕터 표지다. 참여의 도구를 살펴본 데 이어, 그 참여가 어떻게 수익으로 이어지는지를 다루는 구간이 시작된다."],"v":[]},{"n":63,"c":4,"s":"메타 자켓에서 시작한 요소별 로열티 분배","k":["RTFKT가 처음 선보인 디지털 패션 아이템 메타 자켓. 보라색 바탕에 META JACKET 글자가 반복되고, 홀로그램 광택의 패딩과 뿔 달린 헬멧, 어깨에 붙은 구체 장식을 뒷모습으로 잡았다."],"v":[]},{"n":64,"c":4,"s":"메타 자켓에서 시작한 요소별 로열티 분배","k":["메타 자켓에 이어 디자인한 스니커즈를 밤거리에서 로우앵글로 잡은 렌더. 밑창이 푸른빛으로 발광하고 하늘에는 달이 두 개 떠 있어 실재하지 않는 도시를 배경으로 삼는다."],"v":[]},{"n":65,"c":4,"s":"메타 자켓에서 시작한 요소별 로열티 분배","k":["Digitalax의 도식. 완성된 재킷 네 벌은 ERC-721로, 거기 입혀진 패턴은 ERC-1155 차일드 NFT로 따로 발행되어 각각 아티스트 이름과 발행 번호를 갖는다. 외형과 패턴, 컬러, 이펙트 같은 구성 요소별로 수익이 분배된다."],"v":[]},{"n":66,"c":4,"s":"메타 자켓에서 시작한 요소별 로열티 분배","k":["같은 구조를 세 개 층으로 펼쳐 놓은 전체 도식. 1층은 아티스트가 올린 소재와 패턴 라이브러리에서 마스터 의상까지, 2층은 엔진별 파일 변환, 3층은 그 결과물이 실제로 들어가는 게임과 3D 환경들이다."],"v":[]},{"n":67,"c":4,"s":"더 패브리컨트 스튜디오의 조합, 민팅, 재판매","k":["더 패브리컨트 스튜디오의 조합 화면. 가운데 의상을 두고 좌우에 패턴이, 오른쪽에 컬러 팔레트가 놓여 소재와 색을 골라 자기 조합을 만든 뒤 NFT로 발행하는 순서를 보여준다."],"v":[]},{"n":68,"c":4,"s":"더 패브리컨트 스튜디오의 조합, 민팅, 재판매","k":["개념 도식에서 실제 판매 화면으로 넘어간다. XXORIES 프리세일이 열려 있고 남은 수량이 2492/3000으로 표시되며, 화면 아래쪽에는 아직 정체를 알 수 없는 붉은 구체가 놓여 있다."],"v":[]},{"n":69,"c":4,"s":"더 패브리컨트 스튜디오의 조합, 민팅, 재판매","k":["구매 조건을 두 장의 카드로 나눠 보여준다. 2023년 2월 16일 24시간 동안 열리는 프리세일은 95달러로 홀더와 파트너 커뮤니티에 한정되고, 다음 날 72시간 열리는 대기자 판매는 152달러다."],"v":[]},{"n":70,"c":4,"s":"더 패브리컨트 스튜디오의 조합, 민팅, 재판매","k":["파트너 커뮤니티 목록을 띄운 팝업. 민팅이 열릴 때까지 매주 래플 당첨자를 발표한다는 안내 아래 서른 곳이 넘는 커뮤니티 이름이 세 열로 늘어서, 판매가 기존 커뮤니티들과 엮여 진행됨을 보여준다."],"v":[]},{"n":71,"c":4,"s":"더 패브리컨트 스튜디오의 조합, 민팅, 재판매","k":["구매한 XXorie #509의 상세 페이지. 500 플로우에 올라가 있고 희귀도는 아직 공개 전으로 표시된다. 이미지 한 장과 영상 한 편이 담겨 있으며 증강현실로 착용할 수 있다는 설명이 붙어 있다."],"v":[]},{"n":72,"c":4,"s":"더 패브리컨트 스튜디오의 조합, 민팅, 재판매","k":["리빌을 기다리던 아이템이 검은 화면 가운데에서 분홍빛으로 맥동하는 구체로 나타난다. 정해진 시각에 일제히 열리는 리빌의 순간을 영상으로 보여준다."],"v":[{"l":-0.0,"t":0.0,"w":100.09,"h":100.0,"x":1}]},{"n":73,"c":4,"s":"더 패브리컨트 스튜디오의 조합, 민팅, 재판매","k":["검은 화면에 보석 장식이 층층이 이어진 긴 장신구 두 점이 붉은 빛을 받으며 떠 있다. 민팅한 아이템이 한날한시에 공개될 때 어떤 3D 형태로 드러나는지 영상으로 보여준다."],"v":[{"l":20.73,"t":0.0,"w":58.54,"h":100.0,"x":1}]},{"n":74,"c":4,"s":"더 패브리컨트 스튜디오의 조합, 민팅, 재판매","k":["더 패브리컨트 스튜디오의 희소도 등급표. Common 33%부터 Uncommon 20%, Rare 11%, Epic 4%, Legendary 1%까지 다섯 단계를 두고 AR 필터, 게이티드 채널, 독점 이벤트, 이후 드롭의 에어드롭과 코-크리에이션, 우선 판매 권한이 등급마다 어디까지 열리는지 표시한다."],"v":[]},{"n":75,"c":4,"s":"더 패브리컨트 스튜디오의 조합, 민팅, 재판매","k":["보유한 아이템을 2차 마켓플레이스에 등록하는 창이다. 가격을 1000 FLOW로 적으면 로열티 계산기가 가먼트 디자이너 300, 머티리얼 디자이너 300, 플랫폼 100, 판매자 몫 300으로 분배 결과를 바로 계산해 보여준다."],"v":[]},{"n":76,"c":4,"s":"나이키 닷스우시와 #YourForce1 챌린지","k":["클론엑스 아바타가 나이키 의류 차림으로 의자에 앉아 있고 .SWOOSH 카드와 JOIN US 부스 이미지가 함께 놓인다. NIKE .SWOOSH를 커뮤니티와 함께 만들어가는 웹3 기반 코-크리에이션 플랫폼으로 소개하고, RTFKT의 NFT를 발판으로 웹3 시장 진출을 실험 중이라고 적어두었다."],"v":[]},{"n":77,"c":4,"s":"나이키 닷스우시와 #YourForce1 챌린지","k":["왼쪽에는 멤버들이 만든 가상 창작물 카드가, 가운데에는 박스·파운데이션·컬러 블록·컬러웨이 같은 속성이 적힌 픽셀 에어 포스 1 카드 네 장이 영상으로 움직이고, 오른쪽에는 버추얼 크리에이션, 마켓플레이스, 커뮤니티 크리에이션, 러닝 센터 네 축이 놓인다."],"v":[{"l":39.64,"t":9.3,"w":18.69,"h":19.31,"x":1},{"l":39.64,"t":70.6,"w":18.69,"h":19.31,"x":1},{"l":39.64,"t":50.17,"w":18.69,"h":19.31,"x":1},{"l":39.64,"t":29.74,"w":18.69,"h":19.31,"x":1}]},{"n":78,"c":4,"s":"나이키 닷스우시와 #YourForce1 챌린지","k":["격자 배경 위에 에어 포스 1을 신은 사람들의 사진이 흩어져 있고 그 가운데 YOUR FORCE 1이라는 캠페인 이름이 걸린다. 아래에는 CO-CREATION BY .SWOOSH STUDIO라는 문구가 형광 띠로 붙어 있다."],"v":[]},{"n":79,"c":4,"s":"나이키 닷스우시와 #YourForce1 챌린지","k":["수십 켤레의 에어 포스 1 컬러웨이가 격자 벽을 이루고 그 한가운데에 OUR FORCE 1이라는 이름이 놓인다. 개별 창작물이 모여 하나의 계보가 된다는 구성이다."],"v":[]},{"n":80,"c":4,"s":"나이키 닷스우시와 #YourForce1 챌린지","k":["이름과 .SWOOSH ID, 콘셉트 설명, 색상, 소재, 이미지, 키 테마까지 손으로 채운 응모지 석 장을 늘어놓는다. 우승자 4명에게 각 5,000달러가 주어지고 창작물이 실제 컬렉션에 오르면 코-크리에이션 계약으로 로열티를 받는 절차를 영상과 함께 정리한다."],"v":[{"l":68.48,"t":8.05,"w":26.55,"h":83.91,"x":1}]},{"n":81,"c":5,"s":"챕터 진입","k":["검은 화면 가운데 흐릿한 빛무리 위로 '6. 제너레이티브 AI 시대의 새로운 방향성'이라는 제목만 놓인다. 수익 분배 사례를 마치고 생성형 AI 쪽으로 논의를 넘기는 자리다."],"v":[]},{"n":82,"c":5,"s":"아바타에 지능과 목소리를 더하는 시도","k":["RTFKT가 NVIDIA GTC 2023에서 내놓은 구상으로, Omniverse ACE를 클론엑스에 적용해 가상세계 아바타에 지능과 목소리를 더한다. 사용자 질문에서 녹음된 답변, Audio2Face, 실시간 클론 응답으로 이어지는 흐름을 도식과 영상으로 보여준다."],"v":[{"l":0.0,"t":10.0,"w":100.17,"h":83.75,"x":1}]},{"n":83,"c":5,"s":"아바타에 지능과 목소리를 더하는 시도","k":["AI 캐릭터 개발자 플랫폼 Inworld가 스팀 넥스트 페스트에 낸 데모 ORIGINS의 화면들이다. 폐허가 된 도시에서 NPC에게 말을 걸면 정해진 스크립트 대신 상황을 설명하는 대사가 돌아오고, 시네마틱 모드로 대화가 이어진다."],"v":[]},{"n":84,"c":5,"s":"텍스트로 성격을 정의하는 AI 캐릭터 플랫폼","k":["갤러드리엘, 마담 포춘 텔러, 체셔 캣 같은 캐릭터가 늘어선 Inworld 작업 화면에 새 캐릭터 생성 창이 떠 있다. 이름과 짧은 코어 설명만 넣으면 세부 설정이 자동으로 채워지는 구조로, 캐릭터의 성격을 텍스트로 정의하는 방식을 보여준다."],"v":[]},{"n":85,"c":5,"s":"텍스트로 성격을 정의하는 AI 캐릭터 플랫폼","k":["AI 캐릭터 제작 도구의 편집 화면으로, The Caterpillar의 핵심 설명과 동기를 문장으로 적어 넣는다. 정체성, 성격과 감정, 지식, 목소리, 대화 방식이 각각 따로 정의된다."],"v":[]},{"n":86,"c":5,"s":"텍스트로 성격을 정의하는 AI 캐릭터 플랫폼","k":["정의한 캐릭터를 밖으로 내보내는 통합 화면. Unity, 언리얼 엔진, Node.js SDK와 API 키 발급란이 놓여 있어, 만든 캐릭터를 여러 플랫폼에서 NPC로 쓰는 경로를 보여준다."],"v":[]},{"n":87,"c":6,"s":"챕터 진입","k":["일곱 번째 절의 제목만 검은 화면 가운데 놓인다. 창작과 수익을 지나 마지막으로 다루는 주제가 웹3를 통한 지속가능한 거버넌스 구축이다."],"v":[]},{"n":88,"c":6,"s":"모드하우스와 트리플에스, 오브젝트 수집","k":["\"모든 가능성의 아이돌\"을 내건 그룹 사진 아래, 팬 활동과 기여도에 따라 블록체인 토큰을 나눠 주고 팬이 그 토큰으로 투표하며 그 결과가 그룹 운영의 핵심 방향을 정한다는 세 단계를 적었다."],"v":[]},{"n":89,"c":6,"s":"모드하우스와 트리플에스, 오브젝트 수집","k":["코스모 앱의 실행 화면과 홈 화면. 독점 영상, 1집 ASSEMBLE 예약 판매, 예판 인증 안내가 카드로 쌓이고 하단 탭은 Stan, Collect, Gravity, My로 나뉜다."],"v":[]},{"n":90,"c":6,"s":"모드하우스와 트리플에스, 오브젝트 수집","k":["멤버별 오브젝트를 번호 칸에 채워 모으는 수집 화면과, 한 장 USD 2.99인 오브젝트를 1개 4,400원부터 10개 35,000원까지 묶음으로 파는 상점 화면을 나란히 놓는다."],"v":[]},{"n":91,"c":6,"s":"그래비티 투표로 결정되는 운영 방향","k":["타이틀곡을 팬 투표로 정하는 이벤트 공지 두 장. SONG A부터 H까지 여덟 후보를 토너먼트 대진표에 올리고 2022년 12월 1일부터 7일까지 날짜별로 결과를 연다."],"v":[]},{"n":92,"c":6,"s":"그래비티 투표로 결정되는 운영 방향","k":["투표 규칙과 결과가 앱 안에 그대로 공개된다. 48시간 동안 진행된 팬덤명 투표, SONG B 9,178 COMO와 SONG F 8,849 COMO의 최종 득표, 기여도 상위 참여자 목록이 함께 보인다."],"v":[]},{"n":93,"c":6,"s":"온체인 지표로 본 참여 규모","k":["온체인 지표 대시보드를 한 화면에 모았다. 오브젝트 254,049개, 보유자 29,464명, 투표 이벤트 20,684건, 투표자 9,046명, 사용된 토큰 57,340개가 집계되어 있다."],"v":[]},{"n":94,"c":6,"s":"온체인 지표로 본 참여 규모","k":["2022년 8월부터 2023년 2월까지 오브젝트 발행량과 신규 보유자 증가를 막대그래프 두 개로 확대해 보여준다. 활동의 규모와 시점이 Dune에서 누구에게나 조회된다."],"v":[]},{"n":95,"c":7,"s":"일곱 절의 요약과 맺음","k":["일곱 절의 제목을 한 화면에 다시 세운다. 창의성에서 시작해 확장, 경계, 플랫폼, 수익, 제너레이티브 AI, 거버넌스로 이어지는 순서가 그대로 발표의 뼈대다."],"v":[]},{"n":96,"c":7,"s":"일곱 절의 요약과 맺음","k":["검은 화면 가운데 End of Document만 놓이고 오른쪽 아래에 연락용 메일 주소가 적혀 있다. 발표를 닫으면서 이후 문의를 받겠다는 표시다."],"v":[]}]};
+
+(function(){
+  var D = window.DECK, S = D.slides, C = D.chapters;
+  var pv = document.getElementById('pv'), stage = document.getElementById('pvstage');
+  var sorter = document.getElementById('pvsorter'), sgrid = document.getElementById('pvsgrid');
+  var at = 0, opener = null, notesOn = false;
+
+  function pad(n){ return String(n).padStart(3,'0'); }
+
+  function render(){
+    var s = S[at];
+    stage.innerHTML = '';
+    var img = new Image();
+    img.src = '../../assets/src-t1/slide-' + pad(s.n) + '.jpg';
+    img.alt = '슬라이드 ' + s.n;
+    img.decoding = 'async';
+    stage.appendChild(img);
+    // 영상은 PPTX 도형 좌표 그대로 얹고, 장표가 열리면 바로 재생한다(자동 재생).
+    // 한 장에 여럿이면 소리가 겹치니 그때만 음소거한다.
+    var many = s.v.length > 1;
+    s.v.forEach(function(v, i){
+      if (v.x) { return; }   // 재생본이 없는 영상 자리
+      var d = document.createElement('div');
+      d.className = 'pv__v';
+      d.style.cssText = 'left:' + v.l + '%;top:' + v.t + '%;width:' + v.w + '%;height:' + v.h + '%';
+      // 저작권 차단으로 유튜브 재생이 막힌 장표는 발표 자료 원본을 그대로 얹는다.
+      d.innerHTML = v.f
+        ? '<video src="../../assets/video/' + v.f + '" autoplay loop playsinline '
+          + (many ? 'muted ' : 'muted ') + 'controls preload="metadata" '
+          + 'title="발표 중 재생한 영상' + (many ? ' ' + (i + 1) : '') + '"></video>'
+        : '<iframe src="https://www.youtube-nocookie.com/embed/' + v.y +
+        '?autoplay=1&rel=0&playsinline=1' + (many ? '&mute=1' : '') +
+        '" title="발표 중 재생한 영상' + (many ? ' ' + (i + 1) : '') +
+        '" allow="autoplay; fullscreen" allowfullscreen ' +
+        'referrerpolicy="strict-origin-when-cross-origin"></iframe>';
+      stage.appendChild(d);
+    });
+
+    var ch = C[s.c] || C[0];
+    document.getElementById('pvch').textContent =
+      (ch.n ? ch.n + '. ' : '') + ch.t + (s.s ? '  —  ' + s.s : '');
+    document.getElementById('pvno').textContent = s.n;
+    document.getElementById('pvprev').disabled = at === 0;
+    document.getElementById('pvnext').disabled = at === S.length - 1;
+
+    notes.innerHTML = s.k.length
+      ? '<p class="sc">' + esc(s.s || '') + '</p><ul>' +
+        s.k.map(function(x){ return '<li>' + esc(x) + '</li>'; }).join('') + '</ul>'
+      : '<p class="none">이 장표에는 따로 정리된 노트가 없다.</p>';
+    notes.scrollTop = 0;            // 장표를 넘기면 노트도 처음부터
+    fitStage();
+    noteFade();
+
+    var rail = document.getElementById('pvrail').children;
+    for (var i = 0; i < rail.length; i++){
+      rail[i].className = (i <= at ? 'on' : '') + (rail[i].dataset.cut ? ' cut' : '');
+    }
+    if (history.replaceState) history.replaceState(null, '', '#' + s.n);
+  }
+
+  function esc(t){
+    return String(t).replace(/[&<>]/g, function(c){
+      return {'&':'&amp;','<':'&lt;','>':'&gt;'}[c];
+    });
+  }
+
+  function go(d){
+    var i = at + d;
+    if (i < 0 || i >= S.length) return;
+    at = i; render();
+  }
+
+  // 무대를 남는 자리에 꼭 맞는 16:9 사각형으로 만든다. CSS로 두면 가로가 넓을 때
+  // 높이만 깎여 비율이 깨지므로 픽셀로 계산해 박는다.
+  var fit = document.getElementById('pvfit');
+  var notes = document.getElementById('pvnotesbox');
+  function fitStage(){
+    if (pv.hidden) return;
+    // 재는 동안 무대를 0으로 접는다. 무대가 남은 자리보다 크면 부모를 밀어
+    // 넓혀서, 그 부모를 재면 줄어들 수가 없다(자기 크기를 자기가 재는 꼴).
+    stage.style.width = '0px';
+    stage.style.height = '0px';
+    var r = fit.getBoundingClientRect();
+    if (!r.width || !r.height) return;
+    var w = Math.floor(Math.min(r.width, r.height * 16 / 9));
+    stage.style.width = w + 'px';
+    stage.style.height = Math.floor(w * 9 / 16) + 'px';
+  }
+
+  // 노트가 잘렸는지에 따라 위·아래 페이드를 켠다
+  function noteFade(){
+    var top = notes.scrollTop > 2 ? '1' : '0';
+    var bot = notes.scrollTop + notes.clientHeight < notes.scrollHeight - 2 ? '1' : '0';
+    notes.setAttribute('data-top', top);
+    notes.setAttribute('data-bot', bot);
+  }
+  notes.addEventListener('scroll', noteFade);
+  window.addEventListener('resize', function(){ fitStage(); noteFade(); });
+  // 남는 자리는 창 크기 말고도 바뀐다(AI 노트 열고 닫기, 주소창 접힘 등).
+  // 그때마다 다시 맞추지 않으면 무대가 남은 높이를 넘어 잘린다.
+  if (window.ResizeObserver){
+    new ResizeObserver(function(){ fitStage(); noteFade(); }).observe(fit);
+  }
+
+  function open(n){
+    at = Math.max(0, Math.min(S.length - 1, n - 1));
+    pv.hidden = false;
+    document.body.style.overflow = 'hidden';
+    fitStage();
+    render();
+    document.getElementById('pvnext').focus();
+  }
+
+  function close(){
+    pv.hidden = true;
+    sorter.hidden = true;
+    document.getElementById('pvgrid').setAttribute('aria-pressed', 'false');
+    stage.innerHTML = '';           // 재생 중이던 iframe을 확실히 끊는다
+    document.body.style.overflow = '';
+    if (history.replaceState) history.replaceState(null, '', location.pathname);
+    if (opener) opener.focus();
+  }
+
+  // 전체 보기 — 파워포인트 슬라이드 정렬기처럼 96장을 썸네일로 편다.
+  // 아무 장표나 누르면 그 자리에서 슬라이드쇼가 이어진다.
+  function buildSorter(){
+    if (sgrid.children.length) return;
+    sgrid.innerHTML = S.map(function(s, i){
+      return '<li><button type="button" class="pv__sc" data-i="' + i + '" aria-label="슬라이드 ' + s.n + '로 이동">' +
+        '<img src="../../assets/src-t1/thumb-' + pad(s.n) + '.jpg" alt="" loading="lazy" decoding="async">' +
+        '<span class="pv__scn">' + pad(s.n) + (s.v.length ? ' <b>▶</b>' : '') + '</span>' +
+        '</button></li>';
+    }).join('');
+  }
+  function toggleSorter(){
+    var opening = sorter.hidden;
+    if (opening){
+      buildSorter();
+      Array.prototype.forEach.call(sgrid.children, function(li, i){
+        li.firstChild.classList.toggle('now', i === at);
+      });
+      sorter.hidden = false;
+      var cur = sgrid.children[at];
+      if (cur) cur.scrollIntoView({block: 'center'});
+    } else {
+      sorter.hidden = true;
+    }
+    document.getElementById('pvgrid').setAttribute('aria-pressed', opening);
+  }
+
+  // 진행 막대 — 챕터가 바뀌는 칸에 눈금
+  var rail = document.getElementById('pvrail');
+  S.forEach(function(s, i){
+    var el = document.createElement('span');
+    if (i > 0 && s.c !== S[i-1].c){ el.dataset.cut = '1'; }
+    el.title = '슬라이드 ' + s.n;
+    el.addEventListener('click', function(){ at = i; render(); });
+    el.style.cursor = 'pointer';
+    rail.appendChild(el);
+  });
+
+  var motionOK = !matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 좌표로 직접 옮긴다. 브라우저 기본 앵커 이동에 기대지 않아 어느 환경에서든
+  // 같은 자리로 간다. 움직임을 줄이는 설정이면 곧바로, 아니면 부드럽게.
+  function scrollToY(y){
+    y = Math.max(0, y);
+    try { window.scrollTo({top: y, behavior: motionOK ? 'smooth' : 'auto'}); }
+    catch (_) { window.scrollTo(0, y); }
+  }
+
+  document.addEventListener('click', function(e){
+    var g = e.target.closest('[data-go]');
+    if (g){ opener = g; open(+g.dataset.go); return; }
+    // 챕터 표지 CTA — 그 페이지 위치로 스크롤한다(슬라이드쇼는 열지 않는다).
+    var ct = e.target.closest('.chap__ct');
+    if (ct){
+      e.preventDefault();
+      var tgt = document.getElementById(ct.getAttribute('href').slice(1));
+      if (tgt) scrollToY(tgt.getBoundingClientRect().top + window.pageYOffset - 24);
+      return;
+    }
+    if (pv.hidden) return;
+    var id = e.target.id;
+    if (id === 'pvprev') go(-1);
+    if (id === 'pvnext') go(1);
+    if (id === 'pvclose') close();
+    if (id === 'pvgrid' || id === 'pvsortclose') toggleSorter();
+    var cell = e.target.closest('.pv__sc');
+    if (cell){
+      at = +cell.dataset.i;
+      sorter.hidden = true;
+      document.getElementById('pvgrid').setAttribute('aria-pressed', 'false');
+      render();
+    }
+    if (id === 'pvnotes'){
+      notesOn = !notesOn;
+      notes.hidden = !notesOn;
+      e.target.setAttribute('aria-pressed', notesOn);
+      fitStage();                 // 노트가 열리고 닫히면 무대에 남는 높이가 바뀐다
+      noteFade();
+    }
+    if (id === 'pvfull'){
+      if (document.fullscreenElement) document.exitFullscreen();
+      else if (pv.requestFullscreen) pv.requestFullscreen();
+    }
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (pv.hidden) return;
+    var k = e.key;
+    // 전체 보기가 열려 있으면 Esc로 그것부터 닫고, 넘기기는 막는다
+    if (!sorter.hidden){
+      if (k === 'Escape'){ toggleSorter(); }
+      return;
+    }
+    if (k === 'Escape'){ if (!document.fullscreenElement) close(); return; }
+    if (k === 'ArrowRight' || k === 'PageDown' || k === ' '){ e.preventDefault(); go(1); }
+    if (k === 'ArrowLeft' || k === 'PageUp'){ e.preventDefault(); go(-1); }
+    if (k === 'Home'){ e.preventDefault(); at = 0; render(); }
+    if (k === 'End'){ e.preventDefault(); at = S.length - 1; render(); }
+  });
+
+  // 손가락으로 넘기기. 세로 스크롤과 헷갈리지 않게 가로 이동이 뚜렷할 때만.
+  var tx = 0, ty = 0;
+  stage.addEventListener('touchstart', function(e){
+    tx = e.changedTouches[0].clientX; ty = e.changedTouches[0].clientY;
+  }, {passive: true});
+  stage.addEventListener('touchend', function(e){
+    if (stage.querySelector('iframe')) return;   // video는 자동 재생이라 잠그지 않는다       // 재생 중에는 넘기지 않는다
+    var dx = e.changedTouches[0].clientX - tx;
+    var dy = e.changedTouches[0].clientY - ty;
+    if (Math.abs(dx) > 45 && Math.abs(dx) > Math.abs(dy) * 1.5) go(dx < 0 ? 1 : -1);
+  }, {passive: true});
+
+  // 주소에 #42 가 붙어 오면 그 장표부터 연다
+  var h = parseInt(location.hash.slice(1), 10);
+  if (h >= 1 && h <= S.length) open(h);
+
+  // 차례의 현재 위치
+  var links = document.querySelectorAll('.toc a[href^="#ch"]');
+  var obs = new IntersectionObserver(function(es){
+    es.forEach(function(en){
+      if (!en.isIntersecting) return;
+      links.forEach(function(a){
+        a.setAttribute('aria-current', a.getAttribute('href') === '#' + en.target.id);
+      });
+    });
+  }, {rootMargin: '-10% 0px -80% 0px'});
+  document.querySelectorAll('.chap').forEach(function(s){ obs.observe(s); });
+
+  // 챕터 표지 썸네일: 두 줄 창 + 위·아래 페이드 마스크 + 스크롤.
+  // 격자를 런타임에 스크롤 창으로 감싸므로 HTML 구조는 그대로 둔다.
+  document.querySelectorAll('.chap__ctagrid').forEach(function(grid){
+    var wrap = document.createElement('div');
+    wrap.className = 'chap__ctascroll';
+    grid.parentNode.insertBefore(wrap, grid);
+    wrap.appendChild(grid);
+    function upd(){
+      var fade = +wrap.dataset.fade || 0;
+      var top = wrap.scrollTop > 1;
+      var bot = wrap.scrollTop + wrap.clientHeight < wrap.scrollHeight - 1;
+      wrap.style.setProperty('--ft', top ? fade + 'px' : '0px');
+      wrap.style.setProperty('--fb', bot ? fade + 'px' : '0px');
+    }
+    function measure(){
+      var cells = grid.children;
+      if (!cells.length){ return; }
+      // 행 높이를 DOM 실측이 아니라 산술로 구한다. 셀은 12열(모바일 5열)·
+      // 간격 3px·1px 테두리·16:9 고정이므로 격자 폭만 있으면 결정된다.
+      // 실측 방식은 lazy 썸네일이 화면 밖에서 로드되지 않아 로드 전
+      // 스냅샷(엉뚱한 행높이)이 영구 박제되는 버그가 있었다(2026-07-24).
+      var cs = getComputedStyle(grid);
+      var cols = cs.gridTemplateColumns.split(' ').length;
+      var gap = parseFloat(cs.rowGap) || 3;
+      var gridW = grid.clientWidth;
+      if (gridW < 40){ return; }
+      var colW = (gridW - gap * (cols - 1)) / cols;
+      var rowH = (colW - 2) * 9 / 16 + 2;   // 테두리 2px 포함
+      var stride = rowH + gap;
+      var rows = Math.ceil(cells.length / cols);
+      var gridH = rows * rowH + (rows - 1) * gap;
+      var fade = Math.round(rowH * 0.85);
+      wrap.dataset.fade = fade;
+      // 두 줄 + 페이드 한 겹. 내용이 그보다 낮으면(두 줄 이하) 딱 맞춰 마스크·스크롤이 없다.
+      wrap.style.height = Math.round(Math.min(stride * 2 + fade, gridH)) + 'px';
+      upd();
+    }
+    wrap.addEventListener('scroll', upd, { passive: true });
+    measure();
+    setTimeout(measure, 80);               // 레이아웃 안정 후 한 번 더
+    window.addEventListener('resize', measure);
+    grid.querySelectorAll('img').forEach(function(im){
+      if (!im.complete) im.addEventListener('load', measure, { once: true });
+    });
+  });
+})();
+
+</script>
+<footer class="site-footer"><div class="site-footer__in">
+  <span>KIHEON SHIN</span><a href="../../">Co-Creation Culture</a>
+</div></footer>
+</body>
+</html>
