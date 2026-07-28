@@ -166,13 +166,14 @@ export const contentLibrary = {
         },
       ],
       sources: [
-        {
-          id: "chronicle",
-          label: "SOURCE · 연표",
-          title: "발표 연표 · 2017–2024",
-          description: "여러 자리에서 한 발표 스무 건. 관심이 어디로 옮겨갔는지 한 화면에",
-          href: "series/co-creation-culture/sources/chronicle/",
-        },
+        /* 연표(chronicle) — 2026-07-29 목록에서 뺐다.
+           페이지는 그대로 배포돼 있고 URL 로는 열린다. 완성도를 더 높인 뒤 링크를
+           되살릴지 정한다. 되살릴 때는 이 주석을 지우고 아래 항목을 복구하면 된다.
+           { id: "chronicle", label: "SOURCE · 연표",
+             title: "발표 연표 · 2017–2024",
+             description: "여러 자리에서 한 발표 스무 건. 관심이 어디로 옮겨갔는지 한 화면에",
+             href: "series/co-creation-culture/sources/chronicle/" }
+           ※ 링크 제거는 접근 차단이 아니다. 실제 차단은 로그인 기능이 생긴 뒤에. */
         {
           id: "slides-2023-06",
           label: "SOURCE · 발표 자료",
