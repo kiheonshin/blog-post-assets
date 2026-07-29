@@ -166,6 +166,13 @@ export const contentLibrary = {
         },
       ],
       sources: [
+        /* 발화 기록(transcript) — 2026-07-29 목록에서 뺐다(원자료 모듈 비공개 정책).
+           페이지는 배포돼 있고 URL 로는 열린다. 완성도를 더 높인 뒤 되살릴지 정한다.
+           { id: "transcript", label: "SOURCE · 발화 기록",
+             title: "발화 기록 · 2023",
+             description: "2023년의 두 발표에서 본인이 실제로 무대에서 한 말을 정리했다.",
+             href: "series/co-creation-culture/sources/transcript/" }
+           ※ 링크 제거는 접근 차단이 아니다. 실제 차단은 로그인 기능이 생긴 뒤에. */
         /* 연표(chronicle) — 2026-07-29 목록에서 뺐다.
            페이지는 그대로 배포돼 있고 URL 로는 열린다. 완성도를 더 높인 뒤 링크를
            되살릴지 정한다. 되살릴 때는 이 주석을 지우고 아래 항목을 복구하면 된다.
