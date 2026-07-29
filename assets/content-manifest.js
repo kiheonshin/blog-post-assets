@@ -166,6 +166,13 @@ export const contentLibrary = {
         },
       ],
       sources: [
+        /* 개념 사전(codex) — 2026-07-29 목록에서 뺐다(원자료 모듈 비공개 정책).
+           페이지는 배포돼 있고 URL 로는 열린다. 완성도를 더 높인 뒤 되살릴지 정한다.
+           { id: "codex", label: "SOURCE · 개념 사전",
+             title: "개념 사전 · 2023",
+             description: "두 발표에서 정의한 개념 18개를 순서 대신 개념 단위로 묶었다.",
+             href: "series/co-creation-culture/sources/codex/" }
+           ※ 링크 제거는 접근 차단이 아니다. 실제 차단은 로그인 기능이 생긴 뒤에. */
         /* 발화 기록(transcript) — 2026-07-29 목록에서 뺐다(원자료 모듈 비공개 정책).
            페이지는 배포돼 있고 URL 로는 열린다. 완성도를 더 높인 뒤 되살릴지 정한다.
            { id: "transcript", label: "SOURCE · 발화 기록",
