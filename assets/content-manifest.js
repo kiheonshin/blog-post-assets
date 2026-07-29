@@ -166,6 +166,14 @@ export const contentLibrary = {
         },
       ],
       sources: [
+        /* 상영 목록(screening) — 2026-07-29 목록에서 뺐다(원자료 모듈 비공개 정책).
+           { id: "screening", label: "SOURCE · 상영 목록", title: "상영 목록 · 2023",
+             description: "무대 화면에 재생한 영상 19편을 튼 순서대로, 튼 맥락과 함께.",
+             href: "series/co-creation-culture/sources/screening/" } */
+        /* 자료 묶음(dossier) — 2026-07-29 목록에서 뺐다(원자료 모듈 비공개 정책).
+           { id: "dossier", label: "SOURCE · 자료 묶음", title: "자료 묶음 · 2023",
+             description: "이 시리즈가 무엇으로 만들어졌는지를 한 장에 모은 카탈로그.",
+             href: "series/co-creation-culture/sources/dossier/" } */
         /* 개념 사전(codex) — 2026-07-29 목록에서 뺐다(원자료 모듈 비공개 정책).
            페이지는 배포돼 있고 URL 로는 열린다. 완성도를 더 높인 뒤 되살릴지 정한다.
            { id: "codex", label: "SOURCE · 개념 사전",
