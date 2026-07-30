@@ -255,32 +255,45 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
 .summary p{margin:0 0 .85rem;font-size:.9375rem;line-height:1.75}
 .summary p:last-child{margin-block-end:0}
 
-/* 가상의 신기헌 조작대 (미리보기) — 선만 쓰는 규범 안에서 토글을 세운다 */
+/* 가상의 신기헌 음성 조작대 */
 .idx-rail{border:1px solid var(--rule);padding:1.1rem}
 .rail-kicker{margin:0 0 .3rem;font-family:var(--font-mono);font-size:var(--micro);
   font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
 .rail-sub{margin:0;font-size:.8125rem;line-height:1.55;color:var(--ink-muted)}
-/* 지금은 비활성 — 눌러도 켜지지 않으므로 손가락 커서를 주지 않는다 */
-.feat{display:flex;gap:.75rem;align-items:flex-start;justify-content:space-between;
-  margin-block-start:1rem;padding-block-start:1rem;
-  border-block-start:1px solid var(--rule);cursor:default}
-.feat__main{display:grid;gap:.25rem;min-width:0}
-.feat__t{font-size:.9375rem;font-weight:600;line-height:1.35}
-.feat__d{font-size:.75rem;line-height:1.5;color:var(--ink-muted)}
-.sw{flex:none;margin-block-start:.15rem}
-.sw input{position:absolute;width:1px;height:1px;opacity:0;margin:-1px;
-  overflow:hidden;white-space:nowrap}
-.sw__track{display:block;width:2.6rem;height:1.3rem;border:1px solid var(--rule-strong);
-  background:var(--surface);position:relative;transition:border-color .15s,background .15s}
-.sw__k{position:absolute;top:2px;bottom:2px;left:2px;width:1.05rem;
-  background:var(--ink-muted);transition:left .16s ease-out,background .15s}
-.sw input:checked + .sw__track{border-color:var(--accent);background:rgba(36,87,214,.1)}
-.sw input:checked + .sw__track .sw__k{left:calc(100% - 1.05rem - 2px);background:var(--accent)}
-.sw input:focus-visible + .sw__track{outline:2px solid var(--accent);outline-offset:2px}
-.sw input:disabled + .sw__track{opacity:.5}
-.rail-note{margin:1rem 0 0;padding-block-start:.8rem;border-block-start:1px solid var(--rule);
+.voice-title{margin:.9rem 0 .25rem;font-size:.9375rem;line-height:1.35}
+.voice-status{display:flex;align-items:center;gap:.45rem;margin:.9rem 0 0;
+  padding-block-start:.9rem;border-block-start:1px solid var(--rule);
   font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.03em;
-  line-height:1.6;color:var(--ink-faint)}
+  color:var(--ink-muted)}
+.voice-status::before{content:"";display:block;inline-size:.5rem;block-size:.5rem;
+  border:1px solid var(--rule-strong);background:var(--surface)}
+.idx-rail[data-state="connecting"] .voice-status::before,
+.idx-rail[data-state="thinking"] .voice-status::before,
+.idx-rail[data-state="listening"] .voice-status::before,
+.idx-rail[data-state="ready"] .voice-status::before,
+.idx-rail[data-state="speaking"] .voice-status::before{background:var(--accent);
+  border-color:var(--accent)}
+.idx-rail[data-state="error"] .voice-status::before{background:var(--ink);
+  border-color:var(--ink)}
+.voice-action{display:block;width:100%;min-height:2.75rem;margin-block-start:.85rem;
+  border:1px solid var(--rule-strong);border-radius:0;background:var(--inverse);
+  color:var(--inverse-ink);font:600 var(--meta)/1 var(--font-mono);
+  letter-spacing:.06em;cursor:pointer;
+  transition:color .15s ease-out,background .15s ease-out}
+.voice-action:hover{background:var(--surface);color:var(--ink)}
+.voice-action:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.voice-meter{height:.35rem;margin-block-start:.6rem;background:var(--rule);
+  overflow:hidden}
+.voice-meter__level{display:block;width:calc(var(--voice-level,0) * 100%);
+  height:100%;background:var(--ink)}
+.voice-transcript{min-height:6.2rem;max-height:11rem;overflow:auto;
+  margin-block-start:1rem;padding:.75rem;border:1px solid var(--rule);
+  background:var(--surface)}
+.voice-speaker{margin:0 0 .35rem;font-family:var(--font-mono);
+  font-size:var(--micro);font-weight:600;letter-spacing:.06em;color:var(--ink-faint)}
+.voice-copy{margin:0;font-size:.8125rem;line-height:1.58;color:var(--ink)}
+.voice-privacy{margin:1rem 0 0;padding-block-start:.8rem;border-block-start:1px solid var(--rule);
+  font-size:.6875rem;line-height:1.55;color:var(--ink-faint)}
 
 .idx-grid > .foot{margin-block-start:.75rem}
 .idx .foot{margin-block-start:0;padding-block-start:1.5rem;
@@ -288,6 +301,7 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
 </style>
 <link rel="stylesheet" href="../../assets/site.css?v=20260731g">
 <script type="module" src="../../assets/series-nav.js?v=20260731d"></script>
+<script type="module" src="../../assets/voice-agent.js?v=20260730b"></script>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -313,10 +327,18 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
       <p>이 글은 신기헌의 디지털 트윈 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.</p>
       <p class="en">Written and edited 100% by an AI agent from the Kiheon Shin Digital Twin project.</p>
     </div>
-    <aside class="idx-rail" aria-label="가상의 신기헌 미리보기">
-      <p class="rail-kicker">미리보기 · 가상의 신기헌</p>
-      <label class="feat"><span class="feat__main"><span class="feat__t">도움말 켜기</span><span class="feat__d">읽는 대목을 목소리로 짚어 준다.</span></span><span class="sw"><input type="checkbox" disabled><span class="sw__track"><span class="sw__k"></span></span></span></label><label class="feat"><span class="feat__main"><span class="feat__t">실시간 대화</span><span class="feat__d">궁금한 것을 바로 묻는다.</span></span><span class="sw"><input type="checkbox" disabled><span class="sw__track"><span class="sw__k"></span></span></span></label>
-      <p class="rail-note">아직 준비 중인 기능입니다.</p>
+    <aside class="idx-rail" data-voice-agent data-state="idle" aria-label="가상의 신기헌 음성 대화">
+      <p class="rail-kicker">가상의 신기헌</p>
+      <h2 class="voice-title">이 시리즈에 관해 대화하기</h2>
+      <p class="rail-sub">궁금한 것을 말로 물으면 목소리로 답합니다.</p>
+      <p class="voice-status" role="status" aria-live="polite"><span data-voice-status>대화 준비됨</span></p>
+      <button class="voice-action" type="button" data-voice-action aria-pressed="false">대화 시작</button>
+      <div class="voice-meter" data-voice-meter aria-hidden="true"><span class="voice-meter__level"></span></div>
+      <div class="voice-transcript" role="log" aria-live="polite" aria-label="가상의 신기헌 답변">
+        <p class="voice-speaker">가상의 신기헌</p>
+        <p class="voice-copy" data-voice-transcript>버튼을 누르면 마이크 연결을 시작합니다.</p>
+      </div>
+      <p class="voice-privacy">마이크 음성은 대화 중 xAI로 전송됩니다. 이 페이지는 음성과 대화 내용을 별도로 저장하지 않습니다.</p>
     </aside>
   </div>
 </div></main>

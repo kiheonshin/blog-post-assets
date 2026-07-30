@@ -49,3 +49,37 @@ python3 -m http.server 4173 --directory ..
 ```
 
 그다음 `http://127.0.0.1:4173/blog-post-assets/`를 연다.
+
+## AIGC 시리즈 음성 대화
+
+`series/aigc-creative-paradigm/`의 음성 대화는 다음 경계를 따른다.
+
+```text
+GitHub Pages
+  → blog-post-assets.vercel.app/api/xai-client-secret
+  → 수명이 짧은 xAI 클라이언트 토큰
+  → 브라우저와 xAI Realtime의 직접 음성 연결
+```
+
+- 장기 API 키는 Vercel의 서버 전용 `XAI_API_KEY` 환경 변수에만 둔다.
+- 브라우저에는 120초짜리 임시 토큰만 전달한다.
+- 토큰 API는 허용한 사이트 origin만 응답한다.
+- 함수 인스턴스 안에서는 IP별 분당 4회의 보조 제한을 적용한다. 공개 활성화 전에는 Vercel Firewall에도 같은 경로의 지속적인 rate-limit 규칙을 둔다.
+- 음성과 대화 내용은 이 저장소의 코드나 Vercel 함수에 저장하지 않는다.
+
+Vercel 프로젝트를 연결한 뒤 키를 서버 환경 변수로 등록한다.
+
+```sh
+vercel link --yes --project blog-post-assets
+vercel env add XAI_API_KEY production
+vercel env add XAI_API_KEY preview
+vercel dev
+```
+
+로컬 함수와 정적 페이지는 `http://127.0.0.1:3000/series/aigc-creative-paradigm/`에서 함께 확인한다.
+
+토큰 함수의 경계 테스트는 별도 패키지 설치 없이 실행한다.
+
+```sh
+node --test tests/xai-client-secret.test.js
+```
