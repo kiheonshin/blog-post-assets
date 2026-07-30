@@ -291,7 +291,7 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
 </style>
 <link rel="stylesheet" href="../../assets/site.css?v=20260729c">
 <script type="module" src="../../assets/series-nav.js?v=20260729c"></script>
-<script type="module" src="./realtime-voice.mjs?v=20260731a"></script>
+<script type="module" src="./oauth-voice.mjs?v=20260731b"></script>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -317,10 +317,10 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
       <p>이 글은 신기헌의 디지털 트윈 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.</p>
       <p class="en">Written and edited 100% by an AI agent from the Kiheon Shin Digital Twin project.</p>
     </div>
-    <aside class="idx-rail" aria-label="가상의 신기헌 음성 대화" data-realtime-voice data-token-endpoint="https://tama-oauth.vercel.app/api/realtime-token">
-      <p class="rail-kicker">음성 대화 · 베타</p>
-      <label class="feat"><span class="feat__main"><span class="feat__t">도움말 켜기</span><span class="feat__d">읽는 대목을 목소리로 짚어 준다.</span></span><span class="sw"><input type="checkbox" disabled><span class="sw__track"><span class="sw__k"></span></span></span></label><label class="feat feat--active"><span class="feat__main"><span class="feat__t">실시간 대화</span><span class="feat__d">마이크로 궁금한 것을 바로 묻는다.</span></span><span class="sw"><input type="checkbox" data-realtime-toggle aria-describedby="realtime-voice-status"><span class="sw__track"><span class="sw__k"></span></span></span></label>
-      <p class="rail-note" id="realtime-voice-status" data-realtime-status data-state="idle" aria-live="polite">실시간 대화를 켜고 말을 시작해 보세요.</p>
+    <aside class="idx-rail" aria-label="가상의 신기헌 음성 대화" data-oauth-voice data-bridge-endpoint="http://127.0.0.1:8787/v1/responses">
+      <p class="rail-kicker">개인용 음성 대화 · 로컬 브리지</p>
+      <label class="feat"><span class="feat__main"><span class="feat__t">도움말 켜기</span><span class="feat__d">읽는 대목을 목소리로 짚어 준다.</span></span><span class="sw"><input type="checkbox" disabled><span class="sw__track"><span class="sw__k"></span></span></span></label><label class="feat feat--active"><span class="feat__main"><span class="feat__t">로컬 음성 대화</span><span class="feat__d">이 Mac의 ChatGPT OAuth로 묻고 브라우저 음성으로 듣는다.</span></span><span class="sw"><input type="checkbox" data-oauth-voice-toggle aria-describedby="oauth-voice-status"><span class="sw__track"><span class="sw__k"></span></span></span></label>
+      <p class="rail-note" id="oauth-voice-status" data-oauth-voice-status data-state="idle" aria-live="polite">로컬 브리지를 실행한 뒤 음성 대화를 켜세요.</p>
     </aside>
   </div>
 </div></main>

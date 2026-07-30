@@ -49,3 +49,26 @@ python3 -m http.server 4173 --directory ..
 ```
 
 그다음 `http://127.0.0.1:4173/blog-post-assets/`를 연다.
+
+## 개인용 OAuth 음성 대화
+
+`aigc-creative-paradigm` 시리즈의 음성 대화는 공개 API나 별도 로그인 화면을 사용하지 않는다. 이 Mac에 저장된 ChatGPT OAuth 토큰은 Tamaverse의 loopback 브리지에만 남고, 이 브리지는 브라우저가 인식한 텍스트만 `127.0.0.1`에서 받는다.
+
+첫 번째 터미널에서 Tamaverse 브리지를 실행한다.
+
+```sh
+cd /path/to/Tamaverse-App
+uv run --project modules/tama-oauth tamaverse-chatgpt-bridge
+```
+
+두 번째 터미널에서 이 저장소의 상위 디렉터리를 4173 포트로 연다.
+
+```sh
+python3 -m http.server 4173 --directory ..
+```
+
+그다음 `http://127.0.0.1:4173/blog-post-assets/series/aigc-creative-paradigm/`를 Chrome에서 열고 `로컬 음성 대화`를 켠다.
+
+이 기능은 Web Speech API의 음성 인식·합성과 ChatGPT OAuth 텍스트 응답을 연결한 개인용 로컬 기능이다. OpenAI Realtime 음성 대 음성 API가 아니며, bridge endpoint를 Vercel이나 공개 서버에 배포하지 않는다.
+
+OAuth 토큰과 ChatGPT 요청 경로는 로컬 브리지에만 있지만, Chrome의 Web Speech 음성 인식은 브라우저 구현과 설정에 따라 브라우저 제공자의 온라인 STT를 사용할 수 있다. 따라서 이 구성은 완전 오프라인 음성 인식은 아니다.
