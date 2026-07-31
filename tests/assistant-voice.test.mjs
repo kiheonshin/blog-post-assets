@@ -44,6 +44,7 @@ async function loadAssistant() {
     addEventListener() {},
     removeEventListener() {},
     dispatchEvent() {},
+    documentElement: { classList: { add() {}, remove() {} } },
     getElementById() { return null; },
     querySelector() { return null; },
     querySelectorAll() { return []; },
@@ -80,7 +81,7 @@ async function loadAssistant() {
   let source = await readFile(assistantPath, "utf8");
   source = source
     .replace(
-      'import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js?v=20260731h";',
+      'import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js?v=20260801a";',
       "const VoiceTransport = globalThis.VoiceTransport; const VOICE_OFFLINE_MESSAGE = globalThis.VOICE_OFFLINE_MESSAGE;",
     )
     .replace("export class KiheonVoiceAssistant", "class KiheonVoiceAssistant")
@@ -491,6 +492,102 @@ test("narrow series rail starts collapsed and exposes one accessible toggle", as
   assert.match(assistant.seriesMarkup(), /aria-controls="[^"]+-series-body"/);
 });
 
+test("series rail keeps navigation compact and moves conversation into a dedicated dialog", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  assistant.dataset.scope = "series";
+  const markup = assistant.seriesMarkup();
+  const rail = markup.slice(0, markup.indexOf('<div class="voice-assistant__overlay"'));
+
+  assert.match(rail, /data-assistant-prompts/);
+  assert.match(rail, /data-assistant-open/);
+  assert.match(rail, /도슨트와 대화하기/);
+  assert.doesNotMatch(rail, /voice-assistant__transcript|data-assistant-form|voice-assistant__settings/);
+  assert.match(markup, /role="dialog"/);
+  assert.match(markup, /<textarea\b[^>]*data-assistant-input/);
+  assert.doesNotMatch(markup, /<select\b/i);
+});
+
+test("series prepared prompts open the dialog before rendering their answer", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  assistant.dataset.scope = "series";
+  assistant.panel = { hidden: true };
+  assistant.prompts = [{ id: "prepared", label: "준비된 질문", answer: "준비된 답", targets: [] }];
+  const calls = [];
+  assistant.openPanel = () => calls.push("open");
+  assistant.showAnswer = () => calls.push("answer");
+  assistant.speak = () => calls.push("speak");
+  const promptButton = { dataset: { assistantPrompt: "prepared" } };
+
+  assistant.handleClick({
+    target: {
+      closest(selector) { return selector === "[data-assistant-prompt]" ? promptButton : null; },
+    },
+  });
+
+  assert.deepEqual(calls, ["open", "answer", "speak"]);
+});
+
+test("conversation entry opens the dialog, focuses the composer, and returns focus on close", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  const attributes = {};
+  let inputFocus = 0;
+  let triggerFocus = 0;
+  const trigger = {
+    setAttribute(name, value) { attributes[name] = value; },
+    focus() { triggerFocus += 1; },
+  };
+  assistant.panel = { hidden: true };
+  assistant.openButton = trigger;
+  assistant.input = { focus() { inputFocus += 1; } };
+  assistant.updateSectionLabel = () => {};
+  assistant.stopVoice = () => {};
+
+  assistant.openPanel(trigger);
+  assert.equal(assistant.panel.hidden, false);
+  assert.equal(attributes["aria-expanded"], "true");
+  assert.equal(inputFocus, 1);
+  assistant.closePanel();
+  assert.equal(assistant.panel.hidden, true);
+  assert.equal(attributes["aria-expanded"], "false");
+  assert.equal(triggerFocus, 1);
+});
+
+test("composer Enter sends while Shift+Enter and IME composition keep editing", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  let submitted = 0;
+  let prevented = 0;
+  assistant.input = { form: { requestSubmit() { submitted += 1; } } };
+
+  assistant.handleKeydown({
+    key: "Enter",
+    target: assistant.input,
+    shiftKey: false,
+    isComposing: false,
+    preventDefault() { prevented += 1; },
+  });
+  assistant.handleKeydown({
+    key: "Enter",
+    target: assistant.input,
+    shiftKey: true,
+    isComposing: false,
+    preventDefault() { prevented += 1; },
+  });
+  assistant.handleKeydown({
+    key: "Enter",
+    target: assistant.input,
+    shiftKey: false,
+    isComposing: true,
+    preventDefault() { prevented += 1; },
+  });
+
+  assert.equal(submitted, 1);
+  assert.equal(prevented, 1);
+});
+
 test("BFCache pagehide releases active media without disabling the restored assistant", async () => {
   const { Assistant } = await loadAssistant();
   const assistant = new Assistant();
@@ -598,8 +695,8 @@ test("prepared prompt clicks speak with the selected voice and speed and expose 
   context.SpeechSynthesisUtterance = Utterance;
   context.speechSynthesis.getVoices = () => [{ voiceURI: "ko-1", name: "목소리", lang: "ko-KR" }];
   context.speechSynthesis.speak = (utterance) => spoken.push(utterance);
-  assistant.voiceSelect = { value: "ko-1" };
-  assistant.rateSelect = { value: "0.85" };
+  assistant.selectedVoiceValue = () => "ko-1";
+  assistant.selectedRateValue = () => "0.85";
   assistant.stopSpeakingButton = { hidden: true };
   assistant.claimAudio = () => {};
   assistant.setState = () => {};
@@ -658,6 +755,9 @@ test("docent copy contains no connection implementation jargon", async () => {
   assert.match(copy, /연결과 개인정보/);
   assert.match(copy, /직접 질문을 처음 보낼 때/);
   assert.match(assistant.contentMarkup(), /aria-modal="true"/);
+  assert.match(copy, /<fieldset/);
+  assert.match(copy, /type="radio"/);
+  assert.doesNotMatch(copy, /<select\b/i);
 });
 
 test("pilot pages install one assistant each in the required reading order", async () => {
@@ -687,6 +787,10 @@ test("pilot pages install one assistant each in the required reading order", asy
   assert.doesNotMatch(assistantCss, /kiheon-voice-assistant\[data-scope="content"\]\s*\{[^}]*position:\s*sticky/);
   assert.match(assistantCss, /data-series-expanded="false"[^}]*voice-assistant__series-body[\s\S]*display:\s*none/);
   assert.match(assistantCss, /background:\s*color-mix\(in srgb, var\(--ink/);
+  assert.match(assistantCss, /@media\s*\(min-width:\s*64rem\)/);
+  assert.match(assistantCss, /voice-assistant__radio-list[\s\S]*overflow-y:\s*auto/);
+  assert.match(assistantCss, /voice-assistant__form[\s\S]*grid-template-columns:\s*auto minmax\(7rem, 1fr\) auto/);
+  assert.doesNotMatch(assistantCss, /setting-fields select/);
   assert.doesNotMatch(assistantCss, /@media\s*\(max-width:\s*34rem\)/);
 });
 

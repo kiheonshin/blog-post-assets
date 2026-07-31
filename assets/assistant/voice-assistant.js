@@ -1,4 +1,4 @@
-import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js?v=20260731h";
+import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js?v=20260801a";
 
 const DEFAULT_PROMPTS = {
   series: [
@@ -38,6 +38,7 @@ const DEFAULT_PROMPTS = {
 };
 
 let instanceCount = 0;
+let openPanelCount = 0;
 const MAX_GROUNDED_INPUT_LENGTH = 11_500;
 
 function speechRecognitionConstructor() {
@@ -197,6 +198,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.handleAudioClaim = this.handleAudioClaim.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
     this.handleVoicesChanged = this.handleVoicesChanged.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   connectedCallback() {
@@ -204,6 +206,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.dataset.initialized = "true";
     this.render();
     this.addEventListener("click", this.handleClick);
+    this.addEventListener("change", this.handleChange);
     this.addEventListener("submit", this.handleSubmit);
     document.addEventListener("keydown", this.handleKeydown);
     document.addEventListener("kiheon-assistant-audio-claim", this.handleAudioClaim);
@@ -242,8 +245,9 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.panel = this.querySelector("[data-assistant-panel]");
     this.openButton = this.querySelector("[data-assistant-open]");
     this.sectionLabel = this.querySelector("[data-assistant-section]");
-    this.voiceSelect = this.querySelector("[data-assistant-voice-select]");
-    this.rateSelect = this.querySelector("[data-assistant-rate]");
+    this.voiceOptions = this.querySelector("[data-assistant-voice-options]");
+    this.rateOptions = this.querySelector("[data-assistant-rate-options]");
+    this.settingsSummary = this.querySelector("[data-assistant-settings-summary]");
     this.stopSpeakingButton = this.querySelector("[data-assistant-stop-speaking]");
     this.renderPrompts(DEFAULT_PROMPTS[this.scope]);
     this.updateSectionLabel();
@@ -262,9 +266,15 @@ export class KiheonVoiceAssistant extends HTMLElement {
         </header>
         <div id="${this.instanceId}-series-body" class="voice-assistant__series-body">
           <div class="voice-assistant__prompts" data-assistant-prompts></div>
-          ${this.conversationMarkup()}
         </div>
-      </section>`;
+        <button type="button" class="voice-assistant__rail-cta" data-assistant-open aria-expanded="false" aria-controls="${this.instanceId}-dialog">도슨트와 대화하기</button>
+      </section>
+      ${this.dialogMarkup({
+        kicker: "SERIES DOCENT",
+        title: "시리즈 도슨트",
+        closeLabel: "시리즈 도슨트 닫기",
+        sectionMarkup: "",
+      })}`;
   }
 
   contentMarkup() {
@@ -274,19 +284,29 @@ export class KiheonVoiceAssistant extends HTMLElement {
     return `
       <div class="voice-assistant__entry">
         <span><strong>${this.contentName}</strong><span>${description}</span></span>
-        <button type="button" data-assistant-open aria-expanded="false">열기</button>
+        <button type="button" data-assistant-open aria-expanded="false" aria-controls="${this.instanceId}-dialog">열기</button>
       </div>
+      ${this.dialogMarkup({
+        kicker: "PAGE DOCENT",
+        title: this.contentName,
+        closeLabel: `${this.contentName} 닫기`,
+        sectionMarkup: '<p class="voice-assistant__section" data-assistant-section>현재 페이지의 흐름을 기준으로 안내합니다.</p>',
+      })}`;
+  }
+
+  dialogMarkup({ kicker, title, closeLabel, sectionMarkup }) {
+    return `
       <div class="voice-assistant__overlay" data-assistant-panel hidden>
-        <section class="voice-assistant__dialog" role="dialog" aria-modal="true" aria-labelledby="${this.instanceId}-dialog-title">
+        <section id="${this.instanceId}-dialog" class="voice-assistant__dialog" role="dialog" aria-modal="true" aria-labelledby="${this.instanceId}-dialog-title">
           <header class="voice-assistant__dialog-head">
             <div>
-              <p class="voice-assistant__kicker">PAGE DOCENT</p>
-              <h2 id="${this.instanceId}-dialog-title" class="voice-assistant__title">${this.contentName}</h2>
+              <p class="voice-assistant__kicker">${kicker}</p>
+              <h2 id="${this.instanceId}-dialog-title" class="voice-assistant__title">${title}</h2>
             </div>
-            <button type="button" class="voice-assistant__close" data-assistant-close aria-label="${this.contentName} 닫기">닫기</button>
+            <button type="button" class="voice-assistant__close" data-assistant-close aria-label="${closeLabel}">닫기</button>
           </header>
-          <p class="voice-assistant__section" data-assistant-section>현재 페이지의 흐름을 기준으로 안내합니다.</p>
-          <div class="voice-assistant__prompts" data-assistant-prompts></div>
+          ${sectionMarkup}
+          ${this.scope === "content" ? '<div class="voice-assistant__prompts" data-assistant-prompts></div>' : ""}
           ${this.conversationMarkup()}
         </section>
       </div>`;
@@ -302,26 +322,39 @@ export class KiheonVoiceAssistant extends HTMLElement {
         </div>
         <nav class="voice-assistant__targets" aria-label="관련 페이지" data-assistant-targets hidden></nav>
       </div>
-      <form class="voice-assistant__form" data-assistant-form>
-        <label>
-          <span>직접 질문하기</span>
-          <input type="text" data-assistant-input autocomplete="off" maxlength="500" placeholder="궁금한 점을 적어 주세요">
-        </label>
-        <button type="submit">보내기</button>
-      </form>
-      <button class="voice-assistant__voice" type="button" data-assistant-voice aria-pressed="false">말로 질문하기</button>
-      <button class="voice-assistant__stop-speaking" type="button" data-assistant-stop-speaking hidden>읽기 중단</button>
-      <details class="voice-assistant__settings">
-        <summary>목소리·속도</summary>
-        <div class="voice-assistant__setting-fields">
-          <label><span>목소리</span><select data-assistant-voice-select><option value="">기본 목소리</option></select></label>
-          <label><span>속도</span><select data-assistant-rate><option value="0.85">천천히</option><option value="1" selected>보통</option><option value="1.15">빠르게</option></select></label>
-        </div>
-      </details>
-      <details class="voice-assistant__privacy">
-        <summary>연결과 개인정보</summary>
-        <p>준비된 안내는 이 페이지에서 바로 들을 수 있습니다. 직접 질문을 처음 보낼 때 브라우저가 ‘이 기기 연결’을 요청할 수 있습니다. 허용하면 이 Mac의 개인 안내로 질문을 보내며, 말로 질문하기를 누른 뒤 허용한 경우에만 마이크를 엽니다. 질문 기록과 음성은 이 페이지에 저장하지 않습니다.</p>
-      </details>`;
+      <div class="voice-assistant__controls">
+        <form class="voice-assistant__form" data-assistant-form>
+          <button class="voice-assistant__voice" type="button" data-assistant-voice aria-pressed="false">말로 묻기</button>
+          <label>
+            <span>직접 질문하기</span>
+            <textarea data-assistant-input autocomplete="off" maxlength="500" rows="1" placeholder="궁금한 점을 적어 주세요"></textarea>
+          </label>
+          <button type="submit">보내기</button>
+        </form>
+        <button class="voice-assistant__stop-speaking" type="button" data-assistant-stop-speaking hidden>읽기 중단</button>
+        <details class="voice-assistant__settings">
+          <summary>목소리·속도</summary>
+          <p class="voice-assistant__settings-summary" data-assistant-settings-summary>현재 기본 목소리 · 보통 속도</p>
+          <div class="voice-assistant__setting-fields">
+            <fieldset class="voice-assistant__fieldset">
+              <legend>목소리</legend>
+              <div class="voice-assistant__radio-list" data-assistant-voice-options></div>
+            </fieldset>
+            <fieldset class="voice-assistant__fieldset">
+              <legend>속도</legend>
+              <div class="voice-assistant__segmented" data-assistant-rate-options>
+                <label><input type="radio" name="${this.instanceId}-rate" value="0.85" data-assistant-rate-option>천천히</label>
+                <label><input type="radio" name="${this.instanceId}-rate" value="1" data-assistant-rate-option checked>보통</label>
+                <label><input type="radio" name="${this.instanceId}-rate" value="1.15" data-assistant-rate-option>빠르게</label>
+              </div>
+            </fieldset>
+          </div>
+        </details>
+        <details class="voice-assistant__privacy">
+          <summary>연결과 개인정보</summary>
+          <p>준비된 안내는 이 페이지에서 바로 들을 수 있습니다. 직접 질문을 처음 보낼 때 브라우저가 ‘이 기기 연결’을 요청할 수 있습니다. 허용하면 이 Mac의 개인 안내로 질문을 보내며, 말로 질문하기를 누른 뒤 허용한 경우에만 마이크를 엽니다. 질문 기록과 음성은 이 페이지에 저장하지 않습니다.</p>
+        </details>
+      </div>`;
   }
 
   async loadContext() {
@@ -366,9 +399,9 @@ export class KiheonVoiceAssistant extends HTMLElement {
   }
 
   populateVoices() {
-    if (!this.voiceSelect || !globalThis.speechSynthesis?.getVoices) return;
-    const previous = this.voiceSelect.value;
-    const voices = speechSynthesis.getVoices();
+    if (!this.voiceOptions) return;
+    const previous = this.selectedVoiceValue();
+    const voices = globalThis.speechSynthesis?.getVoices?.() ?? [];
     const koreanVoices = voices.filter((voice) => /^ko(?:-|$)/i.test(voice.lang));
     const availableVoices = koreanVoices.length ? koreanVoices : voices.slice(0, 12);
     const ordered = [...availableVoices].sort((left, right) => {
@@ -376,19 +409,50 @@ export class KiheonVoiceAssistant extends HTMLElement {
       const rightKorean = /^ko(?:-|$)/i.test(right.lang) ? 0 : 1;
       return leftKorean - rightKorean || left.name.localeCompare(right.name, "ko");
     });
-    const fallback = document.createElement("option");
-    fallback.value = "";
-    fallback.textContent = "기본 목소리";
-    this.voiceSelect.replaceChildren(fallback);
+    this.voiceOptions.replaceChildren(this.voiceRadio("", "기본 목소리", previous === ""));
     for (const voice of ordered) {
-      const option = document.createElement("option");
-      option.value = voice.voiceURI;
-      option.textContent = `${voice.name} · ${voice.lang}`;
-      this.voiceSelect.append(option);
+      this.voiceOptions.append(this.voiceRadio(
+        voice.voiceURI,
+        `${voice.name} · ${voice.lang}`,
+        voice.voiceURI === previous,
+      ));
     }
-    if ([...this.voiceSelect.options].some((option) => option.value === previous)) {
-      this.voiceSelect.value = previous;
+    if (!this.voiceOptions.querySelector("[data-assistant-voice-option]:checked")) {
+      const fallback = this.voiceOptions.querySelector("[data-assistant-voice-option]");
+      if (fallback) fallback.checked = true;
     }
+    this.updateSettingsSummary();
+  }
+
+  voiceRadio(value, label, checked) {
+    const item = document.createElement("label");
+    const input = document.createElement("input");
+    input.type = "radio";
+    input.name = `${this.instanceId}-voice`;
+    input.value = value;
+    input.checked = checked;
+    input.dataset.assistantVoiceOption = "";
+    item.append(input, label);
+    return item;
+  }
+
+  selectedVoiceValue() {
+    return this.querySelector("[data-assistant-voice-option]:checked")?.value ?? "";
+  }
+
+  selectedRateValue() {
+    return this.querySelector("[data-assistant-rate-option]:checked")?.value ?? "1";
+  }
+
+  updateSettingsSummary() {
+    if (!this.settingsSummary) return;
+    const voiceLabel = this.querySelector("[data-assistant-voice-option]:checked")
+      ?.closest("label")
+      ?.textContent
+      ?.trim() || "기본 목소리";
+    const rate = this.selectedRateValue();
+    const rateLabel = rate === "0.85" ? "천천히" : rate === "1.15" ? "빠르게" : "보통";
+    this.settingsSummary.textContent = `현재 ${voiceLabel} · ${rateLabel} 속도`;
   }
 
   renderPrompts(prompts, { remember = true } = {}) {
@@ -428,6 +492,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     if (!promptButton) return;
     const prompt = this.prompts.find((item) => item.id === promptButton.dataset.assistantPrompt);
     if (prompt) {
+      if (this.scope === "series" && this.panel?.hidden) this.openPanel(promptButton);
       this.showAnswer("안내", prompt.answer, prompt.targets);
       this.speak(prompt.answer);
     }
@@ -445,7 +510,18 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.askQuestion(question, { speak: false });
   }
 
+  handleChange(event) {
+    if (event.target.matches("[data-assistant-voice-option],[data-assistant-rate-option]")) {
+      this.updateSettingsSummary();
+    }
+  }
+
   handleKeydown(event) {
+    if (event.key === "Enter" && event.target === this.input && !event.shiftKey && !event.isComposing) {
+      event.preventDefault();
+      this.input.form?.requestSubmit();
+      return;
+    }
     if (event.key === "Escape" && this.panel && !this.panel.hidden) {
       event.preventDefault();
       this.closePanel();
@@ -453,7 +529,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     }
     if (event.key !== "Tab" || !this.panel || this.panel.hidden) return;
     const focusable = [...this.panel.querySelectorAll(
-      'button:not([disabled]),a[href],input:not([disabled]),select:not([disabled]),summary,[tabindex]:not([tabindex="-1"])',
+      'button:not([disabled]),a[href],input:not([disabled]),textarea:not([disabled]),summary,[tabindex]:not([tabindex="-1"])',
     )].filter((element) => !element.hidden);
     if (!focusable.length) return;
     const first = focusable[0];
@@ -495,16 +571,22 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   openPanel(button) {
     this.returnFocus = button;
-    this.panel.hidden = false;
-    button.setAttribute("aria-expanded", "true");
+    if (this.panel.hidden) {
+      this.panel.hidden = false;
+      openPanelCount += 1;
+      document.documentElement?.classList?.add("voice-assistant-scroll-lock");
+    }
+    this.openButton?.setAttribute("aria-expanded", "true");
     this.updateSectionLabel();
-    this.querySelector("[data-assistant-close]")?.focus();
+    this.input?.focus();
   }
 
   closePanel() {
     if (!this.panel || this.panel.hidden) return;
     this.stopVoice({ quiet: true });
     this.panel.hidden = true;
+    openPanelCount = Math.max(0, openPanelCount - 1);
+    if (!openPanelCount) document.documentElement?.classList?.remove("voice-assistant-scroll-lock");
     this.openButton?.setAttribute("aria-expanded", "false");
     this.returnFocus?.focus();
   }
@@ -900,10 +982,10 @@ export class KiheonVoiceAssistant extends HTMLElement {
     const utterance = new SpeechSynthesisUtterance(text);
     utterance.lang = "ko-KR";
     const selectedVoice = speechSynthesis.getVoices?.().find((voice) =>
-      voice.voiceURI === this.voiceSelect?.value,
+      voice.voiceURI === this.selectedVoiceValue(),
     );
     if (selectedVoice) utterance.voice = selectedVoice;
-    utterance.rate = Number.parseFloat(this.rateSelect?.value ?? "1") || 1;
+    utterance.rate = Number.parseFloat(this.selectedRateValue()) || 1;
     const finish = () => {
       if (this.utterance !== utterance) return;
       this.utterance = null;
@@ -934,7 +1016,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   resetVoiceButton() {
     if (!this.voiceButton) return;
-    this.voiceButton.textContent = "말로 질문하기";
+    this.voiceButton.textContent = "말로 묻기";
     this.voiceButton.setAttribute("aria-pressed", "false");
   }
 
@@ -957,8 +1039,14 @@ export class KiheonVoiceAssistant extends HTMLElement {
     if (this.destroyed) return;
     this.destroyed = true;
     this.stopVoice({ quiet: true });
+    if (this.panel && !this.panel.hidden) {
+      this.panel.hidden = true;
+      openPanelCount = Math.max(0, openPanelCount - 1);
+      if (!openPanelCount) document.documentElement?.classList?.remove("voice-assistant-scroll-lock");
+    }
     this.transport.destroy();
     this.removeEventListener("click", this.handleClick);
+    this.removeEventListener("change", this.handleChange);
     this.removeEventListener("submit", this.handleSubmit);
     document.removeEventListener("keydown", this.handleKeydown);
     document.removeEventListener("kiheon-assistant-audio-claim", this.handleAudioClaim);
