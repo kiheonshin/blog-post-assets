@@ -710,4 +710,11 @@ test("every prepared content explanation carries inspectable source provenance",
       }
     }
   }
+
+  const researchFlow = context.docent.contentPrompts.research
+    .find((prompt) => prompt.id === "research-flow");
+  const researchAnchors = new Set(researchFlow.provenance.map((source) => source.anchor));
+  for (const anchor of ["p1s1", "p1s2", "p2s1", "p2s2", "p2s3", "p2s4"]) {
+    assert.ok(researchAnchors.has(anchor), `research-flow must cite ${anchor}`);
+  }
 });
