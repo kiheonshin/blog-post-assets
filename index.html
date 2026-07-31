@@ -4,18 +4,20 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>신기헌의 블로그 · Kiheon Shin</title>
-<meta name="description" content="신기헌의 생각과 경험에서 출발한 글과 바탕 자료를 주제별 시리즈로 엮어가는 개인 블로그.">
+<meta name="description" content="신기헌의 생각과 경험에서 출발한 글과 바탕 자료를 시리즈와 아카이브로 엮어가는 개인 블로그.">
 <link rel="canonical" href="https://kiheonshin.github.io/blog-post-assets/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Kiheon Shin">
 <meta property="og:locale" content="ko_KR">
 <meta property="og:title" content="신기헌의 블로그">
-<meta property="og:description" content="신기헌의 생각과 경험에서 출발한 글과 바탕 자료를 주제별 시리즈로 엮어가는 개인 블로그.">
+<meta property="og:description" content="신기헌의 생각과 경험에서 출발한 글과 바탕 자료를 시리즈와 아카이브로 엮어가는 개인 블로그.">
 <meta property="og:url" content="https://kiheonshin.github.io/blog-post-assets/">
 <meta property="og:image" content="https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/assets/series-banner.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/site.css?v=20260731g">
-<script type="module" src="assets/series-nav.js?v=20260731d"></script>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="preload" href="series/aigc-creative-paradigm/assets/series-banner.jpg" as="image" fetchpriority="high">
+<link rel="stylesheet" href="assets/site.css?v=20260731i">
+<script type="module" src="assets/series-nav.js?v=20260731e"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQYBGPJFJ4"></script>
 <script>
 window.dataLayer=window.dataLayer||[];
@@ -34,18 +36,27 @@ gtag('config', 'G-SQYBGPJFJ4');
   <header class="library-head">
     <p class="meta-label">Blog</p>
     <h1>신기헌의 생각이<br>쌓이는 블로그</h1>
-    <p class="lead">생각과 경험에서 출발한 글과 바탕 자료를 주제별 시리즈로 엮어 이곳에 기록합니다.</p>
+    <p class="lead">발표와 경험에서 시작한 글, 그리고 글을 만든 바탕 자료를 함께 기록합니다. 주제의 흐름을 따라 이어 읽거나, 연도와 키워드로 기록 전체를 가로질러 찾을 수 있습니다.</p>
   </header>
-  <section class="library-section" aria-labelledby="published-series">
-    <h2 id="published-series" class="library-section__label">시리즈로 읽기</h2>
+  <nav class="library-paths" aria-label="기록을 읽는 두 가지 방법">
+    <a href="#series">
+      <span class="library-paths__index" aria-hidden="true">01</span>
+      <span class="library-paths__title">시리즈로 읽기</span>
+      <span class="library-paths__description">주제별 글과 자료를 이어 읽습니다.</span>
+    </a>
+    <a href="#archive">
+      <span class="library-paths__index" aria-hidden="true">02</span>
+      <span class="library-paths__title">아카이브로 찾기</span>
+      <span class="library-paths__description">연도·주제·키워드로 기록을 찾습니다.</span>
+    </a>
+  </nav>
+  <section id="series" class="library-section library-section--series" aria-labelledby="published-series">
+    <h2 id="published-series" class="library-section__marker" aria-label="시리즈로 읽기">Series</h2>
     <series-library></series-library>
     <noscript><p>시리즈 목록을 보려면 JavaScript를 켜 주세요.</p></noscript>
   </section>
   <section id="archive" class="library-section archive-section" aria-labelledby="archive-title">
-    <div class="library-section__head">
-      <h2 id="archive-title" class="library-section__label">아카이브로 찾기</h2>
-      <p>시리즈의 경계를 넘어 발행일과 원자료 연도, 주제와 키워드로 기록을 다시 찾습니다.</p>
-    </div>
+    <h2 id="archive-title" class="library-section__marker" aria-label="아카이브로 찾기">Archive</h2>
     <archive-library></archive-library>
     <noscript><p>아카이브 검색을 사용하려면 JavaScript를 켜 주세요.</p></noscript>
   </section>
