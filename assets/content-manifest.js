@@ -211,8 +211,8 @@ export const contentLibrary = {
       topics: ["공동 창작", "현실과 가상", "기록과 서사"],
       keywords: ["코-크리에이션", "온체인 아이덴티티", "디지털 소유", "스토리텔링"],
       href: "series/co-creation-culture/",
-      cover: "assets/cover-placeholder.jpg",
-      coverAlt: "커버 비주얼 준비 중 임시 이미지",
+      cover: "series/co-creation-culture/assets/series-banner.jpg",
+      coverAlt: "세 포스팅의 키 비주얼이 하나로 이어진 파노라마",
       posts: [
         {
           id: "01-whose-creativity",
