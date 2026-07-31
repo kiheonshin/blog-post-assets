@@ -114,11 +114,36 @@ kiheon-voice-assistant[hidden],
   color: var(--accent-hover, #163da7);
 }
 
-.voice-assistant__status {
-  margin: var(--space-4, 1rem) 0 0;
+.voice-assistant__conversation-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3, .75rem);
+  margin-block-start: var(--space-4, 1rem);
   padding-block-start: var(--space-3, .75rem);
   border-block-start: 1px solid var(--rule, #cfcfc8);
+}
+
+.voice-assistant__status {
+  margin: 0;
   color: var(--ink-muted, #5e6065);
+}
+
+.voice-assistant__reset {
+  min-height: var(--space-8, 2rem);
+  padding: var(--space-1, .25rem) var(--space-2, .5rem);
+  border: 0;
+  border-block-end: 1px solid currentColor;
+  background: transparent;
+  color: var(--ink-muted, #5e6065);
+  font-family: var(--font-mono, "SFMono-Regular", monospace);
+  font-size: var(--micro, .6875rem);
+  letter-spacing: .04em;
+}
+
+.voice-assistant__reset:disabled {
+  cursor: default;
+  opacity: .42;
 }
 
 .voice-assistant[data-state="listening"] .voice-assistant__status,
@@ -128,6 +153,10 @@ kiheon-voice-assistant[hidden],
 }
 
 .voice-assistant__transcript {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-3, .75rem);
   flex: 1 1 auto;
   min-height: calc(var(--space-16, 4rem) * 3);
   max-height: none;
@@ -139,16 +168,35 @@ kiheon-voice-assistant[hidden],
   background: var(--surface, #fbfbf8);
 }
 
+.voice-assistant__turn {
+  box-sizing: border-box;
+  align-self: flex-start;
+  width: fit-content;
+  max-width: 84%;
+  padding: var(--space-3, .75rem);
+  border: 1px solid var(--rule, #cfcfc8);
+  border-inline-start: 2px solid var(--ink-muted, #5e6065);
+  background: var(--canvas, #f3f3ef);
+}
+
+.voice-assistant__turn[data-assistant-role="user"] {
+  align-self: flex-end;
+  border-color: var(--accent, #2457d6);
+  border-inline-start-width: 1px;
+  border-inline-end: 2px solid var(--accent, #2457d6);
+  background: #edf2ff;
+  background: color-mix(in srgb, var(--accent, #2457d6) 8%, var(--surface, #fbfbf8));
+}
+
 .voice-assistant__speaker {
   margin: 0 0 var(--space-1, .25rem);
   color: var(--ink-faint, #686a6f);
   font-weight: 600;
 }
 
-.voice-assistant__turn + .voice-assistant__turn {
-  margin-block-start: var(--space-3, .75rem);
-  padding-block-start: var(--space-3, .75rem);
-  border-block-start: 1px solid var(--rule, #cfcfc8);
+.voice-assistant__turn[data-assistant-role="user"] .voice-assistant__speaker {
+  color: var(--accent-hover, #163da7);
+  text-align: end;
 }
 
 .voice-assistant__copy {
@@ -159,11 +207,17 @@ kiheon-voice-assistant[hidden],
 }
 
 .voice-assistant__targets {
+  align-self: flex-start;
+  width: min(84%, 28rem);
   display: grid;
   gap: var(--space-1, .25rem);
   margin-block-start: var(--space-3, .75rem);
   padding-block-start: var(--space-3, .75rem);
   border-block-start: 1px solid var(--rule, #cfcfc8);
+}
+
+.voice-assistant__targets[hidden] {
+  display: none;
 }
 
 .voice-assistant__targets a {
@@ -258,7 +312,7 @@ kiheon-voice-assistant[hidden],
 }
 
 .voice-assistant__settings,
-.voice-assistant__privacy {
+.voice-assistant__disclosures {
   margin: var(--space-3, .75rem) 0 0;
   padding: var(--space-3, .75rem) 0 0;
   border: 0;
@@ -279,7 +333,7 @@ kiheon-voice-assistant[hidden],
 }
 
 .voice-assistant__settings summary,
-.voice-assistant__privacy summary {
+.voice-assistant__disclosure summary {
   cursor: pointer;
   font-family: var(--font-mono, "SFMono-Regular", monospace);
   font-size: var(--micro, .6875rem);
@@ -297,6 +351,20 @@ kiheon-voice-assistant[hidden],
   margin: var(--space-2, .5rem) 0 0;
   color: var(--ink-muted, #5e6065);
   line-height: 1.5;
+}
+
+.voice-assistant__preview {
+  width: 100%;
+  min-height: var(--space-10, 2.5rem);
+  margin-block-start: var(--space-3, .75rem);
+  padding: var(--space-2, .5rem) var(--space-3, .75rem);
+  border: 1px solid var(--rule-strong, #17181a);
+  background: transparent;
+  color: var(--ink, #17181a);
+  font-family: var(--font-mono, "SFMono-Regular", monospace);
+  font-size: var(--micro, .6875rem);
+  font-weight: 600;
+  letter-spacing: .04em;
 }
 
 .voice-assistant__fieldset {
@@ -377,7 +445,66 @@ kiheon-voice-assistant[hidden],
   outline-offset: -3px;
 }
 
-.voice-assistant__privacy p {
+.voice-assistant__disclosures {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-3, .75rem);
+}
+
+.voice-assistant__disclosure {
+  min-width: 0;
+}
+
+.voice-assistant__disclosure + .voice-assistant__disclosure {
+  border-inline-start: 1px solid var(--rule, #cfcfc8);
+  padding-inline-start: var(--space-3, .75rem);
+}
+
+.voice-assistant__disclosure summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-1, .25rem) var(--space-2, .5rem);
+  list-style: none;
+}
+
+.voice-assistant__disclosure summary::-webkit-details-marker {
+  display: none;
+}
+
+.voice-assistant__disclosure-title {
+  font-weight: 600;
+}
+
+.voice-assistant__disclosure-short {
+  grid-column: 1;
+  color: var(--ink-muted, #5e6065);
+  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif);
+  line-height: 1.45;
+}
+
+.voice-assistant__info {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  display: inline-grid;
+  place-items: center;
+  align-self: start;
+  width: calc(var(--space-4, 1rem) + var(--space-1, .25rem));
+  height: calc(var(--space-4, 1rem) + var(--space-1, .25rem));
+  border: 1px solid currentColor;
+  border-radius: 50%;
+  color: var(--ink-muted, #5e6065);
+  font-family: var(--font-body, sans-serif);
+  font-size: var(--micro, .6875rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+.voice-assistant__disclosure[open] .voice-assistant__info {
+  background: var(--ink, #17181a);
+  color: var(--surface, #fbfbf8);
+}
+
+.voice-assistant__disclosure p {
   margin: var(--space-2, .5rem) 0 0;
   color: var(--ink-muted, #5e6065);
   line-height: 1.55;
@@ -388,7 +515,8 @@ kiheon-voice-assistant[hidden],
 .voice-assistant__series-toggle:hover,
 .voice-assistant__rail-cta:hover,
 .voice-assistant__entry button:hover,
-.voice-assistant__close:hover {
+.voice-assistant__close:hover,
+.voice-assistant__preview:hover {
   background: var(--surface, #fbfbf8);
   color: var(--ink, #17181a);
 }
@@ -490,6 +618,22 @@ kiheon-voice-assistant[hidden],
 
   .voice-assistant__setting-fields {
     grid-template-columns: minmax(0, 1fr);
+  }
+
+  .voice-assistant__turn,
+  .voice-assistant__targets {
+    max-width: 90%;
+  }
+
+  .voice-assistant__disclosures {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .voice-assistant__disclosure + .voice-assistant__disclosure {
+    padding-block-start: var(--space-3, .75rem);
+    padding-inline-start: 0;
+    border-block-start: 1px solid var(--rule, #cfcfc8);
+    border-inline-start: 0;
   }
 }
 

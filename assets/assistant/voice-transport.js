@@ -4,7 +4,7 @@ const RESPONSE_URL = `${LOOPBACK_ORIGIN}/v1/responses`;
 const REQUEST_TIMEOUT_MS = 45_000;
 
 export const VOICE_OFFLINE_MESSAGE =
-  "이 Mac에서 음성 안내를 켜고, 브라우저의 ‘이 기기 연결’ 요청을 허용한 뒤 다시 눌러 주세요.";
+  "이 기기에서 개인 연결을 켜고, 브라우저의 기기 연결 요청을 허용한 뒤 다시 시도해 주세요. 연결되지 않아도 준비된 안내는 이용할 수 있습니다.";
 
 function requestError(code, cause) {
   const error = new Error(code, cause ? { cause } : undefined);

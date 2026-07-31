@@ -1,4 +1,4 @@
-import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js?v=20260801a";
+import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js?v=20260801b";
 
 const DEFAULT_PROMPTS = {
   series: [
@@ -249,6 +249,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.rateOptions = this.querySelector("[data-assistant-rate-options]");
     this.settingsSummary = this.querySelector("[data-assistant-settings-summary]");
     this.stopSpeakingButton = this.querySelector("[data-assistant-stop-speaking]");
+    this.resetButton = this.querySelector("[data-assistant-reset]");
     this.renderPrompts(DEFAULT_PROMPTS[this.scope]);
     this.updateSectionLabel();
   }
@@ -314,10 +315,13 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   conversationMarkup() {
     return `
-      <p class="voice-assistant__status" role="status" aria-live="polite" data-assistant-status>안내 준비됨</p>
+      <div class="voice-assistant__conversation-head">
+        <p class="voice-assistant__status" role="status" aria-live="polite" data-assistant-status>안내 준비됨</p>
+        <button class="voice-assistant__reset" type="button" data-assistant-reset disabled>대화 지우기</button>
+      </div>
       <div class="voice-assistant__transcript" role="log" aria-live="polite" aria-label="안내 대화 기록">
-        <div class="voice-assistant__turn" data-assistant-initial>
-          <p class="voice-assistant__speaker" data-assistant-speaker>안내</p>
+        <div class="voice-assistant__turn" data-assistant-role="assistant" data-assistant-initial>
+          <p class="voice-assistant__speaker" data-assistant-speaker>도슨트</p>
           <p class="voice-assistant__copy" data-assistant-transcript>궁금한 질문을 고르거나 직접 적어 주세요.</p>
         </div>
         <nav class="voice-assistant__targets" aria-label="관련 페이지" data-assistant-targets hidden></nav>
@@ -349,11 +353,26 @@ export class KiheonVoiceAssistant extends HTMLElement {
               </div>
             </fieldset>
           </div>
+          <button class="voice-assistant__preview" type="button" data-assistant-preview>선택한 목소리 미리 듣기</button>
         </details>
-        <details class="voice-assistant__privacy">
-          <summary>연결과 개인정보</summary>
-          <p>준비된 안내는 이 페이지에서 바로 들을 수 있습니다. 직접 질문을 처음 보낼 때 브라우저가 ‘이 기기 연결’을 요청할 수 있습니다. 허용하면 이 Mac의 개인 안내로 질문을 보내며, 말로 질문하기를 누른 뒤 허용한 경우에만 마이크를 엽니다. 질문 기록과 음성은 이 페이지에 저장하지 않습니다.</p>
-        </details>
+        <div class="voice-assistant__disclosures">
+          <details class="voice-assistant__disclosure">
+            <summary>
+              <span class="voice-assistant__disclosure-title">연결</span>
+              <span class="voice-assistant__disclosure-short">직접 질문에는 이 기기의 개인 연결이 필요합니다.</span>
+              <span class="voice-assistant__info" aria-hidden="true">i</span>
+            </summary>
+            <p>마이크 허용과 기기 연결 허용은 서로 다른 설정입니다. 먼저 이 기기에서 개인 연결을 켠 다음, 브라우저가 기기 연결을 요청하면 허용해 주세요. 연결되지 않아도 준비된 안내는 들을 수 있습니다.</p>
+          </details>
+          <details class="voice-assistant__disclosure">
+            <summary>
+              <span class="voice-assistant__disclosure-title">개인정보</span>
+              <span class="voice-assistant__disclosure-short">대화 내용은 이 화면을 닫으면 사라집니다.</span>
+              <span class="voice-assistant__info" aria-hidden="true">i</span>
+            </summary>
+            <p>직접 질문과 답변은 현재 대화창에만 표시하고 브라우저에 저장하지 않습니다. 마이크는 ‘말로 묻기’를 누르고 허용했을 때만 사용하며, ‘대화 지우기’로 기록을 즉시 비울 수 있습니다.</p>
+          </details>
+        </div>
       </div>`;
   }
 
@@ -478,6 +497,14 @@ export class KiheonVoiceAssistant extends HTMLElement {
     if (event.target.closest("[data-assistant-close]")) return this.closePanel();
     if (event.target.closest("[data-assistant-stop-speaking]")) {
       this.stopSpeech();
+      return;
+    }
+    if (event.target.closest("[data-assistant-reset]")) {
+      this.resetConversation();
+      return;
+    }
+    if (event.target.closest("[data-assistant-preview]")) {
+      this.speak("이 목소리와 속도로 안내해 드릴게요.");
       return;
     }
 
@@ -777,11 +804,17 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   showAnswer(speaker, text, targets = []) {
     this.transcriptLog.querySelector("[data-assistant-initial]")?.remove();
+    const role = speaker === "질문" || speaker === "듣는 중" ? "user" : "assistant";
+    const label = role === "user" ? (speaker === "듣는 중" ? "말하는 중" : "나") : "도슨트";
+    const lastTurn = this.transcriptLog.querySelector(".voice-assistant__turn:last-of-type");
+    const lastText = lastTurn?.querySelector?.("[data-assistant-transcript]")?.textContent;
+    if (lastTurn?.dataset?.assistantRole === role && lastText === text) return;
     const turn = document.createElement("div");
     turn.className = "voice-assistant__turn";
+    turn.dataset.assistantRole = role;
     const speakerNode = document.createElement("p");
     speakerNode.className = "voice-assistant__speaker";
-    speakerNode.textContent = speaker;
+    speakerNode.textContent = label;
     const copyNode = document.createElement("p");
     copyNode.className = "voice-assistant__copy";
     copyNode.dataset.assistantTranscript = "";
@@ -800,7 +833,34 @@ export class KiheonVoiceAssistant extends HTMLElement {
       this.targets.append(link);
     }
     this.targets.hidden = !this.targets.childElementCount;
+    if (this.resetButton) this.resetButton.disabled = false;
     this.transcriptLog.scrollTop = this.transcriptLog.scrollHeight;
+  }
+
+  resetConversation() {
+    this.stopVoice({ quiet: true });
+    for (const turn of this.transcriptLog.querySelectorAll(".voice-assistant__turn")) turn.remove();
+    const initial = document.createElement("div");
+    initial.className = "voice-assistant__turn";
+    initial.dataset.assistantRole = "assistant";
+    initial.dataset.assistantInitial = "";
+    const speaker = document.createElement("p");
+    speaker.className = "voice-assistant__speaker";
+    speaker.textContent = "도슨트";
+    const copy = document.createElement("p");
+    copy.className = "voice-assistant__copy";
+    copy.dataset.assistantTranscript = "";
+    copy.textContent = "궁금한 질문을 고르거나 직접 적어 주세요.";
+    initial.append(speaker, copy);
+    this.transcriptLog.insertBefore(initial, this.targets);
+    this.transcriptSpeaker = speaker;
+    this.transcript = copy;
+    this.targets.replaceChildren();
+    this.targets.hidden = true;
+    if (this.input) this.input.value = "";
+    if (this.resetButton) this.resetButton.disabled = true;
+    this.setState("idle", "대화를 지웠어요");
+    this.input?.focus();
   }
 
   claimAudio() {
@@ -837,7 +897,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
         this.setState("error", "글로 질문해 주세요");
         this.showAnswer("안내", "이 환경에서는 말로 묻기 어렵습니다. 아래 입력칸에 질문을 적어 주세요.");
       } else {
-        this.setState("error", "음성 안내를 시작하지 못했어요");
+        this.setState("error", "개인 연결을 확인해 주세요");
         this.showAnswer("안내", VOICE_OFFLINE_MESSAGE);
       }
     }
@@ -967,7 +1027,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     } catch (error) {
       if (error?.code === "cancelled") return;
       this.transport.reset();
-      this.setState("error", "지금은 글로 준비된 안내를 이용해 주세요");
+      this.setState("error", "개인 연결을 확인해 주세요");
       this.showAnswer("안내", VOICE_OFFLINE_MESSAGE);
     }
   }

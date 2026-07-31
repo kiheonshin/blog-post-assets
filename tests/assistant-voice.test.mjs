@@ -58,7 +58,7 @@ async function loadAssistant() {
     CustomEvent: CustomEventStub,
     HTMLElement: ElementStub,
     URL,
-    VOICE_OFFLINE_MESSAGE: "이 Mac에서 음성 안내를 켜고, 브라우저의 ‘이 기기 연결’ 요청을 허용한 뒤 다시 눌러 주세요.",
+    VOICE_OFFLINE_MESSAGE: "이 기기에서 개인 연결을 켜고, 브라우저의 기기 연결 요청을 허용한 뒤 다시 시도해 주세요. 연결되지 않아도 준비된 안내는 이용할 수 있습니다.",
     VoiceTransport: TransportStub,
     clearTimeout,
     console,
@@ -81,7 +81,7 @@ async function loadAssistant() {
   let source = await readFile(assistantPath, "utf8");
   source = source
     .replace(
-      'import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js?v=20260801a";',
+      'import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js?v=20260801b";',
       "const VoiceTransport = globalThis.VoiceTransport; const VOICE_OFFLINE_MESSAGE = globalThis.VOICE_OFFLINE_MESSAGE;",
     )
     .replace("export class KiheonVoiceAssistant", "class KiheonVoiceAssistant")
@@ -209,8 +209,9 @@ test("offline voice activation never asks for a microphone and gives the recover
   assert.equal(microphoneCalls, 0);
   assert.equal(
     answers.at(-1).text,
-    "이 Mac에서 음성 안내를 켜고, 브라우저의 ‘이 기기 연결’ 요청을 허용한 뒤 다시 눌러 주세요.",
+    "이 기기에서 개인 연결을 켜고, 브라우저의 기기 연결 요청을 허용한 뒤 다시 시도해 주세요. 연결되지 않아도 준비된 안내는 이용할 수 있습니다.",
   );
+  assert.doesNotMatch(answers.at(-1).text, /Mac|Windows|Android|iPhone/iu);
 });
 
 test("typed questions remain available without speech input", async () => {
@@ -260,10 +261,97 @@ test("conversation log keeps the question when the answer arrives", async () => 
   assistant.showAnswer("질문", "첫 질문");
   assistant.showAnswer("안내", "첫 답변");
   assert.equal(turns.length, 2);
-  assert.equal(turns[0].children[0].textContent, "질문");
+  assert.equal(turns[0].children[0].textContent, "나");
   assert.equal(turns[0].children[1].textContent, "첫 질문");
-  assert.equal(turns[1].children[0].textContent, "안내");
+  assert.equal(turns[0].dataset.assistantRole, "user");
+  assert.equal(turns[1].children[0].textContent, "도슨트");
   assert.equal(turns[1].children[1].textContent, "첫 답변");
+  assert.equal(turns[1].dataset.assistantRole, "assistant");
+});
+
+test("consecutive identical connection errors create only one docent message", async () => {
+  const { Assistant, context } = await loadAssistant();
+  const assistant = new Assistant();
+  const turns = [];
+  context.document.createElement = () => ({
+    children: [],
+    dataset: {},
+    append(...children) { this.children.push(...children); },
+    querySelector(selector) {
+      return selector === "[data-assistant-transcript]" ? this.children[1] : null;
+    },
+  });
+  assistant.targets = {
+    childElementCount: 0,
+    hidden: true,
+    replaceChildren() {},
+    append() {},
+  };
+  assistant.transcriptLog = {
+    scrollHeight: 200,
+    scrollTop: 0,
+    querySelector(selector) {
+      if (selector === "[data-assistant-initial]") return null;
+      return selector === ".voice-assistant__turn:last-of-type" ? turns.at(-1) : null;
+    },
+    insertBefore(turn) { turns.push(turn); },
+  };
+
+  assistant.showAnswer("안내", "같은 연결 안내");
+  assistant.showAnswer("안내", "같은 연결 안내");
+  assert.equal(turns.length, 1);
+});
+
+test("conversation reset clears every turn, related link, and transport state", async () => {
+  const { Assistant, context } = await loadAssistant();
+  const assistant = new Assistant();
+  const removed = [];
+  const inserted = [];
+  const made = [];
+  context.document.createElement = () => {
+    const node = {
+      children: [],
+      dataset: {},
+      append(...children) { this.children.push(...children); },
+    };
+    made.push(node);
+    return node;
+  };
+  assistant.stopVoice = ({ quiet }) => {
+    assert.equal(quiet, true);
+    removed.push("transport");
+  };
+  assistant.transcriptLog = {
+    querySelectorAll: () => [
+      { remove: () => removed.push("turn-1") },
+      { remove: () => removed.push("turn-2") },
+    ],
+    insertBefore: (node) => inserted.push(node),
+  };
+  assistant.targets = {
+    hidden: false,
+    replaceChildren: () => removed.push("links"),
+  };
+  assistant.input = { value: "지울 질문", focus: () => removed.push("focus") };
+  assistant.resetButton = { disabled: false };
+  assistant.setState = (state, message) => removed.push(`${state}:${message}`);
+
+  assistant.resetConversation();
+  assert.deepEqual(removed, [
+    "transport",
+    "turn-1",
+    "turn-2",
+    "links",
+    "idle:대화를 지웠어요",
+    "focus",
+  ]);
+  assert.equal(inserted.length, 1);
+  assert.equal(inserted[0].dataset.assistantRole, "assistant");
+  assert.equal(made[1].textContent, "도슨트");
+  assert.equal(made[2].textContent, "궁금한 질문을 고르거나 직접 적어 주세요.");
+  assert.equal(assistant.input.value, "");
+  assert.equal(assistant.targets.hidden, true);
+  assert.equal(assistant.resetButton.disabled, true);
 });
 
 test("series questions carry every allowed public entry and the docent answer contract", async () => {
@@ -718,6 +806,22 @@ test("prepared prompt clicks speak with the selected voice and speed and expose 
   assert.equal(assistant.stopSpeakingButton.hidden, true);
 });
 
+test("voice preview uses the selected voice and speed without adding a conversation turn", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  const spoken = [];
+  assistant.speak = (text) => spoken.push(text);
+  assistant.showAnswer = () => assert.fail("preview must not add a transcript turn");
+
+  assistant.handleClick({
+    target: {
+      closest(selector) { return selector === "[data-assistant-preview]" ? this : null; },
+    },
+  });
+
+  assert.deepEqual(spoken, ["이 목소리와 속도로 안내해 드릴게요."]);
+});
+
 test("content dialog traps Tab, closes from its backdrop, and returns focus", async () => {
   const { Assistant, context } = await loadAssistant();
   const assistant = new Assistant();
@@ -748,12 +852,16 @@ test("docent copy contains no connection implementation jargon", async () => {
   const copy = [
     assistant.seriesMarkup(),
     assistant.contentMarkup(),
-    "이 Mac에서 음성 안내를 켜고, 브라우저의 ‘이 기기 연결’ 요청을 허용한 뒤 다시 눌러 주세요.",
+    "이 기기에서 개인 연결을 켜고, 브라우저의 기기 연결 요청을 허용한 뒤 다시 시도해 주세요.",
   ].join("\n");
   assert.doesNotMatch(copy, /OAuth|API|WebSocket|로컬 브리지|provider|xAI|OpenAI/iu);
+  assert.doesNotMatch(copy, /Mac|Windows|Android|iPhone/iu);
   assert.match(copy, /목소리·속도/);
-  assert.match(copy, /연결과 개인정보/);
-  assert.match(copy, /직접 질문을 처음 보낼 때/);
+  assert.match(copy, />연결</);
+  assert.match(copy, />개인정보</);
+  assert.match(copy, /마이크 허용과 기기 연결 허용은 서로 다른 설정/);
+  assert.match(copy, /대화 지우기/);
+  assert.match(copy, /선택한 목소리 미리 듣기/);
   assert.match(assistant.contentMarkup(), /aria-modal="true"/);
   assert.match(copy, /<fieldset/);
   assert.match(copy, /type="radio"/);
@@ -815,6 +923,9 @@ test("every published docent surface installs one assistant in the required read
   assert.match(assistantCss, /@media\s*\(min-width:\s*64rem\)/);
   assert.match(assistantCss, /voice-assistant__radio-list[\s\S]*overflow-y:\s*auto/);
   assert.match(assistantCss, /voice-assistant__form[\s\S]*grid-template-columns:\s*auto minmax\(7rem, 1fr\) auto/);
+  assert.match(assistantCss, /voice-assistant__turn\[data-assistant-role="user"\][\s\S]*align-self:\s*flex-end/);
+  assert.match(assistantCss, /voice-assistant__disclosures[\s\S]*grid-template-columns:\s*repeat\(2/);
+  assert.match(assistantCss, /voice-assistant__targets\[hidden\][\s\S]*display:\s*none/);
   assert.doesNotMatch(assistantCss, /setting-fields select/);
   assert.doesNotMatch(assistantCss, /@media\s*\(max-width:\s*34rem\)/);
 });
