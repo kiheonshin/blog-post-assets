@@ -57,7 +57,7 @@ async function loadAssistant() {
     CustomEvent: CustomEventStub,
     HTMLElement: ElementStub,
     URL,
-    VOICE_OFFLINE_MESSAGE: "이 기기의 음성 안내를 먼저 켠 뒤 다시 눌러 주세요.",
+    VOICE_OFFLINE_MESSAGE: "이 Mac에서 음성 안내를 켜고, 브라우저의 ‘이 기기 연결’ 요청을 허용한 뒤 다시 눌러 주세요.",
     VoiceTransport: TransportStub,
     clearTimeout,
     console,
@@ -80,7 +80,7 @@ async function loadAssistant() {
   let source = await readFile(assistantPath, "utf8");
   source = source
     .replace(
-      'import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js";',
+      'import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js?v=20260731h";',
       "const VoiceTransport = globalThis.VoiceTransport; const VOICE_OFFLINE_MESSAGE = globalThis.VOICE_OFFLINE_MESSAGE;",
     )
     .replace("export class KiheonVoiceAssistant", "class KiheonVoiceAssistant")
@@ -142,6 +142,7 @@ test("transport uses the public-page-to-loopback request contract", async () => 
       mode: options.mode,
       credentials: options.credentials,
       cache: options.cache,
+      targetAddressSpace: options.targetAddressSpace,
     })),
     [
       {
@@ -150,6 +151,7 @@ test("transport uses the public-page-to-loopback request contract", async () => 
         mode: "cors",
         credentials: "omit",
         cache: "no-store",
+        targetAddressSpace: "loopback",
       },
       {
         url: "http://127.0.0.1:8787/v1/responses",
@@ -157,6 +159,7 @@ test("transport uses the public-page-to-loopback request contract", async () => 
         mode: "cors",
         credentials: "omit",
         cache: "no-store",
+        targetAddressSpace: "loopback",
       },
     ],
   );
@@ -202,7 +205,10 @@ test("offline voice activation never asks for a microphone and gives the recover
 
   await assistant.startVoice();
   assert.equal(microphoneCalls, 0);
-  assert.equal(answers.at(-1).text, "이 기기의 음성 안내를 먼저 켠 뒤 다시 눌러 주세요.");
+  assert.equal(
+    answers.at(-1).text,
+    "이 Mac에서 음성 안내를 켜고, 브라우저의 ‘이 기기 연결’ 요청을 허용한 뒤 다시 눌러 주세요.",
+  );
 });
 
 test("typed questions remain available without speech input", async () => {
@@ -537,11 +543,12 @@ test("docent copy contains no connection implementation jargon", async () => {
   const copy = [
     assistant.seriesMarkup(),
     assistant.contentMarkup(),
-    "이 기기의 음성 안내를 먼저 켠 뒤 다시 눌러 주세요.",
+    "이 Mac에서 음성 안내를 켜고, 브라우저의 ‘이 기기 연결’ 요청을 허용한 뒤 다시 눌러 주세요.",
   ].join("\n");
   assert.doesNotMatch(copy, /OAuth|API|WebSocket|로컬 브리지|provider|xAI|OpenAI/iu);
   assert.match(copy, /목소리·속도/);
   assert.match(copy, /연결과 개인정보/);
+  assert.match(copy, /직접 질문을 처음 보낼 때/);
   assert.match(assistant.contentMarkup(), /aria-modal="true"/);
 });
 

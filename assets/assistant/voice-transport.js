@@ -4,7 +4,7 @@ const RESPONSE_URL = `${LOOPBACK_ORIGIN}/v1/responses`;
 const REQUEST_TIMEOUT_MS = 45_000;
 
 export const VOICE_OFFLINE_MESSAGE =
-  "이 기기의 음성 안내를 먼저 켠 뒤 다시 눌러 주세요.";
+  "이 Mac에서 음성 안내를 켜고, 브라우저의 ‘이 기기 연결’ 요청을 허용한 뒤 다시 눌러 주세요.";
 
 function requestError(code, cause) {
   const error = new Error(code, cause ? { cause } : undefined);
@@ -44,6 +44,7 @@ export class VoiceTransport {
       return await this.fetchImpl(url, {
         ...options,
         mode: "cors",
+        targetAddressSpace: "loopback",
         credentials: "omit",
         cache: "no-store",
         referrerPolicy: "no-referrer",

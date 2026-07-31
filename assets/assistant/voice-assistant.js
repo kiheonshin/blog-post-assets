@@ -1,4 +1,4 @@
-import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js";
+import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js?v=20260731h";
 
 const DEFAULT_PROMPTS = {
   series: [
@@ -314,7 +314,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
       </details>
       <details class="voice-assistant__privacy">
         <summary>연결과 개인정보</summary>
-        <p>준비된 안내는 이 페이지에서 바로 들을 수 있습니다. 직접 질문을 보낼 때만 이 기기의 개인 안내와 연결하고, 말로 질문하기를 누른 뒤 허용한 경우에만 마이크를 엽니다. 질문 기록과 음성은 이 페이지에 저장하지 않습니다.</p>
+        <p>준비된 안내는 이 페이지에서 바로 들을 수 있습니다. 직접 질문을 처음 보낼 때 브라우저가 ‘이 기기 연결’을 요청할 수 있습니다. 허용하면 이 Mac의 개인 안내로 질문을 보내며, 말로 질문하기를 누른 뒤 허용한 경우에만 마이크를 엽니다. 질문 기록과 음성은 이 페이지에 저장하지 않습니다.</p>
       </details>`;
   }
 
