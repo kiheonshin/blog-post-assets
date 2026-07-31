@@ -760,25 +760,50 @@ test("docent copy contains no connection implementation jargon", async () => {
   assert.doesNotMatch(copy, /<select\b/i);
 });
 
-test("pilot pages install one assistant each in the required reading order", async () => {
-  const pages = {
-    series: await readFile(path.join(repoRoot, "series/aigc-creative-paradigm/index.html"), "utf8"),
-    post: await readFile(path.join(repoRoot, "series/aigc-creative-paradigm/posts/01-skill-and-effort/index.html"), "utf8"),
-    source: await readFile(path.join(repoRoot, "series/aigc-creative-paradigm/sources/research/index.html"), "utf8"),
-  };
+test("every published docent surface installs one assistant in the required reading order", async () => {
+  const pageSpecs = [
+    ["series", "series/aigc-creative-paradigm/index.html"],
+    ["post", "series/aigc-creative-paradigm/posts/01-skill-and-effort/index.html"],
+    ["post", "series/aigc-creative-paradigm/posts/02-workflow-design/index.html"],
+    ["post", "series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/index.html"],
+    ["source", "series/aigc-creative-paradigm/sources/research/index.html"],
+    ["source", "series/aigc-creative-paradigm/sources/slides/index.html"],
+    ["series", "series/autonomous-worlds/index.html"],
+    ["post", "series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/index.html"],
+    ["post", "series/autonomous-worlds/posts/02-more-than-a-mirror/index.html"],
+    ["post", "series/autonomous-worlds/posts/03-what-we-want-to-create/index.html"],
+    ["source", "series/autonomous-worlds/sources/talk/index.html"],
+    ["source", "series/autonomous-worlds/sources/script/index.html"],
+    ["source", "series/autonomous-worlds/sources/slides/index.html"],
+    ["series", "series/co-creation-culture/index.html"],
+    ["post", "series/co-creation-culture/posts/01-whose-creativity/index.html"],
+    ["post", "series/co-creation-culture/posts/02-at-the-boundary/index.html"],
+    ["post", "series/co-creation-culture/posts/03-when-records-become-stories/index.html"],
+    ["source", "series/co-creation-culture/sources/slides-2023-06/index.html"],
+    ["source", "series/co-creation-culture/sources/slides-2023-11/index.html"],
+  ];
+  const pages = await Promise.all(pageSpecs.map(async ([type, file]) => ({
+    type,
+    file,
+    html: await readFile(path.join(repoRoot, file), "utf8"),
+  })));
 
-  for (const html of Object.values(pages)) {
+  for (const { type, file, html } of pages) {
     assert.equal((html.match(/<kiheon-voice-assistant\b/g) ?? []).length, 1);
     assert.match(html, /assets\/assistant\/voice-assistant\.js/);
     assert.match(html, /assets\/assistant\/voice-assistant\.css/);
     assert.doesNotMatch(html, /assets\/voice-agent\.js/);
+    if (type === "series") {
+      assert.ok(html.indexOf("<series-nav") < html.indexOf("<kiheon-voice-assistant"), file);
+      assert.ok(html.indexOf("<kiheon-voice-assistant") < html.indexOf("<series-sources"), file);
+    } else if (type === "post") {
+      assert.ok(html.indexOf('<p class="lead">') < html.indexOf("<kiheon-voice-assistant"), file);
+      assert.ok(html.indexOf("<kiheon-voice-assistant") < html.indexOf("<series-nav"), file);
+    } else {
+      assert.ok(html.indexOf("</header>") < html.indexOf("<kiheon-voice-assistant"), file);
+      assert.ok(html.indexOf("<kiheon-voice-assistant") < html.indexOf('<div class="doc">'), file);
+    }
   }
-  assert.ok(pages.series.indexOf("<series-nav") < pages.series.indexOf("<kiheon-voice-assistant"));
-  assert.ok(pages.series.indexOf("<kiheon-voice-assistant") < pages.series.indexOf("<series-sources"));
-  assert.ok(pages.post.indexOf('<p class="lead">') < pages.post.indexOf("<kiheon-voice-assistant"));
-  assert.ok(pages.post.indexOf("<kiheon-voice-assistant") < pages.post.indexOf("<series-nav"));
-  assert.ok(pages.source.indexOf("</header>") < pages.source.indexOf("<kiheon-voice-assistant"));
-  assert.ok(pages.source.indexOf("<kiheon-voice-assistant") < pages.source.indexOf('<div class="doc">'));
 
   const assistantCss = await readFile(
     path.join(repoRoot, "assets", "assistant", "voice-assistant.css"),
@@ -794,27 +819,66 @@ test("pilot pages install one assistant each in the required reading order", asy
   assert.doesNotMatch(assistantCss, /@media\s*\(max-width:\s*34rem\)/);
 });
 
-test("every prepared content explanation carries inspectable source provenance", async () => {
-  const context = JSON.parse(await readFile(
-    path.join(repoRoot, "series/aigc-creative-paradigm/assistant/context.json"),
-    "utf8",
-  ));
-  const entries = new Map(context.entries.map((entry) => [entry.contentId, entry]));
-  for (const prompts of Object.values(context.docent.contentPrompts)) {
-    for (const prompt of prompts) {
-      assert.equal(prompt.kind, "source", `${prompt.id} must declare its source kind`);
-      assert.ok(prompt.provenance.length > 0, `${prompt.id} must include provenance`);
-      for (const source of prompt.provenance) {
-        const entry = entries.get(source.sourceId);
-        assert.ok(entry, `${prompt.id} cites unknown source ${source.sourceId}`);
-        assert.ok(
-          entry.outline.some((section) => section.sectionId === source.anchor),
-          `${prompt.id} cites unknown anchor ${source.sourceId}#${source.anchor}`,
-        );
+test("Newtype and private Co-Creation sources remain outside the docent", async () => {
+  const excluded = [
+    "series/newtype-ip-dialogue/index.html",
+    "series/newtype-ip-dialogue/posts/01-not-blocking-potential/index.html",
+    "series/newtype-ip-dialogue/posts/02-engine-as-ip/index.html",
+    "series/newtype-ip-dialogue/posts/03-already-have-the-eye/index.html",
+    "series/co-creation-culture/sources/screening/index.html",
+    "series/co-creation-culture/sources/dossier/index.html",
+    "series/co-creation-culture/sources/codex/index.html",
+    "series/co-creation-culture/sources/transcript/index.html",
+    "series/co-creation-culture/sources/chronicle/index.html",
+  ];
+  for (const file of excluded) {
+    const html = await readFile(path.join(repoRoot, file), "utf8");
+    assert.doesNotMatch(html, /<kiheon-voice-assistant\b/, file);
+    assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:js|css)/, file);
+  }
+  const manifest = await readFile(path.join(repoRoot, "assets/content-manifest.js"), "utf8");
+  const newtypeBlock = manifest.slice(
+    manifest.indexOf('slug: "newtype-ip-dialogue"'),
+    manifest.indexOf('slug: "autonomous-worlds"'),
+  );
+  assert.match(newtypeBlock, /status:\s*"planned"/);
+  assert.match(newtypeBlock, /pilotSurfaceIds:\s*\[\]/);
+});
+
+test("every prepared explanation in the three ready series has inspectable source provenance", async () => {
+  const seriesIds = ["aigc-creative-paradigm", "autonomous-worlds", "co-creation-culture"];
+  const contexts = [];
+  for (const seriesId of seriesIds) {
+    const context = JSON.parse(await readFile(
+      path.join(repoRoot, `series/${seriesId}/assistant/context.json`),
+      "utf8",
+    ));
+    contexts.push(context);
+    const entries = new Map(context.entries.map((entry) => [entry.contentId, entry]));
+    assert.deepEqual(
+      new Set(Object.keys(context.docent.contentPrompts)),
+      new Set(entries.keys()),
+      `${seriesId} must prepare prompts for every public content entry`,
+    );
+    for (const prompts of Object.values(context.docent.contentPrompts)) {
+      assert.ok(prompts.length > 0, `${seriesId} contains an empty prepared prompt set`);
+      for (const prompt of prompts) {
+        assert.equal(prompt.kind, "source", `${prompt.id} must declare its source kind`);
+        assert.ok(prompt.provenance.length > 0, `${prompt.id} must include provenance`);
+        for (const source of prompt.provenance) {
+          const entry = entries.get(source.sourceId);
+          assert.ok(entry, `${prompt.id} cites unknown source ${source.sourceId}`);
+          const html = await readFile(path.join(repoRoot, entry.url, "index.html"), "utf8");
+          assert.ok(
+            html.includes(`id="${source.anchor}"`) || html.includes(`id='${source.anchor}'`),
+            `${prompt.id} cites unknown anchor ${source.sourceId}#${source.anchor}`,
+          );
+        }
       }
     }
   }
 
+  const context = contexts[0];
   const researchFlow = context.docent.contentPrompts.research
     .find((prompt) => prompt.id === "research-flow");
   const researchAnchors = new Set(researchFlow.provenance.map((source) => source.anchor));

@@ -445,7 +445,9 @@ button.frame{padding:0;cursor:zoom-in}
 .vid3{display:grid;gap:.5rem}
 @media(min-width:34rem){.vid3{grid-template-columns:repeat(3,minmax(0,1fr))}}
 </style>
+<link rel="stylesheet" href="../../../../assets/assistant/voice-assistant.css?v=20260801a">
 <script type="module" src="../../../../assets/series-nav.js?v=20260731d"></script>
+<script type="module" src="../../../../assets/assistant/voice-assistant.js?v=20260801a"></script>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -465,6 +467,12 @@ button.frame{padding:0;cursor:zoom-in}
     <p class="byline">신기헌 · <a href="mailto:heavenlydesigner@gmail.com">heavenlydesigner@gmail.com</a></p>
     <p class="series">편집자 노트 : 이 글은 2024년 7월 발표 직후에 내가 정리해 발행한 원문이다. 2년이 지나 같은 발표를 다시 정리한 글 세 편을 따로 썼고, 그 사이의 거리를 그대로 볼 수 있도록 이 원문은 고치지 않고 둔다. 문장도 오탈자도 발행 당시 그대로다. 같은 글이 <a href="https://medium.com/heavenlydesigner-kiheon-shin/%EC%9E%90%EC%9C%A8-%EC%84%B8%EA%B3%84%EC%9D%98-%EB%93%B1%EC%9E%A5%EC%9D%B8%EB%AC%BC%EA%B3%BC-%EC%83%88%EB%A1%9C%EC%9A%B4-%EA%B8%B0%EB%8A%A5-2024-07-07-bifan-%EC%B6%9C%EC%8B%9C-2a174e5a7ab8" target="_blank" rel="noopener">Medium</a>에도 발행돼 있다.</p>
   </header>
+  <kiheon-voice-assistant
+    data-scope="content"
+    data-series="autonomous-worlds"
+    data-content-type="source"
+    data-content-id="talk"
+    data-context="../../assistant/context.json"></kiheon-voice-assistant>
   <div class="doc">
     <nav class="toc" aria-label="목차">
       <h2>목차</h2>

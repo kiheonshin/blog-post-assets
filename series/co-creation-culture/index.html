@@ -292,7 +292,9 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
 .idx > .lead{margin:0 0 2rem;max-width:var(--measure)}
 </style>
 <link rel="stylesheet" href="../../assets/site.css?v=20260731g">
+<link rel="stylesheet" href="../../assets/assistant/voice-assistant.css?v=20260801a">
 <script type="module" src="../../assets/series-nav.js?v=20260731d"></script>
+<script type="module" src="../../assets/assistant/voice-assistant.js?v=20260801a"></script>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -308,6 +310,13 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
     <div class="cta">
       <series-nav data-series="co-creation-culture"></series-nav>
     </div>
+    <kiheon-voice-assistant
+      class="idx-rail"
+      data-scope="series"
+      data-series="co-creation-culture"
+      data-content-type="series"
+      data-content-id="co-creation-culture"
+      data-context="assistant/context.json"></kiheon-voice-assistant>
     <section class="struct">
       <series-sources data-series="co-creation-culture"></series-sources>
     </section>
@@ -319,11 +328,6 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
       <p>이 글은 신기헌의 디지털 트윈 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.</p>
       <p class="en">Written and edited 100% by an AI agent from the Kiheon Shin Digital Twin project.</p>
     </div>
-    <aside class="idx-rail" aria-label="가상의 신기헌 미리보기">
-      <p class="rail-kicker">미리보기 · 가상의 신기헌</p>
-      <label class="feat"><span class="feat__main"><span class="feat__t">도움말 켜기</span><span class="feat__d">읽는 대목을 목소리로 짚어 준다.</span></span><span class="sw"><input type="checkbox" disabled><span class="sw__track"><span class="sw__k"></span></span></span></label><label class="feat"><span class="feat__main"><span class="feat__t">실시간 대화</span><span class="feat__d">궁금한 것을 바로 묻는다.</span></span><span class="sw"><input type="checkbox" disabled><span class="sw__track"><span class="sw__k"></span></span></span></label>
-      <p class="rail-note">아직 준비 중인 기능입니다.</p>
-    </aside>
   </div>
 </div></main>
 <footer class="site-footer"><div class="site-footer__in">

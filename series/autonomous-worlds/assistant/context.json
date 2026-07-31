@@ -1,0 +1,964 @@
+{
+  "schemaVersion": 1,
+  "series": {
+    "id": "autonomous-worlds",
+    "title": "자율 세계, 스스로 규칙을 만드는 세계의 등장",
+    "synopsis": "2024년 발표 기록과 원고, 130장의 발표 자료, 2년 뒤 다시 쓴 세 편의 글을 통해 게임 엔진에서 AI 에이전트와 자율 세계로 이어지는 변화와 그 안에서 달라지는 창작자의 자리를 살핀다."
+  },
+  "docent": {
+    "intro": "세 편의 글과 세 바탕 자료를 오가며 자율 세계가 무엇인지, 현실과 가상의 관계가 어떻게 바뀌는지, 창작자의 자리는 어디로 이동하는지 안내합니다.",
+    "quickPrompts": [
+      {
+        "id": "where-to-start",
+        "label": "어디서부터 읽을까요?",
+        "answer": "개념의 흐름을 따라가려면 1편에서 게임 엔진과 AI 에이전트를 만나고, 2편에서 가상 세계가 현실의 보조 수단을 벗어나는 장면을 본 뒤, 3편에서 창작자의 정체성으로 이동하세요. 2024년 당시의 논리를 그대로 확인하려면 발표 기록이나 원고를, 사례의 시각적 흐름을 보고 싶다면 발표 자료를 먼저 여는 길도 좋습니다.",
+        "targets": [
+          {
+            "label": "1편부터 읽기",
+            "url": "series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/"
+          },
+          {
+            "label": "발표 기록 보기",
+            "url": "series/autonomous-worlds/sources/talk/"
+          },
+          {
+            "label": "발표 자료 보기",
+            "url": "series/autonomous-worlds/sources/slides/"
+          }
+        ],
+        "provenance": [
+          {
+            "sourceId": "01-engine-city-to-autonomous-world",
+            "anchor": "s1"
+          },
+          {
+            "sourceId": "talk",
+            "anchor": "c1"
+          },
+          {
+            "sourceId": "slides",
+            "anchor": "ch1"
+          }
+        ]
+      },
+      {
+        "id": "three-posts",
+        "label": "세 편은 어떻게 이어지나요?",
+        "answer": "1편은 게임 엔진의 도시에서 자율적으로 살아가는 존재와 세계로 이동합니다. 2편은 가상 세계가 현실을 비추는 거울을 넘어 경제와 일, 경험이 벌어지는 장소가 되는 변화를 다룹니다. 3편은 그 환경에서 창작자가 무엇을 만들고 어떤 존재이고 싶은지 묻습니다. 세계의 작동 방식에서 위상의 변화로, 다시 창작자의 선택으로 이어지는 구성입니다.",
+        "targets": [
+          {
+            "label": "1편 · 세계의 작동",
+            "url": "series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/"
+          },
+          {
+            "label": "2편 · 가상 세계의 위상",
+            "url": "series/autonomous-worlds/posts/02-more-than-a-mirror/"
+          },
+          {
+            "label": "3편 · 창작자의 자리",
+            "url": "series/autonomous-worlds/posts/03-what-we-want-to-create/"
+          }
+        ],
+        "provenance": [
+          {
+            "sourceId": "01-engine-city-to-autonomous-world",
+            "anchor": "s7"
+          },
+          {
+            "sourceId": "02-more-than-a-mirror",
+            "anchor": "s7"
+          },
+          {
+            "sourceId": "03-what-we-want-to-create",
+            "anchor": "s8"
+          }
+        ]
+      },
+      {
+        "id": "source-relationship",
+        "label": "기록·원고·슬라이드는 어떻게 다른가요?",
+        "answer": "발표 기록은 무대가 끝난 직후 공개한 1차 발행본이고, 발표 원고는 무대 전에 써 둔 문장과 발행본의 차이를 절마다 보여줍니다. 발표 자료는 같은 논리를 130장의 장표와 영상 사례로 전개합니다. 세 자료를 함께 보면 말하기 전의 설계, 실제 공개된 서사, 시각적 사례의 역할을 나란히 비교할 수 있습니다.",
+        "targets": [
+          {
+            "label": "발표 기록",
+            "url": "series/autonomous-worlds/sources/talk/"
+          },
+          {
+            "label": "발표 원고",
+            "url": "series/autonomous-worlds/sources/script/"
+          },
+          {
+            "label": "발표 자료",
+            "url": "series/autonomous-worlds/sources/slides/"
+          }
+        ],
+        "provenance": [
+          {
+            "sourceId": "talk",
+            "anchor": "c1"
+          },
+          {
+            "sourceId": "script",
+            "anchor": "c1"
+          },
+          {
+            "sourceId": "slides",
+            "anchor": "ch1"
+          }
+        ]
+      }
+    ],
+    "contentPrompts": {
+      "01-engine-city-to-autonomous-world": [
+        {
+          "id": "01-engine-city-to-autonomous-world-flow",
+          "label": "이 콘텐츠의 흐름을 알려주세요",
+          "answer": "게임 엔진으로 만든 도시에서 출발해 AI 캐릭터, 자율적으로 살림을 꾸리는 존재, 스스로 규칙과 역사를 축적하는 자율 세계의 개념으로 이동한다. 주요 대목은 무대에 서기 전에 들은 것 → 살아 있는 도시 → 대본 없는 배우 → 자율 세계라는 이름 순서로 살펴볼 수 있습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-engine-city-to-autonomous-world",
+              "anchor": "s1"
+            },
+            {
+              "sourceId": "01-engine-city-to-autonomous-world",
+              "anchor": "s3"
+            },
+            {
+              "sourceId": "01-engine-city-to-autonomous-world",
+              "anchor": "s5"
+            },
+            {
+              "sourceId": "01-engine-city-to-autonomous-world",
+              "anchor": "s7"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/#s1"
+            }
+          ]
+        },
+        {
+          "id": "01-engine-city-to-autonomous-world-insight",
+          "label": "핵심 인사이트는 무엇인가요?",
+          "answer": "AI 캐릭터가 대본을 수행하는 단역을 넘어 상태와 기억에 따라 행동할 때 세계는 배경이 아니라 살아 있는 환경이 된다. 자율 세계는 완성된 콘텐츠라기보다 규칙과 참여자의 행동이 계속 역사를 만드는 열린 구조에 가깝다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-engine-city-to-autonomous-world",
+              "anchor": "s5"
+            },
+            {
+              "sourceId": "01-engine-city-to-autonomous-world",
+              "anchor": "s7"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/#s5"
+            }
+          ]
+        }
+      ],
+      "02-more-than-a-mirror": [
+        {
+          "id": "02-more-than-a-mirror-flow",
+          "label": "이 콘텐츠의 흐름을 알려주세요",
+          "answer": "게임 속 상품이 현실로 오고 지구의 디지털 트윈이 에이전트의 일터가 되는 사례를 따라가며, 가상 세계가 현실의 보조 수단에서 독립된 경험과 경제의 장소로 이동하는 과정을 살핀다. 주요 대목은 무대 위의 반전 하나 → 게임 속에서 산 물건이 집으로 온다면 → 디지털 트윈, 에이전트의 일터 → 오아시스 앞에서 바뀐 질문 순서로 살펴볼 수 있습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-more-than-a-mirror",
+              "anchor": "s1"
+            },
+            {
+              "sourceId": "02-more-than-a-mirror",
+              "anchor": "s2"
+            },
+            {
+              "sourceId": "02-more-than-a-mirror",
+              "anchor": "s4"
+            },
+            {
+              "sourceId": "02-more-than-a-mirror",
+              "anchor": "s7"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/autonomous-worlds/posts/02-more-than-a-mirror/#s1"
+            }
+          ]
+        },
+        {
+          "id": "02-more-than-a-mirror-insight",
+          "label": "핵심 인사이트는 무엇인가요?",
+          "answer": "가상과 현실이 상품과 행동을 주고받기 시작하면 가상 세계는 현실을 설명하는 화면이 아니라 자체적인 생활 세계가 된다. 디지털 트윈과 에이전트가 결합하면 복제된 세계는 관찰용 모형을 넘어 작업과 판단이 일어나는 장소가 된다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-more-than-a-mirror",
+              "anchor": "s2"
+            },
+            {
+              "sourceId": "02-more-than-a-mirror",
+              "anchor": "s4"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/autonomous-worlds/posts/02-more-than-a-mirror/#s2"
+            }
+          ]
+        }
+      ],
+      "03-what-we-want-to-create": [
+        {
+          "id": "03-what-we-want-to-create-flow",
+          "label": "이 콘텐츠의 흐름을 알려주세요",
+          "answer": "기억과 현실의 모호한 경계에서 출발해 디지털의 지속성, 포스트 휴먼과의 공존, 세계를 만드는 엔진과 창작 문화의 계보를 거쳐 창작자의 정체성을 묻는다. 주요 대목은 기억과 현실의 모호한 경계 → 다섯 개의 대립쌍, 그리고 뒤집힌 질문 → 세 번째 키워드, 세계를 만드는 엔진 → 문화라는 말에 건 것 순서로 살펴볼 수 있습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-what-we-want-to-create",
+              "anchor": "s1"
+            },
+            {
+              "sourceId": "03-what-we-want-to-create",
+              "anchor": "s3"
+            },
+            {
+              "sourceId": "03-what-we-want-to-create",
+              "anchor": "s6"
+            },
+            {
+              "sourceId": "03-what-we-want-to-create",
+              "anchor": "s8"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/autonomous-worlds/posts/03-what-we-want-to-create/#s1"
+            }
+          ]
+        },
+        {
+          "id": "03-what-we-want-to-create-insight",
+          "label": "핵심 인사이트는 무엇인가요?",
+          "answer": "생성 기술이 강해질수록 중요한 것은 무엇을 만들 수 있는가보다 어떤 세계와 관계를 선택해 지속시킬 것인가다. 창작 문화라는 말은 개인의 결과물보다 연결과 상호작용, 공유와 확산을 만드는 공동의 조건을 가리킨다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-what-we-want-to-create",
+              "anchor": "s3"
+            },
+            {
+              "sourceId": "03-what-we-want-to-create",
+              "anchor": "s8"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/autonomous-worlds/posts/03-what-we-want-to-create/#s3"
+            }
+          ]
+        }
+      ],
+      "talk": [
+        {
+          "id": "talk-flow",
+          "label": "이 콘텐츠의 흐름을 알려주세요",
+          "answer": "2024년 발표 직후 공개한 1차 기록으로, 가상 세계의 발전과 지능을 갖춘 존재, 현실과의 연결, 생성 AI 시대의 창작자와 문화까지 발표의 일곱 장을 보존한다. 주요 대목은 새로운 기술의 등장과 디지털 가상 세계의 발전 → 현실 세계의 재현, 가상 세계와의 연결 → 생성 AI 시대의 창작자로서의 정체성 변화 → 발표를 마무리하며 순서로 살펴볼 수 있습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "talk",
+              "anchor": "c1"
+            },
+            {
+              "sourceId": "talk",
+              "anchor": "c3"
+            },
+            {
+              "sourceId": "talk",
+              "anchor": "c5"
+            },
+            {
+              "sourceId": "talk",
+              "anchor": "c7"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/autonomous-worlds/sources/talk/#c1"
+            }
+          ]
+        },
+        {
+          "id": "talk-insight",
+          "label": "핵심 인사이트는 무엇인가요?",
+          "answer": "자율 세계는 지능을 갖춘 존재들이 세계 안에서 관계를 맺고 행동하면서 기존 가상 세계의 문법을 바꾼다. 발표의 결론은 도구의 성능보다 연결과 공명을 통해 새로운 창작 문화를 함께 만드는 데 놓인다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "talk",
+              "anchor": "c2"
+            },
+            {
+              "sourceId": "talk",
+              "anchor": "c7"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/autonomous-worlds/sources/talk/#c2"
+            }
+          ]
+        }
+      ],
+      "script": [
+        {
+          "id": "script-flow",
+          "label": "이 콘텐츠의 흐름을 알려주세요",
+          "answer": "무대에 서기 전에 작성한 발표 원고로, 일곱 장의 논리와 문장을 보존하고 발행된 발표 기록과 달라진 지점을 비교할 수 있게 한다. 주요 대목은 새로운 기술의 등장과 디지털 가상 세계의 발전 → 현실 세계의 재현, 가상 세계와의 연결 → 생성 AI 시대의 창작자로서의 정체성 변화 → 발표를 마무리하며 순서로 살펴볼 수 있습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "script",
+              "anchor": "c1"
+            },
+            {
+              "sourceId": "script",
+              "anchor": "c3"
+            },
+            {
+              "sourceId": "script",
+              "anchor": "c5"
+            },
+            {
+              "sourceId": "script",
+              "anchor": "c7"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/autonomous-worlds/sources/script/#c1"
+            }
+          ]
+        },
+        {
+          "id": "script-insight",
+          "label": "핵심 인사이트는 무엇인가요?",
+          "answer": "원고는 가상 세계의 기술적 발전을 지능을 가진 존재와 현실 연결의 문제로 단계적으로 확장한다. 생성 AI 시대의 창작 환경을 개인의 생산성보다 문화와 관계의 변화로 읽는 관점이 원고 전체를 관통한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "script",
+              "anchor": "c1"
+            },
+            {
+              "sourceId": "script",
+              "anchor": "c6"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/autonomous-worlds/sources/script/#c1"
+            }
+          ]
+        }
+      ],
+      "slides": [
+        {
+          "id": "slides-flow",
+          "label": "이 콘텐츠의 흐름을 알려주세요",
+          "answer": "130장의 슬라이드와 36편의 영상으로 게임 엔진, AI 캐릭터, 디지털 트윈, 자율 세계, 생성 AI 시대의 창작 환경을 시각적 사례와 함께 전개한 발표 자료다. 주요 대목은 새로운 기술의 등장과 디지털 가상 세계의 발전 → 현실 세계의 재현, 가상 세계와의 연결 → 생성 AI 시대의 창작자로서의 정체성 변화 → 발표를 마무리하며 순서로 살펴볼 수 있습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch1"
+            },
+            {
+              "sourceId": "slides",
+              "anchor": "ch3"
+            },
+            {
+              "sourceId": "slides",
+              "anchor": "ch5"
+            },
+            {
+              "sourceId": "slides",
+              "anchor": "ch7"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/autonomous-worlds/sources/slides/#ch1"
+            }
+          ]
+        },
+        {
+          "id": "slides-insight",
+          "label": "핵심 인사이트는 무엇인가요?",
+          "answer": "게임 엔진과 AI 에이전트의 결합은 가상 세계를 정해진 대본의 공간에서 자율적 존재가 살아가는 시뮬레이션으로 바꾼다. 머시니마와 MOD에서 Showrunner까지 이어지는 사례는 새로운 도구가 새로운 창작 문화의 계보 위에서 등장함을 보여준다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch2"
+            },
+            {
+              "sourceId": "slides",
+              "anchor": "ch6"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/autonomous-worlds/sources/slides/#ch2"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "entries": [
+    {
+      "contentId": "01-engine-city-to-autonomous-world",
+      "type": "post",
+      "url": "series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/",
+      "title": "게임 엔진의 도시에서 자율 세계까지",
+      "synopsis": "게임 엔진으로 만든 도시에서 출발해 AI 캐릭터, 자율적으로 살림을 꾸리는 존재, 스스로 규칙과 역사를 축적하는 자율 세계의 개념으로 이동한다.",
+      "contentHash": "sha256:4ddbfd4b640958692b6056337504af85e5a9f4667558c728c182fa0c4f00ccb8",
+      "keyInsights": [
+        {
+          "text": "AI 캐릭터가 대본을 수행하는 단역을 넘어 상태와 기억에 따라 행동할 때 세계는 배경이 아니라 살아 있는 환경이 된다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-engine-city-to-autonomous-world",
+              "anchor": "s5"
+            }
+          ]
+        },
+        {
+          "text": "자율 세계는 완성된 콘텐츠라기보다 규칙과 참여자의 행동이 계속 역사를 만드는 열린 구조에 가깝다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-engine-city-to-autonomous-world",
+              "anchor": "s7"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "s1",
+          "title": "무대에 서기 전에 들은 것",
+          "summary": "발표 직전의 경험에서 세계를 바라보는 질문을 꺼낸다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-engine-city-to-autonomous-world",
+              "anchor": "s1"
+            }
+          ]
+        },
+        {
+          "sectionId": "s3",
+          "title": "살아 있는 도시",
+          "summary": "게임 엔진으로 구축된 도시가 단순 배경을 넘어 작동하는 시스템이 되는 장면을 본다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-engine-city-to-autonomous-world",
+              "anchor": "s3"
+            }
+          ]
+        },
+        {
+          "sectionId": "s5",
+          "title": "대본 없는 배우",
+          "summary": "AI 캐릭터가 미리 정한 대사 밖에서 행동하는 변화로 이동한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-engine-city-to-autonomous-world",
+              "anchor": "s5"
+            }
+          ]
+        },
+        {
+          "sectionId": "s7",
+          "title": "자율 세계라는 이름",
+          "summary": "규칙과 참여가 스스로 역사를 만드는 세계를 자율 세계로 정리한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-engine-city-to-autonomous-world",
+              "anchor": "s7"
+            }
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "contentId": "02-more-than-a-mirror",
+      "type": "post",
+      "url": "series/autonomous-worlds/posts/02-more-than-a-mirror/",
+      "title": "가상 세계는 더 이상 현실의 보조 수단이 아니다",
+      "synopsis": "게임 속 상품이 현실로 오고 지구의 디지털 트윈이 에이전트의 일터가 되는 사례를 따라가며, 가상 세계가 현실의 보조 수단에서 독립된 경험과 경제의 장소로 이동하는 과정을 살핀다.",
+      "contentHash": "sha256:7a02e3f6521c0b1dc7c812d677dcf0830da5df432c96b996ee48c7723322a8cd",
+      "keyInsights": [
+        {
+          "text": "가상과 현실이 상품과 행동을 주고받기 시작하면 가상 세계는 현실을 설명하는 화면이 아니라 자체적인 생활 세계가 된다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-more-than-a-mirror",
+              "anchor": "s2"
+            }
+          ]
+        },
+        {
+          "text": "디지털 트윈과 에이전트가 결합하면 복제된 세계는 관찰용 모형을 넘어 작업과 판단이 일어나는 장소가 된다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-more-than-a-mirror",
+              "anchor": "s4"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "s1",
+          "title": "무대 위의 반전 하나",
+          "summary": "발표 중 예상과 달라진 장면을 통해 현실과 가상의 관계를 다시 묻는다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-more-than-a-mirror",
+              "anchor": "s1"
+            }
+          ]
+        },
+        {
+          "sectionId": "s2",
+          "title": "게임 속에서 산 물건이 집으로 온다면",
+          "summary": "가상 세계의 선택이 현실의 소유와 경험으로 이어지는 경계를 본다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-more-than-a-mirror",
+              "anchor": "s2"
+            }
+          ]
+        },
+        {
+          "sectionId": "s4",
+          "title": "디지털 트윈, 에이전트의 일터",
+          "summary": "복제된 현실이 AI 에이전트가 행동하고 학습하는 환경이 되는 변화를 살핀다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-more-than-a-mirror",
+              "anchor": "s4"
+            }
+          ]
+        },
+        {
+          "sectionId": "s7",
+          "title": "오아시스 앞에서 바뀐 질문",
+          "summary": "가상 세계를 현실보다 열등한 대체물로 보는 질문 자체를 뒤집는다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-more-than-a-mirror",
+              "anchor": "s7"
+            }
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "contentId": "03-what-we-want-to-create",
+      "type": "post",
+      "url": "series/autonomous-worlds/posts/03-what-we-want-to-create/",
+      "title": "무엇을 창조하는 존재이고 싶은가",
+      "synopsis": "기억과 현실의 모호한 경계에서 출발해 디지털의 지속성, 포스트 휴먼과의 공존, 세계를 만드는 엔진과 창작 문화의 계보를 거쳐 창작자의 정체성을 묻는다.",
+      "contentHash": "sha256:1f122cc2b7ce1b8dfe4e1ae1a32dd31b5e750d8693e16df6efb8c7c8a91a82af",
+      "keyInsights": [
+        {
+          "text": "생성 기술이 강해질수록 중요한 것은 무엇을 만들 수 있는가보다 어떤 세계와 관계를 선택해 지속시킬 것인가다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-what-we-want-to-create",
+              "anchor": "s3"
+            }
+          ]
+        },
+        {
+          "text": "창작 문화라는 말은 개인의 결과물보다 연결과 상호작용, 공유와 확산을 만드는 공동의 조건을 가리킨다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-what-we-want-to-create",
+              "anchor": "s8"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "s1",
+          "title": "기억과 현실의 모호한 경계",
+          "summary": "기록과 기억이 현실의 기준을 어떻게 흔드는지에서 질문을 시작한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-what-we-want-to-create",
+              "anchor": "s1"
+            }
+          ]
+        },
+        {
+          "sectionId": "s3",
+          "title": "다섯 개의 대립쌍, 그리고 뒤집힌 질문",
+          "summary": "기술과 인간을 대립시키던 질문을 창작자의 선택에 관한 질문으로 바꾼다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-what-we-want-to-create",
+              "anchor": "s3"
+            }
+          ]
+        },
+        {
+          "sectionId": "s6",
+          "title": "세 번째 키워드, 세계를 만드는 엔진",
+          "summary": "개별 결과물을 넘어 규칙과 가능성을 만드는 엔진에 주목한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-what-we-want-to-create",
+              "anchor": "s6"
+            }
+          ]
+        },
+        {
+          "sectionId": "s8",
+          "title": "문화라는 말에 건 것",
+          "summary": "연결되고 함께 성장하는 창작 문화를 결론으로 놓는다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-what-we-want-to-create",
+              "anchor": "s8"
+            }
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "contentId": "talk",
+      "type": "source",
+      "url": "series/autonomous-worlds/sources/talk/",
+      "title": "자율 세계의 등장과 새로운 창작 환경",
+      "synopsis": "2024년 발표 직후 공개한 1차 기록으로, 가상 세계의 발전과 지능을 갖춘 존재, 현실과의 연결, 생성 AI 시대의 창작자와 문화까지 발표의 일곱 장을 보존한다.",
+      "contentHash": "sha256:4b56003921005fc16e666866bd51f48acda43b921f482d600464f10e77743a02",
+      "keyInsights": [
+        {
+          "text": "자율 세계는 지능을 갖춘 존재들이 세계 안에서 관계를 맺고 행동하면서 기존 가상 세계의 문법을 바꾼다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "talk",
+              "anchor": "c2"
+            }
+          ]
+        },
+        {
+          "text": "발표의 결론은 도구의 성능보다 연결과 공명을 통해 새로운 창작 문화를 함께 만드는 데 놓인다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "talk",
+              "anchor": "c7"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "c1",
+          "title": "새로운 기술의 등장과 디지털 가상 세계의 발전",
+          "summary": "게임 엔진과 디지털 가상 세계가 발전해 온 흐름을 정리한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "talk",
+              "anchor": "c1"
+            }
+          ]
+        },
+        {
+          "sectionId": "c3",
+          "title": "현실 세계의 재현, 가상 세계와의 연결",
+          "summary": "디지털 트윈과 현실·가상의 상호작용을 살핀다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "talk",
+              "anchor": "c3"
+            }
+          ]
+        },
+        {
+          "sectionId": "c5",
+          "title": "생성 AI 시대의 창작자로서의 정체성 변화",
+          "summary": "생성 기술 앞에서 창작자가 맡는 역할과 정체성의 변화를 묻는다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "talk",
+              "anchor": "c5"
+            }
+          ]
+        },
+        {
+          "sectionId": "c7",
+          "title": "발표를 마무리하며",
+          "summary": "개인의 결과물을 넘어 연결과 공명의 창작 문화를 제안한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "talk",
+              "anchor": "c7"
+            }
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "contentId": "script",
+      "type": "source",
+      "url": "series/autonomous-worlds/sources/script/",
+      "title": "자율 세계의 등장과 새로운 창작 환경",
+      "synopsis": "무대에 서기 전에 작성한 발표 원고로, 일곱 장의 논리와 문장을 보존하고 발행된 발표 기록과 달라진 지점을 비교할 수 있게 한다.",
+      "contentHash": "sha256:0341dab4863c27d0e2606743848cefc82562c712a56e1636002144f8279c0c3d",
+      "keyInsights": [
+        {
+          "text": "원고는 가상 세계의 기술적 발전을 지능을 가진 존재와 현실 연결의 문제로 단계적으로 확장한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "script",
+              "anchor": "c1"
+            }
+          ]
+        },
+        {
+          "text": "생성 AI 시대의 창작 환경을 개인의 생산성보다 문화와 관계의 변화로 읽는 관점이 원고 전체를 관통한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "script",
+              "anchor": "c6"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "c1",
+          "title": "새로운 기술의 등장과 디지털 가상 세계의 발전",
+          "summary": "발표의 출발점과 가상 세계의 기술적 계보를 확인한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "script",
+              "anchor": "c1"
+            }
+          ]
+        },
+        {
+          "sectionId": "c3",
+          "title": "현실 세계의 재현, 가상 세계와의 연결",
+          "summary": "현실 복제와 연결이 가상 세계의 역할을 어떻게 넓히는지 설명한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "script",
+              "anchor": "c3"
+            }
+          ]
+        },
+        {
+          "sectionId": "c5",
+          "title": "생성 AI 시대의 창작자로서의 정체성 변화",
+          "summary": "창작자의 역할이 제작에서 선택과 설계로 이동하는 변화를 다룬다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "script",
+              "anchor": "c5"
+            }
+          ]
+        },
+        {
+          "sectionId": "c7",
+          "title": "발표를 마무리하며",
+          "summary": "발표가 지향하는 공동의 창작 문화를 정리한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "script",
+              "anchor": "c7"
+            }
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "contentId": "slides",
+      "type": "source",
+      "url": "series/autonomous-worlds/sources/slides/",
+      "title": "자율 세계의 등장과 새로운 창작 환경",
+      "synopsis": "130장의 슬라이드와 36편의 영상으로 게임 엔진, AI 캐릭터, 디지털 트윈, 자율 세계, 생성 AI 시대의 창작 환경을 시각적 사례와 함께 전개한 발표 자료다.",
+      "contentHash": "sha256:ccc7540fdab1896d328a51afea46fff0f3b15e141e82005ba3c37b78fba3ae8a",
+      "keyInsights": [
+        {
+          "text": "게임 엔진과 AI 에이전트의 결합은 가상 세계를 정해진 대본의 공간에서 자율적 존재가 살아가는 시뮬레이션으로 바꾼다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch2"
+            }
+          ]
+        },
+        {
+          "text": "머시니마와 MOD에서 Showrunner까지 이어지는 사례는 새로운 도구가 새로운 창작 문화의 계보 위에서 등장함을 보여준다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch6"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "ch1",
+          "title": "새로운 기술의 등장과 디지털 가상 세계의 발전",
+          "summary": "가상 세계와 게임 엔진이 발전해 온 출발점을 장표로 본다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch1"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch3",
+          "title": "현실 세계의 재현, 가상 세계와의 연결",
+          "summary": "디지털 트윈과 현실 연결 사례를 따라간다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch3"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch5",
+          "title": "생성 AI 시대의 창작자로서의 정체성 변화",
+          "summary": "창작자의 질문이 제작 능력에서 선택과 정체성으로 옮겨가는 사례를 본다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch5"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch7",
+          "title": "발표를 마무리하며",
+          "summary": "연결과 공명을 통한 창작 문화라는 결론에 닿는다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch7"
+            }
+          ]
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "allowedTargets": [
+    {
+      "contentType": "series",
+      "contentId": "autonomous-worlds",
+      "url": "series/autonomous-worlds/"
+    },
+    {
+      "contentType": "post",
+      "contentId": "01-engine-city-to-autonomous-world",
+      "url": "series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/"
+    },
+    {
+      "contentType": "post",
+      "contentId": "02-more-than-a-mirror",
+      "url": "series/autonomous-worlds/posts/02-more-than-a-mirror/"
+    },
+    {
+      "contentType": "post",
+      "contentId": "03-what-we-want-to-create",
+      "url": "series/autonomous-worlds/posts/03-what-we-want-to-create/"
+    },
+    {
+      "contentType": "source",
+      "contentId": "talk",
+      "url": "series/autonomous-worlds/sources/talk/"
+    },
+    {
+      "contentType": "source",
+      "contentId": "script",
+      "url": "series/autonomous-worlds/sources/script/"
+    },
+    {
+      "contentType": "source",
+      "contentId": "slides",
+      "url": "series/autonomous-worlds/sources/slides/"
+    }
+  ],
+  "generatedAt": "2026-08-01T15:00:00+09:00"
+}

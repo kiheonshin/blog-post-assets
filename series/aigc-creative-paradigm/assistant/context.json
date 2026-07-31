@@ -232,6 +232,212 @@
             }
           ]
         }
+      ],
+      "02-workflow-design": [
+        {
+          "id": "post-two-flow",
+          "label": "이 글의 흐름을 알려주세요",
+          "answer": "이 글은 프롬프트를 한 번의 명령이 아니라 상호작용의 언어로 보는 데서 시작합니다. 이어 생성보다 평가와 선택이 먼저 일어나는 작업, AI와 역할과 순서를 나누는 공동창작 흐름, 소수의 슈퍼 창작자와 새로운 격차, 창작물이 학습 자원이 되는 권리 문제로 이동합니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-workflow-design",
+              "anchor": "prompt-as-language"
+            },
+            {
+              "sourceId": "02-workflow-design",
+              "anchor": "evaluation-first"
+            },
+            {
+              "sourceId": "02-workflow-design",
+              "anchor": "co-creation-workflow"
+            },
+            {
+              "sourceId": "02-workflow-design",
+              "anchor": "super-creator-gap"
+            },
+            {
+              "sourceId": "02-workflow-design",
+              "anchor": "training-on-creation"
+            }
+          ],
+          "targets": [
+            {
+              "label": "평가가 먼저인 창작",
+              "url": "series/aigc-creative-paradigm/posts/02-workflow-design/#evaluation-first"
+            },
+            {
+              "label": "공동창작 흐름",
+              "url": "series/aigc-creative-paradigm/posts/02-workflow-design/#co-creation-workflow"
+            }
+          ]
+        },
+        {
+          "id": "post-two-question",
+          "label": "프롬프트보다 중요한 것은 무엇인가요?",
+          "answer": "생성 결과를 많이 만드는 능력보다 무엇을 남기고 버릴지 판단하고, 사람과 AI의 역할·순서·피드백을 하나의 흐름으로 설계하는 능력이 중요하다고 봅니다. 프롬프트는 그 흐름을 여는 언어지만 작업 전체를 대신하지는 않습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-workflow-design",
+              "anchor": "evaluation-first"
+            },
+            {
+              "sourceId": "02-workflow-design",
+              "anchor": "co-creation-workflow"
+            }
+          ],
+          "targets": [
+            {
+              "label": "평가와 선택 보기",
+              "url": "series/aigc-creative-paradigm/posts/02-workflow-design/#evaluation-first"
+            }
+          ]
+        }
+      ],
+      "03-reality-virtual-boundary": [
+        {
+          "id": "post-three-flow",
+          "label": "이 글의 흐름을 알려주세요",
+          "answer": "이 글은 생성된 기록이 기억과 서사를 바꾸는 장면에서 시작합니다. 이어 현실을 모방하지 않고 새로운 규칙을 만드는 디지털 물리 법칙, 움직이고 반응하는 세계를 추론하는 월드 모델, 현실 위에 생성형 세계를 입히는 월드 스킨을 거쳐 창작자가 두 층을 잇는 경계면에 선다는 결론으로 갑니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "generated-memory"
+            },
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "digital-physics"
+            },
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "world-model"
+            },
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "world-skin"
+            },
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "at-the-boundary"
+            }
+          ],
+          "targets": [
+            {
+              "label": "생성된 기억부터 보기",
+              "url": "series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/#generated-memory"
+            },
+            {
+              "label": "월드 모델 보기",
+              "url": "series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/#world-model"
+            }
+          ]
+        },
+        {
+          "id": "post-three-question",
+          "label": "여기서 경계면은 무엇인가요?",
+          "answer": "현실과 가상 가운데 하나를 선택하는 선이 아니라, 생성된 기억과 공간이 현실을 해석하고 현실 위에 다시 작동하도록 두 층을 잇는 자리입니다. 글은 창작자의 역할도 완성된 세계를 만드는 사람보다 그 경계에서 무엇을 연결하고 선택할지 판단하는 사람 쪽으로 옮겨 간다고 봅니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "world-skin"
+            },
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "at-the-boundary"
+            }
+          ],
+          "targets": [
+            {
+              "label": "경계면 대목 보기",
+              "url": "series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/#at-the-boundary"
+            }
+          ]
+        }
+      ],
+      "slides": [
+        {
+          "id": "slides-flow",
+          "label": "162장을 어떻게 둘러보면 좋을까요?",
+          "answer": "전체 발표는 여섯 챕터로 읽을 수 있습니다. 실력과 노력의 가치에서 시작해 AI를 새로운 미디어로 보고, 프롬프트와 실시간 워크플로, 창작 커뮤니티와 플랫폼을 거친 뒤, 마지막에 기억·월드 모델·월드 스킨으로 가상 세계의 조건을 확장합니다. 빠르게 보려면 각 챕터 첫 장과 설명부터 훑으세요.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch1"
+            },
+            {
+              "sourceId": "slides",
+              "anchor": "ch2"
+            },
+            {
+              "sourceId": "slides",
+              "anchor": "ch3"
+            },
+            {
+              "sourceId": "slides",
+              "anchor": "ch4"
+            },
+            {
+              "sourceId": "slides",
+              "anchor": "ch5"
+            },
+            {
+              "sourceId": "slides",
+              "anchor": "ch6"
+            }
+          ],
+          "targets": [
+            {
+              "label": "1장부터 보기",
+              "url": "series/aigc-creative-paradigm/sources/slides/#ch1"
+            },
+            {
+              "label": "워크플로 챕터",
+              "url": "series/aigc-creative-paradigm/sources/slides/#ch4"
+            },
+            {
+              "label": "가상 세계 챕터",
+              "url": "series/aigc-creative-paradigm/sources/slides/#ch6"
+            }
+          ]
+        },
+        {
+          "id": "slides-relation",
+          "label": "세 편의 글과 어떤 관계인가요?",
+          "answer": "발표 자료는 연구 노트의 질문과 사례를 청중이 따라갈 수 있는 장표·영상 순서로 편집한 기록입니다. 세 편의 글은 그 발표를 그대로 줄인 요약이 아니라, 발표 뒤 가치·작업 방식·현실과 가상의 경계라는 세 질문으로 다시 해석한 글입니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch1"
+            },
+            {
+              "sourceId": "slides",
+              "anchor": "ch6"
+            },
+            {
+              "sourceId": "01-skill-and-effort",
+              "anchor": "what-can-be-generated"
+            },
+            {
+              "sourceId": "02-workflow-design",
+              "anchor": "evaluation-first"
+            },
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "generated-memory"
+            }
+          ],
+          "targets": [
+            {
+              "label": "시리즈 메인으로 돌아가기",
+              "url": "series/aigc-creative-paradigm/"
+            }
+          ]
+        }
       ]
     }
   },
@@ -335,7 +541,7 @@
       "url": "series/aigc-creative-paradigm/posts/02-workflow-design/",
       "title": "프롬프트를 넘어, 작업의 흐름을 설계하는 일",
       "synopsis": "프롬프트 작성보다 평가와 선택이 먼저 일어나는 창작, AI와의 공동 작업, 슈퍼 창작자와 양극화, 플랫폼과 학습 데이터 문제를 살핀다.",
-      "contentHash": "sha256:2598d647274d9740ccb61ba609469e6c814ce720f89d1e38d468f4d0bfa561b8",
+      "contentHash": "sha256:bb966575392d31aae331601853358b929a62a65fa16dfd7ea55979bbfde430c3",
       "keyInsights": [
         {
           "text": "창작의 병목은 명령을 쓰는 일보다 결과를 비교하고 다음 행동을 고르는 평가의 흐름으로 이동한다.",
@@ -428,7 +634,7 @@
       "url": "series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/",
       "title": "현실과 가상의 경계면에서",
       "synopsis": "생성된 기록이 기억과 서사를 바꾸는 순간에서 출발해 디지털의 물리 법칙, 월드 모델, 현실 위에 입혀지는 월드 스킨과 창작자의 자리를 묻는다.",
-      "contentHash": "sha256:89002feffb27414e7782bdb09935936fdbc473a5a1088ce4553e5036dd11a1d6",
+      "contentHash": "sha256:a2e9fd250583ab0bc25291c1236d80a69ebb41446276e4c9002af9cad8d28e46",
       "keyInsights": [
         {
           "text": "생성된 기록은 현실을 복제하는 데 그치지 않고 기억과 서사를 다시 쓰는 조건이 될 수 있다.",
@@ -662,7 +868,7 @@
       "url": "series/aigc-creative-paradigm/sources/slides/",
       "title": "AIGC 시장 트렌드 및 창작자 패러다임의 변화",
       "synopsis": "2025년 11월 발표의 162장 슬라이드와 발표 중 재생한 영상을 여섯 챕터와 부록의 순서로 다시 볼 수 있는 원자료다.",
-      "contentHash": "sha256:e4c3d7d74f4f2811ade54eac6ca38d623e28cfcca29f061f0860297dc229e729",
+      "contentHash": "sha256:c9eaa5d3ebec03369090dced3bc925e8f64d9a46b0b5d1e69c5d3ee7d9bd87e8",
       "keyInsights": [
         {
           "text": "발표는 실력과 노력의 가치에서 시작해 AI를 새 매체로 보고, 프롬프트와 워크플로, 커뮤니티, 가상 세계로 질문을 확장한다.",

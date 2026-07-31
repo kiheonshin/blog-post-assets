@@ -19,7 +19,10 @@ export const contentLibrary = {
         pilotSurfaceIds: [
           "aigc-creative-paradigm:series:aigc-creative-paradigm",
           "aigc-creative-paradigm:post:01-skill-and-effort",
+          "aigc-creative-paradigm:post:02-workflow-design",
+          "aigc-creative-paradigm:post:03-reality-virtual-boundary",
           "aigc-creative-paradigm:source:research",
+          "aigc-creative-paradigm:source:slides",
         ],
       },
       posts: [
@@ -148,8 +151,16 @@ export const contentLibrary = {
       coverAlt: "세 포스팅의 키 비주얼이 하나로 이어진 파노라마",
       assistantContext: {
         path: "series/autonomous-worlds/assistant/context.json",
-        status: "planned",
-        pilotSurfaceIds: [],
+        status: "ready",
+        pilotSurfaceIds: [
+          "autonomous-worlds:series:autonomous-worlds",
+          "autonomous-worlds:post:01-engine-city-to-autonomous-world",
+          "autonomous-worlds:post:02-more-than-a-mirror",
+          "autonomous-worlds:post:03-what-we-want-to-create",
+          "autonomous-worlds:source:talk",
+          "autonomous-worlds:source:script",
+          "autonomous-worlds:source:slides",
+        ],
       },
       posts: [
         {
@@ -234,8 +245,15 @@ export const contentLibrary = {
       coverAlt: "세 포스팅의 키 비주얼이 하나로 이어진 파노라마",
       assistantContext: {
         path: "series/co-creation-culture/assistant/context.json",
-        status: "planned",
-        pilotSurfaceIds: [],
+        status: "ready",
+        pilotSurfaceIds: [
+          "co-creation-culture:series:co-creation-culture",
+          "co-creation-culture:post:01-whose-creativity",
+          "co-creation-culture:post:02-at-the-boundary",
+          "co-creation-culture:post:03-when-records-become-stories",
+          "co-creation-culture:source:slides-2023-06",
+          "co-creation-culture:source:slides-2023-11",
+        ],
       },
       posts: [
         {

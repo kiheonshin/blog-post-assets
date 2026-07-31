@@ -1,0 +1,904 @@
+{
+  "schemaVersion": 1,
+  "series": {
+    "id": "co-creation-culture",
+    "title": "코-크리에이션 문화",
+    "synopsis": "2023년 두 차례 발표 자료와 3년 뒤 다시 쓴 세 편의 글을 통해 창의성의 주체, 현실과 가상의 경계, 기록과 소유가 공동 창작의 문화로 이어지는 과정을 살핀다."
+  },
+  "docent": {
+    "intro": "세 편의 글과 두 발표 자료를 오가며 창의성이 누구에게 열리는지, 현실과 가상이 어디서 만나는지, 기록과 소유가 어떻게 공동의 이야기가 되는지 안내합니다.",
+    "quickPrompts": [
+      {
+        "id": "where-to-start",
+        "label": "어디서부터 읽을까요?",
+        "answer": "시리즈의 논리를 따라가려면 1편에서 창의성의 주체가 넓어지는 과정을 보고, 2편에서 현실과 가상의 경계면을 거쳐, 3편에서 기록과 소유가 이야기가 되는 조건으로 이동하세요. 당시 사례의 밀도와 시각적 흐름부터 확인하려면 2023년 6월 또는 11월 발표 자료를 먼저 볼 수 있습니다.",
+        "targets": [
+          {
+            "label": "1편부터 읽기",
+            "url": "series/co-creation-culture/posts/01-whose-creativity/"
+          },
+          {
+            "label": "2023년 6월 발표",
+            "url": "series/co-creation-culture/sources/slides-2023-06/"
+          },
+          {
+            "label": "2023년 11월 발표",
+            "url": "series/co-creation-culture/sources/slides-2023-11/"
+          }
+        ],
+        "provenance": [
+          {
+            "sourceId": "01-whose-creativity",
+            "anchor": "s1"
+          },
+          {
+            "sourceId": "slides-2023-06",
+            "anchor": "ch1"
+          },
+          {
+            "sourceId": "slides-2023-11",
+            "anchor": "ch1"
+          }
+        ]
+      },
+      {
+        "id": "three-posts",
+        "label": "세 편은 어떻게 이어지나요?",
+        "answer": "1편은 완성품의 저자 한 명에게 모이던 창의성이 참여자들의 기여로 확장되는 과정을 다룹니다. 2편은 현실과 가상이 겹치는 경계면에서 경험을 설계하는 방법을 살핍니다. 3편은 기록과 소유, 온체인 도구가 개인과 공동체의 이야기를 어떻게 이어 주는지 묻습니다. 주체에서 공간으로, 다시 시간과 기록으로 이동하는 구성입니다.",
+        "targets": [
+          {
+            "label": "1편 · 창의성의 주체",
+            "url": "series/co-creation-culture/posts/01-whose-creativity/"
+          },
+          {
+            "label": "2편 · 경계면",
+            "url": "series/co-creation-culture/posts/02-at-the-boundary/"
+          },
+          {
+            "label": "3편 · 기록과 이야기",
+            "url": "series/co-creation-culture/posts/03-when-records-become-stories/"
+          }
+        ],
+        "provenance": [
+          {
+            "sourceId": "01-whose-creativity",
+            "anchor": "s12"
+          },
+          {
+            "sourceId": "02-at-the-boundary",
+            "anchor": "s9"
+          },
+          {
+            "sourceId": "03-when-records-become-stories",
+            "anchor": "s12"
+          }
+        ]
+      },
+      {
+        "id": "source-relationship",
+        "label": "두 발표 자료는 어떻게 다른가요?",
+        "answer": "2023년 6월 발표는 코-크리에이션의 정의, 참여와 보상, 플랫폼과 거버넌스를 넓게 다룹니다. 11월 발표는 현실 위에 덧입혀진 이미지, 매직서클, 블록체인과 경험의 상속, 온체인 스토리텔링 도구로 초점을 좁힙니다. 세 편의 글은 두 발표의 질문을 창의성·경계면·기록이라는 세 갈래로 다시 읽은 결과입니다.",
+        "targets": [
+          {
+            "label": "6월 발표 자료",
+            "url": "series/co-creation-culture/sources/slides-2023-06/"
+          },
+          {
+            "label": "11월 발표 자료",
+            "url": "series/co-creation-culture/sources/slides-2023-11/"
+          }
+        ],
+        "provenance": [
+          {
+            "sourceId": "slides-2023-06",
+            "anchor": "ch2"
+          },
+          {
+            "sourceId": "slides-2023-06",
+            "anchor": "ch7"
+          },
+          {
+            "sourceId": "slides-2023-11",
+            "anchor": "ch3"
+          },
+          {
+            "sourceId": "slides-2023-11",
+            "anchor": "ch5"
+          }
+        ]
+      }
+    ],
+    "contentPrompts": {
+      "01-whose-creativity": [
+        {
+          "id": "01-whose-creativity-flow",
+          "label": "이 콘텐츠의 흐름을 알려주세요",
+          "answer": "레고의 완결성과 참여 전략, 제프 스테이플과 사피엔즈의 공동 창작, 온체인 초상과 일곱 단계의 참여 구조를 통해 창의성의 주체가 한 명의 저자에서 공동체로 이동하는 과정을 살핀다. 주요 대목은 본드를 바르는 손 → 사람을 참여시키는 기술이라는 감각 → 100년 뒤의 뉴욕에 사는 사람들 → 만든 사람도 올린 사람도 아닌데 → 창의성은 누구의 것인가 순서로 살펴볼 수 있습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-whose-creativity",
+              "anchor": "s1"
+            },
+            {
+              "sourceId": "01-whose-creativity",
+              "anchor": "s4"
+            },
+            {
+              "sourceId": "01-whose-creativity",
+              "anchor": "s7"
+            },
+            {
+              "sourceId": "01-whose-creativity",
+              "anchor": "s10"
+            },
+            {
+              "sourceId": "01-whose-creativity",
+              "anchor": "s12"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/co-creation-culture/posts/01-whose-creativity/#s1"
+            }
+          ]
+        },
+        {
+          "id": "01-whose-creativity-insight",
+          "label": "핵심 인사이트는 무엇인가요?",
+          "answer": "코-크리에이션은 사람을 결과물의 소비자가 아니라 기획과 선택, 확산에 참여하는 창작 주체로 초대하는 구조다. 참여가 열려 있다는 사실만으로 기여가 공정해지지는 않으며 단계와 보상, 기록의 설계가 함께 필요하다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-whose-creativity",
+              "anchor": "s4"
+            },
+            {
+              "sourceId": "01-whose-creativity",
+              "anchor": "s7"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/co-creation-culture/posts/01-whose-creativity/#s4"
+            }
+          ]
+        }
+      ],
+      "02-at-the-boundary": [
+        {
+          "id": "02-at-the-boundary-flow",
+          "label": "이 콘텐츠의 흐름을 알려주세요",
+          "answer": "도시 위에 덧입혀진 이미지와 방문객의 여정, 스토리텔링과 매직서클을 따라가며 현실과 가상이 겹치는 경계면에서 경험을 설계하는 조건을 살핀다. 주요 대목은 피라미드 위에 덮인 것 → 기억의 방향을 뒤집는 문장 → 기술은 숨고 이야기만 남는다 → 매직서클 → 원본을 얼마나 놓아주는가 순서로 살펴볼 수 있습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-at-the-boundary",
+              "anchor": "s1"
+            },
+            {
+              "sourceId": "02-at-the-boundary",
+              "anchor": "s3"
+            },
+            {
+              "sourceId": "02-at-the-boundary",
+              "anchor": "s4"
+            },
+            {
+              "sourceId": "02-at-the-boundary",
+              "anchor": "s7"
+            },
+            {
+              "sourceId": "02-at-the-boundary",
+              "anchor": "s9"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/co-creation-culture/posts/02-at-the-boundary/#s1"
+            }
+          ]
+        },
+        {
+          "id": "02-at-the-boundary-insight",
+          "label": "핵심 인사이트는 무엇인가요?",
+          "answer": "기술이 전면에 드러나기보다 이야기와 행동 안에 숨을 때 방문자는 현실과 가상을 하나의 경험으로 받아들인다. 경계면의 설계는 원본을 지우는 일이 아니라 서로 다른 층이 만나는 규칙과 통과 방식을 만드는 일이다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-at-the-boundary",
+              "anchor": "s4"
+            },
+            {
+              "sourceId": "02-at-the-boundary",
+              "anchor": "s9"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/co-creation-culture/posts/02-at-the-boundary/#s4"
+            }
+          ]
+        }
+      ],
+      "03-when-records-become-stories": [
+        {
+          "id": "03-when-records-become-stories-flow",
+          "label": "이 콘텐츠의 흐름을 알려주세요",
+          "answer": "블록체인을 공부한 이유와 경험의 상속, 온체인 스토리텔링의 다섯 도구, 가상과 현실을 오가는 캐릭터 사례를 통해 기록이 소유를 넘어 이야기가 되는 조건을 묻는다. 주요 대목은 476킬로미터 → 경험의 상속 → 7단계에서 다섯 도구로 → 100 곱하기 100 → 스토리텔링에서 히스토리로 순서로 살펴볼 수 있습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-when-records-become-stories",
+              "anchor": "s1"
+            },
+            {
+              "sourceId": "03-when-records-become-stories",
+              "anchor": "s3"
+            },
+            {
+              "sourceId": "03-when-records-become-stories",
+              "anchor": "s6"
+            },
+            {
+              "sourceId": "03-when-records-become-stories",
+              "anchor": "s8"
+            },
+            {
+              "sourceId": "03-when-records-become-stories",
+              "anchor": "s12"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/co-creation-culture/posts/03-when-records-become-stories/#s1"
+            }
+          ]
+        },
+        {
+          "id": "03-when-records-become-stories-insight",
+          "label": "핵심 인사이트는 무엇인가요?",
+          "answer": "블록체인의 의미는 기록을 남긴다는 기능 자체보다 누가 어떤 경험과 관계를 이어받을 수 있는지 설계하는 데 있다. 온체인 기록은 고정된 증명서가 아니라 캐릭터와 사람, 장소가 축적한 사건을 다음 이야기의 재료로 만드는 장치가 될 수 있다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-when-records-become-stories",
+              "anchor": "s3"
+            },
+            {
+              "sourceId": "03-when-records-become-stories",
+              "anchor": "s8"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/co-creation-culture/posts/03-when-records-become-stories/#s3"
+            }
+          ]
+        }
+      ],
+      "slides-2023-06": [
+        {
+          "id": "slides-2023-06-flow",
+          "label": "이 콘텐츠의 흐름을 알려주세요",
+          "answer": "레고와 스테이플버스에서 출발해 참여와 보상, 현실·가상의 경계, 플랫폼과 수익, 생성 AI, 웹3 거버넌스로 이어지는 코-크리에이션의 전체 구조를 다룬 2023년 6월 발표 자료다. 주요 대목은 모두에게 주어진 창의성 → 코-크리에이션을 통한 창의성의 확장 → 코-크리에이션 플랫폼으로의 발전 → 웹3를 통한 지속가능한 거버넌스 구축 → 정리 순서로 살펴볼 수 있습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-06",
+              "anchor": "ch1"
+            },
+            {
+              "sourceId": "slides-2023-06",
+              "anchor": "ch2"
+            },
+            {
+              "sourceId": "slides-2023-06",
+              "anchor": "ch4"
+            },
+            {
+              "sourceId": "slides-2023-06",
+              "anchor": "ch7"
+            },
+            {
+              "sourceId": "slides-2023-06",
+              "anchor": "ch8"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/co-creation-culture/sources/slides-2023-06/#ch1"
+            }
+          ]
+        },
+        {
+          "id": "slides-2023-06-insight",
+          "label": "핵심 인사이트는 무엇인가요?",
+          "answer": "코-크리에이션은 다수의 창의성을 모으는 것과 각자의 기여를 기록하고 보상하는 일을 하나의 문화적 구조로 묶는다. 지속 가능한 공동 창작에는 생성 도구뿐 아니라 참여자가 의사결정과 가치 분배에 관여하는 거버넌스가 필요하다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-06",
+              "anchor": "ch2"
+            },
+            {
+              "sourceId": "slides-2023-06",
+              "anchor": "ch7"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/co-creation-culture/sources/slides-2023-06/#ch2"
+            }
+          ]
+        }
+      ],
+      "slides-2023-11": [
+        {
+          "id": "slides-2023-11-flow",
+          "label": "이 콘텐츠의 흐름을 알려주세요",
+          "answer": "현실 위의 이미지와 방문객의 여정, 매직서클, 블록체인과 경험의 상속, 온체인 스토리텔링 도구와 캐릭터의 현실 진출을 다룬 2023년 11월 발표 자료다. 주요 대목은 현실 위에 덧입혀진 이미지와 도시 → 스토리텔링과 매직서클 → 블록체인과 경험의 상속 → 온체인 스토리텔링의 정의와 첫 두 도구 → 현실로 나온 캐릭터와 온체인 히스토리 순서로 살펴볼 수 있습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch1"
+            },
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch3"
+            },
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch4"
+            },
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch5"
+            },
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch7"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/co-creation-culture/sources/slides-2023-11/#ch1"
+            }
+          ]
+        },
+        {
+          "id": "slides-2023-11-insight",
+          "label": "핵심 인사이트는 무엇인가요?",
+          "answer": "현실과 가상이 겹치는 경험은 기술을 과시하기보다 방문자의 여정과 이야기 안에서 자연스럽게 작동할 때 힘을 얻는다. 온체인 스토리텔링은 캐릭터와 소유자, 사건의 기록을 연결해 고정된 설정을 살아 있는 히스토리로 바꾼다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch2"
+            },
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch5"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/co-creation-culture/sources/slides-2023-11/#ch2"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "entries": [
+    {
+      "contentId": "01-whose-creativity",
+      "type": "post",
+      "url": "series/co-creation-culture/posts/01-whose-creativity/",
+      "title": "창의성은 누구의 것인가",
+      "synopsis": "레고의 완결성과 참여 전략, 제프 스테이플과 사피엔즈의 공동 창작, 온체인 초상과 일곱 단계의 참여 구조를 통해 창의성의 주체가 한 명의 저자에서 공동체로 이동하는 과정을 살핀다.",
+      "contentHash": "sha256:15af7bcf0c2ec994eb5a57a74d0415a20950e650e55f2688f0cc6a35efe9e82f",
+      "keyInsights": [
+        {
+          "text": "코-크리에이션은 사람을 결과물의 소비자가 아니라 기획과 선택, 확산에 참여하는 창작 주체로 초대하는 구조다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-whose-creativity",
+              "anchor": "s4"
+            }
+          ]
+        },
+        {
+          "text": "참여가 열려 있다는 사실만으로 기여가 공정해지지는 않으며 단계와 보상, 기록의 설계가 함께 필요하다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-whose-creativity",
+              "anchor": "s7"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "s1",
+          "title": "본드를 바르는 손",
+          "summary": "완성품을 고정하려는 손과 다시 조립하려는 손의 대비에서 출발한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-whose-creativity",
+              "anchor": "s1"
+            }
+          ]
+        },
+        {
+          "sectionId": "s4",
+          "title": "사람을 참여시키는 기술이라는 감각",
+          "summary": "기술을 참여의 범위와 역할을 설계하는 수단으로 다시 본다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-whose-creativity",
+              "anchor": "s4"
+            }
+          ]
+        },
+        {
+          "sectionId": "s7",
+          "title": "100년 뒤의 뉴욕에 사는 사람들",
+          "summary": "공동체가 세계관과 정체성을 함께 만드는 사례로 이동한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-whose-creativity",
+              "anchor": "s7"
+            }
+          ]
+        },
+        {
+          "sectionId": "s10",
+          "title": "만든 사람도 올린 사람도 아닌데",
+          "summary": "저작과 소유, 기여가 한 사람에게 모이지 않는 상황을 다룬다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-whose-creativity",
+              "anchor": "s10"
+            }
+          ]
+        },
+        {
+          "sectionId": "s12",
+          "title": "창의성은 누구의 것인가",
+          "summary": "창의성의 주체를 개인과 공동체 사이에서 다시 묻는다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-whose-creativity",
+              "anchor": "s12"
+            }
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "contentId": "02-at-the-boundary",
+      "type": "post",
+      "url": "series/co-creation-culture/posts/02-at-the-boundary/",
+      "title": "경계면에서",
+      "synopsis": "도시 위에 덧입혀진 이미지와 방문객의 여정, 스토리텔링과 매직서클을 따라가며 현실과 가상이 겹치는 경계면에서 경험을 설계하는 조건을 살핀다.",
+      "contentHash": "sha256:49829e3f4c5d26892c7d3b9b92bfbe9089b73610b344d1ea5aa90579b87a697c",
+      "keyInsights": [
+        {
+          "text": "기술이 전면에 드러나기보다 이야기와 행동 안에 숨을 때 방문자는 현실과 가상을 하나의 경험으로 받아들인다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-at-the-boundary",
+              "anchor": "s4"
+            }
+          ]
+        },
+        {
+          "text": "경계면의 설계는 원본을 지우는 일이 아니라 서로 다른 층이 만나는 규칙과 통과 방식을 만드는 일이다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-at-the-boundary",
+              "anchor": "s9"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "s1",
+          "title": "피라미드 위에 덮인 것",
+          "summary": "현실의 장소 위에 다른 이미지와 의미가 덧입혀지는 장면에서 시작한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-at-the-boundary",
+              "anchor": "s1"
+            }
+          ]
+        },
+        {
+          "sectionId": "s3",
+          "title": "기억의 방향을 뒤집는 문장",
+          "summary": "장소와 서사가 기억을 조직하는 방향을 바꾸는 방식을 본다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-at-the-boundary",
+              "anchor": "s3"
+            }
+          ]
+        },
+        {
+          "sectionId": "s4",
+          "title": "기술은 숨고 이야기만 남는다",
+          "summary": "기술이 경험의 뒤로 물러날 때 이야기가 전면에 남는 설계를 살핀다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-at-the-boundary",
+              "anchor": "s4"
+            }
+          ]
+        },
+        {
+          "sectionId": "s7",
+          "title": "매직서클",
+          "summary": "현실의 규칙과 다른 경험의 규칙이 작동하는 경계를 다룬다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-at-the-boundary",
+              "anchor": "s7"
+            }
+          ]
+        },
+        {
+          "sectionId": "s9",
+          "title": "원본을 얼마나 놓아주는가",
+          "summary": "현실의 원본과 가상의 해석 사이에서 무엇을 보존하고 열지 묻는다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-at-the-boundary",
+              "anchor": "s9"
+            }
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "contentId": "03-when-records-become-stories",
+      "type": "post",
+      "url": "series/co-creation-culture/posts/03-when-records-become-stories/",
+      "title": "기록이 이야기가 될 때",
+      "synopsis": "블록체인을 공부한 이유와 경험의 상속, 온체인 스토리텔링의 다섯 도구, 가상과 현실을 오가는 캐릭터 사례를 통해 기록이 소유를 넘어 이야기가 되는 조건을 묻는다.",
+      "contentHash": "sha256:96d4881d41acbd5557fd275c6f04111c21abaceeb06f6d7360a8c9f7b7c276fe",
+      "keyInsights": [
+        {
+          "text": "블록체인의 의미는 기록을 남긴다는 기능 자체보다 누가 어떤 경험과 관계를 이어받을 수 있는지 설계하는 데 있다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-when-records-become-stories",
+              "anchor": "s3"
+            }
+          ]
+        },
+        {
+          "text": "온체인 기록은 고정된 증명서가 아니라 캐릭터와 사람, 장소가 축적한 사건을 다음 이야기의 재료로 만드는 장치가 될 수 있다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-when-records-become-stories",
+              "anchor": "s8"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "s1",
+          "title": "476킬로미터",
+          "summary": "멀리 떨어진 장소와 경험이 기록으로 이어지는 장면에서 시작한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-when-records-become-stories",
+              "anchor": "s1"
+            }
+          ]
+        },
+        {
+          "sectionId": "s3",
+          "title": "경험의 상속",
+          "summary": "소유보다 경험과 맥락을 다음 사람에게 넘기는 문제를 꺼낸다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-when-records-become-stories",
+              "anchor": "s3"
+            }
+          ]
+        },
+        {
+          "sectionId": "s6",
+          "title": "7단계에서 다섯 도구로",
+          "summary": "공동 창작의 참여 절차를 온체인 스토리텔링의 도구로 다시 정리한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-when-records-become-stories",
+              "anchor": "s6"
+            }
+          ]
+        },
+        {
+          "sectionId": "s8",
+          "title": "100 곱하기 100",
+          "summary": "다수의 기록과 조합이 한 캐릭터와 세계의 서사를 만드는 방식을 본다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-when-records-become-stories",
+              "anchor": "s8"
+            }
+          ]
+        },
+        {
+          "sectionId": "s12",
+          "title": "스토리텔링에서 히스토리로",
+          "summary": "만든 이야기가 축적된 역사로 전환되는 조건을 결론으로 놓는다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-when-records-become-stories",
+              "anchor": "s12"
+            }
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "contentId": "slides-2023-06",
+      "type": "source",
+      "url": "series/co-creation-culture/sources/slides-2023-06/",
+      "title": "코-크리에이션 시대의 새로운 창작 문화",
+      "synopsis": "레고와 스테이플버스에서 출발해 참여와 보상, 현실·가상의 경계, 플랫폼과 수익, 생성 AI, 웹3 거버넌스로 이어지는 코-크리에이션의 전체 구조를 다룬 2023년 6월 발표 자료다.",
+      "contentHash": "sha256:2bb4ec8ba632c73c6622be3dce005a122d84511d209fa9e6e5f230d500f69e87",
+      "keyInsights": [
+        {
+          "text": "코-크리에이션은 다수의 창의성을 모으는 것과 각자의 기여를 기록하고 보상하는 일을 하나의 문화적 구조로 묶는다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-06",
+              "anchor": "ch2"
+            }
+          ]
+        },
+        {
+          "text": "지속 가능한 공동 창작에는 생성 도구뿐 아니라 참여자가 의사결정과 가치 분배에 관여하는 거버넌스가 필요하다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-06",
+              "anchor": "ch7"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "ch1",
+          "title": "모두에게 주어진 창의성",
+          "summary": "완결된 IP와 다시 조합할 수 있는 창의성 사이의 긴장을 소개한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-06",
+              "anchor": "ch1"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch2",
+          "title": "코-크리에이션을 통한 창의성의 확장",
+          "summary": "참여와 기여도에 따른 보상을 공동 창작의 핵심으로 정리한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-06",
+              "anchor": "ch2"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch4",
+          "title": "코-크리에이션 플랫폼으로의 발전",
+          "summary": "개별 프로젝트가 지속적인 참여 플랫폼으로 발전하는 조건을 본다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-06",
+              "anchor": "ch4"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch7",
+          "title": "웹3를 통한 지속가능한 거버넌스 구축",
+          "summary": "공동체의 의사결정과 가치 분배를 지속시키는 구조를 다룬다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-06",
+              "anchor": "ch7"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch8",
+          "title": "정리",
+          "summary": "코-크리에이션의 주체와 기술, 문화적 방향을 한 번에 정리한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-06",
+              "anchor": "ch8"
+            }
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "contentId": "slides-2023-11",
+      "type": "source",
+      "url": "series/co-creation-culture/sources/slides-2023-11/",
+      "title": "온체인 스토리텔링과 현실·가상의 경계",
+      "synopsis": "현실 위의 이미지와 방문객의 여정, 매직서클, 블록체인과 경험의 상속, 온체인 스토리텔링 도구와 캐릭터의 현실 진출을 다룬 2023년 11월 발표 자료다.",
+      "contentHash": "sha256:5f8e3de49555f3b47ec8f882e709a459f85dd7eadae0e6e18663af2f3f126311",
+      "keyInsights": [
+        {
+          "text": "현실과 가상이 겹치는 경험은 기술을 과시하기보다 방문자의 여정과 이야기 안에서 자연스럽게 작동할 때 힘을 얻는다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch2"
+            }
+          ]
+        },
+        {
+          "text": "온체인 스토리텔링은 캐릭터와 소유자, 사건의 기록을 연결해 고정된 설정을 살아 있는 히스토리로 바꾼다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch5"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "ch1",
+          "title": "현실 위에 덧입혀진 이미지와 도시",
+          "summary": "도시라는 현실 공간 위에 이미지와 서사가 겹쳐지는 장면을 본다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch1"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch3",
+          "title": "스토리텔링과 매직서클",
+          "summary": "이야기의 규칙이 일상의 공간을 다른 경험의 장으로 바꾸는 방식을 다룬다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch3"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch4",
+          "title": "블록체인과 경험의 상속",
+          "summary": "기록과 소유를 경험과 맥락의 전달 문제로 확장한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch4"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch5",
+          "title": "온체인 스토리텔링의 정의와 첫 두 도구",
+          "summary": "온체인 기록을 이야기의 재료로 쓰는 방법을 정리한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch5"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch7",
+          "title": "현실로 나온 캐릭터와 온체인 히스토리",
+          "summary": "가상 캐릭터의 사건이 현실과 만나 축적된 역사로 이어지는 결론을 본다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch7"
+            }
+          ]
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "allowedTargets": [
+    {
+      "contentType": "series",
+      "contentId": "co-creation-culture",
+      "url": "series/co-creation-culture/"
+    },
+    {
+      "contentType": "post",
+      "contentId": "01-whose-creativity",
+      "url": "series/co-creation-culture/posts/01-whose-creativity/"
+    },
+    {
+      "contentType": "post",
+      "contentId": "02-at-the-boundary",
+      "url": "series/co-creation-culture/posts/02-at-the-boundary/"
+    },
+    {
+      "contentType": "post",
+      "contentId": "03-when-records-become-stories",
+      "url": "series/co-creation-culture/posts/03-when-records-become-stories/"
+    },
+    {
+      "contentType": "source",
+      "contentId": "slides-2023-06",
+      "url": "series/co-creation-culture/sources/slides-2023-06/"
+    },
+    {
+      "contentType": "source",
+      "contentId": "slides-2023-11",
+      "url": "series/co-creation-culture/sources/slides-2023-11/"
+    }
+  ],
+  "generatedAt": "2026-08-01T15:00:00+09:00"
+}
