@@ -57,7 +57,7 @@ async function loadAssistant() {
     CustomEvent: CustomEventStub,
     HTMLElement: ElementStub,
     URL,
-    VOICE_OFFLINE_MESSAGE: "이 Mac에서 음성 안내를 먼저 켠 뒤 다시 눌러 주세요.",
+    VOICE_OFFLINE_MESSAGE: "이 기기의 음성 안내를 먼저 켠 뒤 다시 눌러 주세요.",
     VoiceTransport: TransportStub,
     clearTimeout,
     console,
@@ -202,7 +202,7 @@ test("offline voice activation never asks for a microphone and gives the recover
 
   await assistant.startVoice();
   assert.equal(microphoneCalls, 0);
-  assert.equal(answers.at(-1).text, "이 Mac에서 음성 안내를 먼저 켠 뒤 다시 눌러 주세요.");
+  assert.equal(answers.at(-1).text, "이 기기의 음성 안내를 먼저 켠 뒤 다시 눌러 주세요.");
 });
 
 test("typed questions remain available without speech input", async () => {
@@ -367,6 +367,51 @@ test("multiple assistants have independent transports and accessible ids", async
   assert.match(second.contentMarkup(), new RegExp(`${second.instanceId}-dialog-title`));
 });
 
+test("narrow series rail starts collapsed and exposes one accessible toggle", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  assistant.dataset.scope = "series";
+  const attributes = {};
+  const button = {
+    textContent: "열기",
+    setAttribute(name, value) { attributes[name] = value; },
+  };
+
+  assistant.dataset.seriesExpanded = "false";
+  assistant.toggleSeries(button);
+  assert.equal(assistant.dataset.seriesExpanded, "true");
+  assert.equal(attributes["aria-expanded"], "true");
+  assert.equal(button.textContent, "닫기");
+  assistant.toggleSeries(button);
+  assert.equal(assistant.dataset.seriesExpanded, "false");
+  assert.equal(attributes["aria-expanded"], "false");
+  assert.equal(button.textContent, "열기");
+  assert.match(assistant.seriesMarkup(), /data-assistant-series-toggle/);
+  assert.match(assistant.seriesMarkup(), /aria-controls="[^"]+-series-body"/);
+});
+
+test("BFCache pagehide releases active media without disabling the restored assistant", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  let stopped = 0;
+  let destroyed = 0;
+  const states = [];
+  assistant.stopVoice = ({ quiet }) => {
+    assert.equal(quiet, true);
+    stopped += 1;
+  };
+  assistant.destroy = () => { destroyed += 1; };
+  assistant.setState = (state, message) => states.push({ state, message });
+
+  assistant.handlePagehide({ persisted: true });
+  assert.equal(stopped, 1);
+  assert.equal(destroyed, 0);
+  assert.deepEqual(states, [{ state: "idle", message: "안내 준비됨" }]);
+
+  assistant.handlePagehide({ persisted: false });
+  assert.equal(destroyed, 1);
+});
+
 test("content pages use their own prepared prompts instead of series prompts", async () => {
   const { Assistant } = await loadAssistant();
   const assistant = new Assistant();
@@ -492,7 +537,7 @@ test("docent copy contains no connection implementation jargon", async () => {
   const copy = [
     assistant.seriesMarkup(),
     assistant.contentMarkup(),
-    "이 Mac에서 음성 안내를 먼저 켠 뒤 다시 눌러 주세요.",
+    "이 기기의 음성 안내를 먼저 켠 뒤 다시 눌러 주세요.",
   ].join("\n");
   assert.doesNotMatch(copy, /OAuth|API|WebSocket|로컬 브리지|provider|xAI|OpenAI/iu);
   assert.match(copy, /목소리·속도/);
@@ -524,6 +569,8 @@ test("pilot pages install one assistant each in the required reading order", asy
     path.join(repoRoot, "assets", "assistant", "voice-assistant.css"),
     "utf8",
   );
-  assert.match(assistantCss, /kiheon-voice-assistant\[data-scope="content"\][\s\S]*position:\s*sticky/);
-  assert.match(assistantCss, /env\(safe-area-inset-top\)/);
+  assert.doesNotMatch(assistantCss, /kiheon-voice-assistant\[data-scope="content"\]\s*\{[^}]*position:\s*sticky/);
+  assert.match(assistantCss, /data-series-expanded="false"[^}]*voice-assistant__series-body[\s\S]*display:\s*none/);
+  assert.match(assistantCss, /background:\s*color-mix\(in srgb, var\(--ink/);
+  assert.doesNotMatch(assistantCss, /@media\s*\(max-width:\s*34rem\)/);
 });

@@ -4,7 +4,7 @@ const RESPONSE_URL = `${LOOPBACK_ORIGIN}/v1/responses`;
 const REQUEST_TIMEOUT_MS = 45_000;
 
 export const VOICE_OFFLINE_MESSAGE =
-  "이 Mac에서 음성 안내를 먼저 켠 뒤 다시 눌러 주세요.";
+  "이 기기의 음성 안내를 먼저 켠 뒤 다시 눌러 주세요.";
 
 function requestError(code, cause) {
   const error = new Error(code, cause ? { cause } : undefined);

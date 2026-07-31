@@ -11,12 +11,6 @@ kiheon-voice-assistant[hidden],
   display: none;
 }
 
-kiheon-voice-assistant[data-scope="content"] {
-  position: sticky;
-  top: max(var(--space-2, .5rem), env(safe-area-inset-top));
-  z-index: 20;
-}
-
 .voice-assistant__rail,
 .voice-assistant__entry,
 .voice-assistant__dialog {
@@ -26,6 +20,14 @@ kiheon-voice-assistant[data-scope="content"] {
 
 .voice-assistant__rail {
   padding: var(--space-4, 1rem);
+}
+
+.voice-assistant__series-head > div {
+  min-width: 0;
+}
+
+.voice-assistant__series-toggle {
+  display: none;
 }
 
 .voice-assistant__kicker,
@@ -49,7 +51,6 @@ kiheon-voice-assistant[data-scope="content"] {
   font-size: calc(var(--small, .875rem) + var(--space-1, .25rem));
   font-weight: 400;
   line-height: 1.35;
-  letter-spacing: -.015em;
 }
 
 .voice-assistant__intro,
@@ -58,6 +59,7 @@ kiheon-voice-assistant[data-scope="content"] {
   color: var(--ink-muted, #5e6065);
   font-size: var(--small, .875rem);
   line-height: 1.6;
+  text-wrap: pretty;
 }
 
 .voice-assistant__section {
@@ -122,8 +124,8 @@ kiheon-voice-assistant[data-scope="content"] {
 }
 
 .voice-assistant__transcript {
-  min-height: 6.5rem;
-  max-height: 13rem;
+  min-height: calc(var(--space-12, 3rem) + var(--space-12, 3rem));
+  max-height: calc(var(--space-16, 4rem) + var(--space-16, 4rem) + var(--space-16, 4rem));
   margin-block-start: var(--space-3, .75rem);
   padding: var(--space-3, .75rem);
   overflow-y: auto;
@@ -200,6 +202,7 @@ kiheon-voice-assistant[data-scope="content"] {
 
 .voice-assistant__form button,
 .voice-assistant__voice,
+.voice-assistant__series-toggle,
 .voice-assistant__entry button,
 .voice-assistant__close {
   min-height: var(--space-10, 2.5rem);
@@ -250,7 +253,7 @@ kiheon-voice-assistant[data-scope="content"] {
 
 .voice-assistant__setting-fields {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, .72fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: var(--space-2, .5rem);
   margin-block-start: var(--space-3, .75rem);
 }
@@ -278,6 +281,7 @@ kiheon-voice-assistant[data-scope="content"] {
 
 .voice-assistant__form button:hover,
 .voice-assistant__voice:hover,
+.voice-assistant__series-toggle:hover,
 .voice-assistant__entry button:hover,
 .voice-assistant__close:hover {
   background: var(--surface, #fbfbf8);
@@ -325,12 +329,12 @@ kiheon-voice-assistant[data-scope="content"] {
   z-index: 100;
   display: grid;
   align-items: end;
-  background: rgba(23, 24, 26, .22);
+  background: color-mix(in srgb, var(--ink, #17181a) 22%, transparent);
 }
 
 .voice-assistant__dialog {
   width: 100%;
-  max-height: min(82dvh, var(--measure, 46rem));
+  max-height: min(calc(100dvh - var(--space-16, 4rem)), var(--measure, 46rem));
   padding: var(--space-4, 1rem) max(var(--space-4, 1rem), env(safe-area-inset-right)) max(var(--space-4, 1rem), env(safe-area-inset-bottom)) max(var(--space-4, 1rem), env(safe-area-inset-left));
   overflow-y: auto;
   border-inline: 0;
@@ -344,7 +348,23 @@ kiheon-voice-assistant[data-scope="content"] {
   gap: var(--space-4, 1rem);
 }
 
-@media (max-width: 34rem) {
+@media (max-width: 48rem) {
+  .voice-assistant__series-head {
+    display: flex;
+    align-items: start;
+    justify-content: space-between;
+    gap: var(--space-3, .75rem);
+  }
+
+  .voice-assistant__series-toggle {
+    display: block;
+    flex: none;
+  }
+
+  kiheon-voice-assistant[data-scope="series"][data-series-expanded="false"] .voice-assistant__series-body {
+    display: none;
+  }
+
   .voice-assistant__entry {
     align-items: start;
   }
@@ -376,7 +396,7 @@ kiheon-voice-assistant[data-scope="content"] {
   }
 
   .voice-assistant__dialog {
-    width: min(24rem, 100vw);
+    width: min(calc(var(--measure, 46rem) / 2), 100vw);
     max-height: none;
     padding: calc(var(--space-4, 1rem) + var(--space-1, .25rem)) max(calc(var(--space-4, 1rem) + var(--space-1, .25rem)), env(safe-area-inset-right)) calc(var(--space-4, 1rem) + var(--space-1, .25rem)) calc(var(--space-4, 1rem) + var(--space-1, .25rem));
     border-block: 0;

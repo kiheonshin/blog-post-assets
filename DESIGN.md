@@ -172,11 +172,14 @@
 
 - **구조**: `<kiheon-voice-assistant>` 하나가 시리즈의 전체 rail과 상세 페이지의 compact entry를 함께 제공한다.
 - **시리즈 배치**: DOM에서는 `<series-nav>` 바로 뒤, `<series-sources>`보다 앞에 둔다. 70rem 이상에서는 17rem 오른쪽 rail, 그 아래에서는 같은 DOM 순서의 한 열 블록이다.
+- **좁은 화면**: 48rem 이하에서는 시리즈 rail의 제목·설명·`열기`만 먼저 보이고 나머지는 사용자가 펼친다. 상세 진입 바는 문서 흐름 안에 머물며 sticky로 고정하지 않는다.
 - **상세 배치**: 포스트는 lead 다음, 원자료는 source header 다음에 진입 바를 둔다. 열린 패널은 overlay 또는 bottom sheet이므로 본문과 목차의 계산 폭을 바꾸지 않는다.
 - **상태**: 준비, 듣기, 답 준비, 답하기, 오류. 질문 버튼을 누르기 전에는 마이크와 음성 안내를 시작하지 않는다.
 - **접근성**: 대화 기록은 항상 패널 안에 보이며 polite live region을 사용한다. Escape로 상세 패널을 닫고 진입 버튼으로 포커스를 돌려보내며, 모바일 safe area와 reduced motion을 존중한다.
 - **시각 규칙**: 기존 종이색과 1px 선을 사용한다. 그림자, 둥근 모서리, 블러를 추가하지 않는다.
 - **토큰 규칙**: 간격과 글자 크기는 `--space-*`, `--small`, `--meta`, `--micro`를 그대로 상속한다. 독립 인라인 스타일을 쓰는 원자료 페이지에서는 같은 값의 fallback만 허용한다.
+- **기하 규칙**: transcript 높이는 `--space-12` 두 배에서 `--space-16` 세 배, 하단 시트 높이는 viewport에서 `--space-16`을 뺀 값, 데스크톱 패널 폭은 `--measure`의 절반을 쓴다. 반응형 경계는 사이트 공통 48/70/80rem만 사용한다.
+- **색 규칙**: overlay scrim은 별도 RGB를 만들지 않고 `--ink`와 transparent의 22% 혼합으로 만든다.
 
 ### Transcript Reader
 

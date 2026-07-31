@@ -223,6 +223,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
   render() {
     this.classList.add("voice-assistant", `voice-assistant--${this.scope}`);
     this.dataset.state = "idle";
+    if (this.scope === "series") this.dataset.seriesExpanded = "false";
     this.innerHTML = this.scope === "series" ? this.seriesMarkup() : this.contentMarkup();
     this.status = this.querySelector("[data-assistant-status]");
     this.transcriptLog = this.querySelector(".voice-assistant__transcript");
@@ -245,11 +246,18 @@ export class KiheonVoiceAssistant extends HTMLElement {
   seriesMarkup() {
     return `
       <section class="voice-assistant__rail" aria-labelledby="${this.instanceId}-title">
-        <p class="voice-assistant__kicker">SERIES DOCENT</p>
-        <h2 id="${this.instanceId}-title" class="voice-assistant__title">이 시리즈 둘러보기</h2>
-        <p class="voice-assistant__intro" data-assistant-intro>어디서부터 읽을지, 글과 자료가 어떻게 이어지는지 안내합니다.</p>
-        <div class="voice-assistant__prompts" data-assistant-prompts></div>
-        ${this.conversationMarkup()}
+        <header class="voice-assistant__series-head">
+          <div>
+            <p class="voice-assistant__kicker">SERIES DOCENT</p>
+            <h2 id="${this.instanceId}-title" class="voice-assistant__title">이 시리즈 둘러보기</h2>
+            <p class="voice-assistant__intro" data-assistant-intro>어디서부터 읽을지, 글과 자료가 어떻게 이어지는지 안내합니다.</p>
+          </div>
+          <button type="button" class="voice-assistant__series-toggle" data-assistant-series-toggle aria-expanded="false" aria-controls="${this.instanceId}-series-body">열기</button>
+        </header>
+        <div id="${this.instanceId}-series-body" class="voice-assistant__series-body">
+          <div class="voice-assistant__prompts" data-assistant-prompts></div>
+          ${this.conversationMarkup()}
+        </div>
       </section>`;
   }
 
@@ -306,7 +314,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
       </details>
       <details class="voice-assistant__privacy">
         <summary>연결과 개인정보</summary>
-        <p>준비된 안내는 이 페이지에서 바로 들을 수 있습니다. 직접 질문을 보낼 때만 이 Mac의 개인 안내와 연결하고, 말로 질문하기를 누른 뒤 허용한 경우에만 마이크를 엽니다. 질문 기록과 음성은 이 페이지에 저장하지 않습니다.</p>
+        <p>준비된 안내는 이 페이지에서 바로 들을 수 있습니다. 직접 질문을 보낼 때만 이 기기의 개인 안내와 연결하고, 말로 질문하기를 누른 뒤 허용한 경우에만 마이크를 엽니다. 질문 기록과 음성은 이 페이지에 저장하지 않습니다.</p>
       </details>`;
   }
 
@@ -393,6 +401,8 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   handleClick(event) {
     if (event.target === this.panel) return this.closePanel();
+    const seriesToggle = event.target.closest("[data-assistant-series-toggle]");
+    if (seriesToggle) return this.toggleSeries(seriesToggle);
     const open = event.target.closest("[data-assistant-open]");
     if (open) return this.openPanel(open);
     if (event.target.closest("[data-assistant-close]")) return this.closePanel();
@@ -451,7 +461,12 @@ export class KiheonVoiceAssistant extends HTMLElement {
     }
   }
 
-  handlePagehide() {
+  handlePagehide(event) {
+    if (event?.persisted) {
+      this.stopVoice({ quiet: true });
+      this.setState("idle", "안내 준비됨");
+      return;
+    }
     this.destroy();
   }
 
@@ -463,6 +478,13 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   handleScroll() {
     if (this.scope === "content") this.updateSectionLabel();
+  }
+
+  toggleSeries(button) {
+    const expanded = this.dataset.seriesExpanded !== "true";
+    this.dataset.seriesExpanded = String(expanded);
+    button.setAttribute("aria-expanded", String(expanded));
+    button.textContent = expanded ? "닫기" : "열기";
   }
 
   openPanel(button) {

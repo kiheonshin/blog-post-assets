@@ -6,7 +6,7 @@
     "synopsis": "발표 전 연구, 162장의 발표 자료, 발표를 다시 읽어 쓴 세 편의 글을 통해 AI가 창작의 가치와 과정, 현실과 가상의 경계를 어떻게 옮기는지 살핀다."
   },
   "docent": {
-    "intro": "세 편의 글과 두 바탕 자료가 어디서 갈라지고 다시 만나는지 안내합니다. 먼저 정해 둔 길을 따라가거나, 이 Mac에서 말과 글로 질문할 수 있습니다.",
+    "intro": "세 편의 글과 두 바탕 자료가 어디서 갈라지고 다시 만나는지 안내합니다. 먼저 정해 둔 길을 따라가거나, 이 기기에서 말과 글로 질문할 수 있습니다.",
     "quickPrompts": [
       {
         "id": "where-to-start",
@@ -166,7 +166,7 @@
       "url": "series/aigc-creative-paradigm/posts/01-skill-and-effort/",
       "title": "실력과 노력의 가치는 어디로 가는가",
       "synopsis": "생성이 쉬워진 뒤에도 남는 선택의 어려움에서 출발해, 노력과 진정성의 증명, AI를 새로운 매체로 보는 관점, 콘텐츠가 관계가 되는 변화까지 따라간다.",
-      "contentHash": "sha256:e2e8b926c6f9d6979d400e16548d676c2dbab78be0d53b8408d97793e010bf36",
+      "contentHash": "sha256:5b9482e37594a6cee0eb7c6a96f8adedac67dc9b4caa600d64b424b9fbcd989b",
       "keyInsights": [
         {
           "text": "노력이 사라지는 것이 아니라 결과물 밖에서 선택의 이유를 설명하는 언어로 다시 증명되어야 한다.",
@@ -449,7 +449,7 @@
       "url": "series/aigc-creative-paradigm/sources/research/",
       "title": "AI 시대의 예술, 인간 고유의 창의성이란 무엇인가",
       "synopsis": "발표 전에 작성한 조사 전문으로, 예술과 창작의 재정의에서 AI와의 공진화, 플랫폼과 권리, 가상 세계를 거쳐 책임 있는 창작 문화와 비판적 리터러시까지 넓게 다룬다.",
-      "contentHash": "sha256:b485cf0506a0629552df1649c5a49ea733f78a2adccbb74e24bac7ff5968c978",
+      "contentHash": "sha256:dc3dac4a5203a088344a03535a3bd93502c1baf853e938067b39149d3bd1698c",
       "keyInsights": [
         {
           "text": "AI 시대의 창작 가치는 결과물의 희소성만이 아니라 과정과 맥락, 의도와 책임으로 재배치된다.",
