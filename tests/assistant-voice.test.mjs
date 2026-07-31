@@ -337,6 +337,100 @@ test("content questions send only the current allowed entry", async () => {
   assert.doesNotMatch(grounded, /다른 글|다른 글 설명/);
 });
 
+test("live series answers suggest only allowed public content", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  const answers = [];
+  assistant.dataset.scope = "series";
+  assistant.context = {
+    series: { id: "aigc", title: "공개 시리즈" },
+    allowedTargets: [
+      { contentType: "post", contentId: "post-1", url: "series/aigc/posts/post-1/" },
+      { contentType: "source", contentId: "research", url: "series/aigc/sources/research/" },
+    ],
+    entries: [
+      { type: "post", contentId: "post-1", title: "노력과 진정성", url: "series/aigc/posts/post-1/" },
+      { type: "source", contentId: "research", title: "연구 노트", url: "series/aigc/sources/research/" },
+      { type: "source", contentId: "hidden", title: "숨긴 자료", url: "series/aigc/sources/hidden/" },
+    ],
+  };
+  assistant.groundedInput = (question) => question;
+  assistant.transport = { ask: async () => "노력과 진정성을 다룬 첫 글부터 보세요." };
+  assistant.showAnswer = (speaker, text, targets = []) => answers.push({ speaker, text, targets });
+  assistant.setState = () => {};
+
+  await assistant.askQuestion("노력과 진정성은 어디에서 읽나요?", { speak: false });
+  assert.match(answers.at(-1).targets[0].url, /post-1/);
+  assert.ok(answers.at(-1).targets.length <= 3);
+  assert.doesNotMatch(JSON.stringify(answers.at(-1).targets), /hidden|숨긴/);
+});
+
+test("live content answers link the current section, related content, and series home", async () => {
+  const { Assistant, context } = await loadAssistant();
+  const assistant = new Assistant();
+  const answers = [];
+  assistant.dataset.scope = "content";
+  assistant.dataset.contentId = "post-1";
+  assistant.context = {
+    series: { id: "aigc", title: "공개 시리즈" },
+    allowedTargets: [
+      { contentType: "series", contentId: "aigc", url: "series/aigc/" },
+      { contentType: "post", contentId: "post-1", url: "series/aigc/posts/post-1/" },
+      { contentType: "post", contentId: "post-2", url: "series/aigc/posts/post-2/" },
+    ],
+    entries: [
+      {
+        type: "post",
+        contentId: "post-1",
+        title: "현재 글",
+        url: "series/aigc/posts/post-1/",
+        outline: [{ sectionId: "section-a", title: "현재 절", summary: "현재 절 설명" }],
+        relations: [{ targetContentId: "post-2" }],
+      },
+      { type: "post", contentId: "post-2", title: "다음 글", url: "series/aigc/posts/post-2/" },
+    ],
+  };
+  const heading = { id: "section-a", matches: () => true };
+  context.document.querySelector = (selector) => selector.includes("aria-current")
+    ? { hash: "#section-a" }
+    : null;
+  context.document.getElementById = (id) => id === "section-a" ? heading : null;
+  assistant.groundedInput = (question) => question;
+  assistant.transport = { ask: async () => "현재 절은 선택의 기준을 설명합니다." };
+  assistant.showAnswer = (speaker, text, targets = []) => answers.push({ speaker, text, targets });
+  assistant.setState = () => {};
+
+  await assistant.askQuestion("이 부분을 더 설명해 주세요", { speak: false });
+  const targets = answers.at(-1).targets;
+  assert.equal(targets.length, 3);
+  assert.match(targets[0].url, /post-1\/#section-a$/);
+  assert.match(targets[1].url, /post-2\/$/);
+  assert.match(targets[2].url, /series\/aigc\/$/);
+});
+
+test("voice guide intents play approved prepared guidance without calling the bridge", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  const answers = [];
+  const spoken = [];
+  assistant.dataset.scope = "content";
+  assistant.prompts = [{
+    id: "current-section-section-a",
+    label: "이 대목 짚어 듣기",
+    answer: "검증된 현재 대목 안내입니다.",
+    targets: [{ label: "이 대목 보기", url: "series/aigc/posts/post-1/#section-a" }],
+  }];
+  assistant.transport = { ask: async () => assert.fail("prepared guidance must not call the bridge") };
+  assistant.showAnswer = (speaker, text, targets = []) => answers.push({ speaker, text, targets });
+  assistant.speak = (text) => spoken.push(text);
+  assistant.setState = () => {};
+
+  await assistant.askQuestion("이 대목을 설명해줘", { speak: true });
+  assert.equal(answers.at(-1).text, "검증된 현재 대목 안내입니다.");
+  assert.equal(answers.at(-1).targets.length, 1);
+  assert.deepEqual(spoken, ["검증된 현재 대목 안내입니다."]);
+});
+
 test("stop and destroy release every owned resource", async () => {
   const { Assistant, context } = await loadAssistant();
   const assistant = new Assistant();
@@ -594,4 +688,26 @@ test("pilot pages install one assistant each in the required reading order", asy
   assert.match(assistantCss, /data-series-expanded="false"[^}]*voice-assistant__series-body[\s\S]*display:\s*none/);
   assert.match(assistantCss, /background:\s*color-mix\(in srgb, var\(--ink/);
   assert.doesNotMatch(assistantCss, /@media\s*\(max-width:\s*34rem\)/);
+});
+
+test("every prepared content explanation carries inspectable source provenance", async () => {
+  const context = JSON.parse(await readFile(
+    path.join(repoRoot, "series/aigc-creative-paradigm/assistant/context.json"),
+    "utf8",
+  ));
+  const entries = new Map(context.entries.map((entry) => [entry.contentId, entry]));
+  for (const prompts of Object.values(context.docent.contentPrompts)) {
+    for (const prompt of prompts) {
+      assert.equal(prompt.kind, "source", `${prompt.id} must declare its source kind`);
+      assert.ok(prompt.provenance.length > 0, `${prompt.id} must include provenance`);
+      for (const source of prompt.provenance) {
+        const entry = entries.get(source.sourceId);
+        assert.ok(entry, `${prompt.id} cites unknown source ${source.sourceId}`);
+        assert.ok(
+          entry.outline.some((section) => section.sectionId === source.anchor),
+          `${prompt.id} cites unknown anchor ${source.sourceId}#${source.anchor}`,
+        );
+      }
+    }
+  }
 });

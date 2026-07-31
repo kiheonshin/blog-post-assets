@@ -173,6 +173,12 @@ function headingText(heading) {
     .replace(/\s+/g, " ");
 }
 
+function intentText(value) {
+  return String(value ?? "")
+    .toLocaleLowerCase("ko")
+    .replace(/[^\p{L}\p{N}]+/gu, "");
+}
+
 export class KiheonVoiceAssistant extends HTMLElement {
   constructor() {
     super();
@@ -533,13 +539,16 @@ export class KiheonVoiceAssistant extends HTMLElement {
           id: `current-section-${section.sectionId}`,
           label: "이 대목 짚어 듣기",
           answer: compactText(section.summary),
-          targets: [],
+          targets: [{
+            label: "이 대목 보기",
+            url: `${entry.url}#${encodeURIComponent(section.sectionId)}`,
+          }],
         }
       : {
           id: "current-page-flow",
           label: "이 페이지 흐름 듣기",
           answer: pageFlow || "현재 페이지의 소제목을 따라가며 전체 흐름을 살펴보세요.",
-          targets: [],
+          targets: [{ label: "이 페이지 처음부터 보기", url: entry.url }],
         };
     const promptKey = `${prompt.id}:${prompt.answer}`;
     if (this.sectionPromptKey === promptKey) return;
@@ -560,6 +569,123 @@ export class KiheonVoiceAssistant extends HTMLElement {
       if (anchor?.getBoundingClientRect?.().top <= threshold) nearest = item;
     }
     return nearest;
+  }
+
+  allowedEntries() {
+    const allowed = new Set((this.context?.allowedTargets ?? []).map((target) =>
+      `${target?.contentType}:${target?.contentId}`,
+    ));
+    return (this.context?.entries ?? []).filter((entry) =>
+      allowed.has(`${entry?.type}:${entry?.contentId}`) && publicTarget(entry?.url),
+    );
+  }
+
+  preparedPromptFor(question) {
+    if (this.scope === "content" && this.context) this.updateSectionPrompt(currentHeading());
+    const prompts = this.prompts ?? [];
+    const intent = intentText(question);
+    if (!intent) return null;
+
+    const exact = prompts.find((prompt) => {
+      const label = intentText(prompt.label);
+      return label && (intent === label || (intent.length >= 4 && label.includes(intent)));
+    });
+    if (exact) return exact;
+
+    if (this.scope === "series") {
+      if (/(연구|발표|바탕|근거|자료)/u.test(question) && /(관계|이어|연결)/u.test(question)) {
+        return prompts.find((prompt) => prompt.id === "source-relationship") ?? null;
+      }
+      if (/(세\s*편|이어|연결|순서)/u.test(question)) {
+        return prompts.find((prompt) => prompt.id === "three-posts") ?? null;
+      }
+      if (/(어디서|무엇부터|먼저|시작)/u.test(question)) {
+        return prompts.find((prompt) => prompt.id === "where-to-start") ?? null;
+      }
+      return null;
+    }
+
+    if (/(이\s*대목|현재\s*(대목|부분)|읽는\s*곳|여기)/u.test(question)) {
+      return prompts.find((prompt) => String(prompt.id).startsWith("current-section-"))
+        ?? prompts.find((prompt) => prompt.id === "current-page-flow")
+        ?? null;
+    }
+    if (/(흐름|어떻게\s*읽|처음부터)/u.test(question)) {
+      return prompts.find((prompt) => String(prompt.id).endsWith("-flow"))
+        ?? prompts.find((prompt) => prompt.id === "current-page-flow")
+        ?? null;
+    }
+    if (/(핵심\s*질문|요지)/u.test(question)) {
+      return prompts.find((prompt) => String(prompt.id).endsWith("-question")) ?? null;
+    }
+    if (/(세\s*편|글들)/u.test(question) && /(관계|이어|연결)/u.test(question)) {
+      return prompts.find((prompt) => String(prompt.id).endsWith("-relation")) ?? null;
+    }
+    return null;
+  }
+
+  answerTargets(question) {
+    if (!this.context) return [];
+    const entries = this.allowedEntries();
+    const result = [];
+    const add = (label, rawUrl) => {
+      const url = publicTarget(rawUrl);
+      if (!url || result.some((target) => target.url === url)) return;
+      result.push({ label, url });
+    };
+
+    if (this.scope === "series") {
+      const intent = intentText(question);
+      const navigationTerms = {
+        "01-skill-and-effort": ["실력", "노력", "진정성", "가치"],
+        "02-workflow-design": ["프롬프트", "워크플로", "작업", "평가", "공동창작"],
+        "03-reality-virtual-boundary": ["현실", "가상", "기억", "월드", "경계"],
+        research: ["연구", "조사", "근거", "정책", "리터러시"],
+        slides: ["발표", "슬라이드", "장표", "영상"],
+      };
+      const ranked = entries.map((entry, index) => ({
+        entry,
+        index,
+        score: (navigationTerms[entry.contentId] ?? [])
+          .filter((term) => intent.includes(intentText(term))).length,
+      })).sort((left, right) => right.score - left.score || left.index - right.index);
+      const relevant = ranked.some(({ score }) => score > 0)
+        ? ranked
+        : ranked.sort((left, right) => {
+            const leftPost = left.entry.type === "post" ? 0 : 1;
+            const rightPost = right.entry.type === "post" ? 0 : 1;
+            return leftPost - rightPost || left.index - right.index;
+          });
+      for (const { entry } of relevant) {
+        add(`${entryKind(entry)} · ${entry.title}`, entry.url);
+        if (result.length === 3) break;
+      }
+      return result;
+    }
+
+    const entry = entries.find((item) => item.contentId === this.dataset.contentId);
+    const heading = currentHeading();
+    const section = entry && this.resolveOutlineSection(entry.outline ?? [], heading);
+    if (entry && section) {
+      add(`현재 대목 · ${section.title}`, `${entry.url}#${encodeURIComponent(section.sectionId)}`);
+    } else if (entry) {
+      add(`이 ${entryKind(entry)} 처음부터 보기`, entry.url);
+    }
+
+    const relationIds = (entry?.relations ?? [])
+      .map((relation) => relation?.targetContentId)
+      .filter(Boolean);
+    const related = relationIds
+      .map((contentId) => entries.find((item) => item.contentId === contentId))
+      .find(Boolean)
+      ?? entries.find((item) => item.contentId !== entry?.contentId && item.type === "post");
+    if (related) add(`함께 보기 · ${related.title}`, related.url);
+
+    const seriesTarget = (this.context.allowedTargets ?? []).find((target) =>
+      target?.contentType === "series" && target?.contentId === this.context.series?.id,
+    );
+    if (seriesTarget) add("시리즈 전체로 돌아가기", seriesTarget.url);
+    return result.slice(0, 3);
   }
 
   setState(state, message) {
@@ -737,14 +863,23 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   async askQuestion(question, { speak }) {
     this.requestController?.abort();
-    this.requestController = new AbortController();
+    this.requestController = null;
     this.showAnswer("질문", question);
+    const prepared = this.preparedPromptFor(question);
+    if (prepared) {
+      this.showAnswer("안내", prepared.answer, prepared.targets);
+      if (speak) this.speak(prepared.answer);
+      else this.setState("idle", "안내 준비됨");
+      return;
+    }
+
+    this.requestController = new AbortController();
     this.setState("thinking", "답을 준비하고 있어요");
     try {
       const answer = await this.transport.ask(this.groundedInput(question), {
         signal: this.requestController.signal,
       });
-      this.showAnswer("안내", answer);
+      this.showAnswer("안내", answer, this.answerTargets(question));
       if (speak) this.speak(answer);
       else this.setState("idle", "안내 준비됨");
     } catch (error) {

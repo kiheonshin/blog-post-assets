@@ -106,6 +106,25 @@
           "id": "post-one-flow",
           "label": "이 글의 흐름을 알려주세요",
           "answer": "이 글은 무엇이든 만들 수 있게 된 상황에서 출발해, 결과만으로는 보이지 않는 노력과 진정성의 문제를 거칩니다. 이어 AI를 단순한 효율 도구가 아니라 새로운 매체로 보고, 마지막에는 콘텐츠의 가치가 개별 결과물에서 관계와 선택의 조건으로 이동한다는 질문에 닿습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-skill-and-effort",
+              "anchor": "what-can-be-generated"
+            },
+            {
+              "sourceId": "01-skill-and-effort",
+              "anchor": "generated-authenticity"
+            },
+            {
+              "sourceId": "01-skill-and-effort",
+              "anchor": "ai-as-medium"
+            },
+            {
+              "sourceId": "01-skill-and-effort",
+              "anchor": "content-as-relation"
+            }
+          ],
           "targets": [
             {
               "label": "첫 대목부터 보기",
@@ -121,6 +140,17 @@
           "id": "post-one-question",
           "label": "이 글의 핵심 질문은 무엇인가요?",
           "answer": "생성 능력이 널리 보급된 뒤에도 사람의 실력과 노력은 어디에서 가치로 남는가가 핵심 질문입니다. 글은 답을 하나로 닫기보다, 무엇을 선택했고 왜 선택했는지 설명하는 능력과 새로운 관계를 설계하는 역할 쪽으로 가치가 이동한다고 봅니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-skill-and-effort",
+              "anchor": "generated-authenticity"
+            },
+            {
+              "sourceId": "01-skill-and-effort",
+              "anchor": "content-as-relation"
+            }
+          ],
           "targets": [
             {
               "label": "진정성에 관한 대목",
@@ -134,6 +164,21 @@
           "id": "research-flow",
           "label": "이 연구 노트는 어떻게 읽나요?",
           "answer": "이 자료는 발표 전에 질문과 근거를 넓게 모은 조사 전문입니다. 먼저 창의성과 예술의 가치가 어떻게 바뀌는지 살핀 뒤, 윤리와 지원 정책, 비판적 AI 리터러시, 체화된 예술의 가치로 이동합니다. 결론만 찾기보다 이후 글과 발표가 어떤 근거에서 나왔는지 확인하는 지도처럼 읽는 편이 좋습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "research",
+              "anchor": "p1s1"
+            },
+            {
+              "sourceId": "research",
+              "anchor": "p2s1"
+            },
+            {
+              "sourceId": "research",
+              "anchor": "p2s3"
+            }
+          ],
           "targets": [
             {
               "label": "첫 번째 분석부터 보기",
@@ -149,6 +194,25 @@
           "id": "research-relation",
           "label": "세 편의 글과 어떤 관계인가요?",
           "answer": "연구 노트가 개념과 사례를 넓게 펼친 바탕이라면, 세 편의 글은 발표 뒤 그 재료를 가치, 작업 방식, 현실과 가상의 경계라는 세 질문으로 다시 묶은 해석입니다. 같은 내용을 축약한 것이 아니라 서로 다른 시점과 목적을 가진 층으로 함께 볼 수 있습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "research",
+              "anchor": "p1s1"
+            },
+            {
+              "sourceId": "01-skill-and-effort",
+              "anchor": "what-can-be-generated"
+            },
+            {
+              "sourceId": "02-workflow-design",
+              "anchor": "evaluation-first"
+            },
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "generated-memory"
+            }
+          ],
           "targets": [
             {
               "label": "시리즈 메인으로 돌아가기",
