@@ -13,6 +13,15 @@ export const contentLibrary = {
       href: "series/aigc-creative-paradigm/",
       cover: "series/aigc-creative-paradigm/assets/series-banner.jpg",
       coverAlt: "세 포스팅의 키 비주얼이 하나로 이어진 파노라마",
+      assistantContext: {
+        path: "series/aigc-creative-paradigm/assistant/context.json",
+        status: "planned",
+        pilotSurfaceIds: [
+          "aigc-creative-paradigm:series:aigc-creative-paradigm",
+          "aigc-creative-paradigm:post:01-skill-and-effort",
+          "aigc-creative-paradigm:source:research",
+        ],
+      },
       posts: [
         {
           id: "01-skill-and-effort",
@@ -83,6 +92,11 @@ export const contentLibrary = {
       href: "series/newtype-ip-dialogue/",
       cover: "series/newtype-ip-dialogue/assets/series-banner.jpg",
       coverAlt: "세 포스팅의 키 비주얼이 하나로 이어진 파노라마",
+      assistantContext: {
+        path: "series/newtype-ip-dialogue/assistant/context.json",
+        status: "planned",
+        pilotSurfaceIds: [],
+      },
       posts: [
         {
           id: "01-not-blocking-potential",
@@ -132,6 +146,11 @@ export const contentLibrary = {
       href: "series/autonomous-worlds/",
       cover: "series/autonomous-worlds/assets/series-banner.jpg",
       coverAlt: "세 포스팅의 키 비주얼이 하나로 이어진 파노라마",
+      assistantContext: {
+        path: "series/autonomous-worlds/assistant/context.json",
+        status: "planned",
+        pilotSurfaceIds: [],
+      },
       posts: [
         {
           id: "01-engine-city-to-autonomous-world",
@@ -213,6 +232,11 @@ export const contentLibrary = {
       href: "series/co-creation-culture/",
       cover: "series/co-creation-culture/assets/series-banner.jpg?v=20260731b",
       coverAlt: "세 포스팅의 키 비주얼이 하나로 이어진 파노라마",
+      assistantContext: {
+        path: "series/co-creation-culture/assistant/context.json",
+        status: "planned",
+        pilotSurfaceIds: [],
+      },
       posts: [
         {
           id: "01-whose-creativity",
@@ -348,4 +372,48 @@ export const contentLibrary = {
 
 export function getSeries(slug) {
   return contentLibrary.series.find((series) => series.slug === slug);
+}
+
+export const assistantNavigationActions = Object.freeze([
+  "suggest_content",
+  "focus_section",
+  "play_guide",
+]);
+
+export const assistantSurfaceInventory = Object.freeze(
+  contentLibrary.series.flatMap((series) => {
+    const contextPath = series.assistantContext.path;
+    const status = series.assistantContext.status;
+    const pilotSurfaceIds = new Set(series.assistantContext.pilotSurfaceIds);
+    const surface = (contentType, contentId, href) => {
+      const surfaceId = `${series.slug}:${contentType}:${contentId}`;
+      return Object.freeze({
+        surfaceId,
+        series: series.slug,
+        contentType,
+        contentId,
+        href,
+        contextPath,
+        status,
+        pilot: pilotSurfaceIds.has(surfaceId),
+      });
+    };
+
+    return [
+      surface("series", series.slug, series.href),
+      ...series.posts.map((post) => surface("post", post.id, post.href)),
+      ...series.sources.map((source) =>
+        surface("source", source.id, source.href),
+      ),
+    ];
+  }),
+);
+
+export function getAssistantSurface(series, contentType, contentId) {
+  return assistantSurfaceInventory.find(
+    (surface) =>
+      surface.series === series &&
+      surface.contentType === contentType &&
+      surface.contentId === contentId,
+  );
 }
