@@ -1,0 +1,395 @@
+kiheon-voice-assistant {
+  display: block;
+  min-width: 0;
+  color: var(--ink, #17181a);
+  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif);
+  word-break: keep-all;
+}
+
+kiheon-voice-assistant[hidden],
+.voice-assistant__overlay[hidden] {
+  display: none;
+}
+
+kiheon-voice-assistant[data-scope="content"] {
+  position: sticky;
+  top: max(var(--space-2, .5rem), env(safe-area-inset-top));
+  z-index: 20;
+}
+
+.voice-assistant__rail,
+.voice-assistant__entry,
+.voice-assistant__dialog {
+  border: 1px solid var(--rule, #cfcfc8);
+  background: var(--canvas, #f3f3ef);
+}
+
+.voice-assistant__rail {
+  padding: var(--space-4, 1rem);
+}
+
+.voice-assistant__kicker,
+.voice-assistant__speaker,
+.voice-assistant__status,
+.voice-assistant__form label > span {
+  font-family: var(--font-mono, "SFMono-Regular", monospace);
+  font-size: var(--micro, .6875rem);
+  letter-spacing: .06em;
+}
+
+.voice-assistant__kicker {
+  margin: 0 0 var(--space-1, .25rem);
+  color: var(--accent, #2457d6);
+  font-weight: 600;
+}
+
+.voice-assistant__title {
+  margin: 0;
+  font-family: var(--font-display, "Iowan Old Style", serif);
+  font-size: calc(var(--small, .875rem) + var(--space-1, .25rem));
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: -.015em;
+}
+
+.voice-assistant__intro,
+.voice-assistant__section {
+  margin: var(--space-2, .5rem) 0 0;
+  color: var(--ink-muted, #5e6065);
+  font-size: var(--small, .875rem);
+  line-height: 1.6;
+}
+
+.voice-assistant__section {
+  padding-block-end: var(--space-3, .75rem);
+  border-block-end: 1px solid var(--rule, #cfcfc8);
+}
+
+.voice-assistant__prompts {
+  display: grid;
+  gap: var(--space-2, .5rem);
+  margin-block-start: var(--space-4, 1rem);
+}
+
+.voice-assistant button,
+.voice-assistant input,
+.voice-assistant select {
+  border-radius: 0;
+  font: inherit;
+}
+
+.voice-assistant button {
+  cursor: pointer;
+}
+
+.voice-assistant button:focus-visible,
+.voice-assistant input:focus-visible,
+.voice-assistant select:focus-visible,
+.voice-assistant summary:focus-visible,
+.voice-assistant a:focus-visible {
+  outline: 2px solid var(--accent, #2457d6);
+  outline-offset: 2px;
+}
+
+.voice-assistant__prompts button {
+  width: 100%;
+  min-height: var(--space-10, 2.5rem);
+  padding: var(--space-2, .5rem) var(--space-3, .75rem);
+  border: 1px solid var(--rule, #cfcfc8);
+  background: transparent;
+  color: var(--ink, #17181a);
+  font-size: var(--meta, .75rem);
+  line-height: 1.4;
+  text-align: start;
+}
+
+.voice-assistant__prompts button:hover {
+  border-color: var(--accent, #2457d6);
+  color: var(--accent-hover, #163da7);
+}
+
+.voice-assistant__status {
+  margin: var(--space-4, 1rem) 0 0;
+  padding-block-start: var(--space-3, .75rem);
+  border-block-start: 1px solid var(--rule, #cfcfc8);
+  color: var(--ink-muted, #5e6065);
+}
+
+.voice-assistant[data-state="listening"] .voice-assistant__status,
+.voice-assistant[data-state="thinking"] .voice-assistant__status,
+.voice-assistant[data-state="speaking"] .voice-assistant__status {
+  color: var(--accent, #2457d6);
+}
+
+.voice-assistant__transcript {
+  min-height: 6.5rem;
+  max-height: 13rem;
+  margin-block-start: var(--space-3, .75rem);
+  padding: var(--space-3, .75rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--rule, #cfcfc8);
+  background: var(--surface, #fbfbf8);
+}
+
+.voice-assistant__speaker {
+  margin: 0 0 var(--space-1, .25rem);
+  color: var(--ink-faint, #686a6f);
+  font-weight: 600;
+}
+
+.voice-assistant__turn + .voice-assistant__turn {
+  margin-block-start: var(--space-3, .75rem);
+  padding-block-start: var(--space-3, .75rem);
+  border-block-start: 1px solid var(--rule, #cfcfc8);
+}
+
+.voice-assistant__copy {
+  margin: 0;
+  font-size: var(--small, .875rem);
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.voice-assistant__targets {
+  display: grid;
+  gap: var(--space-1, .25rem);
+  margin-block-start: var(--space-3, .75rem);
+  padding-block-start: var(--space-3, .75rem);
+  border-block-start: 1px solid var(--rule, #cfcfc8);
+}
+
+.voice-assistant__targets a {
+  color: var(--accent, #2457d6);
+  font-size: var(--meta, .75rem);
+  line-height: 1.45;
+}
+
+.voice-assistant__form {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--space-2, .5rem);
+  margin-block-start: var(--space-3, .75rem);
+}
+
+.voice-assistant__form label {
+  display: grid;
+  min-width: 0;
+}
+
+.voice-assistant__form label > span {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+.voice-assistant__form input {
+  width: 100%;
+  min-width: 0;
+  min-height: var(--space-10, 2.5rem);
+  padding: var(--space-2, .5rem) var(--space-3, .75rem);
+  border: 1px solid var(--rule-strong, #17181a);
+  background: var(--surface, #fbfbf8);
+  color: var(--ink, #17181a);
+  font-size: var(--small, .875rem);
+}
+
+.voice-assistant__form button,
+.voice-assistant__voice,
+.voice-assistant__entry button,
+.voice-assistant__close {
+  min-height: var(--space-10, 2.5rem);
+  padding: var(--space-2, .5rem) var(--space-3, .75rem);
+  border: 1px solid var(--rule-strong, #17181a);
+  background: var(--inverse, #17181a);
+  color: var(--inverse-ink, #f7f7f2);
+  font-family: var(--font-mono, "SFMono-Regular", monospace);
+  font-size: var(--micro, .6875rem);
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+
+.voice-assistant__voice {
+  width: 100%;
+  margin-block-start: var(--space-2, .5rem);
+}
+
+.voice-assistant__stop-speaking {
+  width: 100%;
+  min-height: var(--space-10, 2.5rem);
+  margin-block-start: var(--space-2, .5rem);
+  padding: var(--space-2, .5rem) var(--space-3, .75rem);
+  border: 1px solid var(--rule-strong, #17181a);
+  background: transparent;
+  color: var(--ink, #17181a);
+  font-family: var(--font-mono, "SFMono-Regular", monospace);
+  font-size: var(--micro, .6875rem);
+  font-weight: 600;
+  letter-spacing: .04em;
+}
+
+.voice-assistant__settings,
+.voice-assistant__privacy {
+  margin-block-start: var(--space-3, .75rem);
+  padding-block-start: var(--space-3, .75rem);
+  border-block-start: 1px solid var(--rule, #cfcfc8);
+  font-size: var(--meta, .75rem);
+}
+
+.voice-assistant__settings summary,
+.voice-assistant__privacy summary {
+  cursor: pointer;
+  font-family: var(--font-mono, "SFMono-Regular", monospace);
+  font-size: var(--micro, .6875rem);
+  letter-spacing: .04em;
+}
+
+.voice-assistant__setting-fields {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, .72fr);
+  gap: var(--space-2, .5rem);
+  margin-block-start: var(--space-3, .75rem);
+}
+
+.voice-assistant__setting-fields label {
+  display: grid;
+  gap: var(--space-1, .25rem);
+}
+
+.voice-assistant__setting-fields select {
+  width: 100%;
+  min-width: 0;
+  min-height: var(--space-10, 2.5rem);
+  padding: var(--space-1, .25rem) var(--space-2, .5rem);
+  border: 1px solid var(--rule, #cfcfc8);
+  background: var(--surface, #fbfbf8);
+  color: var(--ink, #17181a);
+}
+
+.voice-assistant__privacy p {
+  margin: var(--space-2, .5rem) 0 0;
+  color: var(--ink-muted, #5e6065);
+  line-height: 1.55;
+}
+
+.voice-assistant__form button:hover,
+.voice-assistant__voice:hover,
+.voice-assistant__entry button:hover,
+.voice-assistant__close:hover {
+  background: var(--surface, #fbfbf8);
+  color: var(--ink, #17181a);
+}
+
+.voice-assistant__entry {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-3, .75rem);
+  min-height: calc(var(--space-12, 3rem) + var(--space-1, .25rem));
+  margin-block: calc(var(--space-4, 1rem) + var(--space-1, .25rem)) 0;
+  padding: var(--space-2, .5rem) var(--space-3, .75rem) var(--space-2, .5rem) var(--space-4, 1rem);
+}
+
+.voice-assistant__entry > span {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3, .75rem);
+  min-width: 0;
+}
+
+.voice-assistant__entry strong {
+  flex: none;
+  font-size: var(--small, .875rem);
+}
+
+.voice-assistant__entry span span {
+  color: var(--ink-muted, #5e6065);
+  font-size: var(--meta, .75rem);
+  line-height: 1.45;
+}
+
+.voice-assistant__entry button,
+.voice-assistant__close {
+  flex: none;
+  min-height: calc(var(--space-8, 2rem) + var(--space-1, .25rem));
+  padding-inline: var(--space-3, .75rem);
+}
+
+.voice-assistant__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  align-items: end;
+  background: rgba(23, 24, 26, .22);
+}
+
+.voice-assistant__dialog {
+  width: 100%;
+  max-height: min(82dvh, var(--measure, 46rem));
+  padding: var(--space-4, 1rem) max(var(--space-4, 1rem), env(safe-area-inset-right)) max(var(--space-4, 1rem), env(safe-area-inset-bottom)) max(var(--space-4, 1rem), env(safe-area-inset-left));
+  overflow-y: auto;
+  border-inline: 0;
+  border-block-end: 0;
+}
+
+.voice-assistant__dialog-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--space-4, 1rem);
+}
+
+@media (max-width: 34rem) {
+  .voice-assistant__entry {
+    align-items: start;
+  }
+
+  .voice-assistant__entry > span {
+    display: grid;
+    gap: var(--space-1, .25rem);
+  }
+
+  .voice-assistant__form {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (min-width: 70rem) {
+  .idx-grid > kiheon-voice-assistant[data-scope="series"] {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    position: sticky;
+    top: var(--space-8, 2rem);
+    align-self: start;
+  }
+}
+
+@media (min-width: 80rem) {
+  .voice-assistant__overlay {
+    justify-items: end;
+    align-items: stretch;
+  }
+
+  .voice-assistant__dialog {
+    width: min(24rem, 100vw);
+    max-height: none;
+    padding: calc(var(--space-4, 1rem) + var(--space-1, .25rem)) max(calc(var(--space-4, 1rem) + var(--space-1, .25rem)), env(safe-area-inset-right)) calc(var(--space-4, 1rem) + var(--space-1, .25rem)) calc(var(--space-4, 1rem) + var(--space-1, .25rem));
+    border-block: 0;
+    border-inline-end: 0;
+    border-inline-start: 1px solid var(--rule-strong, #17181a);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .voice-assistant *,
+  .voice-assistant *::before,
+  .voice-assistant *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}

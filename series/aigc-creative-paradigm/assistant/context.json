@@ -1,0 +1,680 @@
+{
+  "schemaVersion": 1,
+  "series": {
+    "id": "aigc-creative-paradigm",
+    "title": "AI 시대, 창작의 정의를 다시 묻다",
+    "synopsis": "발표 전 연구, 162장의 발표 자료, 발표를 다시 읽어 쓴 세 편의 글을 통해 AI가 창작의 가치와 과정, 현실과 가상의 경계를 어떻게 옮기는지 살핀다."
+  },
+  "docent": {
+    "intro": "세 편의 글과 두 바탕 자료가 어디서 갈라지고 다시 만나는지 안내합니다. 먼저 정해 둔 길을 따라가거나, 이 Mac에서 말과 글로 질문할 수 있습니다.",
+    "quickPrompts": [
+      {
+        "id": "where-to-start",
+        "label": "어디서부터 읽을까요?",
+        "answer": "시리즈의 문제의식을 순서대로 따라가려면 1편에서 가치의 이동을 보고, 2편에서 작업 방식의 변화를 거쳐, 3편에서 현실과 가상의 경계로 이동하세요. 발표 전에 쌓은 근거부터 보고 싶다면 연구 노트를, 사례의 시각적 흐름부터 보고 싶다면 발표 자료를 먼저 여는 길도 좋습니다.",
+        "targets": [
+          {
+            "label": "1편부터 읽기",
+            "url": "series/aigc-creative-paradigm/posts/01-skill-and-effort/"
+          },
+          {
+            "label": "연구 노트 보기",
+            "url": "series/aigc-creative-paradigm/sources/research/"
+          },
+          {
+            "label": "발표 자료 보기",
+            "url": "series/aigc-creative-paradigm/sources/slides/"
+          }
+        ],
+        "provenance": [
+          {
+            "sourceId": "01-skill-and-effort",
+            "anchor": "what-can-be-generated"
+          },
+          {
+            "sourceId": "research",
+            "anchor": "p1s1"
+          },
+          {
+            "sourceId": "slides",
+            "anchor": "ch1"
+          }
+        ]
+      },
+      {
+        "id": "three-posts",
+        "label": "세 편은 어떻게 이어지나요?",
+        "answer": "1편은 실력과 노력, 진정성의 가치가 어디로 이동하는지 묻습니다. 2편은 프롬프트를 넘어 평가와 협업의 흐름을 설계하는 일로 들어가고, 3편은 생성된 기억과 월드 모델을 통해 현실과 가상의 경계가 어떻게 바뀌는지 살핍니다. 가치에서 방법으로, 다시 세계의 조건으로 한 단계씩 이동하는 구성입니다.",
+        "targets": [
+          {
+            "label": "1편 · 가치",
+            "url": "series/aigc-creative-paradigm/posts/01-skill-and-effort/"
+          },
+          {
+            "label": "2편 · 작업의 흐름",
+            "url": "series/aigc-creative-paradigm/posts/02-workflow-design/"
+          },
+          {
+            "label": "3편 · 경계면",
+            "url": "series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/"
+          }
+        ],
+        "provenance": [
+          {
+            "sourceId": "01-skill-and-effort",
+            "anchor": "generated-authenticity"
+          },
+          {
+            "sourceId": "02-workflow-design",
+            "anchor": "evaluation-first"
+          },
+          {
+            "sourceId": "03-reality-virtual-boundary",
+            "anchor": "world-model"
+          }
+        ]
+      },
+      {
+        "id": "source-relationship",
+        "label": "글과 바탕 자료는 어떤 관계인가요?",
+        "answer": "연구 노트는 발표 전에 질문과 개념, 근거를 넓게 모은 조사 전문입니다. 발표 자료는 그 조사를 청중이 따라갈 수 있도록 162장의 장표와 영상 흐름으로 편집한 기록이고, 세 편의 글은 발표가 끝난 뒤 핵심 질문을 가치·작업 방식·세계의 경계라는 세 갈래로 다시 해석한 글입니다.",
+        "targets": [
+          {
+            "label": "연구 노트",
+            "url": "series/aigc-creative-paradigm/sources/research/"
+          },
+          {
+            "label": "발표 자료",
+            "url": "series/aigc-creative-paradigm/sources/slides/"
+          }
+        ],
+        "provenance": [
+          {
+            "sourceId": "research",
+            "anchor": "p1s1"
+          },
+          {
+            "sourceId": "slides",
+            "anchor": "ch1"
+          }
+        ]
+      }
+    ],
+    "contentPrompts": {
+      "01-skill-and-effort": [
+        {
+          "id": "post-one-flow",
+          "label": "이 글의 흐름을 알려주세요",
+          "answer": "이 글은 무엇이든 만들 수 있게 된 상황에서 출발해, 결과만으로는 보이지 않는 노력과 진정성의 문제를 거칩니다. 이어 AI를 단순한 효율 도구가 아니라 새로운 매체로 보고, 마지막에는 콘텐츠의 가치가 개별 결과물에서 관계와 선택의 조건으로 이동한다는 질문에 닿습니다.",
+          "targets": [
+            {
+              "label": "첫 대목부터 보기",
+              "url": "series/aigc-creative-paradigm/posts/01-skill-and-effort/#what-can-be-generated"
+            },
+            {
+              "label": "매체에 관한 대목",
+              "url": "series/aigc-creative-paradigm/posts/01-skill-and-effort/#ai-as-medium"
+            }
+          ]
+        },
+        {
+          "id": "post-one-question",
+          "label": "이 글의 핵심 질문은 무엇인가요?",
+          "answer": "생성 능력이 널리 보급된 뒤에도 사람의 실력과 노력은 어디에서 가치로 남는가가 핵심 질문입니다. 글은 답을 하나로 닫기보다, 무엇을 선택했고 왜 선택했는지 설명하는 능력과 새로운 관계를 설계하는 역할 쪽으로 가치가 이동한다고 봅니다.",
+          "targets": [
+            {
+              "label": "진정성에 관한 대목",
+              "url": "series/aigc-creative-paradigm/posts/01-skill-and-effort/#generated-authenticity"
+            }
+          ]
+        }
+      ],
+      "research": [
+        {
+          "id": "research-flow",
+          "label": "이 연구 노트는 어떻게 읽나요?",
+          "answer": "이 자료는 발표 전에 질문과 근거를 넓게 모은 조사 전문입니다. 먼저 창의성과 예술의 가치가 어떻게 바뀌는지 살핀 뒤, 윤리와 지원 정책, 비판적 AI 리터러시, 체화된 예술의 가치로 이동합니다. 결론만 찾기보다 이후 글과 발표가 어떤 근거에서 나왔는지 확인하는 지도처럼 읽는 편이 좋습니다.",
+          "targets": [
+            {
+              "label": "첫 번째 분석부터 보기",
+              "url": "series/aigc-creative-paradigm/sources/research/#p1s1"
+            },
+            {
+              "label": "제언 부분 보기",
+              "url": "series/aigc-creative-paradigm/sources/research/#p2s1"
+            }
+          ]
+        },
+        {
+          "id": "research-relation",
+          "label": "세 편의 글과 어떤 관계인가요?",
+          "answer": "연구 노트가 개념과 사례를 넓게 펼친 바탕이라면, 세 편의 글은 발표 뒤 그 재료를 가치, 작업 방식, 현실과 가상의 경계라는 세 질문으로 다시 묶은 해석입니다. 같은 내용을 축약한 것이 아니라 서로 다른 시점과 목적을 가진 층으로 함께 볼 수 있습니다.",
+          "targets": [
+            {
+              "label": "시리즈 메인으로 돌아가기",
+              "url": "series/aigc-creative-paradigm/"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "entries": [
+    {
+      "contentId": "01-skill-and-effort",
+      "type": "post",
+      "url": "series/aigc-creative-paradigm/posts/01-skill-and-effort/",
+      "title": "실력과 노력의 가치는 어디로 가는가",
+      "synopsis": "생성이 쉬워진 뒤에도 남는 선택의 어려움에서 출발해, 노력과 진정성의 증명, AI를 새로운 매체로 보는 관점, 콘텐츠가 관계가 되는 변화까지 따라간다.",
+      "contentHash": "sha256:e2e8b926c6f9d6979d400e16548d676c2dbab78be0d53b8408d97793e010bf36",
+      "keyInsights": [
+        {
+          "text": "노력이 사라지는 것이 아니라 결과물 밖에서 선택의 이유를 설명하는 언어로 다시 증명되어야 한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-skill-and-effort",
+              "anchor": "generated-authenticity"
+            }
+          ]
+        },
+        {
+          "text": "AI를 단순한 효율 도구가 아니라 고유한 문법과 관계 구조를 가진 새로운 매체로 본다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-skill-and-effort",
+              "anchor": "ai-as-medium"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "what-can-be-generated",
+          "title": "무엇이든 생성 가능한 시대",
+          "summary": "생성 자체는 쉬워졌지만 무엇을 어느 모델로 왜 만들지 선택하는 일은 더 복잡해졌다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-skill-and-effort",
+              "anchor": "what-can-be-generated"
+            }
+          ]
+        },
+        {
+          "sectionId": "generated-authenticity",
+          "title": "진정성도 생성될 수 있다",
+          "summary": "만든 과정의 증명마저 생성될 수 있을 때 노력과 진정성의 가치를 어디에 둘지 다시 묻는다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-skill-and-effort",
+              "anchor": "generated-authenticity"
+            }
+          ]
+        },
+        {
+          "sectionId": "ai-as-medium",
+          "title": "도구가 아니라 미디어",
+          "summary": "AI 환경을 결과물을 만드는 도구보다 세계와 관계가 이어지는 새로운 채널로 바라본다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-skill-and-effort",
+              "anchor": "ai-as-medium"
+            }
+          ]
+        },
+        {
+          "sectionId": "content-as-relation",
+          "title": "콘텐츠가 관계가 될 때",
+          "summary": "가치의 중심이 개별 결과물에서 결과물이 생기고 이어지고 관계 맺는 조건으로 이동한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-skill-and-effort",
+              "anchor": "content-as-relation"
+            }
+          ]
+        }
+      ],
+      "relations": [
+        {
+          "targetContentId": "02-workflow-design",
+          "text": "마지막 장의 질문은 2편의 프롬프트와 워크플로 설계로 이어진다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-skill-and-effort",
+              "anchor": "content-as-relation"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "contentId": "02-workflow-design",
+      "type": "post",
+      "url": "series/aigc-creative-paradigm/posts/02-workflow-design/",
+      "title": "프롬프트를 넘어, 작업의 흐름을 설계하는 일",
+      "synopsis": "프롬프트 작성보다 평가와 선택이 먼저 일어나는 창작, AI와의 공동 작업, 슈퍼 창작자와 양극화, 플랫폼과 학습 데이터 문제를 살핀다.",
+      "contentHash": "sha256:2598d647274d9740ccb61ba609469e6c814ce720f89d1e38d468f4d0bfa561b8",
+      "keyInsights": [
+        {
+          "text": "창작의 병목은 명령을 쓰는 일보다 결과를 비교하고 다음 행동을 고르는 평가의 흐름으로 이동한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-workflow-design",
+              "anchor": "evaluation-first"
+            }
+          ]
+        },
+        {
+          "text": "AI를 도구, 동료, 공동창작자로 부르는 방식이 달라질수록 인간이 맡는 디렉션과 책임도 달라진다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-workflow-design",
+              "anchor": "co-creation-workflow"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "prompt-as-language",
+          "title": "프롬프트라는 언어",
+          "summary": "프롬프트를 한 번의 주문이 아니라 상호작용을 여는 언어로 다시 본다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-workflow-design",
+              "anchor": "prompt-as-language"
+            }
+          ]
+        },
+        {
+          "sectionId": "evaluation-first",
+          "title": "평가가 먼저 일어나는 창작",
+          "summary": "생성과 선택이 반복되는 환경에서 무엇을 남기고 버릴지 판단하는 일이 작업의 중심이 된다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-workflow-design",
+              "anchor": "evaluation-first"
+            }
+          ]
+        },
+        {
+          "sectionId": "co-creation-workflow",
+          "title": "도구에서 공동창작자로",
+          "summary": "AI와 실시간으로 주고받는 흐름은 고정된 프롬프트보다 역할과 순서를 설계하는 문제에 가깝다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-workflow-design",
+              "anchor": "co-creation-workflow"
+            }
+          ]
+        },
+        {
+          "sectionId": "super-creator-gap",
+          "title": "슈퍼 창작자와 양극화",
+          "summary": "확장된 생산성은 누구에게나 같은 결과를 주지 않고 새로운 격차를 만들 수 있다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-workflow-design",
+              "anchor": "super-creator-gap"
+            }
+          ]
+        },
+        {
+          "sectionId": "training-on-creation",
+          "title": "학습당하는 창작물",
+          "summary": "창작물이 플랫폼과 모델의 학습 자원이 되는 구조에서 권리와 참여 조건을 다시 묻는다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-workflow-design",
+              "anchor": "training-on-creation"
+            }
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "contentId": "03-reality-virtual-boundary",
+      "type": "post",
+      "url": "series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/",
+      "title": "현실과 가상의 경계면에서",
+      "synopsis": "생성된 기록이 기억과 서사를 바꾸는 순간에서 출발해 디지털의 물리 법칙, 월드 모델, 현실 위에 입혀지는 월드 스킨과 창작자의 자리를 묻는다.",
+      "contentHash": "sha256:89002feffb27414e7782bdb09935936fdbc473a5a1088ce4553e5036dd11a1d6",
+      "keyInsights": [
+        {
+          "text": "생성된 기록은 현실을 복제하는 데 그치지 않고 기억과 서사를 다시 쓰는 조건이 될 수 있다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "generated-memory"
+            }
+          ]
+        },
+        {
+          "text": "월드 모델과 월드 스킨은 가상 세계를 화면 안의 공간에서 현실을 해석하고 덧입히는 층으로 옮긴다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "world-model"
+            },
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "world-skin"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "generated-memory",
+          "title": "기억과 서사가 다시 만들어진다",
+          "summary": "생성된 기록이 실제 기억의 빈틈을 메우거나 덮어쓸 때 현실의 기준도 흔들린다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "generated-memory"
+            }
+          ]
+        },
+        {
+          "sectionId": "digital-physics",
+          "title": "디지털의 물리 법칙",
+          "summary": "디지털 세계는 현실을 모방하는 단계에서 현실에 없는 규칙을 만드는 단계로 이동한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "digital-physics"
+            }
+          ]
+        },
+        {
+          "sectionId": "world-model",
+          "title": "세계를 추론하는 모델",
+          "summary": "월드 모델은 이미지 한 장을 넘어 움직이고 반응하는 세계의 조건을 학습한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "world-model"
+            }
+          ]
+        },
+        {
+          "sectionId": "world-skin",
+          "title": "현실 위에 입혀지는 세계",
+          "summary": "생성형 공간 경험은 현실 전체를 실시간 캔버스로 바꾸는 월드 스킨의 가능성으로 이어진다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "world-skin"
+            }
+          ]
+        },
+        {
+          "sectionId": "at-the-boundary",
+          "title": "경계면에서",
+          "summary": "창작자의 자리는 현실과 가상 어느 한쪽보다 두 층을 잇고 선택하는 경계면에 놓인다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-reality-virtual-boundary",
+              "anchor": "at-the-boundary"
+            }
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "contentId": "research",
+      "type": "source",
+      "url": "series/aigc-creative-paradigm/sources/research/",
+      "title": "AI 시대의 예술, 인간 고유의 창의성이란 무엇인가",
+      "synopsis": "발표 전에 작성한 조사 전문으로, 예술과 창작의 재정의에서 AI와의 공진화, 플랫폼과 권리, 가상 세계를 거쳐 책임 있는 창작 문화와 비판적 리터러시까지 넓게 다룬다.",
+      "contentHash": "sha256:b485cf0506a0629552df1649c5a49ea733f78a2adccbb74e24bac7ff5968c978",
+      "keyInsights": [
+        {
+          "text": "AI 시대의 창작 가치는 결과물의 희소성만이 아니라 과정과 맥락, 의도와 책임으로 재배치된다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "research",
+              "anchor": "p1s2"
+            },
+            {
+              "sourceId": "research",
+              "anchor": "p2s1"
+            }
+          ]
+        },
+        {
+          "text": "프롬프트 기술만으로는 부족하며 창작자와 시민에게 비판적 AI 리터러시와 주권적 인프라가 필요하다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "research",
+              "anchor": "p2s2"
+            },
+            {
+              "sourceId": "research",
+              "anchor": "p2s3"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "p1s1",
+          "title": "예술과 창작의 재정의",
+          "summary": "무엇이 예술이고 누가 예술가인지부터 AI 시대의 창작 패러다임을 다시 묻는다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "research",
+              "anchor": "p1s1"
+            }
+          ]
+        },
+        {
+          "sectionId": "p1s4",
+          "title": "도구에서 공동 창작자로",
+          "summary": "AI와 인간의 관계를 도구, 동료, 공동창작자의 단계와 통합 워크플로 관점에서 살핀다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "research",
+              "anchor": "p1s4"
+            }
+          ]
+        },
+        {
+          "sectionId": "p1s6",
+          "title": "무한히 확장되는 가상 세계",
+          "summary": "기억과 서사의 변형, 시공간 경계의 확장, 월드 모델과 월드 스킨으로 질문을 넓힌다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "research",
+              "anchor": "p1s6"
+            }
+          ]
+        },
+        {
+          "sectionId": "p2s1",
+          "title": "책임감 있는 창작 문화",
+          "summary": "투명성, 동의, 보상, 창작자의 의도성과 비판적 성찰을 신뢰의 조건으로 제안한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "research",
+              "anchor": "p2s1"
+            }
+          ]
+        },
+        {
+          "sectionId": "p2s3",
+          "title": "비판적 AI 리터러시",
+          "summary": "프롬프트 사용법을 넘어 기술의 조건과 영향을 읽는 능력을 창작자와 시민의 과제로 둔다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "research",
+              "anchor": "p2s3"
+            }
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "contentId": "slides",
+      "type": "source",
+      "url": "series/aigc-creative-paradigm/sources/slides/",
+      "title": "AIGC 시장 트렌드 및 창작자 패러다임의 변화",
+      "synopsis": "2025년 11월 발표의 162장 슬라이드와 발표 중 재생한 영상을 여섯 챕터와 부록의 순서로 다시 볼 수 있는 원자료다.",
+      "contentHash": "sha256:e4c3d7d74f4f2811ade54eac6ca38d623e28cfcca29f061f0860297dc229e729",
+      "keyInsights": [
+        {
+          "text": "발표는 실력과 노력의 가치에서 시작해 AI를 새 매체로 보고, 프롬프트와 워크플로, 커뮤니티, 가상 세계로 질문을 확장한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch1"
+            },
+            {
+              "sourceId": "slides",
+              "anchor": "ch6"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "ch1",
+          "title": "실력과 노력의 가치",
+          "summary": "생성 AI가 결과와 과정의 가치를 어떻게 흔드는지 사례로 연다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch1"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch2",
+          "title": "도구를 넘어 새로운 미디어로",
+          "summary": "AI를 효율 도구보다 고유한 문법과 문화를 만드는 매체로 전환해 본다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch2"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch3",
+          "title": "프롬프트",
+          "summary": "AI와 상호작용하는 언어로서 프롬프트의 역할과 한계를 다룬다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch3"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch4",
+          "title": "실시간 워크플로",
+          "summary": "한 번의 명령에서 벗어나 생성, 평가, 협업이 이어지는 작업 흐름으로 이동한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch4"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch5",
+          "title": "창작 커뮤니티와 플랫폼",
+          "summary": "플랫폼 안에서 이어지는 창작, 권리, 학습 데이터와 참여 구조를 살핀다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch5"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch6",
+          "title": "확장되는 디지털 가상 세계",
+          "summary": "기억과 서사, 디지털 물리 법칙, 월드 모델과 월드 스킨으로 발표의 시야를 넓힌다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides",
+              "anchor": "ch6"
+            }
+          ]
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "allowedTargets": [
+    {
+      "contentType": "series",
+      "contentId": "aigc-creative-paradigm",
+      "url": "series/aigc-creative-paradigm/"
+    },
+    {
+      "contentType": "post",
+      "contentId": "01-skill-and-effort",
+      "url": "series/aigc-creative-paradigm/posts/01-skill-and-effort/"
+    },
+    {
+      "contentType": "post",
+      "contentId": "02-workflow-design",
+      "url": "series/aigc-creative-paradigm/posts/02-workflow-design/"
+    },
+    {
+      "contentType": "post",
+      "contentId": "03-reality-virtual-boundary",
+      "url": "series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/"
+    },
+    {
+      "contentType": "source",
+      "contentId": "research",
+      "url": "series/aigc-creative-paradigm/sources/research/"
+    },
+    {
+      "contentType": "source",
+      "contentId": "slides",
+      "url": "series/aigc-creative-paradigm/sources/slides/"
+    }
+  ],
+  "generatedAt": "2026-07-31T06:00:00.000Z"
+}

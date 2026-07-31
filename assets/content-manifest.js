@@ -15,7 +15,7 @@ export const contentLibrary = {
       coverAlt: "세 포스팅의 키 비주얼이 하나로 이어진 파노라마",
       assistantContext: {
         path: "series/aigc-creative-paradigm/assistant/context.json",
-        status: "planned",
+        status: "ready",
         pilotSurfaceIds: [
           "aigc-creative-paradigm:series:aigc-creative-paradigm",
           "aigc-creative-paradigm:post:01-skill-and-effort",

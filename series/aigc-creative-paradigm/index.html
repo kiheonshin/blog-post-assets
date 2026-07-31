@@ -225,8 +225,7 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 .idx h1{margin:0 0 2rem}
 main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
 
-/* 두 칸 — 본문(CTA·바탕 자료·소개·공개문) 왼쪽, 가상의 신기헌 조작대 오른쪽.
-   좁으면 조작대가 공개문 아래 맨 끝으로 내려간다(DOM 순서 그대로). */
+/* 두 칸 — 본문(CTA·바탕 자료·소개·공개문) 왼쪽, 시리즈 도슨트 오른쪽. */
 .idx-grid{display:grid;gap:2.25rem}
 @media(min-width:70rem){
   .idx-grid{grid-template-columns:minmax(0,1fr) 17rem;column-gap:3rem;align-items:start}
@@ -234,8 +233,6 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
   .idx-grid > .struct{grid-column:1;grid-row:2}
   .idx-grid > .about{grid-column:1;grid-row:3}
   .idx-grid > .foot{grid-column:1 / -1;grid-row:4}
-  .idx-grid > .idx-rail{grid-column:2;grid-row:1 / span 3;
-    position:sticky;top:2rem;align-self:start}
 }
 /* CTA — 배너 위에 포스팅 세 개. 카드가 이미지를 덮으므로 바깥 여백만 정리 */
 .idx-grid > .cta{margin:0}
@@ -255,53 +252,14 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
 .summary p{margin:0 0 .85rem;font-size:.9375rem;line-height:1.75}
 .summary p:last-child{margin-block-end:0}
 
-/* 가상의 신기헌 음성 조작대 */
-.idx-rail{border:1px solid var(--rule);padding:1.1rem}
-.rail-kicker{margin:0 0 .3rem;font-family:var(--font-mono);font-size:var(--micro);
-  font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
-.rail-sub{margin:0;font-size:.8125rem;line-height:1.55;color:var(--ink-muted)}
-.voice-title{margin:.9rem 0 .25rem;font-size:.9375rem;line-height:1.35}
-.voice-status{display:flex;align-items:center;gap:.45rem;margin:.9rem 0 0;
-  padding-block-start:.9rem;border-block-start:1px solid var(--rule);
-  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.03em;
-  color:var(--ink-muted)}
-.voice-status::before{content:"";display:block;inline-size:.5rem;block-size:.5rem;
-  border:1px solid var(--rule-strong);background:var(--surface)}
-.idx-rail[data-state="connecting"] .voice-status::before,
-.idx-rail[data-state="thinking"] .voice-status::before,
-.idx-rail[data-state="listening"] .voice-status::before,
-.idx-rail[data-state="ready"] .voice-status::before,
-.idx-rail[data-state="speaking"] .voice-status::before{background:var(--accent);
-  border-color:var(--accent)}
-.idx-rail[data-state="error"] .voice-status::before{background:var(--ink);
-  border-color:var(--ink)}
-.voice-action{display:block;width:100%;min-height:2.75rem;margin-block-start:.85rem;
-  border:1px solid var(--rule-strong);border-radius:0;background:var(--inverse);
-  color:var(--inverse-ink);font:600 var(--meta)/1 var(--font-mono);
-  letter-spacing:.06em;cursor:pointer;
-  transition:color .15s ease-out,background .15s ease-out}
-.voice-action:hover{background:var(--surface);color:var(--ink)}
-.voice-action:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.voice-meter{height:.35rem;margin-block-start:.6rem;background:var(--rule);
-  overflow:hidden}
-.voice-meter__level{display:block;width:calc(var(--voice-level,0) * 100%);
-  height:100%;background:var(--ink)}
-.voice-transcript{min-height:6.2rem;max-height:11rem;overflow:auto;
-  margin-block-start:1rem;padding:.75rem;border:1px solid var(--rule);
-  background:var(--surface)}
-.voice-speaker{margin:0 0 .35rem;font-family:var(--font-mono);
-  font-size:var(--micro);font-weight:600;letter-spacing:.06em;color:var(--ink-faint)}
-.voice-copy{margin:0;font-size:.8125rem;line-height:1.58;color:var(--ink)}
-.voice-privacy{margin:1rem 0 0;padding-block-start:.8rem;border-block-start:1px solid var(--rule);
-  font-size:.6875rem;line-height:1.55;color:var(--ink-faint)}
-
 .idx-grid > .foot{margin-block-start:.75rem}
 .idx .foot{margin-block-start:0;padding-block-start:1.5rem;
   border-block-start:1px solid var(--rule-strong)}
 </style>
 <link rel="stylesheet" href="../../assets/site.css?v=20260731g">
+<link rel="stylesheet" href="../../assets/assistant/voice-assistant.css?v=20260731f">
 <script type="module" src="../../assets/series-nav.js?v=20260731d"></script>
-<script type="module" src="../../assets/voice-agent.js?v=20260730b"></script>
+<script type="module" src="../../assets/assistant/voice-assistant.js?v=20260731f"></script>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -316,6 +274,12 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
     <div class="cta">
       <series-nav data-series="aigc-creative-paradigm"></series-nav>
     </div>
+    <kiheon-voice-assistant
+      data-scope="series"
+      data-series="aigc-creative-paradigm"
+      data-content-type="series"
+      data-content-id="aigc-creative-paradigm"
+      data-context="assistant/context.json"></kiheon-voice-assistant>
     <section class="struct">
       <series-sources data-series="aigc-creative-paradigm"></series-sources>
     </section>
@@ -327,19 +291,6 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
       <p>이 글은 신기헌의 디지털 트윈 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.</p>
       <p class="en">Written and edited 100% by an AI agent from the Kiheon Shin Digital Twin project.</p>
     </div>
-    <aside class="idx-rail" data-voice-agent data-state="idle" aria-label="가상의 신기헌 음성 대화">
-      <p class="rail-kicker">가상의 신기헌</p>
-      <h2 class="voice-title">이 시리즈에 관해 대화하기</h2>
-      <p class="rail-sub">궁금한 것을 말로 물으면 목소리로 답합니다.</p>
-      <p class="voice-status" role="status" aria-live="polite"><span data-voice-status>대화 준비됨</span></p>
-      <button class="voice-action" type="button" data-voice-action aria-pressed="false">대화 시작</button>
-      <div class="voice-meter" data-voice-meter aria-hidden="true"><span class="voice-meter__level"></span></div>
-      <div class="voice-transcript" role="log" aria-live="polite" aria-label="가상의 신기헌 답변">
-        <p class="voice-speaker">가상의 신기헌</p>
-        <p class="voice-copy" data-voice-transcript>버튼을 누르면 마이크 연결을 시작합니다.</p>
-      </div>
-      <p class="voice-privacy">마이크 음성은 대화 중 xAI로 전송됩니다. 이 페이지는 음성과 대화 내용을 별도로 저장하지 않습니다.</p>
-    </aside>
   </div>
 </div></main>
 <footer class="site-footer"><div class="site-footer__in">

@@ -168,6 +168,16 @@
 - **데이터**: `content-manifest.js`의 포스트 순서·제목·주소를 그대로 사용한다.
 - **접근성**: 현재 글은 링크가 아닌 `aria-current="page"` 상태로 표시한다.
 
+### Series Docent
+
+- **구조**: `<kiheon-voice-assistant>` 하나가 시리즈의 전체 rail과 상세 페이지의 compact entry를 함께 제공한다.
+- **시리즈 배치**: DOM에서는 `<series-nav>` 바로 뒤, `<series-sources>`보다 앞에 둔다. 70rem 이상에서는 17rem 오른쪽 rail, 그 아래에서는 같은 DOM 순서의 한 열 블록이다.
+- **상세 배치**: 포스트는 lead 다음, 원자료는 source header 다음에 진입 바를 둔다. 열린 패널은 overlay 또는 bottom sheet이므로 본문과 목차의 계산 폭을 바꾸지 않는다.
+- **상태**: 준비, 듣기, 답 준비, 답하기, 오류. 질문 버튼을 누르기 전에는 마이크와 음성 안내를 시작하지 않는다.
+- **접근성**: 대화 기록은 항상 패널 안에 보이며 polite live region을 사용한다. Escape로 상세 패널을 닫고 진입 버튼으로 포커스를 돌려보내며, 모바일 safe area와 reduced motion을 존중한다.
+- **시각 규칙**: 기존 종이색과 1px 선을 사용한다. 그림자, 둥근 모서리, 블러를 추가하지 않는다.
+- **토큰 규칙**: 간격과 글자 크기는 `--space-*`, `--small`, `--meta`, `--micro`를 그대로 상속한다. 독립 인라인 스타일을 쓰는 원자료 페이지에서는 같은 값의 fallback만 허용한다.
+
 ### Transcript Reader
 
 - **구조**: `transcript-reader > aside.transcript-index + div.transcript-reader__body > section.talk > section.tr__segment`
