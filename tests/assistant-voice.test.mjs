@@ -86,12 +86,13 @@ async function loadAssistant() {
     .replace("export class KiheonVoiceAssistant", "class KiheonVoiceAssistant")
     .replace(
       /if \(!customElements\.get\("kiheon-voice-assistant"\)\) \{[\s\S]*?\}\s*$/,
-      "globalThis.KiheonVoiceAssistant = KiheonVoiceAssistant;",
+      "globalThis.KiheonVoiceAssistant = KiheonVoiceAssistant; globalThis.currentHeading = currentHeading;",
     );
   vm.runInContext(source, context, { filename: assistantPath });
   return {
     Assistant: context.KiheonVoiceAssistant,
     context,
+    currentHeading: context.currentHeading,
     getTransportInstances: () => transportInstances,
   };
 }
@@ -464,6 +465,19 @@ test("current content section updates one prepared listening prompt only when th
   assert.equal(rendered.at(-1)[0].label, "이 페이지 흐름 듣기");
   assert.match(rendered.at(-1)[0].answer, /페이지 전체 설명입니다/);
   assert.match(rendered.at(-1)[0].answer, /첫 대목 → 둘째 대목/);
+});
+
+test("research scroll spy supersedes a stale URL anchor", async () => {
+  const { context, currentHeading } = await loadAssistant();
+  const hashTarget = { id: "p1s1", matches: () => true };
+  const currentTarget = { id: "p2s3", matches: () => true };
+  context.location.hash = "#p1s1";
+  context.document.querySelector = (selector) => selector.includes('aria-current')
+    ? { hash: "#p2s3" }
+    : null;
+  context.document.getElementById = (id) => id === "p2s3" ? currentTarget : hashTarget;
+
+  assert.equal(currentHeading(), currentTarget);
 });
 
 test("a nested h3 keeps the nearest preceding h2 outline guidance", async () => {

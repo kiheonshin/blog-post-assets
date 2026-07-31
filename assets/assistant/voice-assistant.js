@@ -146,12 +146,12 @@ function entryKind(entry) {
 }
 
 function currentHeading() {
-  const hashTarget = location.hash && document.getElementById(location.hash.slice(1));
-  if (hashTarget?.matches?.("h2[id],h3[id],section[id]")) return hashTarget;
-
   const tocCurrent = document.querySelector('.toc a[aria-current="true"][href^="#"]');
   const tocTarget = tocCurrent && document.getElementById(tocCurrent.hash.slice(1));
   if (tocTarget) return tocTarget;
+
+  const hashTarget = location.hash && document.getElementById(location.hash.slice(1));
+  if (hashTarget?.matches?.("h2[id],h3[id],section[id]")) return hashTarget;
 
   const focused = document.activeElement?.closest?.("h2[id],h3[id],section[id]");
   if (focused) return focused;
