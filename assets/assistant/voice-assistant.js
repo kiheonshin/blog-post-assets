@@ -520,8 +520,10 @@ export class KiheonVoiceAssistant extends HTMLElement {
     const prompt = this.prompts.find((item) => item.id === promptButton.dataset.assistantPrompt);
     if (prompt) {
       if (this.scope === "series" && this.panel?.hidden) this.openPanel(promptButton);
-      this.showAnswer("안내", prompt.answer, prompt.targets);
-      this.speak(prompt.answer);
+      this.input.value = prompt.label;
+      this.input.focus();
+      this.input.setSelectionRange?.(prompt.label.length, prompt.label.length);
+      this.setState("idle", "질문을 확인한 뒤 보내 주세요");
     }
   }
 

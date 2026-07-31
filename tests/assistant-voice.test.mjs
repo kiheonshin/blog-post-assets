@@ -596,7 +596,7 @@ test("series rail keeps navigation compact and moves conversation into a dedicat
   assert.doesNotMatch(markup, /<select\b/i);
 });
 
-test("series prepared prompts open the dialog before rendering their answer", async () => {
+test("series prepared prompts open the dialog and prefill without sending or playing audio", async () => {
   const { Assistant } = await loadAssistant();
   const assistant = new Assistant();
   assistant.dataset.scope = "series";
@@ -604,8 +604,14 @@ test("series prepared prompts open the dialog before rendering their answer", as
   assistant.prompts = [{ id: "prepared", label: "준비된 질문", answer: "준비된 답", targets: [] }];
   const calls = [];
   assistant.openPanel = () => calls.push("open");
-  assistant.showAnswer = () => calls.push("answer");
-  assistant.speak = () => calls.push("speak");
+  assistant.input = {
+    value: "",
+    focus: () => calls.push("focus"),
+    setSelectionRange: (start, end) => calls.push(`selection:${start}:${end}`),
+  };
+  assistant.setState = (state, message) => calls.push(`${state}:${message}`);
+  assistant.showAnswer = () => assert.fail("choosing a prompt must not render an answer");
+  assistant.speak = () => assert.fail("choosing a prompt must not play audio");
   const promptButton = { dataset: { assistantPrompt: "prepared" } };
 
   assistant.handleClick({
@@ -614,7 +620,43 @@ test("series prepared prompts open the dialog before rendering their answer", as
     },
   });
 
-  assert.deepEqual(calls, ["open", "answer", "speak"]);
+  assert.equal(assistant.input.value, "준비된 질문");
+  assert.deepEqual(calls, [
+    "open",
+    "focus",
+    "selection:6:6",
+    "idle:질문을 확인한 뒤 보내 주세요",
+  ]);
+
+  const sent = [];
+  assistant.askQuestion = (question, options) => sent.push({ question, options });
+  assistant.handleSubmit({
+    target: { matches: (selector) => selector === "[data-assistant-form]" },
+    preventDefault() {},
+  });
+  assert.equal(sent.length, 1);
+  assert.equal(sent[0].question, "준비된 질문");
+  assert.equal(sent[0].options.speak, false);
+  assert.equal(assistant.input.value, "");
+});
+
+test("each published series explains its own subject and the same two-step question behavior", async () => {
+  const seriesIds = ["aigc-creative-paradigm", "autonomous-worlds", "co-creation-culture"];
+  const intros = await Promise.all(seriesIds.map(async (seriesId) => {
+    const raw = await readFile(path.join(repoRoot, "series", seriesId, "assistant", "context.json"), "utf8");
+    return JSON.parse(raw).docent.intro;
+  }));
+
+  assert.equal(new Set(intros).size, 3);
+  assert.match(intros[0], /연구 노트·발표 자료/);
+  assert.match(intros[1], /발표 기록·원고·슬라이드/);
+  assert.match(intros[2], /창의성·경계·기록/);
+  for (const intro of intros) {
+    assert.match(intro, /아래 질문을 누르면 대화창에 문장만 미리 담깁니다/);
+    assert.match(intro, /자동으로 보내거나 소리를 재생하지 않/);
+    assert.match(intro, /내용을 확인한 뒤 보내면 답변이 시작됩니다/);
+    assert.match(intro, /‘도슨트와 대화하기’로 빈 대화창을 여세요/);
+  }
 });
 
 test("conversation entry opens the dialog, focuses the composer, and returns focus on close", async () => {
@@ -773,7 +815,7 @@ test("a nested h3 keeps the nearest preceding h2 outline guidance", async () => 
   assert.equal(section.sectionId, "parent-a");
 });
 
-test("prepared prompt clicks speak with the selected voice and speed and expose stop control", async () => {
+test("voice preview speaks with the selected voice and speed and exposes stop control", async () => {
   const { Assistant, context } = await loadAssistant();
   const assistant = new Assistant();
   const spoken = [];
@@ -788,16 +830,14 @@ test("prepared prompt clicks speak with the selected voice and speed and expose 
   assistant.stopSpeakingButton = { hidden: true };
   assistant.claimAudio = () => {};
   assistant.setState = () => {};
-  assistant.showAnswer = () => {};
-  assistant.prompts = [{ id: "prepared", label: "준비된 안내", answer: "미리 작성한 답입니다.", targets: [] }];
-  const promptButton = { dataset: { assistantPrompt: "prepared" } };
+  assistant.showAnswer = () => assert.fail("preview must not add a transcript turn");
   assistant.handleClick({
     target: {
-      closest(selector) { return selector === "[data-assistant-prompt]" ? promptButton : null; },
+      closest(selector) { return selector === "[data-assistant-preview]" ? this : null; },
     },
   });
 
-  assert.equal(spoken[0].text, "미리 작성한 답입니다.");
+  assert.equal(spoken[0].text, "이 목소리와 속도로 안내해 드릴게요.");
   assert.equal(spoken[0].voice.voiceURI, "ko-1");
   assert.equal(spoken[0].rate, 0.85);
   spoken[0].onstart();
