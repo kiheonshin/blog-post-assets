@@ -365,6 +365,75 @@ test("speech recognition revisions update one listening bubble", async () => {
   assert.equal(Object.hasOwn(turns[0].dataset, "assistantListening"), false);
 });
 
+test("speech recognition keeps every revised segment in one submitted question", async () => {
+  const { Assistant, context } = await loadAssistant();
+  const assistant = new Assistant();
+  const turns = [];
+  const asked = [];
+  const result = (transcript, isFinal) => ({
+    0: { transcript },
+    isFinal,
+    length: 1,
+  });
+  context.document.createElement = () => ({
+    children: [],
+    dataset: {},
+    isConnected: true,
+    append(...children) { this.children.push(...children); },
+    querySelector(selector) {
+      if (selector === ".voice-assistant__speaker") return this.children[0];
+      if (selector === "[data-assistant-transcript]") return this.children[1];
+      return null;
+    },
+  });
+  assistant.targets = { childElementCount: 0, hidden: true, replaceChildren() {}, append() {} };
+  assistant.resetButton = { disabled: true };
+  assistant.transcriptLog = {
+    scrollHeight: 200,
+    scrollTop: 0,
+    querySelector(selector) {
+      if (selector === "[data-assistant-listening]") {
+        return turns.find((turn) => Object.hasOwn(turn.dataset, "assistantListening")) ?? null;
+      }
+      if (selector === ".voice-assistant__turn:last-of-type") return turns.at(-1) ?? null;
+      return null;
+    },
+    insertBefore(turn) { turns.push(turn); },
+  };
+  assistant.releaseMicrophone = () => {};
+  assistant.resetVoiceButton = () => {};
+  assistant.askQuestion = async (question, options) => asked.push({ question, options });
+  assistant.listening = true;
+  assistant.recognition = {};
+
+  assistant.handleRecognitionResult({
+    resultIndex: 0,
+    results: [result("포스팅 1의 내", false)],
+  });
+  assistant.handleRecognitionResult({
+    resultIndex: 1,
+    results: [result("포스팅 1의 ", true), result("내용이 궁금", false)],
+  });
+
+  assert.equal(turns.length, 1);
+  assert.equal(turns[0].children[0].textContent, "말하는 중");
+  assert.equal(turns[0].children[1].textContent, "포스팅 1의 내용이 궁금");
+  assert.equal(asked.length, 0);
+
+  assistant.handleRecognitionResult({
+    resultIndex: 1,
+    results: [result("포스팅 1의 ", true), result("내용이 궁금해", true)],
+  });
+
+  assert.equal(turns.length, 1);
+  assert.equal(turns[0].children[0].textContent, "나");
+  assert.equal(turns[0].children[1].textContent, "포스팅 1의 내용이 궁금해");
+  assert.equal(Object.hasOwn(turns[0].dataset, "assistantListening"), false);
+  assert.equal(asked.length, 1);
+  assert.equal(asked[0].question, "포스팅 1의 내용이 궁금해");
+  assert.equal(asked[0].options.speak, true);
+});
+
 test("consecutive identical connection errors create only one docent message", async () => {
   const { Assistant, context } = await loadAssistant();
   const assistant = new Assistant();

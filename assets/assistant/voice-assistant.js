@@ -193,6 +193,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.destroyed = false;
     this.requestController = null;
     this.returnFocus = null;
+    this.listeningTurn = null;
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleKeydown = this.handleKeydown.bind(this);
@@ -891,14 +892,20 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.transcriptLog.querySelector("[data-assistant-initial]")?.remove();
     const role = speaker === "질문" || speaker === "듣는 중" ? "user" : "assistant";
     const label = role === "user" ? (speaker === "듣는 중" ? "말하는 중" : "나") : "도슨트";
-    const listeningTurn = this.transcriptLog.querySelector("[data-assistant-listening]");
+    let listeningTurn = this.listeningTurn;
+    if (listeningTurn?.isConnected === false) listeningTurn = null;
+    listeningTurn ??= this.transcriptLog.querySelector("[data-assistant-listening]");
     if (listeningTurn && role === "user") {
+      this.listeningTurn = listeningTurn;
       listeningTurn.dataset.assistantRole = "user";
       const speakerNode = listeningTurn.querySelector?.(".voice-assistant__speaker");
       const copyNode = listeningTurn.querySelector?.("[data-assistant-transcript]");
       if (speakerNode) speakerNode.textContent = label;
       if (copyNode) copyNode.textContent = text;
-      if (speaker !== "듣는 중") delete listeningTurn.dataset.assistantListening;
+      if (speaker !== "듣는 중") {
+        delete listeningTurn.dataset.assistantListening;
+        this.listeningTurn = null;
+      }
       this.transcriptSpeaker = speakerNode;
       this.transcript = copyNode;
       if (this.resetButton) this.resetButton.disabled = false;
@@ -911,7 +918,10 @@ export class KiheonVoiceAssistant extends HTMLElement {
     const turn = document.createElement("div");
     turn.className = "voice-assistant__turn";
     turn.dataset.assistantRole = role;
-    if (speaker === "듣는 중") turn.dataset.assistantListening = "";
+    if (speaker === "듣는 중") {
+      turn.dataset.assistantListening = "";
+      this.listeningTurn = turn;
+    }
     const speakerNode = document.createElement("p");
     speakerNode.className = "voice-assistant__speaker";
     speakerNode.textContent = label;
@@ -1021,21 +1031,32 @@ export class KiheonVoiceAssistant extends HTMLElement {
       },
     });
 
+    this.discardListeningTurn();
     const recognition = new Recognition();
     recognition.lang = "ko-KR";
     recognition.interimResults = true;
     recognition.continuous = false;
     recognition.maxAlternatives = 1;
     recognition.onstart = () => {
+      if (this.recognition !== recognition) return;
       this.listening = true;
       this.setState("listening", "말씀해 주세요");
     };
-    recognition.onresult = (event) => this.handleRecognitionResult(event);
-    recognition.onerror = (event) => this.handleRecognitionError(event);
+    recognition.onresult = (event) => {
+      if (this.recognition !== recognition) return;
+      this.handleRecognitionResult(event);
+    };
+    recognition.onerror = (event) => {
+      if (this.recognition !== recognition) return;
+      this.handleRecognitionError(event);
+    };
     recognition.onend = () => {
+      if (this.recognition !== recognition) return;
+      this.recognition = null;
       this.releaseMicrophone();
       if (this.listening) {
         this.listening = false;
+        this.discardListeningTurn();
         this.resetVoiceButton();
         this.setState("idle", "안내 준비됨");
       }
@@ -1046,10 +1067,12 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   handleRecognitionResult(event) {
     let text = "";
-    let complete = false;
-    for (let index = event.resultIndex; index < event.results.length; index += 1) {
-      text += event.results[index][0]?.transcript ?? "";
-      complete ||= event.results[index].isFinal;
+    const resultCount = event.results?.length ?? 0;
+    let complete = resultCount > 0;
+    for (let index = 0; index < resultCount; index += 1) {
+      const result = event.results[index];
+      text += result[0]?.transcript ?? "";
+      complete &&= result.isFinal === true;
     }
     text = text.trim();
     if (!text) return;
@@ -1064,6 +1087,8 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   handleRecognitionError(event) {
     this.listening = false;
+    this.recognition = null;
+    this.discardListeningTurn();
     this.releaseMicrophone();
     this.resetVoiceButton();
     if (event.error === "not-allowed" || event.error === "service-not-allowed") {
@@ -1180,6 +1205,13 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.mediaStream = null;
   }
 
+  discardListeningTurn() {
+    const listeningTurn = this.listeningTurn
+      ?? this.transcriptLog?.querySelector?.("[data-assistant-listening]");
+    listeningTurn?.remove?.();
+    this.listeningTurn = null;
+  }
+
   resetVoiceButton() {
     if (!this.voiceButton) return;
     this.voiceButton.textContent = "말로 묻기";
@@ -1194,6 +1226,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
       this.recognition?.abort();
     } catch {}
     this.recognition = null;
+    this.discardListeningTurn();
     this.releaseMicrophone();
     this.stopSpeech({ quiet: true });
     this.transport.reset();
