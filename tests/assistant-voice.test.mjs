@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const transportPath = path.join(repoRoot, "assets", "assistant", "voice-transport.js");
+const agentPath = path.join(repoRoot, "assets", "assistant", "docent-agent.js");
 const assistantPath = path.join(repoRoot, "assets", "assistant", "voice-assistant.js");
 
 async function importTransport() {
@@ -14,7 +15,13 @@ async function importTransport() {
   return import(`data:text/javascript;base64,${Buffer.from(source).toString("base64")}`);
 }
 
+async function importAgent() {
+  const source = await readFile(agentPath, "utf8");
+  return import(`data:text/javascript;base64,${Buffer.from(source).toString("base64")}`);
+}
+
 async function loadAssistant() {
+  const { DocentAgent } = await importAgent();
   let transportInstances = 0;
   class TransportStub {
     constructor() {
@@ -56,6 +63,7 @@ async function loadAssistant() {
   const context = vm.createContext({
     AbortController,
     CustomEvent: CustomEventStub,
+    DocentAgent,
     HTMLElement: ElementStub,
     URL,
     VOICE_OFFLINE_MESSAGE: "이 기기에서 개인 연결을 켜고, 브라우저의 기기 연결 요청을 허용한 뒤 다시 시도해 주세요. 연결되지 않아도 준비된 안내는 이용할 수 있습니다.",
@@ -83,6 +91,10 @@ async function loadAssistant() {
     .replace(
       'import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js?v=20260801b";',
       "const VoiceTransport = globalThis.VoiceTransport; const VOICE_OFFLINE_MESSAGE = globalThis.VOICE_OFFLINE_MESSAGE;",
+    )
+    .replace(
+      'import { DocentAgent } from "./docent-agent.js?v=20260801a";',
+      "const DocentAgent = globalThis.DocentAgent;",
     )
     .replace("export class KiheonVoiceAssistant", "class KiheonVoiceAssistant")
     .replace(
@@ -220,7 +232,7 @@ test("typed questions remain available without speech input", async () => {
   const states = [];
   const answers = [];
   assistant.showAnswer = (speaker, text) => answers.push({ speaker, text });
-  assistant.setState = (state) => states.push(state);
+  assistant.setState = (state, message) => states.push({ state, message });
   assistant.groundedInput = (question) => `public:${question}`;
   assistant.transport = {
     ask: async (input) => {
@@ -230,7 +242,13 @@ test("typed questions remain available without speech input", async () => {
   };
 
   await assistant.askQuestion("글로 묻습니다", { speak: false });
-  assert.deepEqual(states, ["thinking", "idle"]);
+  assert.deepEqual(states.map(({ state }) => state), ["thinking", "thinking", "thinking", "thinking", "idle"]);
+  assert.deepEqual(states.slice(0, -1).map(({ message }) => message), [
+    "질문을 살펴보고 있어요",
+    "공개 자료를 확인하고 있어요",
+    "도슨트가 답을 만들고 있어요",
+    "답변을 확인하고 있어요",
+  ]);
   assert.equal(answers.at(-1).text, "글로 받은 답입니다");
 });
 

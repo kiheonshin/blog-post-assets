@@ -1,4 +1,5 @@
 import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js?v=20260801b";
+import { DocentAgent } from "./docent-agent.js?v=20260801a";
 
 const DEFAULT_PROMPTS = {
   series: [
@@ -40,7 +41,6 @@ const DEFAULT_PROMPTS = {
 let instanceCount = 0;
 let openPanelCount = 0;
 const MAX_GROUNDED_INPUT_LENGTH = 11_500;
-const FILLER_TOKENS = /^(?:아+|어+|으+|음+|흠+|네+|예+|응+|저기|잠깐|잠시|뭐지|그러니까)$/u;
 
 function speechRecognitionConstructor() {
   return globalThis.SpeechRecognition ?? globalThis.webkitSpeechRecognition;
@@ -181,28 +181,18 @@ function intentText(value) {
     .replace(/[^\p{L}\p{N}]+/gu, "");
 }
 
-function isLowSignalUtterance(value) {
-  const tokens = String(value ?? "")
-    .toLocaleLowerCase("ko")
-    .replace(/[^\p{L}\p{N}\s]+/gu, " ")
-    .trim()
-    .split(/\s+/u)
-    .filter(Boolean);
-  return tokens.length > 0 && tokens.length <= 3 && tokens.every((token) => FILLER_TOKENS.test(token));
-}
-
 export class KiheonVoiceAssistant extends HTMLElement {
   constructor() {
     super();
     instanceCount += 1;
     this.instanceId = `kiheon-voice-assistant-${instanceCount}`;
     this.transport = new VoiceTransport();
+    this.agent = this.createAgent();
     this.context = null;
     this.listening = false;
     this.destroyed = false;
     this.requestController = null;
     this.returnFocus = null;
-    this.dialogueHistory = [];
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleKeydown = this.handleKeydown.bind(this);
@@ -239,6 +229,81 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   get contentName() {
     return this.dataset.contentType === "source" ? "이 자료 안내" : "이 글 안내";
+  }
+
+  get dialogueHistory() {
+    return this.agent?.memory?.turns ?? [];
+  }
+
+  set dialogueHistory(turns) {
+    this.agent?.memory?.replaceTurns(turns);
+  }
+
+  createAgent() {
+    return new DocentAgent({
+      scope: this.scope,
+      transport: {
+        ask: (input, options) => this.transport.ask(input, options),
+      },
+      observe: () => ({
+        scope: this.scope,
+        contentId: this.dataset.contentId ?? "",
+        currentSectionId: currentHeading()?.id ?? "",
+        contextReady: Boolean(this.context),
+        allowedEntryCount: this.allowedEntries().length,
+      }),
+      sanitizeTarget: (target) => {
+        const url = publicTarget(target?.url);
+        return url ? { label: target?.label, url } : null;
+      },
+      onEvent: (event) => this.handleAgentEvent(event),
+      tools: [
+        {
+          name: "clarify_intent",
+          description: "불완전한 발화를 확인하고 한 문장으로 의도를 되묻습니다.",
+          execute: () => ({
+            answer: this.scope === "series"
+              ? "네, 듣고 있어요. 읽는 순서, 세 편의 관계, 바탕 자료 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요."
+              : "네, 듣고 있어요. 이 페이지의 흐름, 지금 읽는 대목, 핵심 질문 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요.",
+            targets: [],
+          }),
+        },
+        {
+          name: "prepared_guide",
+          description: "승인된 준비 질문과 현재 대목 안내를 공개 문맥에서 찾습니다.",
+          execute: ({ input }) => {
+            const prepared = this.preparedPromptFor(input);
+            return prepared
+              ? { handled: true, answer: prepared.answer, targets: prepared.targets }
+              : { handled: false };
+          },
+        },
+        {
+          name: "ground_public_context",
+          description: "허용된 공개 콘텐츠와 최근 세션 대화만으로 질문 문맥을 만듭니다.",
+          execute: ({ input }, { memory }) => ({
+            prompt: this.groundedInput(input, memory.recent()),
+          }),
+        },
+        {
+          name: "suggest_content",
+          description: "답변 뒤에 사용자가 직접 선택할 수 있는 공개 콘텐츠 링크를 제안합니다.",
+          execute: ({ input }) => ({ targets: this.answerTargets(input) }),
+        },
+      ],
+    });
+  }
+
+  handleAgentEvent(event) {
+    if (event.type === "turn_started") {
+      this.setState("thinking", "질문을 살펴보고 있어요");
+    } else if (event.type === "tool_started" && event.tool === "ground_public_context") {
+      this.setState("thinking", "공개 자료를 확인하고 있어요");
+    } else if (event.type === "model_started") {
+      this.setState("thinking", "도슨트가 답을 만들고 있어요");
+    } else if (event.type === "verification_started") {
+      this.setState("thinking", "답변을 확인하고 있어요");
+    }
   }
 
   render() {
@@ -893,7 +958,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.targets.replaceChildren();
     this.targets.hidden = true;
     if (this.input) this.input.value = "";
-    this.dialogueHistory = [];
+    this.agent.reset();
     if (this.resetButton) this.resetButton.disabled = true;
     this.setState("idle", "대화를 지웠어요");
     this.input?.focus();
@@ -1009,7 +1074,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.setState("idle", "다시 말씀해 주세요");
   }
 
-  groundedInput(question) {
+  groundedInput(question, dialogueHistory = this.dialogueHistory) {
     if (!this.context) return question;
     const allowed = new Set((this.context.allowedTargets ?? []).map((target) =>
       `${target?.contentType}:${target?.contentId}`,
@@ -1035,7 +1100,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
       ...entries.map((item) => `[${entryKind(item)}]\n${entryGrounding(item)}`),
       headingText(heading) && `현재 읽는 곳: ${headingText(heading)}`,
       outline?.summary && `현재 대목 설명: ${compactText(outline.summary)}`,
-      this.dialogueHistory.length && `이전 대화:\n${this.dialogueHistory
+      dialogueHistory.length && `이전 대화:\n${dialogueHistory
         .slice(-6)
         .map((turn) => `${turn.role}: ${turn.text}`)
         .join("\n")}`,
@@ -1048,56 +1113,29 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   async askQuestion(question, { speak }) {
     this.requestController?.abort();
-    this.requestController = null;
     this.showAnswer("질문", question);
-    if (isLowSignalUtterance(question)) {
-      const clarification = this.scope === "series"
-        ? "네, 듣고 있어요. 읽는 순서, 세 편의 관계, 바탕 자료 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요."
-        : "네, 듣고 있어요. 이 페이지의 흐름, 지금 읽는 대목, 핵심 질문 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요.";
-      this.rememberDialogue("사용자", question);
-      this.rememberDialogue("도슨트", clarification);
-      this.showAnswer("안내", clarification);
-      if (speak) this.speak(clarification);
-      else this.setState("idle", "질문을 조금 더 들려주세요");
-      return;
-    }
-    const prepared = this.preparedPromptFor(question);
-    if (prepared) {
-      this.rememberDialogue("사용자", question);
-      this.rememberDialogue("도슨트", prepared.answer);
-      this.showAnswer("안내", prepared.answer, prepared.targets);
-      if (speak) this.speak(prepared.answer);
-      else this.setState("idle", "안내 준비됨");
-      return;
-    }
-
     this.requestController = new AbortController();
-    this.setState("thinking", "도슨트가 답을 만들고 있어요");
+    this.agent.scope = this.scope;
     try {
-      const grounded = this.groundedInput(question);
-      this.rememberDialogue("사용자", question);
-      const answer = await this.transport.ask(grounded, {
+      const result = await this.agent.runTurn(question, {
         signal: this.requestController.signal,
       });
-      this.rememberDialogue("도슨트", answer);
-      this.showAnswer("안내", answer, this.answerTargets(question));
-      if (speak) this.speak(answer);
-      else this.setState("idle", "안내 준비됨");
+      this.showAnswer("안내", result.answer, result.targets);
+      if (speak) this.speak(result.answer);
+      else this.setState("idle", result.source === "tool" ? "질문을 조금 더 들려주세요" : "안내 준비됨");
     } catch (error) {
       if (error?.code === "cancelled") return;
+      if (error?.code === "context_unavailable") {
+        this.setState("error", "공개 안내 문맥을 확인해 주세요");
+        this.showAnswer("안내", "이 페이지의 공개 안내 문맥을 불러오지 못했어요. 준비된 질문을 이용하거나 잠시 뒤 다시 시도해 주세요.");
+        return;
+      }
       this.transport.reset();
       this.setState("error", "개인 연결을 확인해 주세요");
       this.showAnswer("안내", VOICE_OFFLINE_MESSAGE);
+    } finally {
+      this.requestController = null;
     }
-  }
-
-  rememberDialogue(role, text) {
-    const value = String(text ?? "").trim();
-    if (!value) return;
-    const last = this.dialogueHistory.at(-1);
-    if (last?.role === role && last.text === value) return;
-    this.dialogueHistory.push({ role, text: value });
-    if (this.dialogueHistory.length > 8) this.dialogueHistory.splice(0, this.dialogueHistory.length - 8);
   }
 
   speak(text) {
@@ -1173,6 +1211,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
       if (!openPanelCount) document.documentElement?.classList?.remove("voice-assistant-scroll-lock");
     }
     this.transport.destroy();
+    this.agent.reset();
     this.removeEventListener("click", this.handleClick);
     this.removeEventListener("change", this.handleChange);
     this.removeEventListener("submit", this.handleSubmit);

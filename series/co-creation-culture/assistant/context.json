@@ -408,7 +408,7 @@
       "url": "series/co-creation-culture/posts/01-whose-creativity/",
       "title": "창의성은 누구의 것인가",
       "synopsis": "레고의 완결성과 참여 전략, 제프 스테이플과 사피엔즈의 공동 창작, 온체인 초상과 일곱 단계의 참여 구조를 통해 창의성의 주체가 한 명의 저자에서 공동체로 이동하는 과정을 살핀다.",
-      "contentHash": "sha256:0ecd745c2929dc6c94c8ae6df4ad76e5ca22a35f9f88687645cc0f4bf575c7a3",
+      "contentHash": "sha256:c4d1a8538e3284beee3a8f9ada14c52d5073d83c2de598918741cb6fc7b297e6",
       "keyInsights": [
         {
           "text": "코-크리에이션은 사람을 결과물의 소비자가 아니라 기획과 선택, 확산에 참여하는 창작 주체로 초대하는 구조다.",
@@ -501,7 +501,7 @@
       "url": "series/co-creation-culture/posts/02-at-the-boundary/",
       "title": "경계면에서",
       "synopsis": "도시 위에 덧입혀진 이미지와 방문객의 여정, 스토리텔링과 매직서클을 따라가며 현실과 가상이 겹치는 경계면에서 경험을 설계하는 조건을 살핀다.",
-      "contentHash": "sha256:43261daed9478802a44d31b3665c361f93d748ad9d44a6e475db67a951467cba",
+      "contentHash": "sha256:d2cdd644e309c48db12f07a09d9d117a7d7e804ab8d90d5d319782d4301c279d",
       "keyInsights": [
         {
           "text": "기술이 전면에 드러나기보다 이야기와 행동 안에 숨을 때 방문자는 현실과 가상을 하나의 경험으로 받아들인다.",
@@ -594,7 +594,7 @@
       "url": "series/co-creation-culture/posts/03-when-records-become-stories/",
       "title": "기록이 이야기가 될 때",
       "synopsis": "블록체인을 공부한 이유와 경험의 상속, 온체인 스토리텔링의 다섯 도구, 가상과 현실을 오가는 캐릭터 사례를 통해 기록이 소유를 넘어 이야기가 되는 조건을 묻는다.",
-      "contentHash": "sha256:50a7ab60fe4142c905f96544d9a25f11bf8329dd761ac3b35893c4e7c08bd1dc",
+      "contentHash": "sha256:417b5582f9ce9d143e18b1fadc16f782fe35ce7d25e19738aec7fe96152f1ed2",
       "keyInsights": [
         {
           "text": "블록체인의 의미는 기록을 남긴다는 기능 자체보다 누가 어떤 경험과 관계를 이어받을 수 있는지 설계하는 데 있다.",
@@ -687,7 +687,7 @@
       "url": "series/co-creation-culture/sources/slides-2023-06/",
       "title": "코-크리에이션 시대의 새로운 창작 문화",
       "synopsis": "레고와 스테이플버스에서 출발해 참여와 보상, 현실·가상의 경계, 플랫폼과 수익, 생성 AI, 웹3 거버넌스로 이어지는 코-크리에이션의 전체 구조를 다룬 2023년 6월 발표 자료다.",
-      "contentHash": "sha256:65787a02d071399e6dd425162cdbc9e81fe0f1b910c2ed96354f4d658b4099ec",
+      "contentHash": "sha256:7ad64c6379bcb5d6cc362adfa903b80d90044dca82446249429a74ec7f45ef00",
       "keyInsights": [
         {
           "text": "코-크리에이션은 다수의 창의성을 모으는 것과 각자의 기여를 기록하고 보상하는 일을 하나의 문화적 구조로 묶는다.",
@@ -780,7 +780,7 @@
       "url": "series/co-creation-culture/sources/slides-2023-11/",
       "title": "온체인 스토리텔링과 현실·가상의 경계",
       "synopsis": "현실 위의 이미지와 방문객의 여정, 매직서클, 블록체인과 경험의 상속, 온체인 스토리텔링 도구와 캐릭터의 현실 진출을 다룬 2023년 11월 발표 자료다.",
-      "contentHash": "sha256:c27b1b64ed639f57f7af2ad7b5a4c6b51cd93d49d3af6144655c463a4e3dc30a",
+      "contentHash": "sha256:acd7327e1495a40f637e12237e3efd460c132fde21a306ba6b6a50b71c9a5b51",
       "keyInsights": [
         {
           "text": "현실과 가상이 겹치는 경험은 기술을 과시하기보다 방문자의 여정과 이야기 안에서 자연스럽게 작동할 때 힘을 얻는다.",
