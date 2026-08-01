@@ -129,7 +129,7 @@ kiheon-voice-assistant[hidden],
   color: var(--ink-muted, #5e6065);
 }
 
-.voice-assistant__reset {
+.voice-assistant .voice-assistant__reset {
   min-height: var(--space-8, 2rem);
   padding: var(--space-1, .25rem) var(--space-2, .5rem);
   border: 0;
@@ -137,11 +137,13 @@ kiheon-voice-assistant[hidden],
   background: transparent;
   color: var(--ink-muted, #5e6065);
   font-family: var(--font-mono, "SFMono-Regular", monospace);
-  font-size: var(--micro, .6875rem);
-  letter-spacing: .04em;
+  font-size: .625rem;
+  font-weight: 400;
+  line-height: 1.2;
+  letter-spacing: .02em;
 }
 
-.voice-assistant__reset:disabled {
+.voice-assistant .voice-assistant__reset:disabled {
   cursor: default;
   opacity: .42;
 }
@@ -150,6 +152,50 @@ kiheon-voice-assistant[hidden],
 .voice-assistant[data-state="thinking"] .voice-assistant__status,
 .voice-assistant[data-state="speaking"] .voice-assistant__status {
   color: var(--accent, #2457d6);
+}
+
+.voice-assistant__status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2, .5rem);
+}
+
+.voice-assistant__activity {
+  display: none;
+  align-items: center;
+  gap: .2rem;
+  min-width: 1.25rem;
+}
+
+.voice-assistant[data-state="thinking"] .voice-assistant__activity {
+  display: inline-flex;
+}
+
+.voice-assistant__activity span {
+  width: .25rem;
+  height: .25rem;
+  border-radius: 50%;
+  background: currentColor;
+  animation: voice-assistant-thinking .9s ease-in-out infinite;
+}
+
+.voice-assistant__activity span:nth-child(2) {
+  animation-delay: .15s;
+}
+
+.voice-assistant__activity span:nth-child(3) {
+  animation-delay: .3s;
+}
+
+@keyframes voice-assistant-thinking {
+  0%, 60%, 100% {
+    opacity: .35;
+    transform: translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: translateY(-.15rem);
+  }
 }
 
 .voice-assistant__transcript {
@@ -272,7 +318,7 @@ kiheon-voice-assistant[hidden],
 .voice-assistant__series-toggle,
 .voice-assistant__rail-cta,
 .voice-assistant__entry button,
-.voice-assistant__close {
+.voice-assistant .voice-assistant__close {
   min-height: calc(var(--space-10, 2.5rem) + var(--space-1, .25rem));
   padding: var(--space-2, .5rem) var(--space-3, .75rem);
   border: 1px solid var(--rule-strong, #17181a);
@@ -549,11 +595,17 @@ kiheon-voice-assistant[hidden],
   line-height: 1.45;
 }
 
-.voice-assistant__entry button,
-.voice-assistant__close {
+.voice-assistant__entry button {
   flex: none;
   min-height: calc(var(--space-8, 2rem) + var(--space-1, .25rem));
   padding-inline: var(--space-3, .75rem);
+}
+
+.voice-assistant__close {
+  flex: none;
+  min-height: calc(var(--space-10, 2.5rem) + var(--space-1, .25rem));
+  padding: var(--space-2, .5rem) var(--space-3, .75rem);
+  font-size: var(--micro, .6875rem);
 }
 
 .voice-assistant__overlay {
@@ -669,6 +721,7 @@ kiheon-voice-assistant[hidden],
   .voice-assistant *,
   .voice-assistant *::before,
   .voice-assistant *::after {
+    animation: none !important;
     scroll-behavior: auto !important;
     transition: none !important;
   }

@@ -234,6 +234,26 @@ test("typed questions remain available without speech input", async () => {
   assert.equal(answers.at(-1).text, "글로 받은 답입니다");
 });
 
+test("thinking state exposes a visible and accessible LLM activity signal", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  const attributes = {};
+  assistant.status = { textContent: "" };
+  assistant.statusCopy = { textContent: "" };
+  assistant.transcriptLog = {
+    setAttribute(name, value) { attributes[name] = value; },
+  };
+
+  assistant.setState("thinking", "도슨트가 답을 만들고 있어요");
+  assert.equal(assistant.dataset.state, "thinking");
+  assert.equal(assistant.statusCopy.textContent, "도슨트가 답을 만들고 있어요");
+  assert.equal(attributes["aria-busy"], "true");
+
+  assistant.setState("idle", "안내 준비됨");
+  assert.equal(attributes["aria-busy"], "false");
+  assert.match(assistant.conversationMarkup(), /voice-assistant__activity/);
+});
+
 test("conversation log keeps the question when the answer arrives", async () => {
   const { Assistant, context } = await loadAssistant();
   const assistant = new Assistant();
@@ -593,6 +613,7 @@ test("series rail keeps navigation compact and moves conversation into a dedicat
   assert.doesNotMatch(rail, /voice-assistant__transcript|data-assistant-form|voice-assistant__settings/);
   assert.match(markup, /role="dialog"/);
   assert.match(markup, /<textarea\b[^>]*data-assistant-input/);
+  assert.match(markup, /<details class="voice-assistant__settings" open>/);
   assert.doesNotMatch(markup, /<select\b/i);
 });
 

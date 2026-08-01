@@ -235,6 +235,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     if (this.scope === "series") this.dataset.seriesExpanded = "false";
     this.innerHTML = this.scope === "series" ? this.seriesMarkup() : this.contentMarkup();
     this.status = this.querySelector("[data-assistant-status]");
+    this.statusCopy = this.querySelector("[data-assistant-status-copy]");
     this.transcriptLog = this.querySelector(".voice-assistant__transcript");
     this.transcript = this.querySelector("[data-assistant-transcript]");
     this.transcriptSpeaker = this.querySelector("[data-assistant-speaker]");
@@ -316,7 +317,10 @@ export class KiheonVoiceAssistant extends HTMLElement {
   conversationMarkup() {
     return `
       <div class="voice-assistant__conversation-head">
-        <p class="voice-assistant__status" role="status" aria-live="polite" data-assistant-status>안내 준비됨</p>
+        <p class="voice-assistant__status" role="status" aria-live="polite" data-assistant-status>
+          <span class="voice-assistant__activity" aria-hidden="true"><span></span><span></span><span></span></span>
+          <span data-assistant-status-copy>안내 준비됨</span>
+        </p>
         <button class="voice-assistant__reset" type="button" data-assistant-reset disabled>대화 지우기</button>
       </div>
       <div class="voice-assistant__transcript" role="log" aria-live="polite" aria-label="안내 대화 기록">
@@ -336,7 +340,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
           <button type="submit">보내기</button>
         </form>
         <button class="voice-assistant__stop-speaking" type="button" data-assistant-stop-speaking hidden>읽기 중단</button>
-        <details class="voice-assistant__settings">
+        <details class="voice-assistant__settings" open>
           <summary>목소리·속도</summary>
           <p class="voice-assistant__settings-summary" data-assistant-settings-summary>현재 기본 목소리 · 보통 속도</p>
           <div class="voice-assistant__setting-fields">
@@ -801,7 +805,9 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   setState(state, message) {
     this.dataset.state = state;
-    if (this.status) this.status.textContent = message;
+    const statusCopy = this.statusCopy ?? this.status;
+    if (statusCopy) statusCopy.textContent = message;
+    this.transcriptLog?.setAttribute?.("aria-busy", String(state === "thinking"));
   }
 
   showAnswer(speaker, text, targets = []) {
@@ -1018,7 +1024,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     }
 
     this.requestController = new AbortController();
-    this.setState("thinking", "답을 준비하고 있어요");
+    this.setState("thinking", "도슨트가 답을 만들고 있어요");
     try {
       const answer = await this.transport.ask(this.groundedInput(question), {
         signal: this.requestController.signal,
