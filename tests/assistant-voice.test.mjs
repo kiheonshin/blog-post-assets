@@ -234,6 +234,26 @@ test("typed questions remain available without speech input", async () => {
   assert.equal(answers.at(-1).text, "글로 받은 답입니다");
 });
 
+test("filler speech asks a natural follow-up without calling the bridge", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  const answers = [];
+  const spoken = [];
+  let bridgeCalls = 0;
+  assistant.dataset.scope = "series";
+  assistant.showAnswer = (speaker, text) => answers.push({ speaker, text });
+  assistant.setState = () => {};
+  assistant.speak = (text) => spoken.push(text);
+  assistant.transport = { ask: async () => { bridgeCalls += 1; } };
+
+  await assistant.askQuestion("아아", { speak: true });
+  assert.equal(bridgeCalls, 0);
+  assert.match(answers.at(-1).text, /듣고 있어요/);
+  assert.match(answers.at(-1).text, /무엇이 궁금한지/);
+  assert.deepEqual(spoken, [answers.at(-1).text]);
+  assert.deepEqual(Array.from(assistant.dialogueHistory, (turn) => turn.role), ["사용자", "도슨트"]);
+});
+
 test("thinking state exposes a visible and accessible LLM activity signal", async () => {
   const { Assistant } = await loadAssistant();
   const assistant = new Assistant();
@@ -287,6 +307,44 @@ test("conversation log keeps the question when the answer arrives", async () => 
   assert.equal(turns[1].children[0].textContent, "도슨트");
   assert.equal(turns[1].children[1].textContent, "첫 답변");
   assert.equal(turns[1].dataset.assistantRole, "assistant");
+});
+
+test("speech recognition revisions update one listening bubble", async () => {
+  const { Assistant, context } = await loadAssistant();
+  const assistant = new Assistant();
+  const turns = [];
+  context.document.createElement = () => ({
+    children: [],
+    dataset: {},
+    append(...children) { this.children.push(...children); },
+    querySelector(selector) {
+      if (selector === ".voice-assistant__speaker") return this.children[0];
+      if (selector === "[data-assistant-transcript]") return this.children[1];
+      return null;
+    },
+  });
+  assistant.targets = { childElementCount: 0, hidden: true, replaceChildren() {}, append() {} };
+  assistant.resetButton = { disabled: true };
+  assistant.transcriptLog = {
+    scrollHeight: 200,
+    scrollTop: 0,
+    querySelector(selector) {
+      if (selector === "[data-assistant-listening]") {
+        return turns.find((turn) => Object.hasOwn(turn.dataset, "assistantListening")) ?? null;
+      }
+      if (selector === ".voice-assistant__turn:last-of-type") return turns.at(-1) ?? null;
+      return null;
+    },
+    insertBefore(turn) { turns.push(turn); },
+  };
+
+  assistant.showAnswer("듣는 중", "아");
+  assistant.showAnswer("듣는 중", "아아");
+  assistant.showAnswer("질문", "아아");
+  assert.equal(turns.length, 1);
+  assert.equal(turns[0].children[0].textContent, "나");
+  assert.equal(turns[0].children[1].textContent, "아아");
+  assert.equal(Object.hasOwn(turns[0].dataset, "assistantListening"), false);
 });
 
 test("consecutive identical connection errors create only one docent message", async () => {
@@ -372,6 +430,7 @@ test("conversation reset clears every turn, related link, and transport state", 
   assert.equal(assistant.input.value, "");
   assert.equal(assistant.targets.hidden, true);
   assert.equal(assistant.resetButton.disabled, true);
+  assert.equal(assistant.dialogueHistory.length, 0);
 });
 
 test("series questions carry every allowed public entry and the docent answer contract", async () => {
@@ -418,9 +477,27 @@ test("series questions carry every allowed public entry and the docent answer co
   assert.match(grounded, /\[글\]/);
   assert.match(grounded, /\[연구 노트\]/);
   assert.match(grounded, /네 문장 이내/);
+  assert.match(grounded, /사용자의 의도를 먼저 확인/);
   assert.match(grounded, /무엇부터 읽을까요\?/);
   assert.doesNotMatch(grounded, /비공개 자료|포함되면 안 됨|private/);
   assert.ok(grounded.length <= 11_500);
+});
+
+test("follow-up questions carry recent dialogue without storing it outside the session", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  assistant.dataset.scope = "series";
+  assistant.context = { series: { title: "공개 시리즈" }, allowedTargets: [], entries: [] };
+  assistant.dialogueHistory = [
+    { role: "사용자", text: "첫 글은 무엇을 다루나요?" },
+    { role: "도슨트", text: "실력과 노력의 가치를 다룹니다." },
+  ];
+
+  const grounded = assistant.groundedInput("그건 왜 중요한가요?");
+  assert.match(grounded, /이전 대화/);
+  assert.match(grounded, /첫 글은 무엇을 다루나요/);
+  assert.match(grounded, /실력과 노력의 가치/);
+  assert.match(grounded, /그건 왜 중요한가요/);
 });
 
 test("content questions send only the current allowed entry", async () => {
@@ -987,6 +1064,9 @@ test("every published docent surface installs one assistant in the required read
   assert.match(assistantCss, /voice-assistant__turn\[data-assistant-role="user"\][\s\S]*align-self:\s*flex-end/);
   assert.match(assistantCss, /voice-assistant__disclosures[\s\S]*grid-template-columns:\s*repeat\(2/);
   assert.match(assistantCss, /voice-assistant__targets\[hidden\][\s\S]*display:\s*none/);
+  assert.match(assistantCss, /--voice-assistant-action-min-width/);
+  assert.match(assistantCss, /min-inline-size:\s*var\(--voice-assistant-action-min-width\)/);
+  assert.match(assistantCss, /block-size:\s*var\(--voice-assistant-action-height\)/);
   assert.doesNotMatch(assistantCss, /setting-fields select/);
   assert.doesNotMatch(assistantCss, /@media\s*\(max-width:\s*34rem\)/);
 });

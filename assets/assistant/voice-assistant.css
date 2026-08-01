@@ -1,6 +1,8 @@
 kiheon-voice-assistant {
   display: block;
   min-width: 0;
+  --voice-assistant-action-height: calc(var(--space-10, 2.5rem) + var(--space-1, .25rem));
+  --voice-assistant-action-min-width: calc(var(--space-16, 4rem) + var(--space-3, .75rem));
   color: var(--ink, #17181a);
   font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif);
   word-break: keep-all;
@@ -318,8 +320,15 @@ kiheon-voice-assistant[hidden],
 .voice-assistant__series-toggle,
 .voice-assistant__rail-cta,
 .voice-assistant__entry button,
-.voice-assistant .voice-assistant__close {
-  min-height: calc(var(--space-10, 2.5rem) + var(--space-1, .25rem));
+.voice-assistant .voice-assistant__close,
+.voice-assistant__stop-speaking,
+.voice-assistant__preview {
+  box-sizing: border-box;
+  display: inline-grid;
+  place-items: center;
+  min-inline-size: var(--voice-assistant-action-min-width);
+  block-size: var(--voice-assistant-action-height);
+  min-block-size: var(--voice-assistant-action-height);
   padding: var(--space-2, .5rem) var(--space-3, .75rem);
   border: 1px solid var(--rule-strong, #17181a);
   background: var(--inverse, #17181a);
@@ -328,6 +337,8 @@ kiheon-voice-assistant[hidden],
   font-size: var(--micro, .6875rem);
   font-weight: 600;
   letter-spacing: .04em;
+  line-height: 1;
+  white-space: nowrap;
 }
 
 .voice-assistant__voice {
@@ -345,7 +356,6 @@ kiheon-voice-assistant[hidden],
 
 .voice-assistant__stop-speaking {
   width: 100%;
-  min-height: var(--space-10, 2.5rem);
   margin-block-start: var(--space-2, .5rem);
   padding: var(--space-2, .5rem) var(--space-3, .75rem);
   border: 1px solid var(--rule-strong, #17181a);
@@ -401,7 +411,6 @@ kiheon-voice-assistant[hidden],
 
 .voice-assistant__preview {
   width: 100%;
-  min-height: var(--space-10, 2.5rem);
   margin-block-start: var(--space-3, .75rem);
   padding: var(--space-2, .5rem) var(--space-3, .75rem);
   border: 1px solid var(--rule-strong, #17181a);
@@ -597,13 +606,11 @@ kiheon-voice-assistant[hidden],
 
 .voice-assistant__entry button {
   flex: none;
-  min-height: calc(var(--space-8, 2rem) + var(--space-1, .25rem));
   padding-inline: var(--space-3, .75rem);
 }
 
 .voice-assistant__close {
   flex: none;
-  min-height: calc(var(--space-10, 2.5rem) + var(--space-1, .25rem));
   padding: var(--space-2, .5rem) var(--space-3, .75rem);
   font-size: var(--micro, .6875rem);
 }

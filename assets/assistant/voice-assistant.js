@@ -40,6 +40,7 @@ const DEFAULT_PROMPTS = {
 let instanceCount = 0;
 let openPanelCount = 0;
 const MAX_GROUNDED_INPUT_LENGTH = 11_500;
+const FILLER_TOKENS = /^(?:아+|어+|으+|음+|흠+|네+|예+|응+|저기|잠깐|잠시|뭐지|그러니까)$/u;
 
 function speechRecognitionConstructor() {
   return globalThis.SpeechRecognition ?? globalThis.webkitSpeechRecognition;
@@ -180,6 +181,16 @@ function intentText(value) {
     .replace(/[^\p{L}\p{N}]+/gu, "");
 }
 
+function isLowSignalUtterance(value) {
+  const tokens = String(value ?? "")
+    .toLocaleLowerCase("ko")
+    .replace(/[^\p{L}\p{N}\s]+/gu, " ")
+    .trim()
+    .split(/\s+/u)
+    .filter(Boolean);
+  return tokens.length > 0 && tokens.length <= 3 && tokens.every((token) => FILLER_TOKENS.test(token));
+}
+
 export class KiheonVoiceAssistant extends HTMLElement {
   constructor() {
     super();
@@ -191,6 +202,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.destroyed = false;
     this.requestController = null;
     this.returnFocus = null;
+    this.dialogueHistory = [];
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleKeydown = this.handleKeydown.bind(this);
@@ -814,12 +826,27 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.transcriptLog.querySelector("[data-assistant-initial]")?.remove();
     const role = speaker === "질문" || speaker === "듣는 중" ? "user" : "assistant";
     const label = role === "user" ? (speaker === "듣는 중" ? "말하는 중" : "나") : "도슨트";
+    const listeningTurn = this.transcriptLog.querySelector("[data-assistant-listening]");
+    if (listeningTurn && role === "user") {
+      listeningTurn.dataset.assistantRole = "user";
+      const speakerNode = listeningTurn.querySelector?.(".voice-assistant__speaker");
+      const copyNode = listeningTurn.querySelector?.("[data-assistant-transcript]");
+      if (speakerNode) speakerNode.textContent = label;
+      if (copyNode) copyNode.textContent = text;
+      if (speaker !== "듣는 중") delete listeningTurn.dataset.assistantListening;
+      this.transcriptSpeaker = speakerNode;
+      this.transcript = copyNode;
+      if (this.resetButton) this.resetButton.disabled = false;
+      this.transcriptLog.scrollTop = this.transcriptLog.scrollHeight;
+      return;
+    }
     const lastTurn = this.transcriptLog.querySelector(".voice-assistant__turn:last-of-type");
     const lastText = lastTurn?.querySelector?.("[data-assistant-transcript]")?.textContent;
     if (lastTurn?.dataset?.assistantRole === role && lastText === text) return;
     const turn = document.createElement("div");
     turn.className = "voice-assistant__turn";
     turn.dataset.assistantRole = role;
+    if (speaker === "듣는 중") turn.dataset.assistantListening = "";
     const speakerNode = document.createElement("p");
     speakerNode.className = "voice-assistant__speaker";
     speakerNode.textContent = label;
@@ -866,6 +893,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.targets.replaceChildren();
     this.targets.hidden = true;
     if (this.input) this.input.value = "";
+    this.dialogueHistory = [];
     if (this.resetButton) this.resetButton.disabled = true;
     this.setState("idle", "대화를 지웠어요");
     this.input?.focus();
@@ -997,13 +1025,20 @@ export class KiheonVoiceAssistant extends HTMLElement {
       ? "현재 화면: 시리즈 메인. 전체 구성과 콘텐츠 사이의 관계를 개론적으로 설명하고 다음 읽을 곳을 안내합니다."
       : "현재 화면: 세부 콘텐츠. 이 페이지의 흐름과 현재 읽는 대목을 중심으로 설명합니다.";
     const publicContext = [
-      "역할: 이 공개 시리즈의 도슨트입니다. 아래 공개 문맥만 사용해 한국어로 네 문장 이내로 답하세요. 문맥에 없는 사실은 추측하지 말고 모른다고 말하세요.",
+      "역할: 이 공개 시리즈를 함께 살펴보는 차분하고 정확한 도슨트입니다.",
+      "대화 원칙: 사용자의 의도를 먼저 확인합니다. 인사·감탄·머뭇거림·불완전한 발화라면 내용을 지어 답하지 말고, 들은 뜻을 짧게 확인한 뒤 무엇이 궁금한지 한 문장으로 되묻습니다.",
+      "답변 방식: 의도가 분명하면 요지를 먼저 말하고, 공개 근거와 맥락을 덧붙인 뒤 필요할 때만 다음 읽을 곳을 제안합니다. 질문보다 넓게 강의하지 말고 한국어 네 문장 이내로 답합니다.",
+      "근거 경계: 아래 공개 문맥만 사용합니다. 문맥에 없는 사실은 추측하지 말고 모른다고 말합니다.",
       mode,
       this.context.series?.title && `시리즈: ${compactText(this.context.series.title)}`,
       this.context.series?.synopsis && `시리즈 설명: ${compactText(this.context.series.synopsis)}`,
       ...entries.map((item) => `[${entryKind(item)}]\n${entryGrounding(item)}`),
       headingText(heading) && `현재 읽는 곳: ${headingText(heading)}`,
       outline?.summary && `현재 대목 설명: ${compactText(outline.summary)}`,
+      this.dialogueHistory.length && `이전 대화:\n${this.dialogueHistory
+        .slice(-6)
+        .map((turn) => `${turn.role}: ${turn.text}`)
+        .join("\n")}`,
     ].filter(Boolean);
     if (!publicContext.length) return question;
     const suffix = `\n\n질문\n${question}`;
@@ -1015,8 +1050,21 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.requestController?.abort();
     this.requestController = null;
     this.showAnswer("질문", question);
+    if (isLowSignalUtterance(question)) {
+      const clarification = this.scope === "series"
+        ? "네, 듣고 있어요. 읽는 순서, 세 편의 관계, 바탕 자료 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요."
+        : "네, 듣고 있어요. 이 페이지의 흐름, 지금 읽는 대목, 핵심 질문 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요.";
+      this.rememberDialogue("사용자", question);
+      this.rememberDialogue("도슨트", clarification);
+      this.showAnswer("안내", clarification);
+      if (speak) this.speak(clarification);
+      else this.setState("idle", "질문을 조금 더 들려주세요");
+      return;
+    }
     const prepared = this.preparedPromptFor(question);
     if (prepared) {
+      this.rememberDialogue("사용자", question);
+      this.rememberDialogue("도슨트", prepared.answer);
       this.showAnswer("안내", prepared.answer, prepared.targets);
       if (speak) this.speak(prepared.answer);
       else this.setState("idle", "안내 준비됨");
@@ -1026,9 +1074,12 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.requestController = new AbortController();
     this.setState("thinking", "도슨트가 답을 만들고 있어요");
     try {
-      const answer = await this.transport.ask(this.groundedInput(question), {
+      const grounded = this.groundedInput(question);
+      this.rememberDialogue("사용자", question);
+      const answer = await this.transport.ask(grounded, {
         signal: this.requestController.signal,
       });
+      this.rememberDialogue("도슨트", answer);
       this.showAnswer("안내", answer, this.answerTargets(question));
       if (speak) this.speak(answer);
       else this.setState("idle", "안내 준비됨");
@@ -1038,6 +1089,15 @@ export class KiheonVoiceAssistant extends HTMLElement {
       this.setState("error", "개인 연결을 확인해 주세요");
       this.showAnswer("안내", VOICE_OFFLINE_MESSAGE);
     }
+  }
+
+  rememberDialogue(role, text) {
+    const value = String(text ?? "").trim();
+    if (!value) return;
+    const last = this.dialogueHistory.at(-1);
+    if (last?.role === role && last.text === value) return;
+    this.dialogueHistory.push({ role, text: value });
+    if (this.dialogueHistory.length > 8) this.dialogueHistory.splice(0, this.dialogueHistory.length - 8);
   }
 
   speak(text) {
