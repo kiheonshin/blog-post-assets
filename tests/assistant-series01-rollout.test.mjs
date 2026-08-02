@@ -27,8 +27,8 @@ const unchangedSeriesSurfaces = [
 test("series 01 alone opts into the staged docent interface", async () => {
   for (const file of seriesOneSurfaces) {
     const html = await read(file);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20260802d/, file);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260803grok1/, file);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20260803simple1/, file);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260803grok2/, file);
   }
 
   for (const file of unchangedSeriesSurfaces) {
@@ -40,8 +40,8 @@ test("series 01 alone opts into the staged docent interface", async () => {
 test("series 01 ships the staged Grok built-in voice runtime", async () => {
   const script = await read("assets/assistant/voice-assistant-v2.js");
   const styles = await read("assets/assistant/voice-assistant-v2.css");
-  assert.equal(sha256(script), "20f71aef7c92b45bb34ad67b83f1efbc718cf5ad31752ee466b7415ff5bc8952");
-  assert.equal(sha256(styles), "38747b1f2d67f125d676f96abdb5e29e2a219aefb8457fc8b2a7d518ee84e6be");
+  assert.equal(sha256(script), "8a153474d53f193572a9e5ca64ecb4274599f5e2932f111f61dbb81d6c70677b");
+  assert.equal(sha256(styles), "e3a5965c8871746fe8574867ae0e5eb76b4a2672f9c392fe6d6f6d070b8fc53b");
   assert.match(script, /data-assistant-open-voice/);
   assert.match(script, /voiceSessionActive/);
   assert.match(script, /data-assistant-transcript-details/);
@@ -54,6 +54,12 @@ test("series 01 ships the staged Grok built-in voice runtime", async () => {
   assert.doesNotMatch(script, /data-assistant-reset/);
   assert.match(styles, /voice-assistant__voice-stage/);
   assert.match(styles, /voice-assistant__voice-session/);
+  assert.equal((script.match(/class="voice-assistant__voice-ring"/g) ?? []).length, 1);
+  assert.match(script, /event\.type === "input_level"/);
+  assert.match(script, /--voice-ring-scale/);
+  assert.doesNotMatch(styles, /voice-assistant__voice-ring:nth-child/);
+  assert.match(styles, /voice-assistant-ring-turn/);
+  assert.match(styles, /voice-assistant-ring-speak/);
 });
 
 test("series 01 context stays bound to the exact deployed surfaces", async () => {

@@ -318,6 +318,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.targets = this.querySelector("[data-assistant-targets]");
     this.promptList = this.querySelector("[data-assistant-prompts]");
     this.voiceButton = this.querySelector("[data-assistant-voice]");
+    this.voiceVisual = this.querySelector(".voice-assistant__voice-visual");
     this.voiceStageTitle = this.querySelector("[data-assistant-voice-stage-title]");
     this.voiceStageCopy = this.querySelector("[data-assistant-voice-stage-copy]");
     this.input = this.querySelector("[data-assistant-input]");
@@ -406,9 +407,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
       </div>
       <div class="voice-assistant__voice-stage">
         <div class="voice-assistant__voice-visual">
-          <span class="voice-assistant__voice-ring"></span>
-          <span class="voice-assistant__voice-ring"></span>
-          <span class="voice-assistant__voice-ring"></span>
+          <span class="voice-assistant__voice-ring" aria-hidden="true"></span>
           <button class="voice-assistant__voice-session" type="button" data-assistant-voice aria-label="음성 대화 시작" title="음성 대화 시작" aria-pressed="false">
             <svg class="voice-assistant__mic-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
               <path d="M12 3.5a3 3 0 0 0-3 3v5a3 3 0 0 0 6 0v-5a3 3 0 0 0-3-3Z"></path>
@@ -920,6 +919,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   setState(state, message) {
     this.dataset.state = state;
+    if (state !== "listening") this.updateVoiceLevel();
     const statusCopy = this.statusCopy ?? this.status;
     if (statusCopy) statusCopy.textContent = message;
     const stageCopy = {
@@ -934,6 +934,19 @@ export class KiheonVoiceAssistant extends HTMLElement {
     if (this.voiceStageCopy) this.voiceStageCopy.textContent = stageCopy[1];
     this.syncVoiceButtonLabel();
     this.transcriptLog?.setAttribute?.("aria-busy", String(state === "thinking"));
+  }
+
+  updateVoiceLevel(level) {
+    if (!this.voiceVisual?.style) return;
+    const value = Number(level);
+    if (!Number.isFinite(value) || value <= 0) {
+      this.voiceVisual.style.removeProperty("--voice-ring-scale");
+      this.voiceVisual.style.removeProperty("--voice-ring-opacity");
+      return;
+    }
+    const clamped = Math.min(1, value);
+    this.voiceVisual.style.setProperty("--voice-ring-scale", (1 + clamped * .1).toFixed(3));
+    this.voiceVisual.style.setProperty("--voice-ring-opacity", (.52 + clamped * .32).toFixed(3));
   }
 
   showAnswer(speaker, text, targets = []) {
@@ -1073,6 +1086,10 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   handleRealtimeEvent(event) {
     if (!this.voiceSessionActive && event.type !== "error") return;
+    if (event.type === "input_level") {
+      if (this.dataset.state === "listening") this.updateVoiceLevel(event.level);
+      return;
+    }
     if (event.type === "ready" || event.type === "session_started") {
       this.setState("listening", "말씀해 주세요");
       return;
