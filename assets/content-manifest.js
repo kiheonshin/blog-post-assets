@@ -85,7 +85,7 @@ export const contentLibrary = {
     {
       slug: "newtype-ip-dialogue",
       label: "Newtype Summit",
-      title: "AI를 가로막지 않을수록 선명해지는 창작자의 자리",
+      title: "AI를 열어둘수록 선명해지는 창작자의 자리",
       description:
         "2026년 6월 뉴타입 엔터 서밋 대담을 1인칭으로 다시 정리한 포스팅 세 개.",
       period: "2026",
@@ -104,7 +104,7 @@ export const contentLibrary = {
         {
           id: "01-not-blocking-potential",
           label: "포스팅 1",
-          title: "AI가 가진 잠재력을 가로막지 않을 때 협업이 시작된다",
+          title: "잠재력을 믿는 데서 협업이 시작된다",
           published: "2026-07-25",
           sourceYears: [2026],
           topics: ["AI와 창작", "공동 창작"],
@@ -114,8 +114,7 @@ export const contentLibrary = {
         {
           id: "02-engine-as-ip",
           label: "포스팅 2",
-          title:
-            "한 번 쓰고 버리는 시대에 남는 IP는 결과물이 아니라 취향을 재현하는 엔진이다",
+          title: "남는 IP는 취향을 재현하는 엔진이다",
           published: "2026-07-25",
           sourceYears: [2026],
           topics: ["IP와 정체성", "AI와 창작"],
@@ -125,7 +124,7 @@ export const contentLibrary = {
         {
           id: "03-already-have-the-eye",
           label: "포스팅 3",
-          title: "AI를 다르게 보는 눈은 새 기술이 아니라 창작자가 원래 가진 능력이다",
+          title: "다르게 보는 눈은 창작자가 가진 능력이다",
           published: "2026-07-25",
           sourceYears: [2026],
           topics: ["AI와 창작", "창작 문화"],
