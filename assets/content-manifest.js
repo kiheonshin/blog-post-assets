@@ -87,14 +87,15 @@ export const contentLibrary = {
       label: "Newtype Summit",
       title: "AI를 열어둘수록 선명해지는 창작자의 자리",
       description:
-        "2026년 6월 뉴타입 엔터 서밋 대담을 1인칭으로 다시 정리한 포스팅 세 개.",
+        "AI의 잠재력과 엔진 IP, 창작자의 판단 능력으로 이어지는 뉴타입 엔터 서밋 공개 대담 세 편.",
       period: "2026",
       sourceYears: [2026],
       topics: ["AI와 창작", "IP와 정체성", "공동 창작"],
       keywords: ["AI 협업", "엔진 IP", "취향", "창작자"],
       href: "series/newtype-ip-dialogue/",
       cover: "series/newtype-ip-dialogue/assets/series-banner.jpg",
-      coverAlt: "세 포스팅의 키 비주얼이 하나로 이어진 파노라마",
+      coverAlt:
+        "열린 문과 기억의 프레임, 작은 에이전트들이 녹색 경로로 이어진 뉴타입 시리즈 파노라마",
       assistantContext: {
         path: "series/newtype-ip-dialogue/assistant/context.json",
         status: "planned",
