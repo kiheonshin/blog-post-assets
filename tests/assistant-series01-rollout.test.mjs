@@ -28,7 +28,7 @@ test("series 01 alone opts into the staged docent interface", async () => {
   for (const file of seriesOneSurfaces) {
     const html = await read(file);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20260802d/, file);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260802xai1/, file);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260803grok1/, file);
   }
 
   for (const file of unchangedSeriesSurfaces) {
@@ -37,15 +37,18 @@ test("series 01 alone opts into the staged docent interface", async () => {
   }
 });
 
-test("series 01 ships the already verified v2 runtime bytes", async () => {
+test("series 01 ships the staged Grok built-in voice runtime", async () => {
   const script = await read("assets/assistant/voice-assistant-v2.js");
   const styles = await read("assets/assistant/voice-assistant-v2.css");
-  assert.equal(sha256(script), "dab8f49636a8106aea944d10c2a23f36da5f08f82c62055462147a4c441e01fb");
+  assert.equal(sha256(script), "20f71aef7c92b45bb34ad67b83f1efbc718cf5ad31752ee466b7415ff5bc8952");
   assert.equal(sha256(styles), "38747b1f2d67f125d676f96abdb5e29e2a219aefb8457fc8b2a7d518ee84e6be");
   assert.match(script, /data-assistant-open-voice/);
   assert.match(script, /voiceSessionActive/);
   assert.match(script, /data-assistant-transcript-details/);
-  assert.match(script, /xai-voice-transport\.js\?v=20260802xai1/);
+  assert.match(script, /xai-voice-transport\.js\?v=20260803grok1/);
+  assert.match(script, /GROK_BUILT_IN_VOICES/);
+  assert.match(script, /\["Ara", "따뜻하고 자연스러운 대화"\]/);
+  assert.doesNotMatch(script, /신기헌 보이스|kiheon-custom/);
   assert.match(script, /신기헌 본인이 아닙니다/);
   assert.doesNotMatch(script, /speechSynthesis|SpeechRecognition|webkitSpeechRecognition/);
   assert.doesNotMatch(script, /data-assistant-reset/);

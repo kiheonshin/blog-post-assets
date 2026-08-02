@@ -19,7 +19,8 @@ function tokenResponse(overrides = {}) {
       return {
         value: "ephemeral-test-token",
         expires_at: 1_800_000_000,
-        voice_id: "abc123xy",
+        default_voice: "ara",
+        voices: ["ara", "eve", "rex", "sal", "leo"],
         model: "grok-voice-think-fast-1.0",
         ...overrides,
       };
@@ -102,7 +103,7 @@ test.beforeEach(() => {
   FakeSocket.instances.length = 0;
 });
 
-test("token request exposes only a short-lived custom-voice connection contract", async () => {
+test("token request exposes only a short-lived built-in-voice connection contract", async () => {
   const { VoiceTransport } = await importTransport();
   const calls = [];
   const transport = new VoiceTransport({
@@ -114,7 +115,8 @@ test("token request exposes only a short-lived custom-voice connection contract"
   });
 
   const token = await transport.requestToken();
-  assert.equal(token.voice_id, "abc123xy");
+  assert.equal(token.default_voice, "ara");
+  assert.deepEqual(token.voices, ["ara", "eve", "rex", "sal", "leo"]);
   assert.equal(token.model, "grok-voice-think-fast-1.0");
   assert.deepEqual(calls.map(({ url, options }) => ({
     url,
@@ -131,11 +133,14 @@ test("token request exposes only a short-lived custom-voice connection contract"
   }]);
 });
 
-test("token request rejects built-in or missing voice fallbacks", async () => {
+test("token request rejects custom or unknown voice contracts", async () => {
   const { VoiceTransport } = await importTransport();
   const transport = new VoiceTransport({
     endpoint: "https://example.test/token",
-    fetchImpl: async () => tokenResponse({ voice_id: "eve" }),
+    fetchImpl: async () => tokenResponse({
+      default_voice: "custom01",
+      voices: ["custom01"],
+    }),
   });
 
   await assert.rejects(transport.requestToken(), { code: "invalid_response" });
@@ -159,6 +164,7 @@ test("voice session pins the xAI model and configures Korean duplex audio", asyn
   });
 
   await transport.startVoiceSession({
+    voiceId: "sal",
     instructions: "공개 문맥만 사용합니다.",
     speed: 1.15,
     keyterms: ["신기헌", "AIGC"],
@@ -172,7 +178,7 @@ test("voice session pins the xAI model and configures Korean duplex audio", asyn
     .filter((value) => typeof value === "string")
     .map((value) => JSON.parse(value))
     .find((message) => message.type === "session.update");
-  assert.equal(update.session.voice, "abc123xy");
+  assert.equal(update.session.voice, "sal");
   assert.equal(update.session.reasoning.effort, "none");
   assert.equal(update.session.turn_detection.type, "server_vad");
   assert.equal(update.session.audio.input.transport, "binary");

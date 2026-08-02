@@ -1,4 +1,8 @@
-import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./xai-voice-transport.js?v=20260802xai1";
+import {
+  GROK_BUILT_IN_VOICES,
+  VoiceTransport,
+  VOICE_OFFLINE_MESSAGE,
+} from "./xai-voice-transport.js?v=20260803grok1";
 import { DocentAgent } from "./docent-agent.js?v=20260801a";
 
 const DEFAULT_PROMPTS = {
@@ -528,9 +532,17 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   populateVoices() {
     if (!this.voiceOptions) return;
-    this.voiceOptions.replaceChildren(
-      this.voiceRadio("kiheon-custom", "신기헌 보이스", "본인 확인을 거친 합성 음성", true),
-    );
+    const descriptions = {
+      ara: ["Ara", "따뜻하고 자연스러운 대화"],
+      eve: ["Eve", "밝고 활기찬 안내"],
+      rex: ["Rex", "명료하고 전문적인 안내"],
+      sal: ["Sal", "차분하고 균형 잡힌 안내"],
+      leo: ["Leo", "힘 있고 또렷한 안내"],
+    };
+    this.voiceOptions.replaceChildren(...GROK_BUILT_IN_VOICES.map((voiceId) => {
+      const [label, meta] = descriptions[voiceId];
+      return this.voiceRadio(voiceId, label, meta, voiceId === "ara");
+    }));
     this.updateSettingsSummary();
   }
 
@@ -569,7 +581,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
       ?.closest("label")
       ?.querySelector(".voice-assistant__option-name")
       ?.textContent
-      ?.trim() || "신기헌 보이스";
+      ?.trim() || "Ara";
     const rate = this.selectedRateValue();
     const rateLabel = rate === "0.85" ? "천천히" : rate === "1.15" ? "빠르게" : "보통";
     this.settingsSummary.textContent = voiceLabel;
@@ -1026,6 +1038,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
     try {
       await this.transport.startVoiceSession({
+        voiceId: this.selectedVoiceValue(),
         instructions: this.groundedContext(),
         speed: this.selectedRateValue(),
         keyterms: [
@@ -1128,6 +1141,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.setState("connecting", "미리 듣기를 준비하고 있어요");
     try {
       await this.transport.preview("이 목소리와 속도로 안내해 드릴게요.", {
+        voiceId: this.selectedVoiceValue(),
         speed: this.selectedRateValue(),
         signal: this.requestController.signal,
         onEvent: (event) => {

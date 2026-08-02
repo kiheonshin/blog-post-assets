@@ -3,7 +3,18 @@ const PRODUCTION_TOKEN_ENDPOINT =
 const XAI_REALTIME_ORIGIN = "wss://api.x.ai/v1/realtime";
 const REQUEST_TIMEOUT_MS = 45_000;
 const MAX_EARLY_AUDIO_FRAMES = 10;
-const CUSTOM_VOICE_ID = /^[a-z0-9]{8}$/;
+
+export const GROK_BUILT_IN_VOICES = Object.freeze(["ara", "eve", "rex", "sal", "leo"]);
+
+function isBuiltInVoice(voiceId) {
+  return GROK_BUILT_IN_VOICES.includes(String(voiceId ?? "").toLowerCase());
+}
+
+function sessionVoice(token, requestedVoice) {
+  const allowed = new Set(token.voices);
+  const requested = String(requestedVoice ?? "").toLowerCase();
+  return allowed.has(requested) ? requested : token.default_voice;
+}
 
 export const VOICE_OFFLINE_MESSAGE =
   "현재 음성 도슨트를 시작할 수 없습니다. 잠시 후 다시 시도해 주세요.";
@@ -104,7 +115,11 @@ export class VoiceTransport {
       if (
         typeof payload?.value !== "string" || !payload.value ||
         typeof payload?.expires_at !== "number" ||
-        !CUSTOM_VOICE_ID.test(payload?.voice_id ?? "") ||
+        !Array.isArray(payload?.voices) || !payload.voices.length ||
+        !payload.voices.every(isBuiltInVoice) ||
+        new Set(payload.voices).size !== payload.voices.length ||
+        !isBuiltInVoice(payload?.default_voice) ||
+        !payload.voices.includes(payload.default_voice) ||
         typeof payload?.model !== "string" || !payload.model
       ) {
         throw requestError("invalid_response");
@@ -254,7 +269,7 @@ export class VoiceTransport {
     };
   }
 
-  async startVoiceSession({ instructions, speed = 1, keyterms = [], signal, onEvent } = {}) {
+  async startVoiceSession({ voiceId, instructions, speed = 1, keyterms = [], signal, onEvent } = {}) {
     if (this.active || this.starting) return;
     this.ensureRealtimeSupport({ microphone: true, playback: true });
     this.onEvent = typeof onEvent === "function" ? onEvent : () => {};
@@ -279,8 +294,9 @@ export class VoiceTransport {
       ]);
       if (!this.active) throw requestError("cancelled");
       this.socket = socket;
+      const selectedVoice = sessionVoice(token, voiceId);
       socket.send(JSON.stringify(this.sessionConfiguration({
-        voiceId: token.voice_id,
+        voiceId: selectedVoice,
         instructions,
         sampleRate,
         speed,
@@ -289,7 +305,7 @@ export class VoiceTransport {
       })));
       await this.waitForSessionReady({ socket, signal });
       this.starting = false;
-      this.emit("session_started", { voiceId: token.voice_id, model: token.model });
+      this.emit("session_started", { voiceId: selectedVoice, model: token.model });
     } catch (error) {
       this.stopVoiceSession({ quiet: true });
       throw error;
@@ -297,6 +313,7 @@ export class VoiceTransport {
   }
 
   async preview(text, {
+    voiceId,
     instructions = "한국어 문장을 자연스럽게 읽습니다.",
     speed = 1,
     signal,
@@ -324,7 +341,7 @@ export class VoiceTransport {
       });
       this.socket = socket;
       socket.send(JSON.stringify(this.sessionConfiguration({
-        voiceId: token.voice_id,
+        voiceId: sessionVoice(token, voiceId),
         instructions,
         sampleRate,
         speed,
@@ -359,7 +376,7 @@ export class VoiceTransport {
       signal,
     });
     socket.send(JSON.stringify(this.sessionConfiguration({
-      voiceId: token.voice_id,
+      voiceId: token.default_voice,
       instructions: "공개 블로그 문맥에 근거해 한국어로 간결하고 정확하게 답합니다.",
       sampleRate: 24_000,
       speed: 1,
