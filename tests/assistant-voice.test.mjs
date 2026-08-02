@@ -825,7 +825,7 @@ test("series prepared prompts open the dialog and prefill without sending or pla
   assert.equal(assistant.input.value, "");
 });
 
-test("each published series explains its own subject and the same two-step question behavior", async () => {
+test("each published series explains its own subject during the staged series 01 rollout", async () => {
   const seriesIds = ["aigc-creative-paradigm", "autonomous-worlds", "co-creation-culture"];
   const intros = await Promise.all(seriesIds.map(async (seriesId) => {
     const raw = await readFile(path.join(repoRoot, "series", seriesId, "assistant", "context.json"), "utf8");
@@ -833,10 +833,11 @@ test("each published series explains its own subject and the same two-step quest
   }));
 
   assert.equal(new Set(intros).size, 3);
-  assert.match(intros[0], /연구 노트·발표 자료/);
+  assert.equal(intros[0], "글과 자료를 따라 둘러보세요.");
+  assert.equal([...intros[0]].length <= 20, true);
   assert.match(intros[1], /발표 기록·원고·슬라이드/);
   assert.match(intros[2], /창의성·경계·기록/);
-  for (const intro of intros) {
+  for (const intro of intros.slice(1)) {
     assert.match(intro, /아래 질문을 누르면 대화창에 문장만 미리 담깁니다/);
     assert.match(intro, /자동으로 보내거나 소리를 재생하지 않/);
     assert.match(intro, /내용을 확인한 뒤 보내면 답변이 시작됩니다/);
@@ -1123,8 +1124,8 @@ test("every published docent surface installs one assistant in the required read
 
   for (const { type, file, html } of pages) {
     assert.equal((html.match(/<kiheon-voice-assistant\b/g) ?? []).length, 1);
-    assert.match(html, /assets\/assistant\/voice-assistant\.js/);
-    assert.match(html, /assets\/assistant\/voice-assistant\.css/);
+    assert.match(html, /assets\/assistant\/voice-assistant(?:-v2)?\.js/);
+    assert.match(html, /assets\/assistant\/voice-assistant(?:-v2)?\.css/);
     assert.doesNotMatch(html, /assets\/voice-agent\.js/);
     if (type === "series") {
       assert.ok(html.indexOf("<series-nav") < html.indexOf("<kiheon-voice-assistant"), file);
