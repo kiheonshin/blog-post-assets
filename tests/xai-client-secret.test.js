@@ -48,11 +48,13 @@ function response() {
 test.beforeEach(() => {
   rateLimitWindows.clear();
   process.env.XAI_API_KEY = "test-key";
+  process.env.XAI_CUSTOM_VOICE_ID = "abc123xy";
   process.env.VERCEL_ENV = "production";
 });
 
 test.afterEach(() => {
   delete process.env.XAI_API_KEY;
+  delete process.env.XAI_CUSTOM_VOICE_ID;
   delete process.env.VERCEL_ENV;
   delete global.fetch;
 });
@@ -81,7 +83,7 @@ test("answers an allowed preflight without minting a token", async () => {
   );
 });
 
-test("returns only the ephemeral value and expiry", async () => {
+test("returns only the ephemeral connection fields and configured custom voice", async () => {
   global.fetch = async (url, options) => {
     assert.equal(url, "https://api.x.ai/v1/realtime/client_secrets");
     assert.equal(options.headers.Authorization, "Bearer test-key");
@@ -104,8 +106,22 @@ test("returns only the ephemeral value and expiry", async () => {
   assert.deepEqual(res.body, {
     value: "xai-realtime-client-secret-test",
     expires_at: 1_800_000_000,
+    voice_id: "abc123xy",
+    model: "grok-voice-think-fast-1.0",
   });
   assert.equal(res.headers.get("cache-control"), "no-store, max-age=0");
+});
+
+test("refuses to mint a token until a verified custom voice is configured", async () => {
+  delete process.env.XAI_CUSTOM_VOICE_ID;
+  global.fetch = () => {
+    throw new Error("fetch should not run");
+  };
+  const res = response();
+  await handler(request(), res);
+
+  assert.equal(res.statusCode, 503);
+  assert.deepEqual(res.body, { code: "custom_voice_not_configured" });
 });
 
 test("hides upstream billing and authentication details", async () => {

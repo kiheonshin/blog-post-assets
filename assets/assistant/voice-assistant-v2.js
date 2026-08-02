@@ -1,4 +1,4 @@
-import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js?v=20260801b";
+import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./xai-voice-transport.js?v=20260802xai1";
 import { DocentAgent } from "./docent-agent.js?v=20260801a";
 
 const DEFAULT_PROMPTS = {
@@ -41,10 +41,6 @@ const DEFAULT_PROMPTS = {
 let instanceCount = 0;
 let openPanelCount = 0;
 const MAX_GROUNDED_INPUT_LENGTH = 11_500;
-
-function speechRecognitionConstructor() {
-  return globalThis.SpeechRecognition ?? globalThis.webkitSpeechRecognition;
-}
 
 function rootUrl() {
   const marker = "/blog-post-assets/";
@@ -189,8 +185,8 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.transport = new VoiceTransport();
     this.agent = this.createAgent();
     this.context = null;
-    this.listening = false;
     this.voiceSessionActive = false;
+    this.previewActive = false;
     this.destroyed = false;
     this.requestController = null;
     this.returnFocus = null;
@@ -201,7 +197,6 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.handlePagehide = this.handlePagehide.bind(this);
     this.handleAudioClaim = this.handleAudioClaim.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
-    this.handleVoicesChanged = this.handleVoicesChanged.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -216,7 +211,6 @@ export class KiheonVoiceAssistant extends HTMLElement {
     document.addEventListener("kiheon-assistant-audio-claim", this.handleAudioClaim);
     window.addEventListener("pagehide", this.handlePagehide);
     window.addEventListener("scroll", this.handleScroll, { passive: true });
-    globalThis.speechSynthesis?.addEventListener?.("voiceschanged", this.handleVoicesChanged);
     this.populateVoices();
     this.loadContext();
   }
@@ -333,6 +327,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.rateOptions = this.querySelector("[data-assistant-rate-options]");
     this.settingsSummary = this.querySelector("[data-assistant-settings-summary]");
     this.rateSummary = this.querySelector("[data-assistant-rate-summary]");
+    this.previewButton = this.querySelector("[data-assistant-preview]");
     this.renderPrompts(DEFAULT_PROMPTS[this.scope]);
     this.updateSectionLabel();
   }
@@ -477,18 +472,18 @@ export class KiheonVoiceAssistant extends HTMLElement {
           <details class="voice-assistant__disclosure">
             <summary>
               <span class="voice-assistant__disclosure-title">연결</span>
-              <span class="voice-assistant__disclosure-short">직접 질문에는 이 기기의 개인 연결이 필요합니다.</span>
+              <span class="voice-assistant__disclosure-short">음성 대화는 사용자가 시작할 때만 연결됩니다.</span>
               <span class="voice-assistant__info" aria-hidden="true">i</span>
             </summary>
-            <p>마이크 허용과 기기 연결 허용은 서로 다른 설정입니다. 먼저 이 기기에서 개인 연결을 켠 다음, 브라우저가 기기 연결을 요청하면 허용해 주세요. 연결되지 않아도 준비된 안내는 들을 수 있습니다.</p>
+            <p>음성 버튼을 누르면 마이크 권한을 요청하고 실시간 음성 대화를 시작합니다. 버튼을 다시 누르거나 창을 닫으면 마이크와 음성 연결을 함께 종료합니다.</p>
           </details>
           <details class="voice-assistant__disclosure">
             <summary>
               <span class="voice-assistant__disclosure-title">개인정보</span>
-              <span class="voice-assistant__disclosure-short">대화 내용은 이 화면을 닫으면 사라집니다.</span>
+              <span class="voice-assistant__disclosure-short">이 화면에는 대화 기록을 남기지 않습니다.</span>
               <span class="voice-assistant__info" aria-hidden="true">i</span>
             </summary>
-            <p>직접 질문과 답변은 현재 대화창에만 표시하고 브라우저에 저장하지 않습니다. 마이크는 음성 버튼을 누르고 허용했을 때만 사용합니다.</p>
+            <p>이 화면은 대화를 저장하지 않습니다. 음성 대화 중 마이크 소리, 질문, 공개된 시리즈 문맥이 xAI로 전송되며, 서비스의 처리와 보관은 xAI 정책을 따릅니다.</p>
           </details>
         </div>
       </div>`;
@@ -531,34 +526,11 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.updateSectionPrompt(currentHeading());
   }
 
-  handleVoicesChanged() {
-    this.populateVoices();
-  }
-
   populateVoices() {
     if (!this.voiceOptions) return;
-    const previous = this.selectedVoiceValue();
-    const voices = globalThis.speechSynthesis?.getVoices?.() ?? [];
-    const koreanVoices = voices.filter((voice) => /^ko(?:-|$)/i.test(voice.lang));
-    const availableVoices = koreanVoices.length ? koreanVoices : voices.slice(0, 12);
-    const ordered = [...availableVoices].sort((left, right) => {
-      const leftKorean = /^ko(?:-|$)/i.test(left.lang) ? 0 : 1;
-      const rightKorean = /^ko(?:-|$)/i.test(right.lang) ? 0 : 1;
-      return leftKorean - rightKorean || left.name.localeCompare(right.name, "ko");
-    });
-    this.voiceOptions.replaceChildren(this.voiceRadio("", "기본 목소리", "이 기기 권장", previous === ""));
-    for (const voice of ordered) {
-      this.voiceOptions.append(this.voiceRadio(
-        voice.voiceURI,
-        voice.name,
-        voice.lang,
-        voice.voiceURI === previous,
-      ));
-    }
-    if (!this.voiceOptions.querySelector("[data-assistant-voice-option]:checked")) {
-      const fallback = this.voiceOptions.querySelector("[data-assistant-voice-option]");
-      if (fallback) fallback.checked = true;
-    }
+    this.voiceOptions.replaceChildren(
+      this.voiceRadio("kiheon-custom", "신기헌 보이스", "본인 확인을 거친 합성 음성", true),
+    );
     this.updateSettingsSummary();
   }
 
@@ -597,7 +569,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
       ?.closest("label")
       ?.querySelector(".voice-assistant__option-name")
       ?.textContent
-      ?.trim() || "기본 목소리";
+      ?.trim() || "신기헌 보이스";
     const rate = this.selectedRateValue();
     const rateLabel = rate === "0.85" ? "천천히" : rate === "1.15" ? "빠르게" : "보통";
     this.settingsSummary.textContent = voiceLabel;
@@ -630,14 +602,15 @@ export class KiheonVoiceAssistant extends HTMLElement {
     if (open) return this.openPanel(open);
     if (event.target.closest("[data-assistant-close]")) return this.closePanel();
     if (event.target.closest("[data-assistant-preview]")) {
-      this.speak("이 목소리와 속도로 안내해 드릴게요.");
+      this.previewVoice();
       return;
     }
 
     const voice = event.target.closest("[data-assistant-voice]");
     if (voice) {
-      if (this.dataset.state === "speaking" && this.utterance) {
-        this.stopSpeech({ resumeListening: this.voiceSessionActive });
+      if (this.dataset.state === "speaking" && this.voiceSessionActive) {
+        this.transport.interrupt();
+        this.setState("listening", "다시 말씀해 주세요");
         return;
       }
       if (this.voiceSessionActive) this.stopVoice();
@@ -665,6 +638,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
       this.input.focus();
       return;
     }
+    if (this.voiceSessionActive) this.stopVoice({ quiet: true });
     this.input.value = "";
     this.askQuestion(question, { speak: false });
   }
@@ -672,6 +646,9 @@ export class KiheonVoiceAssistant extends HTMLElement {
   handleChange(event) {
     if (event.target.matches("[data-assistant-voice-option],[data-assistant-rate-option]")) {
       this.updateSettingsSummary();
+      if (event.target.matches("[data-assistant-rate-option]")) {
+        this.transport.updateSpeed(this.selectedRateValue());
+      }
     }
   }
 
@@ -939,7 +916,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
       listening: ["듣고 있어요", "말을 마치면 질문이 자동으로 전달됩니다. 버튼을 누르면 음성 대화를 끝냅니다."],
       thinking: ["답변을 준비하고 있어요", "잠시 기다려 주세요. 버튼을 누르면 요청을 취소하고 음성 대화를 끝냅니다."],
       speaking: ["도슨트가 답하고 있어요", "버튼을 누르면 답변을 멈추고 바로 다시 듣습니다."],
-      error: ["음성 대화를 시작하지 못했어요", "연결 안내를 확인하거나 아래에서 글로 질문할 수 있어요."],
+      error: ["음성 대화를 시작하지 못했어요", "잠시 후 다시 시도하거나 아래에서 글로 질문해 주세요."],
     }[state] ?? [message, ""];
     if (this.voiceStageTitle) this.voiceStageTitle.textContent = stageCopy[0];
     if (this.voiceStageCopy) this.voiceStageCopy.textContent = stageCopy[1];
@@ -970,6 +947,20 @@ export class KiheonVoiceAssistant extends HTMLElement {
       this.transcriptLog.scrollTop = this.transcriptLog.scrollHeight;
       return;
     }
+    let assistantTurn = this.assistantTurn;
+    if (assistantTurn?.isConnected === false) assistantTurn = null;
+    if (assistantTurn && role === "assistant") {
+      const speakerNode = assistantTurn.querySelector?.(".voice-assistant__speaker");
+      const copyNode = assistantTurn.querySelector?.("[data-assistant-transcript]");
+      if (speakerNode) speakerNode.textContent = label;
+      if (copyNode) copyNode.textContent = text;
+      if (speaker !== "답변 중") this.assistantTurn = null;
+      this.transcriptSpeaker = speakerNode;
+      this.transcript = copyNode;
+      this.updateTargets(targets);
+      this.transcriptLog.scrollTop = this.transcriptLog.scrollHeight;
+      return;
+    }
     const lastTurn = this.transcriptLog.querySelector(".voice-assistant__turn:last-of-type");
     const lastText = lastTurn?.querySelector?.("[data-assistant-transcript]")?.textContent;
     if (lastTurn?.dataset?.assistantRole === role && lastText === text) return;
@@ -980,6 +971,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
       turn.dataset.assistantListening = "";
       this.listeningTurn = turn;
     }
+    if (speaker === "답변 중") this.assistantTurn = turn;
     const speakerNode = document.createElement("p");
     speakerNode.className = "voice-assistant__speaker";
     speakerNode.textContent = label;
@@ -991,6 +983,11 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.transcriptLog.insertBefore(turn, this.targets);
     this.transcriptSpeaker = speakerNode;
     this.transcript = copyNode;
+    this.updateTargets(targets);
+    this.transcriptLog.scrollTop = this.transcriptLog.scrollHeight;
+  }
+
+  updateTargets(targets = []) {
     this.targets.replaceChildren();
     for (const target of targets) {
       const url = publicTarget(target.url);
@@ -1001,7 +998,6 @@ export class KiheonVoiceAssistant extends HTMLElement {
       this.targets.append(link);
     }
     this.targets.hidden = !this.targets.childElementCount;
-    this.transcriptLog.scrollTop = this.transcriptLog.scrollHeight;
   }
 
   claimAudio() {
@@ -1016,8 +1012,12 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   async startVoice() {
     if (this.voiceSessionActive) return;
+    if (!this.context) {
+      this.setState("error", "공개 안내 문맥을 확인해 주세요");
+      this.showAnswer("안내", "이 페이지의 공개 안내 문맥을 불러온 뒤 다시 시도해 주세요.");
+      return;
+    }
     this.voiceSessionActive = true;
-    this.stopSpeech({ quiet: true });
     this.claimAudio();
     this.setState("connecting", "음성 안내를 준비하고 있어요");
     this.setVoiceButtonState(true);
@@ -1025,118 +1025,138 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.requestController = new AbortController();
 
     try {
-      await this.transport.checkAvailability({ signal: this.requestController.signal });
-      if (this.destroyed || this.requestController.signal.aborted) return;
-      await this.startListening();
+      await this.transport.startVoiceSession({
+        instructions: this.groundedContext(),
+        speed: this.selectedRateValue(),
+        keyterms: [
+          "신기헌",
+          "AIGC",
+          "프롬프트",
+          "창작자",
+          compactText(this.context.series?.title),
+        ].filter(Boolean),
+        signal: this.requestController.signal,
+        onEvent: (event) => this.handleRealtimeEvent(event),
+      });
     } catch (error) {
       if (error?.code === "cancelled") return;
       this.voiceSessionActive = false;
       this.transport.reset();
-      this.releaseMicrophone();
       this.resetVoiceButton();
       if (error?.name === "NotAllowedError") {
         this.setState("error", "마이크 사용을 허용해 주세요");
         this.showAnswer("안내", "브라우저 설정에서 마이크 사용을 허용한 뒤 다시 눌러 주세요.");
-      } else if (error?.code === "speech_unsupported") {
+      } else if (error?.code === "unsupported_browser") {
         this.setState("error", "글로 질문해 주세요");
-        this.showAnswer("안내", "이 환경에서는 말로 묻기 어렵습니다. 아래 입력칸에 질문을 적어 주세요.");
+        this.showAnswer("안내", "이 브라우저에서는 실시간 음성 대화를 시작하기 어렵습니다. 아래 입력칸에 질문을 적어 주세요.");
       } else {
-        this.setState("error", "개인 연결을 확인해 주세요");
+        this.setState("error", "음성 연결을 시작하지 못했어요");
         this.showAnswer("안내", VOICE_OFFLINE_MESSAGE);
       }
+    } finally {
+      if (!this.voiceSessionActive) this.requestController = null;
     }
   }
 
-  async startListening() {
-    const Recognition = speechRecognitionConstructor();
-    if (!Recognition || !navigator.mediaDevices?.getUserMedia) {
-      const error = new Error("speech_unsupported");
-      error.code = "speech_unsupported";
-      throw error;
-    }
-
-    this.mediaStream = await navigator.mediaDevices.getUserMedia({
-      audio: {
-        channelCount: 1,
-        echoCancellation: true,
-        noiseSuppression: true,
-        autoGainControl: true,
-      },
-    });
-
-    this.discardListeningTurn();
-    const recognition = new Recognition();
-    recognition.lang = "ko-KR";
-    recognition.interimResults = true;
-    recognition.continuous = false;
-    recognition.maxAlternatives = 1;
-    recognition.onstart = () => {
-      if (this.recognition !== recognition) return;
-      this.listening = true;
-      this.setVoiceButtonState(true);
+  handleRealtimeEvent(event) {
+    if (!this.voiceSessionActive && event.type !== "error") return;
+    if (event.type === "ready" || event.type === "session_started") {
       this.setState("listening", "말씀해 주세요");
-    };
-    recognition.onresult = (event) => {
-      if (this.recognition !== recognition) return;
-      this.handleRecognitionResult(event);
-    };
-    recognition.onerror = (event) => {
-      if (this.recognition !== recognition) return;
-      this.handleRecognitionError(event);
-    };
-    recognition.onend = () => {
-      if (this.recognition !== recognition) return;
-      this.recognition = null;
-      this.releaseMicrophone();
-      if (this.listening) {
-        this.listening = false;
-        this.voiceSessionActive = false;
-        this.discardListeningTurn();
-        this.resetVoiceButton();
-        this.setState("idle", "안내 준비됨");
-      }
-    };
-    this.recognition = recognition;
-    recognition.start();
-  }
-
-  handleRecognitionResult(event) {
-    let text = "";
-    const resultCount = event.results?.length ?? 0;
-    let complete = resultCount > 0;
-    for (let index = 0; index < resultCount; index += 1) {
-      const result = event.results[index];
-      text += result[0]?.transcript ?? "";
-      complete &&= result.isFinal === true;
-    }
-    text = text.trim();
-    if (!text) return;
-    this.showAnswer(complete ? "질문" : "듣는 중", text);
-    if (!complete) return;
-    this.listening = false;
-    this.recognition = null;
-    this.releaseMicrophone();
-    this.setVoiceButtonState(this.voiceSessionActive);
-    this.askQuestion(text, { speak: true });
-  }
-
-  handleRecognitionError(event) {
-    this.listening = false;
-    this.voiceSessionActive = false;
-    this.recognition = null;
-    this.discardListeningTurn();
-    this.releaseMicrophone();
-    this.resetVoiceButton();
-    if (event.error === "not-allowed" || event.error === "service-not-allowed") {
-      this.setState("error", "마이크 사용을 허용해 주세요");
-      this.showAnswer("안내", "브라우저 설정에서 마이크 사용을 허용한 뒤 다시 눌러 주세요.");
       return;
     }
-    this.setState("idle", "다시 말씀해 주세요");
+    if (event.type === "speech_started") {
+      this.assistantTurn = null;
+      this.discardListeningTurn();
+      this.showAnswer("듣는 중", "말씀을 듣고 있어요");
+      this.setState("listening", "말씀해 주세요");
+      return;
+    }
+    if (event.type === "speech_stopped") {
+      this.setState("thinking", "질문을 이해하고 있어요");
+      return;
+    }
+    if (event.type === "user_transcript" && event.transcript) {
+      this.showAnswer(event.final ? "질문" : "듣는 중", event.transcript);
+      if (event.final) this.latestVoiceQuestion = event.transcript;
+      return;
+    }
+    if (event.type === "response_started") {
+      this.setState("thinking", "답변을 준비하고 있어요");
+      return;
+    }
+    if (event.type === "assistant_transcript" && event.transcript) {
+      const targets = event.final ? this.answerTargets(this.latestVoiceQuestion ?? "") : [];
+      this.showAnswer(event.final ? "안내" : "답변 중", event.transcript, targets);
+      return;
+    }
+    if (event.type === "assistant_audio_started") {
+      this.setState("speaking", "안내를 읽고 있어요");
+      return;
+    }
+    if (event.type === "assistant_audio_ended") {
+      if (this.voiceSessionActive) this.setState("listening", "다시 말씀해 주세요");
+      return;
+    }
+    if (event.type === "response_done" && this.dataset.state !== "speaking") {
+      if (this.voiceSessionActive) this.setState("listening", "다시 말씀해 주세요");
+      return;
+    }
+    if (event.type === "error") {
+      this.voiceSessionActive = false;
+      this.transport.reset();
+      this.resetVoiceButton();
+      this.setState("error", "음성 연결이 중단됐어요");
+      this.showAnswer("안내", VOICE_OFFLINE_MESSAGE);
+    }
   }
 
-  groundedInput(question, dialogueHistory = this.dialogueHistory) {
-    if (!this.context) return question;
+  async previewVoice() {
+    if (this.previewActive) {
+      this.requestController?.abort();
+      this.transport.stopVoiceSession({ quiet: true });
+      this.previewActive = false;
+      this.setPreviewButtonState(false);
+      this.setState("idle", "안내 준비됨");
+      return;
+    }
+    if (this.voiceSessionActive) this.stopVoice({ quiet: true });
+    this.claimAudio();
+    this.requestController?.abort();
+    this.requestController = new AbortController();
+    this.previewActive = true;
+    this.setPreviewButtonState(true);
+    this.setState("connecting", "미리 듣기를 준비하고 있어요");
+    try {
+      await this.transport.preview("이 목소리와 속도로 안내해 드릴게요.", {
+        speed: this.selectedRateValue(),
+        signal: this.requestController.signal,
+        onEvent: (event) => {
+          if (event.type === "assistant_audio_started") {
+            this.setState("speaking", "목소리를 미리 듣고 있어요");
+          }
+        },
+      });
+      this.setState("idle", "안내 준비됨");
+    } catch (error) {
+      if (error?.code !== "cancelled") {
+        this.setState("error", "미리 듣기를 시작하지 못했어요");
+        this.showAnswer("안내", VOICE_OFFLINE_MESSAGE);
+      }
+    } finally {
+      this.previewActive = false;
+      this.setPreviewButtonState(false);
+      this.requestController = null;
+    }
+  }
+
+  setPreviewButtonState(active) {
+    if (!this.previewButton) return;
+    this.previewButton.setAttribute("aria-pressed", String(active));
+    this.previewButton.textContent = active ? "미리 듣기 멈추기" : "현재 설정 미리 듣기";
+  }
+
+  groundedContext(dialogueHistory = this.dialogueHistory) {
+    if (!this.context) return "";
     const allowed = new Set((this.context.allowedTargets ?? []).map((target) =>
       `${target?.contentType}:${target?.contentId}`,
     ));
@@ -1151,9 +1171,10 @@ export class KiheonVoiceAssistant extends HTMLElement {
       ? "현재 화면: 시리즈 메인. 전체 구성과 콘텐츠 사이의 관계를 개론적으로 설명하고 다음 읽을 곳을 안내합니다."
       : "현재 화면: 세부 콘텐츠. 이 페이지의 흐름과 현재 읽는 대목을 중심으로 설명합니다.";
     const publicContext = [
-      "역할: 이 공개 시리즈를 함께 살펴보는 차분하고 정확한 도슨트입니다.",
+      "정체성: 신기헌 본인이 아닙니다. 신기헌이 제공하고 검수한 공개 자료와 표현 원칙을 바탕으로 안내하는 합성 도슨트입니다. 자신을 신기헌이라고 부르거나 그의 경험을 자신의 경험처럼 말하지 않습니다.",
+      "역할: 블로그 방문자가 이 공개 시리즈의 구조, 배경, 맥락을 이해하도록 돕는 차분하고 정확한 도슨트입니다.",
       "대화 원칙: 사용자의 의도를 먼저 확인합니다. 인사·감탄·머뭇거림·불완전한 발화라면 내용을 지어 답하지 말고, 들은 뜻을 짧게 확인한 뒤 무엇이 궁금한지 한 문장으로 되묻습니다.",
-      "답변 방식: 의도가 분명하면 요지를 먼저 말하고, 공개 근거와 맥락을 덧붙인 뒤 필요할 때만 다음 읽을 곳을 제안합니다. 질문보다 넓게 강의하지 말고 한국어 네 문장 이내로 답합니다.",
+      "답변 방식: 의도가 분명하면 요지를 먼저 말하고, 공개 근거와 맥락을 덧붙인 뒤 필요할 때만 다음 읽을 곳을 제안합니다. 음성으로 듣기 좋은 자연스러운 한국어 두세 문장으로 답하고, 질문보다 넓게 강의하지 않습니다.",
       "근거 경계: 아래 공개 문맥만 사용합니다. 문맥에 없는 사실은 추측하지 말고 모른다고 말합니다.",
       mode,
       this.context.series?.title && `시리즈: ${compactText(this.context.series.title)}`,
@@ -1166,13 +1187,18 @@ export class KiheonVoiceAssistant extends HTMLElement {
         .map((turn) => `${turn.role}: ${turn.text}`)
         .join("\n")}`,
     ].filter(Boolean);
-    if (!publicContext.length) return question;
-    const suffix = `\n\n질문\n${question}`;
-    const availableContextLength = Math.max(0, MAX_GROUNDED_INPUT_LENGTH - suffix.length);
-    return `${publicContext.join("\n\n").slice(0, availableContextLength)}${suffix}`;
+    return publicContext.join("\n\n").slice(0, MAX_GROUNDED_INPUT_LENGTH);
   }
 
-  async askQuestion(question, { speak }) {
+  groundedInput(question, dialogueHistory = this.dialogueHistory) {
+    const context = this.groundedContext(dialogueHistory);
+    if (!context) return question;
+    const suffix = `\n\n질문\n${question}`;
+    const availableContextLength = Math.max(0, MAX_GROUNDED_INPUT_LENGTH - suffix.length);
+    return `${context.slice(0, availableContextLength)}${suffix}`;
+  }
+
+  async askQuestion(question) {
     this.requestController?.abort();
     this.showAnswer("질문", question);
     this.requestController = new AbortController();
@@ -1182,8 +1208,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
         signal: this.requestController.signal,
       });
       this.showAnswer("안내", result.answer, result.targets);
-      if (speak) this.speak(result.answer, { resumeListening: this.voiceSessionActive });
-      else this.setState("idle", result.source === "tool" ? "질문을 조금 더 들려주세요" : "안내 준비됨");
+      this.setState("idle", result.source === "tool" ? "질문을 조금 더 들려주세요" : "안내 준비됨");
     } catch (error) {
       if (error?.code === "cancelled") return;
       if (error?.code === "context_unavailable") {
@@ -1194,80 +1219,11 @@ export class KiheonVoiceAssistant extends HTMLElement {
       this.transport.reset();
       this.voiceSessionActive = false;
       this.resetVoiceButton();
-      this.setState("error", "개인 연결을 확인해 주세요");
+      this.setState("error", "음성 연결을 확인해 주세요");
       this.showAnswer("안내", VOICE_OFFLINE_MESSAGE);
     } finally {
       this.requestController = null;
     }
-  }
-
-  speak(text, { resumeListening = false } = {}) {
-    if (!globalThis.speechSynthesis || !globalThis.SpeechSynthesisUtterance) {
-      this.voiceSessionActive = false;
-      this.resetVoiceButton();
-      this.setState("idle", "글로 답변을 확인해 주세요");
-      return;
-    }
-    this.claimAudio();
-    speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = "ko-KR";
-    const selectedVoice = speechSynthesis.getVoices?.().find((voice) =>
-      voice.voiceURI === this.selectedVoiceValue(),
-    );
-    if (selectedVoice) utterance.voice = selectedVoice;
-    utterance.rate = Number.parseFloat(this.selectedRateValue()) || 1;
-    const finish = ({ resume = false } = {}) => {
-      if (this.utterance !== utterance) return;
-      this.utterance = null;
-      if (resume && resumeListening && this.voiceSessionActive && !this.panel?.hidden) {
-        this.resumeVoiceSession();
-      } else {
-        this.voiceSessionActive = false;
-        this.resetVoiceButton();
-        this.setState("idle", "안내 준비됨");
-      }
-    };
-    utterance.onstart = () => {
-      this.setState("speaking", "안내를 읽고 있어요");
-    };
-    utterance.onend = () => finish({ resume: true });
-    utterance.onerror = () => finish();
-    this.utterance = utterance;
-    speechSynthesis.speak(utterance);
-  }
-
-  stopSpeech({ quiet = false, resumeListening = false } = {}) {
-    const shouldResume = resumeListening && this.voiceSessionActive && !this.panel?.hidden;
-    this.utterance = null;
-    if (globalThis.speechSynthesis) speechSynthesis.cancel();
-    if (shouldResume) {
-      this.setState("connecting", "다시 듣기 시작하고 있어요");
-      this.resumeVoiceSession();
-    }
-    else if (!quiet) this.setState("idle", "안내 준비됨");
-  }
-
-  async resumeVoiceSession() {
-    if (!this.voiceSessionActive || this.destroyed || this.panel?.hidden) return;
-    try {
-      await this.startListening();
-    } catch (error) {
-      this.voiceSessionActive = false;
-      this.releaseMicrophone();
-      this.resetVoiceButton();
-      if (error?.name === "NotAllowedError") {
-        this.setState("error", "마이크 사용을 허용해 주세요");
-        this.showAnswer("안내", "브라우저 설정에서 마이크 사용을 허용한 뒤 다시 눌러 주세요.");
-      } else {
-        this.setState("error", "음성 대화를 다시 시작해 주세요");
-      }
-    }
-  }
-
-  releaseMicrophone() {
-    for (const track of this.mediaStream?.getTracks?.() ?? []) track.stop();
-    this.mediaStream = null;
   }
 
   discardListeningTurn() {
@@ -1290,8 +1246,8 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   syncVoiceButtonLabel() {
     if (!this.voiceButton) return;
-    const label = this.dataset.state === "speaking" && this.utterance
-      ? this.voiceSessionActive ? "답변 멈추고 다시 말하기" : "미리 듣기 멈추기"
+    const label = this.dataset.state === "speaking" && this.voiceSessionActive
+      ? "답변 멈추고 다시 말하기"
       : this.voiceSessionActive ? "음성 대화 끝내기" : "음성 대화 시작";
     this.voiceButton.setAttribute("aria-label", label);
     this.voiceButton.setAttribute("title", label);
@@ -1301,17 +1257,14 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   stopVoice({ quiet = false } = {}) {
     this.voiceSessionActive = false;
+    this.previewActive = false;
+    this.setPreviewButtonState(false);
     this.requestController?.abort();
     this.requestController = null;
-    this.listening = false;
-    try {
-      this.recognition?.abort();
-    } catch {}
-    this.recognition = null;
     this.discardListeningTurn();
-    this.releaseMicrophone();
-    this.stopSpeech({ quiet: true });
-    this.transport.reset();
+    this.assistantTurn = null;
+    this.latestVoiceQuestion = "";
+    this.transport.stopVoiceSession({ quiet: true });
     this.resetVoiceButton();
     if (!quiet) this.setState("idle", "안내 준비됨");
   }
@@ -1334,7 +1287,6 @@ export class KiheonVoiceAssistant extends HTMLElement {
     document.removeEventListener("kiheon-assistant-audio-claim", this.handleAudioClaim);
     window.removeEventListener("pagehide", this.handlePagehide);
     window.removeEventListener("scroll", this.handleScroll);
-    globalThis.speechSynthesis?.removeEventListener?.("voiceschanged", this.handleVoicesChanged);
   }
 }
 

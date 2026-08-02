@@ -3,6 +3,8 @@
 const XAI_CLIENT_SECRET_URL =
   "https://api.x.ai/v1/realtime/client_secrets";
 const TOKEN_LIFETIME_SECONDS = 120;
+const XAI_REALTIME_MODEL = "grok-voice-think-fast-1.0";
+const CUSTOM_VOICE_ID = /^[a-z0-9]{8}$/;
 const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX_REQUESTS = 4;
 
@@ -100,6 +102,11 @@ async function handler(request, response) {
     return sendJson(response, 503, { code: "voice_not_configured" });
   }
 
+  const voiceId = process.env.XAI_CUSTOM_VOICE_ID;
+  if (!CUSTOM_VOICE_ID.test(voiceId ?? "")) {
+    return sendJson(response, 503, { code: "custom_voice_not_configured" });
+  }
+
   let upstream;
   try {
     upstream = await fetch(XAI_CLIENT_SECRET_URL, {
@@ -138,6 +145,8 @@ async function handler(request, response) {
   return sendJson(response, 200, {
     value: payload.value,
     expires_at: payload.expires_at,
+    voice_id: voiceId,
+    model: XAI_REALTIME_MODEL,
   });
 }
 
