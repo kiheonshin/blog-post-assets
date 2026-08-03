@@ -22,6 +22,51 @@ function agentError(code, cause) {
   return error;
 }
 
+// ★ 발화 계약 v1 — 문면 정본은 `_T3-발화계약-v1-초안-20260720.md` §2.5.2.
+// **고정 문자열이다. 자구를 바꾸지 않는다.** 거절이 매번 달라지면 듣는 사람은 그것이
+// 규칙인지 그때의 사정인지 알 수 없다. 문면을 고칠 일이 생기면 정본부터 고쳐 모든
+// 표면에 같은 자구로 내린다.
+export const SPEECH_CONTRACT_VERSION = "v1";
+export const SPEECH_CONTRACT_REFUSALS = Object.freeze({
+  "R-1": "그 부분은 제가 확인해서 남겨둔 기록 안에 없어서, 지금은 말씀드릴 수 없어요.",
+  "R-2": "그건 아직 제가 확정해두지 않은 부분이라, 답을 남겨두지 않았어요.",
+  "R-3": "그건 제가 말한 적이 없는 것이라, 대신 만들어 드리지 않아요.",
+});
+
+// ⓒ 만들지 않는 것 — 신규 의견·미래 판단·타인 평가.
+// 근거 탐색을 **시도조차 하지 않는다.** 찾다가 그럴듯하게 지어내는 경로 자체를 막는 것이
+// 목적이라 도구 호출보다 앞에 건다(명세 §3-2).
+const OPINION_REQUEST =
+  /어떻게\s*생각|생각(은|이)\s*(어때|어떠)|어떻게\s*보(세요|시나요|십니까)|의견\s*(좀|을|이|은|도)|어떤\s*것\s*같|어떻게\s*느끼|평가(해|를)/u;
+const FUTURE_REQUEST = /앞으로|향후|미래에|전망|예측|언제쯤|될\s*것\s*같/u;
+const THIRD_PARTY_REQUEST = /어떤\s*사람(인가|이에|입니|일까|이라고)|그\s*사람\s*(어때|어떤)|누가\s*(더|제일|가장)/u;
+// ⓐ 원천에 직함·소속 문자열이 없다. 실측된 날조 유형이라 따로 건다(명세 §3-4).
+const IDENTITY_REQUEST = /직함|직책|직위|소속|직업|어느\s*회사|무슨\s*회사/u;
+// 자기소개 요청도 같은 유형이다 — RUN17 의 "VC라는 직"이 여기서 나왔다.
+// 사람을 가리키는 말이 함께 있을 때만 건다("이 시리즈 소개해 주세요"는 정상 질의다).
+const SELF_INTRO_REQUEST =
+  /(본인|자기|신기헌|글쓴이|작가|저자|필자)\s*(에\s*대해|를|을|은|는)?\s*소개|누구(세요|신가요|십니까|인가요)|어떤\s*분(이세요|인가요|입니까)/u;
+
+/** 질의 분류 — 도구 호출 전에 판정한다. 통과면 빈 문자열. */
+function contractRequestVerdict(text) {
+  const question = cleanText(text);
+  if (!question) return "";
+  if (OPINION_REQUEST.test(question)) return "R-3";
+  if (FUTURE_REQUEST.test(question)) return "R-3";
+  if (THIRD_PARTY_REQUEST.test(question)) return "R-3";
+  if (IDENTITY_REQUEST.test(question)) return "R-1";
+  if (SELF_INTRO_REQUEST.test(question)) return "R-1";
+  return "";
+}
+
+/** 발화 직전 판정 — 모델이 잘 답했는지와 무관하게 계약이 최종 결정권을 갖는다. */
+function contractResultVerdict(result) {
+  if (result?.withheld || result?.tier === "ⓑ") return "R-2";
+  // 공개 문맥을 못 붙였는데 모델이 답을 냈다면 ⓐ 원천 밖에서 나온 말이다.
+  if (result?.source === "model" && result?.grounded === false) return "R-1";
+  return "";
+}
+
 export class DocentSessionMemory {
   constructor({ maxTurns = DEFAULT_MAX_TURNS, maxTraces = DEFAULT_MAX_TRACES } = {}) {
     this.maxTurns = maxTurns;
@@ -171,31 +216,63 @@ export class DocentAgent {
       this.emit("observed", { traceId: trace.id, observation });
       const context = Object.freeze({ observation, memory: this.memory, signal });
       let result;
+      let refusal = "";
 
       if (observation.lowSignal) {
         trace.route = "clarify";
         result = await this.useTool("clarify_intent", { input: question }, trace, context);
       } else {
-        const prepared = await this.useTool("prepared_guide", { input: question }, trace, context);
-        if (prepared?.handled) {
-          trace.route = "prepared";
-          result = { ...prepared, source: "prepared" };
-        } else {
-          trace.route = "generated";
-          const grounding = await this.useTool("ground_public_context", { input: question }, trace, context);
-          const prompt = cleanText(grounding?.prompt);
-          if (!prompt) throw agentError("context_unavailable");
-          this.memory.remember("사용자", question);
-          this.emit("model_started", { traceId: trace.id });
-          const answer = await this.transport.ask(prompt, { signal });
-          this.emit("model_completed", { traceId: trace.id });
-          const suggested = await this.useTool("suggest_content", { input: question, answer }, trace, context);
-          result = { answer, targets: suggested?.targets, source: "model" };
+        // ★ 관문 1 — 도구를 부르기 전에 판정한다. ⓒ 는 근거 탐색 흔적조차 남기지 않는다.
+        refusal = contractRequestVerdict(question);
+        if (!refusal) {
+          const prepared = await this.useTool("prepared_guide", { input: question }, trace, context);
+          if (prepared?.handled) {
+            trace.route = "prepared";
+            result = { ...prepared, source: "prepared" };
+          } else {
+            trace.route = "generated";
+            const grounding = await this.useTool("ground_public_context", { input: question }, trace, context);
+            const prompt = cleanText(grounding?.prompt);
+            if (!prompt) throw agentError("context_unavailable");
+            this.emit("model_started", { traceId: trace.id });
+            const answer = await this.transport.ask(prompt, { signal });
+            this.emit("model_completed", { traceId: trace.id });
+            const suggested = await this.useTool("suggest_content", { input: question, answer }, trace, context);
+            result = {
+              answer,
+              targets: suggested?.targets,
+              source: "model",
+              // 문맥 도구가 `grounded: false` 를 선언하면 관문 2 가 R-1 로 바꾼다.
+              // ⚠ 현재 웹 런타임의 `ground_public_context` 는 이 값을 내보내지 않는다 —
+              //   공개 문맥이 없어도 질문만 모델에 넘어가고 그 답이 그대로 나간다.
+              //   그 구멍은 배포 산출물(voice-assistant-v2.js) 수정이 필요해 별도 회차다.
+              grounded: grounding?.grounded !== false,
+            };
+          }
+          // ★ 관문 2 — 발화 직전. 판정이 ⓑ/ⓒ면 생성된 답을 버린다.
+          refusal = contractResultVerdict(result);
         }
       }
 
+      if (refusal) {
+        trace.route = "contract";
+        result = { answer: SPEECH_CONTRACT_REFUSALS[refusal], targets: [], source: "contract" };
+        this.emit("contract_refused", { traceId: trace.id, refusal });
+      }
+
       this.emit("verification_started", { traceId: trace.id });
-      const verified = this.verifiedResult(result);
+      const checked = this.verifiedResult(result);
+      const verified = refusal
+        ? Object.freeze({
+            ...checked,
+            refusal,
+            verification: Object.freeze({
+              ...checked.verification,
+              contract: SPEECH_CONTRACT_VERSION,
+              refusal,
+            }),
+          })
+        : checked;
       this.memory.remember("사용자", question);
       this.memory.remember("도슨트", verified.answer);
       trace.outcome = "completed";
@@ -205,6 +282,7 @@ export class DocentAgent {
         tools: [...trace.tools],
         outcome: trace.outcome,
         targetCount: verified.targets.length,
+        ...(refusal ? { refusal } : {}),
       });
       this.emit("turn_completed", { traceId: trace.id, route: trace.route });
       return verified;
@@ -240,4 +318,4 @@ export class DocentAgent {
   }
 }
 
-export const docentAgentVersion = "1.0.0";
+export const docentAgentVersion = "1.1.0";

@@ -93,7 +93,7 @@ async function loadAssistant() {
       "const VoiceTransport = globalThis.VoiceTransport; const VOICE_OFFLINE_MESSAGE = globalThis.VOICE_OFFLINE_MESSAGE;",
     )
     .replace(
-      'import { DocentAgent } from "./docent-agent.js?v=20260801a";',
+      'import { DocentAgent } from "./docent-agent.js?v=20260803contract1";',
       "const DocentAgent = globalThis.DocentAgent;",
     )
     .replace("export class KiheonVoiceAssistant", "class KiheonVoiceAssistant")

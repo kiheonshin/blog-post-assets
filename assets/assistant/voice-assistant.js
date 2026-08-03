@@ -1,5 +1,5 @@
 import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js?v=20260801b";
-import { DocentAgent } from "./docent-agent.js?v=20260801a";
+import { DocentAgent } from "./docent-agent.js?v=20260803contract1";
 
 const DEFAULT_PROMPTS = {
   series: [

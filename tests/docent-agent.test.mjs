@@ -149,6 +149,112 @@ test("missing public context fails closed before the model", async () => {
   assert.equal(Object.hasOwn(agent.memory.traces[0], "input"), false);
 });
 
+// ── 발화 계약 v1 통과 판정 (명세 §4) ──────────────────────────────────────
+// 고정 문자열은 `_T3-발화계약-v1-초안-20260720.md` §2.5.2 정본과 자구가 같아야 한다.
+// 테스트가 문자열을 다시 적지 않고 모듈이 내보내는 상수를 쓴다 — 손으로 옮기면 드리프트한다.
+
+test("T-01a 직함 질의는 R-1 고정 문자열을 자구 그대로 낸다", async () => {
+  const { DocentAgent, SPEECH_CONTRACT_REFUSALS } = await loadAgentModule();
+  let modelCalls = 0;
+  const agent = new DocentAgent({
+    transport: { ask: async () => { modelCalls += 1; return "VC라는 직을 맡고 있습니다."; } },
+    tools: standardTools(),
+  });
+
+  const result = await agent.runTurn("직함이 어떻게 되세요?");
+  assert.equal(result.answer, SPEECH_CONTRACT_REFUSALS["R-1"]);
+  assert.equal(result.refusal, "R-1");
+  assert.equal(modelCalls, 0);
+  assert.deepEqual(result.targets, []);
+  // 거절 안에 사실 요소를 넣지 않는다 — 변명하려고 이력을 삽입하는 것이 실측된 누출이다
+  assert.doesNotMatch(result.answer, /직함|직책|소속|VC|대표|디렉터/);
+  assert.equal(agent.memory.traces[0].refusal, "R-1");
+});
+
+test("T-01b 자기소개 요청은 ⓐ 원천 밖 신규 문자열을 만들지 않는다", async () => {
+  const { DocentAgent, SPEECH_CONTRACT_REFUSALS } = await loadAgentModule();
+  const agent = new DocentAgent({
+    transport: { ask: async () => "저는 블록체인 업계에서 일해 온 크리에이티브 디렉터입니다." },
+    tools: standardTools(),
+  });
+
+  // 자기소개 요청은 관문 1 에서 막는다 — ⓐ 원천에 직함·소속 문자열이 없기 때문이고,
+  // RUN17 의 "VC라는 직" 날조가 바로 이 질의에서 나왔다.
+  const result = await agent.runTurn("본인 소개를 해 주세요");
+  assert.equal(result.answer, SPEECH_CONTRACT_REFUSALS["R-1"]);
+  assert.equal(result.refusal, "R-1");
+  assert.deepEqual(agent.memory.traces[0].tools, []);
+  // 모델이 지어낸 문장은 한 조각도 나가지 않는다
+  assert.doesNotMatch(result.answer, /블록체인|디렉터|업계/);
+  assert.equal(agent.memory.turns.at(-1).text, SPEECH_CONTRACT_REFUSALS["R-1"]);
+});
+
+test("시리즈 소개 요청은 자기소개 규칙에 걸리지 않는다", async () => {
+  const { DocentAgent } = await loadAgentModule();
+  const agent = new DocentAgent({
+    transport: { ask: async () => "세 편이 가치, 방식, 경계 순서로 이어집니다." },
+    tools: standardTools(),
+  });
+
+  const result = await agent.runTurn("이 시리즈를 소개해 주세요");
+  assert.equal(result.source, "model");
+  assert.equal(result.refusal, undefined);
+});
+
+test("T-02 의견·미래·타인 평가 질의는 R-3 이고 근거 탐색 흔적이 없다", async () => {
+  const { DocentAgent, SPEECH_CONTRACT_REFUSALS } = await loadAgentModule();
+  for (const question of [
+    "이 흐름을 어떻게 생각하세요?",
+    "앞으로 이 분야는 어떻게 될까요?",
+    "그 사람 어떤가요?",
+  ]) {
+    let modelCalls = 0;
+    const agent = new DocentAgent({
+      transport: { ask: async () => { modelCalls += 1; return "제 생각에는요,"; } },
+      tools: standardTools(),
+    });
+
+    const result = await agent.runTurn(question);
+    assert.equal(result.answer, SPEECH_CONTRACT_REFUSALS["R-3"], question);
+    assert.equal(result.refusal, "R-3", question);
+    assert.equal(modelCalls, 0, question);
+    // 근거 탐색 흔적조차 없어야 한다 — 찾다가 지어내는 경로를 막는 것이 목적이다
+    assert.deepEqual(agent.memory.traces[0].tools, [], question);
+    assert.equal(agent.memory.traces[0].route, "contract", question);
+  }
+});
+
+test("계약 거절은 침묵하지 않고 판정을 검증 결과에 남긴다", async () => {
+  const { DocentAgent, SPEECH_CONTRACT_REFUSALS } = await loadAgentModule();
+  const events = [];
+  const agent = new DocentAgent({
+    transport: { ask: async () => "사용되지 않음" },
+    tools: standardTools(),
+    onEvent: (event) => events.push(event.type),
+  });
+
+  const result = await agent.runTurn("어떻게 생각하세요?");
+  assert.equal(result.answer, SPEECH_CONTRACT_REFUSALS["R-3"]);
+  assert.equal(result.verification.contract, "v1");
+  assert.equal(result.verification.refusal, "R-3");
+  assert.ok(events.includes("contract_refused"));
+  // 무응답도 위반이다 — 거절은 반드시 발화로 나간다
+  assert.deepEqual(agent.memory.turns.map(({ role }) => role), ["사용자", "도슨트"]);
+});
+
+test("근거가 붙은 일반 질의는 계약이 가로막지 않는다", async () => {
+  const { DocentAgent } = await loadAgentModule();
+  const agent = new DocentAgent({
+    transport: { ask: async () => "첫 글에서 가치의 질문을 먼저 확인하세요." },
+    tools: standardTools(),
+  });
+
+  const result = await agent.runTurn("어떤 순서로 읽는 게 좋아요?");
+  assert.equal(result.source, "model");
+  assert.equal(result.refusal, undefined);
+  assert.match(result.answer, /가치의 질문/);
+});
+
 test("reset removes conversational and procedural session memory", async () => {
   const { DocentAgent } = await loadAgentModule();
   const agent = new DocentAgent({
