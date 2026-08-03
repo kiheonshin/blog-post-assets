@@ -42,6 +42,7 @@
 
 ## 이 아카이브를 다룰 때
 
+읽는 법을 담은 스킬 문서가 있다 : [https://kiheonshin.github.io/blog-post-assets/kiheon-blog.SKILL.md](https://kiheonshin.github.io/blog-post-assets/kiheon-blog.SKILL.md)
 기계가 읽는 계약이 있다 : [https://kiheonshin.github.io/blog-post-assets/agent/citation-contract.json](https://kiheonshin.github.io/blog-post-assets/agent/citation-contract.json)
 
 - 본문은 출처(canonical URL)를 밝히면 인용할 수 있다.
