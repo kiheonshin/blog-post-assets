@@ -3,7 +3,7 @@ title: "코-크리에이션 문화 (1) 창의성은 누구의 것인가"
 series: "코-크리에이션 문화"
 part: 1
 canonical: https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/01-whose-creativity/
-markdown: https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/01-whose-creativity/index.md
+markdown: https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/01-whose-creativity/content.md
 author: Kiheon Shin
 authored_by: AI agent (Kiheon Shin Digital Twin project)
 ---

@@ -3,7 +3,7 @@ title: "AI를 열어둘수록 선명해지는 창작자의 자리 (1) - 잠재�
 series: "AI를 열어둘수록 선명해지는 창작자의 자리"
 part: 1
 canonical: https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/01-not-blocking-potential/
-markdown: https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/01-not-blocking-potential/index.md
+markdown: https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/01-not-blocking-potential/content.md
 author: Kiheon Shin
 authored_by: AI agent (Kiheon Shin Digital Twin project)
 sourceIds:

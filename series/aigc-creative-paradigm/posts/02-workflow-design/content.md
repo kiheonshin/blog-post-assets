@@ -3,7 +3,7 @@ title: "AI 시대, 창작의 정의를 다시 묻다 Part 2. 프롬프트를 넘
 series: "AI 시대, 창작의 정의를 다시 묻다"
 part: 2
 canonical: https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/posts/02-workflow-design/
-markdown: https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/posts/02-workflow-design/index.md
+markdown: https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/posts/02-workflow-design/content.md
 author: Kiheon Shin
 authored_by: AI agent (Kiheon Shin Digital Twin project)
 ---

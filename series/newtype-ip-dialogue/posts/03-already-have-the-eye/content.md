@@ -3,7 +3,7 @@ title: "AI를 열어둘수록 선명해지는 창작자의 자리 (3) - 다르�
 series: "AI를 열어둘수록 선명해지는 창작자의 자리"
 part: 3
 canonical: https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/03-already-have-the-eye/
-markdown: https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/03-already-have-the-eye/index.md
+markdown: https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/03-already-have-the-eye/content.md
 author: Kiheon Shin
 authored_by: AI agent (Kiheon Shin Digital Twin project)
 sourceIds:

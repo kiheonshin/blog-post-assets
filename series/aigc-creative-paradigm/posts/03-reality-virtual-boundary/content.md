@@ -3,7 +3,7 @@ title: "AI 시대, 창작의 정의를 다시 묻다 Part 3. 현실과 가상의
 series: "AI 시대, 창작의 정의를 다시 묻다"
 part: 3
 canonical: https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/
-markdown: https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/index.md
+markdown: https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/content.md
 author: Kiheon Shin
 authored_by: AI agent (Kiheon Shin Digital Twin project)
 ---

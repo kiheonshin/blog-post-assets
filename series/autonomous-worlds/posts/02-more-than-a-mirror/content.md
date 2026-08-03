@@ -3,7 +3,7 @@ title: "자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 2. �
 series: "자율 세계, 스스로 규칙을 만드는 세계의 등장"
 part: 2
 canonical: https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/posts/02-more-than-a-mirror/
-markdown: https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/posts/02-more-than-a-mirror/index.md
+markdown: https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/posts/02-more-than-a-mirror/content.md
 author: Kiheon Shin
 authored_by: AI agent (Kiheon Shin Digital Twin project)
 ---

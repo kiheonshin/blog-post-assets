@@ -3,7 +3,7 @@ title: "AI 시대, 창작의 정의를 다시 묻다 Part 1. 실력과 노력의
 series: "AI 시대, 창작의 정의를 다시 묻다"
 part: 1
 canonical: https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/posts/01-skill-and-effort/
-markdown: https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/posts/01-skill-and-effort/index.md
+markdown: https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/posts/01-skill-and-effort/content.md
 author: Kiheon Shin
 authored_by: AI agent (Kiheon Shin Digital Twin project)
 ---

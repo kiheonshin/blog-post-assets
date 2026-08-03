@@ -3,7 +3,7 @@ title: "코-크리에이션 문화 (2) 경계면에서"
 series: "코-크리에이션 문화"
 part: 2
 canonical: https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/02-at-the-boundary/
-markdown: https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/02-at-the-boundary/index.md
+markdown: https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/02-at-the-boundary/content.md
 author: Kiheon Shin
 authored_by: AI agent (Kiheon Shin Digital Twin project)
 ---

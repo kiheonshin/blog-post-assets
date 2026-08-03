@@ -3,7 +3,7 @@ title: "AI를 열어둘수록 선명해지는 창작자의 자리 (2) - 남는 I
 series: "AI를 열어둘수록 선명해지는 창작자의 자리"
 part: 2
 canonical: https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/02-engine-as-ip/
-markdown: https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/02-engine-as-ip/index.md
+markdown: https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/02-engine-as-ip/content.md
 author: Kiheon Shin
 authored_by: AI agent (Kiheon Shin Digital Twin project)
 sourceIds:

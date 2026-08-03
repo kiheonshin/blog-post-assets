@@ -3,7 +3,7 @@ title: "자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 1. �
 series: "자율 세계, 스스로 규칙을 만드는 세계의 등장"
 part: 1
 canonical: https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/
-markdown: https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/index.md
+markdown: https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/content.md
 author: Kiheon Shin
 authored_by: AI agent (Kiheon Shin Digital Twin project)
 ---

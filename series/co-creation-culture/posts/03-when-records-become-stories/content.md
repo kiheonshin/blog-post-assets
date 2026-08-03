@@ -3,7 +3,7 @@ title: "코-크리에이션 문화 (3) 기록이 이야기가 될 때"
 series: "코-크리에이션 문화"
 part: 3
 canonical: https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/03-when-records-become-stories/
-markdown: https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/03-when-records-become-stories/index.md
+markdown: https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/03-when-records-become-stories/content.md
 author: Kiheon Shin
 authored_by: AI agent (Kiheon Shin Digital Twin project)
 ---
