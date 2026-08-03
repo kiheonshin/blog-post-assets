@@ -1,24 +1,20 @@
----
-title: "코-크리에이션 문화 (3) 기록이 이야기가 될 때"
-series: "코-크리에이션 문화"
-part: 3
-canonical: https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/03-when-records-become-stories/
-markdown: https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/03-when-records-become-stories/content.md
-author: Kiheon Shin
-authored_by: AI agent (Kiheon Shin Digital Twin project)
----
-
 # 코-크리에이션 문화 (3) 기록이 이야기가 될 때
 
-Essay
+- **시리즈** 코-크리에이션 문화 · 3편
+- **원문** https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/03-when-records-become-stories/
+- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/03-when-records-become-stories/content.md
+- **발행일** 2026-07-28
+- **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 
-![](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/hero-3.jpg)
+***
+
+![코-크리에이션 문화 (3) 기록이 이야기가 될 때 키 비주얼](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/hero-3.jpg)
 
 2023년 11월 9일 부산이었다. 블록체인 기반의 스토리텔링을 주제로 무대에 섰는데, 첫 대목은 블록체인이 아니라 포켓몬 한 마리였다. 그 포켓몬은 나와 476킬로미터를 걸었고, 나는 그걸 물려주려다 물려줄 수 없다는 사실을 알게 됐다. 이 글은 그날의 이야기를 3년 뒤에 다시 정리한 것이다. 넉 달 남짓 전의 무대에서 나는 누가 만드는가를 물었고, 이 발표에서는 그렇게 만든 것이 무엇으로 남는가를 물었다.
 
 시리즈 안내 : 이 글은 "코-크리에이션 문화" 3편이다. (1) 창의성은 누구의 것인가 (2) 경계면에서 (3) 기록이 이야기가 될 때 이 시리즈는 2023년 두 차례의 발표를 3년 뒤에 1인칭으로 다시 정리한 것이다.
 
-## 01476킬로미터
+## 476킬로미터
 
 발표를 시작하면서 나는 객석에 한 가지를 미리 말했다. 어제오늘 무거운 주제를 많이 들으셨을 텐데 제가 준비한 건 말랑말랑한 내용이니 편한 마음으로 들어주시면 좋겠다고. 블록체인을 다루는 자리의 첫 문장으로는 조금 이상한 말이다. 그런데 그 말은 예고였다. 나는 그날 컨트랙트 구조를 먼저 꺼낼 생각이 없었다.
 
@@ -36,7 +32,7 @@ Essay
 
 이 대목에서 화면에 걸린 것은 문장이 아니라 장면이었다. 포켓몬 한 마리, 걸어온 거리, 그리고 계정 하나. 논증은 전부 말로 했다. 무거운 주제 사이에 말랑말랑한 것을 준비했다고 먼저 밝힌 이유도 여기에 있었다. 소유가 무엇인지를 정의로 시작하면 듣는 사람은 그 정의를 검토한다. 잃어버린 것에서 시작하면 듣는 사람은 자기가 잃어버린 것을 떠올린다. 나는 두 번째 쪽을 골랐다.
 
-## 022017년에 블록체인을 공부한 이유
+## 2017년에 블록체인을 공부한 이유
 
 무대에서 나는 왜 이 이야기를 블록체인 세션에서 꺼내는지 설명했다. 테마파크를 만들면서 늘 걸리던 문제가 하나 있었다는 것이다. 방문객이 그 안에서 겪은 것을 어떻게 남길 것인가.
 
@@ -50,7 +46,7 @@ Essay
 
 발표에서 이 이야기를 길게 하지는 않았다. 다만 블록체인이라는 단어를 큰 글자로 처음 꺼낸 것은 발표가 한참 진행된 뒤였다. 그 앞은 전부 테마파크와 도시와 포켓몬이었고, 기술의 이름은 그 뒤에 놓였다. 기술을 목적 자리에 두지 않았다는 것이 발표의 순서에 그대로 남아 있는 셈이다. 무엇을 먼저 말하느냐가 그 자리를 무엇에 관한 것으로 만드는지는 그때도 알고 있었다. 나는 이 이야기가 기술에 관한 것이 아니라 남기는 일에 관한 것이기를 바랐다.
 
-## 03경험의 상속
+## 경험의 상속
 
 블록체인을 기술적 요소라고 규정해놓고 바로 다음에 꺼낸 것은 블록체인이 아니었다. 다시 포켓몬이었다.
 
@@ -67,7 +63,7 @@ Essay
 ![2023년 11월 발표. 포탈을 통해 전 세대 게임 타이틀 사이로 데이터가 오간다. 블록체인 없이 성립하는 상속의 사례로 놓았다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-035.jpg)
 *2023년 11월 발표. 포탈을 통해 전 세대 게임 타이틀 사이로 데이터가 오간다. 블록체인 없이 성립하는 상속의 사례로 놓았다.*
 
-## 04그럼에도 할 수 없는 일
+## 그럼에도 할 수 없는 일
 
 그 구간을 다 지나고 나서 한 줄을 띄웠다. 그럼에도 닌텐도, 디즈니가 할 수 없는 일들.
 
@@ -84,7 +80,7 @@ Essay
 ![2023년 11월 발표. 상호작용성과 동기성의 평면 바깥으로 나가는 세 번째 이동. 새 축의 이름은 영속성과 불변성이다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-040.jpg)
 *2023년 11월 발표. 상호작용성과 동기성의 평면 바깥으로 나가는 세 번째 이동. 새 축의 이름은 영속성과 불변성이다.*
 
-## 05무엇이 아닌지부터 적었다
+## 무엇이 아닌지부터 적었다
 
 그다음에 놓은 것은 단어 하나였다. 온체인 스토리텔링(on-chain storytelling).
 
@@ -103,7 +99,7 @@ Essay
 ![2023년 11월 발표. 정의의 앞 절반이 배제로 채워져 있다. 마지막 줄은 발표 제목과 같은 문장이다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-042.jpg)
 *2023년 11월 발표. 정의의 앞 절반이 배제로 채워져 있다. 마지막 줄은 발표 제목과 같은 문장이다.*
 
-## 067단계에서 다섯 도구로
+## 7단계에서 다섯 도구로
 
 넉 달 남짓 전인 6월의 발표에는 번호가 매겨진 순서가 있었다. 코-크리에이션 프로세스라는 제목 아래 1단계부터 7단계까지다.
 
@@ -139,7 +135,7 @@ Essay
 ![2023년 6월 발표. 이때 ERC-6551은 개념도였다. 넉 달 남짓 뒤 같은 기술은 캐릭터의 소지품 목록이 된다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-036.jpg)
 *2023년 6월 발표. 이때 ERC-6551은 개념도였다. 넉 달 남짓 뒤 같은 기술은 캐릭터의 소지품 목록이 된다.*
 
-## 07키이라의 하루, 그리고 그 하루의 주소들
+## 키이라의 하루, 그리고 그 하루의 주소들
 
 도구 1은 Cinematic이다. 부제로 세계관 내 공간 이동 장치라고 달았고, 그 아래에 두 방향을 적었다. 2D 이미지에서 3D 이미지로, 3D 이미지에서 2D 이미지로. 캐릭터가 평면과 입체 사이를 오가는 장치가 이 세계관에는 포탈이라는 이름으로 서 있다.
 
@@ -175,7 +171,7 @@ Essay
 ![2023년 11월 발표. 키이라의 방이 하나의 계정이 되고, 그 방의 소유 목록에 크립토펑크 쪽에서 넘어온 맥주캔이 들어 있다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-048.jpg)
 *2023년 11월 발표. 키이라의 방이 하나의 계정이 되고, 그 방의 소유 목록에 크립토펑크 쪽에서 넘어온 맥주캔이 들어 있다.*
 
-## 08100 곱하기 100
+## 100 곱하기 100
 
 여기서 발표의 호흡이 한 번 바뀐다.
 
@@ -207,7 +203,7 @@ Essay
 ![2023년 11월 발표. 4퍼센트짜리 트레이트 하나에서 낮과 밤이 다른 인물이 나왔다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-058.jpg)
 *2023년 11월 발표. 4퍼센트짜리 트레이트 하나에서 낮과 밤이 다른 인물이 나왔다.*
 
-## 09같은 기타가 두 가지로 보이는 이유
+## 같은 기타가 두 가지로 보이는 이유
 
 도구 4는 Dapp(decentralized application, 탈중앙화 애플리케이션)이다. 이 도구의 구조는 그림 하나에 다 들어 있다.
 
@@ -226,7 +222,7 @@ Essay
 ![2023년 11월 발표. 같은 기타가 어느 주소에 있느냐에 따라 복셀로도 실사로도 보인다. 자리가 표현을 바꾼다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-062.jpg)
 *2023년 11월 발표. 같은 기타가 어느 주소에 있느냐에 따라 복셀로도 실사로도 보인다. 자리가 표현을 바꾼다.*
 
-## 10다시 현실로
+## 다시 현실로
 
 도구 5는 IRL(in real life, 현실에서)이다. 이 구간에는 설명문이 거의 없다. 대신 현장 사진이 이어진다.
 
@@ -242,7 +238,7 @@ Avant Arte가 제작한 CryptoPunks 10,000 On-Chain도 그 자리에 넣었다. 
 
 지도의 바깥쪽에는 초대하고 싶은 외부 노드 몇 개가 적혀 있었다. 그중 하나가 비플이었다. 실제로 비플을 만나 이 프로젝트를 소개한 자리도 그 무렵에 있었다.
 
-## 11비워둔 칸
+## 비워둔 칸
 
 발표의 거의 끝에 표를 하나 놓았다.
 
@@ -263,7 +259,7 @@ Avant Arte가 제작한 CryptoPunks 10,000 On-Chain도 그 자리에 넣었다. 
 ![2023년 11월 발표. 두 캐릭터가 채운 포맷 옆에 빈 슬롯과 새 포맷 칸이 비워진 채로 놓여 있다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-069.jpg)
 *2023년 11월 발표. 두 캐릭터가 채운 포맷 옆에 빈 슬롯과 새 포맷 칸이 비워진 채로 놓여 있다.*
 
-## 12스토리텔링에서 히스토리로
+## 스토리텔링에서 히스토리로
 
 마지막에 남긴 것은 한 줄이었다. 온체인 스토리텔링에서 온체인 히스토리로.
 
