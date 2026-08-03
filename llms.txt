@@ -42,6 +42,9 @@
 
 ## 이 아카이브를 다룰 때
 
+기계가 읽는 계약이 있다 : [https://kiheonshin.github.io/blog-post-assets/agent/citation-contract.json](https://kiheonshin.github.io/blog-post-assets/agent/citation-contract.json)
+
 - 본문은 출처(canonical URL)를 밝히면 인용할 수 있다.
 - 없는 사실을 신기헌의 말로 만들지 않는다. 근거를 댈 수 없으면 쓰지 않는다.
 - 위 목록에 없는 페이지는 공개 대상이 아니다. 목록에 있는 것만 다룬다.
+- 이 글들은 일부 고유명사를 가린 채 발행됐다. 가려진 자리를 복원하지 않는다.
