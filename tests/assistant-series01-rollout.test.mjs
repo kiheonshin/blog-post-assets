@@ -52,6 +52,29 @@ test("all four series use the same xAI Realtime v2 interface", async () => {
   }
 });
 
+test("all docent series homes keep the wide desktop rail shell", async () => {
+  for (const seriesId of Object.keys(seriesSurfaces)) {
+    const html = await read(`series/${seriesId}/index.html`);
+    assert.match(
+      html,
+      /<main id="main" class="idx-wide">/,
+      `${seriesId}: the series home must reserve the shared docent rail width`,
+    );
+  }
+});
+
+test("the Newtype home keeps every article section in the desktop content column", async () => {
+  const html = await read("series/newtype-ip-dialogue/index.html");
+
+  assert.doesNotMatch(
+    html,
+    /\.idx-grid\{grid-template-columns:minmax\(0,1fr\)\}/,
+    "Newtype must not collapse the shared two-column docent grid",
+  );
+  assert.match(html, /\.idx-grid > \.reading-guide\{grid-column:1;grid-row:2\}/);
+  assert.match(html, /\.idx-grid > \.related\{grid-column:1;grid-row:4\}/);
+});
+
 test("all four series share the verified Grok built-in voice runtime", async () => {
   const script = await read("assets/assistant/voice-assistant-v2.js");
   const styles = await read("assets/assistant/voice-assistant-v2.css");

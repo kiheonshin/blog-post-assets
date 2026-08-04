@@ -337,14 +337,12 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
 .related-list{margin-block-start:1rem}
 @media(min-width:48rem){.related-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
 
-/* 시리즈 02는 원자료 페이지도, 가상의 신기헌 rail도 없다. 오른쪽 17rem 열을
-   비워 둔 채로 두면 본문이 왼쪽으로 쏠리므로 한 칸으로 세운다. 공용 규칙은
-   위쪽 블록 그대로 두고 여기서만 덮는다(전수 grep 수정 시 함께 잡히도록). */
+/* 시리즈 02의 추가 섹션도 도슨트 옆 본문 열에서 순서대로 이어진다. */
 .idx h1{margin:0 0 1rem}
 .idx > .lead{margin:0 0 2rem;max-width:var(--measure)}
 @media(min-width:70rem){
-  .idx-grid{grid-template-columns:minmax(0,1fr)}
-  .idx-grid > .cta,.idx-grid > .about{grid-column:1;grid-row:auto}
+  .idx-grid > .reading-guide{grid-column:1;grid-row:2}
+  .idx-grid > .related{grid-column:1;grid-row:4}
 }
 </style>
 <link rel="stylesheet" href="../../assets/site.css?v=20260731g">
@@ -358,7 +356,7 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
   <a class="brand" href="../../">KIHEON SHIN</a>
   <a class="uplink uplink--head" href="../../">전체 시리즈</a>
 </div></header>
-<main id="main"><div class="idx">
+<main id="main" class="idx-wide"><div class="idx">
   <p class="meta-label">시리즈 02</p>
   <h1>AI를 열어둘수록<br>선명해지는 창작자의 자리</h1>
   <p class="lead">AI의 잠재력을 가로막지 않는 협업에서 시작해, 취향을 재현하는 엔진과 창작자의 판단 능력으로 이어지는 세 편.</p>
