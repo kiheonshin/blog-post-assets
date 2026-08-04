@@ -825,19 +825,25 @@ test("series prepared prompts open the dialog and prefill without sending or pla
   assert.equal(assistant.input.value, "");
 });
 
-test("each published series explains its own subject during the staged series 01 rollout", async () => {
-  const seriesIds = ["aigc-creative-paradigm", "autonomous-worlds", "co-creation-culture"];
+test("each published series explains its own subject in xAI Realtime v2", async () => {
+  const seriesIds = [
+    "aigc-creative-paradigm",
+    "newtype-ip-dialogue",
+    "autonomous-worlds",
+    "co-creation-culture",
+  ];
   const intros = await Promise.all(seriesIds.map(async (seriesId) => {
     const raw = await readFile(path.join(repoRoot, "series", seriesId, "assistant", "context.json"), "utf8");
     return JSON.parse(raw).docent.intro;
   }));
 
-  assert.equal(new Set(intros).size, 3);
+  assert.equal(new Set(intros).size, 4);
   assert.equal(intros[0], "글과 자료를 따라 둘러보세요.");
   assert.equal([...intros[0]].length <= 20, true);
-  assert.match(intros[1], /발표 기록·원고·슬라이드/);
-  assert.match(intros[2], /창의성·경계·기록/);
-  for (const intro of intros.slice(1)) {
+  assert.match(intros[1], /세 글의 흐름/);
+  assert.match(intros[2], /발표 기록·원고·슬라이드/);
+  assert.match(intros[3], /창의성·경계·기록/);
+  for (const intro of intros.slice(2)) {
     assert.match(intro, /아래 질문을 누르면 대화창에 문장만 미리 담깁니다/);
     assert.match(intro, /자동으로 보내거나 소리를 재생하지 않/);
     assert.match(intro, /내용을 확인한 뒤 보내면 답변이 시작됩니다/);
@@ -1102,6 +1108,10 @@ test("every published docent surface installs one assistant in the required read
     ["post", "series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/index.html"],
     ["source", "series/aigc-creative-paradigm/sources/research/index.html"],
     ["source", "series/aigc-creative-paradigm/sources/slides/index.html"],
+    ["series", "series/newtype-ip-dialogue/index.html"],
+    ["post", "series/newtype-ip-dialogue/posts/01-not-blocking-potential/index.html"],
+    ["post", "series/newtype-ip-dialogue/posts/02-engine-as-ip/index.html"],
+    ["post", "series/newtype-ip-dialogue/posts/03-already-have-the-eye/index.html"],
     ["series", "series/autonomous-worlds/index.html"],
     ["post", "series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/index.html"],
     ["post", "series/autonomous-worlds/posts/02-more-than-a-mirror/index.html"],
@@ -1124,12 +1134,16 @@ test("every published docent surface installs one assistant in the required read
 
   for (const { type, file, html } of pages) {
     assert.equal((html.match(/<kiheon-voice-assistant\b/g) ?? []).length, 1);
-    assert.match(html, /assets\/assistant\/voice-assistant(?:-v2)?\.js/);
-    assert.match(html, /assets\/assistant\/voice-assistant(?:-v2)?\.css/);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260803grok2/);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20260803simple1/);
+    assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:js|css)/);
     assert.doesNotMatch(html, /assets\/voice-agent\.js/);
     if (type === "series") {
       assert.ok(html.indexOf("<series-nav") < html.indexOf("<kiheon-voice-assistant"), file);
-      assert.ok(html.indexOf("<kiheon-voice-assistant") < html.indexOf("<series-sources"), file);
+      const nextReadingSurface = html.includes("<series-sources")
+        ? html.indexOf("<series-sources")
+        : html.indexOf('<section class="reading-guide"');
+      assert.ok(html.indexOf("<kiheon-voice-assistant") < nextReadingSurface, file);
     } else if (type === "post") {
       assert.ok(html.indexOf('<p class="lead">') < html.indexOf("<kiheon-voice-assistant"), file);
       assert.ok(html.indexOf("<kiheon-voice-assistant") < html.indexOf("<series-nav"), file);
@@ -1140,15 +1154,14 @@ test("every published docent surface installs one assistant in the required read
   }
 
   const assistantCss = await readFile(
-    path.join(repoRoot, "assets", "assistant", "voice-assistant.css"),
+    path.join(repoRoot, "assets", "assistant", "voice-assistant-v2.css"),
     "utf8",
   );
   assert.doesNotMatch(assistantCss, /kiheon-voice-assistant\[data-scope="content"\]\s*\{[^}]*position:\s*sticky/);
-  assert.match(assistantCss, /data-series-expanded="false"[^}]*voice-assistant__series-body[\s\S]*display:\s*none/);
   assert.match(assistantCss, /background:\s*color-mix\(in srgb, var\(--ink/);
   assert.match(assistantCss, /@media\s*\(min-width:\s*64rem\)/);
   assert.match(assistantCss, /voice-assistant__radio-list[\s\S]*overflow-y:\s*auto/);
-  assert.match(assistantCss, /voice-assistant__form[\s\S]*grid-template-columns:\s*auto minmax\(7rem, 1fr\) auto/);
+  assert.match(assistantCss, /voice-assistant__form[\s\S]*grid-template-columns:\s*minmax\(7rem, 1fr\) auto/);
   assert.match(assistantCss, /voice-assistant__turn\[data-assistant-role="user"\][\s\S]*align-self:\s*flex-end/);
   assert.match(assistantCss, /voice-assistant__disclosures[\s\S]*grid-template-columns:\s*repeat\(2/);
   assert.match(assistantCss, /voice-assistant__targets\[hidden\][\s\S]*display:\s*none/);
@@ -1159,12 +1172,8 @@ test("every published docent surface installs one assistant in the required read
   assert.doesNotMatch(assistantCss, /@media\s*\(max-width:\s*34rem\)/);
 });
 
-test("Newtype and private Co-Creation sources remain outside the docent", async () => {
+test("private Co-Creation sources remain outside the docent", async () => {
   const excluded = [
-    "series/newtype-ip-dialogue/index.html",
-    "series/newtype-ip-dialogue/posts/01-not-blocking-potential/index.html",
-    "series/newtype-ip-dialogue/posts/02-engine-as-ip/index.html",
-    "series/newtype-ip-dialogue/posts/03-already-have-the-eye/index.html",
     "series/co-creation-culture/sources/screening/index.html",
     "series/co-creation-culture/sources/dossier/index.html",
     "series/co-creation-culture/sources/codex/index.html",
@@ -1176,17 +1185,15 @@ test("Newtype and private Co-Creation sources remain outside the docent", async 
     assert.doesNotMatch(html, /<kiheon-voice-assistant\b/, file);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:js|css)/, file);
   }
-  const manifest = await readFile(path.join(repoRoot, "assets/content-manifest.js"), "utf8");
-  const newtypeBlock = manifest.slice(
-    manifest.indexOf('slug: "newtype-ip-dialogue"'),
-    manifest.indexOf('slug: "autonomous-worlds"'),
-  );
-  assert.match(newtypeBlock, /status:\s*"planned"/);
-  assert.match(newtypeBlock, /pilotSurfaceIds:\s*\[\]/);
 });
 
-test("every prepared explanation in the three ready series has inspectable source provenance", async () => {
-  const seriesIds = ["aigc-creative-paradigm", "autonomous-worlds", "co-creation-culture"];
+test("every prepared explanation in the four ready series has inspectable source provenance", async () => {
+  const seriesIds = [
+    "aigc-creative-paradigm",
+    "newtype-ip-dialogue",
+    "autonomous-worlds",
+    "co-creation-culture",
+  ];
   const contexts = [];
   for (const seriesId of seriesIds) {
     const context = JSON.parse(await readFile(

@@ -50,30 +50,33 @@ python3 -m http.server 4173 --directory ..
 
 그다음 `http://127.0.0.1:4173/blog-post-assets/`를 연다.
 
-## AIGC 시리즈 음성 도슨트
+## 음성 도슨트
 
-`series/aigc-creative-paradigm/`의 현재 도슨트는 이 블로그를 보는 소유자의 Mac에서만 실시간 질문을 처리한다.
+### xAI Realtime v2
+
+네 개의 공개 시리즈와 그 포스팅·공개 원자료는 모두 같은 v2 도슨트를 사용한다.
 
 ```text
-GitHub Pages 또는 로컬 정적 페이지
-  → 사용자가 질문이나 음성 버튼을 직접 누름
-  → http://127.0.0.1:8787의 Tamaverse ChatGPT OAuth bridge
-  → 답변 텍스트만 브라우저로 반환
-  → 브라우저 Web Speech로 선택 재생
+GitHub Pages의 정적 페이지
+  → 사용자가 대화 또는 음성 버튼을 직접 누름
+  → Vercel의 /api/xai-client-secret에서 120초짜리 client secret 발급
+  → 브라우저가 wss://api.x.ai/v1/realtime에 직접 연결
+  → xAI Realtime이 한국어 전사·답변·음성을 처리
 ```
 
-- bridge는 `127.0.0.1`에만 bind하며 외부 네트워크에 서버를 열지 않는다.
-- 허용 origin은 `http://127.0.0.1:4173`, `http://localhost:4173`, `https://kiheonshin.github.io` 세 개다.
-- 페이지 진입이나 스크롤만으로 bridge, 마이크, 음성 재생을 시작하지 않는다.
-- OAuth token과 인증 파일은 브라우저로 전달하지 않는다.
-- GitHub Pages에서 처음 질문할 때 Chrome이 ‘이 기기 연결’을 요청할 수 있으며, 허용한 뒤에만 이 Mac의 bridge로 질문을 보낸다.
-- bridge가 없거나 연결을 허용하지 않은 기기에서는 준비된 안내만 사용할 수 있고, 직접 질문이나 마이크를 누르면 음성 안내를 켜고 브라우저 연결 요청을 허용하라는 복구 안내가 나온다.
-- 현재 모델은 `chatgpt/gpt-5.4`, reasoning effort는 `low`다.
+- 장기 `XAI_API_KEY`는 Vercel 환경 변수에만 두고 브라우저에는 전달하지 않는다.
+- token endpoint는 허용된 origin만 받고, IP당 1분에 4회로 제한하며, 응답을 저장하지 않는다.
+- 현재 모델은 `grok-voice-think-fast-1.0`, 입력 전사는 `grok-transcribe`, 턴 감지는 `server_vad`다.
+- 음성은 xAI 기본 음성 `Ara`, `Eve`, `Rex`, `Sal`, `Leo`만 제공하며 기본값은 `Ara`다.
+- 페이지 진입이나 스크롤만으로 연결·마이크·음성 재생을 시작하지 않는다.
+- 대화 기록은 현재 브라우저 세션 안에서만 사용하며 블로그나 token endpoint에 저장하는 로직은 두지 않는다.
 
-도슨트와 공개 컨텍스트의 경계 테스트는 별도 패키지 설치 없이 실행한다.
+GitHub Pages는 정적 페이지와 공개 컨텍스트를 배포하고, Vercel은 `api/xai-client-secret.js`만 서버 함수로 배포한다. v2의 진입점은 `assets/assistant/voice-assistant-v2.js`, 전송 계층은 `assets/assistant/xai-voice-transport.js`다.
+
+`assets/assistant/voice-assistant.js`와 `voice-assistant.css`는 이전 구현 기록으로만 남아 있으며, 공개 시리즈 표면에서는 불러오지 않는다. 링크가 숨겨진 Co-Creation 원자료 모듈 다섯 개는 현재 공개 정책에 따라 도슨트 대상에서 제외한다.
+
+도슨트, 공개 컨텍스트, xAI 전송 계층과 token endpoint의 경계 테스트는 별도 패키지 설치 없이 실행한다.
 
 ```sh
-node --test tests/assistant-voice.test.mjs
+node --test tests/*.test.mjs tests/*.test.js
 ```
-
-기존 xAI Realtime 함수와 `assets/voice-agent.js`는 과거 구현을 보존하기 위해 남아 있지만 현재 도슨트 페이지에서는 import하지 않는다. API credit과 별도 공개 승인 없이 다시 활성화하지 않는다.

@@ -98,8 +98,13 @@ export const contentLibrary = {
         "열린 문과 기억의 프레임, 작은 에이전트들이 녹색 경로로 이어진 뉴타입 시리즈 파노라마",
       assistantContext: {
         path: "series/newtype-ip-dialogue/assistant/context.json",
-        status: "planned",
-        pilotSurfaceIds: [],
+        status: "ready",
+        pilotSurfaceIds: [
+          "newtype-ip-dialogue:series:newtype-ip-dialogue",
+          "newtype-ip-dialogue:post:01-not-blocking-potential",
+          "newtype-ip-dialogue:post:02-engine-as-ip",
+          "newtype-ip-dialogue:post:03-already-have-the-eye",
+        ],
       },
       posts: [
         {

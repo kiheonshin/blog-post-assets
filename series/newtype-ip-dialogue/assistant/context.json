@@ -1,0 +1,567 @@
+{
+  "schemaVersion": 1,
+  "series": {
+    "id": "newtype-ip-dialogue",
+    "title": "AI를 열어둘수록 선명해지는 창작자의 자리",
+    "synopsis": "2026년 6월 공개 대담을 다시 정리한 세 편의 글을 통해 AI의 잠재력을 대하는 신뢰, 취향을 재현하는 엔진 IP, 창작자가 이미 가진 판단 능력을 살핀다."
+  },
+  "docent": {
+    "intro": "세 글의 흐름을 함께 살펴보세요.",
+    "quickPrompts": [
+      {
+        "id": "where-to-start",
+        "label": "어디서부터 읽을까요?",
+        "answer": "세 글은 순서대로 읽는 편이 좋습니다. 1편은 AI의 잠재력을 덜 가로막는 협업과 신뢰에서 시작하고, 2편은 완성된 결과물 대신 취향을 다시 불러오는 엔진을 IP로 바라봅니다. 3편은 성능과 효율을 일부러 덜어내는 실험을 통해 창작자의 판단 능력으로 돌아옵니다.",
+        "targets": [
+          {
+            "label": "1편부터 읽기",
+            "url": "series/newtype-ip-dialogue/posts/01-not-blocking-potential/"
+          },
+          {
+            "label": "2편 · 엔진 IP",
+            "url": "series/newtype-ip-dialogue/posts/02-engine-as-ip/"
+          },
+          {
+            "label": "3편 · 창작자의 눈",
+            "url": "series/newtype-ip-dialogue/posts/03-already-have-the-eye/"
+          }
+        ],
+        "provenance": [
+          {
+            "sourceId": "01-not-blocking-potential",
+            "anchor": "hundred-dollar-instruction"
+          },
+          {
+            "sourceId": "02-engine-as-ip",
+            "anchor": "taste-engine"
+          },
+          {
+            "sourceId": "03-already-have-the-eye",
+            "anchor": "creator-eye"
+          }
+        ]
+      },
+      {
+        "id": "three-posts",
+        "label": "세 편은 어떻게 이어지나요?",
+        "answer": "1편은 계획을 정확히 재현하는 신뢰보다 예상하지 못한 결과를 함께 발견하는 신뢰를 다룹니다. 2편은 그 발견을 반복 가능한 취향의 엔진으로 설명하고, 3편은 무한한 가능성 가운데 무엇을 남기고 덜어낼지를 결정하는 눈이 창작자의 자리라고 정리합니다. 신뢰에서 구조로, 다시 판단으로 이동하는 구성입니다.",
+        "targets": [
+          {
+            "label": "1편 · 신뢰",
+            "url": "series/newtype-ip-dialogue/posts/01-not-blocking-potential/"
+          },
+          {
+            "label": "2편 · 구조",
+            "url": "series/newtype-ip-dialogue/posts/02-engine-as-ip/"
+          },
+          {
+            "label": "3편 · 판단",
+            "url": "series/newtype-ip-dialogue/posts/03-already-have-the-eye/"
+          }
+        ],
+        "provenance": [
+          {
+            "sourceId": "01-not-blocking-potential",
+            "anchor": "hundred-dollar-instruction"
+          },
+          {
+            "sourceId": "02-engine-as-ip",
+            "anchor": "native-genre"
+          },
+          {
+            "sourceId": "03-already-have-the-eye",
+            "anchor": "creator-eye"
+          }
+        ]
+      },
+      {
+        "id": "shared-question",
+        "label": "세 글의 공통 질문은 무엇인가요?",
+        "answer": "AI의 가능성을 어디까지 열어둘지, 그리고 열린 가능성 가운데 무엇을 자기 것으로 선택할지가 공통 질문입니다. 글은 성능 좋은 도구를 그대로 받아들이는 데서 멈추지 않고, 결과를 발견하는 방식과 반복할 취향의 범위, 일부러 남겨둘 모자람까지 창작자가 판단해야 한다고 봅니다.",
+        "targets": [
+          {
+            "label": "가드레일에 관한 대목",
+            "url": "series/newtype-ip-dialogue/posts/01-not-blocking-potential/#loosening-guardrails"
+          },
+          {
+            "label": "고유한 장르에 관한 대목",
+            "url": "series/newtype-ip-dialogue/posts/02-engine-as-ip/#native-genre"
+          },
+          {
+            "label": "창작자의 눈에 관한 대목",
+            "url": "series/newtype-ip-dialogue/posts/03-already-have-the-eye/#creator-eye"
+          }
+        ],
+        "provenance": [
+          {
+            "sourceId": "01-not-blocking-potential",
+            "anchor": "loosening-guardrails"
+          },
+          {
+            "sourceId": "02-engine-as-ip",
+            "anchor": "native-genre"
+          },
+          {
+            "sourceId": "03-already-have-the-eye",
+            "anchor": "creator-eye"
+          }
+        ]
+      }
+    ],
+    "contentPrompts": {
+      "01-not-blocking-potential": [
+        {
+          "id": "post-one-flow",
+          "label": "이 글의 흐름을 알려주세요",
+          "answer": "여러 분야와 도구를 오가며 일해온 책상에서 시작해, 한 번의 답을 완성본으로 받지 않는 작업 루프를 살핍니다. 이어 결과를 미리 좁히지 않는 신뢰와 권한의 경계를 구분하고, 결과 뒤에서 기획을 추출하는 순서를 거쳐 작은 실험이 하나의 가상 공간으로 커지는 과정에 닿습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-not-blocking-potential",
+              "anchor": "blurred-desk"
+            },
+            {
+              "sourceId": "01-not-blocking-potential",
+              "anchor": "push-through"
+            },
+            {
+              "sourceId": "01-not-blocking-potential",
+              "anchor": "hundred-dollar-instruction"
+            },
+            {
+              "sourceId": "01-not-blocking-potential",
+              "anchor": "loosening-guardrails"
+            },
+            {
+              "sourceId": "01-not-blocking-potential",
+              "anchor": "reversing-the-order"
+            },
+            {
+              "sourceId": "01-not-blocking-potential",
+              "anchor": "virtual-shibuya"
+            }
+          ],
+          "targets": [
+            {
+              "label": "작업 루프 보기",
+              "url": "series/newtype-ip-dialogue/posts/01-not-blocking-potential/#push-through"
+            },
+            {
+              "label": "신뢰에 관한 대목",
+              "url": "series/newtype-ip-dialogue/posts/01-not-blocking-potential/#hundred-dollar-instruction"
+            }
+          ]
+        },
+        {
+          "id": "post-one-question",
+          "label": "여기서 잠재력을 믿는다는 뜻은 무엇인가요?",
+          "answer": "AI가 계획을 그대로 재현할 것이라고 믿는 것이 아니라, 의도를 덜 강요했을 때 예상하지 못한 선택지를 가져올 가능성에 작업을 걸어보는 태도입니다. 글은 창작의 방향을 열어두는 일과 자료·권한·비용의 경계를 넓히는 일을 서로 다른 층으로 구분합니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-not-blocking-potential",
+              "anchor": "hundred-dollar-instruction"
+            },
+            {
+              "sourceId": "01-not-blocking-potential",
+              "anchor": "loosening-guardrails"
+            }
+          ],
+          "targets": [
+            {
+              "label": "잠재력에 관한 대목",
+              "url": "series/newtype-ip-dialogue/posts/01-not-blocking-potential/#hundred-dollar-instruction"
+            }
+          ]
+        }
+      ],
+      "02-engine-as-ip": [
+        {
+          "id": "post-two-flow",
+          "label": "이 글의 흐름을 알려주세요",
+          "answer": "한 번 듣고 사라지는 음악에서도 무엇이 반복되는지 묻는 데서 시작합니다. 반복의 단위를 완성된 파일에서 취향으로 옮기고, 그 취향을 다시 불러오는 엔진을 IP로 봅니다. 이어 결과를 먼저 만든 뒤 기준을 추출하는 순서, 변주 속에서도 알아볼 수 있는 장르, 미세한 거래와 맥락 기반 발견으로 확장합니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-engine-as-ip",
+              "anchor": "disposable-song"
+            },
+            {
+              "sourceId": "02-engine-as-ip",
+              "anchor": "taste-engine"
+            },
+            {
+              "sourceId": "02-engine-as-ip",
+              "anchor": "reversed-senses"
+            },
+            {
+              "sourceId": "02-engine-as-ip",
+              "anchor": "native-genre"
+            },
+            {
+              "sourceId": "02-engine-as-ip",
+              "anchor": "micro-value-at-scale"
+            },
+            {
+              "sourceId": "02-engine-as-ip",
+              "anchor": "context-over-keywords"
+            }
+          ],
+          "targets": [
+            {
+              "label": "엔진 IP 보기",
+              "url": "series/newtype-ip-dialogue/posts/02-engine-as-ip/#taste-engine"
+            },
+            {
+              "label": "맥락으로 닿는 과정",
+              "url": "series/newtype-ip-dialogue/posts/02-engine-as-ip/#context-over-keywords"
+            }
+          ]
+        },
+        {
+          "id": "post-two-question",
+          "label": "왜 엔진이 IP가 되나요?",
+          "answer": "완성된 결과물 하나보다 무엇을 재료로 삼고 무엇을 버리며 어떤 결을 반복해서 고르는지가 더 오래 남기 때문입니다. 글에서 엔진은 모델 파일만이 아니라 데이터와 가능성의 범위, 취향과 의도, 결과를 선택하는 기준까지 묶은 반복 가능한 구조입니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "02-engine-as-ip",
+              "anchor": "taste-engine"
+            },
+            {
+              "sourceId": "02-engine-as-ip",
+              "anchor": "native-genre"
+            }
+          ],
+          "targets": [
+            {
+              "label": "취향을 만드는 엔진",
+              "url": "series/newtype-ip-dialogue/posts/02-engine-as-ip/#taste-engine"
+            }
+          ]
+        }
+      ],
+      "03-already-have-the-eye": [
+        {
+          "id": "post-three-flow",
+          "label": "이 글의 흐름을 알려주세요",
+          "answer": "에이전트의 성능보다 자꾸 말을 걸고 싶게 만드는 관계를 먼저 보는 데서 시작합니다. 일부러 낮춘 능력과 어수룩함이 이야기의 사건이 되는 실험을 거쳐, 완벽함보다 모자람이 다시 만날 이유를 만드는 과정을 살핍니다. 마지막에는 도구와 존재를 가르는 관점, 시간을 돌아보는 장치, 창작자가 이미 가진 판단 능력으로 이어집니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-already-have-the-eye",
+              "anchor": "agents-must-be-cute"
+            },
+            {
+              "sourceId": "03-already-have-the-eye",
+              "anchor": "deliberate-limits"
+            },
+            {
+              "sourceId": "03-already-have-the-eye",
+              "anchor": "incompleteness"
+            },
+            {
+              "sourceId": "03-already-have-the-eye",
+              "anchor": "tool-or-being"
+            },
+            {
+              "sourceId": "03-already-have-the-eye",
+              "anchor": "owner-changes"
+            },
+            {
+              "sourceId": "03-already-have-the-eye",
+              "anchor": "creator-eye"
+            }
+          ],
+          "targets": [
+            {
+              "label": "일부러 모자란 것들",
+              "url": "series/newtype-ip-dialogue/posts/03-already-have-the-eye/#deliberate-limits"
+            },
+            {
+              "label": "창작자의 눈",
+              "url": "series/newtype-ip-dialogue/posts/03-already-have-the-eye/#creator-eye"
+            }
+          ]
+        },
+        {
+          "id": "post-three-question",
+          "label": "왜 성능을 일부러 덜어내나요?",
+          "answer": "업무 도구라면 바로 고쳐야 할 실패도 캐릭터와 세계의 규칙 안에서는 다음 장면을 기다리게 하는 사건이 될 수 있기 때문입니다. 글은 가능한 능력을 모두 꺼내는 것보다 무엇을 감추고 허용할지를 판단하는 일이 경험과 관계를 만든다고 봅니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "03-already-have-the-eye",
+              "anchor": "deliberate-limits"
+            },
+            {
+              "sourceId": "03-already-have-the-eye",
+              "anchor": "incompleteness"
+            },
+            {
+              "sourceId": "03-already-have-the-eye",
+              "anchor": "tool-or-being"
+            }
+          ],
+          "targets": [
+            {
+              "label": "모자람에 관한 대목",
+              "url": "series/newtype-ip-dialogue/posts/03-already-have-the-eye/#incompleteness"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "entries": [
+    {
+      "contentId": "01-not-blocking-potential",
+      "type": "post",
+      "url": "series/newtype-ip-dialogue/posts/01-not-blocking-potential/",
+      "title": "잠재력을 믿는 데서 협업이 시작된다",
+      "synopsis": "한 번의 답을 완성본으로 받지 않는 작업 루프, 예상하지 못한 결과에 거는 신뢰, 방향과 권한의 경계를 구분하는 태도, 결과 뒤에서 기획을 추출하는 순서를 살핀다.",
+      "contentHash": "sha256:8b2f364ee830325d1da002b3b7b706b76d9db4c7036dce2c088d441e3cddf944",
+      "keyInsights": [
+        {
+          "text": "좋은 협업은 계획을 그대로 재현하는 데서만 생기지 않고, 예상하지 못한 결과를 함께 발견할 때 더 강하게 느껴진다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-not-blocking-potential",
+              "anchor": "hundred-dollar-instruction"
+            }
+          ]
+        },
+        {
+          "text": "창작의 방향을 열어두는 일과 자료·권한·비용의 경계를 넓히는 일은 별도로 판단해야 한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "01-not-blocking-potential",
+              "anchor": "loosening-guardrails"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "blurred-desk",
+          "title": "흐릿하게 살아온 사람의 책상",
+          "summary": "여러 분야와 도구를 오가며 결과를 검수하고 다음 방향을 정하는 현재의 작업 방식을 소개한다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "01-not-blocking-potential", "anchor": "blurred-desk" }]
+        },
+        {
+          "sectionId": "push-through",
+          "title": "밀어붙여라는 말의 두 가지 뜻",
+          "summary": "긴 작업을 계속 잇는 루프와 평가 기준을 잘게 쪼개는 루프를 통해 끝내는 시점을 다시 설계한다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "01-not-blocking-potential", "anchor": "push-through" }]
+        },
+        {
+          "sectionId": "hundred-dollar-instruction",
+          "title": "$100짜리 지시 앞에서",
+          "summary": "의도를 덜 강요했을 때 오는 예상 밖의 결과에 작업을 걸며 신뢰의 기준이 재현에서 발견으로 이동한다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "01-not-blocking-potential", "anchor": "hundred-dollar-instruction" }]
+        },
+        {
+          "sectionId": "loosening-guardrails",
+          "title": "가드레일을 조금씩 푸는 사람들",
+          "summary": "결과의 방향, 자료 접근 권한, 비용과 시간의 범위를 서로 다른 경계로 나누어 본다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "01-not-blocking-potential", "anchor": "loosening-guardrails" }]
+        },
+        {
+          "sectionId": "reversing-the-order",
+          "title": "순서를 뒤집으면 벌어지는 일",
+          "summary": "여러 결과를 먼저 만든 뒤 선택의 이유와 재현 규칙을 추출하면서 기획이 결과 뒤로 이동한다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "01-not-blocking-potential", "anchor": "reversing-the-order" }]
+        },
+        {
+          "sectionId": "virtual-shibuya",
+          "title": "점 하나에서 시작한 가상 시부야",
+          "summary": "작은 점에서 시작한 실험이 여러 존재와 공간, 도구가 연결된 가상 환경으로 확장되는 과정을 돌아본다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "01-not-blocking-potential", "anchor": "virtual-shibuya" }]
+        }
+      ],
+      "relations": [
+        {
+          "targetContentId": "02-engine-as-ip",
+          "text": "결과물이 일회용이 되는 변화는 2편에서 무엇이 IP로 남는가라는 질문으로 이어진다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "01-not-blocking-potential", "anchor": "reversing-the-order" }]
+        }
+      ]
+    },
+    {
+      "contentId": "02-engine-as-ip",
+      "type": "post",
+      "url": "series/newtype-ip-dialogue/posts/02-engine-as-ip/",
+      "title": "남는 IP는 취향을 재현하는 엔진이다",
+      "synopsis": "반복의 단위를 완성된 파일에서 취향으로 옮기고, 변주 속에서도 같은 결을 다시 불러오는 엔진을 IP로 바라본다.",
+      "contentHash": "sha256:133859359229adeed7c81705484e7dd11c06f081772f65bae086edd06203988b",
+      "keyInsights": [
+        {
+          "text": "생성 시대의 IP는 완성된 결과물보다 데이터와 가능성의 범위, 취향과 선택 기준을 묶은 반복 가능한 엔진에 가깝다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "02-engine-as-ip", "anchor": "taste-engine" }]
+        },
+        {
+          "text": "고유함은 같은 결과의 반복이 아니라 서로 다른 결과 사이에서 지속적으로 드러나는 선택의 범위다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "02-engine-as-ip", "anchor": "native-genre" }]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "disposable-song",
+          "title": "한 번 듣고 버리는 노래",
+          "summary": "결과물이 일회용이 되어도 같은 취향에서 다른 결과를 계속 만든다면 반복의 단위가 달라진 것이라고 본다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "02-engine-as-ip", "anchor": "disposable-song" }]
+        },
+        {
+          "sectionId": "taste-engine",
+          "title": "남는 것은 취향을 만드는 엔진",
+          "summary": "모델과 데이터뿐 아니라 무엇을 버리고 고르는지까지 묶인 생성 엔진 자체를 IP로 제안한다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "02-engine-as-ip", "anchor": "taste-engine" }]
+        },
+        {
+          "sectionId": "reversed-senses",
+          "title": "순서가 뒤집힌 감각",
+          "summary": "볼 수 있는 결과를 먼저 만든 뒤 선택의 이유와 생성 규칙을 거꾸로 찾아가는 작업 순서를 살핀다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "02-engine-as-ip", "anchor": "reversed-senses" }]
+        },
+        {
+          "sectionId": "native-genre",
+          "title": "매번 다르지만 고유한 장르",
+          "summary": "결과가 달라도 허용하는 변화의 범위와 반복되는 선택이 보이면 고유한 장르와 작품 세계가 남는다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "02-engine-as-ip", "anchor": "native-genre" }]
+        },
+        {
+          "sectionId": "micro-value-at-scale",
+          "title": "아주 작은 값이 백만 번",
+          "summary": "엔진 호출과 선택, 재사용의 작은 순간마다 값이 흐르고 많은 미세 거래가 묶여 정산되는 구조를 살핀다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "02-engine-as-ip", "anchor": "micro-value-at-scale" }]
+        },
+        {
+          "sectionId": "context-over-keywords",
+          "title": "키워드가 아니라 맥락으로 닿기",
+          "summary": "검색어 대신 의도와 맥락을 읽는 에이전트가 창작물을 고르게 되면 IP도 반복 가능한 취향의 구조로 설명되어야 한다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "02-engine-as-ip", "anchor": "context-over-keywords" }]
+        }
+      ],
+      "relations": [
+        {
+          "targetContentId": "03-already-have-the-eye",
+          "text": "변주 속에서 자기 결을 선택하는 능력은 3편에서 기술을 다르게 바라보는 창작자의 눈으로 이어진다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "02-engine-as-ip", "anchor": "context-over-keywords" }]
+        }
+      ]
+    },
+    {
+      "contentId": "03-already-have-the-eye",
+      "type": "post",
+      "url": "series/newtype-ip-dialogue/posts/03-already-have-the-eye/",
+      "title": "다르게 보는 눈은 창작자가 가진 능력이다",
+      "synopsis": "성능과 효율을 일부러 덜어내는 실험을 통해 오류와 모자람이 이야기와 관계가 되는 조건, 도구를 존재로 바라보는 관점, 창작자의 판단 능력을 살핀다.",
+      "contentHash": "sha256:0fd95809d04c9ab2b35d426724c8ba1f35f9e8ef6fb236bedcd90ccd1341a71b",
+      "keyInsights": [
+        {
+          "text": "가능한 능력을 모두 꺼내기보다 무엇을 감추고 허용할지 정하는 판단이 경험과 관계를 바꾼다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "03-already-have-the-eye", "anchor": "deliberate-limits" }]
+        },
+        {
+          "text": "창작자가 새 도구 앞에서 끝내 붙들 것은 화려한 결과보다 무엇을 좋아하고 좋은 상태로 보는지에 대한 자기 기준이다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "03-already-have-the-eye", "anchor": "creator-eye" }]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "agents-must-be-cute",
+          "title": "에이전트는 귀여워야 한다",
+          "summary": "속도와 정확도보다 자꾸 말을 걸고 싶게 만드는 성질과 관계를 먼저 보는 관점을 소개한다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "03-already-have-the-eye", "anchor": "agents-must-be-cute" }]
+        },
+        {
+          "sectionId": "deliberate-limits",
+          "title": "일부러 모자란 것들",
+          "summary": "좋은 모델의 능력을 일부러 제한하면 업무의 오류였던 반응이 캐릭터 세계의 사건과 규칙이 될 수 있다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "03-already-have-the-eye", "anchor": "deliberate-limits" }]
+        },
+        {
+          "sectionId": "incompleteness",
+          "title": "완벽함이 아니라 모자람",
+          "summary": "완벽함보다 부족함과 서툶이 다시 말을 걸고 실수를 함께 견딜 이유를 만들 수 있다고 본다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "03-already-have-the-eye", "anchor": "incompleteness" }]
+        },
+        {
+          "sectionId": "tool-or-being",
+          "title": "도구인가 존재인가",
+          "summary": "같은 기술도 도구로 볼 때와 하나의 존재로 볼 때 남겨야 할 능력과 평가 기준이 달라진다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "03-already-have-the-eye", "anchor": "tool-or-being" }]
+        },
+        {
+          "sectionId": "owner-changes",
+          "title": "다마고치 에이전트들은 변하지 않고, 내가 변한다",
+          "summary": "에이전트를 바꾸는 대신 시간을 살아낸 자신의 변화를 새 존재로 남기며 스스로를 돌아보는 실험을 설명한다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "03-already-have-the-eye", "anchor": "owner-changes" }]
+        },
+        {
+          "sectionId": "creator-eye",
+          "title": "이건 창작자가 이미 하던 일이다",
+          "summary": "새 기술을 이미 하던 일 옆에 놓고 관점을 바꾸며 무엇을 좋은 결과로 볼지 결정하는 능력은 창작자에게 이미 있다고 정리한다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "03-already-have-the-eye", "anchor": "creator-eye" }]
+        }
+      ],
+      "relations": [
+        {
+          "targetContentId": "01-not-blocking-potential",
+          "text": "마지막 글의 선택과 판단은 1편에서 시작한 잠재력에 대한 신뢰와 가드레일의 문제로 돌아간다.",
+          "kind": "source",
+          "provenance": [{ "sourceId": "03-already-have-the-eye", "anchor": "creator-eye" }]
+        }
+      ]
+    }
+  ],
+  "allowedTargets": [
+    {
+      "contentType": "series",
+      "contentId": "newtype-ip-dialogue",
+      "url": "series/newtype-ip-dialogue/"
+    },
+    {
+      "contentType": "post",
+      "contentId": "01-not-blocking-potential",
+      "url": "series/newtype-ip-dialogue/posts/01-not-blocking-potential/"
+    },
+    {
+      "contentType": "post",
+      "contentId": "02-engine-as-ip",
+      "url": "series/newtype-ip-dialogue/posts/02-engine-as-ip/"
+    },
+    {
+      "contentType": "post",
+      "contentId": "03-already-have-the-eye",
+      "url": "series/newtype-ip-dialogue/posts/03-already-have-the-eye/"
+    }
+  ],
+  "generatedAt": "2026-08-04T04:23:11.000Z"
+}

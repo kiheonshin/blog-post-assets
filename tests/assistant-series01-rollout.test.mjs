@@ -9,35 +9,50 @@ const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".."
 const read = (file) => readFile(path.join(repoRoot, file), "utf8");
 const sha256 = (value) => createHash("sha256").update(value).digest("hex");
 
-const seriesOneSurfaces = [
-  "series/aigc-creative-paradigm/index.html",
-  "series/aigc-creative-paradigm/posts/01-skill-and-effort/index.html",
-  "series/aigc-creative-paradigm/posts/02-workflow-design/index.html",
-  "series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/index.html",
-  "series/aigc-creative-paradigm/sources/research/index.html",
-  "series/aigc-creative-paradigm/sources/slides/index.html",
-];
+const seriesSurfaces = {
+  "aigc-creative-paradigm": [
+    "series/aigc-creative-paradigm/index.html",
+    "series/aigc-creative-paradigm/posts/01-skill-and-effort/index.html",
+    "series/aigc-creative-paradigm/posts/02-workflow-design/index.html",
+    "series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/index.html",
+    "series/aigc-creative-paradigm/sources/research/index.html",
+    "series/aigc-creative-paradigm/sources/slides/index.html",
+  ],
+  "newtype-ip-dialogue": [
+    "series/newtype-ip-dialogue/index.html",
+    "series/newtype-ip-dialogue/posts/01-not-blocking-potential/index.html",
+    "series/newtype-ip-dialogue/posts/02-engine-as-ip/index.html",
+    "series/newtype-ip-dialogue/posts/03-already-have-the-eye/index.html",
+  ],
+  "autonomous-worlds": [
+    "series/autonomous-worlds/index.html",
+    "series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/index.html",
+    "series/autonomous-worlds/posts/02-more-than-a-mirror/index.html",
+    "series/autonomous-worlds/posts/03-what-we-want-to-create/index.html",
+    "series/autonomous-worlds/sources/talk/index.html",
+    "series/autonomous-worlds/sources/script/index.html",
+    "series/autonomous-worlds/sources/slides/index.html",
+  ],
+  "co-creation-culture": [
+    "series/co-creation-culture/index.html",
+    "series/co-creation-culture/posts/01-whose-creativity/index.html",
+    "series/co-creation-culture/posts/02-at-the-boundary/index.html",
+    "series/co-creation-culture/posts/03-when-records-become-stories/index.html",
+    "series/co-creation-culture/sources/slides-2023-06/index.html",
+    "series/co-creation-culture/sources/slides-2023-11/index.html",
+  ],
+};
 
-const unchangedSeriesSurfaces = [
-  "series/autonomous-worlds/index.html",
-  "series/co-creation-culture/index.html",
-  "series/newtype-ip-dialogue/index.html",
-];
-
-test("series 01 alone opts into the staged docent interface", async () => {
-  for (const file of seriesOneSurfaces) {
+test("all four series use the same xAI Realtime v2 interface", async () => {
+  for (const file of Object.values(seriesSurfaces).flat()) {
     const html = await read(file);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20260803simple1/, file);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260803grok2/, file);
-  }
-
-  for (const file of unchangedSeriesSurfaces) {
-    const html = await read(file);
-    assert.doesNotMatch(html, /voice-assistant-v2\.(?:css|js)/, file);
+    assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:css|js)/, file);
   }
 });
 
-test("series 01 ships the staged Grok built-in voice runtime", async () => {
+test("all four series share the verified Grok built-in voice runtime", async () => {
   const script = await read("assets/assistant/voice-assistant-v2.js");
   const styles = await read("assets/assistant/voice-assistant-v2.css");
   assert.equal(sha256(script), "e1d5f74330c470888d96cbddc1b9a0e7a41a8f4091f0cde1ccca11e1fc485e60");
@@ -62,25 +77,24 @@ test("series 01 ships the staged Grok built-in voice runtime", async () => {
   assert.match(styles, /voice-assistant-ring-speak/);
 });
 
-test("series 01 context stays bound to the exact deployed surfaces", async () => {
-  const context = JSON.parse(await read("series/aigc-creative-paradigm/assistant/context.json"));
-  assert.equal([...context.docent.intro].length <= 20, true);
-  assert.equal(context.docent.quickPrompts.length, 3);
-
-  for (const entry of context.entries) {
-    const html = await read(`${entry.url}/index.html`);
-    assert.equal(entry.contentHash, `sha256:${sha256(html)}`, entry.contentId);
+test("all four series contexts stay bound to their exact public surfaces", async () => {
+  for (const seriesId of Object.keys(seriesSurfaces)) {
+    const context = JSON.parse(await read(`series/${seriesId}/assistant/context.json`));
+    assert.equal(context.docent.quickPrompts.length, 3, seriesId);
+    for (const entry of context.entries) {
+      const html = await read(`${entry.url}/index.html`);
+      assert.equal(entry.contentHash, `sha256:${sha256(html)}`, entry.contentId);
+    }
   }
 });
 
-test("series 02 remains unpublished while its docent work continues", async () => {
-  const html = await read("series/newtype-ip-dialogue/index.html");
+test("the manifest publishes all four docent contexts and their 23 surfaces", async () => {
   const manifest = await read("assets/content-manifest.js");
-  const newtype = manifest.slice(
-    manifest.indexOf('slug: "newtype-ip-dialogue"'),
-    manifest.indexOf('slug: "autonomous-worlds"'),
-  );
-  assert.doesNotMatch(html, /<kiheon-voice-assistant\b/);
-  assert.match(newtype, /status:\s*"planned"/);
-  assert.match(newtype, /pilotSurfaceIds:\s*\[\]/);
+  for (const [seriesId, surfaces] of Object.entries(seriesSurfaces)) {
+    const start = manifest.indexOf(`slug: "${seriesId}"`);
+    const nextStart = manifest.indexOf("\n    {", start + 1);
+    const block = manifest.slice(start, nextStart === -1 ? undefined : nextStart);
+    assert.match(block, /status:\s*"ready"/, seriesId);
+    assert.equal((block.match(new RegExp(`${seriesId}:(?:series|post|source):`, "g")) ?? []).length, surfaces.length, seriesId);
+  }
 });
