@@ -2,7 +2,7 @@ import {
   GROK_BUILT_IN_VOICES,
   VoiceTransport,
   VOICE_OFFLINE_MESSAGE,
-} from "./xai-voice-transport.js?v=20260803grok1";
+} from "./xai-voice-transport.js?v=20260805voice1";
 import { DocentAgent } from "./docent-agent.js?v=20260803contract1";
 
 const DEFAULT_PROMPTS = {
@@ -123,6 +123,38 @@ function compactText(value) {
   return allowedKeys.map((key) => compactText(value[key])).filter(Boolean).join(" · ");
 }
 
+function keytermChunks(value) {
+  const words = compactText(value).replace(/\s+/g, " ").split(" ").filter(Boolean);
+  const chunks = [];
+  let current = "";
+  for (const word of words) {
+    const characters = [...word];
+    const parts = characters.length <= 20
+      ? [word]
+      : Array.from({ length: Math.ceil(characters.length / 20) }, (_, index) =>
+        characters.slice(index * 20, (index + 1) * 20).join(""));
+    for (const part of parts) {
+      const next = current ? `${current} ${part}` : part;
+      if ([...next].length <= 20) {
+        current = next;
+      } else {
+        if (current) chunks.push(current);
+        current = part;
+      }
+    }
+  }
+  if (current) chunks.push(current);
+  const tail = chunks.at(-1);
+  if (chunks.length > 1 && [...tail].length < 4) {
+    const previousWords = chunks.at(-2).split(" ");
+    if (previousWords.length > 1) {
+      const moved = previousWords.pop();
+      chunks.splice(-2, 2, previousWords.join(" "), `${moved} ${tail}`);
+    }
+  }
+  return chunks;
+}
+
 function entryGrounding(entry) {
   const fields = [
     ["제목", entry?.title],
@@ -150,13 +182,16 @@ function entryKind(entry) {
 function currentHeading() {
   const tocCurrent = document.querySelector('.toc a[aria-current="true"][href^="#"]');
   const tocTarget = tocCurrent && document.getElementById(tocCurrent.hash.slice(1));
-  if (tocTarget) return tocTarget;
+  if (tocTarget && !tocTarget.closest?.("kiheon-voice-assistant")) return tocTarget;
 
   const hashTarget = location.hash && document.getElementById(location.hash.slice(1));
-  if (hashTarget?.matches?.("h2[id],h3[id],section[id]")) return hashTarget;
+  if (
+    hashTarget?.matches?.("h2[id],h3[id],section[id]") &&
+    !hashTarget.closest?.("kiheon-voice-assistant")
+  ) return hashTarget;
 
   const focused = document.activeElement?.closest?.("h2[id],h3[id],section[id]");
-  if (focused) return focused;
+  if (focused && !focused.closest?.("kiheon-voice-assistant")) return focused;
 
   const headings = [...document.querySelectorAll("main h2[id],main h3[id],main section[id]")]
     .filter((heading) => !heading.closest("kiheon-voice-assistant"));
@@ -418,7 +453,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
         </div>
         <div class="voice-assistant__voice-stage-copy">
           <p class="voice-assistant__voice-stage-title" data-assistant-voice-stage-title>도슨트와 음성으로 대화하기</p>
-          <p data-assistant-voice-stage-copy>버튼을 누르고 말하세요. 말을 마치면 질문이 자동으로 전달되고, 답변을 소리로 들려드려요.</p>
+          <p data-assistant-voice-stage-copy>마이크를 누른 뒤 ‘말씀해 주세요’가 보이면 평소처럼 말하세요.</p>
         </div>
       </div>
       <details class="voice-assistant__transcript-details" data-assistant-transcript-details>
@@ -923,9 +958,9 @@ export class KiheonVoiceAssistant extends HTMLElement {
     const statusCopy = this.statusCopy ?? this.status;
     if (statusCopy) statusCopy.textContent = message;
     const stageCopy = {
-      idle: ["도슨트와 음성으로 대화하기", "버튼을 누르고 말하세요. 말을 마치면 질문이 자동으로 전달되고, 답변을 소리로 들려드려요."],
-      connecting: ["음성 대화를 연결하고 있어요", "연결되면 곧바로 듣기 시작합니다. 버튼을 누르면 음성 대화를 끝냅니다."],
-      listening: ["듣고 있어요", "말을 마치면 질문이 자동으로 전달됩니다. 버튼을 누르면 음성 대화를 끝냅니다."],
+      idle: ["도슨트와 음성으로 대화하기", "마이크를 누른 뒤 ‘말씀해 주세요’가 보이면 평소처럼 말하세요."],
+      connecting: ["마이크와 음성을 연결하고 있어요", "잠시 기다려 주세요. ‘말씀해 주세요’가 보이면 시작하세요."],
+      listening: ["말씀해 주세요", "평소 속도로 말하면, 말을 마친 뒤 질문이 자동으로 전달됩니다."],
       thinking: ["답변을 준비하고 있어요", "잠시 기다려 주세요. 버튼을 누르면 요청을 취소하고 음성 대화를 끝냅니다."],
       speaking: ["도슨트가 답하고 있어요", "버튼을 누르면 답변을 멈추고 바로 다시 듣습니다."],
       error: ["음성 대화를 시작하지 못했어요", "잠시 후 다시 시도하거나 아래에서 글로 질문해 주세요."],
@@ -1054,13 +1089,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
         voiceId: this.selectedVoiceValue(),
         instructions: this.groundedContext(),
         speed: this.selectedRateValue(),
-        keyterms: [
-          "신기헌",
-          "AIGC",
-          "프롬프트",
-          "창작자",
-          compactText(this.context.series?.title),
-        ].filter(Boolean),
+        keyterms: this.voiceKeyterms(),
         signal: this.requestController.signal,
         onEvent: (event) => this.handleRealtimeEvent(event),
       });
@@ -1082,6 +1111,23 @@ export class KiheonVoiceAssistant extends HTMLElement {
     } finally {
       if (!this.voiceSessionActive) this.requestController = null;
     }
+  }
+
+  voiceKeyterms() {
+    const entries = this.allowedEntries();
+    const scopedEntries = this.scope === "series"
+      ? entries
+      : entries.filter((entry) => entry.contentId === this.dataset.contentId);
+    const candidates = [
+      "신기헌",
+      this.context?.series?.title,
+      ...scopedEntries.flatMap((entry) => [
+        entry.title,
+        ...(entry.outline ?? []).map((section) => section?.title),
+      ]),
+    ];
+    return [...new Set(candidates.flatMap(keytermChunks))]
+      .slice(0, 100);
   }
 
   handleRealtimeEvent(event) {

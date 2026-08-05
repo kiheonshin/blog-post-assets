@@ -47,7 +47,7 @@ test("all four series use the same xAI Realtime v2 interface", async () => {
   for (const file of Object.values(seriesSurfaces).flat()) {
     const html = await read(file);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20260803simple1/, file);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260803grok2/, file);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260805voice1/, file);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:css|js)/, file);
   }
 });
@@ -78,12 +78,12 @@ test("the Newtype home keeps every article section in the desktop content column
 test("all four series share the verified Grok built-in voice runtime", async () => {
   const script = await read("assets/assistant/voice-assistant-v2.js");
   const styles = await read("assets/assistant/voice-assistant-v2.css");
-  assert.equal(sha256(script), "e1d5f74330c470888d96cbddc1b9a0e7a41a8f4091f0cde1ccca11e1fc485e60");
+  assert.equal(sha256(script), "581c16f1c44fc3e9163c333ecd1ed798be642d52eba869104f0caeb6fd04bb34");
   assert.equal(sha256(styles), "e3a5965c8871746fe8574867ae0e5eb76b4a2672f9c392fe6d6f6d070b8fc53b");
   assert.match(script, /data-assistant-open-voice/);
   assert.match(script, /voiceSessionActive/);
   assert.match(script, /data-assistant-transcript-details/);
-  assert.match(script, /xai-voice-transport\.js\?v=20260803grok1/);
+  assert.match(script, /xai-voice-transport\.js\?v=20260805voice1/);
   assert.match(script, /GROK_BUILT_IN_VOICES/);
   assert.match(script, /\["Ara", "따뜻하고 자연스러운 대화"\]/);
   assert.doesNotMatch(script, /신기헌 보이스|kiheon-custom/);

@@ -167,7 +167,7 @@ test("voice session pins the xAI model and configures Korean duplex audio", asyn
     voiceId: "sal",
     instructions: "공개 문맥만 사용합니다.",
     speed: 1.15,
-    keyterms: ["신기헌", "AIGC"],
+    keyterms: ["신기헌", "AIGC", "스무 글자를 넘는 키워드는 음성 세션에서 제외됩니다"],
     onEvent: (event) => events.push(event.type),
   });
 
@@ -201,6 +201,9 @@ test("xAI cumulative transcripts update a single user utterance", async () => {
   transport.active = true;
   transport.onEvent = (event) => events.push(event);
   transport.handleSocketMessage({
+    data: JSON.stringify({ type: "input_audio_buffer.speech_started" }),
+  });
+  transport.handleSocketMessage({
     data: JSON.stringify({
       type: "conversation.item.input_audio_transcription.updated",
       transcript: "포스팅 1의 내",
@@ -218,10 +221,44 @@ test("xAI cumulative transcripts update a single user utterance", async () => {
       transcript: "포스팅 1의 내용이 궁금해",
     }),
   });
+  transport.handleSocketMessage({
+    data: JSON.stringify({ type: "input_audio_buffer.speech_stopped" }),
+  });
+  transport.handleSocketMessage({
+    data: JSON.stringify({
+      type: "conversation.item.input_audio_transcription.completed",
+      transcript: "포스팅 1의 내용이 궁금해",
+    }),
+  });
 
-  assert.deepEqual(events.map(({ transcript, final }) => ({ transcript, final })), [
+  assert.deepEqual(
+    events
+      .filter(({ type }) => type === "user_transcript")
+      .map(({ transcript, final }) => ({ transcript, final })),
+    [
     { transcript: "포스팅 1의 내", final: false },
     { transcript: "포스팅 1의 내용이 궁금해", final: false },
+    { transcript: "포스팅 1의 내용이 궁금해", final: false },
     { transcript: "포스팅 1의 내용이 궁금해", final: true },
-  ]);
+    ],
+  );
+});
+
+test("voice connection preserves ordinary speech recorded before the session is ready", async () => {
+  const { VoiceTransport } = await importTransport();
+  const sent = [];
+  const transport = new VoiceTransport();
+  transport.active = true;
+  transport.socket = {
+    readyState: 1,
+    send(frame) { sent.push(frame); },
+  };
+
+  const frames = Array.from({ length: 30 }, (_, index) => new Uint8Array([index]).buffer);
+  for (const frame of frames) transport.sendAudio(frame);
+  transport.handleSocketMessage({
+    data: JSON.stringify({ type: "session.updated" }),
+  });
+
+  assert.deepEqual(sent, frames);
 });
