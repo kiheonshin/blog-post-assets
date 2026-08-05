@@ -332,6 +332,63 @@ export const contentLibrary = {
          (엘리먼트 정의는 series-nav.js 에 그대로 둔다 — 다른 시리즈가 같은
           구조를 쓸 수 있다. 되살리려면 이 자리에 배열을 다시 놓으면 된다.) */
     },
+    {
+      slug: "onchain-storytelling",
+      label: "On-chain Storytelling",
+      title: "온체인 스토리텔링",
+      description:
+        "2023년에 진행하던 웹3 기반 코크리에이션 프로젝트의 세계관·방법론·산출물을 3년 뒤에 세 편으로 정리했다.",
+      period: "2023–2026",
+      sourceYears: [2023],
+      topics: ["기록과 서사", "IP와 정체성", "현실과 가상"],
+      keywords: ["온체인 스토리텔링", "TBA", "캐릭터 설계", "코-크리에이션"],
+      href: "series/onchain-storytelling/",
+      cover: "assets/cover-placeholder.jpg",
+      coverAlt: "온체인 스토리텔링 시리즈 커버 자리표시",
+      published: "2026-08-06",
+      // 도슨트 미장착 — 음성 레인이 결속하면 status 를 올린다.
+      assistantContext: {
+        path: "series/onchain-storytelling/assistant/context.json",
+        status: "planned",
+        pilotSurfaceIds: [],
+      },
+      posts: [
+        {
+          id: "01-worldview",
+          label: "PART 1",
+          title: "이야기를 담으려면 세계부터 지어야 했다",
+          description: "온체인 스토리텔링의 정의, 타운과 포탈, 문서가 아니라 장부가 정본이 되는 세계.",
+          published: "2026-08-06",
+          sourceYears: [2023],
+          topics: ["기록과 서사", "현실과 가상"],
+          keywords: ["온체인 스토리텔링", "TBA", "포탈", "세계관"],
+          href: "series/onchain-storytelling/posts/01-worldview/",
+        },
+        {
+          id: "02-methodology",
+          label: "PART 2",
+          title: "캐릭터는 정의되기 전에 먼저 살았다",
+          description: "정의보다 생활을 먼저 내보내는 순서, 인벤토리로 성격을 만드는 설계, 빈 자리를 상품으로 세우는 방법.",
+          published: "2026-08-06",
+          sourceYears: [2023],
+          topics: ["IP와 정체성", "공동 창작"],
+          keywords: ["캐릭터 설계", "키이라", "에바", "빈 자리"],
+          href: "series/onchain-storytelling/posts/02-methodology/",
+        },
+        {
+          id: "03-expansion",
+          label: "PART 3",
+          title: "세계는 옷과 공간과 음악으로 새어 나갔다",
+          description: "영상 연작과 패션 캠페인, 호텔 형태의 공간 기획, 캐릭터 명의의 음원까지. 확장의 갈래들.",
+          published: "2026-08-06",
+          sourceYears: [2023, 2024],
+          topics: ["공동 창작", "현실과 가상"],
+          keywords: ["트랜스미디어", "AI 에이전트", "확장"],
+          href: "series/onchain-storytelling/posts/03-expansion/",
+        },
+      ],
+      sources: [],
+    },
   ],
 };
 

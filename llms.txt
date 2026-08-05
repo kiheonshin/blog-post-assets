@@ -40,6 +40,13 @@
 - [AI를 열어둘수록 선명해지는 창작자의 자리 (2) - 남는 IP는 취향을 재현하는 엔진이다](https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/02-engine-as-ip/): 콘텐츠가 한 번 쓰고 버려지는 시대, 결과물이 아니라 취향을 반복해 만들어내는 엔진이 어떻게 IP로 남는지 이야기한다.
 - [AI를 열어둘수록 선명해지는 창작자의 자리 (3) - 다르게 보는 눈은 창작자가 가진 능력이다](https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/03-already-have-the-eye/): 다마고치 에이전트들과 의도적으로 모자란 AI 실험을 통해, AI를 다르게 보는 창작자의 판단 능력을 돌아본다.
 
+## 온체인 스토리텔링
+
+- [온체인 스토리텔링](https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/): 2023년에 진행하던 웹3 기반 코크리에이션 프로젝트의 세계관·방법론·산출물을 3년 뒤에 세 편으로 정리했다.
+- [온체인 스토리텔링 (1) 이야기를 담으려면 세계부터 지어야 했다](https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/posts/01-worldview/): 2023년 가을에 글 한 편을 발행했다.
+- [온체인 스토리텔링 (2) 캐릭터는 정의되기 전에 먼저 살았다](https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/posts/02-methodology/): 세계관을 소개하는 글보다 캐릭터가 먼저 있었다.
+- [온체인 스토리텔링 (3) 세계는 옷과 공간과 음악으로 새어 나갔다](https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/posts/03-expansion/): 세계관이 있었고 캐릭터가 살았다.
+
 ## 이 아카이브를 다룰 때
 
 읽는 법을 담은 스킬 문서가 있다 : [https://kiheonshin.github.io/blog-post-assets/kiheon-blog.SKILL.md](https://kiheonshin.github.io/blog-post-assets/kiheon-blog.SKILL.md)
