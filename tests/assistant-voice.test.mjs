@@ -1172,18 +1172,23 @@ test("every published docent surface installs one assistant in the required read
   assert.doesNotMatch(assistantCss, /@media\s*\(max-width:\s*34rem\)/);
 });
 
-test("private Co-Creation sources remain outside the docent", async () => {
+// 2026-08-05: 네 모듈이 series/co-creation-culture/sources/ 에서 /archive/ 로
+// 옮겼다(자료 묶음은 그때 없앴다). 지키려는 것은 경로가 아니라 **비공개 원자료에
+// 도슨트가 붙지 않는다**는 사실이므로, 목록만 새 자리로 옮긴다.
+test("private archive sources remain outside the docent", async () => {
   const excluded = [
-    "series/co-creation-culture/sources/screening/index.html",
-    "series/co-creation-culture/sources/dossier/index.html",
-    "series/co-creation-culture/sources/codex/index.html",
-    "series/co-creation-culture/sources/transcript/index.html",
-    "series/co-creation-culture/sources/chronicle/index.html",
+    "archive/index.html",
+    "archive/chronicle/index.html",
+    "archive/transcript/index.html",
+    "archive/codex/index.html",
+    "archive/screening/index.html",
   ];
   for (const file of excluded) {
     const html = await readFile(path.join(repoRoot, file), "utf8");
     assert.doesNotMatch(html, /<kiheon-voice-assistant\b/, file);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:js|css)/, file);
+    // 옛 자리에 새 페이지가 다시 생기면 이 테스트가 그걸 못 본 채 통과한다.
+    assert.match(html, /name="robots" content="noindex/, file);
   }
 });
 

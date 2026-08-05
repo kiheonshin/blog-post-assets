@@ -293,35 +293,14 @@ export const contentLibrary = {
         },
       ],
       sources: [
-        /* 상영 목록(screening) — 2026-07-29 목록에서 뺐다(원자료 모듈 비공개 정책).
-           { id: "screening", label: "SOURCE · 상영 목록", title: "상영 목록 · 2023",
-             description: "무대 화면에 재생한 영상 19편을 튼 순서대로, 튼 맥락과 함께.",
-             href: "series/co-creation-culture/sources/screening/" } */
-        /* 자료 묶음(dossier) — 2026-07-29 목록에서 뺐다(원자료 모듈 비공개 정책).
-           { id: "dossier", label: "SOURCE · 자료 묶음", title: "자료 묶음 · 2023",
-             description: "이 시리즈가 무엇으로 만들어졌는지를 한 장에 모은 카탈로그.",
-             href: "series/co-creation-culture/sources/dossier/" } */
-        /* 개념 사전(codex) — 2026-07-29 목록에서 뺐다(원자료 모듈 비공개 정책).
-           페이지는 배포돼 있고 URL 로는 열린다. 완성도를 더 높인 뒤 되살릴지 정한다.
-           { id: "codex", label: "SOURCE · 개념 사전",
-             title: "개념 사전 · 2023",
-             description: "두 발표에서 정의한 개념 18개를 순서 대신 개념 단위로 묶었다.",
-             href: "series/co-creation-culture/sources/codex/" }
-           ※ 링크 제거는 접근 차단이 아니다. 실제 차단은 로그인 기능이 생긴 뒤에. */
-        /* 발화 기록(transcript) — 2026-07-29 목록에서 뺐다(원자료 모듈 비공개 정책).
-           페이지는 배포돼 있고 URL 로는 열린다. 완성도를 더 높인 뒤 되살릴지 정한다.
-           { id: "transcript", label: "SOURCE · 발화 기록",
-             title: "발화 기록 · 2023",
-             description: "2023년의 두 발표에서 본인이 실제로 무대에서 한 말을 정리했다.",
-             href: "series/co-creation-culture/sources/transcript/" }
-           ※ 링크 제거는 접근 차단이 아니다. 실제 차단은 로그인 기능이 생긴 뒤에. */
-        /* 연표(chronicle) — 2026-07-29 목록에서 뺐다.
-           페이지는 그대로 배포돼 있고 URL 로는 열린다. 완성도를 더 높인 뒤 링크를
-           되살릴지 정한다. 되살릴 때는 이 주석을 지우고 아래 항목을 복구하면 된다.
-           { id: "chronicle", label: "SOURCE · 연표",
-             title: "발표 연표 · 2017–2024",
-             description: "여러 자리에서 한 발표 스무 건. 관심이 어디로 옮겨갔는지 한 화면에",
-             href: "series/co-creation-culture/sources/chronicle/" }
+        /* 연표·발화 기록·개념 사전·상영 목록은 2026-08-05 에 이 시리즈를 떠나
+           `/archive/<슬러그>/` 로 옮겼다. 연표가 2017–2024 를 다루면서 2023년
+           시리즈 밑에 놓여 있던 것이 어긋난 구조였고, 넷은 서로 대등하다.
+           자료 묶음(dossier)은 다른 셋과 겹쳐 그때 없앴다 — 재료 명세는
+           아카이브 홈으로 옮겼다.
+
+           그러므로 여기에 되살릴 항목은 없다. 아카이브를 공개 목록에 올릴지는
+           `/archive/` 쪽에서 정한다. 지금은 noindex 이고 어디서도 링크하지 않는다.
            ※ 링크 제거는 접근 차단이 아니다. 실제 차단은 로그인 기능이 생긴 뒤에. */
         {
           id: "slides-2023-06",
@@ -346,49 +325,12 @@ export const contentLibrary = {
           href: "series/co-creation-culture/sources/slides-2023-11/",
         },
       ],
-      // 공개 목록에는 넣지 않는다. 아래 네 원자료 페이지 안에서만 서로 이동한다.
-      sourceModuleLinks: [
-        {
-          id: "screening",
-          label: "SOURCE · 상영 목록",
-          title: "상영 목록 · 2023",
-          description: "두 발표에서 재생한 영상 19편의 순서·장표 위치·맥락",
-          sourceYears: [2023],
-          topics: ["공동 창작", "현실과 가상"],
-          keywords: ["상영 목록", "영상", "슬라이드", "발표"],
-          href: "series/co-creation-culture/sources/screening/",
-        },
-        {
-          id: "dossier",
-          label: "SOURCE · 자료 묶음",
-          title: "자료 묶음 · 2023",
-          description: "발표 자료·녹음·계보·관련 페이지를 묶은 출처 카탈로그",
-          sourceYears: [2023],
-          topics: ["기록과 서사", "공동 창작"],
-          keywords: ["출처", "발표 자료", "녹음", "계보"],
-          href: "series/co-creation-culture/sources/dossier/",
-        },
-        {
-          id: "codex",
-          label: "SOURCE · 개념 사전",
-          title: "개념 사전 · 2023",
-          description: "두 발표의 핵심 개념 18개를 개념 단위로 재구성",
-          sourceYears: [2023],
-          topics: ["공동 창작", "IP와 정체성", "현실과 가상"],
-          keywords: ["개념 사전", "코-크리에이션", "디지털 소유", "스토리텔링"],
-          href: "series/co-creation-culture/sources/codex/",
-        },
-        {
-          id: "transcript",
-          label: "SOURCE · 발화 기록",
-          title: "발화 기록 · 2023",
-          description: "두 발표에서 실제로 한 말을 정리한 전사 기록",
-          sourceYears: [2023],
-          topics: ["기록과 서사", "공동 창작", "현실과 가상"],
-          keywords: ["발화 기록", "전사", "발표", "정정 근거"],
-          href: "series/co-creation-culture/sources/transcript/",
-        },
-      ],
+      /* `sourceModuleLinks` 는 여기 있었다. 네 원자료 페이지가 서로 오가는
+         길이었고 공개 목록에는 넣지 않았다. 2026-08-05 에 넷을 `/archive/` 로
+         옮기면서 상단 고정 메뉴가 그 일을 대신하게 돼 데이터가 죽었다.
+         `<source-module-links>` 를 쓰는 페이지도 남아 있지 않다.
+         (엘리먼트 정의는 series-nav.js 에 그대로 둔다 — 다른 시리즈가 같은
+          구조를 쓸 수 있다. 되살리려면 이 자리에 배열을 다시 놓으면 된다.) */
     },
   ],
 };
