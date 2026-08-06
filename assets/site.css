@@ -1383,3 +1383,22 @@ transcript-reader {
   max-height: 22rem;
   margin-inline: auto;
 }
+
+/* 장표 묶음 뷰어 — slide-strip.js 가 단추를 얹는다. JS 없이는 가로 스크롤 스트립. */
+.prose .slides__strip{
+  display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+  border:1px solid var(--rule);background:var(--surface);
+  -webkit-overflow-scrolling:touch;scrollbar-width:thin;
+}
+.prose .slides__strip img{
+  flex:0 0 100%;width:100%;height:auto;
+  scroll-snap-align:start;scroll-snap-stop:always;border:0;margin:0;
+}
+.slides__bar{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:.55rem}
+.slides__btn{
+  appearance:none;border:1px solid var(--rule);background:var(--surface);color:var(--ink);
+  font:inherit;line-height:1;padding:.35rem .85rem;cursor:pointer;border-radius:2px;
+}
+.slides__btn:hover:not(:disabled){border-color:var(--rule-strong)}
+.slides__btn:disabled{opacity:.35;cursor:default}
+.slides__count{font-size:var(--meta);color:var(--ink-muted);font-variant-numeric:tabular-nums;letter-spacing:.06em}
