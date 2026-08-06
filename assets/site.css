@@ -1373,3 +1373,13 @@ transcript-reader {
   border: 1px solid var(--rule);
   background: var(--surface);
 }
+
+/* 정사각·세로형 클립 — 컬럼 폭 기준이면 16:9 보다 훨씬 커진다(2026-08-06 본인 제보).
+   표준 16:9 높이(약 26rem)보다 낮게 눌러 가운데 둔다. */
+.prose .clip--tall video {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 22rem;
+  margin-inline: auto;
+}
