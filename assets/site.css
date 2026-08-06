@@ -1359,3 +1359,17 @@ transcript-reader {
     transition: none !important;
   }
 }
+
+
+/* 본문 영상 클립 — video 에는 img 의 max-width 규칙이 안 걸려서 원본 폭(1280px)
+   그대로 그려져 컬럼을 넘었다(2026-08-06 실측, 시리즈 05 라이브). */
+.prose .clip {
+  margin-inline: 0;
+}
+.prose .clip video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+}
