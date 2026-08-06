@@ -320,7 +320,7 @@
       "url": "series/newtype-ip-dialogue/posts/01-not-blocking-potential/",
       "title": "잠재력을 믿는 데서 협업이 시작된다",
       "synopsis": "한 번의 답을 완성본으로 받지 않는 작업 루프, 예상하지 못한 결과에 거는 신뢰, 방향과 권한의 경계를 구분하는 태도, 결과 뒤에서 기획을 추출하는 순서를 살핀다.",
-      "contentHash": "sha256:b63e3f9a2d3d52c4917efded0ce58e48201b9a6e0d19c84a4d7ca1a40710602f",
+      "contentHash": "sha256:50fe7771ca626b7a29e2a2ad61582e177f77010d9f7e9d193ee5d790bccb3fa7",
       "keyInsights": [
         {
           "text": "좋은 협업은 계획을 그대로 재현하는 데서만 생기지 않고, 예상하지 못한 결과를 함께 발견할 때 더 강하게 느껴진다.",
@@ -406,8 +406,8 @@
         },
         {
           "sectionId": "virtual-shibuya",
-          "title": "점 하나에서 시작한 가상 시부야",
-          "summary": "작은 점에서 시작한 실험이 여러 존재와 공간, 도구가 연결된 가상 환경으로 확장되는 과정을 돌아본다.",
+          "title": "작게 시작한 가상 시부야",
+          "summary": "작은 실험이 직접 만든 3D 엔진과 공개 시부야 모델, 천이백 개의 에이전트, 랜딩 페이지와 디자인 시스템으로 확장되는 과정을 돌아본다.",
           "kind": "source",
           "provenance": [
             {
@@ -688,5 +688,5 @@
       "url": "series/newtype-ip-dialogue/posts/03-already-have-the-eye/"
     }
   ],
-  "generatedAt": "2026-08-04T04:23:11.000Z"
+  "generatedAt": "2026-08-06T04:51:58.000Z"
 }
