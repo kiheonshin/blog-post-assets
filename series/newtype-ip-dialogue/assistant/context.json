@@ -436,11 +436,11 @@
       "type": "post",
       "url": "series/newtype-ip-dialogue/posts/02-engine-as-ip/",
       "title": "남는 IP는 취향을 재현하는 엔진이다",
-      "synopsis": "반복의 단위를 완성된 파일에서 취향으로 옮기고, 변주 속에서도 같은 결을 다시 불러오는 엔진을 IP로 바라본다.",
-      "contentHash": "sha256:e997ced9f949f107705807cbd922a00c7c729cf6c031ed9a939f2f1acc2a5abb",
+      "synopsis": "반복의 단위를 완성된 파일에서 취향으로 옮기고, 변주 속에서도 같은 결을 다시 불러오는 IP 생성 엔진을 자산으로 바라본다.",
+      "contentHash": "sha256:b0a3c3092bf15c6985650c5dac9cd22cbc3a20ddbbedf232043a5b69a7f01827",
       "keyInsights": [
         {
-          "text": "생성 시대의 IP는 완성된 결과물보다 데이터와 가능성의 범위, 취향과 선택 기준을 묶은 반복 가능한 엔진에 가깝다.",
+          "text": "생성 시대의 IP는 완성된 결과물보다 데이터와 가능성의 범위, 취향과 선택 기준을 묶은 반복 가능한 IP 생성 엔진에 가깝다.",
           "kind": "source",
           "provenance": [
             {
@@ -475,8 +475,8 @@
         },
         {
           "sectionId": "taste-engine",
-          "title": "남는 것은 취향을 만드는 엔진",
-          "summary": "모델과 데이터뿐 아니라 무엇을 버리고 고르는지까지 묶인 생성 엔진 자체를 IP로 제안한다.",
+          "title": "남는 것은 취향을 만드는 IP 생성 엔진",
+          "summary": "데이터셋과 개인화된 생성 모델, 무엇을 버리고 고르는지에 관한 취향을 묶은 IP 생성 엔진을 자산으로 제안한다.",
           "kind": "source",
           "provenance": [
             {
@@ -511,8 +511,8 @@
         },
         {
           "sectionId": "micro-value-at-scale",
-          "title": "아주 작은 값이 백만 번",
-          "summary": "엔진 호출과 선택, 재사용의 작은 순간마다 값이 흐르고 많은 미세 거래가 묶여 정산되는 구조를 살핀다.",
+          "title": "마이크로 트랜잭션과 마이크로 페이먼트",
+          "summary": "IP 생성 엔진의 호출·선택·재사용이 마이크로 트랜잭션이 되고, 마이크로 페이먼트와 스마트 컨트랙트로 결제되는 구조를 살핀다.",
           "kind": "source",
           "provenance": [
             {
@@ -523,8 +523,8 @@
         },
         {
           "sectionId": "context-over-keywords",
-          "title": "키워드가 아니라 맥락으로 닿기",
-          "summary": "검색어 대신 의도와 맥락을 읽는 에이전트가 창작물을 고르게 되면 IP도 반복 가능한 취향의 구조로 설명되어야 한다.",
+          "title": "검색어 대신 의도를 읽는 에이전트",
+          "summary": "검색어 대신 의도와 맥락을 읽는 에이전트가 창작물을 선택하게 될 때 IP 생성 엔진이 발견되는 방식을 살핀다.",
           "kind": "source",
           "provenance": [
             {
@@ -688,5 +688,5 @@
       "url": "series/newtype-ip-dialogue/posts/03-already-have-the-eye/"
     }
   ],
-  "generatedAt": "2026-08-06T04:51:58.000Z"
+  "generatedAt": "2026-08-06T06:48:24.000Z"
 }
