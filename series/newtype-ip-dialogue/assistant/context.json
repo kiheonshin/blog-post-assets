@@ -437,7 +437,7 @@
       "url": "series/newtype-ip-dialogue/posts/02-engine-as-ip/",
       "title": "남는 IP는 취향을 재현하는 엔진이다",
       "synopsis": "반복의 단위를 완성된 파일에서 취향으로 옮기고, 변주 속에서도 같은 결을 다시 불러오는 IP 생성 엔진을 자산으로 바라본다.",
-      "contentHash": "sha256:b0a3c3092bf15c6985650c5dac9cd22cbc3a20ddbbedf232043a5b69a7f01827",
+      "contentHash": "sha256:17617f6b65b3b655e20c29c36680a6e564109123f1d8f8bd39207d359c001aec",
       "keyInsights": [
         {
           "text": "생성 시대의 IP는 완성된 결과물보다 데이터와 가능성의 범위, 취향과 선택 기준을 묶은 반복 가능한 IP 생성 엔진에 가깝다.",
@@ -688,5 +688,5 @@
       "url": "series/newtype-ip-dialogue/posts/03-already-have-the-eye/"
     }
   ],
-  "generatedAt": "2026-08-06T06:48:24.000Z"
+  "generatedAt": "2026-08-06T07:30:00.000Z"
 }
