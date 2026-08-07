@@ -163,8 +163,7 @@ export const contentLibrary = {
           "autonomous-worlds:post:02-more-than-a-mirror",
           "autonomous-worlds:post:03-what-we-want-to-create",
           "autonomous-worlds:source:talk",
-          "autonomous-worlds:source:script",
-          "autonomous-worlds:source:slides",
+                    "autonomous-worlds:source:slides",
         ],
       },
       posts: [
@@ -210,17 +209,6 @@ export const contentLibrary = {
           topics: ["가상 세계", "창작 문화"],
           keywords: ["자율 세계", "발표 기록", "게임 엔진"],
           href: "series/autonomous-worlds/sources/talk/",
-        },
-        {
-          id: "script",
-          label: "SOURCE · 발표 원고",
-          title: "자율 세계의 등장과 새로운 창작 환경",
-          description: "2024.07.07 · 무대에 서기 전에 써둔 원고. 발행본과 어디가 다른지 절마다 표시",
-          published: "2024-07-07",
-          sourceYears: [2024],
-          topics: ["가상 세계", "기록과 서사"],
-          keywords: ["자율 세계", "발표 원고", "변경 기록"],
-          href: "series/autonomous-worlds/sources/script/",
         },
         {
           id: "slides",

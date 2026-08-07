@@ -596,7 +596,6 @@ transcript-reader {
   white-space: nowrap;
 }
 
-
 .library-card__title {
   font-family: var(--font-display);
   font-size: clamp(1.45rem, 2vw, 1.85rem);
@@ -1373,7 +1372,6 @@ transcript-reader {
   }
 }
 
-
 /* 본문 영상 클립 — video 에는 img 의 max-width 규칙이 안 걸려서 원본 폭(1280px)
    그대로 그려져 컬럼을 넘었다(2026-08-06 실측, 시리즈 05 라이브). */
 .prose .clip {
@@ -1416,27 +1414,6 @@ transcript-reader {
 .slides__btn:hover:not(:disabled){border-color:var(--rule-strong)}
 .slides__btn:disabled{opacity:.35;cursor:default}
 .slides__count{font-size:var(--meta);color:var(--ink-muted);font-variant-numeric:tabular-nums;letter-spacing:.06em}
-
-/* ── 포스팅 : 셸은 넓게, 읽기 열은 46rem (2026-08-07)
- *
- * 이전에는 main 자체가 46rem 이라 그림도 같이 갇혀 있었다. 장표가 734px 로 눌려
- * 안의 글씨가 안 보였다. 셸을 --wide 로 넓히고 글 요소만 --measure 로 되묶는다.
- * 발표 자료 페이지가 쓰던 방식과 같다 — 그림은 넓게, 글은 그대로.
- * 인라인 <style> 보다 뒤에 오므로 같은 특이도에서 이 규칙이 이긴다. */
-main:has(> article) {
-  width: min(100%, calc(var(--wide) + var(--gutter) * 2));
-}
-
-main:has(> article) > article > *:not(figure):not(.prose),
-main:has(> article) > article > .prose > *:not(figure) {
-  max-width: var(--measure);
-  margin-inline: auto;
-}
-
-/* 히어로는 셸 폭 전체를 쓴다 — 커버는 넓을수록 좋다 */
-main:has(> article) > article > figure.hero {
-  max-width: none;
-}
 
 /* 아카이브·원자료의 안내문도 읽는 문장이다 — 셸이 넓어져도 46rem 에 묶는다 (2026-08-07) */
 .note p {
