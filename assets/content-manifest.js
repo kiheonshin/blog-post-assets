@@ -403,7 +403,7 @@ export const contentLibrary = {
           id: "proposal-mxtwn-x",
           label: "SOURCE · 제안 기획",
           title: "MXTWN X 아이디어 기획안",
-          description: "2023.12.08 · 장표 21장 + 영상. 캐릭터를 화자로 세운 의류 프로젝트의 제안 전문",
+          description: "2023.12.08 · 장표 21장 + 영상 3편. 캐릭터를 화자로 세운 의류 프로젝트의 제안 전문",
           published: "2023-12-08",
           sourceYears: [2023],
           topics: ["공동 창작", "IP와 정체성"],
