@@ -331,7 +331,7 @@ export const contentLibrary = {
       topics: ["기록과 서사", "IP와 정체성", "현실과 가상"],
       keywords: ["온체인 스토리텔링", "TBA", "캐릭터 설계", "코-크리에이션"],
       href: "series/onchain-storytelling/",
-      cover: "series/onchain-storytelling/assets/series-banner.jpg?v=20260808b",
+      cover: "series/onchain-storytelling/assets/series-banner.jpg?v=20260808c",
       coverAlt:
         "밝은 보라색 면이 종이 기록 지형과 생활 공간을 지나 거대한 레코드로 이어지는 온체인 스토리텔링 파노라마",
       published: "2026-08-06",
