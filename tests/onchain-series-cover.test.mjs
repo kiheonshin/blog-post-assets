@@ -26,7 +26,7 @@ test("the On-chain Storytelling series cover replaces the placeholder", async ()
 
   assert.match(
     manifest,
-    /cover: "series\/onchain-storytelling\/assets\/series-banner\.jpg\?v=20260808a"/,
+    /cover: "series\/onchain-storytelling\/assets\/series-banner\.jpg\?v=20260808b"/,
   );
   assert.doesNotMatch(
     manifest.match(/slug: "onchain-storytelling"[\s\S]*?posts: \[/)?.[0] ?? "",
@@ -42,7 +42,7 @@ test("the On-chain Storytelling series cover replaces the placeholder", async ()
 test("the cover cache version reaches the home and every On-chain surface", async () => {
   const surfaces = ["index.html", ...onchainSurfaces];
   for (const file of surfaces) {
-    assert.match(await read(file), /series-nav\.js\?v=20260808a/, file);
+    assert.match(await read(file), /series-nav\.js\?v=20260808b/, file);
   }
 });
 
