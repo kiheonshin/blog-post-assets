@@ -238,6 +238,11 @@ transcript-reader {
   color: var(--ink-muted);
   font-size: 0.9375rem;
   line-height: 1.7;
+  /* 설명이 길어져도 카드 높이가 튀지 않게 두 줄에서 자른다 (2026-08-07). */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 @media (max-width: 48rem) {

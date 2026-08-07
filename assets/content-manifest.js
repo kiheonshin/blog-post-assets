@@ -392,7 +392,7 @@ export const contentLibrary = {
           id: "proposal-strategy-diagrams",
           label: "SOURCE · 전략 기획",
           title: "MIXtown 전략 기획 도식집",
-          description: "2023.12.08 · 장표 16장(원본 24장). 다섯 단계 컨버전스 모델과 TBA 구조, 온체인 히스토리까지 프로젝트 전체의 도식",
+          description: "2023.12.08 · 장표 16장. 다섯 단계 컨버전스 모델과 TBA 구조, 온체인 히스토리",
           published: "2023-12-08",
           sourceYears: [2023],
           topics: ["기록과 서사", "공동 창작"],
