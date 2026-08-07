@@ -442,7 +442,7 @@
       "url": "series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/",
       "title": "게임 엔진의 도시에서 자율 세계까지",
       "synopsis": "게임 엔진으로 만든 도시에서 출발해 AI 캐릭터, 자율적으로 살림을 꾸리는 존재, 스스로 규칙과 역사를 축적하는 자율 세계의 개념으로 이동한다.",
-      "contentHash": "sha256:89afa2307586a7499a879a5df470dea661bc983f3b646442596cc59a91144be8",
+      "contentHash": "sha256:e1a9601d269acf9c086f5b2382426019b5b53ddf35805b6ec42ab8469953482d",
       "keyInsights": [
         {
           "text": "AI 캐릭터가 대본을 수행하는 단역을 넘어 상태와 기억에 따라 행동할 때 세계는 배경이 아니라 살아 있는 환경이 된다.",
@@ -523,7 +523,7 @@
       "url": "series/autonomous-worlds/posts/02-more-than-a-mirror/",
       "title": "가상 세계는 더 이상 현실의 보조 수단이 아니다",
       "synopsis": "게임 속 상품이 현실로 오고 지구의 디지털 트윈이 에이전트의 일터가 되는 사례를 따라가며, 가상 세계가 현실의 보조 수단에서 독립된 경험과 경제의 장소로 이동하는 과정을 살핀다.",
-      "contentHash": "sha256:b2327c1ebcc8d5d84f21c45e712128dca1859273a7b44100c03672f4ea28b442",
+      "contentHash": "sha256:da0c6d5c221d6b13adb261ca268683fc2612bc9fad32f1fc2dd8feaa12776480",
       "keyInsights": [
         {
           "text": "가상과 현실이 상품과 행동을 주고받기 시작하면 가상 세계는 현실을 설명하는 화면이 아니라 자체적인 생활 세계가 된다.",
@@ -604,7 +604,7 @@
       "url": "series/autonomous-worlds/posts/03-what-we-want-to-create/",
       "title": "무엇을 창조하는 존재이고 싶은가",
       "synopsis": "기억과 현실의 모호한 경계에서 출발해 디지털의 지속성, 포스트 휴먼과의 공존, 세계를 만드는 엔진과 창작 문화의 계보를 거쳐 창작자의 정체성을 묻는다.",
-      "contentHash": "sha256:5eafb9b79bf9f733468e61e957ff79a3630bb5b283897a267bff4ae46e8cecbd",
+      "contentHash": "sha256:0b6fffbe4610b1eab33a62c879804c23ccbbe739b7e36ae67850bb6c1667e821",
       "keyInsights": [
         {
           "text": "생성 기술이 강해질수록 중요한 것은 무엇을 만들 수 있는가보다 어떤 세계와 관계를 선택해 지속시킬 것인가다.",
@@ -685,7 +685,7 @@
       "url": "series/autonomous-worlds/sources/talk/",
       "title": "자율 세계의 등장과 새로운 창작 환경",
       "synopsis": "2024년 발표 직후 공개한 1차 기록으로, 가상 세계의 발전과 지능을 갖춘 존재, 현실과의 연결, 생성 AI 시대의 창작자와 문화까지 발표의 일곱 장을 보존한다.",
-      "contentHash": "sha256:e6662d2d569ee4a4d7b6230b7d2996cc4eeaeab323f43e908e431cb5497a7b56",
+      "contentHash": "sha256:1287bc09dec9655f004bb5649deaab2275f77dd96fae4f0a0626dcf672a42331",
       "keyInsights": [
         {
           "text": "자율 세계는 지능을 갖춘 존재들이 세계 안에서 관계를 맺고 행동하면서 기존 가상 세계의 문법을 바꾼다.",
@@ -766,7 +766,7 @@
       "url": "series/autonomous-worlds/sources/script/",
       "title": "자율 세계의 등장과 새로운 창작 환경",
       "synopsis": "무대에 서기 전에 작성한 발표 원고로, 일곱 장의 논리와 문장을 보존하고 발행된 발표 기록과 달라진 지점을 비교할 수 있게 한다.",
-      "contentHash": "sha256:4068c45fb91ffbfe8903ac09ea441ea1f2e61a865c6167bd25380f77444f39b9",
+      "contentHash": "sha256:a258b4f47be48e86d4d528a58ca9aa8713660b268e83167dcc00b7e507a5cb72",
       "keyInsights": [
         {
           "text": "원고는 가상 세계의 기술적 발전을 지능을 가진 존재와 현실 연결의 문제로 단계적으로 확장한다.",
@@ -847,7 +847,7 @@
       "url": "series/autonomous-worlds/sources/slides/",
       "title": "자율 세계의 등장과 새로운 창작 환경",
       "synopsis": "130장의 슬라이드와 36편의 영상으로 게임 엔진, AI 캐릭터, 디지털 트윈, 자율 세계, 생성 AI 시대의 창작 환경을 시각적 사례와 함께 전개한 발표 자료다.",
-      "contentHash": "sha256:7a7e16b291c51efe0618214c41adb90d6f8158f601ee7de482bc612fcbe21b97",
+      "contentHash": "sha256:ae9c66516374a2d4052bb60453498996975ed15cae1230a71cd0c793f34dfa71",
       "keyInsights": [
         {
           "text": "게임 엔진과 AI 에이전트의 결합은 가상 세계를 정해진 대본의 공간에서 자율적 존재가 살아가는 시뮬레이션으로 바꾼다.",
