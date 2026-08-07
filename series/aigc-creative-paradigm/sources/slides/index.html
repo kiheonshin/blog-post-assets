@@ -30,6 +30,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-SQYBGPJFJ4');
 </script>
+<link rel="stylesheet" href="../../../../assets/tokens.css?v=20260807a">
 <style>
 :root{
   --canvas:#F3F3EF; --surface:#FBFBF8; --ink:#17181A; --ink-muted:#5E6065;
@@ -37,8 +38,7 @@ gtag('config', 'G-SQYBGPJFJ4');
   --accent:#2457D6; --accent-hover:#163DA7; --inverse:#17181A; --inverse-ink:#F7F7F2;
   --font-display:"Iowan Old Style","Noto Serif CJK KR","AppleMyungjo","Nanum Myeongjo",serif;
   --font-body:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
-  --font-mono:"SFMono-Regular","Roboto Mono","Noto Sans Mono CJK KR",monospace;
-  --measure:46rem; --gutter:1rem; --micro:.6875rem; --meta:.75rem;
+  --font-mono:"SFMono-Regular","Roboto Mono","Noto Sans Mono CJK KR",monospace; --gutter:1rem; --micro:.6875rem; --meta:.75rem;
 }
 @media(min-width:48rem){:root{--gutter:2rem}}
 @media(min-width:80rem){:root{--gutter:3rem}}
@@ -65,7 +65,7 @@ img{max-width:100%;height:auto}
 /* 선만 사용 — 헤더는 hairline 하나로 구분한다 */
 .site-header{border-block-end:1px solid var(--rule)}
 .site-header__in{
-  width:min(100%,90rem);margin-inline:auto;padding-inline:var(--gutter);
+  width:min(100%,var(--shell));margin-inline:auto;padding-inline:var(--gutter);
   min-height:4.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;
 }
 .brand{
@@ -220,21 +220,21 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 .sources .s{font-size:.8125rem;line-height:1.55;color:var(--ink-muted)}
 
 .site-footer{margin-block-start:5rem;background:var(--inverse);color:var(--inverse-ink)}
-.site-footer__in{width:min(100%,90rem);margin-inline:auto;padding:2.5rem var(--gutter);
+.site-footer__in{width:min(100%,var(--shell));margin-inline:auto;padding:2.5rem var(--gutter);
   display:flex;flex-wrap:wrap;gap:.75rem 2rem;justify-content:space-between;
   font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em}
 .site-footer a{color:var(--inverse-ink)}
 
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 
-:root{--measure-wide:74rem}
+:root{}
 /* 차례·챕터 CTA의 앵커 이동을 부드럽게. 모션 최소화 설정은 존중한다 */
 html{scroll-behavior:smooth}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 main.wide{width:min(100%,calc(var(--measure-wide) + var(--gutter)*2))}
 /* 글 판은 목차(14rem)와 간격(4rem)을 본문 46rem 바깥에 두어야
    읽기 폭이 깎이지 않는다 */
-main.wide--text{--measure-wide:64rem}
+main.wide--text{--measure-wide:var(--measure-wide-text)}
 
 /* 넓은 판이라도 제목·리드·안내문은 읽기 폭을 넘기지 않는다 */
 .srchead{padding-block:4rem 0;display:grid;gap:1.25rem;max-width:var(--measure)}
@@ -559,7 +559,7 @@ button.frame{padding:0;cursor:zoom-in}
 }
 </style>
 <link rel="stylesheet" href="../../../../assets/assistant/voice-assistant-v2.css?v=20260803simple1">
-<script type="module" src="../../../../assets/series-nav.js?v=20260807g"></script>
+<script type="module" src="../../../../assets/series-nav.js?v=20260807h"></script>
 <script type="module" src="../../../../assets/assistant/voice-assistant-v2.js?v=20260803grok2"></script>
 </head>
 <body>

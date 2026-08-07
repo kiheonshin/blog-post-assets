@@ -27,6 +27,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-SQYBGPJFJ4');
 </script>
+<link rel="stylesheet" href="../../assets/tokens.css?v=20260807a">
 <style>
 :root{
   --canvas:#F3F3EF; --surface:#FBFBF8; --ink:#17181A; --ink-muted:#5E6065;
@@ -34,8 +35,7 @@ gtag('config', 'G-SQYBGPJFJ4');
   --accent:#2457D6; --accent-hover:#163DA7; --inverse:#17181A; --inverse-ink:#F7F7F2;
   --font-display:"Iowan Old Style","Noto Serif CJK KR","AppleMyungjo","Nanum Myeongjo",serif;
   --font-body:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
-  --font-mono:"SFMono-Regular","Roboto Mono","Noto Sans Mono CJK KR",monospace;
-  --measure:46rem; --gutter:1rem; --micro:.6875rem; --meta:.75rem;
+  --font-mono:"SFMono-Regular","Roboto Mono","Noto Sans Mono CJK KR",monospace; --gutter:1rem; --micro:.6875rem; --meta:.75rem;
 }
 @media(min-width:48rem){:root{--gutter:2rem}}
 @media(min-width:80rem){:root{--gutter:3rem}}
@@ -62,7 +62,7 @@ img{max-width:100%;height:auto}
 /* 선만 사용 — 헤더는 hairline 하나로 구분한다 */
 .site-header{border-block-end:1px solid var(--rule)}
 .site-header__in{
-  width:min(100%,90rem);margin-inline:auto;padding-inline:var(--gutter);
+  width:min(100%,var(--shell));margin-inline:auto;padding-inline:var(--gutter);
   min-height:4.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;
 }
 .brand{
@@ -213,7 +213,7 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 .sources .s{font-size:.8125rem;line-height:1.55;color:var(--ink-muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 
 .site-footer{margin-block-start:5rem;background:var(--inverse);color:var(--inverse-ink)}
-.site-footer__in{width:min(100%,90rem);margin-inline:auto;padding:2.5rem var(--gutter);
+.site-footer__in{width:min(100%,var(--shell));margin-inline:auto;padding:2.5rem var(--gutter);
   display:flex;flex-wrap:wrap;gap:.75rem 2rem;justify-content:space-between;
   font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em}
 .site-footer a{color:var(--inverse-ink)}
@@ -223,7 +223,7 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 .idx{padding-block:3.5rem 0}
 .idx > .meta-label{margin-block-end:.5rem}
 .idx h1{margin:0 0 2rem}
-main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
+main.idx-wide{width:min(100%,calc(var(--wide) + var(--gutter)*2))}
 
 /* 두 칸 — 본문(CTA·바탕 자료·소개·공개문) 왼쪽, 가상의 신기헌 조작대 오른쪽.
    좁으면 조작대가 공개문 아래 맨 끝으로 내려간다(DOM 순서 그대로). */
@@ -291,8 +291,8 @@ main.idx-wide{width:min(100%,calc(66rem + var(--gutter)*2))}
 .idx h1{margin:0 0 1rem}
 .idx > .lead{margin:0 0 2rem;max-width:var(--measure)}
 </style>
-<link rel="stylesheet" href="../../assets/site.css?v=20260731g">
-<script type="module" src="../../assets/series-nav.js?v=20260807g"></script>
+<link rel="stylesheet" href="../../assets/site.css?v=20260807g">
+<script type="module" src="../../assets/series-nav.js?v=20260807h"></script>
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>

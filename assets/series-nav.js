@@ -421,7 +421,7 @@ class SeriesPostLinks extends HTMLElement {
 
 class SeriesLibrary extends HTMLElement {
   connectedCallback() {
-    const previewLimit = 4;
+    const previewLimit = 6;   // 3열 × 2행. 시리즈가 늘면 이 값과 열 수를 함께 본다.
     const previewSeries = contentLibrary.series.slice(0, previewLimit);
     const remainingSeries = contentLibrary.series.slice(previewLimit);
     const status = makeElement(
