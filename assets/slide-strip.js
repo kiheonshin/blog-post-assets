@@ -24,23 +24,63 @@
     next.textContent = "→";
     count.className = "slides__count";
 
-    function index() {
-      // 첫 레이아웃 전에 폭이 0으로 잡히는 시점이 있다 — 0 나눗셈이 NaN 카운터로 굳는 것을 막는다.
-      var w = strip.clientWidth || 1;
-      return Math.min(n - 1, Math.max(0, Math.round(strip.scrollLeft / w)));
+    // 폭 대신 자식의 위치를 기준으로 삼는다. clientWidth 는 레이아웃 시점에 따라 0 으로
+    // 읽히는 구간이 있어서(라이브 실측), 그것에 기대면 단추가 통째로 죽는다.
+    function offsets() {
+      var base = strip.children[0].offsetLeft;
+      return Array.prototype.map.call(strip.children, function (c) {
+        return c.offsetLeft - base;
+      });
     }
+    function index() {
+      var o = offsets(), sl = strip.scrollLeft, best = 0, gap = Infinity;
+      for (var i = 0; i < o.length; i++) {
+        var d = Math.abs(o[i] - sl);
+        if (d < gap) { gap = d; best = i; }
+      }
+      return best;
+    }
+    // 목표 장을 상태로 들고 간다. 스크롤 위치만 보고 판단하면 연속 클릭이
+    // 애니메이션이 끝나기 전의 같은 위치를 읽어 한 칸에서 멈춘다.
+    var cur = 0;
+    var lockUntil = 0;
+
     function refresh() {
-      var i = index();
+      var i = Date.now() < lockUntil ? cur : index();
+      cur = i;
       count.textContent = (i + 1) + " / " + n;
       prev.disabled = i === 0;
       next.disabled = i === n - 1;
     }
     function go(d) {
-      strip.scrollBy({ left: d * strip.clientWidth, behavior: "smooth" });
+      var o = offsets();
+      var i = Math.min(n - 1, Math.max(0, cur + d));
+      if (i === cur) return;
+      cur = i;
+      lockUntil = Date.now() + 700;
+      var reduce = window.matchMedia
+        && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      try {
+        strip.scrollTo({ left: o[i], behavior: reduce ? "auto" : "smooth" });
+      } catch (e) {
+        strip.scrollLeft = o[i];
+      }
+      refresh();
+      // 부드러운 스크롤이 아예 돌지 않는 환경이 있다(실측). 제자리에 머물면 그냥 옮긴다.
+      setTimeout(function () {
+        if (Math.abs(strip.scrollLeft - o[i]) > 4) strip.scrollLeft = o[i];
+      }, 420);
     }
     prev.addEventListener("click", function () { go(-1); });
     next.addEventListener("click", function () { go(1); });
     strip.addEventListener("scroll", function () { requestAnimationFrame(refresh); }, { passive: true });
+    // 손으로 밀어 넘긴 경우의 동기화. scroll 만으로 두면 이벤트가 눌린 환경에서 카운터가 굳는다.
+    ["pointerup", "touchend", "keyup"].forEach(function (ev) {
+      strip.addEventListener(ev, function () {
+        lockUntil = 0;
+        setTimeout(refresh, 260);
+      }, { passive: true });
+    });
     window.addEventListener("resize", refresh);
 
     bar.appendChild(prev);

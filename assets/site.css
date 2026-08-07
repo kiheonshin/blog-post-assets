@@ -1386,7 +1386,8 @@ transcript-reader {
 
 /* 장표 묶음 뷰어 — slide-strip.js 가 단추를 얹는다. JS 없이는 가로 스크롤 스트립. */
 .prose .slides__strip{
-  display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+  /* width 를 명시하지 않으면 자식의 flex-basis:100% 와 물려 폭이 0으로 접힌다(실측 2px). */
+  display:flex;width:100%;overflow-x:auto;scroll-snap-type:x mandatory;
   border:1px solid var(--rule);background:var(--surface);
   -webkit-overflow-scrolling:touch;scrollbar-width:thin;
 }
