@@ -185,6 +185,9 @@ h1{
 /* 이미지는 그림자로 띄우지 않고 1px 선으로 종이 위에 얹는다 */
 figure{margin:2.5rem 0}
 figure img{display:block;width:100%;border:1px solid var(--rule)}
+/* 원자료 페이지는 인라인 스타일이라 site.css 의 영상 규칙이 닿지 않는다. 여기 따로 둔다. */
+figure video{display:block;width:100%;height:auto;border:1px solid var(--rule);background:var(--surface)}
+figure.clip--tall video{width:auto;max-width:100%;max-height:26rem;margin-inline:auto}
 /* 정사각에 가까운 미디어는 읽기 폭을 채우면 슬라이드의 1.8배 높이로 솟아
    읽기 흐름을 끊는다. 슬라이드와 같은 높이가 되도록 폭 상한을 비율로 계산해
    인라인으로 걸고(빌드 시점) 가운데 정렬한다.
@@ -558,7 +561,7 @@ button.frame{padding:0;cursor:zoom-in}
     margin-block-start:.7rem;font-size:1.1rem}
 }
 </style>
-<script type="module" src="../../../../assets/series-nav.js?v=20260807c"></script>
+<script type="module" src="../../../../assets/series-nav.js?v=20260807d"></script>
 </head>
 <body class="library-page source-page">
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -568,11 +571,11 @@ button.frame{padding:0;cursor:zoom-in}
 </div></header>
 <main id="main"><div class="wrap">
   <header class="chead source-head">
-    <div class="cmeta"><span>SOURCE · 제안 기획</span><span>2023.12.08 · 장표 21장</span></div>
+    <div class="cmeta"><span>SOURCE · 제안 기획</span><span>2023.12.08 · 장표 21장 + 영상 1편</span></div>
     <h1>제안 기획 · MXTWN X</h1>
     <p class="lead">2023년 12월, 캐릭터 노박을 화자로 세운 의류 프로젝트 MXTWN X의 아이디어 기획안 전문이다. 프리스테이지의 현실 행보에서 파일럿 드롭의 재단 도면까지, 장표 스물한 장을 원본 순서대로 실었다.</p>
   </header>
-  <div class="note"><p style="margin:0">실제 협업을 논의하는 단계에서 오간 제안 문서라 일부 일정 칸은 빈칸으로 남아 있다. 원문을 고치지 않았다.</p></div>
+  <div class="note"><p style="margin:0">실제 협업을 논의하는 단계에서 오간 제안 문서라 일부 일정 칸은 빈칸으로 남아 있다. 원문을 고치지 않았다. 장표 6에는 영상이 삽입돼 있어 그 자리에 그대로 실었다. 참고용으로 붙어 있던 외부 서비스 화면 녹화는 남의 자료라 싣지 않았다.</p></div>
   <section class="prose">
   <figure><img src="../../assets/src-mx/slide-01.jpg" alt="장표 1" width="1467" height="825" loading="lazy" decoding="async"><figcaption>01</figcaption></figure>
   <figure><img src="../../assets/src-mx/slide-02.jpg" alt="장표 2" width="1467" height="825" loading="lazy" decoding="async"><figcaption>02</figcaption></figure>
@@ -580,6 +583,7 @@ button.frame{padding:0;cursor:zoom-in}
   <figure><img src="../../assets/src-mx/slide-04.jpg" alt="장표 4" width="1467" height="825" loading="lazy" decoding="async"><figcaption>04</figcaption></figure>
   <figure><img src="../../assets/src-mx/slide-05.jpg" alt="장표 5" width="1467" height="825" loading="lazy" decoding="async"><figcaption>05</figcaption></figure>
   <figure><img src="../../assets/src-mx/slide-06.jpg" alt="장표 6" width="1467" height="825" loading="lazy" decoding="async"><figcaption>06</figcaption></figure>
+  <figure class="clip clip--tall"><video src="../../assets/src-mx/media-06.mp4" poster="../../assets/src-mx/media-06.jpg" width="1080" height="1080" controls autoplay loop muted playsinline preload="metadata" aria-label="장표 6에 삽입돼 있던 디자인 시뮬레이션 영상"></video><figcaption>06 · 장표에 삽입돼 있던 디자인 시뮬레이션 영상</figcaption></figure>
   <figure><img src="../../assets/src-mx/slide-07.jpg" alt="장표 7" width="1467" height="825" loading="lazy" decoding="async"><figcaption>07</figcaption></figure>
   <figure><img src="../../assets/src-mx/slide-08.jpg" alt="장표 8" width="1467" height="825" loading="lazy" decoding="async"><figcaption>08</figcaption></figure>
   <figure><img src="../../assets/src-mx/slide-09.jpg" alt="장표 9" width="1467" height="825" loading="lazy" decoding="async"><figcaption>09</figcaption></figure>

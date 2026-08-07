@@ -2,7 +2,7 @@
    HTML만 새로 받고 모듈은 캐시에서 꺼내 쓰는 일이 생긴다. 그러면 새 시리즈가
    목록에서 빠지고 "시리즈 정보를 불러오지 못했습니다"가 뜬다(2026-07-25 실증).
    페이지의 series-nav.js?v= 값과 반드시 같이 올릴 것. */
-import { contentLibrary, getSeries } from "./content-manifest.js?v=20260807c";
+import { contentLibrary, getSeries } from "./content-manifest.js?v=20260807d";
 
 const siteRoot = new URL("../", import.meta.url);
 
