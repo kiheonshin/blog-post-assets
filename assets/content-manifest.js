@@ -2,7 +2,7 @@ export const contentLibrary = {
   series: [
     {
       slug: "aigc-creative-paradigm",
-      label: "AIGC Notes",
+      label: "01 · AIGC Notes",
       title: "AI 시대, 창작의 정의를 다시 묻다",
       description:
         "2025년 11월 발표와 연구 노트, 그리고 몇 달 지나 다시 쓴 포스팅 세 개.",
@@ -84,7 +84,7 @@ export const contentLibrary = {
     },
     {
       slug: "newtype-ip-dialogue",
-      label: "Newtype Summit",
+      label: "02 · Newtype Summit",
       title: "AI를 열어둘수록 선명해지는 창작자의 자리",
       description:
         "AI의 잠재력과 엔진 IP, 창작자의 판단 능력으로 이어지는 뉴타입 엔터 서밋 공개 대담 세 편.",
@@ -143,7 +143,7 @@ export const contentLibrary = {
     },
     {
       slug: "autonomous-worlds",
-      label: "Autonomous Worlds",
+      label: "03 · Autonomous Worlds",
       title: "자율 세계, 스스로 규칙을 만드는 세계의 등장",
       description:
         "2024년 여름 부천 발표와 그 바탕 자료, 그리고 2년 지나 다시 쓴 포스팅 세 개.",
@@ -237,7 +237,7 @@ export const contentLibrary = {
     },
     {
       slug: "co-creation-culture",
-      label: "Co-Creation Culture",
+      label: "04 · Co-Creation Culture",
       title: "코-크리에이션 문화",
       description:
         "2023년 두 차례의 발표를 3년 뒤에 다시 쓴 포스팅 세 개. 창작의 주체가 어디로 옮겨가는가.",
@@ -334,7 +334,7 @@ export const contentLibrary = {
     },
     {
       slug: "onchain-storytelling",
-      label: "On-chain Storytelling",
+      label: "05 · On-chain Storytelling",
       title: "온체인 스토리텔링",
       description:
         "2023년에 진행하던 웹3 기반 코크리에이션 프로젝트의 세계관·방법론·산출물을 3년 뒤에 세 편으로 정리했다.",

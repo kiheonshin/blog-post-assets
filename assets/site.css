@@ -580,14 +580,22 @@ transcript-reader {
 
 .library-card__meta {
   display: flex;
+  /* 카드가 3열로 좁아지면서 「03 · Autonomous Worlds」 같은 긴 라벨이 낱말 중간에서
+   * 접혔다. 조각 단위로 줄을 바꾸고 각 조각은 통째로 유지한다 (2026-08-07). */
+  flex-wrap: wrap;
   justify-content: space-between;
-  gap: var(--space-3);
+  gap: 0.2rem var(--space-3);
   color: var(--accent);
   font-family: var(--font-mono);
   font-size: var(--micro);
   font-weight: 600;
   letter-spacing: 0.06em;
 }
+
+.library-card__meta > span {
+  white-space: nowrap;
+}
+
 
 .library-card__title {
   font-family: var(--font-display);
