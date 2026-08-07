@@ -1,0 +1,59 @@
+import assert from "node:assert/strict";
+import { readFile, stat } from "node:fs/promises";
+import path from "node:path";
+import test from "node:test";
+import { fileURLToPath } from "node:url";
+
+const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const read = (file) => readFile(path.join(repoRoot, file), "utf8");
+
+const onchainSurfaces = [
+  "series/onchain-storytelling/index.html",
+  "series/onchain-storytelling/posts/01-worldview/index.html",
+  "series/onchain-storytelling/posts/02-methodology/index.html",
+  "series/onchain-storytelling/posts/03-expansion/index.html",
+  "series/onchain-storytelling/sources/proposal-idea-notes/index.html",
+  "series/onchain-storytelling/sources/proposal-mxtwn-x/index.html",
+  "series/onchain-storytelling/sources/proposal-sapienz-town/index.html",
+  "series/onchain-storytelling/sources/proposal-strategy-diagrams/index.html",
+];
+
+test("the On-chain Storytelling series cover replaces the placeholder", async () => {
+  const [manifest, seriesHome] = await Promise.all([
+    read("assets/content-manifest.js"),
+    read(onchainSurfaces[0]),
+  ]);
+
+  assert.match(
+    manifest,
+    /cover: "series\/onchain-storytelling\/assets\/series-banner\.jpg\?v=20260808a"/,
+  );
+  assert.doesNotMatch(
+    manifest.match(/slug: "onchain-storytelling"[\s\S]*?posts: \[/)?.[0] ?? "",
+    /cover-placeholder/,
+  );
+  assert.equal(
+    (seriesHome.match(/series\/onchain-storytelling\/assets\/series-banner\.jpg/g) ?? [])
+      .length,
+    3,
+  );
+});
+
+test("the cover cache version reaches the home and every On-chain surface", async () => {
+  const surfaces = ["index.html", ...onchainSurfaces];
+  for (const file of surfaces) {
+    assert.match(await read(file), /series-nav\.js\?v=20260808a/, file);
+  }
+});
+
+test("the installed cover is a non-empty JPEG asset", async () => {
+  const file = path.join(
+    repoRoot,
+    "series/onchain-storytelling/assets/series-banner.jpg",
+  );
+  const [bytes, metadata] = await Promise.all([readFile(file), stat(file)]);
+
+  assert.ok(metadata.size > 100_000);
+  assert.deepEqual([...bytes.subarray(0, 2)], [0xff, 0xd8]);
+  assert.deepEqual([...bytes.subarray(-2)], [0xff, 0xd9]);
+});

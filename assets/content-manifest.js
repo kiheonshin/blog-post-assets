@@ -331,8 +331,9 @@ export const contentLibrary = {
       topics: ["기록과 서사", "IP와 정체성", "현실과 가상"],
       keywords: ["온체인 스토리텔링", "TBA", "캐릭터 설계", "코-크리에이션"],
       href: "series/onchain-storytelling/",
-      cover: "assets/cover-placeholder.jpg",
-      coverAlt: "온체인 스토리텔링 시리즈 커버 자리표시",
+      cover: "series/onchain-storytelling/assets/series-banner.jpg?v=20260808a",
+      coverAlt:
+        "밝은 보라색 기록의 띠가 인벤토리에서 옷·공간·음악·미술로 갈라지는 온체인 스토리텔링 파노라마",
       published: "2026-08-06",
       // 도슨트 미장착 — 음성 레인이 결속하면 status 를 올린다.
       assistantContext: {
