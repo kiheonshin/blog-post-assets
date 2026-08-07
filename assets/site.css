@@ -836,8 +836,10 @@ transcript-reader {
     "meta title"
     "meta context"
     "meta facets";
-  gap: var(--space-3) var(--space-8);
-  padding-block: var(--space-6);
+  /* 목록이 26건까지 늘어 한 항목의 세로 높이를 줄였다 (2026-08-07).
+   * 행 간격 12→8, 상하 여백 24→16. 항목 200→138px, 목록 전체 5209→3590px. */
+  gap: var(--space-2) var(--space-8);
+  padding-block: var(--space-4);
   border-block-end: 1px solid var(--rule);
 }
 
@@ -845,7 +847,7 @@ transcript-reader {
   grid-area: meta;
   display: grid;
   align-content: start;
-  gap: var(--space-1);
+  gap: 0.125rem;
   margin: 0;
   color: var(--ink-faint);
   font-family: var(--font-mono);
@@ -892,8 +894,10 @@ transcript-reader {
 
 .archive-item__facets {
   grid-area: facets;
-  display: grid;
-  gap: var(--space-2);
+  /* 주제와 키워드를 각각 한 줄씩 쓰던 것을 나란히 놓는다. 좁아지면 접힌다. */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem var(--space-6);
 }
 
 .archive-item__facet-group {
