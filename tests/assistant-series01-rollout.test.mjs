@@ -30,7 +30,6 @@ const seriesSurfaces = {
     "series/autonomous-worlds/posts/02-more-than-a-mirror/index.html",
     "series/autonomous-worlds/posts/03-what-we-want-to-create/index.html",
     "series/autonomous-worlds/sources/talk/index.html",
-    "series/autonomous-worlds/sources/script/index.html",
     "series/autonomous-worlds/sources/slides/index.html",
   ],
   "co-creation-culture": [
@@ -111,7 +110,10 @@ test("all four series contexts stay bound to their exact public surfaces", async
   }
 });
 
-test("the manifest publishes all four docent contexts and their 23 surfaces", async () => {
+// 22 = 이 파일이 세는 네 시리즈의 표면 수. 자율 세계의 「발표 원고」는 발표 자료와
+// 내용이 겹쳐 2026-08-07 에 내렸다(본인 지시) — 그때 매니페스트·도슨트 팩·표면 상수는
+// 고쳤는데 이 파일을 빠뜨려 네 건이 계속 붉었다.
+test("the manifest publishes all four docent contexts and their 22 surfaces", async () => {
   const manifest = await read("assets/content-manifest.js");
   for (const [seriesId, surfaces] of Object.entries(seriesSurfaces)) {
     const start = manifest.indexOf(`slug: "${seriesId}"`);

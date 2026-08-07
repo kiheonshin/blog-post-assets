@@ -1117,7 +1117,6 @@ test("every published docent surface installs one assistant in the required read
     ["post", "series/autonomous-worlds/posts/02-more-than-a-mirror/index.html"],
     ["post", "series/autonomous-worlds/posts/03-what-we-want-to-create/index.html"],
     ["source", "series/autonomous-worlds/sources/talk/index.html"],
-    ["source", "series/autonomous-worlds/sources/script/index.html"],
     ["source", "series/autonomous-worlds/sources/slides/index.html"],
     ["series", "series/co-creation-culture/index.html"],
     ["post", "series/co-creation-culture/posts/01-whose-creativity/index.html"],
