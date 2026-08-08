@@ -11,7 +11,7 @@
  *
  * 링크 순서 — site.css 뒤에 온다. 도판 규칙이 사이트 기본값을 덮어야 하기 때문이다.
  *   <link rel="stylesheet" href="{상대경로}/assets/site.css?v=...">
- *   <link rel="stylesheet" href="{상대경로}/assets/figures.css?v=20260808h">
+ *   <link rel="stylesheet" href="{상대경로}/assets/figures.css?v=20260808j">
  *
  * ★ 이 파일을 고치면 **같은 회차에** 링크하는 표면 전부의 토큰을 올린다. 한쪽만 올리면
  *   이미 방문한 브라우저가 옛 스타일을 계속 본다 — 이 리포의 알려진 함정이다.
@@ -844,4 +844,97 @@ figcaption {
   .fig--dia .split { grid-template-columns: 1fr; gap: 1.1rem 0 }
   .fig--dia .seg .q { font-size: var(--fig-body-narrow) }
   .fig--dia .aside { grid-column: 1; margin-block-start: .25rem }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   11. 캡션 없는 도판 [본인 지시 2026-08-08 「그 자체로 완결성」]
+
+   왜 캡션을 걷어냈나. 캡션이 달려 있으면 도판이 **첨부 이미지**로 읽힌다 —
+   본문이 있고 그 아래 사진이 있고 사진을 설명하는 글이 붙은 꼴이다. 이 도판들은
+   그게 아니라 글과 글 사이에 놓인 **같은 정보의 다른 형태**여야 한다. 설명이
+   따라붙는 순간 그림은 스스로 말하기를 그만둔다.
+
+   그런데 캡션은 장식만 지고 있던 게 아니다. 매핑의 상한 몇은 **캡션에 적으라고
+   지정**돼 있었다(F4 「프로필 한 장만 준 첫 판본」 시점 표기, F5 「같은 자로 잰
+   상대값」, F10 「오른쪽은 겪지 않은 쪽」). 캡션만 지우면 그 한정이 통째로
+   사라지고, 남은 그림은 근거가 허락한 것보다 세게 말한다.
+
+   그래서 지우는 대신 **프레임 안으로 들인다.** 밖에 있으면 설명이고 안에 있으면
+   도판의 일부다. 위치가 곧 지위다.
+     .fig__head — 도판 전체에 걸리는 조건. 무엇을 재고 있는지·언제 것인지.
+     .fig__note — 그림이 못 그리는 단서. 도형 아래 가는 선 하나로 갈라 둔다.
+   둘 다 **한 도판에 한 줄**을 넘기지 않는다. 넘으면 그건 캡션이 안으로 들어온 것뿐이다.
+   ══════════════════════════════════════════════════════════════════ */
+
+.fig__head {
+  font-size: var(--fig-body-narrow);
+  line-height: 1.5;
+  color: var(--fig-ink-mute);
+  margin: 0 0 1.1rem;
+  padding-block-end: .7rem;
+  border-block-end: 1px solid var(--fig-rule);
+}
+.fig__note {
+  font-size: var(--fig-body-narrow);
+  line-height: 1.6;
+  color: var(--fig-ink-mute);
+  margin: 1.15rem 0 0;
+  padding-block-start: .8rem;
+  border-block-start: 1px solid var(--fig-rule);
+}
+
+/* 라벨에 딸리는 조건 한 조각. 라벨(.k)이 「무엇인가」면 이건 「어느 쪽인가」다.
+ * 라벨색을 주지 않는다 — 라벨색은 「이건 라벨이다」 한 뜻만 진다(§3 .k 주석). */
+.fig .sub {
+  display: block;
+  font-size: var(--fig-micro);
+  line-height: 1.5;
+  color: var(--fig-ink-faint);
+  margin-block-start: .15rem;
+}
+
+/* 칸의 값. 칸 머리가 물음이고 이것이 답일 때, 답이 한 조각으로 끝날 때 쓴다.
+ * 여러 줄로 늘어지면 그건 값이 아니라 목록이라 `.b` 를 쓴다.
+ *
+ * 수량은 숫자가 아니라 **글자로 적는다** — 「5」는 값이고 「다섯」은 읽는 말이다.
+ * 이 블로그 본문이 수량을 한글로 적는 것과 같은 규칙이고, 도판만 아라비아
+ * 숫자를 쓰면 도판이 본문과 다른 문서에서 온 것처럼 읽힌다. 0 도 예외가 아니다
+ * (실측 — 처음 판이 「0건」이었다. 「하나도 없다」가 그 자리의 논지이기도 하다).
+ * 잰 값 자체는 다르다 — 회차 차트의 8.00 은 소수 둘째 자리가 곧 정보라 숫자다. */
+.fig--slots .slot .n {
+  font-size: var(--fig-body);
+  line-height: 1.5;
+  color: var(--fig-ink);
+}
+.fig--slots .slot .n + .b { margin-block-start: .45rem }
+
+/* 11-1. 분기 도식의 두 지위 — 표에서 하던 일을 여기서도 한다 [2026-08-08].
+ *
+ * 표 여섯 장을 분기·칸 도식으로 옮기면서, 표에만 있던 두 변형(무리 밖 행 ·
+ * 닫히지 않은 표)이 갈 곳을 잃었다. 형태를 바꿨다고 상한이 없어지지는 않는다.
+ *
+ * `.row.aside` — 나머지와 같은 무리가 아닌 행. 여백 한 칸으로만 가른다.
+ *   선·괄호·들여쓰기를 쓰지 않는다 [본인 지시]. 무리 밖임을 적은 글자는 남긴다.
+ *
+ * `.row.open` — 원인은 있는데 결과가 아직 없는 행. **화살표를 그리지 않는다.**
+ *   화살표가 「여기서 저기로 갔다」를 말하는 유일한 장치이고, 가지 않은 자리에
+ *   그것을 그리면 형태가 사실과 반대로 말한다. 빈 자리는 양식 도식(§10-2)과
+ *   같은 빗금으로 **보이게** 비운다 — 한 뜻에는 한 도형이다. */
+.fig--fork .row.aside { padding-block-start: 1.9rem }
+.fig--fork .row.open::before { content: "" }
+.fig--fork .row.open .b .t {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  color: var(--fig-ink-faint);
+}
+.fig--fork .row.open .b .t::after {
+  content: "";
+  flex: 1 1 auto;
+  block-size: .8rem;
+  background: repeating-linear-gradient(135deg,
+    transparent 0 5px, var(--fig-rule) 5px 6px);
+}
+@media (max-width: 34rem) {
+  .fig--fork .row.aside { padding-block-start: 1.35rem }
 }
