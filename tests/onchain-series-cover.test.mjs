@@ -26,7 +26,7 @@ test("the On-chain Storytelling series cover replaces the placeholder", async ()
 
   assert.match(
     manifest,
-    /cover: "series\/onchain-storytelling\/assets\/series-banner\.jpg\?v=20260808e"/,
+    /cover: "series\/onchain-storytelling\/assets\/series-banner\.jpg\?v=20260809a"/,
   );
   assert.doesNotMatch(
     manifest.match(/slug: "onchain-storytelling"[\s\S]*?posts: \[/)?.[0] ?? "",
