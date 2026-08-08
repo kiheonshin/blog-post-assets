@@ -1,0 +1,437 @@
+/* 도판의 단일 진실 — 이 파일 하나만 고치면 발행면의 모든 그림이 따라온다.
+ *
+ * 왜 새 파일인가.
+ * 2026-08-08 실측 : site.css 에는 figure 정의가 **한 줄도 없다**. 대신
+ * `figure{margin:2.5rem 0}` 과 `figcaption{...}` 이 페이지 인라인 <style> 30곳에,
+ * `.prose figure > img{padding:1.5rem}` 이 3곳에 각각 복제돼 있다. tokens.css 머리말이
+ * 기록한 폭 토큰 이전의 병 — 같은 숫자가 32곳에 흩어져 하나만 고치면 반쪽만 적용되고,
+ * 빌더가 발행 파일의 <head> 를 통째로 복사해 다음 재빌드에 옛 값이 되살아나던 — 과
+ * 정확히 같은 상태다. 표·차트·도식 규격을 새로 세우는 지금이 이 병을 도판으로
+ * 옮기지 않을 유일한 기회라서, tokens.css 가 폭에 대해 한 일을 도판에 대해 그대로 한다.
+ *
+ * 링크 순서 — site.css 뒤에 온다. 도판 규칙이 사이트 기본값을 덮어야 하기 때문이다.
+ *   <link rel="stylesheet" href="{상대경로}/assets/site.css?v=...">
+ *   <link rel="stylesheet" href="{상대경로}/assets/figures.css?v=20260808a">
+ *
+ * 고칠 때 지킬 것.
+ * 1. **발행본 15편과 시각적으로 동일해야 한다.** §1 승계 블록의 값은 인라인에서 그대로
+ *    옮겨 온 것이다. 숫자를 바꾸면 이미 나간 15편이 같이 바뀐다. 바꾸려면 그건 도판
+ *    작업이 아니라 사이트 개편이다.
+ * 2. **자료 페이지의 `table` 을 건드리지 않는다.** series 아래 sources/research 에 이미
+ *    전면 괘선 표가 있고(폭 넓은 자료면용) 이 파일의 표 규격과 다르다. 그래서 이 파일의
+ *    표 규칙은 전부 `.fig--table` 안에만 건다. 벌거벗은 `table` 선택자를 쓰지 않는다.
+ * 3. **hex 는 여기에만 둔다.** 발행 HTML 안에 색값을 쓰지 않고, 도판 마크업에
+ *    `style=` 속성을 한 건도 두지 않는다(회차 차트의 점 위치까지 §7 의 좌표 클래스로 준다).
+ * 4. **다크 모드 값을 지어내지 않는다.** §9 참조.
+ *
+ * 근거 — 색은 `../../2026.08.07 유니버스 시리즈00/03-시각-규격.md`.
+ * 안료 6색은 관측소 설계 노트 v4 의 저채도 안료 대역을 상속해 dataviz validator
+ * (채도 하한 0.10 · 인접 정상시 ΔE ≥15 · 인접 CVD ΔE ≥8)로 재보정한 값이고,
+ * 종이(#f3f3ef)·면(#fbfbf8) 두 표면 모두에서 전 검사 PASS 를 실행으로 확인했다.
+ */
+
+/* ══════════════════════════════════════════════════════════════════
+   1. 승계 — 발행본 15편이 이미 쓰고 있는 값. 한 글자도 바꾸지 않았다.
+      새 페이지는 인라인 <style> 의 아래 여덟 규칙을 지우고 이 파일을 링크한다.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* 이미지는 그림자로 띄우지 않고 1px 선으로 종이 위에 얹는다 */
+figure { margin: 2.5rem 0 }
+figure img { display: block; width: 100%; border: 1px solid var(--rule) }
+/* 정사각에 가까운 미디어는 폭 상한을 인라인으로 걸고(빌드 시점) 가운데 정렬한다 */
+figure img.tall { margin-inline: auto }
+/* 캡션은 가운데. 본문이 왼쪽 정렬이라 그림에 딸린 설명임이 한눈에 구분된다 */
+figcaption {
+  margin-block-start: .75rem;
+  color: var(--ink-muted);
+  font-size: .875rem;
+  line-height: 1.6;
+  text-align: center;
+  text-wrap: pretty;
+}
+.prose figure > img { padding: 1.5rem; background: var(--surface) }
+.prose .slides__strip img { padding: 1.5rem; background: var(--surface) }
+@media (max-width: 34rem) {
+  .prose figure > img { padding: .75rem }
+  .prose .slides__strip img { padding: .75rem }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   2. 토큰 — 도판이 쓰는 모든 값. 마크업에는 hex 가 없다.
+   ══════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* 계열색 6슬롯. 순서가 곧 배정 순서다 — 앞에서부터 쓴다.
+   * mauve · sage · indigo · clay · verdigris · brick
+   * 이 순서는 발명이 아니라 720개 순열 중 인접 CVD 여유가 가장 큰 배열이다
+   * (원안 clay 시작은 인접 deutan ΔE 8.1 로 목표선 8.0 바로 위, 이 배열은 10.3).
+   * ★ 앞 3슬롯(c1~c3)만 all-pairs 로도 통과한다 — 한 도판에 동시에 쓰는 계열색은 3까지.
+   *   c4 를 앉히는 순간 clay↔sage 가 protan ΔE 3.1 로 무너진다(실행 확인).
+   * ★ 코발트(--accent #2457d6)는 이 목록에 없다. 상호작용(선택·링크) 전용이다. */
+  --fig-c1: #8f5281;  /* mauve      L .526  C .103  코발트와 ΔE 19.8 */
+  --fig-c2: #528347;  /* sage       L .560  C .103  코발트와 ΔE 28.0 */
+  --fig-c3: #6d87c8;  /* indigo     L .631  C .103  코발트와 ΔE 16.1 — 여섯 중 가장 가깝다 */
+  --fig-c4: #a77e34;  /* clay       L .619  C .104  코발트와 ΔE 32.7 */
+  --fig-c5: #0195a1;  /* verdigris  L .611  C .104  코발트와 ΔE 20.4 */
+  --fig-c6: #ad604f;  /* brick      L .574  C .104  코발트와 ΔE 28.9 */
+
+  /* 무분류·문맥. 카테고리 슬롯이 아니라 de-emphasis 색이다.
+   * 안료와 짝지어 두 계열로 쓰면 무너진다 — verdigris 와 protan ΔE 2.7. */
+  --fig-neutral: #888884;
+
+  /* 서열 램프 — verdigris 한 색조. 3단은 앞 세 값, 4단은 네 값을 그대로 쓴다.
+   * --ordinal 검사(명도 단조·인접 ΔL ≥.06·밝은 끝 대비·단일 색상) 전부 PASS. */
+  --fig-ramp-1: #68b2bb;
+  --fig-ramp-2: #49939c;
+  --fig-ramp-3: #27757e;
+  --fig-ramp-4: #05585f;
+  /* 3단으로 쓸 때 : ramp-1 · #38848c · ramp-4 */
+  --fig-ramp-3a: #38848c;
+
+  /* 사이트 토큰 참조 + 폴백. 페이지가 tokens.css 만 링크하고 site.css 를 링크하지
+   * 않는 경우가 12건 있어(자료·슬라이드 면) 색 토큰이 그 페이지 인라인에만 있다.
+   * 폴백이 없으면 그 면에서 도판이 색을 잃는다. */
+  --fig-ink:       var(--ink, #17181a);
+  --fig-ink-mute:  var(--ink-muted, #5e6065);
+  --fig-ink-faint: var(--ink-faint, #686a6f);
+  --fig-rule:      var(--rule, #cfcfc8);
+  --fig-rule-hard: var(--rule-strong, #17181a);
+  --fig-surface:   var(--surface, #fbfbf8);
+
+  /* 조판 */
+  --fig-pad: var(--space-6, 1.5rem);
+  --fig-pad-narrow: var(--space-3, .75rem);
+  --fig-micro: var(--micro, .6875rem);
+  --fig-body: .9375rem;
+  --fig-body-narrow: .875rem;
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   3. 골격 — 다섯 형태가 공유한다.
+      .fig__frame 은 발행본 `figure img` 처리를 그대로 승계한다.
+      그려진 도판과 사진 도판이 같은 선반 위에 얹히게 하는 것이 이 블록의 전부다.
+   ══════════════════════════════════════════════════════════════════ */
+
+.fig { margin-block: var(--space-10, 2.5rem) }
+
+.fig__frame {
+  padding: var(--fig-pad);
+  background: var(--fig-surface);
+  border: 1px solid var(--fig-rule);
+  /* 그림자 0 · 둥근 모서리 0 — 사이트는 선만 쓴다 */
+}
+@media (max-width: 34rem) { .fig__frame { padding: var(--fig-pad-narrow) } }
+
+/* 도판 안의 모든 글자는 HTML 텍스트다. 이미지에 굽지 않고 SVG <text> 도 쓰지 않는다.
+ * 근거는 사이트가 배너에서 이미 세운 규범 — 「글자가 선택·검색되고 확대해도
+ * 깨지지 않으며」. 부수 효과로 한글 word-break:keep-all 이 그대로 걸린다. */
+.fig__frame { word-break: keep-all; overflow-wrap: break-word }
+
+/* 화면 낭독기에만 읽히는 보조 문구. .skip 과 같은 기법을 쓴다. */
+.fig-sr { position: absolute; left: -9999px }
+
+/* 값이 없는 자리는 빈칸이 아니라 표시된 부재다.
+ * 「결측이 아니라 측정된 부재」 — 관측소 설계 노트 v4.1 에서 상속한 원리이고,
+ * 이 한 줄이 이 파일에서 가장 자주 쓰이는 규칙이다. */
+.fig .absent { color: var(--fig-ink-faint) }
+
+/* 수치 칸 */
+.fig .num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* 모노 소라벨 — .meta-label·.secnum 의 규격을 그대로 쓴다 */
+.fig .k {
+  font-family: var(--font-mono);
+  font-size: var(--fig-micro);
+  font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--fig-ink-mute);
+}
+
+/* 계열 좌막대 — 두 무리를 갈라 놓는 것이 논지일 때만. 글자에는 색을 넣지 않는다. */
+.fig .s1 { box-shadow: inset 2px 0 0 var(--fig-c1); padding-inline-start: .75rem }
+.fig .s2 { box-shadow: inset 2px 0 0 var(--fig-c2); padding-inline-start: .75rem }
+.fig .s3 { box-shadow: inset 2px 0 0 var(--fig-c3); padding-inline-start: .75rem }
+
+/* ══════════════════════════════════════════════════════════════════
+   4. 대조표 .fig--table — 항목 대 항목. 이 블로그에서 가장 많이 쓰인다.
+      세로선·색면·zebra 전면 금지. 사이트는 선만 쓴다.
+   ══════════════════════════════════════════════════════════════════ */
+
+.fig--table table { width: 100%; border-collapse: collapse }
+
+.fig--table th {
+  font-family: var(--font-mono);
+  font-size: var(--fig-micro);
+  font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--fig-ink-mute);
+  text-align: start;
+  padding: 0 0 .5rem;
+  border-block-end: 1px solid var(--fig-rule-hard);
+}
+/* 마지막 행의 border 를 지우지 않는다 — 표가 선으로 닫힌다 */
+.fig--table td {
+  padding: .7rem 0;
+  border-block-end: 1px solid var(--fig-rule);
+  vertical-align: top;
+  font-size: var(--fig-body);
+  line-height: 1.6;
+}
+/* 열 사이 간격은 세로선이 아니라 여백으로 만든다 */
+.fig--table th + th,
+.fig--table td + td { padding-inline-start: 1.25rem }
+
+/* 3열일 때 셋째 열이 수치·부재·짧은 상태 라벨이면 오른쪽으로 붙인다 */
+.fig--table td.num,
+.fig--table th.num { text-align: end }
+
+@media (max-width: 34rem) {
+  .fig--table td { font-size: var(--fig-body-narrow) }
+  .fig--table th + th,
+  .fig--table td + td { padding-inline-start: .75rem }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   5. 칸 도식 .fig--slots — 값이 아니라 그릇이 주제일 때.
+      간격 자체가 1px 격자선이 된다(테두리를 그리지 않는다).
+   ══════════════════════════════════════════════════════════════════ */
+
+.fig--slots .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  gap: 1px;
+  background: var(--fig-rule);
+}
+.fig--slots .slot {
+  background: var(--fig-surface);
+  padding: .75rem .9rem;
+  display: grid;
+  gap: .35rem;
+  align-content: start;
+}
+.fig--slots .slot .b {
+  font-size: var(--fig-body-narrow);
+  line-height: 1.65;
+  color: var(--fig-ink);
+}
+/* 새로 만든 칸은 좌막대 한 줄로만 표시한다 — 배경색을 넣지 않는다 */
+.fig--slots .slot.s1,
+.fig--slots .slot.s2,
+.fig--slots .slot.s3 { padding-inline-start: .9rem }
+/* ≤34rem 에서 auto-fit 이 스스로 1열로 접힌다 — 추가 규칙이 필요 없다 */
+
+/* ══════════════════════════════════════════════════════════════════
+   6. 분기 도식 .fig--fork — 하나가 둘로 갈리거나 둘이 각각 다른 곳으로 갈 때.
+      줄과 줄을 잇는 선·화살표·괄호를 절대 그리지 않는다.
+      붙이지 않는 것 자체가 이 형태의 논지이고, 형태가 집필 상한을 집행한다.
+   ══════════════════════════════════════════════════════════════════ */
+
+.fig--fork { --fig-arrow: "\2192" }          /* → */
+.fig--fork .row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 0 1rem;
+  align-items: start;
+  padding: .75rem 0;
+  border-block-end: 1px solid var(--fig-rule);
+}
+.fig--fork .row:last-child { border-block-end: 0; padding-block-end: 0 }
+.fig--fork .row:first-child { padding-block-start: 0 }
+.fig--fork .row::before {
+  content: var(--fig-arrow);
+  grid-column: 2;
+  grid-row: 1 / -1;
+  align-self: center;
+  font-family: var(--font-mono);
+  color: var(--fig-ink-faint);
+}
+.fig--fork .a { grid-column: 1 }
+.fig--fork .b { grid-column: 3 }
+.fig--fork .a, .fig--fork .b { display: grid; gap: .3rem }
+.fig--fork .t { font-size: var(--fig-body); line-height: 1.6 }
+
+@media (max-width: 34rem) {
+  /* 1열로 접고 잇는 글자를 아래 방향으로 바꾼다. 마크업은 그대로다.
+   * ::before 는 소스 순서상 첫 자식이라 자동 배치에 맡기면 원인 칸 위에 선다.
+   * order 로만 순서를 바로잡는다 — 마크업에 손대지 않기 위해서다. */
+  .fig--fork { --fig-arrow: "\2193" }        /* ↓ */
+  .fig--fork .row { grid-template-columns: 1fr; gap: .4rem }
+  .fig--fork .row::before {
+    grid-column: 1; grid-row: auto; justify-self: start; order: 2;
+  }
+  .fig--fork .a { grid-column: 1; order: 1 }
+  .fig--fork .b { grid-column: 1; order: 3 }
+  .fig--fork .t { font-size: var(--fig-body-narrow) }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   7. 회차 차트 .fig--run — 같은 자로 잰 같은 계열이 회차를 따라 움직인 방향.
+      막대가 아니라 가로 점 눈금이다. 0에서 시작하지 않으므로 막대는 거짓말이 된다.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* ★ 격자는 행마다 따로 서면 안 된다. 행별 grid 로 짜면 라벨 길이에 따라 트랙 폭이
+ * 행마다 달라지고, 그러면 같은 눈금처럼 보이는 세 줄이 실제로는 서로 다른 자로 잰
+ * 그림이 된다(실측 — 행별 grid 에서 트랙 폭 428.3 / 321.8 / 424.5px).
+ * 그래서 격자는 .runwrap 하나에만 서고 각 행은 display:contents 로 그 안에 흩어진다. */
+.fig--run .runwrap {
+  display: grid;
+  grid-template-columns: minmax(7rem, auto) 1fr auto;
+  gap: .9rem 1rem;
+  align-items: center;
+}
+.fig--run .row { display: contents }
+.fig--run .lab { font-size: var(--fig-body); line-height: 1.45 }
+.fig--run .track {
+  position: relative;
+  height: 1px;
+  background: var(--fig-rule);
+  align-self: center;
+}
+.fig--run .v {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  font-size: var(--fig-body-narrow);
+}
+.fig--run .dot {
+  position: absolute;
+  top: 50%;
+  left: calc((var(--xt, 0) + var(--xu, 0)) * 1%);
+  translate: -50% -50%;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--fig-neutral);
+  box-shadow: 0 0 0 2px var(--fig-surface);
+}
+/* 색 0종이 기본이다. 요점 행만 잉크로 올린다 — 계열이 아니라 강조다. */
+.fig--run .is-lead .dot { background: var(--fig-ink) }
+.fig--run .is-lead .lab,
+.fig--run .is-lead .v { color: var(--fig-ink) }
+.fig--run .lab, .fig--run .v { color: var(--fig-ink-mute) }
+/* 계열이 둘일 때만 안료를 쓰고, 반드시 각 계열을 직접 라벨한다(레전드 상자 금지) */
+.fig--run .dot.s1 { background: var(--fig-c1); box-shadow: 0 0 0 2px var(--fig-surface) }
+.fig--run .dot.s2 { background: var(--fig-c2); box-shadow: 0 0 0 2px var(--fig-surface) }
+
+/* 눈금 양 끝값 — 자른 축이면 자른 사실이 여기 적힌다 */
+.fig--run .scale {
+  display: flex;
+  justify-content: space-between;
+  grid-column: 2;
+  margin-block-start: -.35rem;
+  font-family: var(--font-mono);
+  font-size: var(--fig-micro);
+  color: var(--fig-ink-faint);
+}
+
+/* 점의 가로 위치. 인라인 style 을 쓰지 않기 위한 좌표 클래스다.
+ * 십의 자리 .xt0~.xt10 (10% 눈금) + 반올림 자리 .xu0~.xu19 (0.5% 눈금)를 겹쳐
+ * 0~100% 를 0.5% 해상도로 덮는다. 규칙 31개로 201개 위치가 나온다.
+ * 6.0~8.0 구간에서 0.5% = 0.01점이므로 소수 둘째 자리 값이 양자화되지 않는다.
+ *   보기 : 8.00 → xt10 xu0 · 7.62 → xt8 xu2 · 7.25 → xt6 xu5 · 6.12 → xt0 xu12 */
+.fig--run .xt0{--xt:0}   .fig--run .xt1{--xt:10}  .fig--run .xt2{--xt:20}
+.fig--run .xt3{--xt:30}  .fig--run .xt4{--xt:40}  .fig--run .xt5{--xt:50}
+.fig--run .xt6{--xt:60}  .fig--run .xt7{--xt:70}  .fig--run .xt8{--xt:80}
+.fig--run .xt9{--xt:90}  .fig--run .xt10{--xt:100}
+.fig--run .xu0{--xu:0}    .fig--run .xu1{--xu:.5}  .fig--run .xu2{--xu:1}
+.fig--run .xu3{--xu:1.5}  .fig--run .xu4{--xu:2}   .fig--run .xu5{--xu:2.5}
+.fig--run .xu6{--xu:3}    .fig--run .xu7{--xu:3.5} .fig--run .xu8{--xu:4}
+.fig--run .xu9{--xu:4.5}  .fig--run .xu10{--xu:5}  .fig--run .xu11{--xu:5.5}
+.fig--run .xu12{--xu:6}   .fig--run .xu13{--xu:6.5}.fig--run .xu14{--xu:7}
+.fig--run .xu15{--xu:7.5} .fig--run .xu16{--xu:8}  .fig--run .xu17{--xu:8.5}
+.fig--run .xu18{--xu:9}   .fig--run .xu19{--xu:9.5}
+
+@media (max-width: 34rem) {
+  /* 라벨을 트랙 위 줄로 올린다 */
+  .fig--run .runwrap { grid-template-columns: 1fr auto; gap: .35rem 1rem }
+  .fig--run .lab { grid-column: 1 / -1; font-size: var(--fig-body-narrow) }
+  .fig--run .scale { grid-column: 1 }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   8. 층 도식 .fig--stack — 순서와 위계, 그리고 층과 층 사이에 무엇이 서 있는가.
+      ★ 시리즈 00 1편에서는 쓰지 않는다(층 모델 설명은 2편 전용). 정의만 둔다.
+      색 0종. 구조는 계열이 아니다 — 잉크·neutral·선만 쓴다.
+   ══════════════════════════════════════════════════════════════════ */
+
+.fig--stack .band {
+  border: 1px solid var(--fig-rule);
+  padding: .75rem 1rem;
+  display: grid;
+  gap: .25rem;
+}
+.fig--stack .band + .gate { margin-block: var(--space-6, 1.5rem) 0 }
+.fig--stack .gate + .band { margin-block-start: var(--space-6, 1.5rem) }
+.fig--stack .band .t { font-size: var(--fig-body); line-height: 1.5 }
+.fig--stack .band .n { font-size: var(--fig-body-narrow); color: var(--fig-ink-mute) }
+
+/* 관문 표식 — 폭 100% 파선을 그리지 않는다. 실선 hairline 한 줄에 면색 knockout 라벨. */
+.fig--stack .gate {
+  position: relative;
+  text-align: center;
+}
+.fig--stack .gate::before {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  top: 50%;
+  height: 1px;
+  background: var(--fig-rule);
+}
+.fig--stack .gate span {
+  position: relative;
+  display: inline-block;
+  padding-inline: .5rem;
+  background: var(--fig-surface);
+  font-family: var(--font-mono);
+  font-size: var(--fig-micro);
+  letter-spacing: .09em;
+  color: var(--fig-ink-mute);
+}
+/* 관문이 한 자리로 모이는 것을 보일 때만 오른쪽 여백에 세로 hairline 을 세우고,
+ * 각 관문의 가로 hairline 을 그 줄까지 뻗는다. 줄 끝의 라벨은 마크업이 하나만 단다. */
+.fig--stack.has-rail .stackwrap { position: relative; padding-inline-end: 3rem }
+.fig--stack.has-rail .gate { margin-inline-end: -1.5rem }
+.fig--stack.has-rail .stackwrap::after {
+  content: "";
+  position: absolute;
+  inset-block: 1.5rem;
+  inset-inline-end: 1.5rem;
+  width: 1px;
+  background: var(--fig-rule);
+}
+@media (max-width: 34rem) {
+  .fig--stack.has-rail .stackwrap { padding-inline-end: 0 }
+  .fig--stack.has-rail .stackwrap::after { display: none }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   9. 폭과 다크 모드
+   ══════════════════════════════════════════════════════════════════ */
+
+/* 도판은 언제나 읽기 열 안이다. main 이 --measure(46rem)이므로 프레임 안쪽 유효 폭은
+ * 데스크톱 약 43rem, 375px 화면에서 약 319px 다.
+ * breakout(음수 마진으로 --wide 까지 넓히기) 금지, 프레임 안 가로 스크롤 금지.
+ * 좁은 화면에서 접히는 규칙은 형태별 블록이 이미 갖고 있다 — 스크롤로 도망가지 않는다. */
+.fig, .fig__frame { max-width: 100% }
+.fig__frame > * { min-width: 0 }
+
+/* 다크 모드는 지금 넣지 않는다. 사이트 전체에 prefers-color-scheme 이 CSS 0건이고
+ * (있는 것은 agent-handoff.js 한 곳뿐), validator 를 --mode dark 로 돌린 적이 없다.
+ * 검증하지 않은 값을 정본에 넣지 않는다.
+ * 대신 도판이 하드코딩 hex 를 한 곳도 갖지 않게 해 두었다 — 사이트가 다크를 열 때
+ * 아래 한 블록을 채우는 것만으로 도판 전수가 따라온다. 채울 값은 반드시
+ *   node validate_palette.js "<6색>" --mode dark --surface "<다크 면색>"
+ * 을 실행해 PASS 를 확인한 값이어야 한다.
+ *
+ * @media (prefers-color-scheme: dark) {
+ *   :root { --fig-c1: …; --fig-c2: …; --fig-c3: …;
+ *           --fig-c4: …; --fig-c5: …; --fig-c6: …;
+ *           --fig-neutral: …; --fig-ramp-1: …; }
+ * }
+ */
