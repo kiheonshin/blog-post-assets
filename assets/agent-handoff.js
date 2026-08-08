@@ -15,8 +15,8 @@ const STATUS_RESET_MS = 4000;
 
 const STYLE = `
 .agent-handoff{margin-top:1.75rem;padding-top:1.25rem;border-top:1px solid var(--rule,rgba(0,0,0,.1))}
-/* 도구 층 안에 설 때는 자기 선을 긋지 않는다 — 그 층의 선이 이미 있다 */
-.agent-handoff--tight{margin-top:.35rem;padding-top:0;border-top:0}
+/* 지정된 슬롯에 설 때는 자기 선을 긋지 않는다. 여백은 슬롯이 준다 */
+.agent-handoff--tight{margin-top:0;padding-top:0;border-top:0}
 .agent-handoff__row{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem}
 .agent-handoff__btn{font:inherit;font-size:var(--meta,.75rem);letter-spacing:.02em;
   padding:.5rem .85rem;border:1px solid currentColor;border-radius:2px;
@@ -118,10 +118,10 @@ function mount() {
   const foot = document.querySelector("footer.foot");
   if (!foot || foot.dataset.agentHandoff === "true") return;
   foot.dataset.agentHandoff = "true";
-  // 말미가 세 층으로 정리된 면에서는 **도구 층 안**에 선다(2026-08-08).
-  // 그 층이 이미 자기 선과 여백을 가지므로 여기서 또 그으면 선이 두 겹이 된다.
-  // 옛 마크업(도구 층이 없는 면)에서는 종전대로 말미 끝에 붙는다.
-  const slot = foot.querySelector(".foot__more");
+  // 자리가 지정된 면에서는 **본문 끝 슬롯**에 선다(2026-08-09 본인 지시).
+  // 읽기를 막 끝낸 자리이고, 바로 아래 말미의 가로선이 구분선 노릇을 하므로
+  // 이 단추는 자기 선을 긋지 않는다. 슬롯이 없는 옛 면에서는 말미 끝에 붙는다.
+  const slot = document.querySelector(".handoff-slot");
   render(slot || foot, Boolean(slot));
 }
 

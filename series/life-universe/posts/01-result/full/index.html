@@ -229,8 +229,8 @@ h1{display:grid;gap:.55rem;margin-block-start:.5rem}
 
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<link rel="stylesheet" href="../../../../../assets/site.css?v=20260809a">
-<link rel="stylesheet" href="../../../../../assets/agentview.css?v=20260809b">
+<link rel="stylesheet" href="../../../../../assets/site.css?v=20260809b">
+<link rel="stylesheet" href="../../../../../assets/agentview.css?v=20260809c">
 </head>
 <body>
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -251,18 +251,6 @@ h1{display:grid;gap:.55rem;margin-block-start:.5rem}
   </header>
   <div class="prose">
 
-<nav class="agvbar" aria-label="주석 층">
-  <p class="agvbar__t">주석 층</p>
-  <div class="agvbar__chips">
-      <button class="agvchip" type="button" data-kind="ground" aria-pressed="false">근거 <b>5</b></button>
-      <button class="agvchip" type="button" data-kind="swap" aria-pressed="false">대체 <b>4</b></button>
-      <button class="agvchip" type="button" data-kind="untaken" aria-pressed="false">미채택 <b>3</b></button>
-      <button class="agvchip" type="button" data-kind="fork" aria-pressed="false">갈림 <b>3</b></button>
-      <button class="agvchip" type="button" data-all aria-pressed="false">전부</button>
-  </div>
-  <p class="agvbar__note">눌러서 그 종류를 페이지 전체에서 편다. 접혀 있어도 문서에는 그대로 들어 있어
-    에이전트는 열지 않고 읽는다. 접힘은 읽는 방식이지 접근 제어가 아니다.</p>
-</nav>
 
 <p>새 시리즈를 하나 올리고 나서 발행된 글의 맨 아래까지 내려가 그 한 줄을 다시 읽었다. 본문이 끝나면 가는 선이 하나 그어지고, 그 아래에 작은 글씨로 붙어 있다. 그날은 열다섯 편을 하나씩 열어 그 줄이 빠진 편이 있는지 세어 봤다. 빠진 편은 없었다. 문장을 정한 것도 나고 그것을 그 자리에 붙이기로 한 것도 나다. 책으로 치면 맨 뒤의 판권장 같은 자리인데, 다른 점이라면 거기 적힌 것을 아무도 대신 확인해 줄 수 없다는 것이다.</p>
 <p>그 줄에서 가장 세게 읽히는 말은 100퍼센트다. 나는 그것을 문장을 누가 썼는가에 대한 표기로 붙였지, 사람이 아무 일도 하지 않았다는 뜻으로 붙인 것이 아니다. 내가 한 일은 대부분 문장 바깥에 있었다. 그 바깥이 무엇이었는지를 펼쳐 놓는 것이 이 세 편이다. 다른 시리즈들이 밖에서 한 일을 말한다면 이 세 편은 그 글들이 만들어진 안쪽을 말한다. 그래서 연대기 뒤가 아니라 맨 앞에 놓았다.</p>
@@ -542,6 +530,7 @@ h1{display:grid;gap:.55rem;margin-block-start:.5rem}
 <footer class="foot" id="authorship">
   <p>이 글은 신기헌의 디지털 트윈 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.</p>
   <p class="en">Written and edited 100% by an AI agent from the Kiheon Shin Digital Twin project.</p>
+  <p class="foot__nav"><a class="uplink" href="../">본편으로</a></p>
 </footer>
 </main>
 <footer class="site-footer"><div class="site-footer__in">
@@ -865,32 +854,6 @@ h1{display:grid;gap:.55rem;margin-block-start:.5rem}
   }
  ]
 }
-</script>
-<script>
-/* 층 고르개. aria-pressed 가 상태의 정본이고 details.open 은 그것을 따라간다. */
-(function () {
-  var bar = document.querySelector('.agvbar');
-  if (!bar) return;
-  var all = [].slice.call(document.querySelectorAll('details.agv'));
-  function sync() {
-    [].forEach.call(bar.querySelectorAll('.agvchip[data-kind]'), function (c) {
-      var m = all.filter(function (d) { return d.dataset.kind === c.dataset.kind; });
-      c.setAttribute('aria-pressed', String(m.length > 0 && m.every(function (d) { return d.open; })));
-    });
-    var every = bar.querySelector('.agvchip[data-all]');
-    if (every) every.setAttribute('aria-pressed', String(all.length > 0 && all.every(function (d) { return d.open; })));
-  }
-  bar.addEventListener('click', function (e) {
-    var c = e.target.closest('.agvchip');
-    if (!c) return;
-    var on = c.getAttribute('aria-pressed') !== 'true';
-    all.filter(function (d) { return c.hasAttribute('data-all') || d.dataset.kind === c.dataset.kind; })
-       .forEach(function (d) { d.open = on; });
-    sync();
-  });
-  all.forEach(function (d) { d.addEventListener('toggle', sync); });
-  sync();
-})();
 </script>
 </body>
 </html>
