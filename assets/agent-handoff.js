@@ -14,7 +14,9 @@ const CONTRACT_URL = `${SITE}agent/citation-contract.json`;
 const STATUS_RESET_MS = 4000;
 
 const STYLE = `
-.agent-handoff{margin-top:1.75rem;padding-top:1.25rem;border-top:1px solid rgba(0,0,0,.1)}
+.agent-handoff{margin-top:1.75rem;padding-top:1.25rem;border-top:1px solid var(--rule,rgba(0,0,0,.1))}
+/* 도구 층 안에 설 때는 자기 선을 긋지 않는다 — 그 층의 선이 이미 있다 */
+.agent-handoff--tight{margin-top:.35rem;padding-top:0;border-top:0}
 .agent-handoff__row{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem}
 .agent-handoff__btn{font:inherit;font-size:var(--meta,.75rem);letter-spacing:.02em;
   padding:.5rem .85rem;border:1px solid currentColor;border-radius:2px;
@@ -29,7 +31,7 @@ const STYLE = `
   padding:.5rem;border:1px solid rgba(0,0,0,.2);border-radius:2px}
 .agent-handoff__fallback[hidden]{display:none}
 @media (prefers-color-scheme:dark){
-  .agent-handoff{border-top-color:rgba(255,255,255,.14)}
+  .agent-handoff{border-top-color:var(--rule,rgba(255,255,255,.14))}
   .agent-handoff__fallback{border-color:rgba(255,255,255,.24)}
 }`;
 
@@ -69,12 +71,12 @@ async function copy(text) {
   }
 }
 
-function render(mount) {
+function render(mount, tight) {
   const style = document.createElement("style");
   style.textContent = STYLE;
 
   const box = document.createElement("div");
-  box.className = "agent-handoff";
+  box.className = tight ? "agent-handoff agent-handoff--tight" : "agent-handoff";
   box.innerHTML = `
   <div class="agent-handoff__row">
     <button type="button" class="agent-handoff__btn">에이전트용으로 복사</button>
@@ -116,7 +118,11 @@ function mount() {
   const foot = document.querySelector("footer.foot");
   if (!foot || foot.dataset.agentHandoff === "true") return;
   foot.dataset.agentHandoff = "true";
-  render(foot);
+  // 말미가 세 층으로 정리된 면에서는 **도구 층 안**에 선다(2026-08-08).
+  // 그 층이 이미 자기 선과 여백을 가지므로 여기서 또 그으면 선이 두 겹이 된다.
+  // 옛 마크업(도구 층이 없는 면)에서는 종전대로 말미 끝에 붙는다.
+  const slot = foot.querySelector(".foot__more");
+  render(slot || foot, Boolean(slot));
 }
 
 if (document.readyState === "loading") {

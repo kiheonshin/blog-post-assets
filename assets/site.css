@@ -1419,3 +1419,47 @@ transcript-reader {
 .note p {
   max-width: var(--measure);
 }
+
+/* ══════════════════════════════════════════════════════════════════
+   말미 세 층 [본인 지시 2026-08-08 · 시리즈 00 1편에 먼저 적용]
+
+   왜 손댔나. 말미에 버튼이 둘 있는데 규격도 색도 다른 채 위아래로 따로 떠 있고,
+   그 사이에 귀속문이 끼어 있었다. **이동·기록·도구 세 층위가 섞여** 있었던 것이고,
+   여기에 링크가 하나 더 붙으면 어느 것이 무엇인지 읽히지 않는다.
+
+   순서를 뜻으로 정한다.
+     ① 기록  이 글이 어떻게 쓰였는가 (귀속문 두 줄). 규격상 반드시 남는다.
+     ② 도구  이 글의 다른 판과 넘겨받기. 새 링크는 전부 여기 붙는다.
+     ③ 이동  다른 글로 간다. 읽기를 끝낸 사람의 마지막 동작이라 맨 아래다.
+
+   두 버튼의 색이 다른 것은 그대로 둔다. 「시리즈 홈으로」는 이동이고 「에이전트용으로
+   복사」는 실행이라 층이 실제로 다르다. 같은 색으로 맞추면 그 차이가 지워진다.
+   ══════════════════════════════════════════════════════════════════ */
+
+.foot__more {
+  padding-block-start: 1.25rem;
+  border-block-start: 1px solid var(--rule);
+  display: grid;
+  gap: .5rem;
+}
+.foot__k {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: var(--micro);
+  font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+/* 다른 판으로 가는 링크. 단추가 아니라 글줄이다 — 단추로 만들면 아래 실행 단추와
+ * 같은 무게가 되는데, 이건 실행이 아니라 같은 글의 다른 판이다. */
+.foot__link {
+  justify-self: start;
+  font-size: .9375rem;
+  font-weight: 600;
+  text-underline-offset: .18em;
+}
+.foot__d { margin: 0; font-size: var(--micro); line-height: 1.7; color: var(--ink-faint) }
+/* 이동은 맨 아래. 위 도구 무리와 선으로 갈라 둔다 */
+.foot__nav { padding-block-start: 1.25rem; border-block-start: 1px solid var(--rule) }
+.foot__nav > * { margin: 0 }

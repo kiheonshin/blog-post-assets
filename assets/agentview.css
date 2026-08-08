@@ -1,0 +1,176 @@
+/* agentview — 주석 층. 텍스트 풀버전에만 실린다. [2026-08-08 신설]
+ *
+ * 무엇을 푸는 문제인가.
+ * 이 페이지에는 독자가 둘 있다. 사람은 훑어 내려가고, 에이전트는 파싱한다. 지금까지
+ * 그 둘에게 같은 산문 한 겹만 주고 있었다. 사람에게는 근거와 상한이 방해가 되고,
+ * 에이전트에게는 산문이 근거를 확정할 수 없는 형식이다. 한 겹으로는 둘 다 못 준다.
+ *
+ * 그래서 **층을 나눈다.** 글 층은 그대로 두고, 그 위에 주석 층을 얹는다.
+ * 주석은 기본이 접힘이라 사람의 읽기 흐름을 끊지 않고, DOM 에는 늘 펼쳐진 채로
+ * 있어 에이전트는 열지 않아도 읽는다. **접힘은 UI 이지 접근 제어가 아니다** —
+ * 규격 §4 가 못박은 조항이고, 이 파일의 모든 판단이 거기서 나온다.
+ *
+ * 인터페이스의 새로운 부분은 접힘 위젯이 아니라 **층을 고르는 일**이다.
+ * 위쪽 띠에서 종류별로 켠다. 「근거만 보겠다」·「미채택만 보겠다」가 한 번에 된다.
+ * 지도에서 레이어를 켜고 끄는 동작을, 글의 근거에 대해 한다.
+ *
+ * 네 종류 — 종류가 늘면 층이 아니라 잡동사니가 된다. 넷에서 멈춘다.
+ *   근거   ground    이 절이 선 자리. sourceId 와 집필 상한.
+ *   대체   swap      본편에서 어느 문장이 어느 도판으로 갔나. 두 판본의 차.
+ *   미채택 untaken   근거가 허락하지 않아 쓰지 않은 것. 표시된 부재.
+ *   갈림   fork      판단이 갈렸던 자리. 양쪽 논거와 채택한 기본값.
+ *
+ * 색 — 종류마다 색을 주지 않는다. 넷은 계열이 아니라 **같은 층의 네 갈래**이고,
+ * 색을 주면 어느 것이 더 중요하다는 주장이 된다. 구분은 이름표가 한다.
+ * 코발트(--accent)는 여기서도 상호작용 전용이다 — 켜진 칩과 링크에만.
+ */
+
+.agv,
+.agvbar {
+  --agv-rule: var(--rule, #cfcfc8);
+  --agv-lab: #05585f;                 /* 라벨 전용 색. 도판 규격과 같은 값 */
+  --agv-mono: var(--font-mono, monospace);
+}
+
+/* ══════════════ 층 고르개 ══════════════
+ * 글 맨 위에 선다. 이 페이지가 두 겹이라는 사실을 먼저 알리는 것이 이 띠의 일이다.
+ * 알리지 않으면 접힌 것들은 그냥 흩어진 위젯으로 읽힌다. */
+.agvbar {
+  margin-block: 0 3rem;
+  padding-block: 0 1.15rem;
+  border-block-end: 1px solid var(--agv-rule);
+  display: grid;
+  gap: .85rem;
+}
+/* 위 선을 스스로 긋지 않는다. 이 띠는 `.prose` 의 첫 자식이고 그 컨테이너가
+ * 이미 위에 선을 갖고 있다. 둘 다 그으면 사이에 아무것도 없는 띠가 생긴다
+ * (실측 2026-08-08 — 도판에서 같은 병을 고친 직후 여기서 다시 냈다). */
+.agvbar__t {
+  margin: 0;
+  font-family: var(--agv-mono);
+  font-size: var(--micro, .6875rem);
+  font-weight: 600;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--ink-muted, #5e6065);
+}
+.agvbar__chips { display: flex; flex-wrap: wrap; gap: .45rem }
+
+/* 칩 하나가 한 층이다. 누르면 그 종류가 페이지 전체에서 열린다.
+ * aria-pressed 가 상태의 정본이고 CSS 는 그것만 읽는다 — 클래스를 따로 두면
+ * 화면과 낭독기가 다른 말을 하게 된다. */
+.agvchip {
+  font: inherit;
+  font-family: var(--agv-mono);
+  font-size: var(--micro, .6875rem);
+  letter-spacing: .04em;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  min-height: 2rem;
+  padding-inline: .7rem;
+  border: 1px solid var(--agv-rule);
+  background: transparent;
+  color: var(--ink-muted, #5e6065);
+  cursor: pointer;
+  transition: color .15s ease-out, border-color .15s ease-out;
+}
+.agvchip:hover { border-color: var(--accent, #2457d6); color: var(--accent, #2457d6) }
+.agvchip:focus-visible { outline: 2px solid var(--accent, #2457d6); outline-offset: 2px }
+.agvchip[aria-pressed="true"] {
+  border-color: var(--accent, #2457d6);
+  color: var(--accent, #2457d6);
+}
+/* 개수는 값이라 잉크로 둔다. 켜지면 함께 강조색으로 옮겨간다 */
+.agvchip b { font-weight: 600; color: var(--ink, #17181a) }
+.agvchip[aria-pressed="true"] b { color: inherit }
+
+.agvbar__note {
+  margin: 0;
+  font-size: var(--micro, .6875rem);
+  line-height: 1.7;
+  color: var(--ink-faint, #686a6f);
+}
+
+/* ══════════════ 주석 하나 ══════════════
+ * 도판의 프레임과 같은 말을 쓴다 — 1px 선, 종이색, 색면 없음. 이 페이지에 도판은
+ * 없지만 같은 시리즈의 두 표면이라 형태 어휘가 갈리면 안 된다. */
+.agv {
+  margin-block: 1.75rem;
+  border: 1px solid var(--agv-rule);
+  background: var(--surface, #fbfbf8);
+}
+.agv > summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .3rem .8rem;
+  padding: .8rem 1rem;
+  cursor: pointer;
+  list-style: none;
+}
+.agv > summary::-webkit-details-marker { display: none }
+.agv > summary:focus-visible { outline: 2px solid var(--accent, #2457d6); outline-offset: -2px }
+
+/* 종류 이름표. 라벨색·모노 — 이 값이 「이건 주석이다」의 유일한 신호다 */
+.agv__k {
+  flex: none;
+  font-family: var(--agv-mono);
+  font-size: var(--micro, .6875rem);
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--agv-lab);
+}
+.agv__t { font-size: .875rem; line-height: 1.6; color: var(--ink, #17181a) }
+/* 세는 값은 오른쪽 끝으로. 열기 전에 이 주석의 부피를 알 수 있어야 한다 */
+.agv__n {
+  margin-inline-start: auto;
+  font-family: var(--agv-mono);
+  font-size: var(--micro, .6875rem);
+  color: var(--ink-faint, #686a6f);
+  white-space: nowrap;
+}
+/* 「접어서 보기 / 펼쳐서 보기」 [본인 지시]. 상태에 따라 글자가 바뀐다.
+ * 화살표나 삼각형을 쓰지 않는 것은 이 사이트가 기호 대신 말을 쓰기 때문이다.
+ * 자리는 **오른쪽 끝**이다. 이름표 옆에 붙이면 「근거 · 펼쳐서 보기   이 절이 선 자리」가
+ * 되어 무엇의 이름인지와 무엇을 하는 단추인지가 한 덩어리로 읽힌다. 이름은 왼쪽,
+ * 동작과 부피는 오른쪽으로 갈라 둔다. */
+.agv__n::before { content: "펼쳐서 보기 · " }
+.agv[open] .agv__n::before { content: "접어서 보기 · " }
+
+.agv__body {
+  padding: 0 1rem 1rem;
+  display: grid;
+  gap: .75rem;
+}
+/* 본문 첫 줄이 요약 줄에 붙지 않게 선 하나로 가른다. 요약은 머리고 몸은 몸이다 */
+.agv__body { border-block-start: 1px solid var(--agv-rule); padding-block-start: .9rem; margin-block-start: 0 }
+
+.agv__row {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr;
+  gap: .2rem .9rem;
+  align-items: baseline;
+}
+.agv__lab {
+  font-family: var(--agv-mono);
+  font-size: var(--micro, .6875rem);
+  font-weight: 600;
+  letter-spacing: .06em;
+  color: var(--agv-lab);
+}
+.agv__val { font-size: .875rem; line-height: 1.7; color: var(--ink, #17181a) }
+.agv__val code {
+  font-family: var(--agv-mono);
+  font-size: .8125em;
+  padding: .05em .35em;
+  border: 1px solid var(--agv-rule);
+  white-space: nowrap;
+}
+/* 값이 없는 자리는 빈칸이 아니라 표시된 부재다 — 도판 규격과 같은 원리 */
+.agv__val.absent { color: var(--ink-faint, #686a6f) }
+
+@media (max-width: 34rem) {
+  .agv__row { grid-template-columns: 1fr; gap: .15rem }
+  .agv__n { margin-inline-start: 0 }
+}
