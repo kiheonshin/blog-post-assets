@@ -11,7 +11,14 @@
  *
  * 링크 순서 — site.css 뒤에 온다. 도판 규칙이 사이트 기본값을 덮어야 하기 때문이다.
  *   <link rel="stylesheet" href="{상대경로}/assets/site.css?v=...">
- *   <link rel="stylesheet" href="{상대경로}/assets/figures.css?v=20260808a">
+ *   <link rel="stylesheet" href="{상대경로}/assets/figures.css?v=20260808h">
+ *
+ * ★ 이 파일을 고치면 **같은 회차에** 링크하는 표면 전부의 토큰을 올린다. 한쪽만 올리면
+ *   이미 방문한 브라우저가 옛 스타일을 계속 본다 — 이 리포의 알려진 함정이다.
+ *   토큰을 갖는 자리는 다섯이다. 실측으로 세어 둔다(2026-08-08) :
+ *     ① 이 주석  ② scripts/build_page.py 의 FIGURES_CSS_V  ③ 03-시각-규격.md §4-1 예시
+ *     ④ _dia-try.html  ⑤ _style-try.html      (발행면 index.html 은 ②가 찍는다)
+ *   ④⑤ 를 빠뜨린 회차가 이미 있었다 — 랩이 a·b 에 남아 발행면과 다른 그림을 보였다.
  *
  * 고칠 때 지킬 것.
  * 1. **발행본 15편과 시각적으로 동일해야 한다.** §1 승계 블록의 값은 인라인에서 그대로
@@ -112,6 +119,10 @@ figcaption {
   --fig-ink-mute:  var(--ink-muted, #5e6065);
   --fig-ink-faint: var(--ink-faint, #686a6f);
   --fig-rule:      var(--rule, #cfcfc8);
+  /* ★ 지금 이 파일에서 **쓰이는 자리가 없다.** 본인 지시(굵은선 없음)로 표 머리 아래와
+   * 양식 도식 테두리에서 차례로 걷어냈다. 정의만 남겨 두는 것은 사이트 토큰과의
+   * 배선을 기록하기 위해서지 다시 쓰라는 뜻이 아니다 — 새 형태에 이 값을 넣기 전에
+   * 왜 옅은 선으로는 안 되는지를 먼저 적는다. */
   --fig-rule-hard: var(--rule-strong, #17181a);
   --fig-surface:   var(--surface, #fbfbf8);
 
@@ -160,16 +171,28 @@ figcaption {
   white-space: nowrap;
 }
 
-/* 모노 소라벨 — .meta-label·.secnum 의 규격을 그대로 쓴다.
- * 칸 도식의 칸 머리·분기 도식의 좌우 머리가 이것이다. 표의 열 머리와 같은 색을
- * 쓴다 — 형태가 달라도 「이건 라벨이다」라는 신호는 한 가지여야 한다. */
+/* 라벨 — 칸 도식의 칸 머리·분기 도식의 좌우 머리·다이어그램의 이름표.
+ *
+ * 표의 두 머리와 **같은 규격**을 쓴다 [본인 지시 2026-08-08].
+ * 원래는 사이트의 micro 딱지 규격(.meta-label)을 물려받았는데, 그 규격의 두 장치가
+ * 한국어에서 무효이거나 역효과다(§4 열 머리 주석 참조). 형태가 달라도 「이건
+ * 라벨이다」라는 신호는 한 가지여야 하고, 그 한 가지는 **색과 굵기**다.
+ *
+ * 자간은 `normal` 이 아니라 **`inherit`** 이다 [2026-08-08 정정]. 둘 다 「확장하지
+ * 않는다」는 지키지만 같은 값이 아니다 — 본문은 -.005em 을 쓰고 `normal` 은 그것을
+ * 끊어 0 으로 돌린다. 실측에서 `.k`·열 머리는 normal, 행 머리는 -0.085px 로 갈려
+ * 있었다. 눈에는 안 보이지만(20자에 1.7px) **「두 머리는 같은 규격」이라는 §4 의
+ * 선언이 실행기에서 거짓이었다.** 「본문 계열 서체·크기」[본인 지시]를 글자대로
+ * 집행하면 답은 본문값 승계다. 지우지 않고 `inherit` 을 적어 두는 것은, 이 자리에
+ * micro 딱지 자간(.09em)을 다시 넣지 말라는 기록을 남기기 위해서다. */
 .fig .k {
-  font-family: var(--font-mono);
-  font-size: var(--fig-micro);
+  font-family: var(--font-body);
+  font-size: var(--fig-body);
   font-weight: 600;
-  letter-spacing: .09em;
-  text-transform: uppercase;
+  letter-spacing: inherit;
+  text-transform: none;
   color: var(--fig-label);
+  line-height: 1.5;
 }
 
 /* 계열 좌막대 — 두 무리를 갈라 놓는 것이 논지일 때만. 글자에는 색을 넣지 않는다. */
@@ -184,18 +207,33 @@ figcaption {
 
 .fig--table table { width: 100%; border-collapse: collapse }
 
-/* 열 머리 — 표 위쪽 한 줄 */
+/* 열 머리 — 표 위쪽 한 줄. **행 머리와 같은 규격을 쓴다** [본인 지시 2026-08-08].
+ *
+ * 처음에는 사이트의 micro 딱지 규격(.meta-label)을 그대로 물려받았는데, 그 규격이
+ * 담아 온 것은 「Essay」·「시리즈 04」·「생각의 기록」 같은 **6자 이하 딱지**다.
+ * 거기에 「그 답변이 정한 것」 같은 문장 조각을 넣으면 두 장치가 어긋난다 —
+ * `text-transform: uppercase` 는 한국어에 **아무 효과가 없고**,
+ * `letter-spacing: .09em` 는 라틴 대문자를 읽히게 하는 장치라 한국어에서는
+ * **글자만 성기게** 만든다. 핵심 장치 하나는 무효, 하나는 역효과였다.
+ *
+ * 그래서 한 표 안에서 두 머리가 만나는 자리는 규격을 하나로 맞춘다.
+ * 딱지 규격은 짧은 딱지에만 남긴다(칸 도식의 `.k` 는 그대로 쓴다 — 그쪽은
+ * 슬롯마다 라벨이 하나뿐이라 두 축이 만나지 않는다).
+ *
+ * 자간은 `inherit` 이다 — 사유는 §3 `.k` 주석에 한 번만 적었다. 요지는 하나다 :
+ * **「같은 규격」이라고 선언한 두 머리가 실행기에서 실제로 같아야 한다.** */
 .fig--table thead th,
 .fig--table th[scope="col"] {
-  font-family: var(--font-mono);
-  font-size: var(--fig-micro);
+  font-family: var(--font-body);
+  font-size: var(--fig-body);
   font-weight: 600;
-  letter-spacing: .09em;
-  text-transform: uppercase;
+  letter-spacing: inherit;
+  text-transform: none;
   color: var(--fig-label);
   text-align: start;
-  padding: 0 0 .5rem;
-  border-block-end: 1px solid var(--fig-rule-hard);
+  padding: 0 0 .7rem;
+  /* 굵은선 없음 [본인 지시] — 머리라는 신호는 색·굵기·자리가 이미 준다 */
+  border-block-end: 1px solid var(--fig-rule);
 }
 
 /* 행 머리 — 표 왼쪽 열. `<th scope="row">` 로 적으면 여기에 걸린다.
@@ -204,6 +242,8 @@ figcaption {
  * 자간 확장은 라틴 micro 라벨용이라 한국어에서는 글자만 성기게 만든다. 그래서
  * 색과 굵기로만 구분하고 서체·크기는 본문 계열을 유지한다. 오른쪽 실선 한 줄이
  * 열 머리의 아래 실선과 짝을 이뤄, 두 머리가 만나는 왼쪽 위가 표의 원점이 된다. */
+/* 행 머리 — 표 왼쪽 열. `<th scope="row">` 로 적으면 여기에 걸린다.
+ * 열 머리와 같은 서체·크기를 쓴다(위 주석). 다른 것은 굵기가 아니라 자리뿐이다. */
 .fig--table tbody th,
 .fig--table th[scope="row"] {
   color: var(--fig-label);
@@ -212,17 +252,17 @@ figcaption {
   line-height: 1.6;
   text-align: start;
   vertical-align: top;
-  padding: .7rem 1.25rem .7rem 0;
+  /* 세로선 없음 · 들여쓰기 없음 [본인 지시] — 열 사이 간격은 여기 오른쪽 여백
+   * 하나로만 만든다. 데이터 칸에 왼쪽 여백을 또 주면 간격이 두 겹이 된다. */
+  padding: .7rem 2rem .7rem 0;
   border-block-end: 1px solid var(--fig-rule);
-  border-inline-end: 1px solid var(--fig-rule-hard);
   white-space: normal;
   word-break: keep-all;
 }
-/* 행 머리가 있으면 그 다음 칸은 실선에서 한 번 더 띄운다 */
-.fig--table tbody th + td { padding-inline-start: 1.25rem }
+.fig--table tbody th + td { padding-inline-start: 0 }
 
-/* 두 머리가 만나는 왼쪽 위 모서리 — 비운다. 글자를 넣지 않는다 */
-.fig--table thead th:first-child:empty { border-inline-end: 1px solid var(--fig-rule-hard) }
+/* 두 머리가 만나는 왼쪽 위 모서리 — 비운다. 선도 글자도 넣지 않는다 */
+.fig--table thead th:first-child:empty { border-inline-end: 0 }
 /* 마지막 행의 border 를 지우지 않는다 — 표가 선으로 닫힌다 */
 .fig--table td {
   padding: .7rem 0;
@@ -268,10 +308,14 @@ figcaption {
   line-height: 1.65;
   color: var(--fig-ink);
 }
-/* 새로 만든 칸은 좌막대 한 줄로만 표시한다 — 배경색을 넣지 않는다 */
+/* 계열 좌막대를 쓰지 않는다 [본인 지시 2026-08-08 · 「칸 a — 좌막대만 제거」].
+ * 「원래 있던 칸 / 새로 만든 칸」이라고 **글자가 이미 말한 것**을 색으로 한 번 더
+ * 말하고 있었다. 색을 줄 자격이 있는 변수가 없는 자리다 — 관측소 v4 가 카테고리
+ * 해시색을 걷어낸 것과 같은 판정이다. 칸을 가르는 것은 1px 격자선이 이미 한다.
+ * 슬롯에 s1~s3 클래스가 붙어 있어도 좌막대가 나오지 않게 여기서 눌러 둔다. */
 .fig--slots .slot.s1,
 .fig--slots .slot.s2,
-.fig--slots .slot.s3 { padding-inline-start: .9rem }
+.fig--slots .slot.s3 { box-shadow: none; padding-inline-start: .9rem }
 /* ≤34rem 에서 auto-fit 이 스스로 1열로 접힌다 — 추가 규칙이 필요 없다 */
 
 /* ══════════════════════════════════════════════════════════════════
@@ -485,3 +529,286 @@ figcaption {
  *           --fig-neutral: …; --fig-ramp-1: …; }
  * }
  */
+
+
+/* ══════════════════════════════════════════════════════════════════
+   4-b. 대조표 두 줄 변형 .fig--table--stacked — 행 머리를 값 위에 얹는다.
+        [본인 지시 2026-08-08 「경우에 따라 함께 활용」]
+
+        언제 쓰나 : 값이 길어 두 열로 나누면 오른쪽이 여러 줄로 접힐 때,
+        또는 행이 둘셋뿐이라 표의 격자가 과할 때. 세로 훑기를 잃는 대신
+        각 항목이 한 덩어리로 읽힌다. 마크업은 표가 아니라 행 묶음이다.
+
+        <figure class="fig fig--table fig--table--stacked"><div class="fig__frame">
+          <div class="row"><span class="lab">…</span><span class="val">…</span></div>
+        </div></figure>
+   ══════════════════════════════════════════════════════════════════ */
+
+.fig--table--stacked .row {
+  border-block-end: 1px solid var(--fig-rule);
+  padding-block: .85rem;
+}
+.fig--table--stacked .row:first-child { padding-block-start: 0 }
+.fig--table--stacked .row:last-child { border-block-end: 0; padding-block-end: 0 }
+.fig--table--stacked .lab {
+  display: block;
+  color: var(--fig-label);
+  font-weight: 600;
+  font-size: var(--fig-body);
+  margin-block-end: .25rem;
+}
+.fig--table--stacked .val {
+  display: block;
+  font-size: var(--fig-body);
+  line-height: 1.6;
+  color: var(--fig-ink);
+}
+@media (max-width: 34rem) {
+  .fig--table--stacked .lab,
+  .fig--table--stacked .val { font-size: var(--fig-body-narrow) }
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   4-c. 대조표의 두 지위 표시 — **형태가 아니라 변형이다** [2026-08-08]
+
+   왜 형태로 만들지 않았나. 아래 둘이 그리는 것은 표가 이미 그리고 있는 것에
+   **행 하나의 지위**를 더한 것뿐이다. 새 형태를 세우면 어휘가 열을 넘고, 그러면
+   규격이 아니라 잡동사니가 된다(§3 원칙). 두 자리 모두 매핑의 **상한이 이미
+   요구하고 있는데 글자 하나에만 맡겨져 있던** 것을 형태로 옮긴 것이라,
+   담는 사실은 늘지 않는다 — 도판이 본문보다 세게 말하지 않는다.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* 4-c-1. 무리 밖 행 `tr.aside` — 한 행이 나머지와 같은 무리가 아닐 때.
+ *
+ * 언제 : 표의 행 대부분이 한 묶음인데 마지막 하나가 그 묶음 밖일 때.
+ *   1편 F7 이 그 자리다 — 되돌아온 자리 넷 + 넷 밖의 부수 정정 하나. 매핑 F7 상한 3
+ *   「넷과 부수 정정 하나를 같은 무게로 그리지 않는다」를 지금까지 셀 안의 글자
+ *   한 조각이 혼자 지고 있었다.
+ *
+ * 그리면 안 되는 것
+ *   - 선·괄호·들여쓰기로 가르지 않는다 [본인 지시]. **여백 한 칸**만 쓴다.
+ *   - 행 머리 색을 바꾸지 않는다. 라벨색은 「이건 라벨이다」 한 가지 신호이고,
+ *     지위 표시로 돌리는 순간 한 색이 두 뜻을 갖는다(§3-1a 예외 조항과 같은 이유).
+ *   - **무리 밖임을 적은 글자를 지우지 않는다.** 상한이 「적는다」를 요구한다.
+ *     여백은 글자를 대신하지 않고 거든다 — CSS 가 빠져도 사실이 남아야 한다.
+ *   - 무리 밖 행을 둘 이상 두지 않는다. 둘이면 그건 두 번째 무리이고, 표를 쪼갠다.
+ *
+ * 이름은 분할 막대의 `.aside`(줄 밖 조각)와 같은 말을 쓴다 — 형태가 달라도
+ * 「이건 그 무리 밖이다」라는 뜻은 하나여야 한다. 선택자 범위가 갈라져 있어
+ * 서로 걸리지 않는다. */
+.fig--table tbody tr.aside > * { padding-block-start: 1.9rem }
+@media (max-width: 34rem) {
+  .fig--table tbody tr.aside > * { padding-block-start: 1.35rem }
+}
+
+/* 4-c-2. 닫히지 않는 대조표 `.fig--table--open` — 마지막 자리가 아직 열려 있을 때.
+ *
+ * 언제 : **표가 닫히지 않았다는 것이 논지**일 때. 1편 F13 이 그 자리다 — 매핑 F13
+ *   상한 4 가 「네 번째 자리를 반드시 열린 채로 둔다. 세 행만 닫힌 표가 닫힌 표처럼
+ *   보이면 §7 전체의 논지가 뒤집힌다」로 못박았는데, 그 일을 부재 기호 하나가
+ *   혼자 하고 있었고 표는 선으로 말끔히 닫혀 있었다. 형태가 반대로 말하던 자리다.
+ *
+ * 어떻게 그리나 : 마지막 행에서 **답이 있는 칸 아래는 닫고 부재 칸 아래만 연다.**
+ *   전부 열면 마감선을 빠뜨린 렌더 사고로 읽힌다. 한쪽만 열려 있으면 그것이
+ *   의도라는 것이 보인다 — 표는 답이 있는 데까지만 닫힌다.
+ *
+ * 그리면 안 되는 것
+ *   - 파선을 쓰지 않는다(§3-5 anti-patterns 과 같은 판정).
+ *   - 「계속됨」·「미정」 같은 글자를 넣지 않는다. 열림은 형태가 말하고,
+ *     어떤 종류의 부재인지는 `.fig-sr` 이 말한다(§6-3 부재 세 종류).
+ *   - 마지막 행이 부재가 아닌 표에 쓰지 않는다. 그때는 그냥 닫힌 표다.
+ *   - 부재 칸이 마지막 행의 첫 칸인 표에 쓰지 않는다 — 그 배치에서는 이 규칙이
+ *     정확히 반대로 걸린다. 그런 표는 열을 바꾸거나 이 변형을 쓰지 않는다. */
+.fig--table--open tbody tr:last-child > * { border-block-end: 0 }
+.fig--table--open tbody tr:last-child > :first-child {
+  border-block-end: 1px solid var(--fig-rule);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   10. 다이어그램 .fig--dia — 정보를 공간으로 옮긴다 [실험 2026-08-08]
+
+   앞의 형태들(표·칸·분기)은 전부 **글자를 상자에 담은 것**이다. 배치가 뜻을
+   나르지 않는다. 여기 것들은 자리·크기·채움 자체가 정보다.
+
+   지킬 것 — 글자는 여전히 HTML 텍스트다(§3). SVG <text> 를 쓰지 않는다.
+   도형만 CSS 로 그리고 이름표는 그 위에 얹는다.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* 10-1. 채움 격자 — 전체 중 얼마가 채워졌는가.
+   「열여섯 차원 중 다섯만 내려왔다」처럼 부분 도달이 논지일 때.
+   빈 칸을 그리는 것이 핵심이다 — 안 그리면 「부분」이 시각적으로 사라진다.
+
+   **한 줄에 전부 놓는다.** 8열 2줄로 접으면 첫 줄만 보고 「여덟 중 다섯」으로
+   읽는다(실측 — 아래 줄이 통째로 비어 더 그렇다). 분모가 한눈에 세어져야 한다.
+   칸을 작게 두는 것도 같은 이유다 — 크면 격자가 도판의 주인공이 된다.
+
+   ★ 좁은 화면에서도 접지 않는다. 처음 쓴 ≤34rem 규칙이 `flex-wrap: wrap` 이라
+   위 문단이 금지한 두 줄이 375px 에서 정확히 재현됐다 — 규격과 실행기가 서로를
+   부정하던 자리다. 좁은 화면에서는 접는 대신 칸을 얇게 만든다. */
+.fig--dia .cells {
+  display: flex;
+  gap: 3px;
+  margin-block-end: .9rem;
+}
+.fig--dia .cell {
+  flex: 1 1 0;
+  min-inline-size: 0;
+  block-size: 1.6rem;
+  max-inline-size: 2.2rem;
+  border: 1px solid var(--fig-rule);
+  background: transparent;
+}
+/* 채운 칸은 **잉크**다. 라벨색(--fig-label)을 쓰면 안 된다 — 이 파일 §2 가
+ * 「라벨 전용 색은 데이터 마크에 절대 쓰지 않는다」로 못박았는데 처음 판이
+ * 정확히 그것을 어기고 있었다. 채움/빈칸은 계열이 아니라 한 변수의 두 상태라
+ * 색을 줄 자격이 없다. 잉크와 선으로만 그린다. */
+.fig--dia .cell.on { background: var(--fig-ink); border-color: var(--fig-ink) }
+.fig--dia .legend {
+  display: flex; flex-wrap: wrap; gap: .4rem 1.5rem;
+  font-size: var(--fig-body-narrow); color: var(--fig-ink-mute);
+}
+.fig--dia .legend b { font-weight: 400; color: var(--fig-ink) }
+.fig--dia .swatch {
+  display: inline-block; inline-size: .7em; block-size: .7em;
+  border: 1px solid var(--fig-rule); margin-inline-end: .4em; vertical-align: baseline;
+}
+.fig--dia .swatch.on { background: var(--fig-ink); border-color: var(--fig-ink) }
+
+/* 격자가 센 것과 **이름이 붙은 것**은 다른 층위다. 이름 목록을 레전드 옆에 붙이면
+ * 「빈 칸 = 이 이름들」로 읽혀 근거에 없는 귀속이 된다. 가로선 하나로 갈라 놓고
+ * 자기 이름표를 따로 준다. 세로선·들여쓰기는 쓰지 않는다 [본인 지시]. */
+.fig--dia .named {
+  display: grid;
+  gap: .3rem;
+  margin-block-start: .95rem;
+  padding-block-start: .95rem;
+  border-block-start: 1px solid var(--fig-rule);
+}
+.fig--dia .named .t {
+  font-size: var(--fig-body-narrow);
+  line-height: 1.65;
+  color: var(--fig-ink);
+}
+
+/* 10-2. 양식 도식 .dia--form — 그릇에 칸이 몇이고 어디가 비었는가.
+   칸 도식이 「나란한 세 덩어리」라면 이건 **하나의 양식** 안의 칸들이다.
+
+   테두리는 옅은 선이다. 처음 판은 --fig-rule-hard 였는데, 같은 회차에 표에서
+   굵은선을 걷어냈으므로(§4 열 머리 주석) 여기만 남겨 둘 근거가 없다. 「하나의
+   양식」이라는 신호는 테두리가 있다는 사실이 주는 것이지 선의 굵기가 아니다.
+
+   나중에 더한 칸을 **들여쓰지 않는다** [본인 지시 — 세로선 없음·들여쓰기 없음].
+   처음 판은 margin-inline-start + 왼쪽 세로선으로 그렸다. 두 장치 다 지시에
+   어긋나고, 무엇보다 들여쓴 칸은 「하위 칸」으로도 읽힌다 — 근거는 나중에 더했다는
+   것까지만 말한다. 순서와 칸 몸의 글자가 그 사실을 말하게 두고 도형은 침묵한다. */
+.fig--dia .form {
+  border: 1px solid var(--fig-rule);
+  display: grid;
+}
+.fig--dia .field {
+  display: grid;
+  grid-template-columns: 10rem 1fr;
+  gap: 1rem;
+  padding: .75rem .9rem;
+  border-block-end: 1px solid var(--fig-rule);
+  align-items: baseline;
+}
+.fig--dia .field:last-child { border-block-end: 0 }
+.fig--dia .field .v { font-size: var(--fig-body); line-height: 1.6 }
+/* 비어 있는 칸은 빗금으로 **보이게** 비운다 — 「표시된 부재」의 공간판.
+ *
+ * 빗금은 **남은 자리에만** 깔린다. 처음 판은 칸 몸 전체에 background 로 깔아
+ * 글자 뒤를 가로질렀고, 실물에서 취소선처럼 읽혔다 — 「아직 없다」를 그리려던
+ * 도형이 「지웠다」를 말하고 있었다. 부재 표시(—)는 글자 자리에 두고, 빗금은
+ * 그 오른쪽 빈 폭을 채운다. 비어 있는 것은 글자가 아니라 자리다. */
+.fig--dia .field.empty .v {
+  color: var(--fig-ink-faint);
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+}
+.fig--dia .field.empty .v::after {
+  content: "";
+  flex: 1 1 auto;
+  block-size: .8rem;
+  background: repeating-linear-gradient(135deg,
+    transparent 0 5px, var(--fig-rule) 5px 6px);
+}
+
+/* 10-3. 경로 도식 .dia--path — 시도가 갈라져 어디로 갔는가.
+   분기 도식이 「원인 → 결과」 두 열이라면 이건 **세 갈래가 한 자리로 모이는** 그림.
+
+   ★ 시리즈 00 1편 미사용. 그 편에서 세 시도를 그리는 자리(F6)는 「세 줄을 잇지
+   않는다」가 상한이라 모이는 그림을 쓸 수 없고, 길이가 같은 막대 셋은 닿음·못 닿음을
+   한 번 더 말할 뿐 새 정보를 싣지 않는다. 층 도식과 같이 정의만 두고 쓰지 않는다. */
+.fig--dia .paths { display: grid; gap: .55rem }
+.fig--dia .path {
+  display: grid;
+  grid-template-columns: 12rem 1fr auto;
+  align-items: center;
+  gap: 1rem;
+}
+.fig--dia .bar {
+  block-size: 3px;
+  background: var(--fig-rule);
+  position: relative;
+}
+/* 채움 격자와 같은 판정 — 데이터 마크는 잉크다. 라벨색을 쓰지 않는다 */
+.fig--dia .path.hit .bar { background: var(--fig-ink) }
+.fig--dia .path .end { font-size: var(--fig-body-narrow); color: var(--fig-ink-mute) }
+.fig--dia .path.hit .end { color: var(--fig-ink) }
+
+/* 10-4. 분할 막대 .dia--split — **한 줄의 어디**가 무엇인가.
+   앞의 셋은 「무엇이 있는가」를 그리고 이건 **자리**를 그린다. 한 문장을 앞뒤로
+   가르고 각 자리에 이름표를 다는 형태다. 나란한 칸 셋으로 그리면 「앞쪽 절반」·
+   「뒤쪽 절반」이라는 말이 가리킬 곳이 그림에 없다 — 그 말이 곧 자리이기 때문이다.
+
+   가르는 것은 **여백**이지 세로선이 아니다 [본인 지시]. 두 조각을 1fr 1fr 로 두는
+   것도 근거가 있다 — 본문이 쓰는 말이 「절반」이라 반반이 실측과 같다.
+
+   줄 안에 없는 조각은 **밑줄을 주지 않는다.** 밑줄이 「이 조각은 그 줄의 일부다」를
+   말하는 유일한 장치이고, 그것이 없는 것이 「그 줄이 말하지 않는 자리」의 그림이다.
+   괄호·화살표·번호를 쓰지 않는다 — 순서가 아니라 분할이다. */
+.fig--dia .split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 1.5rem;
+}
+.fig--dia .seg { display: flex; flex-direction: column }
+/* 조각 글자는 아래로 붙이고 밑줄을 단다. flex:1 이 두 조각의 밑줄을 같은 높이에
+ * 세운다 — 두 조각의 줄 수가 다를 때 밑줄이 어긋나면 한 줄로 읽히지 않는다. */
+.fig--dia .seg .q {
+  flex: 1 0 auto;
+  display: flex;
+  align-items: flex-end;
+  font-size: var(--fig-body);
+  line-height: 1.6;
+  color: var(--fig-ink);
+  border-block-end: 1px solid var(--fig-rule);
+  padding-block-end: .55rem;
+  margin-block-end: .5rem;
+}
+.fig--dia .seg .t,
+.fig--dia .aside .t {
+  font-size: var(--fig-body-narrow);
+  line-height: 1.6;
+  color: var(--fig-ink-mute);
+}
+.fig--dia .aside {
+  grid-column: 1 / -1;
+  display: grid;
+  gap: .2rem;
+  margin-block-start: 1.35rem;
+}
+
+@media (max-width: 34rem) {
+  /* 격자는 접지 않는다(§10-1 주석) — 칸을 얇게 만들어 한 줄을 지킨다 */
+  .fig--dia .cells { flex-wrap: nowrap; gap: 2px }
+  .fig--dia .cell { block-size: 1.25rem; max-inline-size: none }
+  .fig--dia .field,
+  .fig--dia .path { grid-template-columns: 1fr; gap: .3rem }
+  /* 분할 막대는 1열로 접는다. 좌우가 위아래가 될 뿐 자리는 그대로 남는다 */
+  .fig--dia .split { grid-template-columns: 1fr; gap: 1.1rem 0 }
+  .fig--dia .seg .q { font-size: var(--fig-body-narrow) }
+  .fig--dia .aside { grid-column: 1; margin-block-start: .25rem }
+}
