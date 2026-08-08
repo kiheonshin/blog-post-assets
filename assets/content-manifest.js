@@ -1,5 +1,56 @@
 export const contentLibrary = {
   series: [
+    // 00 은 연대기의 일부가 아니라 그 연대기를 만든 장치에 대한 글이라 맨 앞에
+    // 선다(구조제안 §2-2). 카드를 특별 대우하지 않는다 — 차이는 description
+    // 한 줄로 충분하고, 카드를 꾸미면 그 자체가 제품 소개문의 신호가 된다.
+    {
+      slug: "life-universe",
+      label: "00 · Making of",
+      // title 은 아직 본인 게이트에 있다(구조제안 §2-1 「집필 뒤에 뽑는다」).
+      // 확정 전까지 라벨에서 번호를 뗀 몫을 세운다 — 시리즈 홈 h1 과 같은 값이다.
+      title: "Making of",
+      description:
+        "앞선 다섯 시리즈 열다섯 편 말미에 붙은 한 줄이 실제로 무엇이었는지, 처음 50일 동안 무엇을 했는지의 중간 보고 세 편.",
+      period: "2026",
+      sourceYears: [2026],
+      // 구조제안 §2-1 은 「기존 topic 어휘와 겹치는 것만」을 규칙으로 걸고서
+      // 「기록과 아카이브」·「에이전트」를 예시로 들었는데, 그 둘은 이 매니페스트의
+      // 8개 어휘에 없다. 규칙이 이긴다 — 겹치는 것으로 갈아 넣었다.
+      topics: ["AI와 창작", "창작 도구", "기록과 서사"],
+      keywords: ["AI 에이전트", "디지털 트윈", "문체", "파인튜닝", "프롬프트"],
+      href: "series/life-universe/",
+      // 커버는 자리표시 그대로 간다(본인 확정). 정보를 담지 않은 이미지이므로
+      // alt 를 비워 장식으로 둔다 — 「자리표시」라고 적으면 발행면이 편집 경위를
+      // 말하게 된다.
+      cover: "assets/cover-placeholder.jpg",
+      coverAlt: "",
+      published: "2026-08-08",
+      // 도슨트 미장착 — 컨텍스트 팩이 아직 없다. planned 면 검증기가 인벤토리만
+      // 보고 전문 검사를 건너뛴다.
+      assistantContext: {
+        path: "series/life-universe/assistant/context.json",
+        status: "planned",
+        pilotSurfaceIds: [],
+      },
+      // 2·3편은 아직 없다. 없는 글을 예고로 걸지 않는다 — 쓰이면 여기에 붙인다.
+      posts: [
+        {
+          id: "01-result",
+          label: "PART 1",
+          title: "앞선 다섯 시리즈에 나는 같은 한 줄을 붙였다",
+          description:
+            "같은 도구를 쓰고도 무엇이 완성도를 갈랐는가. 끝내 오지 않은 말투 하나와, 자료로는 채워지지 않던 칸.",
+          published: "2026-08-08",
+          sourceYears: [2026],
+          topics: ["AI와 창작", "창작 도구"],
+          keywords: ["AI 에이전트", "디지털 트윈", "문체", "파인튜닝"],
+          href: "series/life-universe/posts/01-result/",
+        },
+      ],
+      // 이 시리즈에는 공개 가능한 1차 원자료 표면이 없다(구조제안 §2-1).
+      // 근거는 발행면 sourceIds 스탬프로만 남는다.
+      sources: [],
+    },
     {
       slug: "aigc-creative-paradigm",
       label: "01 · AIGC Notes",
