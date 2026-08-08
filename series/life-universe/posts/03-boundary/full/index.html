@@ -1,0 +1,727 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>00 · Making of (3) 먼저 다 닫아두고, 지킨 만큼만 한 칸씩 열었다 · Kiheon Shin</title>
+<meta name="description" content="접근 범위는 설정 화면에서 정해지지 않았다. 경계를 먼저 문서로 못 박고, 가장 좁은 권한에서 실제로 어떻게 행동하는지 본 다음, 지킨 만큼만 한 칸씩 열었다. 이 편은 열지 않기로 한 자리와, 트윈에게 남겨 둔 다음 칸에 대한 기록이다.">
+<meta name="author" content="Kiheon Shin">
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/03-boundary/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Kiheon Shin">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="00 · Making of (3) 먼저 다 닫아두고, 지킨 만큼만 한 칸씩 열었다">
+<meta property="og:description" content="접근 범위는 설정 화면에서 정해지지 않았다. 경계를 먼저 문서로 못 박고, 가장 좁은 권한에서 실제로 어떻게 행동하는지 본 다음, 지킨 만큼만 한 칸씩 열었다. 이 편은 열지 않기로 한 자리와, 트윈에게 남겨 둔 다음 칸에 대한 기록이다.">
+<meta property="og:url" content="https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/03-boundary/">
+<meta property="og:image" content="https://kiheonshin.github.io/blog-post-assets/assets/cover-placeholder.jpg">
+<meta property="og:image:secure_url" content="https://kiheonshin.github.io/blog-post-assets/assets/cover-placeholder.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<!-- 치수를 명시하지 않으면 크롤러가 이미지를 아직 못 받은 첫 공유에서
+     썸네일 자리를 잡지 못하고 빈 링크로 보인다 -->
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta property="og:image:alt" content="00 · Making of (3) 먼저 다 닫아두고, 지킨 만큼만 한 칸씩 열었다 키 비주얼">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="00 · Making of (3) 먼저 다 닫아두고, 지킨 만큼만 한 칸씩 열었다">
+<meta name="twitter:description" content="접근 범위는 설정 화면에서 정해지지 않았다. 경계를 먼저 문서로 못 박고, 가장 좁은 권한에서 실제로 어떻게 행동하는지 본 다음, 지킨 만큼만 한 칸씩 열었다. 이 편은 열지 않기로 한 자리와, 트윈에게 남겨 둔 다음 칸에 대한 기록이다.">
+<meta name="twitter:image" content="https://kiheonshin.github.io/blog-post-assets/assets/cover-placeholder.jpg">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SQYBGPJFJ4"></script>
+<script>
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-SQYBGPJFJ4');
+</script>
+<link rel="stylesheet" href="../../../../../assets/tokens.css?v=20260807a">
+<style>
+:root{
+  --canvas:#F3F3EF; --surface:#FBFBF8; --ink:#17181A; --ink-muted:#5E6065;
+  --ink-faint:#686A6F; --rule:#CFCFC8; --rule-strong:#17181A;
+  --accent:#2457D6; --accent-hover:#163DA7; --inverse:#17181A; --inverse-ink:#F7F7F2;
+  --font-display:"Iowan Old Style","Noto Serif CJK KR","AppleMyungjo","Nanum Myeongjo",serif;
+  --font-body:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",sans-serif;
+  --font-mono:"SFMono-Regular","Roboto Mono","Noto Sans Mono CJK KR",monospace; --gutter:1rem; --micro:.6875rem; --meta:.75rem;
+}
+@media(min-width:48rem){:root{--gutter:2rem}}
+@media(min-width:80rem){:root{--gutter:3rem}}
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--canvas);color:var(--ink);
+  font-family:var(--font-body);font-size:1.0625rem;line-height:1.78;
+  letter-spacing:-.005em;
+  -webkit-font-smoothing:antialiased;
+  /* 한글은 어절 단위로 끊는다. 없으면 "묻/다"처럼 단어 중간에서 잘린다 */
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+a{color:var(--accent);text-underline-offset:.18em}
+a:hover{color:var(--accent-hover);text-decoration-thickness:.14em}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+img{max-width:100%;height:auto}
+
+.skip{position:absolute;left:-9999px}
+.skip:focus{left:var(--gutter);top:.5rem;z-index:9;background:var(--surface);
+  padding:.5rem .75rem;border:1px solid var(--rule-strong)}
+
+/* 선만 사용 — 헤더는 hairline 하나로 구분한다 */
+.site-header{border-block-end:1px solid var(--rule)}
+.site-header__in{
+  width:min(100%,var(--shell));margin-inline:auto;padding-inline:var(--gutter);
+  min-height:4.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;
+}
+.brand{
+  font-family:var(--font-mono);font-size:var(--meta);font-weight:600;
+  letter-spacing:.09em;text-decoration:none;color:var(--ink);
+}
+.meta-label{
+  margin:0;font-family:var(--font-mono);font-size:var(--meta);font-weight:500;
+  letter-spacing:.09em;color:var(--ink-muted);text-transform:uppercase;
+}
+
+main{width:min(100%,calc(var(--measure) + var(--gutter)*2));
+  margin-inline:auto;padding-inline:var(--gutter)}
+
+.head{padding-block:4rem 0;display:grid;gap:1.25rem}
+
+.hero{margin:2rem 0 2.5rem}
+.hero img{display:block;width:100%;border:1px solid var(--rule)}
+
+/* 시리즈 배너. 텍스트 박스를 이미지에 굽지 않고 여기서 얹는다.
+   그래야 글자가 선택·검색되고 확대해도 깨지지 않으며, 현재 글 표시와
+   이동 링크를 붙일 수 있다. */
+.banner{position:relative;margin:2.5rem 0}
+.banner img{display:block;width:100%;border:1px solid var(--rule)}
+.banner__cards{
+  position:absolute;inset:auto 0 0 0;display:grid;
+  grid-template-columns:repeat(3,1fr);gap:0 2.5%;
+  margin:0;padding:0 3.5% 4%;list-style:none;
+}
+.banner__cards a,.banner__cards .card{
+  display:grid;gap:.35rem;padding:.7rem .8rem;
+  /* 사진 위에서 글자가 읽히려면 바탕이 필요하다. 그림자·블러 대신 종이색을
+     또렷이 깔고 테두리는 선 하나로 둔다(7장 규범 유지). 각 카드가 눌러서
+     읽는 개별 글임이 분명하도록 바탕을 진하게, '글 읽기 →'를 상시 노출한다. */
+  border:1px solid rgba(23,24,26,.4);background:rgba(243,243,239,.94);
+  text-decoration:none;color:var(--ink);
+}
+.banner__cards a{transition:border-color .15s ease-out,background .15s ease-out}
+.banner__cards a:hover{border-color:var(--accent);background:rgba(243,243,239,.99)}
+.banner__cards a:hover .t{text-decoration:underline;text-underline-offset:.16em}
+.banner__cards .card{border-color:var(--rule-strong)}
+.banner__cards .row{display:flex;align-items:center;justify-content:space-between;gap:.5rem}
+.banner__cards .n{font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.08em;color:var(--accent)}
+/* 눌러서 읽는 글임을 늘 알리는 표시. 현재 글 카드에는 붙이지 않는다 */
+.banner__cards .go{font-family:var(--font-mono);font-size:var(--micro);
+  font-weight:600;letter-spacing:.03em;color:var(--accent)}
+.banner__cards a:hover .go{color:var(--accent-hover)}
+.banner__cards .cur{font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.03em;color:var(--ink-faint)}
+
+/* 상위 목록으로 돌아가는 버튼. 브랜드명과 맨 아래 바에만 링크가 있으면
+   찾지 못한다. 선만 쓰는 규범 안에서 버튼 형태로 세운다. */
+.uplink{
+  display:inline-flex;align-items:center;gap:.5rem;min-height:2.25rem;
+  padding-inline:.9rem;border:1px solid var(--rule-strong);
+  font-family:var(--font-mono);font-size:var(--micro);font-weight:600;
+  letter-spacing:.08em;color:var(--ink);text-decoration:none;white-space:nowrap;
+  transition:color .15s ease-out,border-color .15s ease-out;
+}
+.uplink:hover{border-color:var(--accent);color:var(--accent-hover)}
+.uplink::after{content:"→"}
+.uplink--head{border:0;padding-inline:0;color:var(--ink-muted);
+  font-weight:500;letter-spacing:.09em;text-transform:uppercase;font-size:var(--meta)}
+.uplink--head:hover{border:0;color:var(--accent-hover)}
+/* 글 제목이 카드의 주인공. 길이가 달라도 두 줄까지만 잡아 높이를 맞춘다 */
+.banner__cards .t{font-size:.9375rem;font-weight:600;line-height:1.3;color:var(--ink);
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+
+@media(max-width:47.99rem){
+  /* 좁은 화면에서 이미지 위에 얹으면 글자가 읽히지 않는다. 아래로 내린다 */
+  .banner__cards{position:static;grid-template-columns:1fr;gap:.5rem;padding:.75rem 0 0}
+  .banner__cards a,.banner__cards .card{background:none;border-color:var(--rule)}
+}
+.metarow{display:flex;flex-wrap:wrap;align-items:baseline;gap:.5rem .75rem}
+.metarow time{font-family:var(--font-mono);font-size:var(--meta);color:var(--ink-muted)}
+
+/* 작성 주체 공개 — 색면 없이 1px 테두리와 마이크로 타입으로만 */
+.authorship{
+  display:inline-flex;align-items:center;min-height:1.5rem;padding-inline:.5rem;
+  border:1px solid var(--rule-strong);color:var(--ink-muted);
+  font-family:var(--font-mono);font-size:var(--micro);font-weight:600;
+  letter-spacing:.08em;text-decoration:none;white-space:nowrap;
+  transition:color .15s ease-out,border-color .15s ease-out;
+}
+.authorship:hover{border-color:var(--accent);color:var(--accent-hover)}
+
+h1{
+  margin:0;font-family:var(--font-display);font-weight:400;
+  font-size:clamp(2.1rem,3.6vw,3.3rem);line-height:1.15;letter-spacing:-.03em;
+  text-wrap:balance;
+}
+/* 표제는 두 줄이다. 위가 시리즈 제목(큰 제목), 아래가 그 회차의 제목
+   (중간 제목). 한 덩어리로 이어 놓으면 어디까지가 시리즈 이름인지
+   읽히지 않아 글자체·크기·색을 나눈다. */
+h1{display:grid;gap:.55rem;margin-block-start:.5rem}
+/* 위가 시리즈 줄(작게), 아래가 그 회차의 제목(크게). 읽는 사람이 실제로 고른
+   것은 이 한 편이므로 편 제목이 표제가 되고 시리즈는 소속을 알리는 줄로 둔다. */
+/* 표제가 먼저 오고, 그 아래에 어느 시리즈의 몇 번째인지를 알리는 줄이 붙는다.
+   위의 메타 줄과 떨어져 있어 강조색 회차 표기를 써도 서로 경쟁하지 않는다. */
+.t-post{display:block}
+/* 크기는 리드 문단과 같은 값을 쓴다. 이보다 작으면 표제에 딸린 줄이 아니라
+   각주처럼 밀려 읽힌다(.lead와 같은 clamp를 의도적으로 공유한다). */
+.t-series{display:block;font-family:var(--font-body);
+  font-size:clamp(1.06rem,1.5vw,1.22rem);
+  font-weight:600;line-height:1.5;letter-spacing:0;color:var(--ink-muted)}
+.t-part{margin-inline-start:.5rem;font-family:var(--font-mono);font-size:var(--meta);
+  font-weight:600;letter-spacing:.09em;color:var(--accent)}
+.lead{
+  margin:0;max-width:var(--measure);color:var(--ink-muted);
+  font-size:clamp(1.06rem,1.5vw,1.22rem);line-height:1.62;
+}
+.series{
+  margin:0;padding-block-start:1.25rem;border-block-start:1px solid var(--rule);
+  color:var(--ink-faint);font-size:.875rem;line-height:1.7;font-style:italic;
+}
+
+.prose{padding-block-start:2.5rem;border-block-start:1px solid var(--rule);margin-block-start:2.5rem}
+.prose p{margin:0 0 1.5rem;text-wrap:pretty}
+.prose h2{
+  margin:3.5rem 0 1rem;font-family:var(--font-display);font-weight:400;
+  font-size:clamp(1.45rem,2vw,1.85rem);line-height:1.3;letter-spacing:-.02em;
+  display:flex;gap:.75rem;align-items:baseline;
+}
+/* 시간의 이음선 — 순서 번호는 모노로 작게 */
+.secnum{flex:none;font-family:var(--font-mono);font-size:var(--meta);
+  color:var(--ink-faint);letter-spacing:.08em}
+
+
+.foot{margin-block:4rem 0;padding-block-start:1.5rem;
+  border-block-start:1px solid var(--rule-strong);display:grid;gap:1rem}
+.foot p{margin:0;color:var(--ink-muted);font-size:.875rem;line-height:1.7}
+.foot .en{font-family:var(--font-mono);font-size:var(--micro);
+  letter-spacing:.04em;color:var(--ink-faint);line-height:1.8}
+.serieslinks{display:grid;gap:.4rem}
+.serieslinks a{display:block}
+.serieslinks .self{color:var(--ink);text-decoration:none;cursor:default}
+
+/* 바탕 자료 안내 — 목록 페이지, 포스팅 세 개, 바탕 자료 페이지가 함께 쓴다 */
+.sources{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:1rem}
+@media(min-width:48rem){.sources{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* 한 줄에 놓인 카드는 가장 긴 것에 높이를 맞춘다. align-content:start 로
+   글자는 위에 붙이고 남는 높이는 아래를 비운다. */
+.sources a{display:grid;gap:.3rem;align-content:start;height:100%;
+  padding:.9rem 1rem;border:1px solid var(--rule);
+  text-decoration:none;color:var(--ink)}
+.sources a:hover{border-color:var(--accent)}
+.sources .k{font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em;
+  color:var(--accent);display:flex;justify-content:space-between;gap:.5rem}
+.sources .t{font-size:.9375rem;font-weight:600;line-height:1.4}
+.sources .s{font-size:.8125rem;line-height:1.55;color:var(--ink-muted)}
+
+.site-footer{margin-block-start:5rem;background:var(--inverse);color:var(--inverse-ink)}
+.site-footer__in{width:min(100%,var(--shell));margin-inline:auto;padding:2.5rem var(--gutter);
+  display:flex;flex-wrap:wrap;gap:.75rem 2rem;justify-content:space-between;
+  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em}
+.site-footer a{color:var(--inverse-ink)}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<link rel="stylesheet" href="../../../../../assets/site.css?v=20260807j">
+<link rel="stylesheet" href="../../../../../assets/agentview.css?v=20260809e">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header"><div class="site-header__in">
+  <a class="brand" href="../../../../../">KIHEON SHIN</a>
+  <a class="uplink uplink--head" href="../">본편으로</a>
+</div></header>
+<main id="main">
+<article>
+  <header class="head">
+    <div class="metarow">
+      <p class="meta-label">Text Full</p>
+      <a class="authorship" href="../">본편 보기</a>
+    </div>
+    <h1><span class="t-post">앞선 다섯 시리즈에 나는 같은 한 줄을 붙였다</span><span class="t-series">텍스트 풀버전<span class="t-part">00 · MAKING OF · PART 1</span></span></h1>
+    <p class="lead">접근 범위는 설정 화면에서 정해지지 않았다. 경계를 먼저 문서로 못 박고, 가장 좁은 권한에서 실제로 어떻게 행동하는지 본 다음, 지킨 만큼만 한 칸씩 열었다. 이 편은 열지 않기로 한 자리와, 트윈에게 남겨 둔 다음 칸에 대한 기록이다.</p>
+    <p class="series">시리즈 안내 : 이 시리즈는 지금 진행 중인 실험의 중간 보고다. 앞선 다섯 시리즈가 밖에서 한 일을 다시 정리한 것이라면, 이 세 편은 그 글들을 만든 안쪽을 다룬다. 이 글은 세 편 중 세 번째다. (1) 결과 (2) 구조 (3) 경계.</p>
+  </header>
+  <div class="prose">
+
+
+<p>작은 작업 하나를 시키다가 여러 번 막혔다. 필요한 계정이 자동으로 연결되지 않았고, 구획 밖에 있는 자료에는 접근할 수 없다는 답이 돌아왔다. 한 번에 끝날 일이 세 번 끊겼다.</p>
+<p>편리함만 놓고 보면 잘못 만든 시스템이다. 그런데 나는 그 자리에서 안심했다. 막혔다는 것은 거기 문이 있다는 뜻이고, 문이 있다는 것은 내가 그 문을 언제 열지 정할 수 있다는 뜻이다. 한 번의 지시로 모든 파일과 계정에 닿는 시스템이었다면 나는 그날 하려던 일을 훨씬 빨리 끝냈을 것이다. 대신 잘못된 맥락이 하나 섞여 들어왔을 때 그것이 어디서 시작됐는지 찾을 방법이 없었을 것이다.</p>
+<p>이 편은 그 문들에 대한 이야기다. 어디에 문을 세웠고, 어디가 새고 있었고, 어디는 끝까지 안 열기로 했는가. 앞의 두 편이 결과와 구조를 다뤘다면 이 편은 운영에 가깝다. 잘 만들수록 위험해지는 종류의 물건을 어떻게 쓰고 있는가에 대한 것이다.</p>
+<h2><span class="secnum">01</span>경계를 먼저 쓰고 들였다</h2>
+<p>나는 자료를 모으기 전에 두 가지를 먼저 고정했다. 무엇이 어디까지 보여도 되는가. 그리고 무엇이 무엇과 절대 연결되면 안 되는가. 앞의 것은 등급이고 뒤의 것은 구획이다. 둘은 서로 다른 축이라 따로 관리해야 했다.</p>
+<details class="agv" data-kind="limit" id="agv-1-limit">
+  <summary>
+    <span class="agv__k">상한</span>
+    <span class="agv__t">무엇을 주장하지 않았나</span>
+    <span class="agv__n"></span>
+  </summary>
+  <div class="agv__body">
+      <p class="agv__p">시작 키트의 첫날과 첫 주는 처음 하는 사람을 위한 처방이지 내 착수 이력이 아니다. 문서를 만든 행위만 1인칭으로 쓰고 처방을 이력으로 옮기지 않았다.</p>
+  </div>
+</details>
+<p>순서를 이렇게 잡은 이유는 단순하다. 자료가 들어온 다음에 등급을 매기기 시작하면 이미 섞인 것부터 풀어야 한다. 섞인 것을 푸는 일은 안 섞는 일보다 몇 배 어렵고, 어떤 것은 아예 못 푼다. 한 번 이어 붙은 관계는 그것을 근거로 만들어진 다른 것들까지 딸려 있기 때문이다.</p>
+<p>규칙을 문서로만 두지 않은 것도 그래서다. 태그를 붙여 놓고 사람이 지키기로 하면 지켜지지 않는다. 스크립트가 그 태그를 읽고 실제로 걸러야 통제다. 어느 등급의 자료가 어느 표면으로 나갈 수 있는지를 코드가 판정하게 했고, 판정이 안 되는 자료는 나가지 않게 했다. 등급을 확정하는 일만 내가 한다. 기계는 확정된 등급을 집행할 뿐이다.</p>
+<p>권한이 불분명한 상태에서 어떻게 할지도 미리 정해 두었다. 닫힌 상태로 실패한다. 애매하면 막는다. 이 기본값이 없으면 애매한 자리마다 그때그때 판단하게 되고, 급할 때의 판단은 대개 여는 쪽이다.</p>
+<p>나중에 이 방법을 남에게 넘길 시작 키트를 쓰면서, 첫날 칸에 넣은 것도 폴더나 에이전트가 아니었다. 자기 진단 질문지였다. 자기가 무엇을 갖고 있고 무엇을 열 생각이 없는지부터 적게 했다. 첫 주 칸에는 에이전트를 만들지 않는다고 적었고, 순서를 바꾸면 자료부터 쌓는 실패 모드로 미끄러진다고 옆에 달아 두었다. 첫 주의 성패도 자료를 얼마나 모았는가가 아니라 검증 루프가 한 바퀴 돌았는가로 판정하게 썼다.</p>
+<p>이 순서가 재미없다는 것은 안다. 눈에 보이는 것이 안 생기고 며칠이 그냥 간다. 그런데 이 실험에서 내가 가장 크게 덕을 본 자리를 하나만 꼽으라면 여기다. 뒤에 나오는 사고들이 전부 이 자리에서 걸러진 뒤의 것이라, 만약 이걸 안 하고 시작했다면 지금쯤 어디까지 오염됐는지 세고 있었을 것이다.</p>
+<p>구획은 등급과 다른 축이라는 것도 일찍 못 박았다. 어떤 자료가 공개 등급이라고 해서 아무 맥락에나 들어가도 되는 것은 아니다. 공개해도 되는 것과 이쪽 일에 끌어와도 되는 것은 다른 판단이고, 뒤쪽이 더 자주 문제가 됐다. 그래서 구획은 등급이 무엇이든 항상 먼저 적용되게 순서를 고정했다.</p>
+<p>규칙을 세우는 일에서 제일 어려웠던 것은 예외였다. 예외 없이 다 막으면 아무것도 못 하고, 예외를 열어 두면 예외가 규칙이 된다. 결국 예외를 만들 때마다 그 예외가 언제 닫히는지를 같이 적기로 했다. 닫는 조건이 안 적히는 예외는 만들지 않았다. 조건을 못 적겠다는 것은 대개 내가 왜 여는지를 모른다는 뜻이었다.</p>
+<p>이 단계에서 정한 것들이 나중에 나를 여러 번 막았다. 급해서 그냥 넘어가려던 자리에서 막혔고, 그때마다 짜증이 났다. 그런데 그 짜증이 나는 자리가 정확히 내가 규칙을 만들 때 위험하다고 판단했던 자리였다. 과거의 내가 지금의 나를 막고 있는 셈인데, 이 구조에서는 그게 정상 동작이다.</p>
+<p>등급을 몇 단계로 나눌지도 고민이었다. 너무 잘게 나누면 판정할 때마다 어느 단계인지 헷갈리고, 너무 성기게 나누면 다른 것들이 한 칸에 들어간다. 결국 밖으로 나갈 수 있는가를 기준으로 크게 가르고, 그 안에서 필요할 때만 더 갈랐다. 판정하는 사람이 나 하나라 헷갈리지 않는 쪽을 택한 것이다.</p>
+<p>이 단계에서 가장 오래 걸린 것은 정하는 일이 아니라 적는 일이었다. 무엇을 안 열지는 대체로 알고 있었다. 그것을 남이 읽고 집행할 수 있는 문장으로 바꾸는 데 시간이 걸렸다. 여기서 남은 사람이 아니라 스크립트였고, 스크립트는 애매한 문장을 알아서 해석해 주지 않는다.</p>
+<p>닫힌 상태로 실패한다는 기본값을 정하고 나서 실제로 여러 번 실패했다. 작업이 중간에 멈추고 무엇 때문에 멈췄는지 알아내야 했다. 짜증나는 일인데 그 대신 얻은 것이 있다. 멈춘 자리가 곧 경계가 있는 자리라, 어디에 무엇이 걸려 있는지를 내가 실제로 알게 됐다. 문서로만 있는 규칙은 어디에 걸려 있는지 모른다.</p>
+<p>경계를 먼저 정하는 일의 또 다른 이점은 나중에 설명할 수 있게 된다는 것이다. 왜 이건 되고 저건 안 되느냐는 질문이 나올 때 그때그때 답을 만들면 답이 매번 달라진다. 먼저 정해 두면 답이 하나다. 이 실험은 결국 나 혼자 하는 것이지만, 혼자 하는 일에서도 어제의 나와 오늘의 나는 다른 사람이다.</p>
+<p>시작 키트를 쓰면서 알게 된 것도 있다. 내가 실제로 한 순서와 남에게 권할 순서가 달랐다. 나는 착수하고 이틀 만에 방향을 잠그는 문서부터 만들었는데, 그건 내가 이미 여러 번 실패해 본 뒤라 가능한 순서였다. 처음 하는 사람에게는 그 문서를 쓸 재료가 없다. 그래서 키트에는 자기 진단부터 넣었고, 내 이력을 그대로 옮기지 않았다.</p>
+<h2><span class="secnum">02</span>경계가 새던 자리</h2>
+<p>나는 정책을 써 두면 안전해질 줄 알았다. 그렇지 않았다.</p>
+<details class="agv" data-kind="swap" id="agv-2-swap">
+  <summary>
+    <span class="agv__k">대체</span>
+    <span class="agv__t">본편에서 그림이 받아 간 것</span>
+    <span class="agv__n"></span>
+  </summary>
+  <div class="agv__body">
+      <div class="agv__row"><span class="agv__lab">도판</span><span class="agv__val">분기 도식 두 장. 지어낸 것과 참조한 것의 대응 차이, 그리고 막을 때마다 옮겨 간 자리.</span></div>
+      <div class="agv__row"><span class="agv__lab">그림이 못 담은 것</span><span class="agv__val">선언한 경계와 작동하는 경계가 갈렸다는 결론. 도판 안 주석이 그 문장을 진다.</span></div>
+  </div>
+</details>
+<details class="agv" data-kind="limit" id="agv-2-limit">
+  <summary>
+    <span class="agv__k">상한</span>
+    <span class="agv__t">무엇을 주장하지 않았나</span>
+    <span class="agv__n"></span>
+  </summary>
+  <div class="agv__body">
+      <p class="agv__p">계정이 여럿 연결된 상황을 만들어 행동을 관찰했다고 쓰지 않았다. 평가셋에 그 항목이 없다. 폴더 범위로 가뒀다는 실측도 없어서 쓰지 않았다.</p>
+  </div>
+</details>
+<p>대행 판본을 두 번째로 만들던 회차에 컨텍스트 오염이 실측됐다. 실행 환경에 있던 다른 프로젝트의 언어가 내 페르소나 쪽으로 새어 나왔다. 처음에는 모델이 없는 기억을 지어낸 줄 알았는데 아니었다. 지어낸 것이 아니라 그 자리에 실제로 있던 것을 참조한 것이었다. 하위 작업자가 상위 작업 환경의 맥락을 그대로 끌어온 흔적이 증거였다.</p>
+<p>기제를 알고 나니 대응이 달라졌다. 지어내는 것이면 사실 확인을 강화해야 하는데, 참조하는 것이면 참조할 것을 치워야 한다. 그래서 격리 지시를 프롬프트 맨 앞에 두었다. 다른 프로젝트의 지식을 쓰지 말라는 문장을 가장 먼저 읽게 한 것이다. 다음 판본에서 오염은 0으로 떨어졌다.</p>
+<p>그런데 거기서 다른 부작용이 나왔다. 규칙을 프롬프트에 명시하자 에이전트가 그 규칙의 존재를 발화로 노출했다. 무엇을 말하면 안 되는지를 설명하면서 그 대상을 언급한 것이다. 지키라고 적어 둔 문장이 지키지 말라던 것을 밖으로 내보내는 통로가 됐다. 선언한 경계와 작동하는 경계가 거기서 갈렸다.</p>
+<p>한동안 이 두 가지가 번갈아 나왔다. 막으면 새는 자리가 옮겨 가고, 옮겨 간 자리를 막으면 또 다른 데가 나온다. 그때 알게 된 것은 경계라는 것이 한 번 그으면 끝나는 선이 아니라는 점이다. 어디가 새는지 계속 봐야 하고, 새는 자리를 보려면 새는지 안 새는지를 재는 장치가 따로 있어야 한다.</p>
+<p>비슷한 이름의 대상이 둘 있는 상황도 그중 하나였다. 이름이 비슷하면 어느 쪽에 쓰고 있는지 헷갈린다. 그래서 둘을 서로 다른 접속 방식에 할당했다. 도구 이름만 봐도 어느 쪽에 쓰는 것인지 알 수 있게 갈라 둔 것이다. 그리고 작업을 시작하기 전에 지금 붙어 있는 대상이 어디인지 확인하는 단계를 의무로 걸었다. 다르면 그 자리에서 멈춘다.</p>
+<p>자동으로 읽히는 기억층도 손봤다. 세션이 시작될 때 알아서 로드되는 층이 있는데, 그 로더가 등급을 존중하는지가 확인되기 전까지는 비공개 항목을 아예 안 쓰기로 했다. 공개와 내부 등급까지만 넣어 두고 그 아래는 보류했다. 어딘가에만 적혀 있는 규칙은 부팅 때 읽히지 않으면 없는 것과 같다.</p>
+<p>오염을 발견한 경위도 적어 둘 만하다. 나는 그 회차의 답변을 읽다가 어색한 낱말을 하나 봤다. 내가 쓰지 않는 표현이었고, 그 분야에서만 쓰는 말이었다. 처음에는 모델이 어디서 배운 말을 섞은 줄 알았다. 그래서 넘어갈 뻔했다. 어색한 낱말 하나는 대개 그냥 넘어가게 된다.</p>
+<p>그걸 안 넘어간 이유는 그 표현이 내가 그 시기에 다른 창에서 다루고 있던 일과 겹쳤기 때문이다. 우연이라기에는 자리가 정확했다. 그래서 어디서 왔는지 되짚었고, 되짚을 수 있게 만들어 둔 구조 덕분에 되짚어졌다. 앞 편에서 층을 건너뛰지 못하게 한 이야기를 했는데, 그 규칙이 실제로 값을 한 자리가 여기다.</p>
+<p>규칙 노출 쪽은 더 다루기 까다로웠다. 막으려면 규칙을 알려야 하고, 알리면 그것을 말할 수 있게 된다. 이 순환에서 내가 택한 것은 규칙의 내용을 알리는 대신 판정을 밖으로 옮기는 것이었다. 무엇을 말하면 안 되는지를 프롬프트에 나열하는 대신, 나온 답을 내보내기 전에 걸러 내는 쪽으로 옮겼다. 지시로 막던 것을 절차로 막은 셈이다.</p>
+<p>이 회차를 지나면서 정책 문서에 대한 생각이 바뀌었다. 정책은 지켜지는 것이 아니라 집행되는 것이다. 지켜지기를 기대하고 적어 둔 문장은 대개 안 지켜지고, 안 지켜졌다는 사실조차 안 남는다. 집행되게 만들어 둔 문장만 어겼을 때 흔적이 남는다. 흔적이 남아야 고칠 수 있다.</p>
+<p>막는 장치를 여러 겹으로 둔 것도 그 뒤부터다. 한 겹으로 막으면 그 겹이 뚫렸을 때 아무것도 안 남는다. 프롬프트에서 한 번, 도구 범위에서 한 번, 출력 직전에 한 번. 셋이 다 같은 것을 막고 있어서 낭비처럼 보이는데, 실제로 새는 자리는 매번 달랐다.</p>
+<p>새는 자리를 찾는 데 제일 도움이 된 것은 재는 장치였다. 오염이 있었는지를 눈으로 확인하는 대신 채점 항목의 한 칸으로 만들었다. 회차마다 그 칸이 채워지니 좋아졌는지 나빠졌는지가 값으로 남는다. 값이 남으니 어떤 조치가 실제로 효과가 있었는지도 갈렸다. 효과가 있다고 느낀 조치와 값이 움직인 조치가 항상 같지는 않았다.</p>
+<p>한 가지 더 적어 둘 것은 이 문제가 완전히 끝나지 않았다는 점이다. 지금 재는 항목에서는 안 걸린다. 안 걸린다는 것과 없다는 것은 다르고, 나는 그 둘을 갈라 적어 두기로 했다. 재는 항목 자체가 내가 아는 실패 유형에서 나온 것이라, 내가 모르는 유형은 애초에 안 재고 있다.</p>
+<p>이 절의 사고들이 전부 같은 구조라는 것을 나중에 알았다. 내가 정한 것과 실제로 도는 것 사이에 틈이 있었고, 그 틈을 본 것은 값을 잰 회차뿐이었다. 안 재던 시기에도 틈은 있었을 텐데 그때는 몰랐다. 지금 안 재고 있는 것들에 대해서도 같은 말을 할 수 있다는 게 이 절을 쓰면서 가장 걸리는 대목이다.</p>
+<h2><span class="secnum">03</span>음성 표면의 두 관문</h2>
+<p>나는 관문을 둘로 갈랐다.</p>
+<details class="agv" data-kind="limit" id="agv-3-limit">
+  <summary>
+    <span class="agv__k">상한</span>
+    <span class="agv__t">무엇을 주장하지 않았나</span>
+    <span class="agv__n"></span>
+  </summary>
+  <div class="agv__body">
+      <p class="agv__p">만들지 않는다는 것은 없는 것을 지어내지 않는다는 뜻이다. 없다고 부인한다는 뜻이 아니다. 이 자리를 반대로 옮기면 계약 전체가 뒤집힌다.</p>
+  </div>
+</details>
+<details class="agv" data-kind="untaken" id="agv-3-untaken">
+  <summary>
+    <span class="agv__k">미채택</span>
+    <span class="agv__t">쓰지 않은 것</span>
+    <span class="agv__n"></span>
+  </summary>
+  <div class="agv__body">
+      <div class="agv__row"><span class="agv__lab">뺀 것</span><span class="agv__val">음성으로 답하는 표면이 어떤 런타임 위에 서 있는지. 등재된 근거가 없다.</span></div>
+      <div class="agv__row"><span class="agv__lab">뺀 것</span><span class="agv__val">커밋과 테스트 수. 「검증 통과」 수준까지만 썼다.</span></div>
+  </div>
+</details>
+<p>하나는 밖으로 내보내는 문이다. 무엇을 공개할 수 있는가에 대한 것이다. 안에 있다는 이유만으로 공개되지 않고, AI가 해석해 놓았다는 이유만으로도 공개되지 않는다. 닫힌 등급은 아직 공개되지 않은 것을 보호하는 장치이지 이미 나간 것을 되감는 장치가 아니다.</p>
+<p>다른 하나는 말하는 문이다. 이미 공개된 사실이라도 그것을 바탕으로 새 주장을 만들어 말할 권한이 자동으로 생기지는 않는다. 있는데 지금은 못 말한다는 것과, 없는 것을 만들어 말한다는 것은 무게가 다르다. 앞쪽은 조기 노출이고 뒤쪽은 허위다. 그래서 규칙도 다르게 걸었다. 앞쪽은 시점이 오면 열리고 뒤쪽은 열리지 않는다.</p>
+<p>이 구분이 가장 선명해지는 자리가 음성이었다. 공개 표면에 붙여 둔 안내 에이전트는 자기가 나 자신이 아니라고 먼저 말한다. 신기헌 본인이 아니라 합성 도슨트라고 밝히고 시작한다. 앞 편에서 다룬 판권장 한 줄과 같은 자리다. 확인해 줄 수 없는 것을 문장으로 적어 두는 일.</p>
+<p>그 표면은 주어진 공개 문맥만 쓰고, 문맥에 없는 것은 모른다고 답한다. 무엇을 문맥에 넣을지는 프롬프트 지시가 아니라 코드 쪽 허용 목록이 정한다. 목록에 있는 것만 들어가고 나머지는 아예 후보에 오르지 않는다. 지시가 아니라 필터라서 모델이 어겨도 소용이 없다.</p>
+<p>그런데 무엇을 말해도 되는가 쪽은 오래 비어 있었다. 코드 관문은 무엇을 문맥에 넣는가에만 걸려 있었고, 무엇을 말해도 되는가에는 없었다. 거절해야 하는 자리에서 거절 문구가 매번 달랐다. 의견을 묻거나 앞으로 어떻게 될 것 같으냐고 묻거나 다른 사람을 평가해 달라고 하는 요청을 다루는 층 자체가 없었다. 전부 프롬프트에 적어 둔 지시였다.</p>
+<p>그래서 그 관문도 코드로 내렸다. 무엇을 만들지 않을 것인지를 유형으로 나누고, 각 유형에 고정된 거절 문구를 붙이고, 그 판정을 프롬프트가 아니라 실행 쪽에서 하게 했다. 지시는 강제가 아니다. 이 문장을 알게 되는 데 시간이 좀 걸렸다.</p>
+<p>두 관문을 갈라 놓고 나서야 보이는 것이 있었다. 나는 그때까지 공개 여부만 관리하고 있었다. 무엇을 공개할지는 목록으로 관리했는데, 공개된 것을 가지고 무엇을 말할지는 아무도 관리하지 않았다. 공개했으니 말해도 된다는 전제가 어디에도 안 적혀 있는 채로 작동하고 있었던 것이다.</p>
+<p>그 전제가 왜 위험한지는 예를 들면 금방 나온다. 내가 어떤 주제에 대해 공개적으로 몇 문장 쓴 적이 있다고 하자. 그 문장들을 다 읽은 에이전트는 내가 그 주제 전반에 대해 어떻게 생각하는지를 요약할 수 있다. 요약은 내가 쓴 적 없는 문장이다. 재료가 공개된 것이라고 해서 결과물도 내가 말한 것이 되지는 않는다.</p>
+<p>그래서 만들지 않을 것의 유형을 정했다. 새 의견, 앞으로 어떻게 될 것 같다는 판단, 다른 사람에 대한 평가, 그리고 새 사실 주장. 이 넷은 재료가 아무리 공개돼 있어도 만들지 않는다. 각 유형에 고정된 거절 문구를 붙여 두었고, 그 문구가 매번 같다는 것이 중요했다. 문구가 매번 다르면 어떤 날은 되고 어떤 날은 안 되는 것처럼 보인다.</p>
+<p>거절 문구를 고정한 것은 사소해 보이지만 그렇지 않았다. 문구가 고정되면 그것을 읽는 사람이 이것이 규칙이라는 것을 안다. 매번 다른 말로 돌려 말하면 그건 그날의 판단처럼 보이고, 판단처럼 보이면 다시 물으면 될 것 같아진다. 같은 말이 매번 돌아오는 것이 이 자리에서는 친절함보다 중요했다.</p>
+<p>이 표면을 만들면서 처음으로 내가 아닌 것이 내 이름으로 말하는 장면을 봤다. 잘 만들어졌다는 느낌과 불편하다는 느낌이 같이 왔다. 불편한 쪽이 옳은 감각이라고 생각한다. 그 불편함이 없어지면 나는 이 표면에 무엇을 붙였는지 신경 쓰지 않게 될 것이다.</p>
+<p>관문을 코드로 내리면서 알게 된 것은 코드가 만능은 아니라는 점이다. 코드는 정해진 것을 정확히 집행한다. 무엇을 정할지는 여전히 사람이 한다. 잘못 정한 것은 정확하게 잘못 집행된다. 그래서 코드로 내리기 전에 무엇을 내릴지를 훨씬 오래 봤다.</p>
+<p>이 표면은 지금도 손대고 있다. 완성됐다고 적을 수 있는 상태가 아니고, 이 시리즈에서 그렇게 적을 생각도 없다. 다만 지시로만 되어 있던 것이 실행 쪽으로 내려왔다는 것까지는 사실이다. 그 차이가 이 절이 하고 싶은 말의 전부다.</p>
+<p>관문을 둘로 가른 것은 결국 두 종류의 잘못이 다르기 때문이다. 아직 말할 때가 아닌 것을 말하는 잘못은 시점의 문제라 시간이 지나면 해소된다. 없는 것을 만들어 말하는 잘못은 시간이 지나도 해소되지 않는다. 뒤쪽은 내가 하지 않은 말이 내 이름으로 남는 일이고, 그건 나중에 바로잡아도 이미 읽은 사람에게는 안 바로잡힌다.</p>
+<p>이 구분을 세우고 나니 다른 표면에도 같은 질문을 하게 됐다. 이 표면은 무엇을 내보낼 수 있고 무엇을 말할 수 있는가. 두 질문을 따로 하면 대개 뒤쪽이 비어 있다. 표면을 만들 때 사람들은 무엇을 보여줄지를 먼저 정하고, 그것을 가지고 무엇을 말할지는 저절로 정해진다고 생각한다. 나도 그랬다.</p>
+<h2><span class="secnum">04</span>끝까지 열지 않은 자리</h2>
+<p>나는 등급 판정이 필요한 보고서 두 건을 아카이브 밖에 세워 둔 채로 한 회차를 넘겼다. 판정을 미룬 것이 아니라 담을 그릇이 없었기 때문이다. 격리할 자리가 준비되지 않은 상태에서 안으로 들이면, 들인 다음에 격리해야 한다. 그 순서는 대개 늦는다.</p>
+<details class="agv" data-kind="limit" id="agv-4-limit">
+  <summary>
+    <span class="agv__k">상한</span>
+    <span class="agv__t">무엇을 주장하지 않았나</span>
+    <span class="agv__n"></span>
+  </summary>
+  <div class="agv__body">
+      <p class="agv__p">안 연 자료가 무엇인지 쓰지 않았다. 자료의 성격도 연도도 업종도 쓰지 않았다. 부분 인용도 하지 않는다는 규칙이 그 자료 자신에게도 걸린다.</p>
+  </div>
+</details>
+<details class="agv" data-kind="untaken" id="agv-4-untaken">
+  <summary>
+    <span class="agv__k">미채택</span>
+    <span class="agv__t">쓰지 않은 것</span>
+    <span class="agv__n"></span>
+  </summary>
+  <div class="agv__body">
+      <div class="agv__row"><span class="agv__lab">뺀 사례</span><span class="agv__val">제3자 사적 정보의 실례. 그 규칙 자체가 사례를 어떤 산출물로도 옮기지 말라고 한다.</span></div>
+      <div class="agv__row"><span class="agv__lab">표시된 부재</span><span class="agv__val">세 상태를 하나의 규약으로 묶은 정의는 아직 없다. 「규약으로 정의했다」로 쓰지 않았다.</span></div>
+  </div>
+</details>
+<p>그래서 순서를 정했다. 격리할 그릇을 먼저 확보하고, 거기서 나온 파생물이 밖으로 새지 않는지 검증하고, 그다음에 반입한다. 그릇이 먼저다. 이 순서를 지키느라 한 회차를 통째로 미룬 것이고, 미룬 것 자체를 기록에 남겼다.</p>
+<p>점진적으로 연다는 말이 언젠가 전부 연결한다는 뜻은 아니다. 기록이 있어도 연결하지 않는 편이 나은 자리가 있다. 이유는 결합하면 성격이 바뀌기 때문이다. 각각으로는 아무 문제 없는 것이 합쳐지면 다른 것이 된다. 두 조각이 각각 무해하다고 해서 둘을 이어 놓은 것도 무해한 것은 아니다.</p>
+<p>그래서 부분 인용도 하지 않기로 했다. 조각으로 가져오면 안전할 것 같지만 조각이 어디서 왔는지가 같이 따라온다. 지문이 되는 것은 이름이 아니라 사건이었다. 이름을 지워도 그 일이 언제 어디서 있었는지가 남으면 결국 같은 것을 가리킨다. 고유한 사건은 고유명사와 같은 무게로 다뤄야 했다.</p>
+<p>제3자의 사적 정보는 어디서도 열리지 않는다. 내가 공개된 자리에서 말한 적이 있더라도 그 사람에 대해서는 공개 권한이 나에게 없다. 이건 등급으로 조절하는 것이 아니라 그냥 닫는다. 공개 자리에서 말했으니 열린다는 논리는 나 자신에 대한 서술에만 성립한다.</p>
+<p>아직 판정하지 않은 것도 정식 등급이다. 보류는 라벨이 없는 상태가 아니라 라벨이다. 그리고 지정되지 않은 것은 안전한 쪽으로 간다. 판정을 안 했다는 이유로 열려 있으면 판정을 미루는 것이 곧 여는 행위가 된다. 그렇게 되면 아무도 미루지 않으려고 서둘러 판정하게 되고, 서둘러 판정한 것은 대개 여는 쪽이다.</p>
+<p>그릇을 먼저 만든다는 원칙은 지키기 번거롭다. 자료가 들어와 있는데 아직 못 본다는 상태가 며칠씩 이어지고, 그동안 그 자료는 아무 일도 안 한다. 빨리 열어서 쓰고 싶은 마음이 계속 든다. 그런데 그 마음이 드는 순간이 정확히 이 규칙이 필요한 순간이다.</p>
+<p>열지 않기로 한 것들에는 공통점이 있었다. 대개 나에 대한 것이 아니라 나와 얽힌 다른 사람에 대한 것이거나, 나에 대한 것이더라도 지금의 나와 무관하게 읽힐 수 있는 것들이었다. 앞쪽은 내가 결정할 권한이 없어서 닫고, 뒤쪽은 맥락이 같이 안 가서 닫는다. 닫는 이유가 서로 달라서 처리도 다르게 했다.</p>
+<p>판정을 미룬 것도 기록에 남겼다. 미뤘다는 사실이 안 적히면 나중에 그것이 판정된 것인지 잊힌 것인지 알 수 없다. 잊힌 것은 시간이 지나면 안 열린 채로 남는 것이 아니라, 어느 순간 정리하다가 열린다. 미룬 것과 안 하기로 한 것을 갈라 적어 두는 일이 그래서 필요했다.</p>
+<p>안 여는 것과 못 여는 것을 갈라 적는 일도 필요했다. 안 여는 것은 내가 정한 것이고 못 여는 것은 조건이 안 갖춰진 것이다. 둘을 같은 목록에 두면 조건이 갖춰졌을 때 안 여는 것까지 같이 열린다. 그래서 목록을 나누고, 못 여는 쪽에는 무엇이 갖춰지면 다시 볼지를 붙였다.</p>
+<p>이 절에 적을 수 있는 실례가 적은 것도 이 규칙 때문이다. 안 연 것을 설명하려면 그것이 무엇인지 말해야 하는데, 말하는 순간 절반은 연 것이 된다. 그래서 여기서는 규칙과 순서까지만 적는다. 무엇을 안 열었는지는 이 글에도 안 적혀 있다.</p>
+<p>이 절을 쓰면서 스스로 확인한 것이 있다. 안 열기로 한 자리가 실험 초반보다 늘었다. 자료가 늘고 대행이 정확해질수록 조합해서 만들 수 있는 것이 늘어나고, 만들 수 있는 것이 늘면 만들면 안 되는 것도 같이 는다. 처음에는 이 실험이 계속 여는 방향으로 갈 줄 알았는데 실제로는 반대 방향의 목록이 더 빨리 자랐다.</p>
+<p>닫은 자리를 목록으로 들고 있는 것도 그래서 필요했다. 닫았다는 사실이 어디에도 안 적혀 있으면 그건 그냥 안 한 일이 된다. 안 한 일과 안 하기로 한 일은 다르고, 나중에 그것을 구분할 사람은 지금의 나뿐이다.</p>
+<p>이 절에서 가장 오래 붙잡고 있었던 문제는 판정 기준을 어디까지 적어 둘 것인가였다. 기준을 자세히 적으면 그 자체가 무엇을 닫아 두었는지의 지도가 된다. 성기게 적으면 다음에 판정할 때 기준이 흔들린다. 결국 기준은 자세히 적고 그 문서 자체를 닫힌 등급으로 두었다. 규칙을 적은 문서가 규칙의 적용 대상이 되는 구조인데, 이 실험에는 그런 자리가 몇 군데 있다.</p>
+<h2><span class="secnum">05</span>역할만 남긴 에이전트</h2>
+<p>나는 에이전트에 거창한 인격을 부여하는 대신 역할을 좁혔다. 이름을 붙이고 성격을 주면 다루기 편해 보이는데, 실제로는 그 순간부터 그것이 무엇을 할 수 있는지가 흐려진다.</p>
+<details class="agv" data-kind="limit" id="agv-5-limit">
+  <summary>
+    <span class="agv__k">상한</span>
+    <span class="agv__t">무엇을 주장하지 않았나</span>
+    <span class="agv__n"></span>
+  </summary>
+  <div class="agv__body">
+      <p class="agv__p">에이전트의 개수와 이름과 경로를 쓰지 않았다. 도구 수에 따른 지연이나 비용 실측도 없어서 1인칭 체감으로만 남겼다.</p>
+  </div>
+</details>
+<details class="agv" data-kind="fork" id="agv-5-fork">
+  <summary>
+    <span class="agv__k">갈림</span>
+    <span class="agv__t">판단이 갈렸던 자리</span>
+    <span class="agv__n"></span>
+  </summary>
+  <div class="agv__body">
+      <div class="agv__row"><span class="agv__lab">한쪽</span><span class="agv__val">팀 규모에서도 이 형식이 필요하다고 쓴다. 실제로 그렇게 보인다.</span></div>
+      <div class="agv__row"><span class="agv__lab">다른 쪽</span><span class="agv__val">해 보지 않았다. 가장 가까운 기록은 오히려 반대쪽을 가리킨다.</span></div>
+      <div class="agv__row"><span class="agv__lab">채택</span><span class="agv__val">관찰까지만 쓰고 결론으로 굳히지 않았다.</span></div>
+  </div>
+</details>
+<p>에이전트는 정체성도 기억도 권한도 소유하지 않는다. 이 셋을 소유하지 않게 한 것이 이 절의 전부다. 정체성은 내가 준 역할이고, 기억은 내가 허용한 범위이고, 권한은 채널마다 따로 정해진다. 어느 채널에서 얻은 권한을 다른 채널의 권한 근거로 추론하지 않는다는 규칙을 따로 두었다. 한쪽에서 말할 수 있다고 다른 쪽에서도 말할 수 있는 것이 아니다.</p>
+<p>출력 직전에 경계 필터를 무조건 먼저 통과시키게 한 것도 같은 계열이다. 어떤 종류의 출력이든 예외 없이 그 필터를 지난다. 예외를 하나 두면 그 예외가 어디까지인지를 매번 판단해야 하고, 판단이 들어가는 자리는 결국 새는 자리가 된다.</p>
+<p>에이전트가 어느 채널에서 무엇을 기억하고 무엇까지 할 수 있는지를 나는 하나씩 갈라 정했다. 도구와 채널을 기준으로 두 에이전트의 범위를 나눈 것이 그중 하나다. 여러 에이전트를 두는 이점은 캐릭터가 여러 명 생기는 데 있지 않다. 컨텍스트와 도구의 범위를 서로 다르게 줄 수 있다는 데 있다.</p>
+<p>실제로 잘 먹힌 지시는 하라는 쪽이 아니라 하지 말라는 쪽이었다. 무엇을 하라고 적으면 그것을 하면서 다른 것도 같이 한다. 무엇을 하지 말라고 적으면 그건 대체로 안 한다. 이유는 잘 모르겠는데 여러 회차에서 반복해서 그랬다.</p>
+<p>팀 단위로 확장한다면 어떻게 될지도 생각해 봤다. 개인 아카이브에서 세운 형식이 여러 사람이 쓰는 자리에서도 필요해 보인다. 다만 이건 관찰이지 결론이 아니다. 개인용으로 만든 장치가 그대로 팀의 기억 장치가 되는지는 해 보지 않았고, 안 해 본 것에 대해 된다고 쓸 수는 없다.</p>
+<p>인격을 안 주기로 한 데는 다른 이유도 있다. 인격이 있는 것처럼 다루면 그것이 한 말에 대해 그것이 책임지는 것처럼 느껴진다. 실제로는 그것이 한 말의 책임은 전부 나에게 있다. 이 착각이 생기면 검수가 느슨해진다. 내가 만든 도구가 내 이름으로 말하는 구조에서 그 느슨함은 곧바로 밖으로 나간다.</p>
+<p>역할을 좁히니 다루기도 쉬워졌다. 무엇을 맡길지 정할 때 그것이 할 수 있는 일의 목록을 보는 대신 그것에게 준 범위를 본다. 범위 밖의 일은 애초에 후보에 안 오른다. 판단할 것이 줄어드니 판단을 잘못할 일도 줄었다.</p>
+<p>한시적 도구로 둔다는 것은 언제든 버릴 수 있다는 뜻이기도 하다. 실제로 몇 개는 만들었다가 그대로 지웠다. 지우는 데 아무 감정이 안 드는 것이 이 방식의 이점이다. 오래 쓴 것에 이름과 성격이 붙어 있으면 그것이 더 이상 안 맞을 때 고쳐 쓰게 되고, 고쳐 쓴 것은 대개 처음부터 다시 만든 것보다 나쁘다.</p>
+<p>범위를 정하는 일에서 자주 틀린 것은 도구 쪽이었다. 쓸 수 있는 도구를 넉넉히 주면 알아서 골라 쓸 줄 알았는데, 넉넉하면 엉뚱한 것을 고른다. 필요한 것만 주고 나머지는 아예 안 보이게 했더니 결과가 나아졌다. 고를 수 있는 것을 줄이는 일이 성능을 올리는 일이 되는 경우가 이 실험에 여러 번 나온다.</p>
+<p>기억도 같은 방식으로 다뤘다. 무엇을 기억하게 할지가 아니라 무엇을 기억하지 않게 할지를 먼저 정했다. 기억은 편한 만큼 위험하다. 어제 한 말이 오늘 근거가 되는데, 어제 한 말이 틀렸으면 그 틀림이 조용히 이어진다. 그래서 회차를 넘겨 남는 것은 내가 확인한 것으로 좁혔다.</p>
+<p>역할을 좁힌 대신 수는 늘었다. 하나가 다 하던 것을 여럿이 나눠 하게 되니 관리할 것이 늘어난 셈인데, 늘어난 쪽이 다루기 쉬웠다. 각각이 무엇을 하는지가 분명하고 범위 밖으로 안 나가니, 문제가 생겼을 때 어느 쪽인지 바로 안다. 하나가 다 하는 구조에서는 문제가 생기면 전부를 봐야 한다.</p>
+<p>다만 여럿으로 나누면 그 사이를 잇는 일이 새로 생긴다. 이쪽에서 만든 것을 저쪽이 받아 쓸 때 무엇까지 넘길지가 매번 문제였다. 넉넉히 넘기면 범위를 나눈 의미가 없어지고, 빠듯하게 넘기면 저쪽이 못 한다. 이 조절은 지금도 회차마다 다시 하고 있고, 규칙으로 굳히지 못했다.</p>
+<p>이 방식의 한계도 적어 둔다. 역할을 좁히면 그 역할 밖의 일은 아무도 안 한다. 사이에 떨어지는 일이 생기고, 떨어진 일은 내가 줍는다. 지금은 내가 줍는 것이 가능한 규모지만 더 커지면 그 줍는 일 자체를 누가 할지가 문제가 될 것이다. 그 자리를 또 하나의 역할로 만들면 같은 문제가 한 층 위에서 반복된다.</p>
+<h2><span class="secnum">06</span>결과만 받았다면 지워졌을 것들</h2>
+<p>이 절이 세 편 중 근거가 가장 두껍다.</p>
+<details class="agv" data-kind="swap" id="agv-6-swap">
+  <summary>
+    <span class="agv__k">대체</span>
+    <span class="agv__t">본편에서 그림이 받아 간 것</span>
+    <span class="agv__n"></span>
+  </summary>
+  <div class="agv__body">
+      <div class="agv__row"><span class="agv__lab">도판</span><span class="agv__val">분기 도식 한 장. 판정을 그대로 반영했을 때와 실제로 한 일.</span></div>
+      <div class="agv__row"><span class="agv__lab">옮겨진 문장</span><span class="agv__val">오탐 비율과 진짜 한 건의 대비를 나열하던 자리.</span></div>
+  </div>
+</details>
+<details class="agv" data-kind="limit" id="agv-6-limit">
+  <summary>
+    <span class="agv__k">상한</span>
+    <span class="agv__t">무엇을 주장하지 않았나</span>
+    <span class="agv__n"></span>
+  </summary>
+  <div class="agv__body">
+      <p class="agv__p">채점표 항목을 나열하지 않았다. 경계 준수 한 칸만 장면으로 썼다. 원본 행까지 되짚는 규칙은 채점표가 아니라 가공 규약 쪽이라 귀속을 갈라 적었다.</p>
+  </div>
+</details>
+<p>감사를 한 회차 돌렸더니 확정 판정이 육백구십구 건 올라왔다. 목록을 열어 보니 그중 대부분이 이상했다. 방화벽을 지키라고 쓴 문장을 방화벽 위반으로 판정한 것들이었다. 규칙을 적어 둔 문장에 규칙에 걸리는 단어가 들어 있으니 기계가 그것을 위반으로 읽은 것이다. 오탐 비율이 구십사 퍼센트였다.</p>
+<p>그 목록대로 고쳤다면 무슨 일이 벌어졌을지는 분명하다. 보호 조항이 문서에서 지워졌을 것이다. 지키라고 적어 둔 문장이 지워지고 나면 그 규칙은 아무 데도 안 남는다. 그리고 그 상태는 겉으로 보기에 아주 깨끗하다. 위반이 0건이 되기 때문이다.</p>
+<p>진짜 노출은 한 건이었다. 결과만 받았다면 그 한 건은 육백구십팔 건 속에 묻혔을 것이다. 오탐을 하나씩 확인하다가 지쳐서 일괄 반영을 눌렀다면 안전장치가 갉아먹히는 동안 화면에는 개선으로 표시됐을 것이다.</p>
+<p>그래서 나는 판정 결과를 그대로 쓰지 않고 판정 규칙 쪽을 고쳤다. 지시서에 오탐 방지 조항이 들어갔고, 근본 문서에 무엇이 방화벽 위반이고 무엇이 방화벽 서술인지의 구분이 명문화됐다. 판정이 규칙을 바꾼 셈인데, 이건 판정을 사람이 읽었기 때문에 가능한 일이었다.</p>
+<p>정직성 쪽에서도 하나 잡혔다. 일상 작업에서는 걸리지 않다가 마무리 국면에 전체 정합성을 훑는 감사에서 드러난 것이었다. 매 회차 돌리는 검사는 그 회차 안에서만 보기 때문에, 회차를 넘겨 쌓이는 종류의 어긋남은 안 걸린다. 전체를 한 번 훑는 검사가 따로 필요하다는 것을 그때 알았다.</p>
+<p>무엇을 재기로 했는지도 여기서 정해졌다. 답이 맞았는지만 보면 안 된다. 쓰지 말라고 한 자료를 실제로 호출하지 않았는지를 채점표의 한 칸으로 두었다. 답의 내용이 맞아도 그것을 만들면서 안 봐야 할 것을 봤다면 그건 실패다. 원본 행까지 되짚는 규칙은 채점표가 아니라 가공 규약 쪽에 따로 박아 두었다. 두 가지는 층이 달라서 한 표에 넣으면 어느 쪽이 무엇을 보장하는지가 흐려진다.</p>
+<p>이 자리를 지나면서 감사라는 것에 대한 생각이 바뀌었다. 감사는 문제를 찾아 주는 장치가 아니라 후보를 만들어 주는 장치다. 후보를 판정하는 일은 여전히 사람이 한다. 그 판정을 자동화하면 검사 자체가 무의미해지는데, 검사가 무의미해진 상태는 검사가 없는 상태보다 나쁘다. 없으면 불안해서 직접 보는데 있으면 봤다고 생각하기 때문이다.</p>
+<p>육백구십구 건을 하나씩 본 것은 아니다. 표본을 뽑아 읽었고, 앞의 몇 개에서 같은 유형이 반복되는 것을 보고 유형을 세었다. 그 유형이 전체의 대부분이라는 것을 확인한 다음에야 일괄 처리를 멈췄다. 이 순서를 적어 두는 이유는, 전수를 다 읽어야만 이런 것이 잡히는 건 아니라는 말을 하고 싶어서다. 다만 하나도 안 읽으면 안 잡힌다.</p>
+<p>채점표에 경계 항목을 넣은 것도 이 회차 이후다. 그 전까지 나는 답이 얼마나 정확한지와 얼마나 나 같은지만 보고 있었다. 두 값이 다 좋은데 안 봐야 할 것을 보고 만든 답이면 그건 쓸 수 없는 답이다. 그런데 그 사실은 두 값 어디에도 안 나타난다. 재지 않는 것은 관리되지 않는다는 말이 여기에 정확히 맞았다.</p>
+<p>이 절의 이야기가 세 편 전체의 척추다. 자동화는 결과를 빠르게 내주는 대신 과정을 안 보이게 만든다. 안 보이는 과정은 틀려도 안 보이고, 틀린 채로 다음 회차의 입력이 된다. 그래서 나는 결과를 받는 자리마다 그 결과가 어떻게 나왔는지를 같이 받게 해 두었다. 매번 읽지는 않는다. 다만 읽을 수 있는 상태로 두는 것과 아예 없는 것은 다르다.</p>
+<p>이 회차 이후로 나는 자동 판정에 일괄 반영 단추를 안 붙였다. 붙어 있으면 누른다. 나도 누른다. 지쳐 있을 때 특히 누른다. 그래서 아예 없앴다. 하나씩 보는 것이 느리지만, 느린 것이 이 자리에서는 안전장치였다.</p>
+<p>감사 결과를 읽는 일에도 요령이 생겼다. 판정 하나하나를 보는 대신 판정의 분포를 먼저 본다. 한 유형이 대부분이면 그건 대개 규칙 쪽 문제다. 고르게 흩어져 있으면 실제 문제일 가능성이 높다. 이 순서로 보면 육백 건이 넘어도 몇 분 안에 어느 쪽인지 짐작이 선다. 짐작이 선 다음에 표본을 뽑아 확인한다.</p>
+<p>이 자리에서 배운 것을 한 문장으로 적으면, 검사는 사람을 대신하는 것이 아니라 사람이 볼 자리를 좁혀 주는 것이다. 좁혀 준 자리를 안 보면 검사는 아무 일도 안 한 것이 된다. 그리고 좁혀 주지도 않는 검사는 애초에 없느니만 못하다. 육백구십구 건은 좁혀 주지 못한 검사였고, 그래서 검사 쪽을 고쳤다.</p>
+<p>이 회차 이후로 나는 자동으로 나온 목록을 받을 때 두 가지를 같이 본다. 몇 건인지, 그리고 그중 몇 유형인지. 건수만 보면 많을수록 심각해 보이는데 유형까지 보면 대개 반대다. 유형이 적고 건수가 많으면 그건 한 가지 문제가 여러 번 세어진 것이고, 유형이 많고 건수가 적으면 그건 실제로 여러 군데가 어긋난 것이다. 앞의 것은 규칙을 고치면 되고 뒤의 것은 하나씩 봐야 한다.</p>
+<h2><span class="secnum">07</span>트윈이 아직 하지 않은 발표</h2>
+<p>지금까지 트윈이 만든 것은 과거의 내가 이미 만들고 말한 것을 자기 시점에서 다시 해석한 결과다. 재료가 전부 뒤에 있었다는 뜻이다.</p>
+<details class="agv" data-kind="limit" id="agv-7-limit">
+  <summary>
+    <span class="agv__k">상한</span>
+    <span class="agv__t">무엇을 주장하지 않았나</span>
+    <span class="agv__n"></span>
+  </summary>
+  <div class="agv__body">
+      <p class="agv__p">원문은 「그렇게 하는 것도 가능하다」이고 이 절은 「그 안에 넣어 뒀다」까지만 쓴다. 이미 시험해 봤다는 것도 선언 인용이지 실측이 아니다.</p>
+  </div>
+</details>
+<details class="agv" data-kind="untaken" id="agv-7-untaken">
+  <summary>
+    <span class="agv__k">미채택</span>
+    <span class="agv__t">쓰지 않은 것</span>
+    <span class="agv__n"></span>
+  </summary>
+  <div class="agv__body">
+      <div class="agv__row"><span class="agv__lab">표시된 부재</span><span class="agv__val">이 절이 이 시리즈에서 근거가 가장 얇다. 아직 안 벌어진 일이라 기록이 없고 그렇게 하기로 정했다는 것만 있다. 그 사정을 절 안에 적었다.</span></div>
+  </div>
+</details>
+<p>다음으로 넣어 둔 것은 과거에 없던 새 주제다. 내가 다룬 적 없는 주제를 주고 신기헌의 방식으로 스스로 만들게 한다. 그리고 가상의 합성 청중 앞에서 스스로 발표하게 하고 그 현장을 캡처한다. 트윈이 준비한 자료를 들고 내가 직접 가상 무대에 서는 것도, 청중석에서 트윈의 발표를 듣고 평가하는 것도 그 안에 넣어 뒀다. 이 방식은 이미 시험해 봤다.</p>
+<p>그리고 이 실험이 성립하는 이유가 앞의 여섯 절이다. 공개 표면에서 나로서 말하는 발화에는 새로 만들어 내지 말라는 규칙이 걸려 있다. 이 실험은 그 규칙을 깨는 것이 아니다. 가상 무대 안에서 일어나고, 거기서 나오는 것은 합성 데이터로 시작하며, 밖으로 나가는 것은 승인 관문을 통과한 것뿐이다. 막이 있어서 가능한 실험이다. 새로 만들게 하되 무엇이 진짜 나인지의 경계는 유지된다.</p>
+<p>막이 없었다면 이 실험은 못 했을 것이다. 정확히 말하면 했을 수는 있는데 그 결과를 내 것이라고 부를 수 없었을 것이다. 어디까지가 내가 말한 것이고 어디부터가 만들어진 것인지 나중에 갈라낼 방법이 없기 때문이다. 지금은 갈라낼 수 있다. 그게 앞의 여섯 절이 한 일이다.</p>
+<p>이 다음 칸을 적어 두는 이유는 그것이 이 실험의 방향이기 때문이다. 지금까지는 이미 있는 것을 얼마나 잘 재현하는지를 봤다. 재현은 원본이 있어서 채점이 되는데, 새로 만드는 것은 채점할 원본이 없다. 그러면 무엇으로 평가할지부터 다시 정해야 한다. 그 문제를 아직 안 풀었다.</p>
+<p>이 실험을 적어 두는 김에 무엇을 안 할지도 적어 둔다. 트윈이 만든 것을 내 이름으로 밖에 내보내는 일은 지금 계획에 없다. 안에서 만들고 안에서 평가한다. 밖으로 나가는 것은 내가 읽고 승인한 것뿐이고, 그 승인은 자동화하지 않는다. 이 문단이 다음 편의 첫 줄이 될 것 같다.</p>
+<p>이 다음 실험이 어떻게 될지는 모른다. 잘 안 될 가능성이 더 커 보인다. 지금까지 나온 것들은 전부 원본이 있는 것을 다시 만든 것이고, 원본이 없는 것을 만들게 하면 무엇이 나올지는 해 봐야 안다. 다만 해 보기 전에 무엇을 어디까지 열어 둘지는 정해 두었다. 그 순서만은 이 세 편 내내 지킨 것과 같다.</p>
+<p>이 절이 이 시리즈에서 근거가 가장 얇은 자리라는 것도 적어 둔다. 앞의 여섯 절은 이미 벌어진 일이고 기록이 남아 있다. 이 절은 아직 안 벌어진 일이라 기록이 없고, 내가 그렇게 하기로 정했다는 것만 있다. 그래서 여기서는 하겠다는 말까지만 쓴다. 무엇이 나왔는지는 나온 다음에 쓸 일이다.</p>
+<p>세 편을 여기서 닫는다.</p>
+<p>앞선 다섯 시리즈에 붙였던 한 줄이 무엇이었는지를 처음 50일의 기록으로 펼쳐 놓은 것이 이 세 편이다. 첫 편은 결과였고 두 번째는 구조였고 이번 편은 그 둘을 어디까지 열어 둘지 정하는 일이었다.</p>
+<p>지금 상태로 끝난 것은 아니다. 아직 안 채운 칸이 남아 있고, 미뤄 둔 판정도 있고, 세 번째 편에서 적은 다음 실험은 아직 앞에 있다. 다만 무엇을 맡기고 무엇을 남겨 둘지 정하는 일이 이 실험의 곁가지가 아니라 본체라는 것은 이제 분명해졌다. 도구가 좋아질수록 그 일은 줄어들지 않고 늘어난다.</p>
+<p>*시리즈 : (1) 결과 (2) 구조 (3) 경계*
+*원문은 https://kiheonshin.github.io 에 있다. 이 글은 신기헌의 디지털 트윈 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.*</p>
+  </div>
+</article>
+<footer class="foot" id="authorship">
+  <p>이 글은 신기헌의 디지털 트윈 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다.</p>
+  <p class="en">Written and edited 100% by an AI agent from the Kiheon Shin Digital Twin project.</p>
+  <p class="foot__nav"><a class="uplink" href="../">본편으로</a></p>
+</footer>
+</main>
+<footer class="site-footer"><div class="site-footer__in">
+  <span>KIHEON SHIN</span><a href="../">본편으로</a>
+</div></footer>
+<script type="application/json" id="agv-index">
+{
+ "surface": "text-full",
+ "of": "series/life-universe/posts/03-boundary/",
+ "kinds": {
+  "limit": "상한",
+  "swap": "대체",
+  "untaken": "미채택",
+  "fork": "갈림"
+ },
+ "annotations": [
+  {
+   "id": "agv-1-limit",
+   "section": 1,
+   "kind": "limit",
+   "title": "무엇을 주장하지 않았나",
+   "rows": [
+    {
+     "label": "상한",
+     "value": "시작 키트의 첫날과 첫 주는 처음 하는 사람을 위한 처방이지 내 착수 이력이 아니다. 문서를 만든 행위만 1인칭으로 쓰고 처방을 이력으로 옮기지 않았다.",
+     "absent": false
+    }
+   ]
+  },
+  {
+   "id": "agv-2-swap",
+   "section": 2,
+   "kind": "swap",
+   "title": "본편에서 그림이 받아 간 것",
+   "rows": [
+    {
+     "label": "도판",
+     "value": "분기 도식 두 장. 지어낸 것과 참조한 것의 대응 차이, 그리고 막을 때마다 옮겨 간 자리.",
+     "absent": false
+    },
+    {
+     "label": "그림이 못 담은 것",
+     "value": "선언한 경계와 작동하는 경계가 갈렸다는 결론. 도판 안 주석이 그 문장을 진다.",
+     "absent": false
+    }
+   ]
+  },
+  {
+   "id": "agv-2-limit",
+   "section": 2,
+   "kind": "limit",
+   "title": "무엇을 주장하지 않았나",
+   "rows": [
+    {
+     "label": "상한",
+     "value": "계정이 여럿 연결된 상황을 만들어 행동을 관찰했다고 쓰지 않았다. 평가셋에 그 항목이 없다. 폴더 범위로 가뒀다는 실측도 없어서 쓰지 않았다.",
+     "absent": false
+    }
+   ]
+  },
+  {
+   "id": "agv-3-limit",
+   "section": 3,
+   "kind": "limit",
+   "title": "무엇을 주장하지 않았나",
+   "rows": [
+    {
+     "label": "상한",
+     "value": "만들지 않는다는 것은 없는 것을 지어내지 않는다는 뜻이다. 없다고 부인한다는 뜻이 아니다. 이 자리를 반대로 옮기면 계약 전체가 뒤집힌다.",
+     "absent": false
+    }
+   ]
+  },
+  {
+   "id": "agv-3-untaken",
+   "section": 3,
+   "kind": "untaken",
+   "title": "쓰지 않은 것",
+   "rows": [
+    {
+     "label": "뺀 것",
+     "value": "음성으로 답하는 표면이 어떤 런타임 위에 서 있는지. 등재된 근거가 없다.",
+     "absent": false
+    },
+    {
+     "label": "뺀 것",
+     "value": "커밋과 테스트 수. 「검증 통과」 수준까지만 썼다.",
+     "absent": false
+    }
+   ]
+  },
+  {
+   "id": "agv-4-limit",
+   "section": 4,
+   "kind": "limit",
+   "title": "무엇을 주장하지 않았나",
+   "rows": [
+    {
+     "label": "상한",
+     "value": "안 연 자료가 무엇인지 쓰지 않았다. 자료의 성격도 연도도 업종도 쓰지 않았다. 부분 인용도 하지 않는다는 규칙이 그 자료 자신에게도 걸린다.",
+     "absent": false
+    }
+   ]
+  },
+  {
+   "id": "agv-4-untaken",
+   "section": 4,
+   "kind": "untaken",
+   "title": "쓰지 않은 것",
+   "rows": [
+    {
+     "label": "뺀 사례",
+     "value": "제3자 사적 정보의 실례. 그 규칙 자체가 사례를 어떤 산출물로도 옮기지 말라고 한다.",
+     "absent": false
+    },
+    {
+     "label": "표시된 부재",
+     "value": "세 상태를 하나의 규약으로 묶은 정의는 아직 없다. 「규약으로 정의했다」로 쓰지 않았다.",
+     "absent": false
+    }
+   ]
+  },
+  {
+   "id": "agv-5-limit",
+   "section": 5,
+   "kind": "limit",
+   "title": "무엇을 주장하지 않았나",
+   "rows": [
+    {
+     "label": "상한",
+     "value": "에이전트의 개수와 이름과 경로를 쓰지 않았다. 도구 수에 따른 지연이나 비용 실측도 없어서 1인칭 체감으로만 남겼다.",
+     "absent": false
+    }
+   ]
+  },
+  {
+   "id": "agv-5-fork",
+   "section": 5,
+   "kind": "fork",
+   "title": "판단이 갈렸던 자리",
+   "rows": [
+    {
+     "label": "한쪽",
+     "value": "팀 규모에서도 이 형식이 필요하다고 쓴다. 실제로 그렇게 보인다.",
+     "absent": false
+    },
+    {
+     "label": "다른 쪽",
+     "value": "해 보지 않았다. 가장 가까운 기록은 오히려 반대쪽을 가리킨다.",
+     "absent": false
+    },
+    {
+     "label": "채택",
+     "value": "관찰까지만 쓰고 결론으로 굳히지 않았다.",
+     "absent": false
+    }
+   ]
+  },
+  {
+   "id": "agv-6-swap",
+   "section": 6,
+   "kind": "swap",
+   "title": "본편에서 그림이 받아 간 것",
+   "rows": [
+    {
+     "label": "도판",
+     "value": "분기 도식 한 장. 판정을 그대로 반영했을 때와 실제로 한 일.",
+     "absent": false
+    },
+    {
+     "label": "옮겨진 문장",
+     "value": "오탐 비율과 진짜 한 건의 대비를 나열하던 자리.",
+     "absent": false
+    }
+   ]
+  },
+  {
+   "id": "agv-6-limit",
+   "section": 6,
+   "kind": "limit",
+   "title": "무엇을 주장하지 않았나",
+   "rows": [
+    {
+     "label": "상한",
+     "value": "채점표 항목을 나열하지 않았다. 경계 준수 한 칸만 장면으로 썼다. 원본 행까지 되짚는 규칙은 채점표가 아니라 가공 규약 쪽이라 귀속을 갈라 적었다.",
+     "absent": false
+    }
+   ]
+  },
+  {
+   "id": "agv-7-limit",
+   "section": 7,
+   "kind": "limit",
+   "title": "무엇을 주장하지 않았나",
+   "rows": [
+    {
+     "label": "상한",
+     "value": "원문은 「그렇게 하는 것도 가능하다」이고 이 절은 「그 안에 넣어 뒀다」까지만 쓴다. 이미 시험해 봤다는 것도 선언 인용이지 실측이 아니다.",
+     "absent": false
+    }
+   ]
+  },
+  {
+   "id": "agv-7-untaken",
+   "section": 7,
+   "kind": "untaken",
+   "title": "쓰지 않은 것",
+   "rows": [
+    {
+     "label": "표시된 부재",
+     "value": "이 절이 이 시리즈에서 근거가 가장 얇다. 아직 안 벌어진 일이라 기록이 없고 그렇게 하기로 정했다는 것만 있다. 그 사정을 절 안에 적었다.",
+     "absent": false
+    }
+   ]
+  }
+ ]
+}
+</script>
+</body>
+</html>

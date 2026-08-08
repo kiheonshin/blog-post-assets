@@ -32,7 +32,8 @@ export const contentLibrary = {
         status: "planned",
         pilotSurfaceIds: [],
       },
-      // 2·3편은 아직 없다. 없는 글을 예고로 걸지 않는다 — 쓰이면 여기에 붙인다.
+      // 세 편이 다 섰다(2026-08-09). 각 편의 텍스트 풀버전은 숨김 표면이라
+      // 여기 넣지 않는다 — 넣으면 표면 수 계약이 깨지고 도슨트가 안내 대상으로 삼는다.
       posts: [
         {
           id: "01-result",
@@ -45,6 +46,30 @@ export const contentLibrary = {
           topics: ["AI와 창작", "창작 도구"],
           keywords: ["AI 에이전트", "디지털 트윈", "문체", "파인튜닝"],
           href: "series/life-universe/posts/01-result/",
+        },
+        {
+          id: "02-structure",
+          label: "PART 2",
+          title: "디지털 트윈은 프롬프트가 아니라 구조다",
+          description:
+            "자료를 전부 읽히는 일이 아니었다. 읽히기 전에 세고, 원본만 잠그고, 연결 수를 버린 자리까지.",
+          published: "2026-08-09",
+          sourceYears: [2026],
+          topics: ["AI와 창작", "창작 도구"],
+          keywords: ["AI 에이전트", "디지털 트윈", "기록", "온톨로지"],
+          href: "series/life-universe/posts/02-structure/",
+        },
+        {
+          id: "03-boundary",
+          label: "PART 3",
+          title: "먼저 다 닫아두고, 지킨 만큼만 한 칸씩 열었다",
+          description:
+            "접근 범위는 설정 화면에서 정해지지 않았다. 경계가 새던 자리와, 끝까지 열지 않은 자리.",
+          published: "2026-08-09",
+          sourceYears: [2026],
+          topics: ["AI와 창작", "창작 도구"],
+          keywords: ["AI 에이전트", "디지털 트윈", "경계", "발화 계약"],
+          href: "series/life-universe/posts/03-boundary/",
         },
       ],
       // 이 시리즈에는 공개 가능한 1차 원자료 표면이 없다(구조제안 §2-1).
