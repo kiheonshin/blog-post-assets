@@ -79,6 +79,23 @@ figcaption {
    * 안료와 짝지어 두 계열로 쓰면 무너진다 — verdigris 와 protan ΔE 2.7. */
   --fig-neutral: #888884;
 
+  /* ── 라벨 전용 색 ──────────────────────────────────────────────
+   * 열 머리·행 머리·칸 머리가 쓴다. **데이터 마크에는 절대 쓰지 않는다.**
+   *
+   * 왜 계열색을 안 쓰나 : 라벨은 데이터가 아니다. 계열색을 라벨에 주면
+   * 읽는 사람이 그 색을 계열 표시로 읽고, 실제 계열이 등장했을 때 충돌한다.
+   * 코발트를 데이터 팔레트에서 빼 상호작용 전용으로 돌린 것과 같은 처분이다 —
+   * 이번엔 라벨 자리를 하나 예약한다.
+   *
+   * 왜 이 값인가 : 라벨은 micro 대문자라 **텍스트 대비 4.5:1** 이 필요하다.
+   * verdigris 원색 #0195a1 은 3.48:1 로 미달이고, indigo #6d87c8 은 3.40:1 로 미달이다.
+   * 같은 색조의 어두운 끝 #05585f 는 7.89:1 로 여유 있게 통과한다(실측).
+   *
+   * 서열 램프의 가장 어두운 단과 값이 같다. 램프는 셀을 채우는 **면**이고
+   * 라벨은 micro 대문자 **글자**라 화면에서 섞이지 않는다. 다만 한 도판이
+   * 서열 램프와 색 라벨을 **함께** 쓰면 그때는 라벨을 잉크로 내린다. */
+  --fig-label: #05585f;
+
   /* 서열 램프 — verdigris 한 색조. 3단은 앞 세 값, 4단은 네 값을 그대로 쓴다.
    * --ordinal 검사(명도 단조·인접 ΔL ≥.06·밝은 끝 대비·단일 색상) 전부 PASS. */
   --fig-ramp-1: #68b2bb;
@@ -143,14 +160,16 @@ figcaption {
   white-space: nowrap;
 }
 
-/* 모노 소라벨 — .meta-label·.secnum 의 규격을 그대로 쓴다 */
+/* 모노 소라벨 — .meta-label·.secnum 의 규격을 그대로 쓴다.
+ * 칸 도식의 칸 머리·분기 도식의 좌우 머리가 이것이다. 표의 열 머리와 같은 색을
+ * 쓴다 — 형태가 달라도 「이건 라벨이다」라는 신호는 한 가지여야 한다. */
 .fig .k {
   font-family: var(--font-mono);
   font-size: var(--fig-micro);
   font-weight: 600;
   letter-spacing: .09em;
   text-transform: uppercase;
-  color: var(--fig-ink-mute);
+  color: var(--fig-label);
 }
 
 /* 계열 좌막대 — 두 무리를 갈라 놓는 것이 논지일 때만. 글자에는 색을 넣지 않는다. */
@@ -165,17 +184,45 @@ figcaption {
 
 .fig--table table { width: 100%; border-collapse: collapse }
 
-.fig--table th {
+/* 열 머리 — 표 위쪽 한 줄 */
+.fig--table thead th,
+.fig--table th[scope="col"] {
   font-family: var(--font-mono);
   font-size: var(--fig-micro);
   font-weight: 600;
   letter-spacing: .09em;
   text-transform: uppercase;
-  color: var(--fig-ink-mute);
+  color: var(--fig-label);
   text-align: start;
   padding: 0 0 .5rem;
   border-block-end: 1px solid var(--fig-rule-hard);
 }
+
+/* 행 머리 — 표 왼쪽 열. `<th scope="row">` 로 적으면 여기에 걸린다.
+ *
+ * 왜 열 머리와 다르게 두나 : 행 머리는 한국어 구절이 들어와 길다. 대문자 변환과
+ * 자간 확장은 라틴 micro 라벨용이라 한국어에서는 글자만 성기게 만든다. 그래서
+ * 색과 굵기로만 구분하고 서체·크기는 본문 계열을 유지한다. 오른쪽 실선 한 줄이
+ * 열 머리의 아래 실선과 짝을 이뤄, 두 머리가 만나는 왼쪽 위가 표의 원점이 된다. */
+.fig--table tbody th,
+.fig--table th[scope="row"] {
+  color: var(--fig-label);
+  font-weight: 600;
+  font-size: var(--fig-body);
+  line-height: 1.6;
+  text-align: start;
+  vertical-align: top;
+  padding: .7rem 1.25rem .7rem 0;
+  border-block-end: 1px solid var(--fig-rule);
+  border-inline-end: 1px solid var(--fig-rule-hard);
+  white-space: normal;
+  word-break: keep-all;
+}
+/* 행 머리가 있으면 그 다음 칸은 실선에서 한 번 더 띄운다 */
+.fig--table tbody th + td { padding-inline-start: 1.25rem }
+
+/* 두 머리가 만나는 왼쪽 위 모서리 — 비운다. 글자를 넣지 않는다 */
+.fig--table thead th:first-child:empty { border-inline-end: 1px solid var(--fig-rule-hard) }
 /* 마지막 행의 border 를 지우지 않는다 — 표가 선으로 닫힌다 */
 .fig--table td {
   padding: .7rem 0;
@@ -313,7 +360,10 @@ figcaption {
 .fig--run .is-lead .dot { background: var(--fig-ink) }
 .fig--run .is-lead .lab,
 .fig--run .is-lead .v { color: var(--fig-ink) }
-.fig--run .lab, .fig--run .v { color: var(--fig-ink-mute) }
+/* 회차 차트의 왼쪽 라벨은 **행 머리**다 — 표의 행 머리와 같은 색을 준다.
+ * 오른쪽 값(.v)은 데이터라 잉크로 남긴다. */
+.fig--run .lab { color: var(--fig-label) }
+.fig--run .v { color: var(--fig-ink-mute) }
 /* 계열이 둘일 때만 안료를 쓰고, 반드시 각 계열을 직접 라벨한다(레전드 상자 금지) */
 .fig--run .dot.s1 { background: var(--fig-c1); box-shadow: 0 0 0 2px var(--fig-surface) }
 .fig--run .dot.s2 { background: var(--fig-c2); box-shadow: 0 0 0 2px var(--fig-surface) }
