@@ -15,10 +15,14 @@
  *
  * ★ 이 파일을 고치면 **같은 회차에** 링크하는 표면 전부의 토큰을 올린다. 한쪽만 올리면
  *   이미 방문한 브라우저가 옛 스타일을 계속 본다 — 이 리포의 알려진 함정이다.
- *   토큰을 갖는 자리는 다섯이다. 실측으로 세어 둔다(2026-08-08) :
+ *   토큰을 갖는 자리는 **셋이다** [2026-08-09 재측]. 실측으로 세어 둔다 :
  *     ① 이 주석  ② scripts/build_page.py 의 FIGURES_CSS_V  ③ 03-시각-규격.md §4-1 예시
- *     ④ _dia-try.html  ⑤ _style-try.html      (발행면 index.html 은 ②가 찍는다)
- *   ④⑤ 를 빠뜨린 회차가 이미 있었다 — 랩이 a·b 에 남아 발행면과 다른 그림을 보였다.
+ *                                          (발행면 index.html 은 ②가 찍는다)
+ *   앞선 판이 적어 둔 ④ _dia-try.html · ⑤ _style-try.html 은 **이 리포에 없다**
+ *   (2026-08-09 `find` 로 확인 — 0건). 없는 자리를 목록에 두면 다음 회차가 그 둘을
+ *   찾다가 못 찾고 「어차피 다 못 찾는 목록」으로 취급한다. 지우고 셋으로 줄인다.
+ *
+ * 현재 토큰 : v=20260809a  (2026-08-09 회차 — §4-b·§6·§11-2 수정)
  *
  * 고칠 때 지킬 것.
  * 1. **발행본 15편과 시각적으로 동일해야 한다.** §1 승계 블록의 값은 인라인에서 그대로
@@ -352,7 +356,19 @@ figcaption {
  * 프레임 안쪽 여백은 대칭인 채로 안쪽에서만 벌어지기 때문이다.
  * 행은 div, 띠는 p 라 of-type 이 「마지막 행」을 정확히 가리킨다. */
 .fig--fork .row:last-of-type { border-block-end: 0; padding-block-end: 0 }
-.fig--fork .row:first-child { padding-block-start: 0 }
+/* ★ 위 줄의 짝이다. 여기도 `:first-child` 가 아니라 **`:first-of-type`** 이어야 한다
+ * [2026-08-09 정정]. 위 규칙이 주석(<p>) 때문에 빗나가던 것과 **같은 사고가 머리
+ * 쪽에서 대칭으로 일어난다** — `.fig__head` 가 붙는 순간 첫 행은 더 이상 프레임의
+ * 첫 자식이 아니라서 이 규칙이 통째로 빠지고, 첫 행이 자기 위 여백 .75rem 을 되찾는다.
+ * 그러면 머리→도형 간격이 1.15+0.75=1.9rem, 도형→주석 간격이 1.15rem 으로 갈린다.
+ *
+ * 기하 검사기가 못 잡는다. 검사 2는 `.fig__head` 의 margin-block-end 와 `.fig__note`
+ * 의 margin-block-start 를 **계산값으로** 비교하는데 둘 다 1.15rem 이라 통과하고,
+ * 검사 1은 프레임 안쪽 위아래 여백을 재는데 그건 프레임 padding 이라 대칭인 채다.
+ * 벌어지는 곳은 그 안쪽이다 — §6 의 `:last-of-type` 주석이 「기하 검사기도 못 잡았다」
+ * 로 적어 둔 것과 정확히 같은 자리이고, 그때 아래쪽만 고치고 위쪽을 안 고쳤다.
+ * 실측 2026-08-09 : 머리가 있는 분기 도식 다섯(1편 F4·F7·F9·F11·F13)에서 12px 차. */
+.fig--fork .row:first-of-type { padding-block-start: 0 }
 /* 화살표는 **첫 줄에 선다.** 행 세로 중앙에 두면 좌우 글이 길어질수록 어느
  * 줄과도 안 맞는 자리로 내려간다(실측 2026-08-08 : 첫 줄에서 13~21px 아래).
  * 「A 화살표 B」는 한 줄에서 읽히는 말이라, 화살표가 그 한 줄을 벗어나면
@@ -604,8 +620,23 @@ figcaption {
   border-block-end: 1px solid var(--fig-rule);
   padding-block: .85rem;
 }
-.fig--table--stacked .row:first-child { padding-block-start: 0 }
-.fig--table--stacked .row:last-child { border-block-end: 0; padding-block-end: 0 }
+/* ★ `:first-child`·`:last-child` 가 아니라 **of-type** 이다 [2026-08-09 정정].
+ * 이 변형은 정의만 있고 쓰인 적이 없어(2026-08-09 실측 — 발행면 사용 0건) 아무도
+ * 밟지 않았을 뿐, §6 분기 도식이 이미 겪은 사고를 **그대로** 갖고 있었다. 머리나
+ * 주석이 붙는 순간 두 규칙이 다 빗나가고, 그때 마지막 행의 아래 선이 살아남아
+ * 주석의 위 선과 만나 **선 두 겹 사이 빈 띠**가 생긴다. 이쪽은 기하 검사기 4번이
+ * 잡는다 — 행도 주석도 가로선 하나만 가진 것이라 `isRule` 이 양쪽 다 참이 된다.
+ * 행은 div, 띠는 p 라 of-type 이 「마지막 행」을 정확히 가리킨다. */
+.fig--table--stacked .row:first-of-type { padding-block-start: 0 }
+.fig--table--stacked .row:last-of-type { border-block-end: 0; padding-block-end: 0 }
+
+/* 무리 밖 행 — 표의 `tr.aside`(§4-c-1)·분기 도식의 `.row.aside`(§11-1)와 **같은 말**을
+ * 이 변형에서도 쓴다 [2026-08-09 신설]. 형태가 셋으로 갈려도 「이건 그 무리 밖이다」는
+ * 한 뜻이어야 하고, 그 뜻을 그리는 장치도 하나여야 한다 — **여백 한 칸.**
+ * 선·괄호·들여쓰기를 쓰지 않고 라벨색도 바꾸지 않는다(지위 표시로 돌리면 한 색이 두
+ * 뜻을 갖는다). 값은 앞의 둘과 같다 : 1.9rem, 좁은 화면에서 1.35rem.
+ * **무리 밖임을 적은 글자는 지우지 않는다** — CSS 가 빠져도 사실이 남아야 한다. */
+.fig--table--stacked .row.aside { padding-block-start: 1.9rem }
 .fig--table--stacked .lab {
   display: block;
   color: var(--fig-label);
@@ -622,6 +653,7 @@ figcaption {
 @media (max-width: 34rem) {
   .fig--table--stacked .lab,
   .fig--table--stacked .val { font-size: var(--fig-body-narrow) }
+  .fig--table--stacked .row.aside { padding-block-start: 1.35rem }
 }
 
 /* ══════════════════════════════════════════════════════════════════

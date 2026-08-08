@@ -5,10 +5,11 @@ export const contentLibrary = {
     // 한 줄로 충분하고, 카드를 꾸미면 그 자체가 제품 소개문의 신호가 된다.
     {
       slug: "life-universe",
-      label: "00 · Making of",
-      // title 은 아직 본인 게이트에 있다(구조제안 §2-1 「집필 뒤에 뽑는다」).
-      // 확정 전까지 라벨에서 번호를 뗀 몫을 세운다 — 시리즈 홈 h1 과 같은 값이다.
-      title: "Making of",
+      label: "00 · KIHEON LIFE UNIVERSE · Making of",
+      // title 확정 2026-08-09 [본인]. 「Making of」 앞에 프로젝트명을 붙였다 —
+      // 대타였을 때 카드가 「00 · Making of / Making of」로 같은 말을 두 번 했다.
+      // 관측소 브랜드와 시리즈 slug(`life-universe`)에 이어지는 이름을 골랐다.
+      title: "KIHEON LIFE UNIVERSE · Making of",
       description:
         "앞선 다섯 시리즈 열다섯 편 말미에 붙은 한 줄이 실제로 무엇이었는지, 처음 50일 동안 무엇을 했는지의 중간 보고 세 편.",
       period: "2026",

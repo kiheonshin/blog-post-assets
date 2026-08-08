@@ -1,0 +1,181 @@
+/* 포스팅 셸 변형 — 이 시리즈 3편 한 편에만 걸린다. [2026-08-09 신설]
+ *
+ * 무엇인가. 본문 조판(`.prose p`·도판)은 그대로 두고 **글을 감싸는 껍데기**만
+ * 바꾸는 층이다. 머리(키커·표제·상태 칩)·소제목·발 카드 셋이 전부다.
+ *
+ * 왜 새 파일인가. site.css 는 서른 몇 개 표면이 함께 쓰고 figures.css 는 도판 전부가
+ * 쓴다. 한 편에만 거는 규칙을 거기 넣으면 그 파일의 토큰을 올리는 순간 나머지 표면이
+ * 전부 캐시를 버리고, 무엇보다 「이 파일 하나만 고치면 전부 따라온다」는 두 파일의
+ * 계약이 「단 한 편만 빼고」로 흐려진다. 한 편짜리 규칙은 한 편짜리 파일에 둔다.
+ *
+ * 링크 순서 — site.css · figures.css 뒤에 온다. 셸 규칙이 사이트 기본값을 덮어야 한다.
+ * ★ 고치면 **같은 회차에** build_page.py 의 SHELL_CSS_V 를 올린다. 안 올리면 이미
+ *   방문한 브라우저가 옛 껍데기를 계속 본다 — 이 리포의 알려진 함정이다.
+ *   현재 토큰 : v=20260809a
+ *
+ * 범위 자물쇠 — 모든 선택자가 `.post--shell` 아래에 있다. 이 클래스는 build_page.py 가
+ * POSTS 표에 `shell` 이 적힌 편의 <body> 에만 찍는다. 1·2편에는 안 찍히므로 두 편은
+ * 이 파일을 링크하지도 않고, 링크한다 해도 한 규칙도 걸리지 않는다.
+ *
+ * ── 어디서 왔나 ─────────────────────────────────────────────────────
+ * 참조면(관측소 `/world`)과 이 블로그는 **토큰 뿌리가 같다** — 종이·면·잉크·선·코발트가
+ * 같은 값이다. 그래서 이 파일이 하는 일은 새 어휘를 들여오는 것이 아니라, **이 사이트가
+ * 이미 가진 어휘를 참조면이 쓰는 자리로 옮기는 것**에 가깝다. 실제로 넷 중 셋은
+ * 이 리포에 이미 있었다.
+ *
+ *   상태 칩   → `.authorship`(1px 테두리·모노 마이크로·자간 .08em)이 이미 그 형태다.
+ *               참조면은 그것을 **라벨+값** 한 쌍으로 쓰고 줄로 세운다. 그 두 가지만 받는다.
+ *   모노 키커  → `.meta-label`·`.secnum`·`.sources .k` 가 이미 모노 대문자 .09em 이다.
+ *               참조면은 키커를 제목과 **같은 줄이 아니라 윗줄**에 둔다. 그 자리만 받는다.
+ *   카드 격자  → `.sources`(모노 키커 + 제목 + 1px 테두리)가 이미 그 형태다.
+ *               참조면은 제목을 명조로 둔다. 그 한 가지만 받는다.
+ *   표제 둘째 줄 → 이 사이트도 이미 `.t-part` 를 코발트로 쓴다.
+ *
+ * ── 안 가져온 것과 사유 ─────────────────────────────────────────────
+ *   --shell-max 1152px : 이 면의 읽기 열은 --measure 46rem 이다. 넓히면 도판 규격의
+ *     실측값(프레임 안쪽 686px)이 통째로 무효가 되고, 형태별 접힘 규칙이 기준을 잃는다.
+ *     tokens.css 머리말이 「--measure 는 넓히지 않는다」로 못박은 자리이기도 하다.
+ *   --radius 3px : figures.css §3 이 「그림자 0 · 둥근 모서리 0 — 사이트는 선만 쓴다」다.
+ *     받으면 같은 화면에서 칩은 둥글고 도판은 각진 상태가 된다. 한 면에 두 규범을 두지 않는다.
+ *   계열색 6(ochre·teal·green·magenta·red·neutral) : 이 값들은 도판 팔레트의 **상속
+ *     원본**이고, figures.css §2-3 이 그대로 쓰면 FAIL 이라고 기록해 둔 값이다(채도 하한
+ *     7/7 미달 · 정상시 인접 최악 ΔE 8.3, 하한 15). 블로그는 색상각을 고정한 채 채도만
+ *     올려 통과시킨 값을 쓴다. 원본을 셸로 들여오면 같은 면에 검증 통과값과 실패값이
+ *     나란히 서고, 도판이 지켜 온 하한이 껍데기에서 깨진다.
+ *   마커색 4(ok·inf·wait·dead) : 상태를 색으로 부호화하는 장치다. 이 편 본문에는 그렇게
+ *     부호화할 상태 축이 없다. 없는 축에 색을 주면 **도판이 아니라 껍데기가** 근거에 없는
+ *     주장을 만든다. 부재 표시는 도판 안에서 `.absent`(잉크 흐림)가 이미 지고 있다.
+ *   --header-h 73px · --control-h 34px : 사이트 머리·버튼은 서른 몇 표면이 공유한다.
+ *     한 편 때문에 공유 껍데기를 움직이지 않는다.
+ */
+
+/* ══════════════════════════════════════════════════════════════════
+   1. 머리 — 키커 한 줄 · 표제 · 상태 칩 줄
+      참조면의 세로 순서는 키커 → 표제 → 리드 → 칩이다. 이 사이트는 날짜와
+      작성 주체를 표제 **위** 한 줄에 묶어 두고 있었다. 그 줄이 키커와 섞이면
+      표제 앞에서 읽을 것이 셋이 되어, 무엇이 이 글의 종류인지가 흐려진다.
+      종류(Essay)만 위에 남기고 나머지는 리드 아래 칩 줄로 내린다.
+   ══════════════════════════════════════════════════════════════════ */
+
+/* 키커는 홀로 선다. `.head` 의 grid gap(1.25rem)에 h1 자신의 위 마진(.5rem)이
+   더해지면 키커가 표제에서 너무 멀어진다 — 키커는 표제에 딸린 줄이다. */
+.post--shell .head { gap: .75rem }
+.post--shell .head h1 { margin-block-start: 0 }
+
+/* 표제 둘째 줄. 참조면은 둘째 줄에 무게를 준다. 여기서는 **색을 옮기지 않고
+   잉크로만 올린다** — 이 면의 둘째 줄은 주장이 아니라 시리즈 소속이고,
+   코발트는 이 사이트에서 상호작용 전용이라 소속 라벨에 주면 눌리는 것으로 읽힌다.
+   회차 표기(.t-part)는 이미 코발트라 그대로 둔다. */
+.post--shell .t-series { color: var(--ink) }
+
+/* 상태 칩 — 테두리 안에 라벨과 값. `.authorship` 이 이미 쓰고 있는 규격
+   (1px 테두리 · 모노 · --micro · 자간 .08em)을 그대로 받고, 참조면에서 받은 것은
+   **한 쌍으로 읽히는 라벨+값**과 그것을 줄로 세우는 배치 두 가지뿐이다. */
+.post--shell .statusrow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem;
+  margin-block-start: 1.5rem;
+}
+.post--shell .chip {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  min-height: 1.5rem;
+  padding-inline: .5rem;
+  border: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: var(--micro);
+  letter-spacing: .08em;
+  white-space: nowrap;
+}
+/* 라벨은 굵게·잉크, 값은 흐리게. 참조면이 둘을 가르는 방법이 굵기와 명도다 —
+   두 번째 색을 쓰지 않는다. */
+.post--shell .chip__k { font-weight: 600; color: var(--ink) }
+.post--shell .chip__v { color: var(--ink-muted) }
+/* 값만 있는 칩(날짜)은 테두리 규격만 받고 라벨 자리를 비운다. 라벨을 지어내
+   붙이지 않는다 — 없는 이름을 만드는 것이 이 줄에서 가장 하기 쉬운 거짓말이다. */
+.post--shell .statusrow time {
+  font-family: var(--font-mono);
+  font-size: var(--micro);
+  letter-spacing: .08em;
+  color: var(--ink-muted);
+}
+/* 작성 주체 칩은 링크라 테두리가 진하다(원래 규격). 나란히 섰을 때 그 한 칸만
+   무거워 보이는 것을 막기 위해 같은 옅은 선으로 맞추고, 눌리는 표시는 hover 가 진다. */
+.post--shell .statusrow .authorship { border-color: var(--rule) }
+
+/* 시리즈 안내는 칩 줄 **뒤에** 온다. 위 선이 칩 줄과 붙으면 띠가 두 겹으로 보여
+   여백을 한 칸 준다. 문장은 한 글자도 건드리지 않는다. */
+.post--shell .series { margin-block-start: 1.5rem }
+
+/* ══════════════════════════════════════════════════════════════════
+   2. 소제목 — 번호가 제목 옆이 아니라 **윗줄**에 선다
+      참조면의 `01 · DEFINITION` 자리다. 라틴 낱말은 받지 않는다 —
+      이 글에 없는 말을 껍데기가 지어내는 셈이 되기 때문이다. 자리와 조판만 받는다.
+      절 위에 선 하나를 그어 절의 시작이 눈에 걸리게 한다(참조면도 같다).
+   ══════════════════════════════════════════════════════════════════ */
+
+.post--shell .prose h2 {
+  display: grid;
+  gap: .55rem;
+  margin-block: 4rem 1.15rem;
+  padding-block-start: 2.25rem;
+  border-block-start: 1px solid var(--rule);
+}
+/* 첫 절은 위에 선을 두지 않는다. `.prose` 가 이미 자기 위 선을 갖고 있어
+   두 선 사이에 아무것도 없는 띠가 생긴다 — 도판 기하 검사기가 잡는 그 결함과
+   같은 것이고, 여기는 도판 밖이라 검사기가 안 본다. 손으로 막아 둔다. */
+.post--shell .prose h2:first-child {
+  margin-block-start: 0;
+  padding-block-start: 0;
+  border-block-start: 0;
+}
+.post--shell .secnum {
+  letter-spacing: .09em;
+  color: var(--ink-muted);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   3. 발 — 두 링크를 카드로
+      참조면의 「모노 키커 + 명조 제목」 카드다. 이 사이트의 `.sources` 가 이미
+      같은 형태인데 제목이 본문 서체였다. 명조 한 가지만 받는다.
+      키커에 쓰는 두 문자열(회차 표기 · 시리즈 이름)은 이 면에 이미 있는 말이다.
+   ══════════════════════════════════════════════════════════════════ */
+
+.post--shell .foot__nav--cards {
+  display: grid;
+  gap: .75rem;
+  margin: 0;
+  padding-block-start: 1.25rem;
+  border-block-start: 1px solid var(--rule);
+}
+@media (min-width: 34rem) {
+  .post--shell .foot__nav--cards { grid-template-columns: repeat(2, minmax(0, 1fr)) }
+}
+.post--shell .foot__nav--cards a {
+  display: grid;
+  gap: .35rem;
+  align-content: start;
+  height: 100%;
+  padding: .9rem 1rem;
+  border: 1px solid var(--rule);
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color .15s ease-out;
+}
+.post--shell .foot__nav--cards a:hover { border-color: var(--accent) }
+.post--shell .foot__nav--cards .k {
+  font-family: var(--font-mono);
+  font-size: var(--micro);
+  letter-spacing: .09em;
+  color: var(--accent);
+}
+/* 명조. 참조면 카드 제목이 명조이고, 이 사이트에도 이미 표제·소제목이 쓰는
+   서체(--font-display)가 있다. 새 서체를 들이지 않는다. */
+.post--shell .foot__nav--cards .t {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
