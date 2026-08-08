@@ -11,7 +11,7 @@
  *
  * 링크 순서 — site.css 뒤에 온다. 도판 규칙이 사이트 기본값을 덮어야 하기 때문이다.
  *   <link rel="stylesheet" href="{상대경로}/assets/site.css?v=...">
- *   <link rel="stylesheet" href="{상대경로}/assets/figures.css?v=20260808j">
+ *   <link rel="stylesheet" href="{상대경로}/assets/figures.css?v=20260808k">
  *
  * ★ 이 파일을 고치면 **같은 회차에** 링크하는 표면 전부의 토큰을 올린다. 한쪽만 올리면
  *   이미 방문한 브라우저가 옛 스타일을 계속 본다 — 이 리포의 알려진 함정이다.
@@ -433,17 +433,27 @@ figcaption {
  *
  * 값은 소수점 없이 적는다 — 눈금은 축을 읽는 자이고, 소수 둘째 자리는 오른쪽
  * 값(.v)이 이미 말한다. 두 곳이 같은 정밀도로 적히면 어느 쪽이 자인지 흐려진다. */
+/* ★ 높이는 **자기 줄높이와 같은 값**으로 잡는다. 눈금 라벨이 absolute 라 부모
+ * 높이에 기여하지 않기 때문에, 부모 높이를 따로 적으면 그 값이 라벨보다 작아도
+ * 아무도 말해 주지 않는다. 실측 2026-08-08 : 박스 12px 에 라벨 20px 이라 7px 이
+ * 밖으로 나갔고, 바로 아래 주석의 구분선을 그만큼 침범했다 — 화면에서 6·7·8·9 가
+ * 가로선에 걸쳐 보이던 것이 그것이다.
+ * line-height 와 block-size 에 같은 값을 쓰면 라벨 줄상자와 박스가 정확히 같아진다.
+ * 폰트 크기를 나중에 바꿔도 둘이 함께 움직이므로 이 어긋남이 되살아나지 않는다. */
 .fig--run .scale {
   position: relative;
   grid-column: 2;
-  block-size: 1.1em;
-  margin-block-start: -.15rem;
+  line-height: 1.5;
+  block-size: 1.5em;
+  margin-block-start: .1rem;
   font-family: var(--font-mono);
   font-size: var(--fig-micro);
   color: var(--fig-ink-faint);
 }
 .fig--run .scale > * {
   position: absolute;
+  top: 0;
+  line-height: inherit;
   left: calc((var(--xt, 0) + var(--xu, 0)) * 1%);
   translate: -50% 0;
 }
@@ -866,22 +876,47 @@ figcaption {
    둘 다 **한 도판에 한 줄**을 넘기지 않는다. 넘으면 그건 캡션이 안으로 들어온 것뿐이다.
    ══════════════════════════════════════════════════════════════════ */
 
-.fig__head {
-  font-size: var(--fig-body-narrow);
-  line-height: 1.5;
-  color: var(--fig-ink-mute);
-  margin: 0 0 1.1rem;
-  padding-block-end: .7rem;
-  border-block-end: 1px solid var(--fig-rule);
-}
-.fig__note {
+/* 띠(머리·주석)의 여백은 **위아래가 같은 값**이다 [본인 지시 2026-08-08].
+ * 두 값을 따로 적으면 반드시 갈라진다 — 처음 판이 1.1/0.7 과 1.15/0.8 로 갈려
+ * 있었다. 눈에는 안 보이는 차이지만 「대칭」이라고 부를 수 없는 상태였다.
+ * 토큰 둘로 묶어 한 자리에서만 정한다. */
+.fig { --fig-band-gap: 1.15rem; --fig-band-rule: .8rem }
+
+/* ★ 선택자에 `.fig` 를 겹쳐 (0,2,0) 으로 올린다. 띠가 `<p>` 라서 site.css 의
+ * `.prose p` (0,1,1) 와 겨루는데, 클래스 하나짜리로는 **뒤에 와도 진다.**
+ * 실측 2026-08-08 : 이 자리를 한 번 고치고도 머리 아래가 18.4px 이 아니라 24px
+ * (=`.prose p` 의 1.5rem) 이었고 주석 위는 0 이었다. 아래 첫·끝 자식 규칙만
+ * 특이도를 올리고 정작 값을 정하는 두 규칙은 안 올린 것이 원인이다. */
+.fig .fig__head,
+.fig .fig__note {
   font-size: var(--fig-body-narrow);
   line-height: 1.6;
   color: var(--fig-ink-mute);
-  margin: 1.15rem 0 0;
-  padding-block-start: .8rem;
+}
+.fig .fig__head {
+  margin: 0 0 var(--fig-band-gap);
+  padding-block-end: var(--fig-band-rule);
+  border-block-end: 1px solid var(--fig-rule);
+}
+.fig .fig__note {
+  margin: var(--fig-band-gap) 0 0;
+  padding-block-start: var(--fig-band-rule);
   border-block-start: 1px solid var(--fig-rule);
 }
+
+/* ★ 프레임 안쪽 여백은 사방이 같다. 그 대칭을 깨는 것은 **바깥에서 온 마진**이다.
+ *
+ * 실측 2026-08-08 : 주석이 있는 도판 넷만 아래 여백이 49px 이고 나머지 아홉은
+ * 25px 이었다. `.fig__note` 가 `<p>` 라서 site.css 의 `.prose p` 아래 마진 24px 을
+ * 그대로 받고 있었다. 내 `.fig__note { margin: … 0 }` 가 뒤에 있는데도 진 것은
+ * **특이도** 때문이다 — `.prose p` (0,1,1) 가 `.fig__note` (0,1,0) 를 이긴다.
+ * 링크 순서로 이길 거라고 믿은 자리다.
+ *
+ * 그래서 값을 다시 적어 덮는 대신 **바깥 마진이 들어올 자리 자체를 막는다.**
+ * 다음에 어떤 태그를 넣든, 사이트가 그 태그에 무슨 마진을 주든 프레임의 첫·끝은
+ * 프레임 패딩만 본다. 두 클래스를 겹쳐 (0,2,1) 로 특이도를 확보한다. */
+.fig .fig__frame > :first-child { margin-block-start: 0 }
+.fig .fig__frame > :last-child { margin-block-end: 0 }
 
 /* 라벨에 딸리는 조건 한 조각. 라벨(.k)이 「무엇인가」면 이건 「어느 쪽인가」다.
  * 라벨색을 주지 않는다 — 라벨색은 「이건 라벨이다」 한 뜻만 진다(§3 .k 주석). */
