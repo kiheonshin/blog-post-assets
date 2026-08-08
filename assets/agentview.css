@@ -62,7 +62,9 @@
   color: var(--agv-lab);
 }
 .agv__t { font-size: .875rem; line-height: 1.6; color: var(--ink, #17181a) }
-/* 세는 값은 오른쪽 끝으로. 열기 전에 이 주석의 부피를 알 수 있어야 한다 */
+/* 오른쪽 끝은 펼침 안내만 진다. 첫 판은 「2줄」처럼 부피도 함께 적었는데,
+ * 열기 전에 알아야 할 만큼 긴 주석이 아니고 숫자가 하나 더 붙으면 요약 줄이
+ * 세 조각이 된다 [본인 지시 2026-08-09]. */
 .agv__n {
   margin-inline-start: auto;
   font-family: var(--agv-mono);
@@ -75,8 +77,8 @@
  * 자리는 **오른쪽 끝**이다. 이름표 옆에 붙이면 「근거 · 펼쳐서 보기   이 절이 선 자리」가
  * 되어 무엇의 이름인지와 무엇을 하는 단추인지가 한 덩어리로 읽힌다. 이름은 왼쪽,
  * 동작과 부피는 오른쪽으로 갈라 둔다. */
-.agv__n::before { content: "펼쳐서 보기 · " }
-.agv[open] .agv__n::before { content: "접어서 보기 · " }
+.agv__n::before { content: "펼쳐서 보기" }
+.agv[open] .agv__n::before { content: "접어서 보기" }
 
 .agv__body {
   padding: 0 1rem 1rem;
@@ -100,15 +102,11 @@
   color: var(--agv-lab);
 }
 .agv__val { font-size: .875rem; line-height: 1.7; color: var(--ink, #17181a) }
-.agv__val code {
-  font-family: var(--agv-mono);
-  font-size: .8125em;
-  padding: .05em .35em;
-  border: 1px solid var(--agv-rule);
-  white-space: nowrap;
-}
 /* 값이 없는 자리는 빈칸이 아니라 표시된 부재다 — 도판 규격과 같은 원리 */
 .agv__val.absent { color: var(--ink-faint, #686a6f) }
+
+/* 라벨이 하나뿐인 주석은 칸을 나누지 않는다. 요약 줄이 이미 그 이름을 말했다 */
+.agv__p { margin: 0; font-size: .875rem; line-height: 1.7; color: var(--ink, #17181a) }
 
 @media (max-width: 34rem) {
   .agv__row { grid-template-columns: 1fr; gap: .15rem }
