@@ -11,7 +11,7 @@
  *
  * 링크 순서 — site.css 뒤에 온다. 도판 규칙이 사이트 기본값을 덮어야 하기 때문이다.
  *   <link rel="stylesheet" href="{상대경로}/assets/site.css?v=...">
- *   <link rel="stylesheet" href="{상대경로}/assets/figures.css?v=20260808k">
+ *   <link rel="stylesheet" href="{상대경로}/assets/figures.css?v=20260808m">
  *
  * ★ 이 파일을 고치면 **같은 회차에** 링크하는 표면 전부의 토큰을 올린다. 한쪽만 올리면
  *   이미 방문한 브라우저가 옛 스타일을 계속 본다 — 이 리포의 알려진 함정이다.
@@ -345,14 +345,30 @@ figcaption {
   padding: .75rem 0;
   border-block-end: 1px solid var(--fig-rule);
 }
-.fig--fork .row:last-child { border-block-end: 0; padding-block-end: 0 }
+/* ★ `:last-child` 가 아니라 `:last-of-type` 이다. 주석(<p>)이 뒤에 붙는 순간
+ * 마지막 행은 더 이상 프레임의 마지막 자식이 아니고, 그러면 이 규칙이 통째로
+ * 빗나가 행의 아래 선이 남는다. 그 선과 주석의 위 선이 겹쳐 **선 두 겹 사이에
+ * 빈 띠**가 생긴다(실측 2026-08-08 F11 : 18px). 기하 검사기도 못 잡았다 —
+ * 프레임 안쪽 여백은 대칭인 채로 안쪽에서만 벌어지기 때문이다.
+ * 행은 div, 띠는 p 라 of-type 이 「마지막 행」을 정확히 가리킨다. */
+.fig--fork .row:last-of-type { border-block-end: 0; padding-block-end: 0 }
 .fig--fork .row:first-child { padding-block-start: 0 }
+/* 화살표는 **첫 줄에 선다.** 행 세로 중앙에 두면 좌우 글이 길어질수록 어느
+ * 줄과도 안 맞는 자리로 내려간다(실측 2026-08-08 : 첫 줄에서 13~21px 아래).
+ * 「A 화살표 B」는 한 줄에서 읽히는 말이라, 화살표가 그 한 줄을 벗어나면
+ * 잇는 기호가 아니라 두 덩어리 사이에 뜬 장식이 된다.
+ *
+ * 서체도 본문 계열로 되돌렸다. mono 화살표는 폭이 고정이라 글자 사이에서
+ * 혼자 성기게 앉는다. 크기·줄높이를 좌우 첫 줄과 같은 값으로 맞춰 세 조각이
+ * 같은 줄상자에 놓이게 한다. */
 .fig--fork .row::before {
   content: var(--fig-arrow);
   grid-column: 2;
   grid-row: 1 / -1;
-  align-self: center;
-  font-family: var(--font-mono);
+  align-self: start;
+  font-family: var(--font-body);
+  font-size: var(--fig-body);
+  line-height: 1.5;
   color: var(--fig-ink-faint);
 }
 .fig--fork .a { grid-column: 1 }
@@ -368,6 +384,7 @@ figcaption {
   .fig--fork .row { grid-template-columns: 1fr; gap: .4rem }
   .fig--fork .row::before {
     grid-column: 1; grid-row: auto; justify-self: start; order: 2;
+    align-self: auto;
   }
   .fig--fork .a { grid-column: 1; order: 1 }
   .fig--fork .b { grid-column: 1; order: 3 }
