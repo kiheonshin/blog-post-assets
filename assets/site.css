@@ -1438,7 +1438,61 @@ transcript-reader {
 
 /* 넘겨받기 단추가 서는 자리. 선을 긋지 않는다 — 바로 아래 말미의 가로선이
  * 그 일을 한다. 여기서 또 그으면 선 두 겹 사이에 빈 띠가 생긴다. */
-.handoff-slot { margin-block-start: 3rem }
+/* ── 포스팅이 끝나는 자리 [2026-08-09 본인 지시] ────────────────────
+   글은 **편 목록과 귀속 표기에서 끝난다.** 그 아래부터는 이 사이트의 기본
+   템플릿 인터페이스이고, 도구 줄이 그 첫 칸이다. 두 층을 가르는 것은 여백이다 —
+   말미가 이미 가로선으로 닫히므로 선을 한 번 더 긋지 않는다. */
+.post-tools {
+  max-inline-size: var(--measure, 46rem);
+  margin: 2.5rem auto 3.5rem;
+  padding-inline: var(--gutter, 1.25rem);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .6rem;
+}
+/* 도구 줄의 링크는 단추 꼴로 선다 — 옆의 복사 단추와 **같은 무게·같은 색**이어야
+   한다. 나란히 선 둘 중 하나만 다른 색이면 둘이 다른 종류로 읽힌다. */
+.post-tools .uplink {
+  font-size: var(--meta, .75rem);
+  letter-spacing: .02em;
+  padding: .5rem .85rem;
+  border: 1px solid currentColor;
+  color: var(--accent);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.post-tools .uplink:hover { background: var(--accent); color: var(--canvas) }
+
+/* ── 다른 판본으로 가는 배너 ────────────────────────────────────────
+   본문 위에 선다. 읽기 전에 어느 판을 읽을지 고르는 자리라 말미가 아니라
+   상단이다(2026-08-09 본인 지시). 표제 아래·본문 위. */
+.altview {
+  display: block;
+  margin-block: 2rem 2.5rem;
+  padding: .9rem 1rem;
+  border: 1px solid var(--rule);
+  text-decoration: none;
+  color: var(--ink);
+  transition: border-color .15s ease-out;
+}
+.altview:hover { border-color: var(--accent) }
+.altview .k {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--micro);
+  letter-spacing: .09em;
+  color: var(--accent);
+  margin-block-end: .3rem;
+}
+.altview .t { font-size: 1rem; line-height: 1.5 }
+.altview .d {
+  display: block;
+  margin-block-start: .25rem;
+  font-size: var(--micro);
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
 
 /* 말미 맨 아래 단추 줄. 둘 이상이면 나란히 서고 좁으면 접힌다 */
 .foot__nav {
