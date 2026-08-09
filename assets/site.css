@@ -1449,11 +1449,16 @@ transcript-reader {
   width: min(calc(100% - var(--gutter) * 2), var(--measure));
   margin: 0 auto 4rem;
   padding-block-start: 2rem;
-  /* 포스팅이 끝나는 선. 말미가 아니라 **여기**가 경계다 — 위는 글이고
-     아래는 이 사이트의 인터페이스다 [2026-08-09 본인 지시]. */
+  /* 포스팅이 끝나는 선. 위는 글(본문 + 귀속 표기)이고 아래는 이 사이트의
+     인터페이스다 — 편 목록도 이동이므로 선 아래에 선다 [2026-08-09 본인 지시]. */
   border-block-start: 1px solid var(--rule-strong);
-  /* 단추 둘은 왼쪽에 붙고 **가로폭이 같다.** 자동 폭에 맡기면 글자 수만큼
-     달라져 둘이 다른 무게로 읽힌다. */
+  display: grid;
+  gap: 2rem;
+}
+/* 단추 둘은 왼쪽에 붙고 **가로폭이 같다.** 자동 폭에 맡기면 글자 수만큼 달라져
+   둘이 다른 무게로 읽힌다. */
+.post-tools__row {
+  margin: 0;
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: minmax(0, 11rem);
@@ -1461,11 +1466,9 @@ transcript-reader {
   gap: .6rem;
 }
 @media (max-width: 26rem) {
-  .post-tools { grid-auto-flow: row; grid-auto-columns: auto }
+  .post-tools__row { grid-auto-flow: row; grid-auto-columns: auto }
 }
-.post-tools > * { min-inline-size: 0 }
-/* 도구 줄의 링크는 단추 꼴로 선다 — 옆의 복사 단추와 같은 무게·같은 색·같은
-   폭이어야 한다. 나란히 선 둘 중 하나만 다르면 다른 종류로 읽힌다. */
+.post-tools__row > * { min-inline-size: 0 }
 .post-tools .uplink {
   display: flex;
   align-items: center;

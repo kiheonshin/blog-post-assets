@@ -148,8 +148,9 @@ function mount() {
   // 텍스트 풀버전은 숨김 표면이라 마크다운 미러가 없다. 여기서 단추를 세우면
   // 없는 주소(`…/full/content.md`)를 가리키는 지시문이 복사된다.
   if (/\/full\/?$/.test(location.pathname)) return;
-  // 템플릿 층의 도구 줄. 「시리즈 홈으로」가 이미 정적으로 들어 있다.
-  const row = document.querySelector(".post-tools");
+  // 템플릿 층의 단추 줄. 「시리즈 홈으로」가 이미 정적으로 들어 있다.
+  // 편 목록은 같은 층의 **위 칸**이라 여기 끼지 않는다.
+  const row = document.querySelector(".post-tools__row");
   if (!row || row.dataset.agentHandoff === "true") return;
   row.dataset.agentHandoff = "true";
   render(row);
