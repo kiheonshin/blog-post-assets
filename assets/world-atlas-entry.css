@@ -1,0 +1,218 @@
+.library-paths {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.library-paths a {
+  grid-template-columns: 2rem minmax(7.5rem, auto) minmax(0, 1fr);
+}
+
+.world-atlas-entry {
+  display: grid;
+  grid-template-columns: minmax(18rem, 0.78fr) minmax(0, 1.22fr);
+  gap: clamp(var(--space-8), 5vw, var(--space-16));
+  align-items: center;
+  margin-block-start: var(--space-16);
+  padding-block: var(--space-8);
+  border-block: 1px solid var(--rule-strong);
+}
+
+.world-atlas-entry__copy {
+  max-width: var(--measure);
+}
+
+.world-atlas-entry__copy h2 {
+  margin: var(--space-2) 0 var(--space-4);
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.16;
+  text-wrap: balance;
+}
+
+.world-atlas-entry__copy > p:not(.meta-label) {
+  margin: 0;
+  color: var(--ink-muted);
+  line-height: 1.72;
+}
+
+.world-atlas-entry__action {
+  display: inline-flex;
+  gap: var(--space-2);
+  margin-block-start: var(--space-6);
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--small);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.world-atlas-entry__action:hover,
+.world-atlas-entry__action:focus-visible {
+  color: var(--accent-hover);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+.world-atlas-entry__strip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+
+.world-atlas-entry__strip img {
+  width: 100%;
+  height: 100%;
+  min-height: clamp(10rem, 19vw, 18rem);
+  border-inline-start: 1px solid var(--rule);
+  object-fit: cover;
+}
+
+.world-atlas-entry__strip img:first-child {
+  border-inline-start: 0;
+}
+
+.archive-atlas-layer {
+  margin-block: var(--space-16) var(--space-8);
+  padding-block-start: var(--space-6);
+  border-block-start: 2px solid var(--rule-strong);
+}
+
+.archive-atlas-layer__head {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1fr);
+  gap: var(--space-3) clamp(var(--space-8), 5vw, var(--space-16));
+  align-items: start;
+  margin-block-end: var(--space-6);
+}
+
+.archive-atlas-layer__head .library-section__label {
+  grid-column: 1 / -1;
+}
+
+.archive-atlas-layer__head h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.16;
+}
+
+.archive-atlas-layer__head > p:last-child {
+  margin: 0;
+  color: var(--ink-muted);
+  line-height: 1.72;
+}
+
+.archive-atlas-card {
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.36fr) minmax(0, 0.64fr) auto;
+  gap: var(--space-3) var(--space-8);
+  align-items: start;
+  padding: var(--space-6);
+  border: 1px solid var(--rule-strong);
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.archive-atlas-card:hover,
+.archive-atlas-card:focus-visible {
+  border-color: var(--accent);
+}
+
+.archive-atlas-card__meta,
+.archive-atlas-card__action {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--micro);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.archive-atlas-card__meta {
+  grid-column: 1 / -1;
+}
+
+.archive-atlas-card__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  line-height: 1.2;
+}
+
+.archive-atlas-card__body {
+  color: var(--ink-muted);
+  line-height: 1.72;
+}
+
+.archive-atlas-card__action {
+  align-self: end;
+  white-space: nowrap;
+}
+
+@media (max-width: 69.99rem) {
+  .library-paths {
+    grid-template-columns: 1fr;
+  }
+
+  .library-paths a {
+    grid-template-columns: 2rem minmax(0, 1fr);
+  }
+
+  .library-paths a + a {
+    padding-inline-start: 0;
+    border-block-start: 1px solid var(--rule);
+    border-inline-start: 0;
+  }
+
+  .library-paths__description {
+    grid-column: 2;
+  }
+
+  .world-atlas-entry {
+    grid-template-columns: 1fr;
+  }
+
+  .world-atlas-entry__copy {
+    max-width: 44rem;
+  }
+
+  .archive-atlas-layer__head,
+  .archive-atlas-card {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-atlas-card__meta,
+  .archive-atlas-layer__head .library-section__label {
+    grid-column: 1;
+  }
+
+  .archive-atlas-card__action {
+    margin-block-start: var(--space-3);
+  }
+}
+
+@media (max-width: 37.5rem) {
+  .world-atlas-entry {
+    gap: var(--space-6);
+    margin-block-start: var(--space-12);
+    padding-block: var(--space-6);
+  }
+
+  .world-atlas-entry__strip {
+    display: flex;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: thin;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .world-atlas-entry__strip img {
+    flex: 0 0 min(70vw, 18rem);
+    min-height: 8rem;
+    scroll-snap-align: start;
+  }
+}

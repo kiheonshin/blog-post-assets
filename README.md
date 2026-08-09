@@ -1,25 +1,34 @@
 # Kiheon Blog
 
-신기헌의 생각과 경험에서 출발한 글과 원자료를 주제별 시리즈로 묶어 공개하는 개인 블로그다. GitHub Pages에서 별도 빌드 없이 배포한다.
+신기헌의 생각과 경험에서 출발한 글과 원자료를 시리즈, World Atlas, 아카이브의 세 가지 방식으로 읽는 개인 블로그다. GitHub Pages에서 별도 빌드 없이 배포한다.
 
 ## 정보 구조
 
 ```text
 /
-└── series/
-    └── {series-slug}/
-        ├── index.html
-        ├── assets/
-        ├── posts/
-        │   └── {post-slug}/index.html
-        └── sources/
-            └── {source-slug}/index.html
+├── series/
+│   └── {series-slug}/
+│       ├── index.html
+│       ├── assets/
+│       ├── posts/
+│       │   └── {post-slug}/index.html
+│       └── sources/
+│           └── {source-slug}/index.html
+└── archive/
+    ├── index.html
+    ├── world-atlas/
+    ├── chronicle/
+    ├── transcript/
+    ├── codex/
+    └── screening/
 ```
 
 - `/`: 여러 시리즈를 묶는 최상위 라이브러리
 - `/series/{series-slug}/`: 한 시리즈의 소개, 글, 원자료를 묶는 허브
 - `/series/{series-slug}/posts/{post-slug}/`: 개별 포스트
 - `/series/{series-slug}/sources/{source-slug}/`: 연구 노트와 발표 자료 같은 원자료
+- `/archive/`: 원자료 네 모듈과 공개 시리즈 해석층을 구분해 여는 아카이브
+- `/archive/world-atlas/`: 다섯 공개 시리즈의 구역·사물·색·관계 제안을 비교하는 공개 참고면
 
 기존의 `import-post1.html`, `source-research.html` 같은 주소는 새 주소로 이동시키는 호환 페이지로 남겨 둔다.
 
@@ -38,6 +47,9 @@
 - `assets/content-manifest.js`: 시리즈·포스트·원자료의 단일 데이터 원본
 - `assets/series-nav.js`: 최상위 라이브러리, 시리즈 내비게이션, 하단 글 링크 컴포넌트
 - `assets/site.css`: 공통 토큰, 라이브러리, 시리즈 내비게이션 스타일
+- `assets/world-atlas-entry.css`: 홈페이지와 아카이브의 World Atlas 진입면 스타일
+- `archive/world-atlas/world-atlas-context.json`: 공개 참고면의 공개 안전 단일 문맥
+- `archive/world-atlas/world-atlas.js`: 구역·관계 선택과 읽기 어댑터
 - `DESIGN.md`: 시각 언어, 컴포넌트, 접근성 규칙
 
 ## 로컬 확인

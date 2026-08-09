@@ -1,0 +1,330 @@
+{
+  "schemaVersion": 1,
+  "surface": "world-atlas-public-reference-context",
+  "locale": "ko-KR",
+  "visibility": "public-indexable-reference-surface",
+  "counts": {
+    "zones": 5,
+    "objects": 6,
+    "materials": 5,
+    "relations": 5,
+    "boundaries": 2,
+    "publicSourceLinks": 5,
+    "futureExperienceLinks": 0
+  },
+  "labels": {
+    "observed": "화면에서 확인한 요소",
+    "reading": "읽기 제안",
+    "notConfirmed": "확정 전"
+  },
+  "semantics": {
+    "displayOrderOnly": true,
+    "directional": false,
+    "hierarchical": false,
+    "distanceKnown": false,
+    "centralityKnown": false
+  },
+  "zones": [
+    {
+      "id": "zone-01",
+      "number": "01",
+      "shortLabel": "AIGC",
+      "publicLabel": "창작의 조건",
+      "kicker": "AIGC · CREATIVE PARADIGM",
+      "title": "AI 시대, 창작의 정의를 다시 묻다",
+      "image": {
+        "src": "assets/series-01.jpg",
+        "alt": "검은 프레임과 분절된 조각, 주홍색 원형 구조가 놓인 AIGC 시리즈 배너"
+      },
+      "purpose": "결과가 쉽게 만들어지는 시대에 창작의 조건이 선택, 작업 방식, 관계, 기억과 세계 설계로 넓어지는 지점을 살펴봅니다.",
+      "question": "누구나 만들 수 있게 될 때, 무엇이 한 세계를 선택할 이유와 책임을 갖게 하는지 묻습니다.",
+      "observed": "거대한 검은 프레임, 분절된 조각, 작은 화면과 선, 주홍색 원형 구조가 넓은 수평 무대에 놓입니다.",
+      "readingProposal": "완성된 결과보다 선택과 작업 방식, 세계를 만드는 조건을 함께 살펴봅니다.",
+      "publicSource": {
+        "label": "공개 시리즈 읽기",
+        "url": "https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/"
+      }
+    },
+    {
+      "id": "zone-02",
+      "number": "02",
+      "shortLabel": "NEWTYPE",
+      "publicLabel": "열어 두는 판단",
+      "kicker": "NEWTYPE · IP DIALOGUE",
+      "title": "AI를 열어둘수록 선명해지는 창작자의 자리",
+      "image": {
+        "src": "assets/series-02.jpg",
+        "alt": "검은 프레임과 손 조각, 짙은 초록색 원형 구조가 놓인 Newtype 시리즈 배너"
+      },
+      "purpose": "가능성을 더 많이 통제하는 대신 취향과 경계를 선택해 결과와 반복 가능한 창작 조건이 생기는 지점을 살펴봅니다.",
+      "question": "완성물이 쉽게 생성되고 사라지는 시대에, 창작자의 자리는 직접 만드는 능력인지 가능성을 열고 좁히는 판단인지 묻습니다.",
+      "observed": "큰 검은 프레임과 손 조각, 겹친 액자, 짙은 초록색 원, 작은 알 모양 형상이 넓은 무대에 놓입니다.",
+      "readingProposal": "가능성을 열어 두면서도 취향과 경계를 세우는 판단을 살펴봅니다.",
+      "publicSource": {
+        "label": "공개 시리즈 읽기",
+        "url": "https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/"
+      }
+    },
+    {
+      "id": "zone-03",
+      "number": "03",
+      "shortLabel": "AUTONOMOUS",
+      "publicLabel": "스스로 움직이는 세계",
+      "kicker": "AUTONOMOUS WORLDS",
+      "title": "자율 세계, 스스로 규칙을 만드는 세계의 등장",
+      "image": {
+        "src": "assets/series-03.jpg",
+        "alt": "모듈형 블록과 반으로 나뉜 구, 파란 원형 면이 놓인 Autonomous Worlds 시리즈 배너"
+      },
+      "purpose": "사물 하나를 만드는 일에서 규칙, 관계와 환경을 설계하는 일로 창작의 단위가 달라지는 지점을 살펴봅니다.",
+      "question": "세계가 스스로 움직이는 조건에서 창작자는 무엇을 만들고 무엇을 관찰하는 존재가 되는지 묻습니다.",
+      "observed": "모듈형 블록과 선 프레임, 서로 다른 표면으로 나뉜 큰 구, 파란 원형 면이 지평형 무대에 놓입니다.",
+      "readingProposal": "사물 하나보다 규칙과 관계를 설계할 때 세계와 창작자의 자리가 어떻게 달라지는지 묻습니다.",
+      "publicSource": {
+        "label": "공개 시리즈 읽기",
+        "url": "https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/"
+      }
+    },
+    {
+      "id": "zone-04",
+      "number": "04",
+      "shortLabel": "CO-CREATION",
+      "publicLabel": "함께 만드는 자리",
+      "kicker": "CO-CREATION · CULTURE",
+      "title": "코-크리에이션 문화",
+      "image": {
+        "src": "assets/series-04.jpg",
+        "alt": "문과 작업대, 계단이 이어진 공동 제작 회랑의 Co-creation 시리즈 배너"
+      },
+      "purpose": "서로 다른 사람이 만드는 자리에 들어와 역할과 크기가 다른 참여를 함께 만들고 남기는 조건을 살펴봅니다.",
+      "question": "누가 만드는 자리에 들어올 수 있고, 서로 다른 참여가 무엇으로 남는지 묻습니다.",
+      "observed": "문과 작업대, 도면과 계단이 수평으로 이어지고 여러 익명의 인물이 서로 다른 자리에서 작업합니다.",
+      "readingProposal": "누가 만드는 자리에 들어올 수 있고, 서로 다른 참여가 무엇으로 남는지 살펴봅니다.",
+      "publicSource": {
+        "label": "공개 시리즈 읽기",
+        "url": "https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/"
+      }
+    },
+    {
+      "id": "zone-05",
+      "number": "05",
+      "shortLabel": "ONCHAIN",
+      "publicLabel": "기록이 생활이 되는 방",
+      "kicker": "ONCHAIN · STORYTELLING",
+      "title": "온체인 스토리텔링",
+      "image": {
+        "src": "assets/series-05.jpg",
+        "alt": "판 묶음과 수납 구조, 연보라색 원반이 놓인 Onchain Storytelling 시리즈 배너"
+      },
+      "purpose": "보존된 기록이 방과 사물, 이동과 여러 형식의 장면으로 다시 읽히는 조건을 살펴봅니다.",
+      "question": "기록이 단순한 로그를 넘어 생활과 세계의 역사가 되려면 무엇이 필요한지 묻습니다.",
+      "observed": "높은 사선 시점에서 판 묶음과 열린 수납 구조, 단차와 곡면, 큰 연보라색 원반이 보입니다.",
+      "readingProposal": "기록이 방과 사물, 이동과 여러 형식의 장면으로 이어지려면 무엇이 필요한지 묻습니다.",
+      "publicSource": {
+        "label": "공개 시리즈 읽기",
+        "url": "https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/"
+      }
+    }
+  ],
+  "objects": [
+    {
+      "id": "object-frames-openings",
+      "label": "프레임과 개구",
+      "zoneIds": ["zone-01", "zone-02", "zone-04"],
+      "observed": "시리즈 01, 02, 04에서 크기와 형태가 다른 건축적 프레임과 통과 개구가 보입니다.",
+      "readingProposal": "경계와 통과 장면을 비교할 수 있지만 같은 장소나 같은 통행 권한을 뜻하지는 않습니다."
+    },
+    {
+      "id": "object-circles-spheres-discs",
+      "label": "원, 구, 원반",
+      "zoneIds": ["zone-01", "zone-02", "zone-03", "zone-05"],
+      "observed": "시리즈 01, 02, 03, 05에 큰 원형 구조가 서로 다른 표면과 자세로 놓입니다.",
+      "readingProposal": "크기와 배치를 비교할 수 있지만 모두 같은 문, 세계의 핵 또는 기록을 뜻한다고 확정하지 않습니다."
+    },
+    {
+      "id": "object-lines-planes",
+      "label": "선과 넓은 면",
+      "zoneIds": ["zone-01", "zone-02", "zone-03", "zone-04", "zone-05"],
+      "observed": "가는 선, 바닥 띠와 폭이 있는 색면이 장면 안의 사물과 구역을 나눕니다.",
+      "readingProposal": "시선과 장면의 구획을 비교하는 단서이며 실제 이동이나 권한을 자동으로 허용하지 않습니다."
+    },
+    {
+      "id": "object-anonymous-figures",
+      "label": "익명의 인물",
+      "zoneIds": ["zone-01", "zone-02", "zone-03", "zone-04", "zone-05"],
+      "observed": "다섯 장면 모두 얼굴을 식별하기 어려운 작은 인물이 구조물 사이에 놓입니다.",
+      "readingProposal": "공간의 규모와 관찰 위치를 비교하는 표상이며 신원이나 특정 역할, 발화 권한을 부여하지 않습니다."
+    },
+    {
+      "id": "object-screens-drawings-plates-storage",
+      "label": "화면, 도면, 판, 수납",
+      "zoneIds": ["zone-01", "zone-02", "zone-03", "zone-04", "zone-05"],
+      "observed": "화면, 도면, 납작한 판과 열린 수납 형태의 평면과 구조가 여러 장면에 반복됩니다.",
+      "readingProposal": "결과, 기억, 규칙과 기록을 놓아 두는 장치를 비교할 수 있지만 모두 같은 기록 체계라고 확정하지 않습니다."
+    },
+    {
+      "id": "object-steps-levels",
+      "label": "계단과 단차",
+      "zoneIds": ["zone-01", "zone-04", "zone-05"],
+      "observed": "시리즈 01, 04, 05에서 계단, 단차와 높이 차이가 서로 다른 카메라와 공간 리듬을 만듭니다.",
+      "readingProposal": "시점이나 상태 변화의 표식으로 검토할 수 있지만 높이가 권위, 등급이나 가치를 뜻하지는 않습니다."
+    }
+  ],
+  "materials": [
+    {
+      "id": "material-vermilion",
+      "zoneId": "zone-01",
+      "label": "01 · 주홍",
+      "observed": "주홍과 오렌지 계열이 원형 구조, 중앙 표식과 가는 선에 집중됩니다.",
+      "screenRoleProposal": "창작 흐름과 세계 경계를 구분하는 비측정 UI 표식으로 사용합니다.",
+      "measurementState": "not-measured"
+    },
+    {
+      "id": "material-forest-green",
+      "zoneId": "zone-02",
+      "label": "02 · 숲색",
+      "observed": "탁한 짙은 숲색이 큰 원형 면과 바닥 띠에 집중됩니다.",
+      "screenRoleProposal": "열린 가능성과 존재 조건을 구분하는 비측정 UI 표식으로 사용합니다.",
+      "measurementState": "not-measured"
+    },
+    {
+      "id": "material-deep-blue",
+      "zoneId": "zone-03",
+      "label": "03 · 짙은 파랑",
+      "observed": "짙은 파랑이 큰 구의 격자 면, 세워진 원형 면과 가는 바닥 선에 집중됩니다.",
+      "screenRoleProposal": "규칙과 관측 장면을 구분하는 비측정 UI 표식으로 사용합니다.",
+      "measurementState": "not-measured"
+    },
+    {
+      "id": "material-ochre",
+      "zoneId": "zone-04",
+      "label": "04 · 황토",
+      "observed": "황토와 금빛 계열이 공용 바닥과 큰 문턱 안쪽을 이어 줍니다.",
+      "screenRoleProposal": "공동 제작 장면을 구분하는 비측정 UI 표식이며 소유, 보상이나 가치의 표시는 아닙니다.",
+      "measurementState": "not-measured"
+    },
+    {
+      "id": "material-lavender",
+      "zoneId": "zone-05",
+      "label": "05 · 연보라",
+      "observed": "연보라색이 바닥판, 계단, 단차, 곡면과 원반에 연속적으로 놓입니다.",
+      "screenRoleProposal": "기록 이동과 상태 변환을 구분하는 비측정 UI 표식으로 검토하며 장식 의미로 확정하지 않습니다.",
+      "measurementState": "not-measured"
+    }
+  ],
+  "relations": [
+    {
+      "id": "relation-01",
+      "selectorLabel": "창작의 조건 · 스스로 움직이는 세계",
+      "accessibleName": "창작의 조건과 스스로 움직이는 세계 관계 읽기 제안",
+      "title": "창작의 흐름과 스스로 움직이는 세계",
+      "zoneIds": ["zone-01", "zone-03"],
+      "sharedQuestion": "창작의 단위가 결과와 작업 방식에서 기억, 규칙과 상호작용을 가진 세계로 넓어질 때 창작자는 무엇을 설계하게 되는지 묻습니다.",
+      "observedDifference": "한쪽은 검은 프레임과 분절된 조각, 작은 화면과 주홍색 원형 구조를 보여 주고, 다른 쪽은 모듈형 블록과 서로 다른 표면의 큰 구, 파란 원형 면을 보여 줍니다. 둘 다 넓은 바탕과 작은 익명 인물을 공유하지만 중심 사물과 강조색은 다릅니다.",
+      "readingProposal": "결과를 고르고 작업 방식을 설계하는 질문과, 기억과 규칙이 지속되는 세계를 설계하는 질문을 나란히 읽어 볼 수 있습니다. 한쪽이 다른 쪽의 발전 단계라는 뜻은 아닙니다.",
+      "status": "not-confirmed",
+      "semantics": {
+        "unconfirmed": true,
+        "directional": false,
+        "hierarchical": false,
+        "distanceKnown": false,
+        "centralityKnown": false,
+        "leftRightIsNotDirection": true
+      }
+    },
+    {
+      "id": "relation-02",
+      "selectorLabel": "열어 두는 판단 · 스스로 움직이는 세계",
+      "accessibleName": "열어 두는 판단과 스스로 움직이는 세계 관계 읽기 제안",
+      "title": "열어 두는 판단과 자율 생태",
+      "zoneIds": ["zone-02", "zone-03"],
+      "sharedQuestion": "필요한 경계를 세우면서도 그 안의 존재가 세계 조건에 따라 움직이게 하려면 무엇을 정하고 무엇을 열어 두어야 하는지 묻습니다.",
+      "observedDifference": "한쪽은 빈 검은 프레임과 손 조각, 겹친 액자, 숲색 원과 작은 알 모양 형상을 보여 주고, 다른 쪽은 모듈형 블록과 반으로 나뉜 큰 구, 파란 경로를 보여 줍니다. 원형 구조와 익명 인물은 보이지만 사물 사이의 직접 대응은 확인되지 않습니다.",
+      "readingProposal": "취향과 가드레일을 선택하는 질문과, 규칙 안에서 관계와 환경이 움직이는 질문 사이의 긴장을 함께 살펴볼 수 있습니다. 자율성을 무제한 권한으로 읽지는 않습니다.",
+      "status": "not-confirmed",
+      "semantics": {
+        "unconfirmed": true,
+        "directional": false,
+        "hierarchical": false,
+        "distanceKnown": false,
+        "centralityKnown": false,
+        "leftRightIsNotDirection": true
+      }
+    },
+    {
+      "id": "relation-03",
+      "selectorLabel": "스스로 움직이는 세계 · 함께 만드는 자리",
+      "accessibleName": "스스로 움직이는 세계와 함께 만드는 자리 관계 읽기 제안",
+      "title": "세계 설계와 함께 만드는 자리",
+      "zoneIds": ["zone-03", "zone-04"],
+      "sharedQuestion": "살아 움직이는 세계를 여러 사람이 함께 시험하고 바꿀 때 누가 만드는 자리에 들어오고 참여는 어떻게 남는지 묻습니다.",
+      "observedDifference": "한쪽은 모듈형 블록과 큰 구, 파란 원형 면 주변의 관찰자를 보여 주고, 다른 쪽은 문과 작업대, 도면과 계단 사이에서 일하는 여러 인물을 보여 줍니다. 두 장면은 정면에 가까운 무대를 공유하지만 관찰 중심과 작업 중심의 구성이 다릅니다.",
+      "readingProposal": "세계의 규칙과 변화를 관찰하는 자리와, 그 규칙과 결과를 여러 사람이 함께 시험하고 수정하는 자리를 나란히 읽어 볼 수 있습니다. 어느 쪽도 상위 단계가 아닙니다.",
+      "status": "not-confirmed",
+      "semantics": {
+        "unconfirmed": true,
+        "directional": false,
+        "hierarchical": false,
+        "distanceKnown": false,
+        "centralityKnown": false,
+        "leftRightIsNotDirection": true
+      }
+    },
+    {
+      "id": "relation-04",
+      "selectorLabel": "함께 만드는 자리 · 기록이 생활이 되는 방",
+      "accessibleName": "함께 만드는 자리와 기록이 생활이 되는 방 관계 읽기 제안",
+      "title": "함께 만든 것이 기록으로 남는 자리",
+      "zoneIds": ["zone-04", "zone-05"],
+      "sharedQuestion": "참여와 기여가 사라지지 않고 다시 읽을 수 있는 역사로 남으려면 어떤 행위와 사물을 기록에 연결해야 하는지 묻습니다.",
+      "observedDifference": "한쪽은 정면형 작업 회랑과 여러 참여자, 작업대와 도면을 보여 주고, 다른 쪽은 높은 사선 시점의 판 묶음과 열린 수납 구조를 보여 줍니다. 따뜻한 바탕과 짙은 구조, 익명의 인물은 공유하지만 카메라와 강조색은 다릅니다.",
+      "readingProposal": "함께 만드는 동안 생긴 행위와 사물이 나중에 다시 확인할 수 있는 기록으로 남는 관계를 검토할 수 있습니다. 모든 기여를 거래나 소유로 환원하지 않습니다.",
+      "status": "not-confirmed",
+      "semantics": {
+        "unconfirmed": true,
+        "directional": false,
+        "hierarchical": false,
+        "distanceKnown": false,
+        "centralityKnown": false,
+        "leftRightIsNotDirection": true
+      }
+    },
+    {
+      "id": "relation-05",
+      "selectorLabel": "열어 두는 판단 · 기록이 생활이 되는 방",
+      "accessibleName": "열어 두는 판단과 기록이 생활이 되는 방 관계 읽기 제안",
+      "title": "생성 조건과 다시 읽는 이력",
+      "zoneIds": ["zone-02", "zone-05"],
+      "sharedQuestion": "결과를 호출하고 선택하고 변주할 때 각 선택의 맥락과 이력을 어떻게 남기고 다시 읽을지 묻습니다.",
+      "observedDifference": "한쪽은 정면형 무대의 겹친 액자와 손 조각, 숲색 원과 작은 형상을 보여 주고, 다른 쪽은 높은 사선 시점의 기록판과 수납, 연보라색 단차와 원반을 보여 줍니다. 원형 구조와 익명 인물은 보이지만 사물과 기술의 직접 대응은 확인되지 않습니다.",
+      "readingProposal": "가능성과 선택 기준을 설계하는 질문과, 선택된 결과의 출처와 변화를 다시 읽는 질문을 함께 살펴볼 수 있습니다. 생성 조건과 기록 장치를 같은 기술로 보지는 않습니다.",
+      "status": "not-confirmed",
+      "semantics": {
+        "unconfirmed": true,
+        "directional": false,
+        "hierarchical": false,
+        "distanceKnown": false,
+        "centralityKnown": false,
+        "leftRightIsNotDirection": true
+      }
+    }
+  ],
+  "boundaries": [
+    {
+      "id": "boundary-reference",
+      "state": "public-reference-surface",
+      "title": "World Atlas",
+      "description": "구역, 시각 요소, 색과 표면, 관계 제안을 읽는 공개 참고면입니다.",
+      "pathText": "/archive/world-atlas/",
+      "linkable": false
+    },
+    {
+      "id": "boundary-future-experience",
+      "state": "future-experience-not-active",
+      "title": "Inner World Experience",
+      "description": "공간, 소리, 이동과 대화를 결합하는 경험은 별도의 설계와 확인 뒤에 다룹니다.",
+      "pathText": "/universe/world/",
+      "linkable": false
+    }
+  ]
+}
