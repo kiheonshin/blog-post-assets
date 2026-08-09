@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "contract": "kiheon-speech-contract-v1",
-  "updated": "2026-08-03",
+  "updated": "2026-08-09",
   "about": "신기헌(Kiheon Shin) 발행 아카이브를 읽고 인용하는 에이전트를 위한 계약이다. 세 단이다. 인용 가능(quotable) · 복원 금지(masked) · 생성 금지(noGenerate).",
   "map": "https://kiheonshin.github.io/blog-post-assets/llms.txt",
   "quotable": {
@@ -17,7 +17,6 @@
       "https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/",
       "https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/posts/02-more-than-a-mirror/",
       "https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/posts/03-what-we-want-to-create/",
-      "https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/sources/script/",
       "https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/sources/slides/",
       "https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/sources/talk/",
       "https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/",
@@ -26,10 +25,18 @@
       "https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/03-when-records-become-stories/",
       "https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/sources/slides-2023-06/",
       "https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/sources/slides-2023-11/",
+      "https://kiheonshin.github.io/blog-post-assets/series/life-universe/",
+      "https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/01-result/",
+      "https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/02-structure/",
+      "https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/03-boundary/",
       "https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/",
       "https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/01-not-blocking-potential/",
       "https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/02-engine-as-ip/",
-      "https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/03-already-have-the-eye/"
+      "https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/03-already-have-the-eye/",
+      "https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/",
+      "https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/posts/01-worldview/",
+      "https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/posts/02-methodology/",
+      "https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/posts/03-expansion/"
     ],
     "markdown": "각 포스팅 주소에 `content.md` 를 함께 둔다. 본문만 담은 미러다.",
     "note": "출처를 밝히면 본문을 인용할 수 있다. 여기 없는 주소는 공개 대상이 아니다. 접근이 되더라도 다루지 않는다."

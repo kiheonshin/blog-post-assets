@@ -8,7 +8,7 @@
 
 ***
 
-![온체인 스토리텔링 (1) 이야기를 담으려면 세계부터 지어야 했다 키 비주얼](https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/assets/cover-placeholder.jpg)
+![온체인 스토리텔링 (1) 이야기를 담으려면 세계부터 지어야 했다 키 비주얼](https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/assets/hero-1.jpg?v=20260808d)
 
 2023년 가을에 글 한 편을 발행했다. 모든 것이 온체인 데이터와 트랜잭션으로 정의된 세상을 상상해보셨나요, 라는 질문으로 시작하는 글이었다. 거기서 나는 온체인 스토리텔링(On-chain Storytelling)을 다음 단계의 크리에이티브로 정의했다. 새 기술을 소개하는 글이 아니었다. 이야기를 담을 그릇으로 게임 서버도 영상 플랫폼도 아닌, 지워지지 않는 장부를 고르겠다는 글이었다. 이 글은 그 세계가 무엇으로 지어졌는지를 3년 뒤에 다시 정리한 것이다.
 

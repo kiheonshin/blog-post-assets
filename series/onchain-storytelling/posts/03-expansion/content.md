@@ -8,7 +8,7 @@
 
 ***
 
-![온체인 스토리텔링 (3) 세계는 옷과 공간과 음악으로 새어 나갔다 키 비주얼](https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/assets/cover-placeholder.jpg)
+![온체인 스토리텔링 (3) 세계는 옷과 공간과 음악으로 새어 나갔다 키 비주얼](https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/assets/hero-3.jpg?v=20260808d)
 
 세계관이 있었고 캐릭터가 살았다. 앞의 두 편에서 정리한 이야기다. 이 편은 그 세계가 밖으로 내보낸 것들에 대한 글이다. 확장의 방향은 한 갈래가 아니었다. 영상 연작이 쌓였고, 캐릭터가 옷 브랜드의 화자가 됐고, 호텔의 형태를 한 공간 시스템이 기획됐고, 무대 뒤에 숨겨두었던 캐릭터의 다른 얼굴은 실제 음원이 됐고, 아직 그려지지 않은 캐릭터 하나가 미술 갈래의 자리로 남았다. 어떤 것은 실물이 됐고 어떤 것은 아이디어로 남았다. 그 갈래들을 순서대로 적는다.
 

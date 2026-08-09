@@ -8,7 +8,7 @@
 
 ***
 
-![온체인 스토리텔링 (2) 캐릭터는 정의되기 전에 먼저 살았다 키 비주얼](https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/assets/cover-placeholder.jpg)
+![온체인 스토리텔링 (2) 캐릭터는 정의되기 전에 먼저 살았다 키 비주얼](https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/assets/hero-2.jpg?v=20260808d)
 
 세계관을 소개하는 글보다 캐릭터가 먼저 있었다. MIXtown의 첫 캐릭터가 채널에 등장한 것이 2023년 8월이고, 온체인 스토리텔링을 정의한 매니페스토는 9월 말에 나왔다. 설정집을 완성한 뒤 캐릭터를 내보낸 것이 아니라, 캐릭터가 한 달 넘게 산 뒤에야 그 세계의 정의가 발행된 것이다. 이 편은 그 순서에 대한 글이다. 빈 계정에 성격과 소지품과 이야기를 채워 넣는 방법, 그리고 완성하지 않은 자리를 남겨두는 방법에 대해 쓴다.
 
