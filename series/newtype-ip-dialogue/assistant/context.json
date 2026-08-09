@@ -320,7 +320,7 @@
       "url": "series/newtype-ip-dialogue/posts/01-not-blocking-potential/",
       "title": "잠재력을 믿는 데서 협업이 시작된다",
       "synopsis": "한 번의 답을 완성본으로 받지 않는 작업 루프, 예상하지 못한 결과에 거는 신뢰, 방향과 권한의 경계를 구분하는 태도, 결과 뒤에서 기획을 추출하는 순서를 살핀다.",
-      "contentHash": "sha256:282887be90feea5295a020bcb2f153a2a8dd7dec47911dbe820477b0442eabdf",
+      "contentHash": "sha256:4f77f8c833dd2ff5e9952f5408b5d7101afe9ec34013604e10b7af85e794bc00",
       "keyInsights": [
         {
           "text": "좋은 협업은 계획을 그대로 재현하는 데서만 생기지 않고, 예상하지 못한 결과를 함께 발견할 때 더 강하게 느껴진다.",
@@ -437,7 +437,7 @@
       "url": "series/newtype-ip-dialogue/posts/02-engine-as-ip/",
       "title": "남는 IP는 취향을 재현하는 엔진이다",
       "synopsis": "반복의 단위를 완성된 파일에서 취향으로 옮기고, 변주 속에서도 같은 결을 다시 불러오는 IP 생성 엔진을 자산으로 바라본다.",
-      "contentHash": "sha256:81b64137ce4ba07aa66f14bb0c744141a2ea08d6daed706203da648549683b73",
+      "contentHash": "sha256:e764ce1d17148b3882e60f3fd6d2f2b3bc47fbf1b7f1a3fd5d2d7851f3d1eae0",
       "keyInsights": [
         {
           "text": "생성 시대의 IP는 완성된 결과물보다 데이터와 가능성의 범위, 취향과 선택 기준을 묶은 반복 가능한 IP 생성 엔진에 가깝다.",
@@ -554,7 +554,7 @@
       "url": "series/newtype-ip-dialogue/posts/03-already-have-the-eye/",
       "title": "다르게 보는 눈은 창작자가 가진 능력이다",
       "synopsis": "성능과 효율을 일부러 덜어내는 실험을 통해 오류와 모자람이 이야기와 관계가 되는 조건, 도구를 존재로 바라보는 관점, 창작자의 판단 능력을 살핀다.",
-      "contentHash": "sha256:f6e3eb8080dcf2cbebcc9d429e00f1b7fdc9163e12193e2e033f6ed9bd5a825f",
+      "contentHash": "sha256:757a7d1f76f3aa9a7065c3050003ca53b9d5fdd79d77128bd40d2a1061d2028a",
       "keyInsights": [
         {
           "text": "가능한 능력을 모두 꺼내기보다 무엇을 감추고 허용할지 정하는 판단이 경험과 관계를 바꾼다.",

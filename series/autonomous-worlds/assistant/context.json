@@ -380,7 +380,7 @@
       "url": "series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/",
       "title": "게임 엔진의 도시에서 자율 세계까지",
       "synopsis": "게임 엔진으로 만든 도시에서 출발해 AI 캐릭터, 자율적으로 살림을 꾸리는 존재, 스스로 규칙과 역사를 축적하는 자율 세계의 개념으로 이동한다.",
-      "contentHash": "sha256:623a3ef23347f55f012b8b6f87d1bde7a56ee50d2a52c75be09563b80a45f84a",
+      "contentHash": "sha256:8e050ad28688ce728a65a63611b6873f3470f7fdb24c99d02894b5cb5dca0c71",
       "keyInsights": [
         {
           "text": "AI 캐릭터가 대본을 수행하는 단역을 넘어 상태와 기억에 따라 행동할 때 세계는 배경이 아니라 살아 있는 환경이 된다.",
@@ -461,7 +461,7 @@
       "url": "series/autonomous-worlds/posts/02-more-than-a-mirror/",
       "title": "가상 세계는 더 이상 현실의 보조 수단이 아니다",
       "synopsis": "게임 속 상품이 현실로 오고 지구의 디지털 트윈이 에이전트의 일터가 되는 사례를 따라가며, 가상 세계가 현실의 보조 수단에서 독립된 경험과 경제의 장소로 이동하는 과정을 살핀다.",
-      "contentHash": "sha256:495bdd5e52a9aee9ec2fee3c209906ac8e92c718dd15397a3f04be4c1c257804",
+      "contentHash": "sha256:e3edd190295ee559c109593df87d6b4abacf7144f68dccd075fd0cd1b75debc8",
       "keyInsights": [
         {
           "text": "가상과 현실이 상품과 행동을 주고받기 시작하면 가상 세계는 현실을 설명하는 화면이 아니라 자체적인 생활 세계가 된다.",
@@ -542,7 +542,7 @@
       "url": "series/autonomous-worlds/posts/03-what-we-want-to-create/",
       "title": "무엇을 창조하는 존재이고 싶은가",
       "synopsis": "기억과 현실의 모호한 경계에서 출발해 디지털의 지속성, 포스트 휴먼과의 공존, 세계를 만드는 엔진과 창작 문화의 계보를 거쳐 창작자의 정체성을 묻는다.",
-      "contentHash": "sha256:5bb39d4af73f287ba6c26cea002fadb52170a1d9c0ea86174b53d64b2a1ed4a0",
+      "contentHash": "sha256:957379a86cc1ea1391c89ae63ff603dad3778d160fec21e0d73bd767365d7623",
       "keyInsights": [
         {
           "text": "생성 기술이 강해질수록 중요한 것은 무엇을 만들 수 있는가보다 어떤 세계와 관계를 선택해 지속시킬 것인가다.",
