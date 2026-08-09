@@ -20,11 +20,12 @@ export const contentLibrary = {
       topics: ["AI와 창작", "창작 도구", "기록과 서사"],
       keywords: ["AI 에이전트", "디지털 트윈", "문체", "파인튜닝", "프롬프트"],
       href: "series/life-universe/",
-      // 커버는 자리표시 그대로 간다(본인 확정). 정보를 담지 않은 이미지이므로
-      // alt 를 비워 장식으로 둔다 — 「자리표시」라고 적으면 발행면이 편집 경위를
-      // 말하게 된다.
-      cover: "assets/cover-placeholder.jpg",
-      coverAlt: "",
+      // 커버 세트 설치 [2026-08-09]. 은유는 「이 글을 닫는 한 줄이 세 조각으로
+      // 갈리고 각 조각을 한 편씩 맡는다」. 액센트 청록은 앞선 다섯이 쓴
+      // 주황·남색·보라와 색상환에서 떨어져 있어 목록에서 이 시리즈만 갈린다.
+      cover: "series/life-universe/assets/series-banner.jpg?v=20260809a",
+      coverAlt:
+        "청록색 상감 띠가 바닥을 가로지르다 두 조각으로 갈리고 세 번째 조각이 그 줄 밖에 따로 놓인 Life Universe 파노라마",
       published: "2026-08-08",
       // 도슨트 미장착 — 컨텍스트 팩이 아직 없다. planned 면 검증기가 인벤토리만
       // 보고 전문 검사를 건너뛴다.
