@@ -23,7 +23,7 @@ export const contentLibrary = {
       // 커버 세트 설치 [2026-08-09]. 은유는 「이 글을 닫는 한 줄이 세 조각으로
       // 갈리고 각 조각을 한 편씩 맡는다」. 액센트 청록은 앞선 다섯이 쓴
       // 주황·남색·보라와 색상환에서 떨어져 있어 목록에서 이 시리즈만 갈린다.
-      cover: "series/life-universe/assets/series-banner.jpg?v=20260809c",
+      cover: "series/life-universe/assets/series-banner.jpg?v=20260809d",
       coverAlt:
         "다섯 시리즈의 색을 섞은 그레이디언트 띠가 바닥을 가로지르다 두 조각으로 갈리고 세 번째 조각이 그 줄 밖에 따로 놓인 Life Universe 파노라마",
       published: "2026-08-08",
