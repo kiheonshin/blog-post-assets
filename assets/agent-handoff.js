@@ -27,8 +27,8 @@ const CONTRACT_URL = `${SITE}agent/citation-contract.json`;
 const STATUS_RESET_MS = 4000;
 
 const STYLE = `
-.agent-handoff{position:relative;display:inline-flex}
-.agent-handoff__btn{font:inherit;font-size:var(--meta,.75rem);letter-spacing:.02em;
+.agent-handoff{position:relative;display:flex}
+.agent-handoff__btn{inline-size:100%;font:inherit;font-size:var(--meta,.75rem);letter-spacing:.02em;
   padding:.5rem .85rem;border:1px solid currentColor;border-radius:0;
   background:transparent;color:var(--accent,#2457d6);cursor:pointer;
   white-space:nowrap}

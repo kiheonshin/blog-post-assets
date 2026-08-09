@@ -253,9 +253,17 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
   font-size:clamp(1.25rem,2vw,1.65rem);line-height:1.4}
 .media-placeholder__note{font-size:.8125rem;color:var(--ink-muted)}
 
-.foot{margin-block:4rem 0;padding-block-start:1.5rem;
-  border-block-start:1px solid var(--rule-strong);display:grid;gap:1rem}
-.foot p{margin:0;color:var(--ink-muted);font-size:.875rem;line-height:1.7}
+/* 선을 긋지 않는다 — 포스팅이 끝나는 선은 아래 도구 줄이 진다.
+   말미 위에 선을 그으면 편 목록·귀속이 본문과 다른 덩어리로 읽히고,
+   정작 글과 사이트 인터페이스 사이에는 아무 경계도 없게 된다. */
+.foot{margin-block:4rem 2.5rem;display:block}
+/* 여백은 **한 자리에서만** 정한다. 앞서 `.foot p{margin:0}` 이 형제 규칙보다
+   특이도가 높아(0,1,1 > 0,1,0) 귀속문 위 여백을 조용히 0 으로 눌렀다. */
+.foot > *{margin:0}
+.foot > * + *{margin-block-start:1.75rem}
+/* 두 귀속 문장은 한 덩어리다. 한글과 영어 사이는 바짝 붙인다 */
+.foot .en{margin-block-start:.4rem}
+.foot p{color:var(--ink-muted);font-size:.875rem;line-height:1.7}
 .foot .en{font-family:var(--font-mono);font-size:var(--micro);
   letter-spacing:.04em;color:var(--ink-faint);line-height:1.8}
 .serieslinks{display:grid;gap:.4rem}
@@ -284,10 +292,10 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<link rel="stylesheet" href="../../../../assets/site.css?v=20260809c">
+<link rel="stylesheet" href="../../../../assets/site.css?v=20260809e">
 <link rel="stylesheet" href="../../../../assets/assistant/voice-assistant-v2.css?v=20260803simple1">
 <script type="module" src="../../../../assets/series-nav.js?v=20260807j"></script>
-<script type="module" src="../../../../assets/agent-handoff.js?v=20260809c"></script>
+<script type="module" src="../../../../assets/agent-handoff.js?v=20260809e"></script>
 <script type="module" src="../../../../assets/assistant/voice-assistant-v2.js?v=20260803grok2"></script>
 </head>
 <body>
