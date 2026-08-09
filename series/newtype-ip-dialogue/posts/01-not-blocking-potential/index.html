@@ -256,7 +256,11 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 /* 선을 긋지 않는다 — 포스팅이 끝나는 선은 아래 도구 줄이 진다.
    말미 위에 선을 그으면 편 목록·귀속이 본문과 다른 덩어리로 읽히고,
    정작 글과 사이트 인터페이스 사이에는 아무 경계도 없게 된다. */
-.foot{margin-block:4rem 2.5rem;display:block}
+/* 귀속 표기는 **한 장의 판**이다. 선 위에 남은 유일한 것이라 문단으로 두면
+   본문 꼬리처럼 읽힌다. 도슨트 안내 박스와 같은 집안으로 맞춘다 —
+   1px 실선 · 모서리 0 · 바탕은 지면색(칠하지 않고 테두리만 남는다). */
+.foot{margin-block:4rem 2.5rem;display:block;
+  padding:1.15rem 1.25rem;border:1px solid var(--rule);background:var(--canvas)}
 /* 여백은 **한 자리에서만** 정한다. 앞서 `.foot p{margin:0}` 이 형제 규칙보다
    특이도가 높아(0,1,1 > 0,1,0) 귀속문 위 여백을 조용히 0 으로 눌렀다. */
 .foot > *{margin:0}
@@ -292,10 +296,10 @@ figcaption{margin-block-start:.75rem;color:var(--ink-muted);
 
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<link rel="stylesheet" href="../../../../assets/site.css?v=20260809f">
+<link rel="stylesheet" href="../../../../assets/site.css?v=20260809g">
 <link rel="stylesheet" href="../../../../assets/assistant/voice-assistant-v2.css?v=20260803simple1">
 <script type="module" src="../../../../assets/series-nav.js?v=20260807j"></script>
-<script type="module" src="../../../../assets/agent-handoff.js?v=20260809f"></script>
+<script type="module" src="../../../../assets/agent-handoff.js?v=20260809g"></script>
 <script type="module" src="../../../../assets/assistant/voice-assistant-v2.js?v=20260803grok2"></script>
 </head>
 <body>
