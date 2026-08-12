@@ -1,0 +1,2076 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KIHEON LIFE UNIVERSE 소개 덱 · Kiheon Shin</title>
+<meta name="description" content="KIHEON LIFE UNIVERSE를 소개하는 27장. 신기헌 본인이 만든 것이 아니라, 본인을 학습한 에이전트가 본인의 발표 자료와 아카이브를 재료로 다시 만들었다. 본인이 읽고 승인한 뒤 시리즈 00의 원자료로 공개됐다.">
+<link rel="canonical" href="https://kiheonshin.github.io/blog-post-assets/series/life-universe/sources/universe-intro/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="KIHEON LIFE UNIVERSE 소개 덱">
+<meta property="og:description" content="KIHEON LIFE UNIVERSE를 소개하는 27장. 신기헌 본인이 만든 것이 아니라, 본인을 학습한 에이전트가 본인의 발표 자료와 아카이브를 재료로 다시 만들었다. 본인이 읽고 승인한 뒤 시리즈 00의 원자료로 공개됐다.">
+<meta property="og:url" content="https://kiheonshin.github.io/blog-post-assets/series/life-universe/sources/universe-intro/">
+<meta property="og:image" content="https://kiheonshin.github.io/blog-post-assets/series/life-universe/assets/series-banner.jpg?v=20260810a">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SQYBGPJFJ4"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-SQYBGPJFJ4');</script>
+<style>:root {
+  --ks-bg: #f7f8f9;
+  --ks-surface: #ffffff;
+  --ks-soft: #edf1f3;
+  --ks-text: #182026;
+  --ks-muted: #596773;
+  --ks-line: #cbd3d9;
+  --ks-edge: #61707c;
+  --ks-accent: #0f766e;
+  --ks-soft-accent: #d9efec;
+  --ks-accent-2: #2563eb;
+  --ks-accent-3: #d8573c;
+  --ks-warning: #f4b740;
+  --ks-on-accent: #ffffff;
+  --ks-font: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+  --ks-slide-w: 1280px;
+  --ks-slide-h: 720px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+  color: var(--ks-text);
+  background: #d8dde1;
+  font-family: var(--ks-font);
+  letter-spacing: 0;
+}
+
+body {
+  display: grid;
+  place-items: center;
+}
+
+.deck-stage {
+  width: var(--ks-slide-w);
+  height: var(--ks-slide-h);
+}
+
+.slide {
+  position: relative;
+  display: none;
+  flex-direction: column;
+  width: var(--ks-slide-w);
+  height: var(--ks-slide-h);
+  padding: 48px 64px 46px;
+  overflow: hidden;
+  background: var(--ks-bg);
+  color: var(--ks-text);
+}
+
+.slide.is-active {
+  display: flex;
+}
+
+.slide--cover {
+  justify-content: center;
+  background: var(--ks-text);
+  color: var(--ks-on-accent);
+}
+
+.slide__header {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  max-width: 1100px;
+}
+
+.slide__header h1,
+.slide__header h2 {
+  max-width: 1080px;
+}
+
+.slide__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1 1 auto;
+  min-height: 0;
+  margin-top: 18px;
+}
+
+.slide__footer {
+  position: absolute;
+  z-index: 4;
+  right: 64px;
+  bottom: 19px;
+  left: 64px;
+  display: flex;
+  justify-content: space-between;
+  color: var(--ks-muted);
+  font-size: 11px;
+  font-weight: 650;
+}
+
+.slide--cover .slide__footer {
+  color: #bcc5cc;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+h1,
+h2 {
+  font-size: 35px;
+  line-height: 1.18;
+  font-weight: 790;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 1.3;
+  font-weight: 760;
+}
+
+p,
+li {
+  font-size: 17px;
+  line-height: 1.55;
+}
+
+.eyebrow {
+  margin-bottom: 13px;
+  color: var(--ks-accent);
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.slide--cover .eyebrow {
+  color: #72d4c8;
+}
+
+.lede {
+  max-width: 900px;
+  margin-top: 18px;
+  color: var(--ks-muted);
+  font-size: 20px;
+  line-height: 1.48;
+}
+
+.slide--cover .lede {
+  color: #d0d7dc;
+}
+
+.diagram-frame {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 0;
+  padding: 2px 0;
+}
+
+.kiheon-diagram {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: 470px;
+}
+
+.two-column {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 26px;
+  width: 100%;
+  min-height: 0;
+}
+
+.panel {
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--ks-line);
+  border-radius: 8px;
+  background: var(--ks-surface);
+}
+
+.source-note {
+  position: absolute;
+  right: 64px;
+  bottom: 38px;
+  left: 64px;
+  color: var(--ks-muted);
+  font-size: 10px;
+}
+
+.sample-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 8px;
+  border-radius: 6px;
+  background: var(--ks-warning);
+  color: #17120a;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+@media print {
+  @page {
+    size: 13.333333in 7.5in;
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: var(--ks-slide-w);
+    min-height: 0;
+    background: transparent;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  body {
+    display: block;
+  }
+
+  .deck-stage {
+    width: auto;
+    height: auto;
+  }
+
+  .slide,
+  .slide.is-active {
+    display: flex;
+    break-after: page;
+    page-break-after: always;
+  }
+
+  .slide:last-child {
+    break-after: auto;
+    page-break-after: auto;
+  }
+}
+
+
+/* ============================================================================
+   KIHEON LIFE UNIVERSE — 디자인 시스템 v1
+   ----------------------------------------------------------------------------
+   이 파일은 무엇인가 : 유니버스의 시각 언어를 한 곳에 모은 정본이다.
+   새로 발명한 것이 아니라 **이미 살아 있는 세 표면에서 실측해 통합**한 것이다.
+
+     블로그   kiheonshin.github.io/blog/      tokens.css + site.css
+     아카이브 kiheonshin.github.io/archive/   + archive.css
+     유니버스 …observatory…/map               KLU-DS v1 (인라인)
+
+   실측일 2026-08-09. 세 표면에서 **6개 색과 3개 폰트 스택이 문자 그대로 동일**했다.
+   그것이 이 시스템의 뼈대이고, 나머지는 그 위의 확장이다.
+
+   §1 토큰      — 어느 표면에서나 쓰는 이식 가능한 층
+   §2 브리지    — 슬라이드 하네스(--ks-*)에 연결
+   §3 조판      — 1280×720 적응
+   §4 표현 부품 — 웹에서 실측한 어휘를 슬라이드로 옮긴 것
+
+   §1만 떼어 웹에 써도 된다. §2~4는 슬라이드 전용이다.
+   ========================================================================== */
+
+/* ==========================================================================
+   §1  토큰
+   ========================================================================== */
+
+:root {
+  /* ── 지면 ────────────────────────────────────────────────────────────
+     그림자를 쓰지 않는다. 깊이는 1px 선과 종이색 명도차로만 만든다.
+     실측 : 6개 스타일시트 전부 box-shadow 0건. */
+  --klu-canvas:          #f3f3ef;   /* 페이지 바탕 — 세 표면 동일 */
+  --klu-surface:         #fbfbf8;   /* 카드·입력칸 — 세 표면 동일 */
+  --klu-surface-overlay: rgba(251, 251, 248, .96);
+  --klu-inverse:         #17181a;   /* 반전면 바탕 */
+  --klu-inverse-ink:     #f7f7f2;   /* 반전면 글자 */
+  --klu-stage:           #0b0c0d;   /* 발표 뷰어 바탕 */
+  --klu-veil:            rgba(23, 24, 26, .24);
+
+  /* ── 잉크 4단 ────────────────────────────────────────────────────── */
+  --klu-ink:       #17181a;   /* 본문·제목 */
+  --klu-ink-body:  #3d3f44;   /* 카드 본문 — 유니버스에만 있던 네 번째 단 */
+  --klu-ink-muted: #5e6065;   /* 리드·설명 */
+  --klu-ink-faint: #686a6f;   /* 최저 대비 — §5 판정 1 참조 */
+
+  /* ── 선 ──────────────────────────────────────────────────────────── */
+  --klu-rule:        #cfcfc8;   /* hairline. 슬라이드에서도 1px을 유지한다 */
+  --klu-rule-strong: #17181a;   /* 섹션 경계 */
+  --klu-rule-on-dark: rgba(247, 247, 242, .22);
+
+  /* ── 강조 ────────────────────────────────────────────────────────── */
+  --klu-accent:         #2457d6;   /* 링크·현재 위치·라벨 — 세 표면 동일 */
+  --klu-accent-hover:   #163da7;   /* §5 판정 2 참조 */
+  --klu-accent-soft:    #eaf0fb;   /* 눌린 상태 바탕 */
+  --klu-accent-wash:    rgba(36, 87, 214, .04);
+  --klu-accent-on-dark: #8ab0ff;   /* 어두운 면에서는 반드시 이걸로 바꾼다 */
+  /* 형광 밑줄은 페이지의 포인트 색을 따른다. --klu-point 를 바꾸면 밑줄도 따라간다.
+     노랑 고정이던 것을 2026-08-09 본인 지시로 연동으로 바꿨다. */
+  --klu-point:          var(--klu-accent);
+  --klu-highlight:      rgba(36, 87, 214, .16);
+  --klu-error:          #a12b2b;
+
+  /* ── 범주 6색 ────────────────────────────────────────────────────
+     유니버스 12구역을 차원별로 묶은 색. 성도·폴더·범례에서 실측. */
+  --klu-cat-root:    #17181a;   /* 근간 */
+  --klu-cat-archive: #a18048;   /* 보존 */
+  --klu-cat-time:    #468d95;   /* 시간 */
+  --klu-cat-space:   #5e7f57;   /* 공간 */
+  --klu-cat-mind:    #8a6180;   /* 인식 */
+  --klu-cat-expand:  #a66556;   /* 확장 */
+  --klu-cat-public:  #2457d6;   /* 공개 = 강조색과 같다 */
+  --klu-cat-neutral: #888884;
+
+  /* ── 검증 마커 4종 ──────────────────────────────────────────────
+     아카이브의 [확정]/[추론]/[대기]/[폐기]와 1:1 대응한다. */
+  --klu-mk-ok:          #466a49;
+  --klu-mk-ok-bg:       #ebf3ec;
+  --klu-mk-ok-border:   #cde4d4;
+  --klu-mk-inf:         #2457d6;
+  --klu-mk-inf-bg:      #eaf0fb;
+  --klu-mk-inf-border:  #ccd8f2;
+  --klu-mk-wait:        #846324;
+  --klu-mk-wait-bg:     #f5efe6;
+  --klu-mk-wait-border: #e8dcbd;
+  --klu-mk-dead:        #6a6964;   /* 바탕 없음 · line-through */
+
+  /* ── 서체 ────────────────────────────────────────────────────────
+     제목=명조, 본문=고딕, 라벨·수치=모노. 세 표면에서 문자열까지 동일했다.
+     한 제목 안에서 라틴(Iowan)과 한글(명조)이 섞이는 것이 이 시스템의 지문이다. */
+  --klu-font-display: "Iowan Old Style", "Noto Serif CJK KR", "AppleMyungjo",
+                      "Nanum Myeongjo", serif;
+  --klu-font-body:    -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
+                      "Noto Sans KR", "Malgun Gothic", sans-serif;
+  --klu-font-mono:    "SFMono-Regular", "Roboto Mono", "Noto Sans Mono CJK KR",
+                      monospace;
+
+  /* ── 자간 ────────────────────────────────────────────────────────
+     모노 대문자 + 넓은 자간이 「라벨」의 신호다. 0.09em이 기본값. */
+  --klu-ls-title:  -0.02em;
+  --klu-ls-body:   -0.005em;
+  --klu-ls-tag:     0.08em;
+  --klu-ls-label:   0.09em;
+  --klu-ls-strong:  0.16em;
+  --klu-ls-hero:    0.30em;
+
+  /* ── 모션 ────────────────────────────────────────────────────────
+     슬라이드에서는 거의 쓰지 않는다. 인쇄·PDF에서 사라지기 때문이다. */
+  --klu-dur-fast: 150ms;
+  --klu-ease:     ease-out;
+}
+
+/* ==========================================================================
+   §2  하네스 브리지 — 베이스 테마의 --ks-* 를 유니버스 값으로 갈아끼운다
+   ========================================================================== */
+
+:root {
+  --ks-bg:          var(--klu-canvas);
+  --ks-surface:     var(--klu-surface);
+  --ks-soft:        var(--klu-accent-soft);
+  --ks-text:        var(--klu-ink);
+  --ks-muted:       var(--klu-ink-muted);
+  --ks-line:        var(--klu-rule);
+  --ks-edge:        var(--klu-ink-faint);
+  --ks-accent:      var(--klu-accent);
+  --ks-soft-accent: var(--klu-accent-soft);
+  --ks-accent-2:    var(--klu-cat-time);
+  --ks-accent-3:    var(--klu-cat-expand);
+  --ks-warning:     var(--klu-mk-wait-bg);
+  --ks-on-accent:   var(--klu-inverse-ink);
+  --ks-font:        var(--klu-font-body);
+}
+
+/* ==========================================================================
+   §3  조판 — 1280×720
+
+   웹은 세로로 무한히 흐르지만 슬라이드는 720px이 전부다.
+   실측 : 블로그 홈 문서 높이 5847px · 유니버스 /map 3483px.
+   그래서 세로 리듬을 웹의 약 60%로 압축하고, 글자 하한을 올린다.
+   ========================================================================== */
+
+html,
+body {
+  background: #dcdcd6;                 /* 무대 바깥 — 종이보다 한 단 어둡게 */
+  letter-spacing: var(--klu-ls-body);
+  word-break: keep-all;                /* 없으면 「묻/다」처럼 어절 중간이 잘린다 */
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 좌우 48px → 콘텐츠 폭 1184px.
+   이 값은 웹 시스템의 --measure-wide(74rem = 1184px)와 정확히 같다.
+   읽기 열 736px을 그대로 쓰면 슬라이드에서 42%가 비어 미완성으로 보인다. */
+.slide {
+  padding: 40px 48px 58px;   /* 하단을 넓혀 본문이 푸터에 닿지 않게 한다 */
+  background: var(--klu-canvas);
+  color: var(--klu-ink);
+}
+
+.slide__footer,
+.source-note {
+  right: 48px;
+  left: 48px;
+}
+
+.slide__footer {
+  font-family: var(--klu-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--klu-ls-label);
+  color: var(--klu-ink-faint);
+  text-transform: uppercase;
+}
+
+/* ── 타이포 계단 ────────────────────────────────────────────────────
+   웹의 clamp()+vw는 슬라이드에서 무의미하다(폭 고정). 전부 고정 px으로 굳힌다.
+   하한 : 본문 18px · 라벨 13px · 최소 12px.
+   유니버스 웹은 본문 14px·최소 8px까지 내려가지만 그건 코앞에서 보는 대시보드다.
+   프로젝터에서 10px 이하는 읽히지 않는다. */
+
+h1,
+h2 {
+  font-family: var(--klu-font-display);
+  font-size: 34px;
+  font-weight: 400;                    /* 명조는 400이 기본. 굵히지 않는다 */
+  line-height: 1.34;   /* 명조는 글자 상자가 크다 — 1.22에서 글리프가 넘쳤다(실측) */
+  letter-spacing: var(--klu-ls-title);
+  text-wrap: balance;
+}
+
+h3 {
+  font-family: var(--klu-font-display);
+  font-size: 19px;
+  font-weight: 600;                    /* 작은 명조만 600 — 아카이브 카드 제목 선례 */
+  line-height: 1.4;
+  letter-spacing: var(--klu-ls-title);
+}
+
+p,
+li {
+  font-size: 16.5px;
+  line-height: 1.56;                   /* 웹 1.78은 긴 글을 읽는 값이다 */
+  text-wrap: pretty;
+}
+
+.lede {
+  max-width: 860px;
+  margin-top: 12px;
+  color: var(--klu-ink-muted);
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+/* 아이브로우 = 모노 대문자 라벨. 이 시스템에서 「지금 어느 절인가」를 알리는 방식. */
+.eyebrow {
+  margin-bottom: 10px;
+  font-family: var(--klu-font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--klu-ls-label);
+  color: var(--klu-accent);
+  text-transform: uppercase;
+}
+
+.slide__body {
+  margin-top: 16px;
+}
+
+/* ── 반전면 ──────────────────────────────────────────────────────────
+   다크모드는 없다(6개 시트 전부 prefers-color-scheme 0건).
+   그러나 「반전 슬라이드」는 시스템 안의 정당한 어휘다 — 푸터와 발표 뷰어가 쓴다.
+   장 표지에 쓴다. 어두운 바탕에서 --klu-accent 는 대비가 모자라므로 반드시 치환한다. */
+.slide--cover,
+.slide--chapter {
+  justify-content: center;
+  background: var(--klu-inverse);
+  color: var(--klu-inverse-ink);
+}
+
+.slide--cover .eyebrow,
+.slide--chapter .eyebrow {
+  color: var(--klu-accent-on-dark);
+}
+
+.slide--cover .lede,
+.slide--chapter .lede {
+  color: rgba(247, 247, 242, .72);
+}
+
+.slide--cover h1,
+.slide--chapter h1,
+.slide--cover h2,
+.slide--chapter h2 {
+  font-size: 46px;
+}
+
+.slide--cover .slide__footer,
+.slide--chapter .slide__footer {
+  color: rgba(247, 247, 242, .5);
+}
+
+/* ==========================================================================
+   §4  표현 부품 — 웹에서 실측한 어휘를 슬라이드 밀도로 옮긴 것
+   ========================================================================== */
+
+/* ── 러너 : 웹 헤더 73px 의 슬라이드판 ──────────────────────────────
+   720px 중 73px(10.1%)을 매 장 쓰는 것은 낭비다. 48px로 줄이고
+   브랜드·절 이름·진행만 남긴다. 하단 1px 괘선은 유지한다. */
+.klu-runner {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: baseline;
+  justify-content: space-between;
+  height: 30px;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--klu-rule);
+  font-family: var(--klu-font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: var(--klu-ls-label);
+  color: var(--klu-ink-faint);
+  text-transform: uppercase;
+}
+
+.klu-runner__now {
+  color: var(--klu-accent);            /* 현재 절만 강조색 */
+}
+
+.slide--cover .klu-runner,
+.slide--chapter .klu-runner {
+  border-bottom-color: var(--klu-rule-on-dark);
+  color: rgba(247, 247, 242, .55);
+}
+
+/* ── 진행 눈금 : 발표 뷰어의 3px 막대에서 왔다 ─────────────────── */
+.klu-rail {
+  display: flex;
+  gap: 4px;
+  height: 3px;
+}
+
+.klu-rail span {
+  flex: 1 1 auto;
+  background: var(--klu-rule);
+}
+
+.klu-rail span.is-done { background: var(--klu-ink-faint); }
+.klu-rail span.is-now  { background: var(--klu-accent); }
+
+/* ── 검증 마커 ──────────────────────────────────────────────────────
+   [확정]/[추론]/[대기]/[폐기]. 아카이브의 판정 어휘를 화면으로 옮긴 것이라
+   슬라이드에서 근거 수준을 말없이 표시할 수 있다. */
+.mk {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font-family: var(--klu-font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: var(--klu-ls-tag);
+}
+
+.mk--ok   { color: var(--klu-mk-ok);   background: var(--klu-mk-ok-bg);   border-color: var(--klu-mk-ok-border); }
+.mk--inf  { color: var(--klu-mk-inf);  background: var(--klu-mk-inf-bg);  border-color: var(--klu-mk-inf-border); }
+.mk--wait { color: var(--klu-mk-wait); background: var(--klu-mk-wait-bg); border-color: var(--klu-mk-wait-border); }
+.mk--dead { color: var(--klu-mk-dead); border-color: var(--klu-rule); text-decoration: line-through; }
+
+/* ── 칩 : 수치 요약 한 조각 ────────────────────────────────────── */
+.chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border: 1px solid var(--klu-rule);
+  border-radius: 3px;
+  background: var(--klu-surface);
+  font-family: var(--klu-font-mono);
+  font-size: 13px;
+  color: var(--klu-ink-body);
+}
+
+/* ── 카드 격자 ──────────────────────────────────────────────────────
+   최소폭 352px 이면 콘텐츠 1184px 에서 3열이 여유롭게 열린다(3×352+24×2=1104).
+   4열이 필요하면 272px 까지 낮출 수 있고, 그 아래는 한글 제목 두 줄이 깨진다. */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(352px, 1fr));
+  gap: 20px;
+  width: 100%;
+}
+
+.card-grid--4 { grid-template-columns: repeat(4, minmax(272px, 1fr)); gap: 16px; }
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  padding: 18px 20px;
+  border: 1px solid var(--klu-rule);
+  border-radius: 3px;
+  background: var(--klu-surface);
+}
+
+.card__t {
+  font-family: var(--klu-font-display);
+  font-size: 17.5px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.card p { font-size: 15px; line-height: 1.5; color: var(--klu-ink-body); }
+
+/* 1px 격자 카드 — 카드 사이 선을 「배경」으로 그리는 아카이브 기법.
+   테두리를 겹치지 않고 정확히 1px 을 만든다. */
+.card-lattice {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1px;
+  border: 1px solid var(--klu-rule);
+  background: var(--klu-rule);
+}
+
+.card-lattice > * {
+  padding: 18px 20px;
+  background: var(--klu-surface);
+}
+
+/* ── 통계 타일 ─────────────────────────────────────────────────── */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1px;
+  border: 1px solid var(--klu-rule);
+  background: var(--klu-rule);
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 16px 18px;
+  background: var(--klu-surface);
+}
+
+.stat__v {
+  font-family: var(--klu-font-mono);
+  font-size: 25px;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--klu-ink);
+}
+
+.stat__l {
+  font-family: var(--klu-font-mono);
+  font-size: 12px;
+  letter-spacing: var(--klu-ls-label);
+  color: var(--klu-ink-faint);
+  text-transform: uppercase;
+}
+
+/* ── 막(membrane) : 경계 선언 ───────────────────────────────────
+   유니버스의 두 막(공개 승인 · 발화 계약)을 그리는 전용 부품.
+   파선 강조 테두리가 「여기가 경계다」의 신호다. */
+.membrane {
+  min-width: 0;
+  padding: 18px 22px;
+  border: 1px dashed var(--klu-accent);
+  border-radius: 3px;
+  background: var(--klu-surface);
+}
+
+.membrane__t {
+  margin-bottom: 10px;
+  font-family: var(--klu-font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: var(--klu-ls-strong);
+  color: var(--klu-accent);
+  text-transform: uppercase;
+}
+
+/* ── 연표 ────────────────────────────────────────────────────────── */
+.tl { position: relative; padding-left: 22px; }
+
+.tl::before {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  left: 6px;
+  width: 1px;
+  background: var(--klu-rule);
+  content: "";
+}
+
+.tl__ev { position: relative; margin-bottom: 14px; }
+
+.tl__ev::before {
+  position: absolute;
+  top: 6px;
+  left: -19px;
+  width: 7px;
+  height: 7px;
+  border: 1.5px solid var(--klu-accent);
+  border-radius: 50%;
+  background: var(--klu-surface);
+  content: "";
+}
+
+/* ── 원문 블록 : 프롬프트·파일 목록 ──────────────────────────────── */
+.prompt {
+  padding: 16px 18px;
+  border: 1px solid var(--klu-rule);
+  border-radius: 3px;
+  background: var(--klu-surface);
+  font-family: var(--klu-font-mono);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--klu-ink-body);
+  white-space: pre-wrap;
+}
+
+/* ── 범례 : 색 ↔ 범주 사전 ─────────────────────────────────────── */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font-family: var(--klu-font-mono);
+  font-size: 12px;
+  letter-spacing: var(--klu-ls-label);
+  color: var(--klu-ink-faint);
+  text-transform: uppercase;
+}
+
+.legend__i { display: inline-flex; align-items: center; gap: 7px; }
+
+.legend__d {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--klu-cat-neutral);
+}
+
+/* ── 형광 밑줄 : 페이지 포인트 색을 따른다 ─────────────────────────
+   기본은 강조 파랑. 장이 다른 계열을 쓰면 아래 유틸리티를 얹는다. */
+.u {
+  background: linear-gradient(transparent 60%, var(--klu-highlight) 60%);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* 포인트 색 유틸리티 — 장 단위로 얹는다(러너·아이브로우·밑줄이 함께 바뀐다) */
+.pt--archive { --klu-point: var(--klu-cat-archive); --klu-highlight: rgba(161, 128, 72, .20); }
+.pt--time    { --klu-point: var(--klu-cat-time);    --klu-highlight: rgba(70, 141, 149, .20); }
+.pt--space   { --klu-point: var(--klu-cat-space);   --klu-highlight: rgba(94, 127, 87, .20); }
+.pt--mind    { --klu-point: var(--klu-cat-mind);    --klu-highlight: rgba(138, 97, 128, .20); }
+.pt--expand  { --klu-point: var(--klu-cat-expand);  --klu-highlight: rgba(166, 101, 86, .20); }
+
+.slide[class*="pt--"] .eyebrow,
+.slide[class*="pt--"] .klu-runner__now,
+.slide[class*="pt--"] .membrane__t { color: var(--klu-point); }
+.slide[class*="pt--"] .quote { border-left-color: var(--klu-point); }
+.slide[class*="pt--"] .membrane { border-color: var(--klu-point); }
+
+/* ── 인용 : 좌측 강조 막대 ───────────────────────────────────────── */
+.quote {
+  padding-left: 16px;
+  border-left: 2px solid var(--klu-accent);
+  color: var(--klu-ink-muted);
+}
+
+/* ── 두 칸 배치 ─────────────────────────────────────────────────── */
+.two-column { gap: 20px; }
+
+.panel {
+  padding: 18px 20px;
+  border: 1px solid var(--klu-rule);
+  border-radius: 3px;
+}
+
+/* ── 도식 ────────────────────────────────────────────────────────────
+   도식은 live-text SVG 로 그린다. 이미지 안에 글자를 굽지 않는다.
+   원본 제안서의 래스터 장표(1467×825)를 재사용하면 축소되어 글자가 9px 이하가 되고,
+   팔레트(노랑·시안·라벤더)도 이 시스템과 충돌한다. 형태 문법만 가져오고
+   색은 --klu-cat-* 6색과 --klu-accent 로 치환한다. */
+.kiheon-diagram { max-height: 452px; }
+
+/* 도식 텍스트에 자간을 걸지 않는다 — 엔진이 letter-spacing:0 을 전제로
+   라벨 상자와 노드 간격을 미리 계산한다. 여기서 자간을 더하면 계산이 어긋나
+   겹침 검사를 통과한 도식이 실제로는 겹친다(2026-08-09 확인). */
+
+/* 강조 노드 안의 보조 텍스트도 반전색으로 돌린다.
+   엔진은 `.kd-node--emphasis .kd-label` 만 반전시키고 `.kd-detail`·`.kd-value` 는
+   muted 로 둔다 — 강조색 바탕 위에서 어두운 회색이 되어 읽히지 않는다.
+   DOM 대비 검사는 h1·h2·h3·p·li 만 보므로 **SVG 안쪽은 잡지 못한다**(2026-08-09 육안 발견). */
+.kd-node--emphasis .kd-detail,
+.kd-node--emphasis .kd-value,
+.kd-node--emphasis .kd-point-label {
+  fill: var(--klu-inverse-ink);
+  opacity: 1;   /* .82 는 4.38:1 로 하한 미달이었다(실측) */
+}
+
+/* 성도에서 실측한 값 — 도식 SVG가 참조한다 */
+:root {
+  --klu-svg-halo-opacity:  .10;   /* 노드 후광 */
+  --klu-svg-link-opacity:  .08;   /* 연결선 — 거의 안 보일 만큼 약하게 */
+  --klu-svg-boundary-dash: 5 8;   /* 검증의 막 파선 */
+  --klu-svg-boundary-op:   .45;
+  --klu-svg-label:         13px;  /* 웹 11px → 슬라이드 하한에 맞춰 올림 */
+}
+
+/* ── 인쇄 : 반전면의 잉크를 지키지 않으면 장 표지가 흰 종이가 된다 ── */
+@media print {
+  .slide--cover,
+  .slide--chapter {
+    background: var(--klu-inverse) !important;
+    color: var(--klu-inverse-ink) !important;
+  }
+}
+</style>
+</head>
+<body>
+<main class="deck-stage" data-deck-title="KIHEON LIFE UNIVERSE 소개">
+<section class="slide slide--cover" data-source-ref="content.md#01" style="justify-content:flex-start">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now" style="color:var(--klu-accent-on-dark)">01 · 표지</span>
+    <span>선언</span>
+  </div>
+  <div class="slide__header" data-qa-box style="margin-top:auto">
+    <p class="eyebrow" data-fidelity>KIHEON LIFE UNIVERSE</p>
+    <h1 data-fidelity>AI는 나를 아는 만큼만 나를 대신한다</h1>
+  </div>
+  <div class="slide__body" data-qa-box style="flex:0 0 auto; flex-direction:column; gap:18px; margin-top:26px; margin-bottom:auto">
+    <p class="lede" style="margin-top:0">또 하나의 나를 만드는 50일 — 넘긴 것과, 아직 넘기지 못한 것.</p>
+    <p style="max-width:900px">대행의 상한은 도구 성능이 아니라, 에이전트가 나에 대해 가진 정보의 정확도다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>01 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#02">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">02 · 산출물</span>
+    <span>선언</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>DELIVERED</p>
+    <h2 data-fidelity>위임은 개념이 아니라 이미 존재하는 산출물로 증명된다</h2>
+    <p class="lede">글도, 슬라이드도, 목소리도 오늘 만든 게 아니다. 내가 어디까지 맡겼는지의 증거다.</p>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:31px">
+    <div class="card-grid" style="flex:0 0 auto">
+      <div class="card">
+        <h3 class="card__t">시리즈 4 · 포스팅 12편</h3>
+        <p style="font-size:16.5px">각 편이 독립된 주제와 랜딩을 가진다. 한 번에 몰아 쓴 게 아니라 순서대로 쌓였다.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__t">과거 발표 자료 4벌</h3>
+        <p style="font-size:16.5px">강연에 쓰던 자료를 웹으로 옮겼다.</p>
+        <span class="chip" style="align-self:flex-start">162 · 130 · 96 · 71장</span>
+      </div>
+      <div class="card">
+        <h3 class="card__t">음성 안내</h3>
+        <p style="font-size:16.5px">공개 시리즈 전반에 붙어 있다. 말하는 표면이 늘어도 출처는 하나다.</p>
+      </div>
+    </div>
+    <p style="font-size:17px; line-height:1.55; color:var(--klu-ink-muted)">글을 쓰고, 슬라이드로 바꾸고, 이미지를 고르고, 발행까지 — 내가 하던 순서를 그대로 옮긴 것이라 내 손이 닿은 자리를 지금도 짚을 수 있다. 지금 이 자료도 같은 순서를 지나서 나왔다.</p>
+    <div style="flex:0 0 auto; display:flex; flex-direction:column; gap:16px">
+      <p style="font-family:var(--klu-font-mono); font-size:22px; letter-spacing:var(--klu-ls-tag); color:var(--klu-ink)">kiheonshin.github.io<span style="color:var(--klu-ink-faint)">/blog-post-assets</span></p>
+      <p class="quote" data-fidelity style="color:var(--klu-ink); font-size:20px"><span class="u">이건 50일치입니다.</span> 시작은 텍스트 파일 한 장이었다.</p>
+    </div>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>02 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#03">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">03 · 기다린 6개월</span>
+    <span>선언</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>SIX MONTHS</p>
+    <h2 data-fidelity>6개월을 기다렸고, 그동안 데이터는 0건이었다</h2>
+    <p class="lede">앞 장의 산출물은 50일치다. 그런데 그 50일 앞에 아무것도 넣지 않은 6개월이 있다.</p>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:15px">
+    <div class="stat-grid" style="flex:0 0 auto">
+      <div class="stat">
+        <span class="stat__v">6개월</span>
+        <span class="stat__l">시작 전 · 기다린 기간</span>
+      </div>
+      <div class="stat">
+        <span class="stat__v">0건</span>
+        <span class="stat__l">그동안 반입한 데이터</span>
+      </div>
+      <div class="stat">
+        <span class="stat__v">통제 확신</span>
+        <span class="stat__l">막고 있던 것</span>
+      </div>
+    </div>
+    <p data-fidelity style="flex:0 0 auto; font-size:19px; line-height:1.5">막은 것은 용량도 기술도 아니었다. 넣고 나서 그것이 어디로 가는지 내가 붙잡고 있을 수 있는지, 그 확신이 서지 않았다.</p>
+    <div class="card-grid" style="flex:0 0 auto">
+      <div class="card">
+        <h3 class="card__t">등급이 없었다</h3>
+        <p>자료마다 공개 범위를 매기는 등급이다. 그게 없으면 넣어 봐야 어디에 둘지 정할 수 없다. 방대한 것을 늦게 넣은 이유도 여기다 — 등급이 정해지기 전에는 붙일 수가 없었다.</p>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">등급 먼저, 반입은 그다음</span>
+      </div>
+      <div class="card">
+        <h3 class="card__t">반입 기준이 없었다</h3>
+        <p>무엇부터 넣을지의 기준이 중요도이면 가장 위험한 것이 먼저 들어온다. 기준을 안전도로 바꾸고 나서야 첫 자료가 정해졌다 — 검수가 끝난 공개용부터.</p>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">기준은 중요도가 아니라 안전도</span>
+      </div>
+      <div class="card">
+        <h3 class="card__t">소스 목록이 없었다</h3>
+        <p>어디에 무엇이 있는지 모른 채로는 신청조차 못 한다. 먼저 목록을 만들고 그다음에 내려받기를 걸었다.</p>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">목록이 먼저, 신청은 그다음</span>
+      </div>
+    </div>
+    <p class="quote" data-fidelity style="flex:0 0 auto; color:var(--klu-ink); font-size:20px">미리 정한 순서가 아니다 — <span class="u">막고 있던 것이 하나씩 풀리면서</span> 그게 순서가 됐다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>03 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#04">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">04 · 해상도</span>
+    <span>선언</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>RESOLUTION</p>
+    <h2 data-fidelity>많이 넣으면 선명해지지 않는다 — 해상도는 양이 아니라 정확도다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:14px">
+    <p data-fidelity style="flex:0 0 auto; font-size:19px; line-height:1.5; color:var(--klu-ink-muted)">시작 조건은 프로필 한 장이었다 — 넣은 양도 적고 해상도도 낮은 자리. 거기서 길이 둘로 갈렸다.</p>
+    <div class="card-grid" style="flex:1 1 auto">
+      <div class="card">
+        <h3 class="card__t">양을 늘린 쪽 — 규칙을 더 쓴 판</h3>
+        <p>고치려고 지시를 계속 더 썼다. 넣은 것은 가장 많은 판이 됐는데, 해상도는 따라 올라가지 않았다. 더 넣을수록 좋아진다는 가정이 여기서 깨졌다.</p>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">넣은 양 최대 · 해상도 최저</span>
+      </div>
+      <div class="card">
+        <h3 class="card__t">정확도를 올린 쪽 — 하드 제약 판</h3>
+        <p>규칙을 더한 게 아니라 지면을 줄였다. 넣은 것은 오히려 적은데, 가장 선명한 판이 됐다. 양과 해상도가 같은 축이 아니라는 증거다.</p>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">넣은 양 최소 · 해상도 최고</span>
+      </div>
+    </div>
+    <div class="card-lattice" style="flex:1 1 auto">
+      <div style="display:flex; flex-direction:column; gap:6px; justify-content:center">
+        <h3 class="card__t">문제 ① 초대 다음이 비어 있다</h3>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">도구는 들여놨는데 그다음이 비어 있어, 깔아 놓고 쓰지 않게 된 자리가 생긴다.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:6px; justify-content:center">
+        <h3 class="card__t">문제 ② 속도가 인지를 앞지른다</h3>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">속도를 내다 보니 사람의 인지가 못 쫓아간다. <span class="u">제가 겪은 것</span>이다.</p>
+      </div>
+    </div>
+    <p class="quote" style="flex:0 0 auto; font-size:16px; line-height:1.5">순서는 셋이다 — 해상도를 올린 과정 → 흐려지지 않게 지키는 장치 → 눈앞에서 하나 만들기.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>04 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#05">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">05 · 과다 선명화</span>
+    <span>해상도가 낮을 때</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>OVERSHARPENING</p>
+    <h2 data-fidelity>개선하려고 손을 댔는데 점수가 내려갔다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:14px">
+    <div class="stat-grid" style="flex:1 1 auto">
+      <div class="stat">
+        <span class="stat__l">v1 · 프로필만</span>
+        <span class="stat__v">8.0</span>
+        <span style="font-family:var(--klu-font-mono); font-size:13px; color:var(--klu-ink-faint)">시작점</span>
+        <p style="margin-top:auto; padding-top:8px; font-size:15px; line-height:1.5; color:var(--klu-ink-body)">프로필 한 장만 주고 잰 기준점.</p>
+      </div>
+      <div class="stat">
+        <span class="stat__l">v2 · 금지 규칙 추가</span>
+        <span class="stat__v">7.25</span>
+        <span style="font-family:var(--klu-font-mono); font-size:13px; color:var(--klu-error)">▼ 0.75</span>
+        <p style="margin-top:auto; padding-top:8px; font-size:15px; line-height:1.5; color:var(--klu-ink-body)">금지 규칙 여섯 개를 더 썼다.</p>
+      </div>
+      <div class="stat">
+        <span class="stat__l">v3 · 발화 예시로</span>
+        <span class="stat__v">6.12</span>
+        <span style="font-family:var(--klu-font-mono); font-size:13px; color:var(--klu-error)">▼ 1.13 · 네 판 중 최저</span>
+        <p style="margin-top:auto; padding-top:8px; font-size:15px; line-height:1.5; color:var(--klu-ink-body)">규칙을 걷어내고 발화 예시로 바꿨다.</p>
+      </div>
+      <div class="stat">
+        <span class="stat__l">v4 · 길이 하드 제약</span>
+        <span class="stat__v">7.6</span>
+        <span style="font-family:var(--klu-font-mono); font-size:13px; color:var(--klu-accent)">▲ 1.48 · 회복</span>
+        <p style="margin-top:auto; padding-top:8px; font-size:15px; line-height:1.5; color:var(--klu-ink-body)">지시를 늘리는 대신 답의 길이를 묶었다.</p>
+      </div>
+    </div>
+    <p data-fidelity style="flex:0 0 auto; font-size:19px; line-height:1.5">가장 낮은 판은 손을 대지 않은 v1이 아니라, 고치려고 두 번 손을 댄 v3이었다.</p>
+    <p style="flex:0 0 auto; font-size:16px; line-height:1.5; color:var(--klu-ink-muted)">측정 조건 : 말투 유사도 10점 만점 · 판마다 변인 하나만 바꿈 · 같은 문항 · 같은 판정단. 그래서 어느 개입이 점수를 내렸는지 지목할 수 있었다.</p>
+    <div class="card-lattice" style="flex:1 1 auto">
+      <div style="display:flex; flex-direction:column; gap:6px; justify-content:center">
+        <h3 class="card__t">실패 ① 경력을 앞세움</h3>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">묻지 않은 이력을 먼저 꺼낸다. 무엇을 하느냐고 물었는데 어디를 거쳤는지가 답의 앞머리에 온다.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:6px; justify-content:center">
+        <h3 class="card__t">실패 ② 겸손을 웅변함</h3>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">겸손함조차 연설로 만든다. 낮추는 말이 길어질수록 원래 말투에서는 오히려 멀어진다.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:6px; justify-content:center">
+        <h3 class="card__t">실패 ③ 또렷하게 틀리게 앎</h3>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">흐리게 아는 게 아니라 전부 더 좋게 틀린다. 문장이 매끄러워서 읽는 사람이 잡아내기 어렵다.</p>
+      </div>
+    </div>
+    <p class="quote" data-fidelity style="flex:0 0 auto; color:var(--klu-ink); font-size:20px">규칙을 더 쓴 개선이 유사도를 떨어뜨렸다 — 이 실패의 이름이 과다 선명화다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>05 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#06">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">06 · 제약</span>
+    <span>해상도가 낮을 때</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>CONSTRAINT</p>
+    <h2 data-fidelity>스타일 문제는 규칙이 아니라 물리적 제약이 푼다</h2>
+    <p class="lede">지시를 더 써서는 말투의 마지막 결이 고쳐지지 않았다. 고친 것은 규칙이 아니라 길이였다 — 짧으면 웅변할 수 없다.</p>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:20px">
+    <div class="card-grid" style="flex:0 0 auto">
+      <div class="card">
+        <h3 class="card__t">3~4문장 하드 제약</h3>
+        <p>v4가 넣은 것은 규칙 추가가 아니었다. 가치·자기소개 질문에는 세 문장에서 네 문장 이내로, 소제목이나 불릿으로 답하지 않는다.</p>
+        <span class="chip" style="align-self:flex-start">금지어를 늘린 게 아니라 지면을 줄였다</span>
+      </div>
+      <div class="card">
+        <h3 class="card__t">격리 지시 한 줄</h3>
+        <p>같은 컴퓨터의 다른 작업 말투가 스며드는 것이 측정됐다. 맨 앞의 격리 지시 한 줄로만 막혔다.</p>
+        <span class="chip" style="align-self:flex-start">다른 구획 오염 0</span>
+      </div>
+    </div>
+    <div style="flex:0 0 auto">
+      <p class="eyebrow" style="margin-bottom:9px">2상태 규칙 — 칸은 이 둘뿐이다</p>
+      <div class="card-lattice">
+        <div style="display:flex; flex-direction:column; gap:6px">
+          <h3 class="card__t">규칙 ① 직접 말한 것</h3>
+          <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">본인이 실제로 말한 것만 이 칸에 들어간다.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:6px">
+          <h3 class="card__t">규칙 ② 아직 안 물어본 것</h3>
+          <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">「그럴 것 같다」는 칸은 아예 만들지 않았다. 빈칸이 정식 자리면 지어내지 않는다.</p>
+        </div>
+      </div>
+    </div>
+    <p class="quote" data-fidelity style="color:var(--klu-ink); font-size:20px; flex:0 0 auto">여기서부터는 프롬프트가 아니라 데이터의 문제였다 — 기법에서 재료로 넘어가는 경첩.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>06 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#07">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">07 · 계보</span>
+    <span>해상도를 올린 과정</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>INTAKE</p>
+    <h2 data-fidelity>반입을 막은 것은 용량이 아니라 통제 확신·오염·등급이었다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:14px">
+    <p data-fidelity style="flex:0 0 auto; font-size:19px; line-height:1.5; color:var(--klu-ink-muted)">3장의 6개월이 풀린 뒤 자료가 들어온 순서다. 무엇을 먼저 넣을지 고른 게 아니라, 그때그때 막고 있던 것이 풀린 순서였다.</p>
+    <div class="card-lattice" style="flex:1 1 auto; grid-template-columns:repeat(2, minmax(0, 1fr))">
+      <div style="display:flex; flex-direction:column; gap:5px; justify-content:center">
+        <div style="display:flex; align-items:baseline; gap:12px">
+          <span style="flex:0 0 76px; font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">시작 전</span>
+          <h3 class="card__t">여기까지가 3장의 6개월</h3>
+        </div>
+        <p style="margin-left:88px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">통제 확신이 서지 않아 한 건도 넣지 못했다.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:5px; justify-content:center">
+        <div style="display:flex; align-items:baseline; gap:12px">
+          <span style="flex:0 0 76px; font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">구간 1</span>
+          <h3 class="card__t">목록</h3>
+        </div>
+        <p style="margin-left:88px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">어디에 뭐가 있는지 적고, 내려받기를 걸어 두는 일.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:5px; justify-content:center">
+        <div style="display:flex; align-items:baseline; gap:12px">
+          <span style="flex:0 0 76px; font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">구간 2</span>
+          <h3 class="card__t">공개용부터</h3>
+        </div>
+        <p style="margin-left:88px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">검수가 끝난 글부터. 기준은 중요도가 아니라 안전도였다.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:5px; justify-content:center">
+        <div style="display:flex; align-items:baseline; gap:12px">
+          <span style="flex:0 0 76px; font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">구간 3</span>
+          <h3 class="card__t">문체가 먼저 왔다</h3>
+        </div>
+        <p style="margin-left:88px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">발표 자료가 통째로. 쉽게 온 것은 표면이었다.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:5px; justify-content:center">
+        <div style="display:flex; align-items:baseline; gap:12px">
+          <span style="flex:0 0 76px; font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">구간 4</span>
+          <h3 class="card__t">칸을 나누고 검수</h3>
+        </div>
+        <p style="margin-left:88px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">오염이 막았다. 잘못 읽은 원천 하나가 옆으로 번진다.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:5px; justify-content:center">
+        <div style="display:flex; align-items:baseline; gap:12px">
+          <span style="flex:0 0 76px; font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">구간 5</span>
+          <h3 class="card__t">방대한 것을 늦게</h3>
+        </div>
+        <p style="margin-left:88px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">등급이 막았다. 칸이 서기 전에는 붙일 수가 없었다.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:5px; justify-content:center">
+        <div style="display:flex; align-items:baseline; gap:12px">
+          <span style="flex:0 0 76px; font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">구간 6</span>
+          <h3 class="card__t">방향이 뒤집혔다</h3>
+        </div>
+        <p style="margin-left:88px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">기록이 없던 자리가 질문지가 되어 돌아왔다.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:5px; justify-content:center">
+        <div style="display:flex; align-items:baseline; gap:12px">
+          <span style="flex:0 0 76px; font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">구간 7</span>
+          <h3 class="card__t">증거를 밖으로</h3>
+        </div>
+        <p style="margin-left:88px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">발행 채널 하나가 통째로. 아직 틀린 게 많다.</p>
+      </div>
+    </div>
+    <p class="quote" style="flex:0 0 auto; font-size:16px; line-height:1.5">이건 내 자료의 순서이지 남의 자료의 순서가 아니다. 원천 목록이 다르면 순서도 달라진다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>07 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#08">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">08 · 원천</span>
+    <span>해상도를 올린 과정</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>SOURCES</p>
+    <h2 data-fidelity>원천은 특별한 곳이 아니라 쓰던 서비스가 통째로 내주는 파일이다</h2>
+    <p class="lede">많아서 시작한 게 아니라, 어디에 있는지 알아서 시작할 수 있었다.</p>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:16px">
+    <div class="stat-grid" style="flex:0 0 auto">
+      <div class="stat"><span class="stat__v">29GB</span><span class="stat__l">메일 · 파일 2개</span></div>
+      <div class="stat"><span class="stat__v">3.6MB</span><span class="stat__l">일정표 · 파일 12개</span></div>
+      <div class="stat"><span class="stat__v">24,040</span><span class="stat__l">사진·영상 · 12GB</span></div>
+      <div class="stat"><span class="stat__v">12,433</span><span class="stat__l">내려받은 웹 · 8.1GB</span></div>
+      <div class="stat"><span class="stat__v">950</span><span class="stat__l">문서 · 12GB</span></div>
+    </div>
+    <div class="panel" style="flex:0 0 auto; padding:13px 18px">
+      <p data-fidelity style="font-size:17px; line-height:1.5; color:var(--klu-ink)">위 다섯을 더하면 아래 전수 총계가 나오지 않는다. <span class="u">주요 항목만</span> 적었기 때문이다.</p>
+      <p style="margin-top:5px; font-size:15px; line-height:1.5; color:var(--klu-ink-muted)">화면에서 그대로 검산되는 값이라, 단서를 빼면 더해 보는 쪽이 먼저 틀린 걸 찾는다. 그래서 어긋난다는 사실을 같이 적어 둔다.</p>
+    </div>
+    <div class="stat-grid" style="flex:0 0 auto">
+      <div class="stat"><span class="stat__v">60,146</span><span class="stat__l">전수 인벤토리 · 파일 수</span></div>
+      <div class="stat"><span class="stat__v">73GB</span><span class="stat__l">원본 용량</span></div>
+      <div class="stat"><span class="stat__v">6</span><span class="stat__l">프라이버시 사유 제외</span></div>
+    </div>
+    <p class="quote" data-fidelity style="color:var(--klu-ink); font-size:20px; flex:0 0 auto">원본은 늘 한 곳에 있고, 나머지는 전부 사본이다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>08 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#09">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">09 · 전처리</span>
+    <span>해상도를 올린 과정</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>PREPROCESSING</p>
+    <h2 data-fidelity>73GB를 다 읽지 않는다 — 전처리는 읽는 순서를 정하는 일이다</h2>
+    <p class="lede">용량이 문제였다면 시작도 못 했다. 실제로 한 일은 무엇부터 읽힐지 정하는 것이었다.</p>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:18px">
+    <div class="two-column" style="flex:0 0 auto">
+      <div class="panel">
+        <h3 class="card__t">먼저 정한 넉 줄</h3>
+        <ul style="margin:9px 0 0; padding-left:20px">
+          <li>목록부터 만들고, 그다음에 신청한다.</li>
+          <li>공개용으로 쓴 것부터 넣는다.</li>
+          <li>넣기 전에 칸부터 만든다.</li>
+          <li>큰 덩어리는 헤더만 먼저 읽힌다.</li>
+        </ul>
+        <p class="eyebrow" style="margin-top:14px; margin-bottom:0">넣어 보면서 뒤에 붙은 넉 줄</p>
+        <ul style="margin:9px 0 0; padding-left:20px">
+          <li>기간을 잘라 요약을 쌓는다.</li>
+          <li>항목표를 미리 만들지 않는다.</li>
+          <li>모르는 것은 질문으로 되돌려 받는다.</li>
+          <li>근거 없는 문장은 위층으로 올리지 않는다.</li>
+        </ul>
+      </div>
+      <div class="panel" style="display:flex; flex-direction:column">
+        <h3 class="card__t">공정이 스스로 적어 둔 규율</h3>
+        <p style="margin-top:8px; font-size:15px; line-height:1.5; color:var(--klu-ink-muted)">아래는 제 작업 기록에서 그대로 옮긴 것이다.</p>
+        <div class="prompt" style="margin-top:8px">이번은 첫 전수 인벤토리다. 파일 메타데이터만 기록하며, 메일 본문·연락처·비공개 노트·미디어 내용은 파싱하지 않는다.</div>
+        <p style="margin-top:10px; font-size:15px; line-height:1.5; color:var(--klu-ink-muted)">읽은 것은 파일의 이름과 크기와 날짜뿐이다. 안을 열지 않고도 목록은 만들어진다.</p>
+        <p style="margin-top:auto; padding-top:12px; font-size:15px; line-height:1.5; color:var(--klu-ink-body)">73GB가 걸림돌이 아니었던 이유가 여기 있다 — 다 읽지 않았기 때문에 첫날에도 목록이 나왔다.</p>
+      </div>
+    </div>
+    <p class="quote" data-fidelity style="color:var(--klu-ink); font-size:20px; flex:0 0 auto">시작은 <span class="u">가장 안전한 것 하나</span>면 충분하다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>09 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#10">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">10 · 역인터뷰</span>
+    <span>해상도를 올린 과정</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>REVERSED</p>
+    <h2 data-fidelity>항목표를 사람이 먼저 만드는 방향을 뒤집으면 빈칸이 질문이 된다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:17px">
+    <div class="card-grid" style="flex:0 0 auto">
+      <div class="card">
+        <h3 class="card__t">보통의 방식</h3>
+        <p>① 채울 항목표를 사람이 먼저 만든다<br>② 사람이 칸을 채운다<br>③ 대부분 빈칸으로 남는다</p>
+      </div>
+      <div class="card">
+        <h3 class="card__t">여기서 한 것</h3>
+        <p>① 자료를 바닥에 전부 깔아 준다<br>② 공통점과 연결점이 위로 올라온다<br>③ 더 못 올리는 지점이 질문이 된다</p>
+      </div>
+    </div>
+    <div class="stat-grid" style="flex:0 0 auto">
+      <div class="stat"><span class="stat__v">20개</span><span class="stat__l">단위로 질문지가 돌아온다</span></div>
+      <div class="stat"><span class="stat__v">50문항</span><span class="stat__l">한 번에</span></div>
+      <div class="stat"><span class="stat__v">3</span><span class="stat__l">끝내 빈 칸</span></div>
+    </div>
+    <div style="flex:0 0 auto">
+      <p style="font-size:15px; line-height:1.5; color:var(--klu-ink-muted)">빈 칸 셋은 즉흥이 아니라 공정이 스스로 지목한 다음 관문이다. 아래는 제 작업 기록에서 그대로 옮긴 것이다.</p>
+      <div class="prompt" style="margin-top:6px">다음 단계는 브라우저 숫자를 늘리는 것이 아니다. 메일 메타데이터와 캘린더부터 하고, 검토를 통과한 후보만 승격한다.</div>
+    </div>
+    <p class="quote" data-fidelity style="color:var(--klu-ink); font-size:20px; flex:0 0 auto">지금도 뒤에서 계속 그러고 있고, <span class="u">아직 틀린 게 많습니다.</span></p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>10 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#11">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">11 · 관문</span>
+    <span>해상도를 지키는 장치</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>TWO GATES</p>
+    <h2 data-fidelity>맡긴다는 건 허락을 두 번 주는 일이다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:14px">
+    <p data-fidelity style="flex:0 0 auto; font-size:19px; line-height:1.5; color:var(--klu-ink-muted)">자료 하나가 두 관문을 차례로 통과해야 밖으로 나간다. 무엇을 내보내도 되는가와 무엇을 말해도 되는가는 다른 허락이라, 앞을 통과했다고 뒤가 열리지 않는다.</p>
+    <div class="two-column" style="flex:1 1 auto">
+      <div class="membrane" style="display:flex; flex-direction:column; gap:10px; justify-content:space-between">
+        <p class="membrane__t" style="margin-bottom:0" data-fidelity>허락 1 · 공개 승인 관문</p>
+        <h3 style="margin-bottom:2px">무엇을 내보내도 되는가</h3>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)"><span style="font-family:var(--klu-font-mono); font-size:13px; letter-spacing:var(--klu-ls-tag); color:var(--klu-ink)">출처 식별</span> — 어디서 온 자료인지 지목할 수 있어야 한다. 못 대면 여기서 멈춘다.</p>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)"><span style="font-family:var(--klu-font-mono); font-size:13px; letter-spacing:var(--klu-ls-tag); color:var(--klu-ink)">공개 등급</span> — 등급이 공개로 선언돼 있어야 한다. 안 정한 것은 닫힌 쪽이 기본값이다.</p>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)"><span style="font-family:var(--klu-font-mono); font-size:13px; letter-spacing:var(--klu-ls-tag); color:var(--klu-ink)">사람 승인</span> — 사람이 읽고 승인한 것만 나간다. 이 승인은 자동화하지 않는다.</p>
+        <p style="padding-top:10px; border-top:1px solid var(--klu-rule); font-size:15px; line-height:1.5; color:var(--klu-ink-muted)">셋 중 하나라도 못 대면 여기서 멈춘다. 통과해도 아직 「말해도 되는가」는 열리지 않았다.</p>
+      </div>
+      <div class="membrane" style="display:flex; flex-direction:column; gap:10px; justify-content:space-between">
+        <p class="membrane__t" style="margin-bottom:0" data-fidelity>허락 2 · 발화 계약 관문</p>
+        <h3 style="margin-bottom:2px">무엇을 말해도 되는가</h3>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)"><span style="font-family:var(--klu-font-mono); font-size:13px; letter-spacing:var(--klu-ls-tag); color:var(--klu-ink)">인용 가능</span> — 이미 승인된 문장을 그대로 옮기는 것까지는 열려 있다.</p>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)"><span style="font-family:var(--klu-font-mono); font-size:13px; letter-spacing:var(--klu-ls-tag); color:var(--klu-ink)">발화 금지</span> — 내 목소리로 말해서는 안 되는 자리가 따로 지정돼 있다.</p>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)"><span style="font-family:var(--klu-font-mono); font-size:13px; letter-spacing:var(--klu-ls-tag); color:var(--klu-ink)">새 생성 금지</span> — 바탕이 공개여도 거기서 새 문장을 지어내는 것은 막는다.</p>
+        <p style="padding-top:10px; border-top:1px solid var(--klu-rule); font-size:15px; line-height:1.5; color:var(--klu-ink-muted)">막히면 얼버무리지 않는다. 거부할 때 쓰는 문구가 미리 정해져 있다.</p>
+      </div>
+    </div>
+    <div class="quote" style="flex:0 0 auto">
+      <p data-fidelity style="color:var(--klu-ink); font-size:20px">공개해도 되는 내용이어도, 그것을 바탕으로 새 내용을 지어 말할 권한은 따로다.</p>
+      <p data-fidelity style="margin-top:6px; font-size:16px; line-height:1.5; color:var(--klu-ink-muted)">내 목소리로 말한다고 아무 말이나 해도 되는 건 아니다.</p>
+    </div>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>11 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#12">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">12 · 편성</span>
+    <span>해상도를 지키는 장치</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>FORMATION</p>
+    <h2 data-fidelity>편성은 일이 많아져서가 아니라 주인 없는 자산이 생길 때 늘었다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:13px">
+    <p data-fidelity style="flex:0 0 auto; font-size:19px; line-height:1.5; color:var(--klu-ink-muted)">지휘 하나 · 담당 셋 · 안내 하나. 다섯 다 세션이라는 성질을 갖는다 — 켜면 태어나고 끄면 사라진다.</p>
+    <div class="card-grid" style="flex:1 1 auto">
+      <div class="card">
+        <h3 class="card__t">지휘 — 조율 전담</h3>
+        <p>경계와 게이트, 내보내는 순서를 정한다. 콘텐츠는 만들지 않는다. 만드는 자리와 정하는 자리를 겹치지 않게 뒀다.</p>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">뒤에서 직접 만들어 볼 지휘자와 같은 자리</span>
+      </div>
+      <div class="card">
+        <h3 class="card__t">자료 — 진본을 만든다</h3>
+        <p>반입 · 등급 · 마커 · 노드 가공까지 자료 쪽을 전담한다. 원본은 읽기 전용이라 아무도 고치지 않는다.</p>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">원본은 한 곳, 나머지는 전부 사본</span>
+      </div>
+    </div>
+    <div class="card-grid" style="flex:1 1 auto">
+      <div class="card">
+        <h3 class="card__t">발행 — 진본을 세상으로</h3>
+        <p>진본을 시리즈로 만들어 공개 표면으로 내보낸다. 나가는 순서와 형식을 고정해 둔다.</p>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">2장의 시리즈 4 · 포스팅 12편</span>
+      </div>
+      <div class="card">
+        <h3 class="card__t">음성 — 목소리를 자산으로</h3>
+        <p>합성 · 인식 · 대화 셋을 한 갈래에서 기른다. 목소리를 쓰는 표면이 늘어도 출처는 하나다.</p>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">말하는 표면마다 같은 모듈</span>
+      </div>
+      <div class="card">
+        <h3 class="card__t">안내 — 공개된 것만 고른다</h3>
+        <p>공개된 것만 골라 안내한다. 닫힌 자료는 아예 후보에 들어오지 않는다.</p>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">2장에서 들으신 그 음성 안내</span>
+      </div>
+    </div>
+    <p class="quote" style="flex:0 0 auto; font-size:16px; line-height:1.5">규약 셋(헌장 · 원장 · 본인 게이트)은 이 다섯 아래에 있지 않다 — 지휘가 부리는 것이 아니라 지휘를 구속하는 쪽이라, 다음 장에서 따로 다룬다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>12 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#13">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">13 · 스킬과 규약</span>
+    <span>해상도를 지키는 장치</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>SKILLS &amp; PROTOCOL</p>
+    <h2 data-fidelity>스킬은 설계로 태어나지 않았다 — 같은 일을 세 번째 할 때 파일로 굳었다</h2>
+    <p class="lede">에이전트가 누구인가라면, 스킬은 무엇을 할 줄 아는가다. 필요해진 날 하나씩 늘었다.</p>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:14px">
+    <p class="eyebrow" style="margin:0; flex:0 0 auto; color:var(--klu-ink-faint)">스킬 셋 — 할 줄 아는 것</p>
+    <div class="card-grid" style="flex:1 1 0; min-height:0">
+      <div class="card">
+        <h3 class="card__t">쓰는 일</h3>
+        <p>1인칭 원고를 쓰고, 그것이 내 말투인지 판정한다. 판정 기준도 파일이라 세션이 바뀌어도 같은 잣대로 잰다.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__t">내보내는 일</h3>
+        <p>원고 하나가 여러 표면으로 나가는 경로를 고정한다.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__t">보이는 일</h3>
+        <p>표지와 배너를 만들고, 음성을 글로 옮긴다.</p>
+      </div>
+    </div>
+    <p class="eyebrow" style="margin:0; flex:0 0 auto; color:var(--klu-ink-faint)">규약 셋 — 스킬이 넘지 못하는 선</p>
+    <div class="card-grid" style="flex:1 1 0; min-height:0">
+      <div class="card">
+        <h3 class="card__t">규약 ① 헌장 1장</h3>
+        <p>누가 무엇을 소유하고 무엇을 못 하는지를 한 장에 적어 둔다.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__t">규약 ② 원장</h3>
+        <p>결정은 한 줄씩 추가만 한다. 고치지도 지우지도 않으므로 왜 그렇게 정했는지가 남는다.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__t">규약 ③ 본인 게이트</h3>
+        <p>발행·삭제·경계는 에이전트끼리 정하지 않는다. 사람이 승인해야 지나간다 — 이 승인은 자동화하지 않는다.</p>
+      </div>
+    </div>
+    <p class="quote" data-fidelity style="color:var(--klu-ink); font-size:20px; flex:0 0 auto">먼저 설계하고 시작한 게 아니라, <span class="u">같은 일을 세 번째 하는 순간</span> 그때 하나씩 파일로 굳혔다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>13 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#14">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">14 · 정체성</span>
+    <span>해상도를 지키는 장치</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>IDENTITY</p>
+    <h2 data-fidelity>세션은 사라지므로 정체성은 대화가 아니라 파일에 있어야 한다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:13px">
+    <p data-fidelity style="flex:0 0 auto; font-size:19px; line-height:1.5; color:var(--klu-ink-muted)">세션은 회차가 끝나면 사라지고, 다음 세션은 앞 회차를 모른 채 다시 처음부터 시작한다. 회차를 관통하는 것은 파일뿐이다.</p>
+    <div class="card-grid" style="flex:1 1 auto">
+      <div class="card">
+        <h3 class="card__t">정의 문서 — Soul</h3>
+        <p>사명 · 경계 · 시행착오 목록이 한 파일에 들어간다. 시행착오를 남겨 두지 않으면 다음 세션이 같은 자리에서 다시 넘어진다.</p>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">새 세션이 읽는 순간 그 에이전트가 된다</span>
+      </div>
+      <div class="card">
+        <h3 class="card__t">결정 원장 — Memory</h3>
+        <p>결정은 한 줄씩 추가만 한다. 고치지도 지우지도 않으므로 지난 결정과 그 근거가 전부 남는다.</p>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">왜 그렇게 정했는지가 남는다</span>
+      </div>
+      <div class="card">
+        <h3 class="card__t">충돌 규칙 — 파일이 이긴다</h3>
+        <p>대화에서 나온 말과 파일이 어긋나면 파일을 따른다. 말은 회차마다 흔들리지만 파일은 그대로 남기 때문이다.</p>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">누가 정본인지 미리 정해 뒀다</span>
+      </div>
+    </div>
+    <div class="two-column" style="flex:1 1 auto; grid-template-columns:.88fr 1.12fr">
+      <div class="panel" style="padding:16px 18px">
+        <h3 style="margin-bottom:8px">필요한 건 네 줄이다</h3>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">무슨 일을 하고, 어떤 규칙을 지키고, 어디서 멈추고, 지금 어떤 상태인가. 역할 · 규칙 · 경계 · 상태 — 이 네 줄이 에이전트 하나의 전부다.</p>
+        <p style="margin-top:10px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">그래서 팀을 만든다는 것도 결국 이런 파일을 몇 장 만드는 일이 된다.</p>
+      </div>
+      <div class="prompt"># research-digest
+
+역할   링크를 받아 세 묶음으로 정리한다
+규칙   사실 · 추론 · 확인 필요를 섞지 않는다
+경계   원문에 없는 건 쓰지 않는다
+상태   초안</div>
+    </div>
+    <p class="quote" style="flex:0 0 auto; font-size:16px; line-height:1.5">실측이 추정을 이기고, 검증이 확신을 이기고, 파일이 대화를 이긴다 — 매일 전원이 교체되는데도 팀이 유지되는 이유다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>14 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#15">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">15 · 유니버스</span>
+    <span>해상도를 지키는 장치</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>UNIVERSE · WHAT IT IS</p>
+    <h2 data-fidelity>많이 모은 저장소가 아니라, 검증된 하나를 여러 차원으로 투영한다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:16px">
+    <div class="two-column" style="flex:1 1 auto; min-height:0; grid-template-columns:1.06fr .94fr; grid-template-rows:minmax(0, 1fr); align-items:stretch">
+
+      <div style="display:flex; flex-direction:column; gap:20px; min-width:0; min-height:0">
+        <p data-fidelity style="font-size:17px; line-height:1.52; color:var(--klu-ink)">앞의 넷(관문 · 편성 · 스킬 · 파일)이 모여 무엇이 되었나. <span class="u">출처로 검증된 하나의 자기 모델을 여러 차원으로 투영하고, 사람이 승인한 결과만 밖으로 내보내는 체계</span>다.</p>
+
+        <div class="card-lattice" style="flex:0 0 auto; grid-template-columns:repeat(3, minmax(0, 1fr))">
+          <div style="display:flex; flex-direction:column; gap:5px; padding:16px 16px">
+            <p class="eyebrow" style="margin-bottom:0">① 원천</p>
+            <h3 class="card__t" style="font-size:16px">하나의 검증된 원천</h3>
+            <p style="font-size:14px; line-height:1.45; color:var(--klu-ink-body)">출처로 되짚을 수 있는 것만 정본이 된다.</p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:5px; padding:16px 16px">
+            <p class="eyebrow" style="margin-bottom:0">② 뷰</p>
+            <h3 class="card__t" style="font-size:16px">여러 차원의 뷰</h3>
+            <p style="font-size:14px; line-height:1.45; color:var(--klu-ink-body)">같은 원천을 시간 · 공간 · 인식으로 투영한다.</p>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:5px; padding:16px 16px">
+            <p class="eyebrow" style="margin-bottom:0">③ 외부</p>
+            <h3 class="card__t" style="font-size:16px">승인된 결과만 외부로</h3>
+            <p style="font-size:14px; line-height:1.45; color:var(--klu-ink-body)">중요한 건 뷰의 수가 아니라 원천과 권한의 일관성이다.</p>
+          </div>
+        </div>
+
+        <div class="membrane" style="flex:0 0 auto; padding:17px 18px">
+          <p class="membrane__t" style="margin-bottom:7px">대부분은 안쪽이다</p>
+          <p style="font-size:15px; line-height:1.5; color:var(--klu-ink-body)">구역 대부분은 검증된 안쪽에 남는다. 밖으로 나가는 것은 승인을 지난 것뿐이고, 오른쪽 성도에서 중심으로부터 가장 멀리 떨어져 있는 것이 공개면이다.</p>
+        </div>
+
+        <div class="legend" style="flex:0 0 auto; margin-top:auto; gap:7px 16px">
+          <span class="legend__i"><span class="legend__d" style="background:var(--klu-cat-root)"></span>근간 · 원본과 검증</span>
+          <span class="legend__i"><span class="legend__d" style="background:var(--klu-cat-time)"></span>시간</span>
+          <span class="legend__i"><span class="legend__d" style="background:var(--klu-cat-space)"></span>공간</span>
+          <span class="legend__i"><span class="legend__d" style="background:var(--klu-cat-mind)"></span>인식</span>
+          <span class="legend__i"><span class="legend__d" style="background:var(--klu-cat-expand)"></span>확장</span>
+          <span class="legend__i"><span class="legend__d" style="background:var(--klu-cat-public)"></span>공개</span>
+        </div>
+      </div>
+
+      <!-- 성도(星圖). 좌표·색·투명도는 라이브 관측 도구 실측값 그대로다.
+           viewBox 795x632 가 545px 폭으로 렌더되므로 배율은 0.685 —
+           라벨 user unit 20/18/17 이 화면에서 각각 13.7 / 12.3 / 11.6px 로 앉는다.
+           선은 non-scaling-stroke 라 축소돼도 1px 헤어라인을 유지한다. -->
+      <figure style="display:flex; align-items:center; justify-content:center; margin:0; min-width:0; min-height:0">
+        <svg viewBox="155 18 795 632" preserveAspectRatio="xMidYMid meet" role="img"
+             aria-label="유니버스 성도 — 근간 ONTOLOGY를 중심으로 시간·공간·인식·확장 구역이 안쪽에 놓이고, 공개면 ASTRO만 바깥에 떨어져 있다"
+             style="display:block; width:100%; height:100%">
+
+          <g stroke="var(--klu-ink)" stroke-width="1" opacity=".08" vector-effect="non-scaling-stroke">
+            <line x1="470" y1="330" x2="340" y2="432" vector-effect="non-scaling-stroke"/>
+            <line x1="470" y1="330" x2="250" y2="212" vector-effect="non-scaling-stroke"/>
+            <line x1="470" y1="330" x2="183" y2="330" vector-effect="non-scaling-stroke"/>
+            <line x1="470" y1="330" x2="250" y2="452" vector-effect="non-scaling-stroke"/>
+            <line x1="470" y1="330" x2="398" y2="128" vector-effect="non-scaling-stroke"/>
+            <line x1="470" y1="330" x2="585" y2="505" vector-effect="non-scaling-stroke"/>
+            <line x1="470" y1="330" x2="700" y2="424" vector-effect="non-scaling-stroke"/>
+            <line x1="470" y1="330" x2="700" y2="175" vector-effect="non-scaling-stroke"/>
+            <line x1="470" y1="330" x2="878" y2="298" vector-effect="non-scaling-stroke"/>
+          </g>
+
+          <g opacity=".10">
+            <circle cx="470" cy="330" r="32" fill="var(--klu-cat-root)"/>
+            <circle cx="340" cy="432" r="20" fill="var(--klu-cat-archive)"/>
+            <circle cx="250" cy="212" r="18" fill="var(--klu-cat-time)"/>
+            <circle cx="183" cy="330" r="14" fill="var(--klu-cat-time)"/>
+            <circle cx="250" cy="452" r="16" fill="var(--klu-cat-time)"/>
+            <circle cx="398" cy="128" r="18" fill="var(--klu-cat-space)"/>
+            <circle cx="585" cy="505" r="18" fill="var(--klu-cat-mind)"/>
+            <circle cx="700" cy="424" r="18" fill="var(--klu-cat-mind)"/>
+            <circle cx="700" cy="175" r="20" fill="var(--klu-cat-expand)"/>
+            <circle cx="878" cy="298" r="22" fill="var(--klu-cat-public)"/>
+          </g>
+
+          <g>
+            <circle cx="470" cy="330" r="16" fill="var(--klu-cat-root)"/>
+            <circle cx="340" cy="432" r="10" fill="var(--klu-cat-archive)"/>
+            <circle cx="250" cy="212" r="9" fill="var(--klu-cat-time)"/>
+            <circle cx="183" cy="330" r="7" fill="var(--klu-cat-time)"/>
+            <circle cx="250" cy="452" r="8" fill="var(--klu-cat-time)"/>
+            <circle cx="398" cy="128" r="9" fill="var(--klu-cat-space)"/>
+            <circle cx="585" cy="505" r="9" fill="var(--klu-cat-mind)"/>
+            <circle cx="700" cy="424" r="9" fill="var(--klu-cat-mind)"/>
+            <circle cx="700" cy="175" r="10" fill="var(--klu-cat-expand)"/>
+            <circle cx="878" cy="298" r="11" fill="var(--klu-cat-public)"/>
+          </g>
+
+          <g font-family="var(--klu-font-mono)" font-size="20" font-weight="600"
+             letter-spacing=".08em" fill="var(--klu-ink)">
+            <text x="398" y="80" text-anchor="middle">ATLAS</text>
+            <text x="224" y="163">CHRONICLE</text>
+            <text x="690" y="211" text-anchor="middle">TWIN</text>
+            <text x="204" y="326">SNAPSHOT</text>
+            <text x="878" y="336" text-anchor="middle">ASTRO</text>
+            <text x="752" y="376" text-anchor="end">COMPASS</text>
+            <text x="470" y="378" text-anchor="middle">ONTOLOGY</text>
+            <text x="364" y="428">ARCHIVE</text>
+            <text x="250" y="484">CAPSULE</text>
+            <text x="585" y="538" text-anchor="middle">MIRROR</text>
+          </g>
+
+          <g font-family="var(--klu-font-body)" font-size="18" fill="var(--klu-ink-muted)">
+            <text x="398" y="103" text-anchor="middle">삶의 지도·조망</text>
+            <text x="224" y="186">흐름·서사</text>
+            <text x="690" y="234" text-anchor="middle">차원 확장·대행</text>
+            <text x="204" y="349">한 순간의 단면</text>
+            <text x="878" y="359" text-anchor="middle">공개면·별빛</text>
+            <text x="752" y="399" text-anchor="end">가치관·세계관</text>
+            <text x="470" y="401" text-anchor="middle">검증된 SSOT</text>
+            <text x="364" y="451">원본·불변</text>
+            <text x="250" y="507">봉인·미래·승계</text>
+            <text x="585" y="561" text-anchor="middle">정체성·내면</text>
+          </g>
+
+        </svg>
+      </figure>
+
+    </div>
+    <p class="quote" data-fidelity style="flex:0 0 auto; font-size:16px; line-height:1.5">구역 열 중 밖을 향하는 것은 하나뿐이다 — 그 하나를 지키는 것이 11장의 두 관문이다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>15 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#16">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">16 · 규칙</span>
+    <span>실연 기록</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>GROUND RULES</p>
+    <h2 data-fidelity>데모는 안전·정직·비코드 위에서 돈다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:18px">
+    <p class="lede" data-fidelity style="margin-top:0">여기서부터는 실제로 만든 것의 기록이다. 세 규칙은 만들기 전에 정해 두었다.</p>
+    <div class="card-grid" style="flex:0 0 auto">
+      <div class="card">
+        <h3 class="card__t">① 안전 — 스크래치에서만</h3>
+        <p>전부 새로 만든 폴더 안에서 돈다. 폴더째 버리면 흔적이 남지 않는다.</p>
+        <p style="font-size:15px; color:var(--klu-ink-muted)">원래 쓰던 자료는 손이 닿지 않는 자리에 둔 채로 시작했다.</p>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">되돌릴 것이 애초에 없다</span>
+      </div>
+      <div class="card">
+        <h3 class="card__t">② 정직 — 실패를 감추지 않는다</h3>
+        <p>이상하게 나온 결과도 고쳐 쓰지 않고 그대로 남긴다.</p>
+        <p style="font-size:15px; color:var(--klu-ink-muted)">뒤에서 「검토 담당이 아직 없다」가 화면에 그대로 남는 것도 이 규칙 때문이다.</p>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">빠진 자리를 빠진 채로 보인다</span>
+      </div>
+      <div class="card">
+        <h3 class="card__t">③ 비코드 — 한글 텍스트 파일</h3>
+        <p>만든 것은 전부 한글로 쓴 텍스트 파일이다.</p>
+        <p style="font-size:15px; color:var(--klu-ink-muted)">열어 보면 무슨 규칙인지 그대로 읽히고, 읽을 줄 알면 고칠 줄도 안다.</p>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">편집기 하나면 다 열린다</span>
+      </div>
+    </div>
+    <div class="card-lattice" style="flex:0 0 auto">
+      <div>
+        <p class="eyebrow" style="margin-bottom:6px">기록 ①</p>
+        <h3 class="card__t">에이전트 하나</h3>
+        <p style="margin-top:6px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">리서치 정리를 전담하는 명세 한 장. 다음 장에서 그 파일을 그대로 연다.</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:6px">기록 ②</p>
+        <h3 class="card__t">스킬 하나</h3>
+        <p style="margin-top:6px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">새 문서를 만드는 자리에 머리말 규칙을 걸어 둔다.</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:6px">기록 ③</p>
+        <h3 class="card__t">팀 하나</h3>
+        <p style="margin-top:6px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">지휘자와 일꾼 셋, 그리고 아직 비어 있는 검토 자리.</p>
+      </div>
+    </div>
+    <p class="quote" data-fidelity>공통 종료 동작은 하나다 — 만든 파일을 열어 눈으로 확인한다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>16 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#17">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">17 · 에이전트</span>
+    <span>실연 기록</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>RECORD 01 · AGENT</p>
+    <h2 data-fidelity>에이전트는 한글 문장 명세 하나이고, 채팅과 달리 내일도 같은 상대가 온다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:18px">
+    <p data-fidelity>리서치 정리를 전담시켰다. AI 코딩 에이전트에게 쓴 것은 아래 문장이 전부다.</p>
+    <div class="two-column" style="grid-template-columns:1.12fr .88fr">
+      <div class="prompt">리서치 정리 전담 에이전트를 만들어줘.
+
+이름: research-digest
+규칙:
+1. 내용을 ①사실 ②추론 ③확인 필요로 나눈다.
+2. 확실하지 않은 것은 지어내지 말고 [확인 필요]에.
+3. 마지막에 "다음에 물어볼 질문" 3개.
+4. 길이는 원문의 1/3 이내.
+
+에이전트 정의 폴더에 research-digest 로 저장해줘.</div>
+      <div class="panel">
+        <p class="eyebrow" style="margin-bottom:8px">생긴 것 — 파일 하나</p>
+        <div class="prompt" style="margin-bottom:14px">research-digest    리서치를 세 묶음으로</div>
+        <h3 style="margin-bottom:8px">볼 것</h3>
+        <ul style="margin:0; padding-left:19px">
+          <li>파일이 열린다 — 이게 전부다</li>
+          <li>안이 전부 한글 문장이다</li>
+          <li>모르는 것은 [확인 필요]로 남는다</li>
+        </ul>
+      </div>
+    </div>
+    <p class="quote" data-fidelity>채팅과 다른 점은 하나다 — 내일 새 창을 열어도 이 파일이 남아 있어서 같은 상대가 온다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>17 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#18">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">18 · 스킬</span>
+    <span>실연 기록</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>RECORD 02 · SKILL</p>
+    <h2 data-fidelity>규칙은 실행 자리에 둬야 지켜지고, 기본값은 확정이 안 되는 쪽으로 기운다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:10px">
+    <p data-fidelity>규칙을 문서로 적어 두는 대신, 새 문서를 만드는 자리에 규칙을 걸었다. 가운데가 실제로 쓴 문장 전문이다.</p>
+    <div class="card-lattice" style="flex:1 1 auto; grid-template-columns:.84fr 1.32fr .84fr">
+      <div style="display:flex; flex-direction:column; padding:10px 16px">
+        <p class="eyebrow" data-fidelity style="margin-bottom:5px">① 규칙이 붙기 전</p>
+        <div class="prompt" style="padding:11px 15px; line-height:1.4; color:var(--klu-ink-faint)"># (어떤 문서)
+본문부터 바로 시작 …
+
+# (다른 문서)
+요약 한 줄만 있고 상태는 없다</div>
+        <p style="margin-top:auto; padding-top:9px; font-size:15px; line-height:1.5; color:var(--klu-ink-body)">요약도 날짜도 상태도 없다. 그때 생각나면 붙고, 안 나면 그냥 없다. 규칙을 따로 적어 둬도 마찬가지였다.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; padding:10px 18px">
+        <p class="eyebrow" data-fidelity style="margin-bottom:5px">② 규칙을 건 자리 — 스킬 파일 한 장</p>
+        <div class="prompt" style="padding:11px 16px; line-height:1.4">문서 머리말 스킬을 만들어줘.
+
+이름: doc-header
+언제: 내가 새 문서를 만들어 달라고 할 때마다.
+규칙: 맨 위에 반드시 —
+  - 한 줄 요약:
+  - 작성일:
+  - 상태: 초안   (기본값은 언제나 '초안')
+  - 이 문서가 답하는 질문:
+내가 "확정"이라 말하기 전에는 상태를 바꾸지 않는다.
+
+스킬 폴더에 doc-header/SKILL.md 로 저장해줘.</div>
+        <p style="margin-top:auto; padding-top:9px; font-size:15px; line-height:1.5; color:var(--klu-ink-body)">규칙이 사는 자리는 문서가 아니라 실행하는 순간이다. 이 파일 하나가 그 자리에 걸렸다.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; padding:10px 16px">
+        <p class="eyebrow" data-fidelity style="margin-bottom:5px">③ 규칙이 붙은 뒤</p>
+        <div class="prompt" style="padding:12px 15px; line-height:1.5">한 줄 요약:
+작성일:
+상태: 초안
+이 문서가 답하는 질문:
+
+# (어떤 문서든 똑같이)</div>
+        <p style="margin-top:auto; padding-top:9px; font-size:15px; line-height:1.5; color:var(--klu-ink-body)">같은 요청인데 머리말 넉 줄이 먼저 붙는다. 상태 칸은 사람이 올리기 전까지 초안이다.</p>
+      </div>
+    </div>
+    <div style="flex:0 0 auto; display:flex; gap:10px; flex-wrap:wrap">
+      <span class="chip" style="padding:4px 11px">볼 것 ① 머리말이 자동으로 붙는다</span>
+      <span class="chip" style="padding:4px 11px">볼 것 ② 상태가 초안으로 잡힌다</span>
+      <span class="chip" style="padding:4px 11px">볼 것 ③ 규칙 파일이 그대로 열린다</span>
+    </div>
+    <p class="quote" data-fidelity style="flex:0 0 auto">확정은 언제나 사람이 올린다 — 아무것도 하지 않으면 확정이 되지 않는 쪽이 기본값이다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>18 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#19">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">19 · 팀</span>
+    <span>실연 기록</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>RECORD 03 · TEAM</p>
+    <h2 data-fidelity>팀은 일꾼 + 헌장 + 지휘자이고, 지휘자도 파일 한 장이며 내용을 만들지 않는다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:18px">
+    <p data-fidelity>편성을 이미 아는 경우다. 일꾼을 먼저 세우고 지휘 규칙을 위에 얹었다.</p>
+    <div class="two-column" style="grid-template-columns:1.12fr .88fr">
+      <div class="prompt">작은 에이전트 팀을 한 번에 세팅해줘.
+
+지휘자 — 프로젝트 규칙을 AGENTS.md 로:
+  collector → sorter → writer 순으로 배분.
+  내용을 직접 만들지 않는다 — 배분·취합·게이트만.
+  밖으로 내보내기 전에는 사람 확인을 받는다.
+
+일꾼 셋 (에이전트 정의 폴더):
+  collector — 재료 수집. 출처를 함께 남긴다
+  sorter    — 사실 · 추론 · 확인 필요로 가른다
+  writer    — 초안. 담담한 문체, 과장 금지
+CHARTER.md — 각자 소유 폴더 · 완료 = 파일 + 사람 눈</div>
+      <div class="panel">
+        <p class="eyebrow" style="margin-bottom:8px">한 번에 생긴 것 — 파일 다섯</p>
+        <div class="prompt" style="margin-bottom:14px">AGENTS.md    지휘 규칙 · 배분과 게이트
+CHARTER.md   헌장 · 소유와 금지
+collector    재료 수집
+sorter       사실 · 추론 · 확인 필요
+writer       초안</div>
+        <p><span class="mk mk--wait">대기</span>&nbsp;&nbsp;검토 담당이 아직 없다.</p>
+      </div>
+    </div>
+    <p class="quote" data-fidelity>지휘자도 파일 한 장이다 — 그 파일을 읽는 순간 그 세션이 지휘자가 된다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>19 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#20">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">20 · 순서</span>
+    <span>실연 기록</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>RECORD 04 · ORDER</p>
+    <h2 data-fidelity>결과는 같고 다른 건 순서다 — 먼저 정하는 건 사람이 아니라 자리다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:18px">
+    <div class="card-lattice" style="grid-template-columns:1fr 1fr">
+      <div>
+        <p class="eyebrow" style="margin-bottom:6px">앞의 기록 — 편성을 알 때</p>
+        <p data-fidelity>일꾼 셋을 먼저 세우고 → 지휘 규칙을 위에 얹는다</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:6px">이 기록 — 편성을 모를 때</p>
+        <p data-fidelity>지휘자를 먼저 세우고 → 편성표는 비워 둔다</p>
+      </div>
+    </div>
+    <div class="two-column" style="grid-template-columns:1.12fr .88fr">
+      <div class="prompt">지휘자부터 세우고, 필요한 일꾼을 붙여줘.
+
+먼저 AGENTS.md 하나만:
+  나는 배분·취합·게이트만 한다.
+  내용은 직접 만들지 않는다.
+  편성표: (비워 둔다)
+  게이트: 밖으로 나가기 전 사람 확인.
+
+그다음 어떤 일꾼이 필요한지 네가 먼저 제안하고,
+내가 승인하면 에이전트 정의 폴더 아래에 만들어줘.</div>
+      <div class="panel">
+        <h3 style="margin-bottom:8px">볼 것</h3>
+        <ul style="margin:0 0 14px; padding-left:19px">
+          <li>편성표가 먼저 비어 있다</li>
+          <li>제안을 받고 승인할 때만 파일이 생긴다</li>
+          <li>결과물은 앞 기록과 같은 모양이다</li>
+        </ul>
+        <p>순서가 다른 이유는 하나다 — 시작할 때 아는 것이 다르다.</p>
+      </div>
+    </div>
+    <p class="quote" data-fidelity>승인 뒤에야 파일이 생긴다 — 사람이 서는 자리가 여기서 미리 한 번 보인다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>20 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#21">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">21 · 개편</span>
+    <span>실연 기록</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>RECORD 05 · GROWTH</p>
+    <h2 data-fidelity>편성은 문제가 생길 때 늘리고, 개편은 지우지 않고 승계 표시로 남긴다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:22px">
+    <p data-fidelity style="flex:0 0 auto; font-size:19px; line-height:1.5; color:var(--klu-ink-muted)">앞의 기록에서 비워 둔 검토 자리는 설계로 채워지지 않았다. writer 초안에 과장이 섞이는 걸 보고 나서야 한 명을 붙였고, 그 역할이 너무 넓어지자 다시 둘로 갈랐다.</p>
+    <div class="two-column">
+      <div class="prompt">[점진] writer 초안에 과장이 자꾸 섞인다.
+검토 전담을 추가해줘. 이름 reviewer,
+근거 없는 문장·과장에 [확인 필요]만 붙인다. 고치지 않는다.
+AGENTS.md 편성에 reviewer를 넣고,
+"reviewer 통과 전에는 내보내지 않는다"도 추가해줘.</div>
+      <div class="prompt">[개편] reviewer 역할이 너무 넓다. 둘로 나눠줘 —
+fact-check(사실만) / tone-check(문체만).
+기존 reviewer는 지우지 말고 맨 위에
+"구판 — 둘이 승계함"이라고 적어 보관해줘.
+그리고 AGENTS.md의 편성 순서도
+collector → sorter → writer → fact-check → tone-check
+로 갱신해줘.</div>
+    </div>
+    <div class="card-lattice" style="grid-template-columns:1fr 1fr">
+      <div>
+        <p class="eyebrow" style="margin-bottom:6px">개편 전</p>
+        <p data-fidelity>수집 → 분류 → 작성 → 검토</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="margin-bottom:6px">개편 후 — 다섯 단계</p>
+        <p data-fidelity>수집 → 분류 → 작성 → 사실 확인 → 문체 확인</p>
+      </div>
+    </div>
+    <p class="quote" data-fidelity style="flex:0 0 auto">일꾼이 바뀌는 동안 지휘자는 흔들리지 않는다 — 편성표 한 줄만 갱신된다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>21 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#22">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">22 · 회수</span>
+    <span>실연 기록</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>RECORD · CLOSE</p>
+    <h2 data-fidelity>텍스트 파일 열 개였다 — 완료는 실행 결과가 아니라 사람 눈으로 정의된다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:13px">
+    <p data-fidelity style="flex:0 0 auto; font-size:19px; line-height:1.5; color:var(--klu-ink-muted)">회수해서 세어 보니 아홉이 아니라 열이었다. 앞선 판에 「아홉 개」라 적어 뒀는데 목록은 줄곧 열 줄이었고, 담당을 둘로 줄였던 시절의 숫자가 그대로 따라오고 있었다.</p>
+    <div class="stat-grid" style="flex:0 0 auto">
+      <div class="stat">
+        <span class="stat__v">10</span>
+        <span class="stat__l">텍스트 파일 · 구판 1 포함</span>
+      </div>
+      <div class="stat">
+        <span class="stat__v">0줄</span>
+        <span class="stat__l">필요했던 코드</span>
+      </div>
+      <div class="stat">
+        <span class="stat__v">14분</span>
+        <span class="stat__l">걸린 시간</span>
+      </div>
+    </div>
+    <div class="two-column" style="grid-template-columns:1.12fr .88fr">
+      <div class="prompt">AGENTS.md            지휘 규칙 · 배분과 게이트
+CHARTER.md           헌장 · 소유와 금지
+research-digest      리서치를 세 묶음으로
+doc-header/SKILL.md  머리말 규칙
+collector            재료 수집
+sorter               사실 · 추론 · 확인 필요
+writer               초안
+reviewer             검토 (구판 — 아래 둘이 승계)
+fact-check           사실만
+tone-check           문체만</div>
+      <div class="panel" style="display:flex; flex-direction:column">
+        <h3 style="margin-bottom:10px">완료의 정의</h3>
+        <p style="margin-bottom:12px">만들 때마다, 예외 없이, 만든 파일을 열어 눈으로 확인했다.</p>
+        <p data-fidelity style="margin-top:auto; font-size:18px; line-height:1.5; color:var(--klu-ink)"><span class="u">「됐어요」는 완료가 아니다.</span> 완료는 실행 결과가 아니라 사람 눈으로 정의된다.</p>
+      </div>
+    </div>
+    <p class="quote" data-fidelity style="flex:0 0 auto">에이전트 팀은 소프트웨어가 아니라 문서였다 — 지휘자까지 포함해서.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>22 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#23">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">23 · 착수</span>
+    <span>활용</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>START · WHAT TO PICK</p>
+    <h2 data-fidelity>착수에 새로 발명할 것은 없고, 병목은 자동화 속도가 아니라 하루 승인량이다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:16px">
+    <p data-fidelity style="flex:0 0 auto">새로 발명할 것은 없다. 앞의 기록에서 쓴 것 그대로, 고를 것이 셋이다 — 무엇을 고르느냐가 전부다.</p>
+    <div class="card-grid" style="flex:0 0 auto">
+      <div class="card">
+        <h3 class="card__t">① 반복 업무 하나</h3>
+        <p>매주 돌아오는 것 중에서 자기 것 하나만.</p>
+        <p style="margin-top:auto; padding-top:10px; border-top:1px solid var(--klu-rule); font-size:15px; color:var(--klu-ink-muted)">기준 — 이번 주에 또 하게 되는가. 한 번뿐인 일은 두 번째가 없어 값을 못 한다.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__t">② 규칙 파일 하나</h3>
+        <p>산출물이 늘 지켜야 하는 형식 중 제일 자주 틀리는 것 하나.</p>
+        <p style="margin-top:auto; padding-top:10px; border-top:1px solid var(--klu-rule); font-size:15px; color:var(--klu-ink-muted)">기준 — 형식이 이미 정해져 있는가. 매번 모양이 다르면 아직 규칙으로 적을 수 없다.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__t">③ 검토 자리 하나</h3>
+        <p>밖으로 나가기 전에 사람이 서는 지점을 한 군데.</p>
+        <p style="margin-top:auto; padding-top:10px; border-top:1px solid var(--klu-rule); font-size:15px; color:var(--klu-ink-muted)">기준 — 되돌리기 어렵거나 남에게 닿는가. 다음 장의 두 축이 그대로 판단 기준이다.</p>
+      </div>
+    </div>
+    <div style="flex:0 0 auto; display:flex; gap:9px; flex-wrap:wrap; align-items:center">
+      <span class="eyebrow" style="margin-bottom:0">① 후보</span>
+      <span class="chip">회의 기록 정리</span>
+      <span class="chip">자료와 레퍼런스 모으기</span>
+      <span class="chip">산출물 검수 목록</span>
+      <span class="chip">주간 보고 초안</span>
+      <span class="chip">반복 문의 답변</span>
+      <span class="chip">파일 이름과 폴더 정리</span>
+    </div>
+    <div class="stat-grid" style="flex:0 0 auto">
+      <div class="stat">
+        <span class="stat__v">6</span>
+        <span class="stat__l">위에 적어 둔 후보</span>
+      </div>
+      <div class="stat">
+        <span class="stat__v">1개</span>
+        <span class="stat__l">그중 고르는 것</span>
+      </div>
+      <div class="stat">
+        <span class="stat__v">3분</span>
+        <span class="stat__l">고르고 나면 첫 파일까지</span>
+      </div>
+    </div>
+    <p class="quote" data-fidelity style="flex:0 0 auto">대신 해 주는 속도가 빨라질수록 결정 대기가 쌓인다 — 하루에 승인할 양을 먼저 본다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>23 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#24">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">24 · 사람</span>
+    <span>활용</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>HUMAN GATE</p>
+    <h2 data-fidelity>사람이 서는 자리는 되돌리기 어렵거나 남에게 닿는 순간뿐이다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:15px">
+    <p data-fidelity style="flex:0 0 auto; font-size:19px; line-height:1.5; color:var(--klu-ink-muted)">다섯은 남에게 닿는 범위로는 흩어지고, 되돌리기 어렵다는 점에서는 전부 같은 자리에 모인다. 그것이 이 다섯을 고른 기준이다.</p>
+    <div class="card-lattice" style="flex:1 1 auto; grid-template-columns:repeat(6, minmax(0, 1fr))">
+      <div style="grid-column:span 2; display:flex; flex-direction:column; gap:6px">
+        <h3 class="card__t">지우기</h3>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">지운 것은 다시 만들 수 없다. 남에게 가장 덜 닿는데도 사람이 선다.</p>
+        <span style="margin-top:auto; font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">남에게 닿음 · 거의 없음</span>
+      </div>
+      <div style="grid-column:span 2; display:flex; flex-direction:column; gap:6px">
+        <h3 class="card__t">기억에 남기기</h3>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">기억층은 추가만 하므로, 잘못 적힌 것이 계속 따라온다.</p>
+        <span style="margin-top:auto; font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">남에게 닿음 · 좁다</span>
+      </div>
+      <div style="grid-column:span 2; display:flex; flex-direction:column; gap:6px">
+        <h3 class="card__t">칸막이 넘기</h3>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">자료를 다른 칸에 섞는 순간, 섞인 판단은 다시 갈라내기 어렵다.</p>
+        <span style="margin-top:auto; font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">남에게 닿음 · 중간</span>
+      </div>
+      <div style="grid-column:span 3; display:flex; flex-direction:column; gap:6px">
+        <h3 class="card__t">내보내기</h3>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">발행 · 메일 · 공지 전부. 한 번 나간 것은 회수되지 않는다. 다섯 중 가장 자주 마주치는 자리이기도 하다.</p>
+        <span style="margin-top:auto; font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">남에게 닿음 · 넓다</span>
+      </div>
+      <div style="grid-column:span 3; display:flex; flex-direction:column; gap:6px">
+        <h3 class="card__t">공개로 바꾸기</h3>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">등급을 올리는 결정. 되돌려도 이미 읽힌 뒤라 원래대로 돌아가지 않는다. 그래서 이 결정은 에이전트끼리 하지 않는다.</p>
+        <span style="margin-top:auto; font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">남에게 닿음 · 가장 넓다</span>
+      </div>
+    </div>
+    <div class="two-column" style="flex:0 0 auto; gap:16px">
+      <div class="panel" style="padding:13px 18px">
+        <p class="eyebrow" style="margin-bottom:6px">넘긴 것</p>
+        <p data-fidelity>반복 정리 · 초안 만들기 · 형식 맞추기 · 자료 모으기</p>
+        <p data-fidelity>틀려도 다시 하면 되는 것부터 넘겼다</p>
+      </div>
+      <div class="panel" style="padding:13px 18px">
+        <p class="eyebrow" style="margin-bottom:6px">아직 안 넘긴 것</p>
+        <p data-fidelity>건강 · 재정 · 사진 전체 · 등급을 정하기 어려운 영역</p>
+        <p data-fidelity>기술이 모자라서가 아니라 안 넘기기로 한 결정이다</p>
+      </div>
+    </div>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>24 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#25">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">25 · 착지</span>
+    <span>활용</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>NO HOMEWORK</p>
+    <h2 data-fidelity>숙제는 없다 — 시작은 3분짜리 파일 한 장이거나 다섯 줄 목록이다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:17px">
+    <p class="lede" data-fidelity style="flex:0 0 auto; margin-top:0">여기까지가 기록이다. 시켜야 할 일은 없다. 다만 앞에서 실제로 밟은 순서는 이랬다.</p>
+    <div class="card-lattice" style="flex:0 0 auto; grid-template-columns:1fr 1fr">
+      <div style="display:flex; flex-direction:column">
+        <p class="eyebrow" data-fidelity style="margin-bottom:7px">해보고 싶으시면 — 파일 한 장</p>
+        <h3 class="card__t">앞의 기록에서 만든 그것이다</h3>
+        <ol style="margin:10px 0 0; padding-left:21px">
+          <li style="margin-bottom:6px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">앞 장에서 고른 반복 업무 하나를 떠올린다.</li>
+          <li style="margin-bottom:6px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">빈 텍스트 파일을 열고 네 줄을 적는다 — 역할 · 규칙 · 경계 · 상태.</li>
+          <li style="margin-bottom:6px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">한 번 시켜 보고, 나온 파일을 열어 눈으로 확인한다.</li>
+          <li style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">다음 주에 같은 일이 오면 그 파일을 다시 연다 — 두 번째부터 값을 한다.</li>
+        </ol>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">여기까지 3분</span>
+      </div>
+      <div style="display:flex; flex-direction:column">
+        <p class="eyebrow" data-fidelity style="margin-bottom:7px">더 가보고 싶으시면 — 다섯 줄 목록</p>
+        <h3 class="card__t">내 기록이 어디 있는지부터</h3>
+        <ol style="margin:10px 0 0; padding-left:21px">
+          <li style="margin-bottom:6px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">기록이 어디에 흩어져 있는지 종류만 적는다 — 다 찾지 않아도 된다.</li>
+          <li style="margin-bottom:6px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">문서 · 메모 · 채팅 · 사진. 다섯 줄이면 충분하고 그 이상은 아직 필요 없다.</li>
+          <li style="margin-bottom:6px; font-size:16px; line-height:1.5; color:var(--klu-ink-body)">각 줄 옆에 지금 꺼낼 수 있는지만 적는다 — 목록이 먼저고 신청은 그다음이다.</li>
+          <li style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">그중 가장 안전한 것 하나에 표시하고, 오늘은 거기서 멈춘다.</li>
+        </ol>
+        <span class="chip" style="align-self:flex-start; margin-top:auto">여기까지도 3분</span>
+      </div>
+    </div>
+    <div class="panel" style="flex:0 0 auto; padding:14px 18px">
+      <p class="eyebrow" data-fidelity style="margin-bottom:6px">먼저 하지 않아도 되는 것</p>
+      <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">팀부터 세우지 않는다. 앞의 기록에서도 파일 한 장이 먼저였고, 지휘자와 일꾼은 그 뒤에 붙었다.</p>
+    </div>
+    <p class="quote" data-fidelity style="flex:0 0 auto">둘 다 3분이고, 둘 다 앞에서 실제로 해 본 것이다. 막히는 지점이 생기면 언제든 물어보셔도 된다.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>25 / 27</span></footer></section>
+<section class="slide" data-source-ref="content.md#26">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now">26 · 질문</span>
+    <span>부록</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>APPENDIX · OPEN QUESTION</p>
+    <h2 data-fidelity>원장·마커·사람이 서는 자리는 규모와 무관하게 반복된다</h2>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; gap:17px">
+    <p class="lede" data-fidelity style="flex:0 0 auto; margin-top:0">지금까지는 한 사람의 기록을 모으고 검증하는 이야기였다. 같은 구조를 세계 크기로 키우면 어떻게 될까.</p>
+    <div class="card-grid" style="flex:0 0 auto">
+      <div class="card">
+        <h3 class="card__t">기록이 쌓이는 자리</h3>
+        <p style="font-size:15px; line-height:1.5"><span style="font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">한 사람일 때</span><br>일어난 일이 시각과 함께 한 줄씩. 고쳐 쓰지 않고 얹는다.</p>
+        <p style="font-size:15px; line-height:1.5"><span style="font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">세계 크기일 때</span><br>얹는 주체가 하나가 아니게 된다. 쌓이는 방식은 그대로다.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__t">상태가 남는 자리</h3>
+        <p style="font-size:15px; line-height:1.5"><span style="font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">한 사람일 때</span><br>지금 어디에 있고 무엇을 하는 중인지가 수치와 문장으로 남는다.</p>
+        <p style="font-size:15px; line-height:1.5"><span style="font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">세계 크기일 때</span><br>상태를 읽는 쪽이 사람만이 아니게 된다. 남기는 자리는 그대로다.</p>
+      </div>
+      <div class="card">
+        <h3 class="card__t">사람이 개입하는 자리</h3>
+        <p style="font-size:15px; line-height:1.5"><span style="font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">한 사람일 때</span><br>밀어 넣고, 거둬들이고, 유도한다. 강제하지는 않는다.</p>
+        <p style="font-size:15px; line-height:1.5"><span style="font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">세계 크기일 때</span><br>개입할 자리가 같은 모양으로 계속 나타난다. 개수만 달라진다.</p>
+      </div>
+    </div>
+    <p class="eyebrow" data-fidelity style="flex:0 0 auto; margin-bottom:0">그래서 여기서 걸리는 질문 셋 — 이 장은 답하지 않는다</p>
+    <div class="card-lattice" style="flex:0 0 auto">
+      <div>
+        <p style="margin-bottom:6px; font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">기록</p>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">한 줄씩 얹기만 하는 원장을 그 크기로 밀면, 지우지 않고도 틀린 줄을 바로잡을 수 있을까.</p>
+      </div>
+      <div>
+        <p style="margin-bottom:6px; font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">상태</p>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">마커가 붙지 않은 것이 붙은 것보다 훨씬 많아질 때, 기본값은 어느 쪽으로 기울어야 할까.</p>
+      </div>
+      <div>
+        <p style="margin-bottom:6px; font-family:var(--klu-font-mono); font-size:12px; letter-spacing:var(--klu-ls-label); color:var(--klu-ink-faint)">사람</p>
+        <p style="font-size:16px; line-height:1.5; color:var(--klu-ink-body)">사람이 서는 자리를 그 규모에서도 남겨 두려면, 하루 승인량은 누가 나눠 지게 되는가.</p>
+      </div>
+    </div>
+    <p class="quote" data-fidelity style="flex:0 0 auto; font-size:21px">개인의 기록을 세우는 방법이, 하나의 세계를 세우는 방법과 같은 모양이라면.</p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>26 / 27</span></footer></section>
+<section class="slide slide--cover" data-source-ref="content.md#27" style="justify-content:flex-start">
+  <div class="klu-runner" data-qa-box>
+    <span class="klu-runner__now" style="color:var(--klu-accent-on-dark)">27 · 제작 주체</span>
+    <span>이 자료를 만든 것</span>
+  </div>
+  <header class="slide__header" data-qa-box>
+    <p class="eyebrow" data-fidelity>AUTHORSHIP</p>
+    <h1 data-fidelity>이 발표 자료는 에이전트가 다시 만들었다</h1>
+    <p class="lede" data-fidelity>시드는 본인의 기존 발표 자료와 아카이브이고, 문장을 조립하고 완결한 것은 에이전트다.</p>
+  </header>
+  <div class="slide__body" data-qa-box style="flex-direction:column; justify-content:center; gap:16px">
+    <div style="padding-top:16px; border-top:1px solid var(--klu-rule-on-dark)">
+      <p data-fidelity>1장이 건 문장은 「AI는 나를 아는 만큼만 나를 대신한다」였다.</p>
+      <p data-fidelity>그 문장을 설명하는 자료를, 그 문장이 말하는 에이전트가 다시 만들었다.</p>
+    </div>
+    <p data-fidelity>정확한 표현은 여기까지다 — 「에이전트가 다시 만든 발표 자료」. 원본이 뒤에 있는 재현이지, 새 주제를 스스로 만든 발표가 아니다.</p>
+    <p data-fidelity>밖으로 나가는 것은 본인이 읽고 승인한 것뿐이고, 그 승인은 자동화하지 않는다.</p>
+    <p style="padding-top:14px; border-top:1px solid var(--klu-rule-on-dark)"><span data-fidelity>이 자료는 본인이 읽고 승인한 뒤, 시리즈 00 「Life Universe · Making of」의 원자료로 공개됐다.</span></p>
+  </div>
+<footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>27 / 27</span></footer></section>
+
+</main>
+<script>(() => {
+  const slides = [...document.querySelectorAll(".slide")];
+  let index = 0;
+  const show = next => {
+    if (!slides.length) return;
+    index = Math.max(0, Math.min(slides.length - 1, next));
+    slides.forEach((slide, position) => slide.classList.toggle("is-active", position === index));
+    document.body.dataset.page = String(index + 1);
+  };
+  window.addEventListener("keydown", event => {
+    if (["ArrowRight", "PageDown", " "].includes(event.key)) show(index + 1);
+    if (["ArrowLeft", "PageUp"].includes(event.key)) show(index - 1);
+    if (event.key === "Home") show(0);
+    if (event.key === "End") show(slides.length - 1);
+  });
+  show(0);
+})();
+
+</script>
+</body>
+</html>

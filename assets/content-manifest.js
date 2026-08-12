@@ -27,8 +27,10 @@ export const contentLibrary = {
       coverAlt:
         "다섯 시리즈의 색을 섞은 그레이디언트 띠가 바닥을 가로지르다 두 조각으로 갈리고 세 번째 조각이 그 줄 밖에 따로 놓인 Life Universe 파노라마",
       published: "2026-08-08",
-      // 도슨트 미장착 — 컨텍스트 팩이 아직 없다. planned 면 검증기가 인벤토리만
-      // 보고 전문 검사를 건너뛴다.
+      // 컨텍스트 팩은 인벤토리(entries·allowedTargets)만 실었다[2026-08-13] —
+      // 원자료를 llms.txt 에 싣는 유일한 경로가 allowedTargets 라서다.
+      // 도슨트 발화(quickPrompts)는 음성 레인 검수 후 붙인다. status 는 그때 올린다.
+      // ★ 파일이 존재하면 검증기는 status 와 무관하게 전량 검사를 돈다(실측).
       assistantContext: {
         path: "series/life-universe/assistant/context.json",
         status: "planned",
@@ -74,9 +76,25 @@ export const contentLibrary = {
           href: "series/life-universe/posts/03-boundary/",
         },
       ],
-      // 이 시리즈에는 공개 가능한 1차 원자료 표면이 없다(구조제안 §2-1).
-      // 근거는 발행면 sourceIds 스탬프로만 남는다.
-      sources: [],
+      // 1차 원자료 표면은 없다(구조제안 §2-1 — 그 판정은 유지된다). 아래 한 건은
+      // 1차 자료가 아니라 **층 ④ 합성 파생물**이다 : 세 편이 다룬 실험의 산출물
+      // (본인을 학습한 에이전트가 다시 만든 소개 덱)이 본인 승인[2026-08-13]을
+      // 거쳐 그 실험의 원자료로 돌아온 첫 사례. 본인 저작으로 귀속하지 않는다.
+      sources: [
+        {
+          id: "universe-intro",
+          label: "SOURCE · 소개 덱",
+          title: "KIHEON LIFE UNIVERSE 소개",
+          description:
+            "27장. 신기헌 본인이 아니라, 본인을 학습한 에이전트가 본인의 발표 자료와 "
+            + "아카이브를 재료로 다시 만들었다. 본인이 읽고 승인한 뒤 공개됐다.",
+          published: "2026-08-13",
+          sourceYears: [2026],
+          topics: ["AI와 창작", "창작 도구"],
+          keywords: ["AI 에이전트", "디지털 트윈", "발표 자료"],
+          href: "series/life-universe/sources/universe-intro/",
+        },
+      ],
     },
     {
       slug: "aigc-creative-paradigm",
