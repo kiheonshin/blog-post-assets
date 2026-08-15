@@ -35,7 +35,7 @@
 ## Life Universe · Making of
 
 - [Life Universe · Making of](https://kiheonshin.github.io/blog-post-assets/series/life-universe/): 앞선 다섯 시리즈 열다섯 편 말미에 붙은 한 줄이 실제로 무엇이었는지, 처음 50일 동안 무엇을 했는지의 중간 보고 세 편.
-- [Life Universe · Making of (1) 앞선 다섯 시리즈에 나는 같은 한 줄을 붙였다](https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/01-result/): 앞선 다섯 시리즈 열다섯 편의 맨 아래에는 같은 문장이 하나씩 붙어 있다.
+- [Life Universe · Making of (1) 앞선 다섯 시리즈에 나는 같은 한 줄을 붙였다](https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/01-result/): 앞선 다섯 시리즈 열다섯 편의 맨 아래에 나는 같은 문장을 하나씩 붙였다.
 - [Life Universe · Making of (2) 디지털 트윈은 프롬프트가 아니라 구조다](https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/02-structure/): 나를 아는 AI를 만드는 일은 내 자료를 전부 읽히는 일이 아니었다.
 - [Life Universe · Making of (3) 먼저 다 닫아두고, 지킨 만큼만 한 칸씩 열었다](https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/03-boundary/): 접근 범위는 설정 화면에서 정해지지 않았다.
 - [KIHEON LIFE UNIVERSE 소개 덱](https://kiheonshin.github.io/blog-post-assets/series/life-universe/sources/universe-intro/): KIHEON LIFE UNIVERSE를 소개하는 27장. 신기헌 본인이 만든 것이 아니라, 본인을 학습한 에이전트가 본인의 발표 자료와 아카이브를 재료로 다시 만들었다. 본인이 읽고 승인한 뒤 시리즈 00의 원자료로 공개됐다.
