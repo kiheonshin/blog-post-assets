@@ -519,6 +519,73 @@ export const contentLibrary = {
         },
       ],
     },
+    {
+      slug: "metaverse-era",
+      label: "06 · Metaverse Era",
+      title: "메타버스 시대 — 한 파일로 2년을 말했다",
+      description:
+        "2020년 겨울부터 2021년 말까지 강연으로 한 말을, 그 말을 담고 다닌 파일 한 벌과 나란히 놓고 다시 읽은 세 편.",
+      period: "2020–2026",
+      sourceYears: [2020, 2021],
+      topics: ["현실과 가상", "가상 세계", "기록과 서사"],
+      keywords: ["메타버스", "가상 경제", "발표 자료", "판본"],
+      href: "series/metaverse-era/",
+      // 커버 세트는 본인 승인 대기다. cover·coverAlt 를 **일부러 비워 둔다** —
+      // series-nav.js 의 SeriesNav 와 SeriesLibrary 는 series.cover 를 무조건
+      // <img src> 로 만들기 때문에(325·443행) 없는 경로를 적으면 발행면에 깨진
+      // 이미지가 남는다. 이 시리즈는 목록에서 일곱 번째라 홈 카드 미리보기(앞 여섯)
+      // 밖이고, 나머지 목록은 글자 링크만 그리므로 지금은 cover 를 읽는 자리가 없다.
+      // 승인 뒤 같은 회차에 : cover·coverAlt 추가 + 랜딩면의 series-post-links 를
+      // series-nav 로 교체 + 포스트 세 편에 hero figure 삽입.
+      published: "2026-08-15",
+      // 도슨트 미장착 — 음성 레인이 결속하면 path 를 실제 파일로 채우고 status 를 올린다.
+      // **키 자체는 비워 둘 수 없다.** assistantSurfaceInventory 가 series.assistantContext.path
+      // 를 가드 없이 읽어서, 이 키가 없으면 매니페스트가 import 시점에 TypeError 로 죽고
+      // 그 페이지의 커스텀 엘리먼트가 전멸한다(실측 — 처음 등재판이 정확히 그랬다).
+      assistantContext: {
+        path: "series/metaverse-era/assistant/context.json",
+        status: "planned",
+        pilotSurfaceIds: [],
+      },
+      posts: [
+        {
+          id: "01-no-money-talk",
+          label: "PART 1",
+          title: "현실과 가상 사이에서 돈 이야기를 하지 않던 해",
+          description: "2020년 11월의 두 발표 244장. 값을 다루는 자리는 일곱 장이고, 값이 어떻게 매겨지는지 묻는 장은 하나도 없다.",
+          published: "2026-08-15",
+          sourceYears: [2020],
+          topics: ["현실과 가상", "가상 세계"],
+          keywords: ["메타버스", "경험지도", "매직서클", "이음매"],
+          href: "series/metaverse-era/posts/01-no-money-talk/",
+        },
+        {
+          id: "02-size-and-price",
+          label: "PART 2",
+          title: "세계의 크기를 재고, 무대에서 지갑을 열었다",
+          description: "2021년 3월과 4월과 12월의 발표 351장. 지구의 치수를 자로 들이대던 파일이 여덟 달 만에 무대에서 지갑을 여는 데까지 간다.",
+          published: "2026-08-15",
+          sourceYears: [2021],
+          topics: ["가상 세계", "현실과 가상"],
+          keywords: ["가상 경제", "디센트럴랜드", "스토리리빙", "라이브 데모"],
+          href: "series/metaverse-era/posts/02-size-and-price/",
+        },
+        {
+          id: "03-clocking-in",
+          label: "PART 3",
+          title: "오늘도 나는 메타버스로 출근합니다, 라고 말한 뒤에",
+          description: "2021년 여름과 가을의 발표 255장. 같은 파일을 넉 달 사이에 세 번 다시 조립하며 손댄 자리를 장 단위로 짚었다.",
+          published: "2026-08-15",
+          sourceYears: [2021],
+          topics: ["가상 세계", "기록과 서사"],
+          keywords: ["Play to Earn", "발표자 노트", "판본", "재조립"],
+          href: "series/metaverse-era/posts/03-clocking-in/",
+        },
+      ],
+      // sources 는 **일부러 비워 둔다** — 원자료 모듈 비공개 정책(브리지 §8) :
+      // 매니페스트 미등록 + noindex. 아홉 모듈은 지어 두고 목록에는 걸지 않는다.
+      sources: [],
+    },
   ],
 };
 
