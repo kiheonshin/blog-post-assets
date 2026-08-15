@@ -22,7 +22,8 @@
  *   (2026-08-09 `find` 로 확인 — 0건). 없는 자리를 목록에 두면 다음 회차가 그 둘을
  *   찾다가 못 찾고 「어차피 다 못 찾는 목록」으로 취급한다. 지우고 셋으로 줄인다.
  *
- * 현재 토큰 : v=20260809a  (2026-08-09 회차 — §4-b·§6·§11-2 수정)
+ * 현재 토큰 : v=20260815a  (2026-08-15 회차 — §10-3-b 계보 갈래 신설 · 좌표 클래스를
+ *                            .fig--run 에서 .fig 로 넓힘. 기존 15편 렌더값 무변화)
  *
  * 고칠 때 지킬 것.
  * 1. **발행본 15편과 시각적으로 동일해야 한다.** §1 승계 블록의 값은 인라인에서 그대로
@@ -500,17 +501,17 @@ figcaption {
  * (참값 33.33 · 66.67, 어긋남 0.17% — 600px 트랙에서 1px). 이 어긋남은 눈금과 점에
  * **똑같이** 걸리므로 8 눈금과 8.00 점은 서로 어긋나지 않는다. 둘 다 xt6 xu13 이다.
  *   보기 : 8.00 → xt6 xu13 · 7.25 → xt4 xu3 · 6.12 → xt0 xu8 */
-.fig--run .xt0{--xt:0}   .fig--run .xt1{--xt:10}  .fig--run .xt2{--xt:20}
-.fig--run .xt3{--xt:30}  .fig--run .xt4{--xt:40}  .fig--run .xt5{--xt:50}
-.fig--run .xt6{--xt:60}  .fig--run .xt7{--xt:70}  .fig--run .xt8{--xt:80}
-.fig--run .xt9{--xt:90}  .fig--run .xt10{--xt:100}
-.fig--run .xu0{--xu:0}    .fig--run .xu1{--xu:.5}  .fig--run .xu2{--xu:1}
-.fig--run .xu3{--xu:1.5}  .fig--run .xu4{--xu:2}   .fig--run .xu5{--xu:2.5}
-.fig--run .xu6{--xu:3}    .fig--run .xu7{--xu:3.5} .fig--run .xu8{--xu:4}
-.fig--run .xu9{--xu:4.5}  .fig--run .xu10{--xu:5}  .fig--run .xu11{--xu:5.5}
-.fig--run .xu12{--xu:6}   .fig--run .xu13{--xu:6.5}.fig--run .xu14{--xu:7}
-.fig--run .xu15{--xu:7.5} .fig--run .xu16{--xu:8}  .fig--run .xu17{--xu:8.5}
-.fig--run .xu18{--xu:9}   .fig--run .xu19{--xu:9.5}
+.fig .xt0{--xt:0}   .fig .xt1{--xt:10}  .fig .xt2{--xt:20}
+.fig .xt3{--xt:30}  .fig .xt4{--xt:40}  .fig .xt5{--xt:50}
+.fig .xt6{--xt:60}  .fig .xt7{--xt:70}  .fig .xt8{--xt:80}
+.fig .xt9{--xt:90}  .fig .xt10{--xt:100}
+.fig .xu0{--xu:0}    .fig .xu1{--xu:.5}  .fig .xu2{--xu:1}
+.fig .xu3{--xu:1.5}  .fig .xu4{--xu:2}   .fig .xu5{--xu:2.5}
+.fig .xu6{--xu:3}    .fig .xu7{--xu:3.5} .fig .xu8{--xu:4}
+.fig .xu9{--xu:4.5}  .fig .xu10{--xu:5}  .fig .xu11{--xu:5.5}
+.fig .xu12{--xu:6}   .fig .xu13{--xu:6.5}.fig .xu14{--xu:7}
+.fig .xu15{--xu:7.5} .fig .xu16{--xu:8}  .fig .xu17{--xu:8.5}
+.fig .xu18{--xu:9}   .fig .xu19{--xu:9.5}
 
 @media (max-width: 34rem) {
   /* 라벨을 트랙 위 줄로 올린다 */
@@ -849,6 +850,115 @@ figcaption {
 .fig--dia .path.hit .bar { background: var(--fig-ink) }
 .fig--dia .path .end { font-size: var(--fig-body-narrow); color: var(--fig-ink-mute) }
 .fig--dia .path.hit .end { color: var(--fig-ink) }
+
+/* 10-3-b. 계보 갈래 .paths--tree — R10 의 첫 실사용 [2026-08-15 · 시리즈 06]
+   §3-8 이 R10 을 정의하고 「미사용」으로 남겨 둔 자리를 처음 쓴다. 그리는 것은
+   **파일 하나가 일곱 갈래로 갈라져 각각 어디까지 갔는가**다.
+
+   위 10-3 의 기본형과 다른 점 하나 — **막대가 3px 채움이 아니라 1px 헤어라인이다.**
+   기본형의 막대는 길이가 곧 값이라 채워도 되지만, 계보의 가로축은 **시간**이고
+   막대는 그 자(尺)일 뿐 값이 아니다. §7 이 회차 차트에서 「막대가 아니라 가로 점
+   눈금이다 — 0에서 시작하지 않으므로 막대는 거짓말이 된다」고 적은 것과 같은 판정을
+   여기서도 내린다. 값은 점의 **자리**가 지고, 막대는 침묵한다.
+   같은 이유로 이 변형에는 `.hit` 을 쓰지 않는다 — 축을 굵게 만들면 축이 값을 말한다.
+
+   **왼쪽 뿌리를 세로선으로 그리지 않는다** [본인 지시 승계 — §10-1 `.named` ·
+   §10-2 `.form` · §10-4 `.split` 이 이미 세 번 못박은 「세로선 없음·들여쓰기 없음」].
+   일곱 줄이 **같은 왼쪽 모서리에서 시작한다는 사실 자체**가 한 뿌리를 말한다. 격자가
+   이미 그리고 있는 것을 선으로 다시 그리면 없는 인과가 하나 더 생긴다(§6-2).
+   뿌리가 무엇인지는 `.fig__head` 가 글로 말한다 — 그것은 시간축 위의 점이 아니라
+   파일에 대한 사실이라 축에 앉힐 자리가 없다.
+
+   **승계율은 숫자다.** 막대 굵기·길이에 싣지 않는다 — 굵기로 실으면 형태가 값을
+   주장하는데 이 값들은 서로 같은 자로 잰 것이 아니다(96.2% 는 두 판 사이의 승계,
+   34.6% 는 한 판의 확장분). 오른쪽 `.end` 열에 글자로 둔다. */
+/* ★ 격자는 갈래마다 따로 서면 안 된다 — §7 이 회차 차트에서 이미 당한 자리다.
+ * 위 10-3 의 기본형은 `.path` 마다 grid 를 세우는데, R10 이 미사용이라 그 결함이
+ * 드러난 적이 없었다. 첫 실사용에서 그대로 나왔다 : 라벨과 끝말 길이가 행마다
+ * 달라 축 폭이 **266 / 325 / 230 / 256 / 337 / 230 / 392px** 로 갈렸다(1280 실측).
+ * 그러면 같은 날짜가 갈래마다 다른 자리에 앉아 **한 시간축처럼 보이는 그림이 실제로는
+ * 일곱 개의 다른 자로 잰 것**이 된다. 격자를 감싸개 하나에만 세우고 각 줄은
+ * display:contents 로 그 안에 흩어진다. */
+.fig--dia .paths--tree {
+  display: grid;
+  grid-template-columns: minmax(7.5rem, auto) 1fr minmax(0, 11rem);
+  gap: .8rem 1rem;
+  align-items: center;
+}
+.fig--dia .paths--tree .path { display: contents }
+.fig--dia .paths--tree .bar { block-size: 1px }
+.fig--dia .paths--tree .lab {
+  font-size: var(--fig-body);
+  line-height: 1.45;
+  color: var(--fig-label);
+}
+.fig--dia .paths--tree .lab .sub { color: var(--fig-ink-mute) }
+
+/* 점 — §7 회차 차트의 점과 같은 규격(7px·면색 테두리)을 그대로 승계한다. 같은
+ * 사이트에서 같은 크기의 점이 두 규격을 가지면 독자가 둘을 다른 것으로 읽는다.
+ * 기본값은 **빈 점**이다 — 이 도판에서 다수는 축약·재사용판이고, 채운 점은 원자료로
+ * 실제 여는 대표판에만 준다. 「무엇이 열려 있는가」가 이 그림의 실용적 논지다. */
+.fig--dia .paths--tree .mark {
+  position: absolute;
+  top: 50%;
+  left: calc((var(--xt, 0) + var(--xu, 0)) * 1%);
+  translate: -50% -50%;
+  inline-size: 7px;
+  block-size: 7px;
+  border-radius: 50%;
+  border: 1px solid var(--fig-ink);
+  background: var(--fig-surface);
+  box-shadow: 0 0 0 2px var(--fig-surface);
+}
+.fig--dia .paths--tree .mark.on { background: var(--fig-ink) }
+/* 노트가 본체인 판은 **점 옆**에 작은 사각을 하나 더 둔다. 점의 채움/빔은 이미
+ * 「대표판인가」를 지고 있으므로 여기에 세 번째 상태를 얹으면 한 기호가 두 변수를
+ * 나른다. 다른 변수는 다른 기호로 — 그리고 그 기호가 무엇인지는 `.named` 가 말한다. */
+.fig--dia .paths--tree .mark.note::after {
+  content: "";
+  position: absolute;
+  left: 11px;
+  top: 50%;
+  translate: 0 -50%;
+  inline-size: 4px;
+  block-size: 4px;
+  background: var(--fig-ink);
+}
+/* 눈금 — §7 과 같은 좌표계에 선다. 라벨이 곧 위치다(§7 눈금 주석) */
+.fig--dia .paths--tree .scale {
+  position: relative;
+  grid-column: 2;
+  line-height: 1.5;
+  block-size: 1.5em;
+  margin-block-start: .35rem;
+  font-family: var(--font-mono);
+  font-size: var(--fig-micro);
+  color: var(--fig-ink-faint);
+}
+.fig--dia .paths--tree .scale > * {
+  position: absolute;
+  top: 0;
+  line-height: inherit;
+  left: calc((var(--xt, 0) + var(--xu, 0)) * 1%);
+  translate: -50% 0;
+}
+/* 0% 자리의 눈금만 시작 정렬로 돌린다. 가운데 정렬이면 라벨의 왼쪽 반이 프레임
+ * 밖으로 나간다 — 375 실측에서 라벨 왼쪽 6px, 프레임 왼쪽 16px 이었다. 축의 끝에
+ * 선 라벨은 「가운데가 곧 위치」가 아니라 「모서리가 곧 위치」로 읽힌다. */
+.fig--dia .paths--tree .scale > .xt0.xu0 { translate: 0 0 }
+@media (max-width: 34rem) {
+  /* 좁은 화면에서는 **한 열**로 내린다 — 라벨 · 축 · 끝말이 갈래마다 세 줄로 쌓인다.
+   * §7 처럼 라벨만 올리고 끝말을 축 옆에 두면(1fr auto) 끝말이 auto 로 폭을 먹어
+   * 축이 99.9px 로 눌리고 A 갈래 두 점의 간격이 3.5px 가 된다 — 375 실측. 점이
+   * 7px 이므로 그건 겹친 것이다. 축은 프레임 안쪽 폭을 통째로 쓴다(317px, §4-5).
+   * §7 이 두 열로 버틴 것은 그쪽 끝말이 숫자 한 개라서다. */
+  .fig--dia .paths--tree { grid-template-columns: 1fr; gap: .3rem }
+  .fig--dia .paths--tree .path { display: block }
+  .fig--dia .paths--tree .lab { display: block; font-size: var(--fig-body-narrow) }
+  .fig--dia .paths--tree .bar { display: block; margin-block: .55rem }
+  .fig--dia .paths--tree .end { display: block; margin-block-end: 1.1rem }
+  .fig--dia .paths--tree .scale { grid-column: 1 }
+}
 
 /* 10-4. 분할 막대 .dia--split — **한 줄의 어디**가 무엇인가.
    앞의 셋은 「무엇이 있는가」를 그리고 이건 **자리**를 그린다. 한 문장을 앞뒤로
