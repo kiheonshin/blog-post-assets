@@ -1,9 +1,12 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/universe",
-      "destination": "https://kiheon-life-universe-observatory.vercel.app/map"
-    },
+      "destination": "/universe/",
+      "permanent": false
+    }
+  ],
+  "rewrites": [
     {
       "source": "/universe/",
       "destination": "https://kiheon-life-universe-observatory.vercel.app/map"
