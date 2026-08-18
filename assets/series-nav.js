@@ -421,7 +421,15 @@ class SeriesPostLinks extends HTMLElement {
 
 class SeriesLibrary extends HTMLElement {
   connectedCallback() {
-    const previewLimit = 6;   // 3열 × 2행. 시리즈가 늘면 이 값과 열 수를 함께 본다.
+    // 접기는 숨기는 양이 클릭 값을 할 때만 한다. 6개 고정으로 두면 7번째 시리즈가
+    // 붙는 순간 "나머지 1개 보기"가 생겨, 카드 한 장을 숨기려고 클릭과 접기 줄을
+    // 요구한다 — 접기가 절약해 주는 것보다 비싸다. 그래서 남는 수가 한 행에 못 미치면
+    // 접지 않고 전부 펼친다. 열 수가 바뀌면 이 상수만 고친다.
+    const COLUMNS = 3;
+    const PREVIEW_ROWS = 2;
+    const total = contentLibrary.series.length;
+    const gridLimit = COLUMNS * PREVIEW_ROWS;
+    const previewLimit = total - gridLimit < COLUMNS ? total : gridLimit;
     const previewSeries = contentLibrary.series.slice(0, previewLimit);
     const remainingSeries = contentLibrary.series.slice(previewLimit);
     const status = makeElement(
@@ -476,10 +484,18 @@ class SeriesLibrary extends HTMLElement {
 
     if (remainingSeries.length) {
       const directory = makeElement("details", "series-directory");
+      // 접힌 것이 몇 개인지만 말하면 열어 볼 이유가 안 생긴다. 어느 시기를 담고
+      // 있는지 함께 적어, 접힌 채로도 목록의 범위가 보이게 한다.
+      const foldedYears = remainingSeries
+        .map((series) => Number.parseInt(series.period, 10))
+        .filter((year) => Number.isFinite(year));
+      const foldedRange = foldedYears.length
+        ? ` · ${Math.min(...foldedYears)}–${Math.max(...foldedYears)}`
+        : "";
       const summary = makeElement(
         "summary",
         "",
-        `나머지 ${remainingSeries.length}개 시리즈 보기`,
+        `나머지 ${remainingSeries.length}개 시리즈${foldedRange} 보기`,
       );
       const directoryList = makeElement("ol", "series-directory__list");
 
