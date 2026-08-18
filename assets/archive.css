@@ -137,6 +137,128 @@
   line-height: 1.7;
 }
 
+/* ── 들어가는 면의 문패 ──────────────────────────────────────────── */
+
+/* 위 네 카드는 원자료 모듈이고, World Atlas 는 그것을 가로질러 읽는 해석층이다.
+   이 층은 둘 다 아니다 — 읽는 곳이 아니라 들어가는 곳의 문패다.
+
+   그래서 `.arc-cards` 에 다섯째로 끼우지 않는다. 그 격자는 「네 개니까 2×2」로
+   짜여 있어 다섯째가 들어오면 홀로 남는 한 칸이 생기고, 성격이 다른 것이 대등한
+   자리에 앉아 원자료로 읽힌다. 층을 따로 세우는 문법은 이미 아카이브에 있다 —
+   World Atlas 해석층(`archive-atlas-layer`)이 그것이고, 껍데기 세 줄만 같은 값을
+   쓴다. 그쪽은 홈과 공유하는 파일에 있어 여기로 끌어오지 않았다.
+
+   ★ 이 카드는 링크가 아니다. 가리킬 주소가 아직 서지 않았다. 눌러서 404 로
+   보내는 대신 아직 이어지지 않았다고 적고, 파선으로 그 상태를 보인다 — 파선은
+   이 리포에서 이미 「표시된 부재」의 표기다(site.css `.tr__mask`). 그리고 강조색을
+   쓰지 않는다. 이 사이트에서 파란색은 누를 수 있다는 뜻이다. 주소가 서면 껍데기를
+   `<a>` 로 바꾸고 파선과 색을 그때 함께 되돌린다. */
+
+.archive-inner-layer {
+  margin-block: var(--space-16) var(--space-8);
+  padding-block-start: var(--space-6);
+  border-block-start: 2px solid var(--rule-strong);
+}
+
+.archive-inner-layer__head {
+  display: grid;
+  grid-template-columns: minmax(14rem, 0.7fr) minmax(0, 1fr);
+  gap: var(--space-3) clamp(var(--space-8), 5vw, var(--space-16));
+  align-items: start;
+  margin-block-end: var(--space-6);
+}
+
+.archive-inner-layer__head .library-section__label {
+  grid-column: 1 / -1;
+}
+
+.archive-inner-layer__head h2 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  line-height: 1.16;
+}
+
+.archive-inner-layer__head > p:last-child {
+  margin: 0;
+  color: var(--ink-muted);
+  line-height: 1.72;
+}
+
+.archive-inner-card {
+  display: grid;
+  grid-template-columns: minmax(11rem, 0.36fr) minmax(0, 0.64fr) auto;
+  gap: var(--space-3) var(--space-8);
+  align-items: start;
+  padding: var(--space-6);
+  border: 1px dashed var(--rule);
+}
+
+.archive-inner-card__meta {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--ink-faint);
+  font-family: var(--font-mono);
+  font-size: var(--micro);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+}
+
+.archive-inner-card__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.5vw, 2.25rem);
+  line-height: 1.2;
+}
+
+.archive-inner-card__body {
+  min-width: 0;
+}
+
+.archive-inner-card__body p {
+  margin: 0;
+  color: var(--ink-muted);
+  line-height: 1.72;
+}
+
+.archive-inner-card__body p + p {
+  margin-block-start: var(--space-3);
+}
+
+/* 「준비 중」은 누르는 것이 아니므로 강조색을 쓰지 않는다. 파선 테두리만으로
+   위 카드와 같은 상태를 한 번 더 말한다. */
+.archive-inner-card__status {
+  align-self: end;
+  margin: 0;
+  padding: 0 var(--space-2);
+  border: 1px dashed var(--rule);
+  color: var(--ink-faint);
+  font-family: var(--font-mono);
+  font-size: var(--micro);
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+@media (max-width: 69.99rem) {
+  .archive-inner-layer__head,
+  .archive-inner-card {
+    grid-template-columns: 1fr;
+  }
+
+  .archive-inner-card__meta,
+  .archive-inner-layer__head .library-section__label {
+    grid-column: 1;
+  }
+
+  .archive-inner-card__status {
+    justify-self: start;
+    margin-block-start: var(--space-3);
+  }
+}
+
 /* 재료 목록 — 페이지가 없는 자료도 여기에 적는다. 링크가 없다고
    자료가 없는 것은 아니다. */
 .arc-stock {

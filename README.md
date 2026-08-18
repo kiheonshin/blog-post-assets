@@ -27,7 +27,7 @@
 - `/series/{series-slug}/`: 한 시리즈의 소개, 글, 원자료를 묶는 허브
 - `/series/{series-slug}/posts/{post-slug}/`: 개별 포스트
 - `/series/{series-slug}/sources/{source-slug}/`: 연구 노트와 발표 자료 같은 원자료
-- `/archive/`: 원자료 네 모듈과 공개 시리즈 해석층을 구분해 여는 아카이브
+- `/archive/`: 원자료 네 모듈, 공개 시리즈 해석층, 아직 이어지지 않은 이너월드 진입점을 구분해 여는 아카이브
 - `/archive/world-atlas/`: 다섯 공개 시리즈의 구역·사물·색·관계 제안을 비교하는 공개 참고면
 
 기존의 `import-post1.html`, `source-research.html` 같은 주소는 새 주소로 이동시키는 호환 페이지로 남겨 둔다.
