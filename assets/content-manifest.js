@@ -530,13 +530,9 @@ export const contentLibrary = {
       topics: ["현실과 가상", "가상 세계", "기록과 서사"],
       keywords: ["메타버스", "가상 경제", "발표 자료", "판본"],
       href: "series/metaverse-era/",
-      // 커버 세트는 본인 승인 대기다. cover·coverAlt 를 **일부러 비워 둔다** —
-      // series-nav.js 의 SeriesNav 와 SeriesLibrary 는 series.cover 를 무조건
-      // <img src> 로 만들기 때문에(325·443행) 없는 경로를 적으면 발행면에 깨진
-      // 이미지가 남는다. 이 시리즈는 목록에서 일곱 번째라 홈 카드 미리보기(앞 여섯)
-      // 밖이고, 나머지 목록은 글자 링크만 그리므로 지금은 cover 를 읽는 자리가 없다.
-      // 승인 뒤 같은 회차에 : cover·coverAlt 추가 + 랜딩면의 series-post-links 를
-      // series-nav 로 교체 + 포스트 세 편에 hero figure 삽입.
+      cover: "series/metaverse-era/assets/series-banner.jpg",
+      coverAlt:
+        "청록색 면 위에 선 검은 판을 코트 차림의 두 사람이 올려다보고, 여러 갈래 그림자가 앞으로 길게 뻗은 파노라마",
       published: "2026-08-15",
       // 도슨트 미장착 — 음성 레인이 결속하면 path 를 실제 파일로 채우고 status 를 올린다.
       // **키 자체는 비워 둘 수 없다.** assistantSurfaceInventory 가 series.assistantContext.path
