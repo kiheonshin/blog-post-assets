@@ -1,11 +1,5 @@
 {
-  "redirects": [
-    {
-      "source": "/universe",
-      "destination": "/universe/",
-      "permanent": false
-    }
-  ],
+  "trailingSlash": true,
   "rewrites": [
     {
       "source": "/universe/",
