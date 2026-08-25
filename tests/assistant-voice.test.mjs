@@ -29,6 +29,12 @@ async function loadAssistant() {
     }
     reset() {}
     destroy() {}
+    interrupt() {}
+    updateSpeed() {}
+    async ask() { return { answer: "", targets: [] }; }
+    async preview() {}
+    async startVoiceSession() {}
+    stopVoiceSession() {}
   }
   class ElementStub {
     constructor() {
@@ -64,6 +70,7 @@ async function loadAssistant() {
     AbortController,
     CustomEvent: CustomEventStub,
     DocentAgent,
+    GROK_BUILT_IN_VOICES: Object.freeze(["ara", "eve", "rex", "sal", "leo"]),
     HTMLElement: ElementStub,
     URL,
     VOICE_OFFLINE_MESSAGE: "이 기기에서 개인 연결을 켜고, 브라우저의 기기 연결 요청을 허용한 뒤 다시 시도해 주세요. 연결되지 않아도 준비된 안내는 이용할 수 있습니다.",
@@ -87,15 +94,16 @@ async function loadAssistant() {
   });
   context.globalThis = context;
   let source = await readFile(assistantPath, "utf8");
+  // 이름 붙은 import 를 전역 스텁으로 잇는다. 특정 모듈 경로에 묶지 않는 이유는
+  // 픽스처가 구판에서 v2 로 옮겨오며 import 가 바뀌자 32개가 한꺼번에 깨졌기 때문이다.
   source = source
-    .replace(
-      'import { VoiceTransport, VOICE_OFFLINE_MESSAGE } from "./voice-transport.js?v=20260801b";',
-      "const VoiceTransport = globalThis.VoiceTransport; const VOICE_OFFLINE_MESSAGE = globalThis.VOICE_OFFLINE_MESSAGE;",
-    )
-    .replace(
-      'import { DocentAgent } from "./docent-agent.js?v=20260803contract1";',
-      "const DocentAgent = globalThis.DocentAgent;",
-    )
+    .replace(/import\s*\{([^}]*)\}\s*from\s*"[^"]*";/g, (_, names) =>
+      names
+        .split(",")
+        .map((name) => name.trim())
+        .filter(Boolean)
+        .map((name) => `const ${name} = globalThis.${name};`)
+        .join(" "))
     .replace("export class KiheonVoiceAssistant", "class KiheonVoiceAssistant")
     .replace(
       /if \(!customElements\.get\("kiheon-voice-assistant"\)\) \{[\s\S]*?\}\s*$/,
