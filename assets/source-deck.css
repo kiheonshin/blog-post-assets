@@ -1,6 +1,5 @@
-/* 원자료 슬라이드 뷰어 — 코크리에이션 slides-2023-06 의 인라인 CSS 에서
-   뷰어·챕터·격자·차례 규칙만 그대로 떠 온 것이다. 새로 쓴 규칙은 없다.
-   기준선 페이지는 아직 자기 인라인 사본을 쓴다(범위 밖) — 다음 회차에 이 파일로 모은다. */
+/* 원자료 슬라이드 뷰어 — 차례·챕터·썸네일 격자·슬라이드쇼 오버레이의 스타일.
+   원자료 면이 source-deck.js 와 짝으로 싣는다. 면 고유 스타일은 각 면에 둔다. */
 .doc{display:grid;gap:3rem;margin-block-start:3rem}
 @media(min-width:64rem){
 .doc{grid-template-columns:14rem minmax(0,1fr);gap:4rem;align-items:start}
