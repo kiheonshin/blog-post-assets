@@ -262,10 +262,16 @@ main.idx-wide{width:min(100%,calc(var(--wide) + var(--gutter)*2))}
   .idx-grid{grid-template-columns:minmax(0,1fr) 17rem;column-gap:3rem;align-items:start}
   .idx-grid > .cta{grid-column:1;grid-row:1}
   .idx-grid > .struct{grid-column:1;grid-row:2}
-  .idx-grid > .about{grid-column:1;grid-row:3}
+  .idx-grid > .about{grid-column:1;grid-row:2}
   .idx-grid > .foot{grid-column:1 / -1;grid-row:4}
   .idx-grid > .idx-rail{grid-column:2;grid-row:1 / span 3;
     position:sticky;top:2rem;align-self:start}
+  /* 도슨트 조작대는 공유 CSS(voice-assistant-v2)에서 본문 열 3행을 가로지른다.
+     이 시리즈는 절 둘을 걷어내 본문 열이 2행이므로 여기서만 2행으로 줄인다.
+     안 그러면 빈 3행이 남아 행 간격 36px 이 공개문 구분선 위에 붙는다.
+     공유 CSS 는 다른 여섯 시리즈가 3행 그대로 쓰므로 건드리지 않는다.
+     인라인 style 이 링크보다 앞서므로 특이도를 (0,3,1)로 올려 이긴다. */
+  .idx .idx-grid > kiheon-voice-assistant[data-scope="series"]{grid-row:1 / span 2}
 }
 /* CTA — 배너 위에 포스팅 세 개. 카드가 이미지를 덮으므로 바깥 여백만 정리 */
 .idx-grid > .cta{margin:0}
@@ -316,34 +322,15 @@ main.idx-wide{width:min(100%,calc(var(--wide) + var(--gutter)*2))}
 .idx .foot{margin-block-start:0;padding-block-start:1.5rem;
   border-block-start:1px solid var(--rule-strong)}
 
-/* 세 편의 제목을 다시 요약하지 않고, 읽기 전에 품을 질문을 보여준다. */
-.reading-guide,.related{padding-block-start:2rem;border-block-start:1px solid var(--rule)}
 .section-kicker{margin:0 0 .45rem;font-family:var(--font-mono);font-size:var(--micro);
   font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--accent)}
-.reading-guide h2,.related h2,.about h2{margin:0;font-family:var(--font-display);
+.about h2{margin:0;font-family:var(--font-display);
   font-size:clamp(1.45rem,2vw,1.85rem);font-weight:400;line-height:1.3;letter-spacing:-.02em}
-.reading-guide__intro{margin:.65rem 0 1.25rem;color:var(--ink-muted);font-size:.9375rem;line-height:1.7}
-.reading-map,.related-list{list-style:none;margin:0;padding:0;display:grid;gap:.75rem}
-@media(min-width:48rem){.reading-map{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.reading-map a,.related-list a{display:grid;align-content:start;height:100%;gap:.5rem;
-  padding:1rem;border:1px solid var(--rule);color:var(--ink);text-decoration:none}
-.reading-map a:hover,.related-list a:hover{border-color:var(--accent)}
-.reading-map .n,.related-list .n{font-family:var(--font-mono);font-size:var(--micro);
-  letter-spacing:.08em;color:var(--accent)}
-.reading-map .q,.related-list .q{font-family:var(--font-display);font-size:1.08rem;
-  line-height:1.42;letter-spacing:-.015em}
-.reading-map .d,.related-list .d{font-size:.8125rem;line-height:1.58;color:var(--ink-muted)}
 .about h2{margin-block-end:.85rem}
-.related-list{margin-block-start:1rem}
-@media(min-width:48rem){.related-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
 
-/* 시리즈 02의 추가 섹션도 도슨트 옆 본문 열에서 순서대로 이어진다. */
+/* 표제와 리드는 도슨트 옆 본문 열의 폭에 맞춘다. */
 .idx h1{margin:0 0 1rem}
 .idx > .lead{margin:0 0 2rem;max-width:var(--measure)}
-@media(min-width:70rem){
-  .idx-grid > .reading-guide{grid-column:1;grid-row:2}
-  .idx-grid > .related{grid-column:1;grid-row:4}
-}
 </style>
 <link rel="stylesheet" href="../../assets/site.css?v=20260807j">
 <link rel="stylesheet" href="../../assets/assistant/voice-assistant-v2.css?v=20260803simple1">
@@ -370,30 +357,11 @@ main.idx-wide{width:min(100%,calc(var(--wide) + var(--gutter)*2))}
       data-content-type="series"
       data-content-id="newtype-ip-dialogue"
       data-context="assistant/context.json"></kiheon-voice-assistant>
-    <section class="reading-guide" aria-labelledby="reading-guide-title">
-      <p class="section-kicker">READING MAP</p>
-      <h2 id="reading-guide-title">어디서 시작할까</h2>
-      <p class="reading-guide__intro">세 편은 순서대로 읽을 수 있지만, 지금 가장 궁금한 질문에서 시작해도 된다.</p>
-      <ol class="reading-map">
-        <li><a href="posts/01-not-blocking-potential/"><span class="n">01 · 협업</span><span class="q">AI에게 덜 지시하면 무엇이 열리는가</span><span class="d">긴 작업 루프와 가상 시부야를 통해, 잠재력을 믿고 비켜서는 협업을 살펴본다.</span></a></li>
-        <li><a href="posts/02-engine-as-ip/"><span class="n">02 · IP</span><span class="q">결과물이 바뀌어도 무엇이 IP로 남는가</span><span class="d">완성된 한 편보다 취향을 다시 만들어내는 엔진에 IP의 무게를 둔다.</span></a></li>
-        <li><a href="posts/03-already-have-the-eye/"><span class="n">03 · 창작자</span><span class="q">AI 시대에 창작자의 능력은 어디에 있는가</span><span class="d">일부러 모자란 에이전트를 만들며, 다르게 보는 눈과 판단의 자리를 확인한다.</span></a></li>
-      </ol>
-    </section>
     <section class="about">
       <p class="section-kicker">ABOUT THE DIALOGUE</p>
       <h2>대담에서 세 편으로</h2>
       <p class="lead">2026년 6월 12일, 한남동에서 열린 뉴타입 엔터 서밋 2026에서 'OK, Computer'라는 화두 아래 AI 시대의 IP 비즈니스를 이야기했다. 사회는 차우진이 맡았고, 행사는 엔터문화연구소(영문 이름 Neo Vibe Lab)가 주최했다. 그날 무대에서 한 말을 한 달 반쯤 지나 1인칭으로 다시 정리했다. 행사 소개는 <a href="https://www.neovibelab.com/summit" target="_blank" rel="noopener">neovibelab.com/summit</a> 에 있다.</p>
       <div class="summary"><p>1편에서 잠재력을 가로막지 않는 협업을 말하고, 2편에서는 그렇게 생겨난 결과가 계속 바뀌는 시대에 무엇이 IP로 남는지 묻는다. 3편은 그 둘을 판단하는 창작자의 눈으로 돌아온다.</p><p>세 편이 다시 만나는 곳은 효율이 아니라 판단이다. 무엇을 맡기고, 무엇을 남기며, 어떤 상태를 좋다고 볼 것인지 정하는 일이 창작자의 자리로 남는다.</p></div>
-    </section>
-    <section class="related" aria-labelledby="related-title">
-      <p class="section-kicker">CONTINUE READING</p>
-      <h2 id="related-title">다른 시리즈에서 이어 읽기</h2>
-      <ul class="related-list">
-        <li><a href="../aigc-creative-paradigm/"><span class="n">AI와 창작</span><span class="q">AI 시대, 창작의 정의를 다시 묻다</span><span class="d">도구보다 작업 흐름과 창작의 기준을 더 길게 다룬다.</span></a></li>
-        <li><a href="../co-creation-culture/"><span class="n">공동 창작</span><span class="q">코-크리에이션 문화</span><span class="d">누가 만들었는가보다 함께 만드는 규칙과 문화를 살펴본다.</span></a></li>
-        <li><a href="../autonomous-worlds/"><span class="n">가상 세계</span><span class="q">자율 세계, 스스로 규칙을 만드는 세계의 등장</span><span class="d">에이전트가 머무는 세계와 그 세계를 설계하는 관점으로 이어진다.</span></a></li>
-      </ul>
     </section>
   </div>
   <div class="foot">
