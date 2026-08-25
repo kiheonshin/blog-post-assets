@@ -228,7 +228,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
   }
 
   get contentName() {
-    return this.dataset.contentType === "source" ? "이 자료 안내" : "이 글 안내";
+    return "도슨트 에이전트";
   }
 
   get dialogueHistory() {
@@ -364,12 +364,12 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   contentMarkup() {
     const description = this.dataset.contentType === "source"
-      ? "현재 자료의 흐름과 읽는 대목을 짚어 드립니다."
-      : "현재 글의 흐름과 읽는 대목을 짚어 드립니다.";
+      ? "목소리로 대답하는 에이전트입니다. 이 자료의 흐름과 지금 읽는 대목을 짚어 드립니다."
+      : "목소리로 대답하는 에이전트입니다. 글의 흐름과 지금 읽는 대목을 짚어 드립니다.";
     return `
       <div class="voice-assistant__entry">
         <span><strong>${this.contentName}</strong><span>${description}</span></span>
-        <button type="button" data-assistant-open aria-expanded="false" aria-controls="${this.instanceId}-dialog">열기</button>
+        <button type="button" data-assistant-open aria-expanded="false" aria-controls="${this.instanceId}-dialog">말 걸기</button>
       </div>
       ${this.dialogMarkup({
         kicker: "PAGE DOCENT",

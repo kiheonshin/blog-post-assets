@@ -448,7 +448,7 @@
       "url": "series/aigc-creative-paradigm/posts/01-skill-and-effort/",
       "title": "실력과 노력의 가치는 어디로 가는가",
       "synopsis": "생성이 쉬워진 뒤에도 남는 선택의 어려움에서 출발해, 노력과 진정성의 증명, AI를 새로운 매체로 보는 관점, 콘텐츠가 관계가 되는 변화까지 따라간다.",
-      "contentHash": "sha256:2c2801cd6947c9d56dc7c8db8180adc6bb5267b48592f844612a29aeabd2d338",
+      "contentHash": "sha256:6bb7ff4a420e9e306baa060b5d19b2cb051d4e84099311bd26269c44593ba6dc",
       "keyInsights": [
         {
           "text": "노력이 사라지는 것이 아니라 결과물 밖에서 선택의 이유를 설명하는 언어로 다시 증명되어야 한다.",
@@ -541,7 +541,7 @@
       "url": "series/aigc-creative-paradigm/posts/02-workflow-design/",
       "title": "프롬프트를 넘어, 작업의 흐름을 설계하는 일",
       "synopsis": "프롬프트 작성보다 평가와 선택이 먼저 일어나는 창작, AI와의 공동 작업, 슈퍼 창작자와 양극화, 플랫폼과 학습 데이터 문제를 살핀다.",
-      "contentHash": "sha256:5cd8d19614370aa06a8cdb3e50d77c8911db70667f58ff43b609b38ad4231b8b",
+      "contentHash": "sha256:5d657bd254e4a378a58d98384723c043b0700ec7f2be459274fdb41435557031",
       "keyInsights": [
         {
           "text": "창작의 병목은 명령을 쓰는 일보다 결과를 비교하고 다음 행동을 고르는 평가의 흐름으로 이동한다.",
@@ -634,7 +634,7 @@
       "url": "series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/",
       "title": "현실과 가상의 경계면에서",
       "synopsis": "생성된 기록이 기억과 서사를 바꾸는 순간에서 출발해 디지털의 물리 법칙, 월드 모델, 현실 위에 입혀지는 월드 스킨과 창작자의 자리를 묻는다.",
-      "contentHash": "sha256:54eaaaee70e00a9fbd2be62524237511cfe7fffc24007112fa8c21e2fa3b5720",
+      "contentHash": "sha256:3509d177c50c93e3783a4f09ad912cb56d610a72fcef29903455e18171b039ae",
       "keyInsights": [
         {
           "text": "생성된 기록은 현실을 복제하는 데 그치지 않고 기억과 서사를 다시 쓰는 조건이 될 수 있다.",
@@ -731,7 +731,7 @@
       "url": "series/aigc-creative-paradigm/sources/research/",
       "title": "AI 시대의 예술, 인간 고유의 창의성이란 무엇인가",
       "synopsis": "발표 전에 작성한 조사 전문으로, 예술과 창작의 재정의에서 AI와의 공진화, 플랫폼과 권리, 가상 세계를 거쳐 책임 있는 창작 문화와 비판적 리터러시까지 넓게 다룬다.",
-      "contentHash": "sha256:80fb66cfba98212dd2d3c467683a83069a06eef7fced78ba8e235e9b00efc53b",
+      "contentHash": "sha256:1c1932e880618778f8ff9de8fa613bf7e791cddc416f2137b5430a93179feb7b",
       "keyInsights": [
         {
           "text": "AI 시대의 창작 가치는 결과물의 희소성만이 아니라 과정과 맥락, 의도와 책임으로 재배치된다.",
@@ -868,7 +868,7 @@
       "url": "series/aigc-creative-paradigm/sources/slides/",
       "title": "AIGC 시장 트렌드 및 창작자 패러다임의 변화",
       "synopsis": "2025년 11월 발표의 162장 슬라이드와 발표 중 재생한 영상을 여섯 챕터와 부록의 순서로 다시 볼 수 있는 원자료다.",
-      "contentHash": "sha256:5342689ffa84d3025d0212e2ca0e4a02325a69b9c988f763fdafdc01bbcfe659",
+      "contentHash": "sha256:7c45e9143201bf18f54ee64a2ab9d7d791b67ff56726094871424f4b9c64e2de",
       "keyInsights": [
         {
           "text": "발표는 실력과 노력의 가치에서 시작해 AI를 새 매체로 보고, 프롬프트와 워크플로, 커뮤니티, 가상 세계로 질문을 확장한다.",
