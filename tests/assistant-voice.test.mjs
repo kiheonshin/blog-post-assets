@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const transportPath = path.join(repoRoot, "assets", "assistant", "voice-transport.js");
 const agentPath = path.join(repoRoot, "assets", "assistant", "docent-agent.js");
-const assistantPath = path.join(repoRoot, "assets", "assistant", "voice-assistant.js");
+const assistantPath = path.join(repoRoot, "assets", "assistant", "voice-assistant-v2.js");
 
 async function importTransport() {
   const source = await readFile(transportPath, "utf8");
@@ -188,49 +188,56 @@ test("transport uses the public-page-to-loopback request contract", async () => 
   assert.deepEqual(JSON.parse(calls[1].options.body), { input: "질문" });
 });
 
-test("voice activation completes health before asking for microphone access", async () => {
+test("voice activation claims audio before opening the microphone session", async () => {
   const { Assistant } = await loadAssistant();
   const assistant = new Assistant();
   const order = [];
-  assistant.voiceButton = {
-    setAttribute() {},
-    textContent: "",
-  };
+  assistant.context = { series: {}, entries: [], allowedTargets: [] };
+  assistant.voiceButton = { dataset: {}, setAttribute() {}, textContent: "" };
+  assistant.selectedVoiceValue = () => "ara";
+  assistant.selectedRateValue = () => "1";
   assistant.claimAudio = () => order.push("claim");
   assistant.setState = () => {};
   assistant.showAnswer = () => {};
   assistant.transport = {
-    checkAvailability: async () => order.push("health"),
+    startVoiceSession: async () => order.push("session"),
+    stopVoiceSession() {},
     reset() {},
   };
-  assistant.startListening = async () => order.push("microphone");
 
   await assistant.startVoice();
-  assert.deepEqual(order, ["claim", "health", "microphone"]);
+  assert.deepEqual(order, ["claim", "session"]);
 });
 
-test("offline voice activation never asks for a microphone and gives the recovery action", async () => {
-  const { Assistant } = await loadAssistant();
+test("voice activation without context never opens a microphone session, and an offline session recovers", async () => {
+  const { Assistant, context } = await loadAssistant();
   const assistant = new Assistant();
   const answers = [];
-  let microphoneCalls = 0;
-  assistant.voiceButton = { setAttribute() {}, textContent: "" };
+  let sessionCalls = 0;
+  assistant.voiceButton = { dataset: {}, setAttribute() {}, textContent: "" };
+  assistant.selectedVoiceValue = () => "ara";
+  assistant.selectedRateValue = () => "1";
   assistant.claimAudio = () => {};
   assistant.setState = () => {};
   assistant.showAnswer = (speaker, text) => answers.push({ speaker, text });
-  assistant.releaseMicrophone = () => {};
   assistant.transport = {
-    checkAvailability: async () => { throw new Error("offline"); },
+    startVoiceSession: async () => { sessionCalls += 1; throw new Error("offline"); },
+    stopVoiceSession() {},
     reset() {},
   };
-  assistant.startListening = async () => { microphoneCalls += 1; };
 
+  // 문맥이 없으면 마이크 세션 자체를 열지 않는다.
+  assistant.context = null;
   await assistant.startVoice();
-  assert.equal(microphoneCalls, 0);
-  assert.equal(
-    answers.at(-1).text,
-    "이 기기에서 개인 연결을 켜고, 브라우저의 기기 연결 요청을 허용한 뒤 다시 시도해 주세요. 연결되지 않아도 준비된 안내는 이용할 수 있습니다.",
-  );
+  assert.equal(sessionCalls, 0);
+  assert.match(answers.at(-1).text, /공개 안내 문맥/);
+
+  // 세션이 열리다 끊기면 복구 안내를 준다 — 기기 이름은 말하지 않는다.
+  assistant.context = { series: {}, entries: [], allowedTargets: [] };
+  assistant.voiceSessionActive = false;
+  await assistant.startVoice();
+  assert.equal(sessionCalls, 1);
+  assert.equal(answers.at(-1).text, context.VOICE_OFFLINE_MESSAGE);
   assert.doesNotMatch(answers.at(-1).text, /Mac|Windows|Android|iPhone/iu);
 });
 
@@ -264,19 +271,16 @@ test("filler speech asks a natural follow-up without calling the bridge", async 
   const { Assistant } = await loadAssistant();
   const assistant = new Assistant();
   const answers = [];
-  const spoken = [];
   let bridgeCalls = 0;
   assistant.dataset.scope = "series";
   assistant.showAnswer = (speaker, text) => answers.push({ speaker, text });
   assistant.setState = () => {};
-  assistant.speak = (text) => spoken.push(text);
   assistant.transport = { ask: async () => { bridgeCalls += 1; } };
 
-  await assistant.askQuestion("아아", { speak: true });
+  await assistant.askQuestion("아아");
   assert.equal(bridgeCalls, 0);
   assert.match(answers.at(-1).text, /듣고 있어요/);
   assert.match(answers.at(-1).text, /무엇이 궁금한지/);
-  assert.deepEqual(spoken, [answers.at(-1).text]);
   assert.deepEqual(Array.from(assistant.dialogueHistory, (turn) => turn.role), ["사용자", "도슨트"]);
 });
 
@@ -373,73 +377,28 @@ test("speech recognition revisions update one listening bubble", async () => {
   assert.equal(Object.hasOwn(turns[0].dataset, "assistantListening"), false);
 });
 
-test("speech recognition keeps every revised segment in one submitted question", async () => {
-  const { Assistant, context } = await loadAssistant();
+test("voice transcript revisions keep one listening turn and the final text becomes the question", async () => {
+  const { Assistant } = await loadAssistant();
   const assistant = new Assistant();
-  const turns = [];
-  const asked = [];
-  const result = (transcript, isFinal) => ({
-    0: { transcript },
-    isFinal,
-    length: 1,
-  });
-  context.document.createElement = () => ({
-    children: [],
-    dataset: {},
-    isConnected: true,
-    append(...children) { this.children.push(...children); },
-    querySelector(selector) {
-      if (selector === ".voice-assistant__speaker") return this.children[0];
-      if (selector === "[data-assistant-transcript]") return this.children[1];
-      return null;
-    },
-  });
-  assistant.targets = { childElementCount: 0, hidden: true, replaceChildren() {}, append() {} };
-  assistant.resetButton = { disabled: true };
-  assistant.transcriptLog = {
-    scrollHeight: 200,
-    scrollTop: 0,
-    querySelector(selector) {
-      if (selector === "[data-assistant-listening]") {
-        return turns.find((turn) => Object.hasOwn(turn.dataset, "assistantListening")) ?? null;
-      }
-      if (selector === ".voice-assistant__turn:last-of-type") return turns.at(-1) ?? null;
-      return null;
-    },
-    insertBefore(turn) { turns.push(turn); },
-  };
-  assistant.releaseMicrophone = () => {};
-  assistant.resetVoiceButton = () => {};
-  assistant.askQuestion = async (question, options) => asked.push({ question, options });
-  assistant.listening = true;
-  assistant.recognition = {};
+  const shown = [];
+  let discarded = 0;
+  assistant.voiceSessionActive = true;
+  assistant.setState = () => {};
+  assistant.showAnswer = (speaker, text) => shown.push({ speaker, text });
+  assistant.discardListeningTurn = () => { discarded += 1; };
 
-  assistant.handleRecognitionResult({
-    resultIndex: 0,
-    results: [result("포스팅 1의 내", false)],
-  });
-  assistant.handleRecognitionResult({
-    resultIndex: 1,
-    results: [result("포스팅 1의 ", true), result("내용이 궁금", false)],
-  });
+  // 발화가 시작되면 듣는 중 거품을 하나만 세운다.
+  assistant.handleRealtimeEvent({ type: "speech_started" });
+  assert.equal(discarded, 1);
 
-  assert.equal(turns.length, 1);
-  assert.equal(turns[0].children[0].textContent, "말하는 중");
-  assert.equal(turns[0].children[1].textContent, "포스팅 1의 내용이 궁금");
-  assert.equal(asked.length, 0);
+  // 고쳐 들은 조각은 같은 거품을 갱신하고, 마지막 판이 제출되는 질문이 된다.
+  assistant.handleRealtimeEvent({ type: "user_transcript", transcript: "자율", final: false });
+  assistant.handleRealtimeEvent({ type: "user_transcript", transcript: "자율 세계가", final: false });
+  assistant.handleRealtimeEvent({ type: "user_transcript", transcript: "자율 세계가 뭐죠", final: true });
 
-  assistant.handleRecognitionResult({
-    resultIndex: 1,
-    results: [result("포스팅 1의 ", true), result("내용이 궁금해", true)],
-  });
-
-  assert.equal(turns.length, 1);
-  assert.equal(turns[0].children[0].textContent, "나");
-  assert.equal(turns[0].children[1].textContent, "포스팅 1의 내용이 궁금해");
-  assert.equal(Object.hasOwn(turns[0].dataset, "assistantListening"), false);
-  assert.equal(asked.length, 1);
-  assert.equal(asked[0].question, "포스팅 1의 내용이 궁금해");
-  assert.equal(asked[0].options.speak, true);
+  assert.deepEqual(shown.map((turn) => turn.speaker), ["듣는 중", "듣는 중", "듣는 중", "질문"]);
+  assert.equal(shown.at(-1).text, "자율 세계가 뭐죠");
+  assert.equal(assistant.latestVoiceQuestion, "자율 세계가 뭐죠");
 });
 
 test("consecutive identical connection errors create only one docent message", async () => {
@@ -473,59 +432,6 @@ test("consecutive identical connection errors create only one docent message", a
   assistant.showAnswer("안내", "같은 연결 안내");
   assistant.showAnswer("안내", "같은 연결 안내");
   assert.equal(turns.length, 1);
-});
-
-test("conversation reset clears every turn, related link, and transport state", async () => {
-  const { Assistant, context } = await loadAssistant();
-  const assistant = new Assistant();
-  const removed = [];
-  const inserted = [];
-  const made = [];
-  context.document.createElement = () => {
-    const node = {
-      children: [],
-      dataset: {},
-      append(...children) { this.children.push(...children); },
-    };
-    made.push(node);
-    return node;
-  };
-  assistant.stopVoice = ({ quiet }) => {
-    assert.equal(quiet, true);
-    removed.push("transport");
-  };
-  assistant.transcriptLog = {
-    querySelectorAll: () => [
-      { remove: () => removed.push("turn-1") },
-      { remove: () => removed.push("turn-2") },
-    ],
-    insertBefore: (node) => inserted.push(node),
-  };
-  assistant.targets = {
-    hidden: false,
-    replaceChildren: () => removed.push("links"),
-  };
-  assistant.input = { value: "지울 질문", focus: () => removed.push("focus") };
-  assistant.resetButton = { disabled: false };
-  assistant.setState = (state, message) => removed.push(`${state}:${message}`);
-
-  assistant.resetConversation();
-  assert.deepEqual(removed, [
-    "transport",
-    "turn-1",
-    "turn-2",
-    "links",
-    "idle:대화를 지웠어요",
-    "focus",
-  ]);
-  assert.equal(inserted.length, 1);
-  assert.equal(inserted[0].dataset.assistantRole, "assistant");
-  assert.equal(made[1].textContent, "도슨트");
-  assert.equal(made[2].textContent, "궁금한 질문을 고르거나 직접 적어 주세요.");
-  assert.equal(assistant.input.value, "");
-  assert.equal(assistant.targets.hidden, true);
-  assert.equal(assistant.resetButton.disabled, true);
-  assert.equal(assistant.dialogueHistory.length, 0);
 });
 
 test("series questions carry every allowed public entry and the docent answer contract", async () => {
@@ -571,7 +477,7 @@ test("series questions carry every allowed public entry and the docent answer co
   assert.match(grounded, /연구 노트/);
   assert.match(grounded, /\[글\]/);
   assert.match(grounded, /\[연구 노트\]/);
-  assert.match(grounded, /네 문장 이내/);
+  assert.match(grounded, /두세 문장/);
   assert.match(grounded, /사용자의 의도를 먼저 확인/);
   assert.match(grounded, /무엇부터 읽을까요\?/);
   assert.doesNotMatch(grounded, /비공개 자료|포함되면 안 됨|private/);
@@ -693,7 +599,6 @@ test("voice guide intents play approved prepared guidance without calling the br
   const { Assistant } = await loadAssistant();
   const assistant = new Assistant();
   const answers = [];
-  const spoken = [];
   assistant.dataset.scope = "content";
   assistant.prompts = [{
     id: "current-section-section-a",
@@ -703,39 +608,35 @@ test("voice guide intents play approved prepared guidance without calling the br
   }];
   assistant.transport = { ask: async () => assert.fail("prepared guidance must not call the bridge") };
   assistant.showAnswer = (speaker, text, targets = []) => answers.push({ speaker, text, targets });
-  assistant.speak = (text) => spoken.push(text);
   assistant.setState = () => {};
 
-  await assistant.askQuestion("이 대목을 설명해줘", { speak: true });
+  await assistant.askQuestion("이 대목을 설명해줘");
   assert.equal(answers.at(-1).text, "검증된 현재 대목 안내입니다.");
   assert.equal(answers.at(-1).targets.length, 1);
-  assert.deepEqual(spoken, ["검증된 현재 대목 안내입니다."]);
 });
 
 test("stop and destroy release every owned resource", async () => {
-  const { Assistant, context } = await loadAssistant();
+  const { Assistant } = await loadAssistant();
   const assistant = new Assistant();
   const released = [];
-  assistant.voiceButton = { setAttribute() {}, textContent: "" };
-  assistant.requestController = { abort: () => released.push("request") };
-  assistant.recognition = { abort: () => released.push("recognition") };
-  assistant.mediaStream = { getTracks: () => [{ stop: () => released.push("track") }] };
-  assistant.utterance = {};
-  context.speechSynthesis.cancel = () => released.push("speech");
-  assistant.transport = {
-    reset: () => released.push("reset"),
-    destroy: () => released.push("transport"),
+  assistant.panel = { hidden: true };
+  assistant.stopVoice = ({ quiet } = {}) => {
+    assert.equal(quiet, true);
+    released.push("voice");
   };
+  assistant.transport = {
+    destroy: () => released.push("transport"),
+    stopVoiceSession() {},
+    reset() {},
+  };
+  assistant.agent = { reset: () => released.push("agent") };
 
   assistant.destroy();
-  assert.deepEqual(released, [
-    "request",
-    "recognition",
-    "track",
-    "speech",
-    "reset",
-    "transport",
-  ]);
+  assert.deepEqual(released, ["voice", "transport", "agent"]);
+
+  // 두 번 불러도 한 번만 푼다.
+  assistant.destroy();
+  assert.deepEqual(released, ["voice", "transport", "agent"]);
 });
 
 test("multiple assistants have independent transports and accessible ids", async () => {
@@ -747,29 +648,6 @@ test("multiple assistants have independent transports and accessible ids", async
   assert.equal(getTransportInstances(), 2);
   assert.match(first.seriesMarkup(), new RegExp(`${first.instanceId}-title`));
   assert.match(second.contentMarkup(), new RegExp(`${second.instanceId}-dialog-title`));
-});
-
-test("narrow series rail starts collapsed and exposes one accessible toggle", async () => {
-  const { Assistant } = await loadAssistant();
-  const assistant = new Assistant();
-  assistant.dataset.scope = "series";
-  const attributes = {};
-  const button = {
-    textContent: "열기",
-    setAttribute(name, value) { attributes[name] = value; },
-  };
-
-  assistant.dataset.seriesExpanded = "false";
-  assistant.toggleSeries(button);
-  assert.equal(assistant.dataset.seriesExpanded, "true");
-  assert.equal(attributes["aria-expanded"], "true");
-  assert.equal(button.textContent, "닫기");
-  assistant.toggleSeries(button);
-  assert.equal(assistant.dataset.seriesExpanded, "false");
-  assert.equal(attributes["aria-expanded"], "false");
-  assert.equal(button.textContent, "열기");
-  assert.match(assistant.seriesMarkup(), /data-assistant-series-toggle/);
-  assert.match(assistant.seriesMarkup(), /aria-controls="[^"]+-series-body"/);
 });
 
 test("series rail keeps navigation compact and moves conversation into a dedicated dialog", async () => {
@@ -859,10 +737,11 @@ test("each published series explains its own subject in xAI Realtime v2", async 
   }
 });
 
-test("conversation entry opens the dialog, focuses the composer, and returns focus on close", async () => {
+test("conversation entry opens the dialog, focuses the requested control, and returns focus on close", async () => {
   const { Assistant } = await loadAssistant();
   const assistant = new Assistant();
   const attributes = {};
+  let voiceFocus = 0;
   let inputFocus = 0;
   let triggerFocus = 0;
   const trigger = {
@@ -870,19 +749,29 @@ test("conversation entry opens the dialog, focuses the composer, and returns foc
     focus() { triggerFocus += 1; },
   };
   assistant.panel = { hidden: true };
-  assistant.openButton = trigger;
+  assistant.setOpenButtonsExpanded = (expanded) => {
+    attributes["aria-expanded"] = String(expanded);
+  };
+  assistant.voiceButton = { focus() { voiceFocus += 1; } };
   assistant.input = { focus() { inputFocus += 1; } };
   assistant.updateSectionLabel = () => {};
   assistant.stopVoice = () => {};
 
+  // 기본 초점은 음성 버튼이다 — 이 화면의 주된 행동이 말 걸기이기 때문이다.
   assistant.openPanel(trigger);
   assert.equal(assistant.panel.hidden, false);
   assert.equal(attributes["aria-expanded"], "true");
-  assert.equal(inputFocus, 1);
+  assert.equal(voiceFocus, 1);
+  assert.equal(inputFocus, 0);
+
   assistant.closePanel();
   assert.equal(assistant.panel.hidden, true);
   assert.equal(attributes["aria-expanded"], "false");
   assert.equal(triggerFocus, 1);
+
+  // 적어서 묻겠다고 하면 입력칸으로 간다.
+  assistant.openPanel(trigger, { focusTarget: "input" });
+  assert.equal(inputFocus, 1);
 });
 
 test("composer Enter sends while Shift+Enter and IME composition keep editing", async () => {
@@ -1015,51 +904,59 @@ test("a nested h3 keeps the nearest preceding h2 outline guidance", async () => 
   assert.equal(section.sectionId, "parent-a");
 });
 
-test("voice preview speaks with the selected voice and speed and exposes stop control", async () => {
-  const { Assistant, context } = await loadAssistant();
+test("voice preview exposes a stop control that ends the preview", async () => {
+  const { Assistant } = await loadAssistant();
   const assistant = new Assistant();
-  const spoken = [];
-  class Utterance {
-    constructor(text) { this.text = text; }
-  }
-  context.SpeechSynthesisUtterance = Utterance;
-  context.speechSynthesis.getVoices = () => [{ voiceURI: "ko-1", name: "목소리", lang: "ko-KR" }];
-  context.speechSynthesis.speak = (utterance) => spoken.push(utterance);
-  assistant.selectedVoiceValue = () => "ko-1";
-  assistant.selectedRateValue = () => "0.85";
-  assistant.stopSpeakingButton = { hidden: true };
-  assistant.claimAudio = () => {};
+  const stopped = [];
+  let previewState = null;
+  assistant.previewActive = true;
+  assistant.setPreviewButtonState = (active) => { previewState = active; };
   assistant.setState = () => {};
   assistant.showAnswer = () => assert.fail("preview must not add a transcript turn");
+  assistant.transport = {
+    preview: async () => assert.fail("stopping must not start another preview"),
+    stopVoiceSession: (options) => stopped.push(options),
+    reset() {},
+  };
+
   assistant.handleClick({
     target: {
       closest(selector) { return selector === "[data-assistant-preview]" ? this : null; },
     },
   });
 
-  assert.equal(spoken[0].text, "이 목소리와 속도로 안내해 드릴게요.");
-  assert.equal(spoken[0].voice.voiceURI, "ko-1");
-  assert.equal(spoken[0].rate, 0.85);
-  spoken[0].onstart();
-  assert.equal(assistant.stopSpeakingButton.hidden, false);
-  assistant.stopSpeech();
-  assert.equal(assistant.stopSpeakingButton.hidden, true);
+  assert.equal(stopped.length, 1);
+  assert.equal(assistant.previewActive, false);
+  assert.equal(previewState, false);
 });
 
 test("voice preview uses the selected voice and speed without adding a conversation turn", async () => {
   const { Assistant } = await loadAssistant();
   const assistant = new Assistant();
-  const spoken = [];
-  assistant.speak = (text) => spoken.push(text);
+  const previews = [];
+  assistant.selectedVoiceValue = () => "ara";
+  assistant.selectedRateValue = () => "0.85";
+  assistant.claimAudio = () => {};
+  assistant.setState = () => {};
+  assistant.setPreviewButtonState = () => {};
   assistant.showAnswer = () => assert.fail("preview must not add a transcript turn");
+  assistant.transport = {
+    preview: async (text, options) => previews.push({ text, options }),
+    stopVoiceSession() {},
+    reset() {},
+  };
 
   assistant.handleClick({
     target: {
       closest(selector) { return selector === "[data-assistant-preview]" ? this : null; },
     },
   });
+  await new Promise((resolve) => setTimeout(resolve, 0));
 
-  assert.deepEqual(spoken, ["이 목소리와 속도로 안내해 드릴게요."]);
+  assert.equal(previews.length, 1);
+  assert.equal(previews[0].text, "이 목소리와 속도로 안내해 드릴게요.");
+  assert.equal(previews[0].options.voiceId, "ara");
+  assert.equal(previews[0].options.speed, "0.85");
 });
 
 test("content dialog traps Tab, closes from its backdrop, and returns focus", async () => {
@@ -1086,26 +983,36 @@ test("content dialog traps Tab, closes from its backdrop, and returns focus", as
   assert.equal(returned, 1);
 });
 
-test("docent copy contains no connection implementation jargon", async () => {
+test("docent copy keeps implementation jargon out of every surface except the privacy disclosure", async () => {
   const { Assistant } = await loadAssistant();
   const assistant = new Assistant();
-  const copy = [
-    assistant.seriesMarkup(),
-    assistant.contentMarkup(),
+  const markup = [assistant.seriesMarkup(), assistant.contentMarkup()].join("\n");
+
+  // 개인정보 고지는 처리 주체를 밝혀야 한다 — 숨기는 것이 정직이 아니다.
+  // 그래서 고지 블록만 떼어내고, 그 **밖에서** 구현 용어가 0건인지 본다.
+  const disclosures = markup.match(/<details class="voice-assistant__disclosure">[\s\S]*?<\/details>/g) ?? [];
+  assert.ok(disclosures.length >= 1, "고지 블록이 있어야 예외 범위가 성립한다");
+  const outside = [
+    disclosures.reduce((rest, block) => rest.replace(block, ""), markup),
     "이 기기에서 개인 연결을 켜고, 브라우저의 기기 연결 요청을 허용한 뒤 다시 시도해 주세요.",
   ].join("\n");
-  assert.doesNotMatch(copy, /OAuth|API|WebSocket|로컬 브리지|provider|xAI|OpenAI/iu);
-  assert.doesNotMatch(copy, /Mac|Windows|Android|iPhone/iu);
-  assert.match(copy, /목소리·속도/);
-  assert.match(copy, />연결</);
-  assert.match(copy, />개인정보</);
-  assert.match(copy, /마이크 허용과 기기 연결 허용은 서로 다른 설정/);
-  assert.match(copy, /대화 지우기/);
-  assert.match(copy, /선택한 목소리 미리 듣기/);
+  assert.doesNotMatch(outside, /OAuth|API|WebSocket|로컬 브리지|provider|xAI|OpenAI/iu);
+  assert.doesNotMatch(outside, /Mac|Windows|Android|iPhone/iu);
+
+  // 고지 안에서는 처리 주체를 반드시 밝힌다.
+  const privacy = disclosures.find((block) => block.includes(">개인정보<"));
+  assert.ok(privacy, "개인정보 고지 블록이 있어야 한다");
+  assert.match(privacy, /xAI/);
+
+  assert.match(markup, /목소리·속도/);
+  assert.match(markup, />연결</);
+  assert.match(markup, />개인정보</);
+  assert.match(markup, /마이크 권한을 요청하고/);
+  assert.match(markup, /현재 설정 미리 듣기/);
   assert.match(assistant.contentMarkup(), /aria-modal="true"/);
-  assert.match(copy, /<fieldset/);
-  assert.match(copy, /type="radio"/);
-  assert.doesNotMatch(copy, /<select\b/i);
+  assert.match(markup, /<fieldset/);
+  assert.match(markup, /type="radio"/);
+  assert.doesNotMatch(markup, /<select\b/i);
 });
 
 test("every published docent surface installs one assistant in the required reading order", async () => {
