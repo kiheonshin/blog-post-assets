@@ -1133,19 +1133,28 @@ test("every published docent surface installs one assistant in the required read
 
   for (const { type, file, html } of pages) {
     assert.equal((html.match(/<kiheon-voice-assistant\b/g) ?? []).length, 1);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260803grok2/);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260825docent1/);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20260803simple1/);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:js|css)/);
     assert.doesNotMatch(html, /assets\/voice-agent\.js/);
     if (type === "series") {
       assert.ok(html.indexOf("<series-nav") < html.indexOf("<kiheon-voice-assistant"), file);
-      const nextReadingSurface = html.includes("<series-sources")
-        ? html.indexOf("<series-sources")
-        : html.indexOf('<section class="reading-guide"');
+      // 도슨트 뒤에는 다음 읽을거리가 온다. 어느 요소가 그 자리를 맡는지는 시리즈마다
+      // 다르므로(뉴타입은 READING MAP 을 걷어내 .about 이 그 자리다) 후보를 순서대로
+      // 찾는다. -1 을 그대로 비교하면 "아무것도 없음"이 조용히 통과하므로 존재를 먼저 단언한다.
+      const nextReadingSurface = ["<series-sources", '<section class="reading-guide"', '<section class="about"']
+        .map((marker) => html.indexOf(marker))
+        .find((index) => index !== -1);
+      assert.ok(
+        nextReadingSurface !== undefined,
+        `${file}: the series home must keep a reading surface after the docent`,
+      );
       assert.ok(html.indexOf("<kiheon-voice-assistant") < nextReadingSurface, file);
     } else if (type === "post") {
       assert.ok(html.indexOf('<p class="lead">') < html.indexOf("<kiheon-voice-assistant"), file);
-      assert.ok(html.indexOf("<kiheon-voice-assistant") < html.indexOf("<series-nav"), file);
+      // 2026-08-25 본인 확정 : 포스팅 내비게이션(이미지·버튼)이 도슨트보다 먼저 온다.
+      // 이전 계약은 반대였다 — 뒤집힌 것이지 느슨해진 것이 아니므로 부등호만 돌린다.
+      assert.ok(html.indexOf("<series-nav") < html.indexOf("<kiheon-voice-assistant"), file);
     } else {
       assert.ok(html.indexOf("</header>") < html.indexOf("<kiheon-voice-assistant"), file);
       assert.ok(html.indexOf("<kiheon-voice-assistant") < html.indexOf('<div class="doc">'), file);

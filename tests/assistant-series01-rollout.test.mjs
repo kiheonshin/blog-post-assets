@@ -46,7 +46,7 @@ test("all four series use the same xAI Realtime v2 interface", async () => {
   for (const file of Object.values(seriesSurfaces).flat()) {
     const html = await read(file);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20260803simple1/, file);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260803grok2/, file);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260825docent1/, file);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:css|js)/, file);
   }
 });
@@ -70,20 +70,37 @@ test("the Newtype home keeps every article section in the desktop content column
     /\.idx-grid\{grid-template-columns:minmax\(0,1fr\)\}/,
     "Newtype must not collapse the shared two-column docent grid",
   );
-  assert.match(html, /\.idx-grid > \.reading-guide\{grid-column:1;grid-row:2\}/);
-  assert.match(html, /\.idx-grid > \.related\{grid-column:1;grid-row:4\}/);
+  // 2026-08-25: READING MAP·CONTINUE READING 두 절을 걷었다(본인 확정). 지키려는 것은
+  // 그 두 절이 아니라 **글 섹션이 데스크톱 본문 열에 남는다**는 사실이므로, 남은
+  // 글 섹션(.about)으로 단언을 옮긴다. 걷어낸 절이 되살아나면 아래 doesNotMatch 가 잡는다.
+  assert.match(html, /\.idx-grid > \.about\{grid-column:1;grid-row:2\}/);
+  assert.doesNotMatch(html, /class="reading-guide"|class="related"/);
+  // 도슨트 조작대는 공유 CSS 가 3행을 가로지른다. 본문 열이 2행이 된 이 시리즈에서만
+  // 2행으로 줄여 빈 행이 남지 않게 한다 — 줄이지 않으면 공개문 구분선 위에 행 간격이 뜬다.
+  assert.match(
+    html,
+    /\.idx \.idx-grid > kiheon-voice-assistant\[data-scope="series"\]\{grid-row:1 \/ span 2\}/,
+    "Newtype must shrink the shared docent rail to the two rows its content column now has",
+  );
 });
 
 test("all four series share the verified Grok built-in voice runtime", async () => {
   const script = await read("assets/assistant/voice-assistant-v2.js");
   const styles = await read("assets/assistant/voice-assistant-v2.css");
-  assert.equal(sha256(script), "e1d5f74330c470888d96cbddc1b9a0e7a41a8f4091f0cde1ccca11e1fc485e60");
+  assert.equal(sha256(script), "348920bf8da8d9f482674e2323c199a74444616a200e8312d8934ae22c3c1cb2");
   assert.equal(sha256(styles), "e3a5965c8871746fe8574867ae0e5eb76b4a2672f9c392fe6d6f6d070b8fc53b");
   assert.match(script, /data-assistant-open-voice/);
   assert.match(script, /voiceSessionActive/);
   assert.match(script, /data-assistant-transcript-details/);
   assert.match(script, /xai-voice-transport\.js\?v=20260803grok1/);
   assert.match(script, /GROK_BUILT_IN_VOICES/);
+  // 2026-08-25 본인 확정 명칭 — 「도슨트 에이전트」. 원자료면도 같은 라벨을 쓰고
+  // 대상 구분은 부제가 한다. 이 단언은 배포되는 v2 위에 걸린다.
+  assert.match(script, /return "도슨트 에이전트";/);
+  assert.doesNotMatch(script, /이 글 안내|이 자료 안내/);
+  assert.match(script, /목소리로 대답하는 에이전트입니다\. 글의 흐름과 지금 읽는 대목을 짚어 드립니다\./);
+  assert.match(script, /목소리로 대답하는 에이전트입니다\. 이 자료의 흐름과 지금 읽는 대목을 짚어 드립니다\./);
+  assert.match(script, />말 걸기<\/button>/);
   assert.match(script, /\["Ara", "따뜻하고 자연스러운 대화"\]/);
   assert.doesNotMatch(script, /신기헌 보이스|kiheon-custom/);
   assert.match(script, /신기헌 본인이 아닙니다/);
