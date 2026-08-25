@@ -131,7 +131,7 @@
     if (sgrid.children.length) return;
     sgrid.innerHTML = S.map(function(s, i){
       return '<li><button type="button" class="pv__sc" data-i="' + i + '" aria-label="슬라이드 ' + s.n + '로 이동">' +
-        '<img src="' + D.dir + 'thumb-' + pad(s.n) + '.jpg" alt="" loading="lazy" decoding="async">' +
+        '<img src="' + D.dir + 'thumb-' + pad(s.n) + '.jpg" alt="슬라이드 ' + s.n + '" width="480" height="270" loading="lazy" decoding="async">' +
         '<span class="pv__scn">' + pad(s.n) + (s.v.length ? ' <b>▶</b>' : '') + '</span>' +
         '</button></li>';
     }).join('');
