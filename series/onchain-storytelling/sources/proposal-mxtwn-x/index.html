@@ -31,6 +31,7 @@ gtag('js', new Date());
 gtag('config', 'G-SQYBGPJFJ4');
 </script>
 <link rel="stylesheet" href="../../../../assets/tokens.css?v=20260807a">
+<link rel="stylesheet" href="../../../../assets/source-deck.css?v=20260826deck2">
 <style>
 :root{
   --canvas:#F3F3EF; --surface:#FBFBF8; --ink:#17181A; --ink-muted:#5E6065;
@@ -245,36 +246,6 @@ main.wide--text{--measure-wide:var(--measure-wide-text)}
 .byline{margin:0;color:var(--ink-muted);font-size:.9375rem}
 .byline a{color:var(--ink-muted)}
 
-/* 문서 뼈대 — 넓은 화면에서만 목차를 옆에 세운다. 좁으면 위로 접는다 */
-.doc{display:grid;gap:3rem;margin-block-start:3rem}
-@media(min-width:64rem){
-  .doc{grid-template-columns:14rem minmax(0,1fr);gap:4rem;align-items:start}
-  .toc{position:sticky;top:2rem;max-height:calc(100vh - 4rem);overflow:auto}
-}
-.toc{border-block-start:1px solid var(--rule-strong);padding-block-start:1rem}
-.toc h2{margin:0 0 .75rem;font-family:var(--font-mono);font-size:var(--micro);
-  font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-muted)}
-.toc ol{margin:0;padding:0;list-style:none;display:grid;gap:.1rem}
-.toc a{display:block;padding:.28rem 0 .28rem .55rem;font-size:.8125rem;line-height:1.45;
-  color:var(--ink);text-decoration:none;border-inline-start:2px solid transparent}
-.toc a:hover{color:var(--accent-hover)}
-.toc .lv2{padding-inline-start:1.4rem;color:var(--ink-muted);font-size:.78125rem}
-.toc .part{margin-block-start:.9rem;padding-block-start:.7rem;
-  border-block-start:1px solid var(--rule);font-family:var(--font-mono);
-  font-size:var(--micro);letter-spacing:.08em;color:var(--ink-faint)}
-/* 현재 읽는/보는 위치 — 위쪽 경계선(가로)과 겹치지 않게 왼쪽 세로 막대로 */
-.toc a[aria-current="true"]{color:var(--accent);border-inline-start-color:var(--accent)}
-
-.doc .body{min-width:0;max-width:var(--measure)}
-.doc .body h2{margin:3.5rem 0 1rem;font-family:var(--font-display);font-weight:400;
-  font-size:clamp(1.45rem,2vw,1.85rem);line-height:1.3;letter-spacing:-.02em;
-  display:flex;gap:.75rem;align-items:baseline;scroll-margin-top:2rem}
-.doc .body h2:first-child{margin-block-start:0}
-.doc .body h3{margin:2.5rem 0 .75rem;font-size:1.0625rem;font-weight:600;
-  line-height:1.45;letter-spacing:-.01em;scroll-margin-top:2rem}
-.doc .body p{margin:0 0 1.5rem;text-wrap:pretty}
-.doc .body ul{margin:0 0 1.5rem;padding-inline-start:1.1rem}
-.doc .body li{margin-block-end:.5rem}
 .parthead{margin:5rem 0 0;padding-block-start:2rem;
   border-block-start:1px solid var(--rule-strong);scroll-margin-top:2rem}
 .parthead p{margin:0 0 .35rem;font-family:var(--font-mono);font-size:var(--micro);
@@ -312,33 +283,6 @@ th,td{border:1px solid var(--rule);padding:.5rem .6rem;text-align:start;
 th{font-weight:600;background:var(--surface)}
 .tablewrap{overflow-x:auto;margin:0 0 1.5rem}
 .tablewrap table{margin:0;min-width:32rem}
-
-/* ── 발표 자료 ── */
-.deck{margin-block-start:3rem}
-.chap{margin-block-start:4.5rem;padding-block-start:2rem;
-  border-block-start:1px solid var(--rule-strong);scroll-margin-top:4rem}
-.chap:first-child{margin-block-start:3rem}
-.chap__no{margin:0 0 .4rem;font-family:var(--font-mono);font-size:var(--micro);
-  letter-spacing:.09em;color:var(--accent)}
-.chap__t{margin:0 0 1rem;font-family:var(--font-display);font-weight:400;
-  font-size:clamp(1.6rem,2.6vw,2.2rem);line-height:1.25;letter-spacing:-.02em}
-.chap__p{margin:0;max-width:var(--measure);color:var(--ink-muted);
-  font-size:.9375rem;line-height:1.75}
-.chap__div{position:relative;margin:1.75rem 0 0}
-.chap__divimg{display:block;width:100%;padding:0;border:1px solid var(--rule);
-  background:#000;cursor:pointer}
-.chap__divimg:hover{border-color:var(--accent)}
-.chap__divimg img{display:block;width:100%}
-
-.scene{margin-block-start:3rem}
-.scene__h{display:flex;gap:.75rem;align-items:baseline;margin:0 0 .5rem}
-.scene__r{flex:none;font-family:var(--font-mono);font-size:var(--micro);
-  letter-spacing:.08em;color:var(--ink-faint);padding-block-start:.25rem}
-.scene__t{margin:0;font-size:1.0625rem;font-weight:600;line-height:1.45;
-  letter-spacing:-.01em}
-.scene__n{margin:.5rem 0 0;padding-inline-start:1.1rem;max-width:var(--measure);
-  color:var(--ink-muted);font-size:.9375rem;line-height:1.7}
-.scene__n li{margin-block-end:.35rem}
 
 .strip{list-style:none;margin:1.5rem 0 0;padding:0;display:grid;gap:1.75rem 1.5rem}
 /* 2단은 목차(14rem)를 빼고도 한 칸이 27rem 이상 남을 때만 연다.
@@ -392,174 +336,6 @@ button.frame{padding:0;cursor:zoom-in}
 .lb button:hover{border-color:var(--inverse-ink)}
 .lb__nav{display:flex;gap:.5rem;justify-content:center}
 
-/* 표지에서 바로 슬라이드쇼로 */
-.cover{position:relative}
-.cover__go{position:absolute;right:1rem;bottom:1rem;padding:.5rem .9rem;
-  border:1px solid rgba(23,24,26,.3);background:rgba(243,243,239,.92);
-  font-family:var(--font-mono);font-size:var(--micro);font-weight:600;
-  letter-spacing:.08em;color:var(--ink);cursor:pointer}
-.cover__go:hover{border-color:var(--accent);color:var(--accent-hover)}
-.tocfoot{margin:1rem 0 0;font-size:.75rem;line-height:1.9;color:var(--ink-faint)}
-.tocfoot__go{margin:.35rem 0;padding:.3rem .6rem;border:1px solid var(--rule-strong);
-  background:none;font-family:var(--font-mono);font-size:var(--micro);
-  letter-spacing:.08em;color:var(--ink);cursor:pointer}
-.tocfoot__go:hover{border-color:var(--accent);color:var(--accent-hover)}
-
-/* 전체 보기 격자 */
-.tgrid{list-style:none;margin:1.25rem 0 0;padding:0;display:grid;gap:1rem .9rem;
-  grid-template-columns:repeat(auto-fill,minmax(11rem,1fr))}
-.tcell{margin:0;min-width:0}
-.tframe{display:block;width:100%;padding:0;border:1px solid var(--rule);
-  background:var(--ink);cursor:pointer}
-.tframe:hover{border-color:var(--accent)}
-.tframe img{display:block;width:100%}
-.tno{margin:.3rem 0 0;display:flex;gap:.4rem;align-items:center;
-  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.08em;
-  color:var(--ink-faint)}
-.tno .tag{border:1px solid var(--rule);padding:0 .3rem;color:var(--accent)}
-.tcell{scroll-margin-top:1.5rem}
-
-/* 챕터 표지 CTA — 그 챕터 페이지를 작은 썸네일로 모은다. 아래 큰 썸네일과
-   구분되게 더 작은 12열. 눌러도 열리지 않고 그 페이지로 스크롤만 한다.
-   표지 이미지 하단선에 절대배치로 고정한다. 음수 마진(흐름 배치)은 CTA가
-   짧은 챕터(2줄)에서 컨테이너 흐름 높이를 이미지보다 줄여 뒤따르는 본문이
-   표지 위로 올라와 겹치게 만든다(2026-07-24 실증). 하단 고정이므로 아래
-   선은 모든 챕터에서 동일하고, 줄 수가 줄면 위쪽이 줄어든다. */
-.chap__cta{position:absolute;left:0;right:0;bottom:3%;z-index:1;margin:0;
-  padding:0 2.5%;pointer-events:none}
-.chap__cta-h{display:inline-block;margin:0 0 .4rem;font-family:var(--font-mono);
-  font-size:var(--micro);letter-spacing:.05em;color:rgba(247,247,242,.92);
-  background:rgba(11,12,13,.55);padding:.14rem .45rem}
-/* 썸네일 창 — 두 줄 정도만 두고 위·아래를 그래디언트 마스크로 서서히 가린다.
-   창 높이·페이드 두께는 JS가 줄 높이를 재서 설정하고, 스크롤 위치에 따라
-   위(--ft)·아래(--fb) 마스크를 켠다. 두 줄 이하 챕터는 창이 내용에 딱 맞아
-   마스크가 켜지지 않는다. */
-.chap__ctascroll{position:relative;pointer-events:auto;overflow-y:auto;
-  scrollbar-width:none;-ms-overflow-style:none;--ft:0px;--fb:0px;
-  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 var(--ft),#000 calc(100% - var(--fb)),transparent 100%);
-  mask-image:linear-gradient(to bottom,transparent 0,#000 var(--ft),#000 calc(100% - var(--fb)),transparent 100%)}
-.chap__ctascroll::-webkit-scrollbar{display:none}
-.chap__ctagrid{list-style:none;margin:0;padding:0;display:grid;
-  grid-template-columns:repeat(12,1fr);gap:3px}
-.chap__ct{position:relative;display:block;border:1px solid rgba(150,150,150,.45);
-  background:#000;text-decoration:none;pointer-events:auto}
-.chap__ct:hover{border-color:var(--accent);outline:1px solid var(--accent)}
-.chap__ct img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
-.chap__ctn{position:absolute;left:0;bottom:0;padding:0 .2rem;font-family:var(--font-mono);
-  font-size:9px;line-height:1.55;letter-spacing:.02em;color:#F7F7F2;
-  background:rgba(11,12,13,.72)}
-.chap__ctn b{color:#8AB0FF;font-weight:400}
-@media(max-width:47.99rem){
-  /* 좁은 화면에선 표지가 작아 겹치면 뭉갠다. 절대배치를 풀어 이미지 아래
-     일반 흐름으로 내리고 열을 줄인다 */
-  .chap__cta{position:static;margin:.6rem 0 0;padding:0;pointer-events:auto}
-  .chap__ctagrid{grid-template-columns:repeat(5,1fr)}
-  .chap__cta-h{color:var(--ink-muted);background:none;padding:0}
-}
-
-/* ── 슬라이드쇼 ── */
-.pv[hidden]{display:none}
-.pv{position:fixed;inset:0;z-index:60;background:#0B0C0D;color:#F7F7F2;
-  display:grid;grid-template-rows:auto minmax(0,1fr) auto auto}
-.pv__bar{display:flex;align-items:center;gap:.5rem;padding:.6rem .9rem;
-  border-block-end:1px solid rgba(247,247,242,.18);
-  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em}
-.pv__sp{flex:1}
-.pv__id{color:rgba(247,247,242,.55)}
-.pv__ch{color:rgba(247,247,242,.8);overflow:hidden;text-overflow:ellipsis;
-  white-space:nowrap;max-width:22rem}
-.pv__no b{color:#F7F7F2;font-weight:600}
-.pv__no{color:rgba(247,247,242,.55);margin-inline-end:.35rem}
-.pv button{background:none;border:1px solid rgba(247,247,242,.35);color:#F7F7F2;
-  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.08em;
-  padding:.3rem .6rem;cursor:pointer}
-.pv button:hover{border-color:#F7F7F2}
-.pv button[aria-pressed="true"]{background:rgba(247,247,242,.14)}
-
-/* stretch여야 한다. center면 가운데 fit 영역이 내용 높이로만 잡히는데,
-   그 안의 무대 크기를 fit 높이로 계산하므로 서로를 기다리다 0에서 멈춘다. */
-.pv__body{display:flex;align-items:stretch;gap:.5rem;padding:.9rem;min-height:0}
-.pv__arrow{flex:none;align-self:center;width:2.4rem;height:3.4rem;
-  font-size:1.5rem;line-height:1;border-color:rgba(247,247,242,.22)!important}
-.pv__arrow:disabled{opacity:.25;cursor:default}
-
-/* 무대 — 크기는 JS가 픽셀로 정한다(fitStage). CSS의 aspect-ratio + max-height
-   조합은 가로가 넓을 때 높이만 깎여 비율이 깨졌고, object-fit:cover가 그 차이를
-   잘라내 장표 위아래가 사라졌다(2026-07-25 실증). 영상 좌표가 이 사각형 기준의
-   %이므로 무대는 항상 정확히 16:9여야 하고, 그래서 계산으로 굳힌다. */
-.pv__fit{flex:1;min-width:0;min-height:0;display:flex;
-  align-items:center;justify-content:center}
-.pv__stage{position:relative;flex:none;background:#000;overflow:hidden;
-  border:1px solid rgba(247,247,242,.18)}
-.pv__stage>img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
-/* 영상 자리 — 발표 좌표대로 얹은 유튜브 임베드. 장표가 열리면 바로 재생된다 */
-.pv__v{position:absolute;padding:0;background:#000;overflow:hidden}
-.pv__v iframe,.pv__v video{position:absolute;inset:0;width:100%;height:100%;border:0;object-fit:fill;background:#000}
-
-/* AI 노트 — 높이를 고정한다. 내용 길이에 따라 늘면 위의 무대가 밀려 올라가
-   장표마다 자리가 달라진다. 넘치는 만큼은 이 안에서 스크롤하고, 잘린 경계는
-   그래디언트로 흐려 아래에 더 있음을 알린다. */
-.pv__notes{padding:.2rem .9rem .9rem;height:8.5rem;overflow:auto;
-  scrollbar-width:thin;
-  --ft:transparent 0,#000 0;
-  --fb:#000 calc(100% - 1.6rem),transparent 100%;
-  -webkit-mask-image:linear-gradient(to bottom,var(--ft)),linear-gradient(to bottom,var(--fb));
-  mask-image:linear-gradient(to bottom,var(--ft)),linear-gradient(to bottom,var(--fb));
-  -webkit-mask-composite:source-in;mask-composite:intersect}
-.pv__notes[data-top="1"]{--ft:transparent 0,#000 1.6rem}
-.pv__notes[data-bot="0"]{--fb:#000 100%,#000 100%}
-.pv__notes ul{margin:0;padding-inline-start:1.1rem;max-width:60rem}
-.pv__notes li{margin-block-end:.3rem;font-size:.8125rem;line-height:1.65;
-  color:rgba(247,247,242,.8)}
-.pv__notes .sc{margin:0 0 .4rem;font-family:var(--font-mono);font-size:var(--micro);
-  letter-spacing:.08em;color:rgba(247,247,242,.5)}
-.pv__notes .none{margin:0;font-size:.8125rem;color:rgba(247,247,242,.55)}
-
-/* 진행 막대 — 챕터 경계에 눈금을 둔다 */
-.pv__rail{display:flex;gap:1px;padding:0 .9rem .8rem}
-.pv__rail span{flex:1;height:3px;background:rgba(247,247,242,.18)}
-.pv__rail span.on{background:rgba(247,247,242,.85)}
-.pv__rail span.cut{margin-inline-start:5px}
-
-/* 전체 보기 — 슬라이드 정렬기. 대화상자 전체를 덮고 스스로 스크롤한다.
-   표시줄 높이가 화면 폭에 따라 바뀌므로 아래를 비우지 않고 통째로 덮는다. */
-.pv__sorter[hidden]{display:none}
-.pv__sorter{position:absolute;inset:0;z-index:3;background:#0B0C0D;
-  display:grid;grid-template-rows:auto minmax(0,1fr)}
-.pv__sortbar{display:flex;align-items:center;justify-content:space-between;gap:1rem;
-  padding:.6rem .9rem;border-block-end:1px solid rgba(247,247,242,.18);
-  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em;
-  color:rgba(247,247,242,.7)}
-.pv__sortbar button{background:none;border:1px solid rgba(247,247,242,.35);
-  color:#F7F7F2;font-family:var(--font-mono);font-size:var(--micro);
-  letter-spacing:.08em;padding:.3rem .6rem;cursor:pointer}
-.pv__sortbar button:hover{border-color:#F7F7F2}
-.pv__sgrid{list-style:none;margin:0;padding:.9rem;overflow:auto;
-  display:grid;gap:.7rem;grid-template-columns:repeat(auto-fill,minmax(9rem,1fr));
-  align-content:start}
-.pv__sc{display:block;width:100%;padding:0;border:1px solid rgba(247,247,242,.18);
-  background:#000;cursor:pointer;position:relative}
-.pv__sc:hover{border-color:rgba(247,247,242,.7)}
-.pv__sc.now{border-color:#F7F7F2;outline:1px solid #F7F7F2}
-.pv__sc img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover}
-.pv__scn{position:absolute;left:0;bottom:0;padding:.1rem .35rem;
-  font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.06em;
-  color:#F7F7F2;background:rgba(11,12,13,.7)}
-.pv__scn b{color:#8AB0FF;font-weight:400}
-
-@media(max-width:47.99rem){
-  .pv__bar{flex-wrap:wrap;gap:.4rem}
-  .pv__ch{order:9;flex-basis:100%;max-width:none}
-  /* 좁은 화면에서는 무대 옆에 화살표를 둘 자리가 없다. 지우지 말고
-     무대 아래로 내린다. 지우면 손가락으로 넘길 방법이 사라진다. */
-  /* 세로 화면에서는 남는 높이가 커서 가운데 정렬하면 무대가 아래로 떠
-     내려간다. 표시줄 바로 아래에 붙인다. */
-  .pv__body{flex-wrap:wrap;justify-content:center;align-content:flex-start;
-    padding:.75rem .5rem}
-  .pv__fit{flex:0 0 100%;order:1}
-  .pv__arrow{order:2;flex:1;width:auto;max-width:10rem;height:2.6rem;
-    margin-block-start:.7rem;font-size:1.1rem}
-}
 </style>
 <script type="module" src="../../../../assets/series-nav.js?v=20260819a"></script>
 </head>
