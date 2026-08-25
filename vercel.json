@@ -2,6 +2,14 @@
   "trailingSlash": true,
   "rewrites": [
     {
+      "source": "/universe/:view(ontology|graph|identity|map)/:file+",
+      "destination": "https://kiheon-life-universe-observatory.vercel.app/:file+"
+    },
+    {
+      "source": "/universe/:view(ontology|graph|identity|map)/",
+      "destination": "https://kiheon-life-universe-observatory.vercel.app/:view"
+    },
+    {
       "source": "/universe/",
       "destination": "https://kiheon-life-universe-observatory.vercel.app/map"
     },
