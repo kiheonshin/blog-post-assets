@@ -23,16 +23,40 @@ const titles = [
   "2022 웹3.0 시대 — 디지털·온라인 환경에서 창작하기",
 ];
 
-test("the archive builds one index and five human-readable detail pages", async () => {
+const lineageSlugs = [
+  "web3-next-billion-2024",
+  "metaverse-beyond-experience-2024",
+  "generative-ai-metaverse-2024",
+];
+
+const lineageTitles = [
+  "2024 웹3 확장 지도 — 프로토콜에서 다음 10억 명까지",
+  "우리의 경험 너머의 메타버스 — 경험·정체성·웹3·커뮤니티의 통합",
+  "생성 AI 시대의 새로운 메타버스 — 자율 세계 발표의 후기 재편집",
+];
+
+const allSlugs = [...slugs, ...lineageSlugs];
+
+test("the archive builds one index and eight human-readable detail pages", async () => {
   const index = await read(`${archiveRoot}/index.html`);
   assert.match(index, /<h1>공개 발표와 자료의 연결<\/h1>/);
   assert.match(index, /<meta name="robots" content="noindex, nofollow">/);
+  assert.match(index, /영상 5편 · 자료 계보 3편/);
+  assert.equal([...index.matchAll(/<li id="[^"]+">/g)].length, 8);
 
   for (const [position, slug] of slugs.entries()) {
     const detail = await read(`${archiveRoot}/${slug}/index.html`);
     assert.match(detail, new RegExp(`<h1>${titles[position]}</h1>`));
     assert.match(detail, /<meta name="source-ids" content="node:234 node:237 node:243">/);
     assert.match(detail, /<nav class="pa-toc" aria-label="이 페이지 차례">/);
+  }
+
+  for (const [position, slug] of lineageSlugs.entries()) {
+    const detail = await read(`${archiveRoot}/${slug}/index.html`);
+    assert.match(detail, new RegExp(`<h1>${lineageTitles[position]}</h1>`));
+    assert.match(detail, new RegExp(`<meta name="source-ids" content="node:${244 + position} deck:`));
+    assert.match(detail, /<nav class="pa-toc" aria-label="이 페이지 차례">/);
+    assert.match(detail, /텍스트 판본 구조 제공/);
   }
 });
 
@@ -90,6 +114,28 @@ test("video access is explicit and never autoplaying or embedded", async () => {
   }
 });
 
+test("2024 lineage pages expose structure without media or downloads", async () => {
+  const expectedDeckIds = [
+    ["deck:2024-09-10:e629e2442293", "deck:2024-09-10:207288c53476"],
+    ["deck:2024-10-29:4397cc1d1089", "deck:2024-10-29:7e7e64fe4964"],
+    [
+      "deck:2024-10-29:60f7768c0da3",
+      "deck:2024-10-29:8977edf7401d",
+      "deck:2024-07-07:c04072cabb73",
+    ],
+  ];
+  for (const [position, slug] of lineageSlugs.entries()) {
+    const detail = await read(`${archiveRoot}/${slug}/index.html`);
+    assert.match(detail, /현재 이 페이지에서는 제목과 판본 구조만 제공하며 원본 파일과 내장 미디어는 공개하지 않습니다/);
+    assert.match(detail, /id="versions"/);
+    assert.match(detail, /id="notes"/);
+    assert.match(detail, /id="lineage"/);
+    assert.doesNotMatch(detail, /<iframe|<video|<img|autoplay|download/i);
+    assert.doesNotMatch(detail, /youtube\.com|\.pptx(?:[?"#]|$)|\.pdf(?:[?"#]|$)/i);
+    for (const deckId of expectedDeckIds[position]) assert.match(detail, new RegExp(deckId));
+  }
+});
+
 test("the local candidate contains no private paths or forbidden source material", async () => {
   const forbidden = [
     "/Volumes/SSD",
@@ -99,7 +145,7 @@ test("the local candidate contains no private paths or forbidden source material
     "UNOPND",
     "app.notion.com",
   ];
-  for (const relative of ["index.html", ...slugs.map((slug) => `${slug}/index.html`)]) {
+  for (const relative of ["index.html", ...allSlugs.map((slug) => `${slug}/index.html`)]) {
     const html = await read(`${archiveRoot}/${relative}`);
     for (const value of forbidden) assert.doesNotMatch(html, new RegExp(value));
   }
@@ -114,8 +160,18 @@ test("2022 pages do not link or rehost unapproved deck assets", async () => {
 });
 
 test("public copy omits internal governance wording", async () => {
-  const forbidden = ["후보", "비공개 대기", "공개 가능 여부", "로컬 검토", "승인 대기", "근거:"];
-  for (const relative of ["index.html", ...slugs.map((slug) => `${slug}/index.html`)]) {
+  const forbidden = [
+    "후보",
+    "비공개 대기",
+    "공개 가능 여부",
+    "로컬 검토",
+    "승인 대기",
+    "근거:",
+    "pipeline PASS",
+    "owner gate",
+    "local-only",
+  ];
+  for (const relative of ["index.html", ...allSlugs.map((slug) => `${slug}/index.html`)]) {
     const html = await read(`${archiveRoot}/${relative}`);
     for (const value of forbidden) assert.doesNotMatch(html, new RegExp(value));
     const body = html.match(/<body[\s\S]*?<\/body>/)?.[0] ?? "";
@@ -135,7 +191,7 @@ test("the Web3 page links all available 2021 public source evidence", async () =
 });
 
 test("every local href, image and in-page anchor resolves", async () => {
-  const pages = ["index.html", ...slugs.map((slug) => `${slug}/index.html`)];
+  const pages = ["index.html", ...allSlugs.map((slug) => `${slug}/index.html`)];
   for (const relative of pages) {
     const absolute = path.join(repoRoot, archiveRoot, relative);
     const html = await read(`${archiveRoot}/${relative}`);
