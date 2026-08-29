@@ -23,6 +23,7 @@ test("Series 07 keeps identifying family labels and child ages out of the source
 
   const source = await read("sources/pokemon-talk/index.html");
   assert.doesNotMatch(source, /p1-s00[456]|P1-S00[456]|p2-s044|P2-S044|8살/);
+  await assert.rejects(access(path.join(seriesRoot, "assets/source-pokemon-redacted")));
 });
 
 test("Series 07 article media remains explicit, single-column, and non-autoplaying", async () => {
