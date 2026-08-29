@@ -12,7 +12,7 @@
       "page": 3,
       "file": "a37-p003.jpg",
       "caption": "OLED섬 전체 구역 계획",
-      "selectionStatus": "owner-final-select-pending",
+      "selectionStatus": "owner-approved-local-candidate",
       "sourceIds": [
         "node:233"
       ],
@@ -24,7 +24,7 @@
       "page": 7,
       "file": "a37-p007.jpg",
       "caption": "4S 속성을 공간 경험으로 번역한 구조",
-      "selectionStatus": "owner-final-select-pending",
+      "selectionStatus": "owner-approved-local-candidate",
       "sourceIds": [
         "node:233"
       ],
@@ -36,7 +36,7 @@
       "page": 8,
       "file": "a37-p008.jpg",
       "caption": "Mr. OLED 집 내부 공간 렌더",
-      "selectionStatus": "owner-final-select-pending",
+      "selectionStatus": "owner-approved-local-candidate",
       "sourceIds": [
         "node:233"
       ],
@@ -48,7 +48,7 @@
       "page": 10,
       "file": "a37-p010.jpg",
       "caption": "집과 광장 주변의 구역 계획",
-      "selectionStatus": "owner-final-select-pending",
+      "selectionStatus": "owner-approved-local-candidate",
       "sourceIds": [
         "node:233"
       ],
@@ -60,7 +60,7 @@
       "page": 16,
       "file": "a37-p016.jpg",
       "caption": "중앙 광장과 주민 공간의 참조 구조",
-      "selectionStatus": "owner-final-select-pending",
+      "selectionStatus": "owner-approved-local-candidate",
       "sourceIds": [
         "node:233"
       ],
@@ -72,7 +72,7 @@
       "page": 19,
       "file": "a37-p019.jpg",
       "caption": "생활·문화 구역의 공간 참조",
-      "selectionStatus": "owner-final-select-pending",
+      "selectionStatus": "owner-approved-local-candidate",
       "sourceIds": [
         "node:233"
       ],
@@ -84,7 +84,7 @@
       "page": 21,
       "file": "a37-p021.jpg",
       "caption": "집 내부와 정원 구성 참조",
-      "selectionStatus": "owner-final-select-pending",
+      "selectionStatus": "owner-approved-local-candidate",
       "sourceIds": [
         "node:233"
       ],
@@ -96,7 +96,7 @@
       "page": 27,
       "file": "a37-p027.jpg",
       "caption": "LIT섬 구역 계획",
-      "selectionStatus": "owner-final-select-pending",
+      "selectionStatus": "owner-approved-local-candidate",
       "sourceIds": [
         "node:233"
       ],
@@ -108,7 +108,7 @@
       "page": 36,
       "file": "a37-p036.jpg",
       "caption": "LIT섬 전체 구조",
-      "selectionStatus": "owner-final-select-pending",
+      "selectionStatus": "owner-approved-local-candidate",
       "sourceIds": [
         "node:233"
       ],
@@ -120,7 +120,7 @@
       "page": 37,
       "file": "a37-p037.jpg",
       "caption": "LIT섬 게임·스포츠 구역 설계",
-      "selectionStatus": "owner-final-select-pending",
+      "selectionStatus": "owner-approved-local-candidate",
       "sourceIds": [
         "node:233"
       ],
