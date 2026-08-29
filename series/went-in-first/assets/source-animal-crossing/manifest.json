@@ -1,0 +1,578 @@
+{
+  "schemaVersion": 1,
+  "status": "local-candidate-unpublished",
+  "sourceIds": [
+    "node:233",
+    "node:240"
+  ],
+  "assets": [
+    {
+      "id": "animal-37:p003",
+      "edition": "37p-design",
+      "page": 3,
+      "file": "a37-p003.jpg",
+      "caption": "OLED섬 전체 구역 계획",
+      "selectionStatus": "owner-final-select-pending",
+      "sourceIds": [
+        "node:233"
+      ],
+      "sha256": "db8e0d708ee25c71ccfdfe32ba9a213d354c83c449d6aa7634c974561159319c"
+    },
+    {
+      "id": "animal-37:p007",
+      "edition": "37p-design",
+      "page": 7,
+      "file": "a37-p007.jpg",
+      "caption": "4S 속성을 공간 경험으로 번역한 구조",
+      "selectionStatus": "owner-final-select-pending",
+      "sourceIds": [
+        "node:233"
+      ],
+      "sha256": "fcb95987a0e05b5a915c144827a6026c46a1f486bdb01448c9ce635e9bc17d0a"
+    },
+    {
+      "id": "animal-37:p008",
+      "edition": "37p-design",
+      "page": 8,
+      "file": "a37-p008.jpg",
+      "caption": "Mr. OLED 집 내부 공간 렌더",
+      "selectionStatus": "owner-final-select-pending",
+      "sourceIds": [
+        "node:233"
+      ],
+      "sha256": "d66d680b7511ef428ce08ff23f6514855f261946b8437bcc0f693ba8277e61da"
+    },
+    {
+      "id": "animal-37:p010",
+      "edition": "37p-design",
+      "page": 10,
+      "file": "a37-p010.jpg",
+      "caption": "집과 광장 주변의 구역 계획",
+      "selectionStatus": "owner-final-select-pending",
+      "sourceIds": [
+        "node:233"
+      ],
+      "sha256": "28ad2fce909ff638d0e27ec095040e27a25e9628cf44450c910d3e10f14534d7"
+    },
+    {
+      "id": "animal-37:p016",
+      "edition": "37p-design",
+      "page": 16,
+      "file": "a37-p016.jpg",
+      "caption": "중앙 광장과 주민 공간의 참조 구조",
+      "selectionStatus": "owner-final-select-pending",
+      "sourceIds": [
+        "node:233"
+      ],
+      "sha256": "f87d7478aba90a1660a4cc59e02c81d9727709750489fb7d0b83c021284c1016"
+    },
+    {
+      "id": "animal-37:p019",
+      "edition": "37p-design",
+      "page": 19,
+      "file": "a37-p019.jpg",
+      "caption": "생활·문화 구역의 공간 참조",
+      "selectionStatus": "owner-final-select-pending",
+      "sourceIds": [
+        "node:233"
+      ],
+      "sha256": "70a0a290c1cf9a44476c117e581b053350d8e71cc2e5540333a9c0db57d8071f"
+    },
+    {
+      "id": "animal-37:p021",
+      "edition": "37p-design",
+      "page": 21,
+      "file": "a37-p021.jpg",
+      "caption": "집 내부와 정원 구성 참조",
+      "selectionStatus": "owner-final-select-pending",
+      "sourceIds": [
+        "node:233"
+      ],
+      "sha256": "c226405c3ca8ec750706fa38d2c5eae89a5103198f786270f5c66ddd4c2e0df3"
+    },
+    {
+      "id": "animal-37:p027",
+      "edition": "37p-design",
+      "page": 27,
+      "file": "a37-p027.jpg",
+      "caption": "LIT섬 구역 계획",
+      "selectionStatus": "owner-final-select-pending",
+      "sourceIds": [
+        "node:233"
+      ],
+      "sha256": "7daad28643e37e64f3980f6823cb4cf1ccad94dada99282fe41c1591625cec71"
+    },
+    {
+      "id": "animal-37:p036",
+      "edition": "37p-design",
+      "page": 36,
+      "file": "a37-p036.jpg",
+      "caption": "LIT섬 전체 구조",
+      "selectionStatus": "owner-final-select-pending",
+      "sourceIds": [
+        "node:233"
+      ],
+      "sha256": "95438abf7aafee1049c6fd0cf05e985ca32e5ec0901fe080be70e9100f5566d8"
+    },
+    {
+      "id": "animal-37:p037",
+      "edition": "37p-design",
+      "page": 37,
+      "file": "a37-p037.jpg",
+      "caption": "LIT섬 게임·스포츠 구역 설계",
+      "selectionStatus": "owner-final-select-pending",
+      "sourceIds": [
+        "node:233"
+      ],
+      "sha256": "69b6f199e22fe4b080de3c54c03759dc53c9ef0237dc30f82d6a346d9b50505a"
+    },
+    {
+      "id": "animal-98:p003",
+      "edition": "98p-execution",
+      "page": 3,
+      "selectedPdfPage": 1,
+      "file": "a98-p003.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.3",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "e0576e8f6b91ad5a9d4e0e643caf128f86ab17cc6fbb1033ff197abbfd0d48df"
+    },
+    {
+      "id": "animal-98:p004",
+      "edition": "98p-execution",
+      "page": 4,
+      "selectedPdfPage": 2,
+      "file": "a98-p004.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.4",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "b5ed7d3d900b5e3dc2561ab285cbbb1fe72dccf745cd8b2d4e477fcb1eee0e12"
+    },
+    {
+      "id": "animal-98:p009",
+      "edition": "98p-execution",
+      "page": 9,
+      "selectedPdfPage": 3,
+      "file": "a98-p009.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.9",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "649e91a304f7fd3f7d5e4f505ee1bbca6c5cec1bb82bc803a514100a4f991aea"
+    },
+    {
+      "id": "animal-98:p010",
+      "edition": "98p-execution",
+      "page": 10,
+      "selectedPdfPage": 4,
+      "file": "a98-p010.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.10",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "465d4a9ea5b6c10710d3d8d9ba2c473c8ed06aa04e92d1a2f444b35b72ee762f"
+    },
+    {
+      "id": "animal-98:p011",
+      "edition": "98p-execution",
+      "page": 11,
+      "selectedPdfPage": 5,
+      "file": "a98-p011.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.11",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "7ae4565f9f0353b155db5312ced046ecfa666d6d8cfe7beb06f2a6dbb12650dd"
+    },
+    {
+      "id": "animal-98:p023",
+      "edition": "98p-execution",
+      "page": 23,
+      "selectedPdfPage": 6,
+      "file": "a98-p023.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.23",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "960366b9afd0611b88f4240a3371f4b64cb55e98f248c0a82219b509efe813a0"
+    },
+    {
+      "id": "animal-98:p024",
+      "edition": "98p-execution",
+      "page": 24,
+      "selectedPdfPage": 7,
+      "file": "a98-p024.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.24",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "9eae1a92e4da9f0d5d98c983a4eacf248eaacc570b8a3e66c1a2346246032b93"
+    },
+    {
+      "id": "animal-98:p025",
+      "edition": "98p-execution",
+      "page": 25,
+      "selectedPdfPage": 8,
+      "file": "a98-p025.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.25",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "6aef1c931233a0f4d73b5b4da9c00dc71bec2c12eeeba0c1944e4a665d09ee5c"
+    },
+    {
+      "id": "animal-98:p026",
+      "edition": "98p-execution",
+      "page": 26,
+      "selectedPdfPage": 9,
+      "file": "a98-p026.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.26",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "869f383226abb8298e038c577413458ed3d615009a3f09cc0da0f6cc8102bab8"
+    },
+    {
+      "id": "animal-98:p027",
+      "edition": "98p-execution",
+      "page": 27,
+      "selectedPdfPage": 10,
+      "file": "a98-p027.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.27",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "1a9242a42a7a35fd5c04437266665595baef309a7c95012d2b0b59951061d539"
+    },
+    {
+      "id": "animal-98:p029",
+      "edition": "98p-execution",
+      "page": 29,
+      "selectedPdfPage": 11,
+      "file": "a98-p029.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.29",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "e5cef37ae3253448fb9322c7edfefae89f3a162c0c219cbc87e1ca5688f5538a"
+    },
+    {
+      "id": "animal-98:p031",
+      "edition": "98p-execution",
+      "page": 31,
+      "selectedPdfPage": 12,
+      "file": "a98-p031.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.31",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "0024642306c009ffd1ca5a3b399daa2667a598371bfe325160c58e0615f1b6ac"
+    },
+    {
+      "id": "animal-98:p034",
+      "edition": "98p-execution",
+      "page": 34,
+      "selectedPdfPage": 13,
+      "file": "a98-p034.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.34",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "b526bb9196afcdf58c2163c3424b5d2cd1f261d2ed5bdf267e4fd15d8620f3b4"
+    },
+    {
+      "id": "animal-98:p035",
+      "edition": "98p-execution",
+      "page": 35,
+      "selectedPdfPage": 14,
+      "file": "a98-p035.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.35",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "d0cecce11b39034c2b1cfa571eaa7bd5fb667387d8a74bad4a4e505cf10572d7"
+    },
+    {
+      "id": "animal-98:p036",
+      "edition": "98p-execution",
+      "page": 36,
+      "selectedPdfPage": 15,
+      "file": "a98-p036.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.36",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "6e0f2c8f14a58cad9d7e51a4db7e6343928db7693eca91713a6ed336be66b006"
+    },
+    {
+      "id": "animal-98:p038",
+      "edition": "98p-execution",
+      "page": 38,
+      "selectedPdfPage": 16,
+      "file": "a98-p038.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.38",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "7a96ed9fbea9194d8768e85f9bea6a63340121e9db5738a5f4a3e4941ded4ca9"
+    },
+    {
+      "id": "animal-98:p040",
+      "edition": "98p-execution",
+      "page": 40,
+      "selectedPdfPage": 17,
+      "file": "a98-p040.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.40",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "37000ca3f858b5b3a3e20db1961e254a0204a3faa435e1cfa25f8574a7319de6"
+    },
+    {
+      "id": "animal-98:p043",
+      "edition": "98p-execution",
+      "page": 43,
+      "selectedPdfPage": 18,
+      "file": "a98-p043.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.43",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "d1f24b0adfc663062e567d127a91d033cf9bedaf1417c2d88727d0eade4eedfb"
+    },
+    {
+      "id": "animal-98:p044",
+      "edition": "98p-execution",
+      "page": 44,
+      "selectedPdfPage": 19,
+      "file": "a98-p044.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.44",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "d59970c4ff47ca8ed167a89468db590dc3d5e863ab07f9c2386661c3a71cb1ad"
+    },
+    {
+      "id": "animal-98:p045",
+      "edition": "98p-execution",
+      "page": 45,
+      "selectedPdfPage": 20,
+      "file": "a98-p045.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.45",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "072f1136a805acd2e74126339b75091c9ab7ff934fe555e5797dbc19f17c1a38"
+    },
+    {
+      "id": "animal-98:p046",
+      "edition": "98p-execution",
+      "page": 46,
+      "selectedPdfPage": 21,
+      "file": "a98-p046.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.46",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "9325ebd7b6ede74ce8a535fb0ef93d637b2f3aba624eaf56a7b314e231ccede3"
+    },
+    {
+      "id": "animal-98:p047",
+      "edition": "98p-execution",
+      "page": 47,
+      "selectedPdfPage": 22,
+      "file": "a98-p047.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.47",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "7383fc4f6fac964b1494187b02adac9407e42f1e9fb4c129451185952e7c6a5b"
+    },
+    {
+      "id": "animal-98:p048",
+      "edition": "98p-execution",
+      "page": 48,
+      "selectedPdfPage": 23,
+      "file": "a98-p048.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.48",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "f186158f84f8736d08fb066f5b18823ba35704397c45d5fac1309732e086d0b0"
+    },
+    {
+      "id": "animal-98:p049",
+      "edition": "98p-execution",
+      "page": 49,
+      "selectedPdfPage": 24,
+      "file": "a98-p049.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.49",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "f3ce758babffe34fb241f0de06c40f185efe0e9ca8bd5ceef6ac416854a0345d"
+    },
+    {
+      "id": "animal-98:p051",
+      "edition": "98p-execution",
+      "page": 51,
+      "selectedPdfPage": 25,
+      "file": "a98-p051.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.51",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "231f86cd94b489d8d244f66673fe56a8f706137b2cc301d484a7b374894d0f6d"
+    },
+    {
+      "id": "animal-98:p053",
+      "edition": "98p-execution",
+      "page": 53,
+      "selectedPdfPage": 26,
+      "file": "a98-p053.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.53",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "539f95ee5c54ce2bfa9e610e81ebea72637ee0a33be89fba3288ac9bffc3f871"
+    },
+    {
+      "id": "animal-98:p054",
+      "edition": "98p-execution",
+      "page": 54,
+      "selectedPdfPage": 27,
+      "file": "a98-p054.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.54",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "4ca561cd583d23513cb98162f14bc3289c86a1ce6e7f76b1696585cb39febce4"
+    },
+    {
+      "id": "animal-98:p055",
+      "edition": "98p-execution",
+      "page": 55,
+      "selectedPdfPage": 28,
+      "file": "a98-p055.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.55",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "e79520e7d21314c0f3b7805f55198c70f70fc6890c452b6321f20680d5880b42"
+    },
+    {
+      "id": "animal-98:p061",
+      "edition": "98p-execution",
+      "page": 61,
+      "selectedPdfPage": 29,
+      "file": "a98-p061.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.61",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "15e9124ad261dde906acd4922b1825dcbf58dcad07fb191384d3dd3565cf97e5"
+    },
+    {
+      "id": "animal-98:p072",
+      "edition": "98p-execution",
+      "page": 72,
+      "selectedPdfPage": 30,
+      "file": "a98-p072.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.72",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "b2423ac345d29b5e78135ff8b6f39a8025e5a27b5cad62abf1dd4adddf48b004"
+    },
+    {
+      "id": "animal-98:p082",
+      "edition": "98p-execution",
+      "page": 82,
+      "selectedPdfPage": 31,
+      "file": "a98-p082.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.82",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "0aa153a77434a77faa7e5c04f4b601484bb833b529ef9247e75e7397f53afabb"
+    },
+    {
+      "id": "animal-98:p083",
+      "edition": "98p-execution",
+      "page": 83,
+      "selectedPdfPage": 32,
+      "file": "a98-p083.jpg",
+      "caption": "캠페인 결산본 지정 장표 p.83",
+      "selectionStatus": "owner-selected-local-candidate",
+      "sourceIds": [
+        "node:233",
+        "node:240"
+      ],
+      "sha256": "c6c150cbe6e2a186fcc863ce5e35329092a17a9e6301310522bb66a13248f48b"
+    }
+  ]
+}

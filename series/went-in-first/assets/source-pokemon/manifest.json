@@ -1,0 +1,2114 @@
+{
+  "schemaVersion": 1,
+  "status": "local-candidate-unpublished",
+  "canonicalTotal": 278,
+  "selectedTotal": 150,
+  "withheldTotal": 128,
+  "order": "canonical-part-then-page",
+  "sourceIds": [
+    "node:190",
+    "node:247"
+  ],
+  "assets": [
+    {
+      "pageId": "P1-S001",
+      "part": 1,
+      "canonicalPage": 1,
+      "file": "p1-s001.jpg",
+      "section": "발표의 출발점",
+      "caption": "발표의 출발점 · 정본 1부 1쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "256a9e836ac42cfaf425fa2e9ced4a9ffb22524e72eb1dd9748373048151ce84"
+    },
+    {
+      "pageId": "P1-S003",
+      "part": 1,
+      "canonicalPage": 3,
+      "file": "p1-s003.jpg",
+      "section": "발표의 출발점",
+      "caption": "발표의 출발점 · 정본 1부 3쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "4b1b86d2899ad6bf4969d27237cc3854ac6b6566166b326a008b806df01abcba"
+    },
+    {
+      "pageId": "P1-S004",
+      "part": 1,
+      "canonicalPage": 4,
+      "file": "p1-s004.jpg",
+      "section": "발표의 출발점",
+      "caption": "발표의 출발점 · 정본 1부 4쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "7949b07cb60a3d8982d849cff625c79737604e1aa0d373e6d68f9f903a8d6a35"
+    },
+    {
+      "pageId": "P1-S005",
+      "part": 1,
+      "canonicalPage": 5,
+      "file": "p1-s005.jpg",
+      "section": "발표의 출발점",
+      "caption": "발표의 출발점 · 정본 1부 5쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "d5ef93ea1e6362cbe4559ccd4fbfb83d6a97823238c1e3e286a1ae5ff56a4420"
+    },
+    {
+      "pageId": "P1-S006",
+      "part": 1,
+      "canonicalPage": 6,
+      "file": "p1-s006.jpg",
+      "section": "발표의 출발점",
+      "caption": "발표의 출발점 · 정본 1부 6쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "ab8317bfe1a53ac72a4ef32e37232520c2a68e5686f5b87682051df257c0fb36"
+    },
+    {
+      "pageId": "P1-S007",
+      "part": 1,
+      "canonicalPage": 7,
+      "file": "p1-s007.jpg",
+      "section": "발표의 출발점",
+      "caption": "발표의 출발점 · 정본 1부 7쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "38c74e5b4f90ae2a0a30518af4851cc0f2dc257ee7f77e419cc98a5960247942"
+    },
+    {
+      "pageId": "P1-S009",
+      "part": 1,
+      "canonicalPage": 9,
+      "file": "p1-s009.jpg",
+      "section": "발표의 출발점",
+      "caption": "발표의 출발점 · 정본 1부 9쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "976267252972db9a5979bf7e14778ccf2379febacc592b92126a57d6bbd2bbe1"
+    },
+    {
+      "pageId": "P1-S014",
+      "part": 1,
+      "canonicalPage": 14,
+      "file": "p1-s014.jpg",
+      "section": "관심사를 탐색하는 방법",
+      "caption": "관심사를 탐색하는 방법 · 정본 1부 14쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "8e9e269912501424a82225e9e5c7599baf95a37577e2b18cad5db0f61c44dc3e"
+    },
+    {
+      "pageId": "P1-S015",
+      "part": 1,
+      "canonicalPage": 15,
+      "file": "p1-s015.jpg",
+      "section": "관심사를 탐색하는 방법",
+      "caption": "관심사를 탐색하는 방법 · 정본 1부 15쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "a6f1a35519c8045fe3bef771d457df1db9ff13be846b6a1b1f0cf8b0c485571d"
+    },
+    {
+      "pageId": "P1-S016",
+      "part": 1,
+      "canonicalPage": 16,
+      "file": "p1-s016.jpg",
+      "section": "관심사를 탐색하는 방법",
+      "caption": "관심사를 탐색하는 방법 · 정본 1부 16쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "4b85753ea94e38f0c0cfe0043abc17cd3ec356c714799a4fe0657c169af1ecf2"
+    },
+    {
+      "pageId": "P1-S017",
+      "part": 1,
+      "canonicalPage": 17,
+      "file": "p1-s017.jpg",
+      "section": "관심사를 탐색하는 방법",
+      "caption": "관심사를 탐색하는 방법 · 정본 1부 17쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "7f56a2935f60b991795c5f64f7e68643a362d34c70f2d1f557f1b25a2f55a98b"
+    },
+    {
+      "pageId": "P1-S020",
+      "part": 1,
+      "canonicalPage": 20,
+      "file": "p1-s020.jpg",
+      "section": "관심사를 탐색하는 방법",
+      "caption": "관심사를 탐색하는 방법 · 정본 1부 20쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "308ae71a15413bdb3585f2e4a51fe9046a2d615582935d4714869407bd994267"
+    },
+    {
+      "pageId": "P1-S021",
+      "part": 1,
+      "canonicalPage": 21,
+      "file": "p1-s021.jpg",
+      "section": "관심사를 탐색하는 방법",
+      "caption": "관심사를 탐색하는 방법 · 정본 1부 21쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "a536bf31d60f48dc1d0398f368a814779736246540059aaa76fc8810d9d271dd"
+    },
+    {
+      "pageId": "P1-S022",
+      "part": 1,
+      "canonicalPage": 22,
+      "file": "p1-s022.jpg",
+      "section": "관심사를 탐색하는 방법",
+      "caption": "관심사를 탐색하는 방법 · 정본 1부 22쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "9ebbe663a2fc0bd83f97d83308064ef6e63536bc3ce502913577f1ce6f6b4977"
+    },
+    {
+      "pageId": "P1-S023",
+      "part": 1,
+      "canonicalPage": 23,
+      "file": "p1-s023.jpg",
+      "section": "관심사를 탐색하는 방법",
+      "caption": "관심사를 탐색하는 방법 · 정본 1부 23쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "06d75065b43a7382c6d1bb9d6dc20a277f1f51123d53e794dbc617426ed3cd59"
+    },
+    {
+      "pageId": "P1-S024",
+      "part": 1,
+      "canonicalPage": 24,
+      "file": "p1-s024.jpg",
+      "section": "관심사를 탐색하는 방법",
+      "caption": "관심사를 탐색하는 방법 · 정본 1부 24쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "44cc86bddd1cf0f3fbf439370ad52a8aebc5efa4ef1a8222b3c57e0e8698142a"
+    },
+    {
+      "pageId": "P1-S025",
+      "part": 1,
+      "canonicalPage": 25,
+      "file": "p1-s025.jpg",
+      "section": "관심사를 탐색하는 방법",
+      "caption": "관심사를 탐색하는 방법 · 정본 1부 25쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "b26dc7a82ec2977d54b879ddb97d8c8ce64549d079193f97a0c2ccec7fcba4ae"
+    },
+    {
+      "pageId": "P1-S029",
+      "part": 1,
+      "canonicalPage": 29,
+      "file": "p1-s029.jpg",
+      "section": "관심사를 탐색하는 방법",
+      "caption": "관심사를 탐색하는 방법 · 정본 1부 29쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "7a7aa302143c6d31a3f07f0b6f2ebd6da5bedf58fe459acf25422c625a70e985"
+    },
+    {
+      "pageId": "P1-S031",
+      "part": 1,
+      "canonicalPage": 31,
+      "file": "p1-s031.jpg",
+      "section": "관심사를 탐색하는 방법",
+      "caption": "관심사를 탐색하는 방법 · 정본 1부 31쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "9eac83198c7e1908a17a2953c6bd8d6770fb723233db40f83034f084ab62051d"
+    },
+    {
+      "pageId": "P1-S035",
+      "part": 1,
+      "canonicalPage": 35,
+      "file": "p1-s035.jpg",
+      "section": "관심사를 탐색하는 방법",
+      "caption": "관심사를 탐색하는 방법 · 정본 1부 35쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "bc9cf58bd39de679f15392fd3574facbf749235db0bdf9a751179d6f968907d0"
+    },
+    {
+      "pageId": "P1-S036",
+      "part": 1,
+      "canonicalPage": 36,
+      "file": "p1-s036.jpg",
+      "section": "관심사를 탐색하는 방법",
+      "caption": "관심사를 탐색하는 방법 · 정본 1부 36쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "df6282cd52be9b21041cb5962f1be95dedb5a8134d10063a34e8ddac832de2a1"
+    },
+    {
+      "pageId": "P1-S037",
+      "part": 1,
+      "canonicalPage": 37,
+      "file": "p1-s037.jpg",
+      "section": "관심사를 탐색하는 방법",
+      "caption": "관심사를 탐색하는 방법 · 정본 1부 37쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "6e3ae185019bfece54ca0ea5460e6575b2c235e5bea07284f04185dd7780eef2"
+    },
+    {
+      "pageId": "P1-S039",
+      "part": 1,
+      "canonicalPage": 39,
+      "file": "p1-s039.jpg",
+      "section": "관심사를 탐색하는 방법",
+      "caption": "관심사를 탐색하는 방법 · 정본 1부 39쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "8a4700dc7640fbcf7f0cadf343d4893144630a319f056f10c9df9835373c0dbc"
+    },
+    {
+      "pageId": "P1-S042",
+      "part": 1,
+      "canonicalPage": 42,
+      "file": "p1-s042.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 42쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "c8fc0ebe38430f1456e5346603f55775621f7e0b5cf5f04badcb823ecf55a71b"
+    },
+    {
+      "pageId": "P1-S043",
+      "part": 1,
+      "canonicalPage": 43,
+      "file": "p1-s043.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 43쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "071d1720f9533174c8c8683bb30545058f2b87dbe56fbc24e480f39b07372987"
+    },
+    {
+      "pageId": "P1-S044",
+      "part": 1,
+      "canonicalPage": 44,
+      "file": "p1-s044.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 44쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "4ca81a5aae683a83852ef4226d1a972433145de733a6bcd9cc2803eca313373c"
+    },
+    {
+      "pageId": "P1-S045",
+      "part": 1,
+      "canonicalPage": 45,
+      "file": "p1-s045.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 45쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "e8a6e701c6092b6003e4219cee1aa5fa49a6d3a5a49f0f514152607eb829e48a"
+    },
+    {
+      "pageId": "P1-S046",
+      "part": 1,
+      "canonicalPage": 46,
+      "file": "p1-s046.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 46쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "bd644edd1926e92c928f57fb9cd540c2d52a793c8e099646276d5e80b3cecea9"
+    },
+    {
+      "pageId": "P1-S047",
+      "part": 1,
+      "canonicalPage": 47,
+      "file": "p1-s047.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 47쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "49e409b74f399a02cab04933a4e917cc5d06d65526d0310b5c259d21d20a15f2"
+    },
+    {
+      "pageId": "P1-S049",
+      "part": 1,
+      "canonicalPage": 49,
+      "file": "p1-s049.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 49쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "c21f0d60ee8933c74d68ea32ac5fda76cae4ece5e235f0e0af3c44cc064c60a9"
+    },
+    {
+      "pageId": "P1-S050",
+      "part": 1,
+      "canonicalPage": 50,
+      "file": "p1-s050.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 50쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "bca5ca31010adbe877bf96d8601002ad5a462aff7f4e3ad614cbe6fc29b1b23c"
+    },
+    {
+      "pageId": "P1-S053",
+      "part": 1,
+      "canonicalPage": 53,
+      "file": "p1-s053.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 53쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "dc8e6a9c2ae616cee8382328ffb84bb99c39b57f261d14c808e1005208fc584a"
+    },
+    {
+      "pageId": "P1-S057",
+      "part": 1,
+      "canonicalPage": 57,
+      "file": "p1-s057.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 57쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "236bfec10704d137d3f32219e77b606fd50b307678a6b90ccb534c1eaea3c9ec"
+    },
+    {
+      "pageId": "P1-S061",
+      "part": 1,
+      "canonicalPage": 61,
+      "file": "p1-s061.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 61쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "961fd6cb6e3e05795f18b37acce4936513fc5a955e05d51009e3606b07aea0b0"
+    },
+    {
+      "pageId": "P1-S062",
+      "part": 1,
+      "canonicalPage": 62,
+      "file": "p1-s062.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 62쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "a6d3c6119143fddb18670647643e45431bc0bfdf29efd2265306fcefd7e7e766"
+    },
+    {
+      "pageId": "P1-S067",
+      "part": 1,
+      "canonicalPage": 67,
+      "file": "p1-s067.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 67쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "ac52a489eb147c752d468e8e5d1cd4be618a7fcbd12e1b3816051fd7b5e9081a"
+    },
+    {
+      "pageId": "P1-S071",
+      "part": 1,
+      "canonicalPage": 71,
+      "file": "p1-s071.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 71쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "84c7bed9d3ca25a0b9ff769de70f203a379684af10af0bbfdaff9c5a79bbc54a"
+    },
+    {
+      "pageId": "P1-S072",
+      "part": 1,
+      "canonicalPage": 72,
+      "file": "p1-s072.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 72쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "b450ce720a0aad8ddd0b62657497da138d0e132c7a93a187510fdceea1d1ad18"
+    },
+    {
+      "pageId": "P1-S073",
+      "part": 1,
+      "canonicalPage": 73,
+      "file": "p1-s073.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 73쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "004cf11df68269183baa15450d0323c2952e3b3f77a915e32950696caf263775"
+    },
+    {
+      "pageId": "P1-S074",
+      "part": 1,
+      "canonicalPage": 74,
+      "file": "p1-s074.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 74쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "0713e4c31c6732d9942eacb1a44bd8938ec96f678609a00995b095ee679ec706"
+    },
+    {
+      "pageId": "P1-S076",
+      "part": 1,
+      "canonicalPage": 76,
+      "file": "p1-s076.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 76쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "1d53febfb20844af108f9be0eefaeacdd2b27144a8c7a4f511169be54814789f"
+    },
+    {
+      "pageId": "P1-S077",
+      "part": 1,
+      "canonicalPage": 77,
+      "file": "p1-s077.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 77쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "30aa0962cf6951bab48313bdea9528009543c4cb2b6b493aadf6133d89359414"
+    },
+    {
+      "pageId": "P1-S078",
+      "part": 1,
+      "canonicalPage": 78,
+      "file": "p1-s078.jpg",
+      "section": "가상세계 경험의 설계",
+      "caption": "가상세계 경험의 설계 · 정본 1부 78쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "d992504b72e6d917c57af0141a8c6df94132e1619fb827dc2340dc8e71de4a2c"
+    },
+    {
+      "pageId": "P1-S082",
+      "part": 1,
+      "canonicalPage": 82,
+      "file": "p1-s082.jpg",
+      "section": "포켓몬 이름으로 여는 참여",
+      "caption": "포켓몬 이름으로 여는 참여 · 정본 1부 82쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "2bf451bd085845bd6357dcef08f375e0c34ba4f8117bf63fe4a294e1b7cdbb68"
+    },
+    {
+      "pageId": "P1-S084",
+      "part": 1,
+      "canonicalPage": 84,
+      "file": "p1-s084.jpg",
+      "section": "포켓몬 이름으로 여는 참여",
+      "caption": "포켓몬 이름으로 여는 참여 · 정본 1부 84쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "85d647e8326721f7d95f04ff6b9b53157b5169732391dcbab69fc9856fde47fc"
+    },
+    {
+      "pageId": "P1-S087",
+      "part": 1,
+      "canonicalPage": 87,
+      "file": "p1-s087.jpg",
+      "section": "포켓몬 이름으로 여는 참여",
+      "caption": "포켓몬 이름으로 여는 참여 · 정본 1부 87쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "f9d61b9ee7d398b102bf3b4b00ba9b2069d8f7299e6c3714c39f134f11bad1c3"
+    },
+    {
+      "pageId": "P1-S092",
+      "part": 1,
+      "canonicalPage": 92,
+      "file": "p1-s092.jpg",
+      "section": "포켓몬 이름으로 여는 참여",
+      "caption": "포켓몬 이름으로 여는 참여 · 정본 1부 92쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "c78cb3efdd7f981fe47ddf102d9948c4d8025f03e1ad2553f100a832cb1b370b"
+    },
+    {
+      "pageId": "P2-S001",
+      "part": 2,
+      "canonicalPage": 1,
+      "file": "p2-s001.jpg",
+      "section": "피지컬 세계의 캐릭터 IP",
+      "caption": "피지컬 세계의 캐릭터 IP · 정본 2부 1쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "b53adf310bd8ece2c1d2392b4d5d2e958ea76187add6a40e3251f71dee9d2840"
+    },
+    {
+      "pageId": "P2-S002",
+      "part": 2,
+      "canonicalPage": 2,
+      "file": "p2-s002.jpg",
+      "section": "피지컬 세계의 캐릭터 IP",
+      "caption": "피지컬 세계의 캐릭터 IP · 정본 2부 2쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "1338f60d7ea34128a9560917754f308a4c967dc2f39118dc3085dcd4d03fd029"
+    },
+    {
+      "pageId": "P2-S003",
+      "part": 2,
+      "canonicalPage": 3,
+      "file": "p2-s003.jpg",
+      "section": "피지컬 세계의 캐릭터 IP",
+      "caption": "피지컬 세계의 캐릭터 IP · 정본 2부 3쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "767f6d94694cbcf36089da2f9ec3b780bdce3022d3a3fa4590d9a6bfc2674361"
+    },
+    {
+      "pageId": "P2-S004",
+      "part": 2,
+      "canonicalPage": 4,
+      "file": "p2-s004.jpg",
+      "section": "피지컬 세계의 캐릭터 IP",
+      "caption": "피지컬 세계의 캐릭터 IP · 정본 2부 4쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "c2ba43eb632054bda4b666d93cec6bd63f3547beb5b3e5935863f8fffe9d8df3"
+    },
+    {
+      "pageId": "P2-S005",
+      "part": 2,
+      "canonicalPage": 5,
+      "file": "p2-s005.jpg",
+      "section": "피지컬 세계의 캐릭터 IP",
+      "caption": "피지컬 세계의 캐릭터 IP · 정본 2부 5쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "8ec4b7df11ef1474ee0c4f631b5456d5f1a342a919f7f3e11819ecf6e13c9810"
+    },
+    {
+      "pageId": "P2-S007",
+      "part": 2,
+      "canonicalPage": 7,
+      "file": "p2-s007.jpg",
+      "section": "피지컬 세계의 캐릭터 IP",
+      "caption": "피지컬 세계의 캐릭터 IP · 정본 2부 7쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "bd99fbaa0fbb6cc0ff9e05411709d1432a9c717b549436c013d2a287668d6eea"
+    },
+    {
+      "pageId": "P2-S008",
+      "part": 2,
+      "canonicalPage": 8,
+      "file": "p2-s008.jpg",
+      "section": "피지컬 세계의 캐릭터 IP",
+      "caption": "피지컬 세계의 캐릭터 IP · 정본 2부 8쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "fa4ee474c063a030dc7c76d797f6294e5e0b578575438ef3a7485228164b624d"
+    },
+    {
+      "pageId": "P2-S009",
+      "part": 2,
+      "canonicalPage": 9,
+      "file": "p2-s009.jpg",
+      "section": "피지컬 세계의 캐릭터 IP",
+      "caption": "피지컬 세계의 캐릭터 IP · 정본 2부 9쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "939d606d0d72c981db682d52901a0594b0a171b800cc85549b7762a4c7c88906"
+    },
+    {
+      "pageId": "P2-S010",
+      "part": 2,
+      "canonicalPage": 10,
+      "file": "p2-s010.jpg",
+      "section": "피지컬 세계의 캐릭터 IP",
+      "caption": "피지컬 세계의 캐릭터 IP · 정본 2부 10쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "6b88e01f72ff9a8c8ac5f175246890b49c554e7a6ee7d5e80eaa969e0bfd1dc3"
+    },
+    {
+      "pageId": "P2-S011",
+      "part": 2,
+      "canonicalPage": 11,
+      "file": "p2-s011.jpg",
+      "section": "피지컬 세계의 캐릭터 IP",
+      "caption": "피지컬 세계의 캐릭터 IP · 정본 2부 11쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "20bb3aa9e984e794a890597df00e6556a1e0264920455ed16fff3dec1ebe0194"
+    },
+    {
+      "pageId": "P2-S013",
+      "part": 2,
+      "canonicalPage": 13,
+      "file": "p2-s013.jpg",
+      "section": "피지컬 세계의 캐릭터 IP",
+      "caption": "피지컬 세계의 캐릭터 IP · 정본 2부 13쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "1a0e7c6d50095015625aa2409d8db7df805758adfd32b8dbc9c720dd6085b00f"
+    },
+    {
+      "pageId": "P2-S014",
+      "part": 2,
+      "canonicalPage": 14,
+      "file": "p2-s014.jpg",
+      "section": "피지컬 세계의 캐릭터 IP",
+      "caption": "피지컬 세계의 캐릭터 IP · 정본 2부 14쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "c6471ac7385ce9f305e49ba66a98d4edf120f3ea645368cd78e0d012991fd5bf"
+    },
+    {
+      "pageId": "P2-S015",
+      "part": 2,
+      "canonicalPage": 15,
+      "file": "p2-s015.jpg",
+      "section": "피지컬 세계의 캐릭터 IP",
+      "caption": "피지컬 세계의 캐릭터 IP · 정본 2부 15쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "eb34a73b15528467bbf1aac1fef61976fc93d7a1ca9cc92e1a431d2c9f179066"
+    },
+    {
+      "pageId": "P2-S016",
+      "part": 2,
+      "canonicalPage": 16,
+      "file": "p2-s016.jpg",
+      "section": "피지컬 세계의 캐릭터 IP",
+      "caption": "피지컬 세계의 캐릭터 IP · 정본 2부 16쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "c26b772840cb97fb052572761dc4bf7e6d8acae5200fc35682df95124ae5ce41"
+    },
+    {
+      "pageId": "P2-S017",
+      "part": 2,
+      "canonicalPage": 17,
+      "file": "p2-s017.jpg",
+      "section": "피지컬 세계의 캐릭터 IP",
+      "caption": "피지컬 세계의 캐릭터 IP · 정본 2부 17쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "51b1416670e94e914e876ae14887f27dd7d215a221797bbf5ea9ef2aa5537f47"
+    },
+    {
+      "pageId": "P2-S019",
+      "part": 2,
+      "canonicalPage": 19,
+      "file": "p2-s019.jpg",
+      "section": "일상과 디지털의 연결",
+      "caption": "일상과 디지털의 연결 · 정본 2부 19쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "90d13a96c7b8079eca1fc7b13adb0b44c4f42ab3d35174cc28d4c82b159e93ad"
+    },
+    {
+      "pageId": "P2-S020",
+      "part": 2,
+      "canonicalPage": 20,
+      "file": "p2-s020.jpg",
+      "section": "일상과 디지털의 연결",
+      "caption": "일상과 디지털의 연결 · 정본 2부 20쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "4459b02fef69fd51b9fa97f4429a52a337b1c2d522cbea2979dd8a26ad45d9fb"
+    },
+    {
+      "pageId": "P2-S021",
+      "part": 2,
+      "canonicalPage": 21,
+      "file": "p2-s021.jpg",
+      "section": "일상과 디지털의 연결",
+      "caption": "일상과 디지털의 연결 · 정본 2부 21쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "12007b34128953bb92b72ac4deae3a56a957fc800da74db5ff8c6695648e2062"
+    },
+    {
+      "pageId": "P2-S022",
+      "part": 2,
+      "canonicalPage": 22,
+      "file": "p2-s022.jpg",
+      "section": "일상과 디지털의 연결",
+      "caption": "일상과 디지털의 연결 · 정본 2부 22쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "c7174dbf483041099875c454119ba0a44585d9652275968c957f6afce9327878"
+    },
+    {
+      "pageId": "P2-S023",
+      "part": 2,
+      "canonicalPage": 23,
+      "file": "p2-s023.jpg",
+      "section": "일상과 디지털의 연결",
+      "caption": "일상과 디지털의 연결 · 정본 2부 23쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "7dac0e34d0757256ebcf5946944c8d3634b81886e7b8fbc1fd27de4131ced9b4"
+    },
+    {
+      "pageId": "P2-S024",
+      "part": 2,
+      "canonicalPage": 24,
+      "file": "p2-s024.jpg",
+      "section": "일상과 디지털의 연결",
+      "caption": "일상과 디지털의 연결 · 정본 2부 24쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "01e4980a780aa11167dabbb1dd1f909cc6b9d1bf739b0fb8aeca6ea71599ffe5"
+    },
+    {
+      "pageId": "P2-S025",
+      "part": 2,
+      "canonicalPage": 25,
+      "file": "p2-s025.jpg",
+      "section": "일상과 디지털의 연결",
+      "caption": "일상과 디지털의 연결 · 정본 2부 25쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "c9403767d1f882bac40bd28cab471e96985ffe3616e8169985333fbacd11aa30"
+    },
+    {
+      "pageId": "P2-S028",
+      "part": 2,
+      "canonicalPage": 28,
+      "file": "p2-s028.jpg",
+      "section": "일상과 디지털의 연결",
+      "caption": "일상과 디지털의 연결 · 정본 2부 28쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "05c4928c0ba9c78ee7f8672b1c0f79514c7b47c556cc0c63db3bf03d5b5dd9fe"
+    },
+    {
+      "pageId": "P2-S029",
+      "part": 2,
+      "canonicalPage": 29,
+      "file": "p2-s029.jpg",
+      "section": "일상과 디지털의 연결",
+      "caption": "일상과 디지털의 연결 · 정본 2부 29쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "7e20cccb17df7fbfa9a595ce7df9dc3ad4f0977b983e232edc1763dfa40d533c"
+    },
+    {
+      "pageId": "P2-S030",
+      "part": 2,
+      "canonicalPage": 30,
+      "file": "p2-s030.jpg",
+      "section": "일상과 디지털의 연결",
+      "caption": "일상과 디지털의 연결 · 정본 2부 30쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "0415916f790dd41a5d63bfd32b74d14bd7652b1f6e8f81fd930c0d90973c91df"
+    },
+    {
+      "pageId": "P2-S031",
+      "part": 2,
+      "canonicalPage": 31,
+      "file": "p2-s031.jpg",
+      "section": "일상과 디지털의 연결",
+      "caption": "일상과 디지털의 연결 · 정본 2부 31쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "6a575b78aacd5d7ec877d33f12449e865ac681bcf818df6f6938012b6514a457"
+    },
+    {
+      "pageId": "P2-S032",
+      "part": 2,
+      "canonicalPage": 32,
+      "file": "p2-s032.jpg",
+      "section": "일상과 디지털의 연결",
+      "caption": "일상과 디지털의 연결 · 정본 2부 32쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "fd8f55ef4bc4531549f2242bbf3a60dcfc6a9c624e56bea834c612ce9343c7c2"
+    },
+    {
+      "pageId": "P2-S033",
+      "part": 2,
+      "canonicalPage": 33,
+      "file": "p2-s033.jpg",
+      "section": "일상과 디지털의 연결",
+      "caption": "일상과 디지털의 연결 · 정본 2부 33쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "40ea9f82803efcb97320e4d63a4945c6e654d4b299b27dbb05f0a18d30b307d1"
+    },
+    {
+      "pageId": "P2-S036",
+      "part": 2,
+      "canonicalPage": 36,
+      "file": "p2-s036.jpg",
+      "section": "일상과 디지털의 연결",
+      "caption": "일상과 디지털의 연결 · 정본 2부 36쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "d5191762029b331457a3f8ac2b2a204a86f413e9bd2e7e407bd246b752924302"
+    },
+    {
+      "pageId": "P2-S037",
+      "part": 2,
+      "canonicalPage": 37,
+      "file": "p2-s037.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 37쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "feb4144aa026c10b70bbee4b45c84560b3be893e1a002e7ac77a089d15287590"
+    },
+    {
+      "pageId": "P2-S038",
+      "part": 2,
+      "canonicalPage": 38,
+      "file": "p2-s038.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 38쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "67f6d1ae4a8d2450ca129f6e8313d4630a42848a0c5e00bd05ff04d72c5a60df"
+    },
+    {
+      "pageId": "P2-S039",
+      "part": 2,
+      "canonicalPage": 39,
+      "file": "p2-s039.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 39쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "574244e2de8cec8711d9b205d1346cb41b7e6fdd60c0ccfc6b5b3b49b724178a"
+    },
+    {
+      "pageId": "P2-S041",
+      "part": 2,
+      "canonicalPage": 41,
+      "file": "p2-s041.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 41쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "237d7b959a86ad4d70c9776df7eb0fc2125a31e088b5afeb1d07043885228b89"
+    },
+    {
+      "pageId": "P2-S043",
+      "part": 2,
+      "canonicalPage": 43,
+      "file": "p2-s043.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 43쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "1596037da4820cff766fa8af8915839f657e2cd288885f8d77701c75bfcc6051"
+    },
+    {
+      "pageId": "P2-S044",
+      "part": 2,
+      "canonicalPage": 44,
+      "file": "p2-s044.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 44쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "644dc1cddcf224a39b87d607281b63ffd3ca0b69888e0602579bb951466a8634"
+    },
+    {
+      "pageId": "P2-S045",
+      "part": 2,
+      "canonicalPage": 45,
+      "file": "p2-s045.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 45쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "014de0f41541295107afbcdba4918931cab39585f7a8ad37fa7ed0932f5f9003"
+    },
+    {
+      "pageId": "P2-S046",
+      "part": 2,
+      "canonicalPage": 46,
+      "file": "p2-s046.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 46쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "bc5e9a8a6e1a712a4c795d988549bcc009c10ac6847e88d317cef7fea657ad5a"
+    },
+    {
+      "pageId": "P2-S047",
+      "part": 2,
+      "canonicalPage": 47,
+      "file": "p2-s047.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 47쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "cc9e2d9ebb1475d157e93884dcc186dfed69611aecbaa58733f38962e09527d8"
+    },
+    {
+      "pageId": "P2-S048",
+      "part": 2,
+      "canonicalPage": 48,
+      "file": "p2-s048.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 48쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "a95fbd27a04e85fb19da1ea984fea51b88f6845eae44d56d1c4f4504287fcfb1"
+    },
+    {
+      "pageId": "P2-S050",
+      "part": 2,
+      "canonicalPage": 50,
+      "file": "p2-s050.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 50쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "13311384c8a00f424ce5c273d00ffffe8459fd64aadf7ad79475b68f6c4df948"
+    },
+    {
+      "pageId": "P2-S051",
+      "part": 2,
+      "canonicalPage": 51,
+      "file": "p2-s051.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 51쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "b59442bc93edf2cf36e25f48ef72dee1f64ecc8adc73395b4836bb71e678c8e6"
+    },
+    {
+      "pageId": "P2-S052",
+      "part": 2,
+      "canonicalPage": 52,
+      "file": "p2-s052.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 52쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "1ecb258a1a4344a3d34662728a5b02c1d8e262a8d45d522d10b2243c5e92713b"
+    },
+    {
+      "pageId": "P2-S053",
+      "part": 2,
+      "canonicalPage": 53,
+      "file": "p2-s053.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 53쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "0afbdd00f139386c558bc3cdf465ea5c8a92236c42e8181ca662805749d90fbf"
+    },
+    {
+      "pageId": "P2-S054",
+      "part": 2,
+      "canonicalPage": 54,
+      "file": "p2-s054.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 54쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "e38803443da157dfc9aa38eccc02dba4840a214287dcf6f535a33e73d36b5215"
+    },
+    {
+      "pageId": "P2-S057",
+      "part": 2,
+      "canonicalPage": 57,
+      "file": "p2-s057.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 57쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "6bf6775e34d97882bd9c7aafe6dd6658cafd210d0c4e95afc1c5bb981576e130"
+    },
+    {
+      "pageId": "P2-S059",
+      "part": 2,
+      "canonicalPage": 59,
+      "file": "p2-s059.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 59쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "0329f6b0d06de4a253b3b87c4e3368addb1419db2817de8281d9a8b68d1ad359"
+    },
+    {
+      "pageId": "P2-S060",
+      "part": 2,
+      "canonicalPage": 60,
+      "file": "p2-s060.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 60쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "e98e44b1cc38cf6b17cc9c4346c702c3ae6f16c31a8629eda0689ca70859a3f6"
+    },
+    {
+      "pageId": "P2-S061",
+      "part": 2,
+      "canonicalPage": 61,
+      "file": "p2-s061.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 61쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "d1d6dce555b7986cf1cc7958de162666e997c3313eaf67247f51c603927280a3"
+    },
+    {
+      "pageId": "P2-S062",
+      "part": 2,
+      "canonicalPage": 62,
+      "file": "p2-s062.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 62쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "8e7debe466c17afc7a8636749cbe5509b855a67a0c56733374f9f38662d5aadb"
+    },
+    {
+      "pageId": "P2-S063",
+      "part": 2,
+      "canonicalPage": 63,
+      "file": "p2-s063.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 63쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "22b8142febed3e51e2074cfa54c376b0b8d0496d3cf67022dcbdeec897b3bbc1"
+    },
+    {
+      "pageId": "P2-S064",
+      "part": 2,
+      "canonicalPage": 64,
+      "file": "p2-s064.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 64쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "7c2dec9467708b00918bbf89165c6bc6458c82a0ca863626ab20f9bc0891fd90"
+    },
+    {
+      "pageId": "P2-S065",
+      "part": 2,
+      "canonicalPage": 65,
+      "file": "p2-s065.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 65쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "49a859889409ac15895c2801e53087b7b7af1aef285674e99861260370eee56c"
+    },
+    {
+      "pageId": "P2-S066",
+      "part": 2,
+      "canonicalPage": 66,
+      "file": "p2-s066.jpg",
+      "section": "디지털 자산과 인터페이스",
+      "caption": "디지털 자산과 인터페이스 · 정본 2부 66쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "7c9d3bacfba9dce73e3d79b05a3928757bea32cf6f437c4b1d9b2b7cbeaa450b"
+    },
+    {
+      "pageId": "P2-S067",
+      "part": 2,
+      "canonicalPage": 67,
+      "file": "p2-s067.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 67쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "442e93d0104cda4324530ecd5389136769380216a79b4759b35a11abc15e929d"
+    },
+    {
+      "pageId": "P2-S069",
+      "part": 2,
+      "canonicalPage": 69,
+      "file": "p2-s069.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 69쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "e9a2cadd3790d864abba968a4c81b1b7006eeffb0c27fedaee9ff4811ab37ab7"
+    },
+    {
+      "pageId": "P2-S070",
+      "part": 2,
+      "canonicalPage": 70,
+      "file": "p2-s070.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 70쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "005e5f15840f08f4dd7cc274d54bc17be0e8c7e41eab6e1b90e9f25c0ab470cb"
+    },
+    {
+      "pageId": "P2-S071",
+      "part": 2,
+      "canonicalPage": 71,
+      "file": "p2-s071.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 71쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "1d6695b27767f25b177a3d8ccaf18f3cdf2d3a4cf3cd544c023f9d343e875e64"
+    },
+    {
+      "pageId": "P2-S072",
+      "part": 2,
+      "canonicalPage": 72,
+      "file": "p2-s072.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 72쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "be047c288219abe1dd7ee190867250172e3f5dbeb19eda3a6605a71c02c2e69c"
+    },
+    {
+      "pageId": "P2-S073",
+      "part": 2,
+      "canonicalPage": 73,
+      "file": "p2-s073.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 73쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "c09b578903d5512d12cb35ca43bc32edab280aac99d0f31e9dc1097116de0aed"
+    },
+    {
+      "pageId": "P2-S074",
+      "part": 2,
+      "canonicalPage": 74,
+      "file": "p2-s074.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 74쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "8d2401b8473418a559526f0aac6ae0473cc51a90f9141ff53efb1c5dd023659e"
+    },
+    {
+      "pageId": "P2-S075",
+      "part": 2,
+      "canonicalPage": 75,
+      "file": "p2-s075.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 75쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "526dc1af294489a23ea9f1861a48e868b2f3ec627f4430e545bfba7f6112d9a4"
+    },
+    {
+      "pageId": "P2-S076",
+      "part": 2,
+      "canonicalPage": 76,
+      "file": "p2-s076.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 76쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "4459fab482095f38a62313388da1325537e56cd69d432aaeb0d284ddda7ba68f"
+    },
+    {
+      "pageId": "P2-S077",
+      "part": 2,
+      "canonicalPage": 77,
+      "file": "p2-s077.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 77쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "019b49e6111fedd8545f123adb71dea7e2d5727d504942e9ee98e6846b0f0577"
+    },
+    {
+      "pageId": "P2-S078",
+      "part": 2,
+      "canonicalPage": 78,
+      "file": "p2-s078.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 78쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "bb30917a4ee2f02c07948528d42b707da9d68d0de676736b2506ee9c94d996bb"
+    },
+    {
+      "pageId": "P2-S081",
+      "part": 2,
+      "canonicalPage": 81,
+      "file": "p2-s081.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 81쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "a755f98b1df3439cb6cd18d2d3fc667678416c5f3fd36d001e2a0643c964c8b9"
+    },
+    {
+      "pageId": "P2-S082",
+      "part": 2,
+      "canonicalPage": 82,
+      "file": "p2-s082.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 82쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "98d80330f96980fb4b29f326503bb60e65b53046b6873c4cf9f18e4a88483285"
+    },
+    {
+      "pageId": "P2-S088",
+      "part": 2,
+      "canonicalPage": 88,
+      "file": "p2-s088.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 88쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "3063c5736211969980a003d92fd9584c71f4707c3142a261b2f06a199a04fccb"
+    },
+    {
+      "pageId": "P2-S090",
+      "part": 2,
+      "canonicalPage": 90,
+      "file": "p2-s090.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 90쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "6a5fdd978afc085de69b35f7f8e4f4f46ac7088693b562d691a63828a6952b5c"
+    },
+    {
+      "pageId": "P2-S091",
+      "part": 2,
+      "canonicalPage": 91,
+      "file": "p2-s091.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 91쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "d28e5ef1b3337b9946741c1222d0c9207f07745e018f7d1ca2451025f3300016"
+    },
+    {
+      "pageId": "P2-S092",
+      "part": 2,
+      "canonicalPage": 92,
+      "file": "p2-s092.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 92쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "bc675147ec9ee35867a42feb207ab1fdcc1ae579a5df5152a11e0e41a9777084"
+    },
+    {
+      "pageId": "P2-S093",
+      "part": 2,
+      "canonicalPage": 93,
+      "file": "p2-s093.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 93쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "f7f14883fd6d9a8e3378b0bd10410811a6f2626cad67cef963b5dfd55111792d"
+    },
+    {
+      "pageId": "P2-S094",
+      "part": 2,
+      "canonicalPage": 94,
+      "file": "p2-s094.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 94쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "e75acfb3b6a3c7ef22551ae21dc472bd35001a97ce41c69a14d3e634bda94074"
+    },
+    {
+      "pageId": "P2-S095",
+      "part": 2,
+      "canonicalPage": 95,
+      "file": "p2-s095.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 95쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "6c5a527491316d327c95d07fa2b1bedc31ad2a43945e7f85b4751a7e452f4fec"
+    },
+    {
+      "pageId": "P2-S096",
+      "part": 2,
+      "canonicalPage": 96,
+      "file": "p2-s096.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 96쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "f81751f70654e4a4a40b5e8cfbd35b3953f87158bf13382421a342517b3fa702"
+    },
+    {
+      "pageId": "P2-S097",
+      "part": 2,
+      "canonicalPage": 97,
+      "file": "p2-s097.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 97쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "25c8aed5188679e285c60f33bfb3816103f20f6d3a952f19302186f4ca910844"
+    },
+    {
+      "pageId": "P2-S098",
+      "part": 2,
+      "canonicalPage": 98,
+      "file": "p2-s098.jpg",
+      "section": "게임을 넘어 이어지는 경험",
+      "caption": "게임을 넘어 이어지는 경험 · 정본 2부 98쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "891d4d9051ffb70c2bf1fc081f2e6cca42a0635c9559da051d7ca9a0358397d1"
+    },
+    {
+      "pageId": "P2-S118",
+      "part": 2,
+      "canonicalPage": 118,
+      "file": "p2-s118.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 118쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "c8cb636c64632621b476e1970c945ae4ce6e0b935d8c3b394be9855bee8c59ea"
+    },
+    {
+      "pageId": "P2-S121",
+      "part": 2,
+      "canonicalPage": 121,
+      "file": "p2-s121.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 121쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "a29275c4d3d47a3d5497c275b67e78b0539c70c366a46a29b61003761bef0278"
+    },
+    {
+      "pageId": "P2-S122",
+      "part": 2,
+      "canonicalPage": 122,
+      "file": "p2-s122.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 122쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "b047534cb8af5a80ac491eb1701514a267c4acd99ca4defc81096947bf09e6ab"
+    },
+    {
+      "pageId": "P2-S123",
+      "part": 2,
+      "canonicalPage": 123,
+      "file": "p2-s123.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 123쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "8c4e8a3a7b2f5ce9e30f4209ba03caf1557291ec0afa644899226df39ed54c34"
+    },
+    {
+      "pageId": "P2-S125",
+      "part": 2,
+      "canonicalPage": 125,
+      "file": "p2-s125.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 125쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "357cd4fba63bd1a05df1156f34da31a41da2b2dcb86fc3b973c90fec5cc35594"
+    },
+    {
+      "pageId": "P2-S127",
+      "part": 2,
+      "canonicalPage": 127,
+      "file": "p2-s127.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 127쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "fbc722da65db851628bf065649abfc21adfad9e86e90aca917b11fe80b2c297a"
+    },
+    {
+      "pageId": "P2-S128",
+      "part": 2,
+      "canonicalPage": 128,
+      "file": "p2-s128.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 128쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "a13c8d26bd4d0e1065ef356ed3af11448347f478dc18d3b873b1db35150ba62c"
+    },
+    {
+      "pageId": "P2-S129",
+      "part": 2,
+      "canonicalPage": 129,
+      "file": "p2-s129.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 129쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "0b56ee378da4a6ffe8fa08030a69aa05f240d3361312a9f4492224174107606a"
+    },
+    {
+      "pageId": "P2-S131",
+      "part": 2,
+      "canonicalPage": 131,
+      "file": "p2-s131.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 131쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "e2a0819af53394b8b07277f1085767f08df562e5ab35e0a9f0e237f9e8f412f3"
+    },
+    {
+      "pageId": "P2-S132",
+      "part": 2,
+      "canonicalPage": 132,
+      "file": "p2-s132.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 132쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "2e2e38d030e8e088538d6d910d184848cc5e299a553c9e059a9912d023cbf802"
+    },
+    {
+      "pageId": "P2-S133",
+      "part": 2,
+      "canonicalPage": 133,
+      "file": "p2-s133.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 133쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "a46caafa42b12cf4d92a60cced7428d7b79517fcdb2f6d648277d9c083915061"
+    },
+    {
+      "pageId": "P2-S134",
+      "part": 2,
+      "canonicalPage": 134,
+      "file": "p2-s134.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 134쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "64b1d4f76bc3e65ef73f8ded0c4b92cadd99e1949c08e4d988aca8226722d3c5"
+    },
+    {
+      "pageId": "P2-S135",
+      "part": 2,
+      "canonicalPage": 135,
+      "file": "p2-s135.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 135쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "b53739770258990a76a3ebb580af908b8668dad1534df1b5465185c4cdd118ad"
+    },
+    {
+      "pageId": "P2-S136",
+      "part": 2,
+      "canonicalPage": 136,
+      "file": "p2-s136.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 136쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "6de4d76c22d45163e3d9d6c9baf8089700c07b5104de92c5861b72aa2e8872c0"
+    },
+    {
+      "pageId": "P2-S137",
+      "part": 2,
+      "canonicalPage": 137,
+      "file": "p2-s137.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 137쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "5adfd0f865f6b892809fb5d0c5deffda6ce03915154514f12991317b919aabb1"
+    },
+    {
+      "pageId": "P2-S138",
+      "part": 2,
+      "canonicalPage": 138,
+      "file": "p2-s138.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 138쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "e57f681cf956f4aa69bb59bfec23a678f104fe596368958af6767a95ff69ddb6"
+    },
+    {
+      "pageId": "P2-S139",
+      "part": 2,
+      "canonicalPage": 139,
+      "file": "p2-s139.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 139쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "5894355506d1616a177e013dc8fb07e74b4176fdbfeb7d099010be96a4cb9f2c"
+    },
+    {
+      "pageId": "P2-S141",
+      "part": 2,
+      "canonicalPage": 141,
+      "file": "p2-s141.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 141쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "61307ff3fc528a078832daa3d105d284c42447861a3ebbfd724d4210fd41b2eb"
+    },
+    {
+      "pageId": "P2-S143",
+      "part": 2,
+      "canonicalPage": 143,
+      "file": "p2-s143.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 143쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "9511e823f0aad1483684f2010cc60829d80908fdb6de4b7c70a0c9560b54e665"
+    },
+    {
+      "pageId": "P2-S144",
+      "part": 2,
+      "canonicalPage": 144,
+      "file": "p2-s144.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 144쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "ec1446e8c438a344f99a47f4558686378759b960fee5922ff0d9ca09ce57a6b8"
+    },
+    {
+      "pageId": "P2-S145",
+      "part": 2,
+      "canonicalPage": 145,
+      "file": "p2-s145.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 145쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "185733a7669df20158a6928149c32e3326dd28082befc5512caadcb380c515d7"
+    },
+    {
+      "pageId": "P2-S147",
+      "part": 2,
+      "canonicalPage": 147,
+      "file": "p2-s147.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 147쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "3a0883a13c7ae2eb41c781deca308a46484a63e1318179f0735170ca1b3817cd"
+    },
+    {
+      "pageId": "P2-S148",
+      "part": 2,
+      "canonicalPage": 148,
+      "file": "p2-s148.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 148쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "a8773ad6040f3a17f5d22861f2b67872451d5a31786377680922c5966c127a13"
+    },
+    {
+      "pageId": "P2-S149",
+      "part": 2,
+      "canonicalPage": 149,
+      "file": "p2-s149.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 149쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "ed5c8cff721aa8a2a2d6ff2292730f7d2e63341ede8e0275f28277760e181879"
+    },
+    {
+      "pageId": "P2-S150",
+      "part": 2,
+      "canonicalPage": 150,
+      "file": "p2-s150.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 150쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "0db5e9065e8bcef145ba54717c2ec42305ebcd4b06653c5f42f398974b3ed4eb"
+    },
+    {
+      "pageId": "P2-S151",
+      "part": 2,
+      "canonicalPage": 151,
+      "file": "p2-s151.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 151쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "909999845bc6baaf3b82af655dc74612d28f848ff89c7572a87cef523ccc8799"
+    },
+    {
+      "pageId": "P2-S154",
+      "part": 2,
+      "canonicalPage": 154,
+      "file": "p2-s154.jpg",
+      "section": "탐험·수집·경쟁·상속",
+      "caption": "탐험·수집·경쟁·상속 · 정본 2부 154쪽",
+      "reviewStatus": "human-reviewed-local-candidate",
+      "sourceIds": [
+        "node:190",
+        "node:247"
+      ],
+      "sha256": "40f39138cfb9d049d4ad9a072985db59a1486c4c27305fed21c10216c4fd710d"
+    }
+  ]
+}
