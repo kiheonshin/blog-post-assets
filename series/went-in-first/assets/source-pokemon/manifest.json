@@ -2,8 +2,8 @@
   "schemaVersion": 1,
   "status": "local-candidate-unpublished",
   "canonicalTotal": 278,
-  "selectedTotal": 150,
-  "withheldTotal": 128,
+  "selectedTotal": 146,
+  "withheldTotal": 132,
   "order": "canonical-part-then-page",
   "sourceIds": [
     "node:190",
@@ -37,48 +37,6 @@
         "node:247"
       ],
       "sha256": "4b1b86d2899ad6bf4969d27237cc3854ac6b6566166b326a008b806df01abcba"
-    },
-    {
-      "pageId": "P1-S004",
-      "part": 1,
-      "canonicalPage": 4,
-      "file": "p1-s004.jpg",
-      "section": "발표의 출발점",
-      "caption": "발표의 출발점 · 정본 1부 4쪽",
-      "reviewStatus": "human-reviewed-local-candidate",
-      "sourceIds": [
-        "node:190",
-        "node:247"
-      ],
-      "sha256": "7949b07cb60a3d8982d849cff625c79737604e1aa0d373e6d68f9f903a8d6a35"
-    },
-    {
-      "pageId": "P1-S005",
-      "part": 1,
-      "canonicalPage": 5,
-      "file": "p1-s005.jpg",
-      "section": "발표의 출발점",
-      "caption": "발표의 출발점 · 정본 1부 5쪽",
-      "reviewStatus": "human-reviewed-local-candidate",
-      "sourceIds": [
-        "node:190",
-        "node:247"
-      ],
-      "sha256": "d5ef93ea1e6362cbe4559ccd4fbfb83d6a97823238c1e3e286a1ae5ff56a4420"
-    },
-    {
-      "pageId": "P1-S006",
-      "part": 1,
-      "canonicalPage": 6,
-      "file": "p1-s006.jpg",
-      "section": "발표의 출발점",
-      "caption": "발표의 출발점 · 정본 1부 6쪽",
-      "reviewStatus": "human-reviewed-local-candidate",
-      "sourceIds": [
-        "node:190",
-        "node:247"
-      ],
-      "sha256": "ab8317bfe1a53ac72a4ef32e37232520c2a68e5686f5b87682051df257c0fb36"
     },
     {
       "pageId": "P1-S007",
@@ -1143,20 +1101,6 @@
         "node:247"
       ],
       "sha256": "1596037da4820cff766fa8af8915839f657e2cd288885f8d77701c75bfcc6051"
-    },
-    {
-      "pageId": "P2-S044",
-      "part": 2,
-      "canonicalPage": 44,
-      "file": "p2-s044.jpg",
-      "section": "디지털 자산과 인터페이스",
-      "caption": "디지털 자산과 인터페이스 · 정본 2부 44쪽",
-      "reviewStatus": "human-reviewed-local-candidate",
-      "sourceIds": [
-        "node:190",
-        "node:247"
-      ],
-      "sha256": "644dc1cddcf224a39b87d607281b63ffd3ca0b69888e0602579bb951466a8634"
     },
     {
       "pageId": "P2-S045",
