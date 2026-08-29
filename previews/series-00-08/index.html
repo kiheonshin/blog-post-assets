@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>시리즈 00–08 메인 진열 미리보기 · Kiheon Shin</title>
+<meta name="robots" content="noindex,nofollow,noarchive">
+<link rel="icon" href="../../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../../assets/tokens.css?v=20260807a">
+<link rel="stylesheet" href="../../assets/site.css?v=20260807j">
+<style>
+  .preview-note{margin:var(--space-12) 0 0;padding:var(--space-6);border:1px solid var(--rule);background:var(--surface)}
+  .preview-note h2{margin:0 0 var(--space-3);font-family:var(--font-display);font-size:clamp(1.5rem,2.4vw,2rem);font-weight:400}
+  .preview-note p{max-width:var(--measure);margin:0;color:var(--ink-muted);line-height:1.75}
+  .preview-note p+p{margin-top:var(--space-3)}
+  .library-card--planned a{border-style:dashed}
+  .library-card--planned img{filter:grayscale(1);opacity:.72}
+  .library-card--planned .library-card__action{color:var(--ink-muted)}
+</style>
+</head>
+<body class="library-page">
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<header class="site-header"><div class="site-header__in">
+  <a class="brand" href="../../">KIHEON SHIN</a>
+  <p class="meta-label">LOCAL PREVIEW · 00–08</p>
+</div></header>
+<main id="main" class="library-main">
+  <header class="library-head">
+    <p class="meta-label">Blog · Series Preview</p>
+    <h1>신기헌의 생각이<br>쌓이는 블로그</h1>
+    <p class="lead">현재 공개 목록의 시리즈 00부터 06, 공개 준비 중인 시리즈 07, 기획 단계인 시리즈 08을 같은 메인 카드 규격으로 나란히 봅니다.</p>
+  </header>
+  <section id="series" class="library-section library-section--series" aria-labelledby="preview-series-title">
+    <h2 id="preview-series-title" class="library-section__marker">Series · 00–08</h2>
+    <p class="series-library__status">9개 시리즈 · 로컬 진열 미리보기</p>
+    <ol class="library-grid" id="preview-grid"></ol>
+  </section>
+  <section class="preview-note" id="series-08-preview" aria-labelledby="series-08-title">
+    <p class="meta-label">08 · NEXT SERIES · 기획 중</p>
+    <h2 id="series-08-title">커뮤니티·오픈소스·교육·나눔</h2>
+    <p>배우고 나누는 활동, 열린 도구와 공동 학습, 참여자가 소비자에서 창작자로 옮겨 가는 조건을 살펴볼 다음 시리즈입니다.</p>
+    <p>현재는 주제와 핵심 재료만 확보한 단계이며 제목·세 편 구성·커버는 아직 확정하지 않았습니다.</p>
+  </section>
+</main>
+<footer class="site-footer"><div class="site-footer__in">
+  <span>KIHEON SHIN</span><span>LOCAL PREVIEW · 미발행</span>
+</div></footer>
+<script type="module">
+import { contentLibrary } from "../../assets/content-manifest.js";
+
+const root = new URL("../../", import.meta.url);
+const candidates = [
+  {
+    slug: "went-in-first",
+    label: "07 · Went In First",
+    title: "낯선 세계 — 아이보다 먼저 들어가 봤다",
+    description: "동물의 숲의 설계와 실행, 함께 탐색한 포켓몬, 원고와 실제 발화 사이의 차이를 세 편으로 읽습니다.",
+    period: "2012–2026",
+    href: "series/went-in-first/",
+    cover: "series/went-in-first/assets/series-banner.jpg",
+    posts: [{}, {}, {}],
+    sources: [{}, {}],
+  },
+  {
+    slug: "community-open-source-learning",
+    label: "08 · Next Series",
+    title: "커뮤니티·오픈소스·교육·나눔",
+    description: "배우고 나누는 활동, 열린 도구와 공동 학습, 참여자가 창작자로 옮겨 가는 조건을 살펴볼 다음 시리즈.",
+    period: "2009–2025",
+    href: "previews/series-00-08/#series-08-preview",
+    cover: "assets/cover-placeholder.jpg",
+    posts: [],
+    sources: [],
+    planned: true,
+  },
+];
+
+const series = [...contentLibrary.series, ...candidates];
+const grid = document.querySelector("#preview-grid");
+
+for (const [index, entry] of series.entries()) {
+  const item = document.createElement("li");
+  const article = document.createElement("article");
+  article.className = `library-card${entry.planned ? " library-card--planned" : ""}`;
+  const link = document.createElement("a");
+  link.href = new URL(entry.href, root);
+
+  const image = document.createElement("img");
+  image.src = new URL(entry.cover, root);
+  image.alt = "";
+  image.width = 1600;
+  image.height = 800;
+  image.decoding = "async";
+  if (index === 0) image.fetchPriority = "high";
+  else image.loading = "lazy";
+
+  const copy = document.createElement("span");
+  copy.className = "library-card__copy";
+  const meta = document.createElement("span");
+  meta.className = "library-card__meta";
+  const label = document.createElement("span");
+  label.textContent = entry.label;
+  const count = document.createElement("span");
+  count.textContent = entry.planned
+    ? `${entry.period} · 기획 중`
+    : `${entry.period} · 포스팅 ${entry.posts.length}개${entry.sources?.length ? ` · 자료 ${entry.sources.length}개` : ""}`;
+  meta.append(label, count);
+
+  const title = document.createElement("span");
+  title.className = "library-card__title";
+  title.textContent = entry.title;
+  const description = document.createElement("span");
+  description.className = "library-card__description";
+  description.textContent = entry.description;
+  const action = document.createElement("span");
+  action.className = "library-card__action";
+  action.textContent = entry.planned ? "기획 카드 보기 ↓" : "시리즈 보기 →";
+
+  copy.append(meta, title, description, action);
+  link.append(image, copy);
+  article.append(link);
+  item.append(article);
+  grid.append(item);
+}
+</script>
+</body>
+</html>
