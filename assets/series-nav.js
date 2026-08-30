@@ -2,9 +2,12 @@
    HTML만 새로 받고 모듈은 캐시에서 꺼내 쓰는 일이 생긴다. 그러면 새 시리즈가
    목록에서 빠지고 "시리즈 정보를 불러오지 못했습니다"가 뜬다(2026-07-25 실증).
    페이지의 series-nav.js?v= 값과 반드시 같이 올릴 것. */
-import { contentLibrary, getSeries } from "./content-manifest.js?v=20260819a";
+import { contentLibrary, getSeries } from "./content-manifest.js?v=20260831a";
 
 const siteRoot = new URL("../", import.meta.url);
+const SERIES_PAGE_SIZE = 6;
+const EXPLORE_PAGE_SIZE = 8;
+const EXPLORE_PRIMARY_TOPIC_LIMIT = 8;
 
 function makeElement(tagName, className, text) {
   const element = document.createElement(tagName);
@@ -148,13 +151,14 @@ function makeArchiveResult(item) {
   const meta = makeElement("p", "archive-item__meta");
   meta.append(
     makeElement("span", "archive-item__kind", item.kindLabel),
-    makeElement("span", "", item.seriesLabel),
+    makeElement("span", "archive-item__series", item.seriesLabel),
   );
 
   if (item.published) {
     const time = document.createElement("time");
+    time.className = "archive-item__published";
     time.dateTime = item.published;
-    time.textContent = item.published.replaceAll("-", ".");
+    time.textContent = `발행 ${item.published.replaceAll("-", ".")}`;
     meta.append(time);
   }
 
@@ -162,7 +166,7 @@ function makeArchiveResult(item) {
     meta.append(
       makeElement(
         "span",
-        "",
+        "archive-item__source-years",
         `원자료 ${item.sourceYears.map(String).join("·")}`,
       ),
     );
@@ -174,11 +178,6 @@ function makeArchiveResult(item) {
   link.textContent = item.title;
   title.append(link);
 
-  const context = makeElement(
-    "p",
-    "archive-item__context",
-    item.description || item.seriesTitle,
-  );
   const facets = makeElement("div", "archive-item__facets");
   const topics = makeElement("div", "archive-item__facet-group");
   topics.append(
@@ -195,7 +194,7 @@ function makeArchiveResult(item) {
     keywords,
   );
 
-  article.append(meta, title, context, facets);
+  article.append(meta, title, facets);
   listItem.append(article);
   return listItem;
 }
@@ -421,27 +420,18 @@ class SeriesPostLinks extends HTMLElement {
 
 class SeriesLibrary extends HTMLElement {
   connectedCallback() {
-    // 접기는 숨기는 양이 클릭 값을 할 때만 한다. 6개 고정으로 두면 7번째 시리즈가
-    // 붙는 순간 "나머지 1개 보기"가 생겨, 카드 한 장을 숨기려고 클릭과 접기 줄을
-    // 요구한다 — 접기가 절약해 주는 것보다 비싸다. 그래서 남는 수가 한 행에 못 미치면
-    // 접지 않고 전부 펼친다. 열 수가 바뀌면 이 상수만 고친다.
-    const COLUMNS = 3;
-    const PREVIEW_ROWS = 2;
     const total = contentLibrary.series.length;
-    const gridLimit = COLUMNS * PREVIEW_ROWS;
-    const previewLimit = total - gridLimit < COLUMNS ? total : gridLimit;
-    const previewSeries = contentLibrary.series.slice(0, previewLimit);
-    const remainingSeries = contentLibrary.series.slice(previewLimit);
+    const pageCount = Math.max(1, Math.ceil(total / SERIES_PAGE_SIZE));
+    this.page = 1;
     const status = makeElement(
       "p",
       "series-library__status",
-      remainingSeries.length
-        ? `${contentLibrary.series.length}개 시리즈 · 먼저 ${previewSeries.length}개를 펼쳐봅니다.`
-        : `${contentLibrary.series.length}개 시리즈`,
+      `${total}개 시리즈 · 한 페이지에 ${SERIES_PAGE_SIZE}개`,
     );
     const list = makeElement("ol", "library-grid");
+    list.id = "series-library-grid";
 
-    for (const [index, series] of previewSeries.entries()) {
+    const makeSeriesCard = (series, index) => {
       const item = document.createElement("li");
       const article = makeElement("article", "library-card");
       const link = document.createElement("a");
@@ -477,47 +467,77 @@ class SeriesLibrary extends HTMLElement {
       link.append(image, copy);
       article.append(link);
       item.append(article);
-      list.append(item);
-    }
+      return item;
+    };
 
-    this.replaceChildren(status, list);
+    const pager = makeElement("nav", "series-pager");
+    pager.setAttribute("aria-label", "시리즈 페이지");
+    const previous = makeElement("button", "series-pager__direction", "←");
+    previous.type = "button";
+    previous.setAttribute("aria-label", "이전 시리즈 페이지");
+    previous.setAttribute("aria-controls", list.id);
+    const rail = makeElement("div", "series-pager__rail");
+    const pageStatus = makeElement("p", "series-pager__status");
+    pageStatus.setAttribute("aria-live", "polite");
+    const pageSegments = makeElement("div", "series-pager__segments");
+    pageSegments.setAttribute("role", "group");
+    pageSegments.setAttribute("aria-label", "시리즈 페이지 선택");
+    const pageButtons = Array.from({ length: pageCount }, (_, index) => {
+      const button = makeElement("button", "series-pager__segment");
+      button.type = "button";
+      button.setAttribute("aria-label", `${index + 1}번째 시리즈 페이지`);
+      button.addEventListener("click", () => {
+        this.page = index + 1;
+        render();
+      });
+      pageSegments.append(button);
+      return button;
+    });
+    const pageHint = makeElement("p", "series-pager__hint");
+    rail.append(pageStatus, pageSegments, pageHint);
+    const next = makeElement("button", "series-pager__direction", "→");
+    next.type = "button";
+    next.setAttribute("aria-label", "다음 시리즈 페이지");
+    next.setAttribute("aria-controls", list.id);
+    pager.append(previous, rail, next);
 
-    if (remainingSeries.length) {
-      const directory = makeElement("details", "series-directory");
-      // 접힌 것이 몇 개인지만 말하면 열어 볼 이유가 안 생긴다. 어느 시기를 담고
-      // 있는지 함께 적어, 접힌 채로도 목록의 범위가 보이게 한다.
-      const foldedYears = remainingSeries
-        .map((series) => Number.parseInt(series.period, 10))
-        .filter((year) => Number.isFinite(year));
-      const foldedRange = foldedYears.length
-        ? ` · ${Math.min(...foldedYears)}–${Math.max(...foldedYears)}`
-        : "";
-      const summary = makeElement(
-        "summary",
-        "",
-        `나머지 ${remainingSeries.length}개 시리즈${foldedRange} 보기`,
+    const render = () => {
+      const start = (this.page - 1) * SERIES_PAGE_SIZE;
+      const pageSeries = contentLibrary.series.slice(
+        start,
+        start + SERIES_PAGE_SIZE,
       );
-      const directoryList = makeElement("ol", "series-directory__list");
+      list.replaceChildren(
+        ...pageSeries.map((series, index) => makeSeriesCard(series, start + index)),
+      );
+      pageStatus.textContent = `${start + 1}–${start + pageSeries.length} / ${total}`;
+      const nextCount = Math.min(
+        SERIES_PAGE_SIZE,
+        Math.max(0, total - (start + pageSeries.length)),
+      );
+      pageHint.textContent = nextCount
+        ? `다음 화면에 ${nextCount}개 시리즈`
+        : "전체 시리즈를 모두 확인했습니다";
+      pageButtons.forEach((button, index) => {
+        const active = index + 1 === this.page;
+        button.setAttribute("aria-current", active ? "page" : "false");
+      });
+      previous.disabled = this.page === 1;
+      next.disabled = this.page === pageCount;
+      pager.hidden = pageCount === 1;
+    };
 
-      for (const series of remainingSeries) {
-        const item = document.createElement("li");
-        const link = document.createElement("a");
-        link.href = new URL(series.href, siteRoot);
-        link.append(
-          makeElement("span", "series-directory__title", series.title),
-          makeElement(
-            "span",
-            "series-directory__meta",
-            `${series.label} · ${series.period} · 포스팅 ${series.posts.length}개`,
-          ),
-        );
-        item.append(link);
-        directoryList.append(item);
-      }
+    previous.addEventListener("click", () => {
+      this.page = Math.max(1, this.page - 1);
+      render();
+    });
+    next.addEventListener("click", () => {
+      this.page = Math.min(pageCount, this.page + 1);
+      render();
+    });
 
-      directory.append(summary, directoryList);
-      this.append(directory);
-    }
+    this.replaceChildren(status, list, pager);
+    render();
   }
 }
 
@@ -539,6 +559,10 @@ class ArchiveLibrary extends HTMLElement {
     ];
 
     const parameters = new URL(location.href).searchParams;
+    const requestedPage = Number.parseInt(parameters.get("page") ?? "1", 10);
+    this.page = Number.isFinite(requestedPage) && requestedPage > 0
+      ? requestedPage
+      : 1;
     const selectParameter = (name, values, fallback) => {
       const value = parameters.get(name);
       return value && values.includes(value) ? value : fallback;
@@ -600,7 +624,7 @@ class ArchiveLibrary extends HTMLElement {
     const topicFieldset = makeElement("fieldset", "archive-topics");
     topicFieldset.append(makeElement("legend", "", "주제"));
     this.topicButtons = makeElement("div", "archive-topics__buttons");
-    for (const topic of ["all", ...this.topics]) {
+    const makeTopicButton = (topic) => {
       const count =
         topic === "all"
           ? this.items.length
@@ -612,7 +636,29 @@ class ArchiveLibrary extends HTMLElement {
       );
       button.type = "button";
       button.dataset.topic = topic;
-      this.topicButtons.append(button);
+      return button;
+    };
+    this.topicButtons.append(
+      makeTopicButton("all"),
+      ...this.topics
+        .slice(0, EXPLORE_PRIMARY_TOPIC_LIMIT)
+        .map(makeTopicButton),
+    );
+    const additionalTopics = this.topics.slice(EXPLORE_PRIMARY_TOPIC_LIMIT);
+    if (additionalTopics.length) {
+      const moreTopics = makeElement("details", "archive-topics__more");
+      const summary = makeElement(
+        "summary",
+        "",
+        `주제 ${additionalTopics.length}개 더 보기`,
+      );
+      const additionalButtons = makeElement(
+        "div",
+        "archive-topics__additional",
+      );
+      additionalButtons.append(...additionalTopics.map(makeTopicButton));
+      moreTopics.append(summary, additionalButtons);
+      this.topicButtons.append(moreTopics);
     }
     topicFieldset.append(this.topicButtons);
 
@@ -620,6 +666,32 @@ class ArchiveLibrary extends HTMLElement {
     this.activeFilters = makeElement("div", "archive-active-filters");
     this.activeFilters.setAttribute("aria-live", "polite");
     this.results = makeElement("ol", "archive-results");
+    this.results.id = "archive-results";
+    this.pagination = makeElement("nav", "archive-pagination");
+    this.pagination.setAttribute("aria-label", "검색 결과 페이지");
+    this.previousButton = makeElement(
+      "button",
+      "archive-pagination__button",
+      "←",
+    );
+    this.previousButton.type = "button";
+    this.previousButton.setAttribute("aria-label", "이전 검색 결과 페이지");
+    this.previousButton.setAttribute("aria-controls", this.results.id);
+    this.resultProgress = makeElement("p", "archive-pagination__progress");
+    this.resultProgress.setAttribute("aria-live", "polite");
+    this.nextButton = makeElement(
+      "button",
+      "archive-pagination__button",
+      "→",
+    );
+    this.nextButton.type = "button";
+    this.nextButton.setAttribute("aria-label", "다음 검색 결과 페이지");
+    this.nextButton.setAttribute("aria-controls", this.results.id);
+    this.pagination.append(
+      this.previousButton,
+      this.resultProgress,
+      this.nextButton,
+    );
     this.empty = makeElement(
       "p",
       "archive-empty",
@@ -627,7 +699,13 @@ class ArchiveLibrary extends HTMLElement {
     );
     this.empty.hidden = true;
 
-    this.replaceChildren(this.form, this.activeFilters, this.results, this.empty);
+    this.replaceChildren(
+      this.form,
+      this.activeFilters,
+      this.results,
+      this.pagination,
+      this.empty,
+    );
     this.form.addEventListener("input", () => this.readForm());
     this.form.addEventListener("change", () => this.readForm());
     this.form.addEventListener("reset", () => {
@@ -640,6 +718,7 @@ class ArchiveLibrary extends HTMLElement {
           tag: "",
           sort: "newest",
         };
+        this.page = 1;
         this.syncForm();
         this.render();
       });
@@ -648,6 +727,7 @@ class ArchiveLibrary extends HTMLElement {
       const button = event.target.closest("[data-topic]");
       if (!button) return;
       this.state.topic = button.dataset.topic;
+      this.page = 1;
       this.render();
     });
     this.results.addEventListener("click", (event) => {
@@ -659,6 +739,7 @@ class ArchiveLibrary extends HTMLElement {
       const url = new URL(link.href);
       this.state.topic = url.searchParams.get("topic") ?? this.state.topic;
       this.state.tag = url.searchParams.get("tag") ?? "";
+      this.page = 1;
       this.syncForm();
       this.render();
       this.scrollIntoView({ behavior: "smooth", block: "start" });
@@ -668,7 +749,16 @@ class ArchiveLibrary extends HTMLElement {
       if (!button) return;
       this.state[button.dataset.clear] =
         button.dataset.clear === "topic" ? "all" : "";
+      this.page = 1;
       this.syncForm();
+      this.render();
+    });
+    this.previousButton.addEventListener("click", () => {
+      this.page = Math.max(1, this.page - 1);
+      this.render();
+    });
+    this.nextButton.addEventListener("click", () => {
+      this.page += 1;
       this.render();
     });
 
@@ -698,6 +788,7 @@ class ArchiveLibrary extends HTMLElement {
     this.state.type = String(data.get("type") ?? "all");
     this.state.year = String(data.get("year") ?? "all");
     this.state.sort = String(data.get("sort") ?? "newest");
+    this.page = 1;
     this.render();
   }
 
@@ -716,6 +807,11 @@ class ArchiveLibrary extends HTMLElement {
       } else {
         url.searchParams.set(key, value);
       }
+    }
+    if (this.page > 1) {
+      url.searchParams.set("page", String(this.page));
+    } else {
+      url.searchParams.delete("page");
     }
     history.replaceState(null, "", url);
   }
@@ -760,11 +856,21 @@ class ArchiveLibrary extends HTMLElement {
         );
       });
 
-    this.results.replaceChildren(...items.map(makeArchiveResult));
+    const pageCount = Math.max(1, Math.ceil(items.length / EXPLORE_PAGE_SIZE));
+    this.page = Math.min(this.page, pageCount);
+    const start = (this.page - 1) * EXPLORE_PAGE_SIZE;
+    const visibleItems = items.slice(start, start + EXPLORE_PAGE_SIZE);
+    this.results.replaceChildren(...visibleItems.map(makeArchiveResult));
     this.empty.hidden = items.length > 0;
     this.results.hidden = items.length === 0;
+    this.pagination.hidden = items.length <= EXPLORE_PAGE_SIZE;
+    this.resultProgress.textContent = items.length
+      ? `${this.page}/${pageCount} 페이지 · ${start + 1}–${start + visibleItems.length}/${items.length}`
+      : "0개 결과";
+    this.previousButton.disabled = this.page === 1;
+    this.nextButton.disabled = this.page === pageCount;
 
-    for (const button of this.topicButtons.children) {
+    for (const button of this.topicButtons.querySelectorAll("[data-topic]")) {
       const active = button.dataset.topic === this.state.topic;
       button.setAttribute("aria-pressed", String(active));
     }

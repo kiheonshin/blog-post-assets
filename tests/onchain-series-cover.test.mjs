@@ -44,7 +44,7 @@ test("the current cache versions reach the home and every On-chain surface", asy
   assert.match(await read("index.html"), /series-nav\.js\?v=20260831a/);
 
   for (const file of onchainSurfaces) {
-    assert.match(await read(file), /series-nav\.js\?v=20260819a/, file);
+    assert.match(await read(file), /series-nav\.js\?v=20260831a/, file);
   }
 });
 

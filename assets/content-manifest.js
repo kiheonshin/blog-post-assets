@@ -84,7 +84,7 @@ export const contentLibrary = {
         {
           id: "universe-intro",
           label: "SOURCE · 소개 덱",
-          title: "KIHEON LIFE UNIVERSE 소개",
+          title: "Kiheon life universe 소개",
           description:
             "27장. 신기헌 본인이 아니라, 본인을 학습한 에이전트가 본인의 발표 자료와 "
             + "아카이브를 재료로 다시 만들었다. 본인이 읽고 승인한 뒤 공개됐다.",
