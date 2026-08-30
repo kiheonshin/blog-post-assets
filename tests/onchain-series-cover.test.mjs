@@ -16,6 +16,7 @@ const onchainSurfaces = [
   "series/onchain-storytelling/sources/proposal-mxtwn-x/index.html",
   "series/onchain-storytelling/sources/proposal-sapienz-town/index.html",
   "series/onchain-storytelling/sources/proposal-strategy-diagrams/index.html",
+  "series/onchain-storytelling/sources/slides-2023-11/index.html",
 ];
 
 test("the On-chain Storytelling series cover replaces the placeholder", async () => {

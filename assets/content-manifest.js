@@ -397,17 +397,6 @@ export const contentLibrary = {
           keywords: ["코-크리에이션", "웹3", "슬라이드", "온체인 아이덴티티"],
           href: "series/co-creation-culture/sources/slides-2023-06/",
         },
-        {
-          id: "slides-2023-11",
-          label: "SOURCE · 발표 자료",
-          title: "현실과 가상을 연결하는 블록체인 기반의 스토리텔링",
-          description: "2023.11.09 · 슬라이드 71장을 그날의 순서대로",
-          published: "2023-11-09",
-          sourceYears: [2023],
-          topics: ["현실과 가상", "기록과 서사"],
-          keywords: ["블록체인", "스토리텔링", "매직서클", "디지털 소유"],
-          href: "series/co-creation-culture/sources/slides-2023-11/",
-        },
       ],
       /* `sourceModuleLinks` 는 여기 있었다. 네 원자료 페이지가 서로 오가는
          길이었고 공개 목록에는 넣지 않았다. 2026-08-05 에 넷을 `/archive/` 로
@@ -473,6 +462,17 @@ export const contentLibrary = {
         },
       ],
       sources: [
+        {
+          id: "slides-2023-11",
+          label: "SOURCE · 발표 자료",
+          title: "현실과 가상을 연결하는 블록체인 기반의 스토리텔링",
+          description: "2023.11.09 · 슬라이드 71장을 그날의 순서대로",
+          published: "2023-11-09",
+          sourceYears: [2023],
+          topics: ["현실과 가상", "기록과 서사"],
+          keywords: ["블록체인", "스토리텔링", "매직서클", "디지털 소유"],
+          href: "series/onchain-storytelling/sources/slides-2023-11/",
+        },
         {
           id: "proposal-strategy-diagrams",
           label: "SOURCE · 전략 기획",
