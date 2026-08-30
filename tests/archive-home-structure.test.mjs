@@ -13,20 +13,36 @@ function inventory(html) {
 
 test("Archive keeps product navigation on the homepage only", async () => {
   const html = await read("archive/index.html");
+  const summary = JSON.parse(await read("assets/archive-summary.json"));
   assert.doesNotMatch(html, /archive-atlas-layer|archive-inner-layer/);
   assert.doesNotMatch(html, />World Atlas<|>Inner World</);
+  assert.doesNotMatch(html, /Life World|세계 모델|월드 모델|월드 스킨/);
   assert.doesNotMatch(html, /world-atlas-entry\.css/);
-  assert.match(html, /원자료 모듈 4개 · 자료 인벤토리 9종/);
+  assert.match(html, /PUBLIC ARCHIVE/);
+  const period = `${summary.sourceYears.at(0)}–${summary.sourceYears.at(-1)}`;
+  assert.deepEqual([summary.sourceYears.at(0), summary.sourceYears.at(-1)], [2017, 2026]);
+  assert.match(html, new RegExp(`공개 시리즈 ${summary.counts.publicSeries}개 · 글 ${summary.counts.publishedPosts}편 · 등록 자료 ${summary.counts.manifestSources}개`));
+  assert.match(html, new RegExp(`발표 아카이브 ${summary.counts.presentationArchiveItems}편 · ${period}`));
+  for (const [key, value] of Object.entries({
+    publicSeries: summary.counts.publicSeries,
+    publishedPosts: summary.counts.publishedPosts,
+    manifestSources: summary.counts.manifestSources,
+    presentationArchiveItems: summary.counts.presentationArchiveItems,
+  })) {
+    assert.match(html, new RegExp(`data-archive-count="${key}">${value}<`));
+  }
+  assert.match(html, new RegExp(`data-archive-range="sourceYears">${period}<`));
+  assert.match(html, /Local Vault/);
 });
 
-test("the material inventory distinguishes seven pages from two preserved originals", async () => {
+test("the material inventory distinguishes public links from Local Vault originals", async () => {
   const html = inventory(await read("archive/index.html"));
   assert.ok(html);
-  assert.match(html, />자료 인벤토리</);
+  assert.match(html, />공개 자료와 Local Vault 기록</);
 
   const openRows = html.match(/<div data-access="open">[\s\S]*?<\/div>/g) ?? [];
   const closedRows = html.match(/<div data-access="closed">[\s\S]*?<\/div>/g) ?? [];
-  assert.equal(openRows.length, 7);
+  assert.ok(openRows.length >= 11);
   assert.equal(closedRows.length, 2);
 
   for (const row of openRows) {
@@ -41,6 +57,7 @@ test("the material inventory distinguishes seven pages from two preserved origin
 
 test("Archive inventory styles retain visible availability text", async () => {
   const css = await read("assets/archive.css");
+  assert.match(css, /\.arc-summary/);
   assert.match(css, /\.arc-stock__status/);
   assert.match(css, /\.arc-stock \[data-access="open"\] \.arc-stock__status/);
   assert.doesNotMatch(css, /\.archive-inner-layer|\.archive-inner-card/);

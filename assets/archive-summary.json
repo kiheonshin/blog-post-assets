@@ -1,0 +1,95 @@
+{
+  "schemaVersion": "public-archive-summary-v1",
+  "generatedFrom": [
+    "assets/content-manifest.js",
+    "series/metaverse-era/sources/presentations/index.html"
+  ],
+  "asOf": "2026-08-31",
+  "counts": {
+    "publicSeries": 7,
+    "publishedPosts": 21,
+    "manifestSources": 11,
+    "presentationArchiveItems": 8,
+    "presentationVideos": 5,
+    "presentationLineages": 3
+  },
+  "sourceYears": [
+    2017,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "registeredSeries": [
+    {
+      "slug": "life-universe",
+      "label": "00 · Life Universe · Making of",
+      "title": "Life Universe · Making of",
+      "href": "series/life-universe/",
+      "posts": 3,
+      "sources": 1,
+      "hasCover": true
+    },
+    {
+      "slug": "aigc-creative-paradigm",
+      "label": "01 · AIGC Notes",
+      "title": "AI 시대, 창작의 정의를 다시 묻다",
+      "href": "series/aigc-creative-paradigm/",
+      "posts": 3,
+      "sources": 2,
+      "hasCover": true
+    },
+    {
+      "slug": "newtype-ip-dialogue",
+      "label": "02 · Newtype Summit",
+      "title": "AI를 열어둘수록 선명해지는 창작자의 자리",
+      "href": "series/newtype-ip-dialogue/",
+      "posts": 3,
+      "sources": 0,
+      "hasCover": true
+    },
+    {
+      "slug": "autonomous-worlds",
+      "label": "03 · Autonomous Worlds",
+      "title": "자율 세계, 스스로 규칙을 만드는 세계의 등장",
+      "href": "series/autonomous-worlds/",
+      "posts": 3,
+      "sources": 2,
+      "hasCover": true
+    },
+    {
+      "slug": "co-creation-culture",
+      "label": "04 · Co-Creation Culture",
+      "title": "코-크리에이션 문화",
+      "href": "series/co-creation-culture/",
+      "posts": 3,
+      "sources": 1,
+      "hasCover": true
+    },
+    {
+      "slug": "onchain-storytelling",
+      "label": "05 · On-chain Storytelling",
+      "title": "온체인 스토리텔링",
+      "href": "series/onchain-storytelling/",
+      "posts": 3,
+      "sources": 5,
+      "hasCover": true
+    },
+    {
+      "slug": "metaverse-era",
+      "label": "06 · Metaverse Era",
+      "title": "메타버스 시대 — 한 파일로 2년을 말했다",
+      "href": "series/metaverse-era/",
+      "posts": 3,
+      "sources": 0,
+      "hasCover": true
+    }
+  ],
+  "availability": {
+    "publicLinks": "links-open-the-current-public-surface",
+    "localVault": "originals-and-unregistered-source-pages-are-not-counted-here"
+  }
+}
