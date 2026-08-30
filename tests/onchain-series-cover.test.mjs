@@ -41,7 +41,7 @@ test("the On-chain Storytelling series cover replaces the placeholder", async ()
 });
 
 test("the current cache versions reach the home and every On-chain surface", async () => {
-  assert.match(await read("index.html"), /series-nav\.js\?v=20260819a/);
+  assert.match(await read("index.html"), /series-nav\.js\?v=20260831a/);
 
   for (const file of onchainSurfaces) {
     assert.match(await read(file), /series-nav\.js\?v=20260819a/, file);

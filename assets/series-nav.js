@@ -617,11 +617,8 @@ class ArchiveLibrary extends HTMLElement {
     topicFieldset.append(this.topicButtons);
 
     this.form.append(search, type, year, sort, reset, topicFieldset);
-    this.statusRow = makeElement("div", "archive-status-row");
-    this.status = makeElement("p", "archive-status");
-    this.status.setAttribute("aria-live", "polite");
     this.activeFilters = makeElement("div", "archive-active-filters");
-    this.statusRow.append(this.status, this.activeFilters);
+    this.activeFilters.setAttribute("aria-live", "polite");
     this.results = makeElement("ol", "archive-results");
     this.empty = makeElement(
       "p",
@@ -630,7 +627,7 @@ class ArchiveLibrary extends HTMLElement {
     );
     this.empty.hidden = true;
 
-    this.replaceChildren(this.form, this.statusRow, this.results, this.empty);
+    this.replaceChildren(this.form, this.activeFilters, this.results, this.empty);
     this.form.addEventListener("input", () => this.readForm());
     this.form.addEventListener("change", () => this.readForm());
     this.form.addEventListener("reset", () => {
@@ -764,30 +761,6 @@ class ArchiveLibrary extends HTMLElement {
       });
 
     this.results.replaceChildren(...items.map(makeArchiveResult));
-    const scope = [
-      this.state.q ? `검색 “${this.state.q}”` : "",
-      this.state.type === "post"
-        ? "포스팅"
-        : this.state.type === "source"
-          ? "원자료"
-          : "",
-      this.state.year === "all" ? "" : `관련 연도 ${this.state.year}`,
-      this.state.topic === "all" ? "" : `주제 ${this.state.topic}`,
-      this.state.tag ? `키워드 #${this.state.tag}` : "",
-    ].filter(Boolean);
-    const sortLabel = {
-      newest: "최신 발행순",
-      oldest: "오래된 발행순",
-      series: "시리즈순",
-    }[this.state.sort];
-    this.status.replaceChildren(
-      makeElement("strong", "archive-status__count", `기록 ${items.length}건`),
-      makeElement(
-        "span",
-        "archive-status__scope",
-        ` · ${scope.length ? scope.join(" · ") : "전체 공개 기록"} · ${sortLabel}`,
-      ),
-    );
     this.empty.hidden = items.length > 0;
     this.results.hidden = items.length === 0;
 

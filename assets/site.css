@@ -786,39 +786,14 @@ transcript-reader {
   font-weight: 600;
 }
 
-.archive-status-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: var(--space-3);
-  min-height: 3.5rem;
-  padding-block: var(--space-3);
-}
-
-.archive-status {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--space-2) var(--space-3);
-  margin: 0;
-  color: var(--ink-muted);
-  font-size: 0.875rem;
-}
-
-.archive-status__count {
-  color: var(--ink);
-  font-weight: 600;
-}
-
-.archive-status__scope {
-  color: var(--ink-muted);
-}
-
 .archive-active-filters {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
+}
+
+.archive-active-filters:not(:empty) {
+  padding-block: var(--space-3);
 }
 
 .archive-results {
