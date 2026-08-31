@@ -95,11 +95,9 @@ function getSelectedContext({ kind, id } = {}) {
   return notFound(id ?? kind);
 }
 
-function getImagePlan({ zoneId = state.zoneId, relationId = state.relationId } = {}) {
+function getImagePlan({ zoneId = state.zoneId } = {}) {
   const zone = zoneById(zoneId);
-  const relation = relationById(relationId);
   if (!zone) return notFound(zoneId);
-  if (!relation) return notFound(relationId);
 
   const zoneSlots = state.context.zones.map((item) => ({
     slot: `zone-selector-${item.number}`,
@@ -107,21 +105,11 @@ function getImagePlan({ zoneId = state.zoneId, relationId = state.relationId } =
     src: item.image.src,
     alt: item.image.alt,
   }));
-  const endpointSlots = relation.zoneIds.map((endpointId, index) => {
-    const endpoint = zoneById(endpointId);
-    return {
-      slot: `relation-endpoint-${index + 1}`,
-      zoneId: endpoint.id,
-      src: endpoint.image.src,
-      alt: endpoint.image.alt,
-    };
-  });
 
   return copy({
     slots: [
       ...zoneSlots,
       { slot: "zone-detail", zoneId: zone.id, src: zone.image.src, alt: zone.image.alt },
-      ...endpointSlots,
     ],
     uniqueAssets: state.context.zones.map((item) => item.image.src),
   });
@@ -156,7 +144,8 @@ function validateContext(context) {
 
 function renderCounts() {
   document.querySelector("[data-zone-count]").textContent = String(state.context.zones.length).padStart(2, "0");
-  document.querySelector("[data-relation-count]").textContent = String(state.context.relations.length).padStart(2, "0");
+  const evidenceCount = state.context.objects.length + state.context.materials.length;
+  document.querySelector("[data-evidence-count]").textContent = String(evidenceCount).padStart(2, "0");
   document.querySelector("[data-zone-range]").textContent = `${state.context.zones.length}개 구역`;
 }
 
@@ -271,79 +260,6 @@ function renderMaterials() {
   }).join("");
 }
 
-function renderRelationTabs() {
-  const tablist = document.querySelector("[data-relation-tablist]");
-  tablist.innerHTML = state.context.relations.map((relation, index) => {
-    const selected = relation.id === state.relationId;
-    return `<button class="relation-tab" type="button" role="tab"
-      id="tab-${escapeHtml(relation.id)}"
-      aria-selected="${selected}"
-      aria-controls="relation-detail"
-      aria-label="${escapeHtml(relation.accessibleName)}"
-      tabindex="${selected ? "0" : "-1"}"
-      data-relation-id="${escapeHtml(relation.id)}">
-      <span class="relation-tab__number">${String(index + 1).padStart(2, "0")}</span>
-      <strong>${escapeHtml(relation.selectorLabel)}</strong>
-      <span>${escapeHtml(relation.sharedQuestion)}</span>
-    </button>`;
-  }).join("");
-  bindTablist(tablist, "relation", state.context.relations.map((relation) => relation.id));
-}
-
-function renderRelationPanel() {
-  const relation = relationById(state.relationId);
-  const panel = document.querySelector("[data-relation-panel]");
-  if (!relation || !panel) return;
-  const zones = relation.zoneIds.map((id) => zoneById(id));
-  const labels = state.context.labels;
-  panel.dataset.relationId = relation.id;
-  panel.setAttribute("aria-labelledby", `tab-${relation.id}`);
-  panel.innerHTML = `
-    <header class="relation-stage__head">
-      <div>
-        <p class="zone-stage__kicker">${escapeHtml(labels.notConfirmed)} · RELATION PROPOSAL</p>
-        <h3>${escapeHtml(relation.title)}</h3>
-        <p>${escapeHtml(relation.sharedQuestion)}</p>
-      </div>
-      <p class="zone-stage__count">${zones.map((zone) => zone.number).join(" + ")}</p>
-    </header>
-    <div class="relation-stage__visuals">
-      ${zones.map((zone) => `<figure class="relation-figure">
-        <button class="image-open" type="button"
-          data-open-image
-          data-image-src="${escapeHtml(zone.image.src)}"
-          data-image-alt="${escapeHtml(zone.image.alt)}"
-          data-image-title="${escapeHtml(zone.title)}"
-          data-image-caption="${escapeHtml(zone.observed)}"
-          aria-label="${escapeHtml(zone.title)} 장면 전체 보기">
-          <img src="${escapeHtml(zone.image.src)}" alt="${escapeHtml(zone.image.alt)}" width="1600" height="800" loading="lazy" decoding="async">
-          <span class="image-open__label">전체 보기</span>
-        </button>
-        <figcaption>${escapeHtml(zone.number)} · ${escapeHtml(zone.publicLabel)}</figcaption>
-      </figure>`).join("")}
-    </div>
-    <div class="relation-stage__reading">
-      <section class="reading-block">
-        <p class="reading-label reading-label--observed">${escapeHtml(labels.observed)}</p>
-        <p>${escapeHtml(relation.observedDifference)}</p>
-      </section>
-      <section class="reading-block">
-        <p class="reading-label reading-label--proposal">${escapeHtml(labels.reading)}</p>
-        <p>${escapeHtml(relation.readingProposal)}</p>
-      </section>
-    </div>`;
-}
-
-function renderBoundaries() {
-  const target = document.querySelector("[data-boundary-list]");
-  target.innerHTML = state.context.boundaries.map((item) => `<article class="boundary-card" data-boundary-id="${escapeHtml(item.id)}">
-    <p class="boundary-card__state">${escapeHtml(item.state)}</p>
-    <h3>${escapeHtml(item.title)}</h3>
-    <p>${escapeHtml(item.description)}</p>
-    <code>${escapeHtml(item.pathText)}</code>
-  </article>`).join("");
-}
-
 function bindTablist(tablist, kind, ids) {
   const selector = `[data-${kind}-id][role="tab"]`;
   tablist.querySelectorAll(selector).forEach((tab) => {
@@ -371,14 +287,6 @@ function select(kind, id, focusSelected = false) {
     renderMaterials();
     if (focusSelected) {
       document.querySelector(`[data-zone-tablist] [data-zone-id="${id}"]`)?.focus();
-    }
-  }
-  if (kind === "relation" && relationById(id)) {
-    state.relationId = id;
-    renderRelationTabs();
-    renderRelationPanel();
-    if (focusSelected) {
-      document.querySelector(`[data-relation-tablist] [data-relation-id="${id}"]`)?.focus();
     }
   }
 }
@@ -419,9 +327,6 @@ function renderAll() {
   renderZonePanel();
   renderObjects();
   renderMaterials();
-  renderRelationTabs();
-  renderRelationPanel();
-  renderBoundaries();
 }
 
 async function initialize() {

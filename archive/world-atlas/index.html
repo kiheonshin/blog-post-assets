@@ -58,34 +58,46 @@
       </div>
       <dl class="outside-metrics" aria-label="Outside 공개 범위">
         <div><dt>Zones</dt><dd data-zone-count>0</dd></div>
-        <div><dt>Relations</dt><dd data-relation-count>0</dd></div>
+        <div><dt>Evidence</dt><dd data-evidence-count>0</dd></div>
         <div><dt>Access</dt><dd>Public</dd></div>
       </dl>
     </section>
 
     <section class="shared-seam outside-shell" aria-labelledby="shared-seam-title" data-shared-seam>
-      <div class="shared-seam__side shared-seam__side--outside">
+      <div class="shared-seam__side shared-seam__side--outside" tabindex="0" aria-describedby="seam-tip-outside">
         <p>현재 면</p>
         <h2 id="shared-seam-title">Outside</h2>
         <span>기록을 펼쳐 읽는 면</span>
+        <div class="seam-tip" id="seam-tip-outside" role="note">
+          <p>PUBLIC-REFERENCE-SURFACE</p>
+          <p>구역, 시각 요소, 색과 표면, 관계 제안을 읽는 공개 참고면입니다.</p>
+          <code>/archive/world-atlas/</code>
+        </div>
       </div>
-      <div class="shared-seam__boundary" aria-label="공유 경계면">
+      <div class="shared-seam__boundary" tabindex="0" aria-label="공유 경계면" aria-describedby="seam-tip-boundary">
         <span>SHARED SEAM</span>
         <i aria-hidden="true"></i>
         <p>같은 기록을 공유하지만 같은 권한을 갖지 않습니다.</p>
+        <div class="seam-tip" id="seam-tip-boundary" role="note">
+          <p>OUTSIDE READS · INSIDE ENTERS</p>
+          <p>Outside에서 읽을 수 있는 것은 공개 승인된 장면과 관찰, 관계 후보뿐입니다. 개인 상태, 실제 관계, 닫힌 기록과 Inside 장면 후보는 이 번들에 포함하지 않습니다.</p>
+        </div>
       </div>
-      <div class="shared-seam__side shared-seam__side--inside">
+      <div class="shared-seam__side shared-seam__side--inside" tabindex="0" aria-describedby="seam-tip-inside">
         <p>보호된 반대 면</p>
         <h2>Inside</h2>
         <span>기록 안으로 들어가는 면 · 링크 없음</span>
+        <div class="seam-tip" id="seam-tip-inside" role="note">
+          <p>PROTECTED-EXPERIENCE-NOT-LINKED</p>
+          <p>공간, 소리, 이동과 대화를 결합하는 경험은 별도 보호 경계와 승인 뒤에 다룹니다. 이 공개 번들에는 후보 장면과 개인 상태를 넣지 않습니다.</p>
+          <code>kiheon.app/inside/ · protected</code>
+        </div>
       </div>
     </section>
 
     <nav class="outside-nav outside-shell" aria-label="Outside 섹션">
       <a href="#zones">01 Zones</a>
       <a href="#evidence">02 Evidence</a>
-      <a href="#relations">03 Relations</a>
-      <a href="#boundaries">04 Boundaries</a>
     </nav>
 
     <section class="outside-section outside-shell" id="zones" aria-labelledby="zones-title">
@@ -126,29 +138,6 @@
       </div>
     </section>
 
-    <section class="outside-section outside-shell" id="relations" aria-labelledby="relations-title">
-      <header class="section-marker">
-        <p>03 · RELATIONS</p>
-        <div>
-          <h2 id="relations-title">두 장면을 같은 폭에서 비교합니다</h2>
-          <p>이미지를 먼저 나란히 보고, 관찰된 차이와 해석 후보를 그 아래에서 읽습니다. 좌우 배치는 방향, 거리, 중심이나 위계를 뜻하지 않습니다.</p>
-        </div>
-      </header>
-
-      <div class="relation-rail" role="tablist" aria-label="구역 사이 관계 후보 선택" data-relation-tablist></div>
-      <article class="relation-stage" id="relation-detail" role="tabpanel" tabindex="0" data-relation-panel data-relation-id="relation-01" aria-labelledby="tab-relation-01"></article>
-    </section>
-
-    <section class="outside-section outside-shell" id="boundaries" aria-labelledby="boundaries-title">
-      <header class="section-marker">
-        <p>04 · BOUNDARIES</p>
-        <div>
-          <h2 id="boundaries-title">공개 참고면과 보호된 경험면을 구분합니다</h2>
-          <p>Outside에서 읽을 수 있는 것은 공개 승인된 장면과 관찰, 관계 후보뿐입니다. 개인 상태, 실제 관계, 닫힌 기록과 Inside 장면 후보는 이 번들에 포함하지 않습니다.</p>
-        </div>
-      </header>
-      <div class="boundary-list" data-boundary-list></div>
-    </section>
   </main>
 
   <dialog class="image-dialog" data-image-dialog aria-labelledby="image-dialog-title">

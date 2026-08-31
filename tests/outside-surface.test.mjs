@@ -70,8 +70,6 @@ test("Outside gives wide images the full stage and an accessible full-view dialo
   assert.match(html, /data-dialog-close aria-label="전체 보기 닫기"/);
   assert.match(css, /\.image-open img[\s\S]*object-fit: contain/);
   assert.match(css, /\.outside-page img \{[\s\S]*height: auto/);
-  assert.match(css, /\.relation-stage__visuals[\s\S]*grid-template-columns: repeat\(2/);
-  assert.match(css, /\.relation-figure \.image-open img[\s\S]*object-fit: contain/);
   assert.doesNotMatch(css, /position:\s*fixed[^}]*sidebar/i);
   assert.match(script, /dialog\.showModal\(\)/);
   assert.match(script, /state\.dialogReturnFocus\?\.focus\(\)/);
@@ -111,4 +109,36 @@ test("Outside candidate files contain no private contract fields or long dash gl
     assert.doesNotMatch(content, /\u2014/, file);
     assert.doesNotMatch(content, /\/Volumes\/|\/Users\/|90-raw-staging|private:family|local-only|sourcePath|kr_title|summary_1line/, file);
   }
+});
+
+test("Outside folds boundary detail into the seam and drops the relations stage", async () => {
+  const html = await read("archive/world-atlas/index.html");
+  const css = await read("archive/world-atlas/world-atlas.css");
+  const script = await read("archive/world-atlas/world-atlas.js");
+
+  // 본인 지시 2026-09-01: 03 Relations 절과 04 Boundaries 절은 화면에서 내린다.
+  assert.doesNotMatch(html, /두 장면을 같은 폭에서 비교합니다/);
+  assert.doesNotMatch(html, /id="relations"/);
+  assert.doesNotMatch(html, /id="boundaries"/);
+  assert.doesNotMatch(html, /03 Relations|04 Boundaries/);
+
+  // 경계 정보는 사라지지 않고 seam 위 툴팁으로 남는다 — hover와 focus 둘 다.
+  assert.match(html, /class="seam-tip" id="seam-tip-outside"/);
+  assert.match(html, /class="seam-tip" id="seam-tip-boundary"/);
+  assert.match(html, /class="seam-tip" id="seam-tip-inside"/);
+  assert.match(html, /PUBLIC-REFERENCE-SURFACE/);
+  assert.match(html, /PROTECTED-EXPERIENCE-NOT-LINKED/);
+  assert.match(html, /aria-describedby="seam-tip-outside"/);
+  assert.match(css, /\.shared-seam__side:hover \.seam-tip/);
+  assert.match(css, /\.shared-seam__side:focus-visible \.seam-tip/);
+
+  // 지표는 화면에 있는 것을 센다 — Relations 카운트는 Evidence 로 바뀌었다.
+  assert.match(html, /data-evidence-count/);
+  assert.doesNotMatch(html, /data-relation-count/);
+  assert.match(script, /data-evidence-count/);
+
+  // 데이터 계약은 그대로다 — 관계는 읽기 API 로만 남는다.
+  assert.match(script, /getRelation/);
+  assert.doesNotMatch(script, /renderRelationTabs|renderBoundaries/);
+  assert.doesNotMatch(css, /\.relation-|\.boundary-/);
 });

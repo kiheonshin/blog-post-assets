@@ -88,8 +88,9 @@
   display: block;
   font-family: var(--font-mono);
   font-size: var(--micro);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.09em;
+  text-transform: uppercase;
 }
 
 .outside-wordmark strong {
@@ -100,7 +101,7 @@
 .outside-header__meta {
   display: flex;
   align-items: center;
-  gap: 1.2rem;
+  gap: 1.25rem;
   color: var(--outside-muted);
 }
 
@@ -124,15 +125,13 @@
 .zone-tab__number,
 .zone-stage__kicker,
 .reading-label,
-.relation-tab__number,
 .shared-seam p,
-.image-dialog header p,
-.boundary-card__state {
+.image-dialog header p {
   margin: 0;
   font-family: var(--font-mono);
   font-size: var(--micro);
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.09em;
   text-transform: uppercase;
 }
 
@@ -145,7 +144,6 @@
 .section-marker h2,
 .shared-seam h2,
 .zone-stage h3,
-.relation-stage h3,
 .evidence-panel h3,
 .image-dialog h2 {
   font-family: var(--font-display);
@@ -156,8 +154,8 @@
 .outside-hero h1 {
   max-width: 48rem;
   margin: 0.75rem 0 1.2rem;
-  font-size: clamp(2.1rem, 3.6vw, 3.3rem);
-  line-height: 1.15;
+  font-size: clamp(2rem, 3vw, 2.125rem);
+  line-height: 1.16;
 }
 
 .outside-lede {
@@ -180,19 +178,21 @@
   border-bottom: 1px solid var(--outside-rule);
 }
 
-.outside-metrics dt {
-  color: var(--outside-muted);
+.outside-metrics dt,
+.outside-metrics dd {
   font-family: var(--font-mono);
   font-size: var(--micro);
-  font-weight: 700;
-  letter-spacing: 0.09em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+}
+
+.outside-metrics dt {
+  color: var(--outside-muted);
+  font-weight: 700;
 }
 
 .outside-metrics dd {
   margin: 0;
-  font-family: var(--font-mono);
-  font-size: var(--meta);
 }
 
 .shared-seam {
@@ -205,10 +205,71 @@
 
 .shared-seam__side,
 .shared-seam__boundary {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+/* 경계 상세는 항상 떠 있지 않는다. 마우스를 올리거나 초점이 갔을 때만 카드로 나온다. */
+.seam-tip {
+  position: absolute;
+  z-index: 30;
+  inset-inline: clamp(0.75rem, 2vw, 1.5rem);
+  top: calc(100% - 0.75rem);
+  padding: 0.9rem 1rem 1rem;
+  border: 1px solid var(--outside-ink);
+  background: var(--outside-surface);
+  box-shadow: 0 14px 30px rgba(23, 24, 26, 0.12);
+  text-align: left;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-0.25rem);
+  transition: opacity 0.16s ease, transform 0.16s ease, visibility 0.16s;
+  pointer-events: none;
+}
+
+.seam-tip > p:first-child {
+  margin: 0 0 0.5rem;
+  color: var(--outside-accent);
+  font-family: var(--font-mono);
+  font-size: var(--micro);
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.seam-tip > p + p {
+  margin: 0;
+  color: var(--outside-ink);
+  font-size: var(--small);
+  letter-spacing: 0;
+  text-transform: none;
+  text-align: left;
+}
+
+.seam-tip code {
+  display: block;
+  margin-top: 0.6rem;
+  font-family: var(--font-mono);
+  font-size: var(--micro);
+  color: var(--outside-muted);
+}
+
+.shared-seam__side:hover .seam-tip,
+.shared-seam__side:focus-visible .seam-tip,
+.shared-seam__boundary:hover .seam-tip,
+.shared-seam__boundary:focus-visible .seam-tip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.shared-seam__side:focus-visible,
+.shared-seam__boundary:focus-visible {
+  outline: 2px solid var(--outside-accent);
+  outline-offset: -2px;
 }
 
 .shared-seam__side {
@@ -287,7 +348,7 @@
   z-index: 20;
   top: 0;
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
   margin-top: 2rem;
   border-block: 1px solid var(--outside-ink);
   background: rgba(243, 243, 239, 0.96);
@@ -348,8 +409,7 @@
   margin-bottom: 1rem;
 }
 
-.zone-rail,
-.relation-rail {
+.zone-rail {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: minmax(13rem, 18rem);
@@ -361,8 +421,7 @@
   padding-bottom: 0.75rem;
 }
 
-.zone-tab,
-.relation-tab {
+.zone-tab {
   scroll-snap-align: start;
   min-width: 0;
   padding: 0;
@@ -405,14 +464,12 @@
   opacity: 1;
 }
 
-.zone-tab[aria-selected="true"],
-.relation-tab[aria-selected="true"] {
+.zone-tab[aria-selected="true"] {
   border-color: var(--outside-accent);
   background: var(--outside-surface);
 }
 
-.zone-tab[aria-selected="true"] .zone-tab__number,
-.relation-tab[aria-selected="true"] .relation-tab__number {
+.zone-tab[aria-selected="true"] .zone-tab__number {
   color: var(--outside-accent);
 }
 
@@ -426,14 +483,12 @@
   font-size: var(--micro);
 }
 
-.zone-stage,
-.relation-stage {
+.zone-stage {
   border: 1px solid var(--outside-ink);
   background: var(--outside-surface);
 }
 
-.zone-stage__head,
-.relation-stage__head {
+.zone-stage__head {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
   gap: 2rem;
@@ -441,16 +496,14 @@
   padding: clamp(1.25rem, 3vw, 2rem);
 }
 
-.zone-stage__head h3,
-.relation-stage__head h3 {
+.zone-stage__head h3 {
   max-width: 54rem;
   margin: 0.3rem 0 0;
   font-size: clamp(1.5rem, 2.8vw, 2.4rem);
   line-height: 1.15;
 }
 
-.zone-stage__head p:last-child,
-.relation-stage__head p:last-child {
+.zone-stage__head p:last-child {
   max-width: 43rem;
   margin: 0.75rem 0 0;
   color: var(--outside-muted);
@@ -462,8 +515,7 @@
   color: var(--outside-muted);
 }
 
-.zone-visual,
-.relation-visual {
+.zone-visual {
   margin: 0;
   border-top: 1px solid var(--outside-rule);
   border-bottom: 1px solid var(--outside-rule);
@@ -499,15 +551,13 @@
   font-weight: 700;
 }
 
-.zone-visual figcaption,
-.relation-figure figcaption {
+.zone-visual figcaption {
   padding: 0.65rem 1rem;
   color: var(--outside-muted);
   font-size: var(--meta);
 }
 
-.zone-stage__reading,
-.relation-stage__reading {
+.zone-stage__reading {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
 }
@@ -519,8 +569,7 @@
 }
 
 .reading-block:nth-child(even),
-.zone-stage__reading .reading-block:last-child,
-.relation-stage__reading .reading-block:last-child {
+.zone-stage__reading .reading-block:last-child {
   border-right: 0;
 }
 
@@ -686,91 +735,6 @@
 [data-material-id="material-ochre"] { --material-color: #a26d2d; }
 [data-material-id="material-lavender"] { --material-color: #7354a2; }
 
-.relation-rail {
-  margin-bottom: 1rem;
-}
-
-.relation-tab {
-  min-height: 8rem;
-  display: grid;
-  align-content: start;
-  gap: 0.45rem;
-  padding: 1rem;
-}
-
-.relation-tab strong {
-  font-family: var(--font-display);
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-.relation-tab span:last-child {
-  color: var(--outside-muted);
-  font-size: var(--small);
-}
-
-.relation-stage__visuals {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  border-top: 1px solid var(--outside-rule);
-  border-bottom: 1px solid var(--outside-rule);
-}
-
-.relation-figure {
-  min-width: 0;
-  margin: 0;
-  background: #e8e8e2;
-}
-
-.relation-figure:first-child {
-  border-right: 1px solid var(--outside-rule);
-}
-
-.relation-figure .image-open img {
-  aspect-ratio: 2 / 1;
-  object-fit: contain;
-}
-
-.boundary-list {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  border: 1px solid var(--outside-rule);
-  background: var(--outside-surface);
-}
-
-.boundary-card {
-  padding: clamp(1.25rem, 3vw, 2rem);
-}
-
-.boundary-card:first-child {
-  border-right: 1px solid var(--outside-rule);
-}
-
-.boundary-card__state {
-  color: var(--outside-accent);
-}
-
-.boundary-card h3 {
-  margin: 0.5rem 0;
-  font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-.boundary-card p {
-  max-width: 38rem;
-  margin: 0;
-  color: var(--outside-muted);
-}
-
-.boundary-card code {
-  display: block;
-  width: fit-content;
-  margin-top: 1rem;
-  font-family: var(--font-mono);
-  font-size: var(--micro);
-}
-
 .image-dialog {
   width: min(96vw, 96rem);
   max-width: none;
@@ -838,9 +802,7 @@
 }
 
 .zone-tab:focus-visible,
-.relation-tab:focus-visible,
 .zone-stage:focus-visible,
-.relation-stage:focus-visible,
 .image-open:focus-visible,
 .outside-page a:focus-visible,
 .outside-page button:focus-visible {
@@ -893,8 +855,7 @@
     grid-template-columns: 1fr;
   }
 
-  .zone-stage__head,
-  .relation-stage__head {
+  .zone-stage__head {
     grid-template-columns: 1fr;
   }
 }
@@ -942,8 +903,7 @@
     gap: 0.6rem;
   }
 
-  .zone-rail,
-  .relation-rail {
+  .zone-rail {
     grid-auto-columns: minmax(12rem, 76vw);
   }
 
@@ -955,30 +915,19 @@
     display: block;
   }
 
-  .zone-stage__reading,
-  .relation-stage__reading,
-  .relation-stage__visuals,
-  .boundary-list {
+  .zone-stage__reading {
     grid-template-columns: 1fr;
   }
 
   .reading-block,
-  .reading-block:nth-child(even),
-  .zone-stage__reading .reading-block:last-child,
-  .relation-stage__reading .reading-block:last-child {
+.reading-block:nth-child(even),
+.zone-stage__reading .reading-block:last-child {
     border-right: 0;
     border-bottom: 1px solid var(--outside-rule);
   }
 
-  .zone-stage__reading .reading-block:last-child,
-  .relation-stage__reading .reading-block:last-child {
+  .zone-stage__reading .reading-block:last-child {
     border-bottom: 0;
-  }
-
-  .relation-figure:first-child,
-  .boundary-card:first-child {
-    border-right: 0;
-    border-bottom: 1px solid var(--outside-rule);
   }
 
   .object-card,
