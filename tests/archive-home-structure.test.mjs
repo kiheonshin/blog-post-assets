@@ -37,11 +37,12 @@ test("Archive keeps product navigation on the homepage only", async () => {
 
 test("the material inventory distinguishes public links from Local Vault originals", async () => {
   const html = inventory(await read("archive/index.html"));
+  const summary = JSON.parse(await read("assets/archive-summary.json"));
   assert.ok(html);
   assert.match(html, />공개 자료와 Local Vault 기록</);
 
-  const openRows = html.match(/<div data-access="open">[\s\S]*?<\/div>/g) ?? [];
-  const closedRows = html.match(/<div data-access="closed">[\s\S]*?<\/div>/g) ?? [];
+  const openRows = html.match(/<div data-access="open"[^>]*>[\s\S]*?<\/div>/g) ?? [];
+  const closedRows = html.match(/<div data-access="closed"[^>]*>[\s\S]*?<\/div>/g) ?? [];
   assert.ok(openRows.length >= 11);
   assert.equal(closedRows.length, 2);
 
@@ -49,6 +50,14 @@ test("the material inventory distinguishes public links from Local Vault origina
     assert.match(row, /<a href=/);
     assert.match(row, /열람 가능/);
   }
+  const registeredRows = html.match(/data-source-key="[^"]+"/g) ?? [];
+  assert.equal(registeredRows.length, summary.registeredSources.length);
+  assert.equal(new Set(registeredRows).size, registeredRows.length);
+  for (const source of summary.registeredSources) {
+    assert.match(html, new RegExp(source.displayTitle.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")));
+    assert.ok(source.description.length >= 20, source.title);
+  }
+  assert.doesNotMatch(html, />자율 세계 기록<|>11월 발표 자료<|>11월 발표 녹음 전사</);
   for (const row of closedRows) {
     assert.doesNotMatch(row, /<a\b|href=/);
     assert.match(row, /원본만 보존/);

@@ -9,6 +9,30 @@ const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), ".."
 const series = contentLibrary.series;
 const posts = series.flatMap((entry) => entry.posts ?? []);
 const sources = series.flatMap((entry) => entry.sources ?? []);
+const registeredSources = series.flatMap((entry) =>
+  (entry.sources ?? []).map((source) => ({
+    id: source.id,
+    title: source.title,
+    description: source.description,
+    label: source.label,
+    published: source.published,
+    sourceYears: source.sourceYears ?? [],
+    href: source.href,
+    seriesSlug: entry.slug,
+    seriesLabel: entry.label,
+    seriesTitle: entry.title,
+  })),
+);
+const sourceTitleCounts = new Map();
+for (const source of registeredSources) {
+  sourceTitleCounts.set(source.title, (sourceTitleCounts.get(source.title) ?? 0) + 1);
+}
+for (const source of registeredSources) {
+  const sourceLabel = source.label.replace(/^SOURCE ·\s*/, "");
+  source.displayTitle = sourceTitleCounts.get(source.title) > 1
+    ? `${source.title} — ${sourceLabel}`
+    : source.title;
+}
 
 const presentationArchiveHref = "series/metaverse-era/sources/presentations/";
 const presentationArchiveHtml = await readFile(
@@ -60,6 +84,7 @@ const payload = {
     sources: (entry.sources ?? []).length,
     hasCover: Boolean(entry.cover),
   })),
+  registeredSources,
   availability: {
     publicLinks: "links-open-the-current-public-surface",
     localVault: "originals-and-unregistered-source-pages-are-not-counted-here",
@@ -102,6 +127,38 @@ for (const key of [
   replaceAttributeText("data-archive-count", key, payload.counts[key]);
 }
 replaceAttributeText("data-archive-range", "sourceYears", period);
+
+const escapeHtml = (value) => String(value)
+  .replaceAll("&", "&amp;")
+  .replaceAll("<", "&lt;")
+  .replaceAll(">", "&gt;")
+  .replaceAll('"', "&quot;");
+const sourceRows = registeredSources.map((source) => {
+  const published = source.published?.replaceAll("-", ".")
+    ?? source.sourceYears.join("–");
+  const sourceLabel = source.label.replace(/^SOURCE ·\s*/, "");
+  const description = source.description.replace(
+    new RegExp(`^${published.replaceAll(".", "\\.")} ·\\s*`),
+    "",
+  );
+  const meta = [source.seriesLabel, sourceLabel, published]
+    .filter(Boolean)
+    .join(" · ");
+  const sourceKey = `${source.seriesSlug}:${source.id}`;
+  return `      <div data-access="open" data-source-key="${escapeHtml(sourceKey)}"><dt><a href="../${escapeHtml(source.href)}">${escapeHtml(source.displayTitle)}</a><span class="arc-stock__status">열람 가능</span></dt><dd><b>${escapeHtml(meta)}</b>${escapeHtml(description)}</dd></div>`;
+}).join("\n");
+const sourceStart = "      <!-- ARCHIVE_REGISTERED_SOURCES:START -->";
+const sourceEnd = "      <!-- ARCHIVE_REGISTERED_SOURCES:END -->";
+const sourcePattern = new RegExp(
+  `${sourceStart}[\\s\\S]*?${sourceEnd}`,
+);
+if (!sourcePattern.test(archiveHtml)) {
+  throw new Error("Archive registered-source block missing");
+}
+archiveHtml = archiveHtml.replace(
+  sourcePattern,
+  `${sourceStart}\n${sourceRows}\n${sourceEnd}`,
+);
 await writeFile(archivePath, archiveHtml);
 
 console.log(

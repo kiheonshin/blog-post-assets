@@ -88,6 +88,173 @@
       "hasCover": true
     }
   ],
+  "registeredSources": [
+    {
+      "id": "universe-intro",
+      "title": "Kiheon life universe 소개",
+      "description": "27장. 신기헌 본인이 아니라, 본인을 학습한 에이전트가 본인의 발표 자료와 아카이브를 재료로 다시 만들었다. 본인이 읽고 승인한 뒤 공개됐다.",
+      "label": "SOURCE · 소개 덱",
+      "published": "2026-08-13",
+      "sourceYears": [
+        2026
+      ],
+      "href": "series/life-universe/sources/universe-intro/",
+      "seriesSlug": "life-universe",
+      "seriesLabel": "00 · Life Universe · Making of",
+      "seriesTitle": "Life Universe · Making of",
+      "displayTitle": "Kiheon life universe 소개"
+    },
+    {
+      "id": "research",
+      "title": "AI 시대의 예술, 인간 고유의 창의성이란 무엇인가",
+      "description": "2025.09.09 · 발표의 바탕이 된 사전 조사 전문",
+      "label": "SOURCE · 연구 노트",
+      "published": "2025-09-09",
+      "sourceYears": [
+        2025
+      ],
+      "href": "series/aigc-creative-paradigm/sources/research/",
+      "seriesSlug": "aigc-creative-paradigm",
+      "seriesLabel": "01 · AIGC Notes",
+      "seriesTitle": "AI 시대, 창작의 정의를 다시 묻다",
+      "displayTitle": "AI 시대의 예술, 인간 고유의 창의성이란 무엇인가"
+    },
+    {
+      "id": "slides",
+      "title": "AIGC 시장 트렌드 및 창작자 패러다임의 변화",
+      "description": "2025.11.21 · 슬라이드 162장과 발표 중 재생한 영상 59개",
+      "label": "SOURCE · 발표 자료",
+      "published": "2025-11-21",
+      "sourceYears": [
+        2025
+      ],
+      "href": "series/aigc-creative-paradigm/sources/slides/",
+      "seriesSlug": "aigc-creative-paradigm",
+      "seriesLabel": "01 · AIGC Notes",
+      "seriesTitle": "AI 시대, 창작의 정의를 다시 묻다",
+      "displayTitle": "AIGC 시장 트렌드 및 창작자 패러다임의 변화"
+    },
+    {
+      "id": "talk",
+      "title": "자율 세계의 등장과 새로운 창작 환경",
+      "description": "2024.07.07 · 발표 직후 정리해 발행한 원문 그대로의 1차 기록",
+      "label": "SOURCE · 2024년 기록",
+      "published": "2024-07-07",
+      "sourceYears": [
+        2024
+      ],
+      "href": "series/autonomous-worlds/sources/talk/",
+      "seriesSlug": "autonomous-worlds",
+      "seriesLabel": "03 · Autonomous Worlds",
+      "seriesTitle": "자율 세계, 스스로 규칙을 만드는 세계의 등장",
+      "displayTitle": "자율 세계의 등장과 새로운 창작 환경 — 2024년 기록"
+    },
+    {
+      "id": "slides",
+      "title": "자율 세계의 등장과 새로운 창작 환경",
+      "description": "2024.07.07 · 슬라이드 130장과 발표 중 재생한 영상 36편",
+      "label": "SOURCE · 발표 자료",
+      "published": "2024-07-07",
+      "sourceYears": [
+        2024
+      ],
+      "href": "series/autonomous-worlds/sources/slides/",
+      "seriesSlug": "autonomous-worlds",
+      "seriesLabel": "03 · Autonomous Worlds",
+      "seriesTitle": "자율 세계, 스스로 규칙을 만드는 세계의 등장",
+      "displayTitle": "자율 세계의 등장과 새로운 창작 환경 — 발표 자료"
+    },
+    {
+      "id": "slides-2023-06",
+      "title": "웹3의 다음 흐름을 주도할 코-크리에이션 문화",
+      "description": "2023.06.30 · 슬라이드 96장을 그날의 순서대로",
+      "label": "SOURCE · 발표 자료",
+      "published": "2023-06-30",
+      "sourceYears": [
+        2023
+      ],
+      "href": "series/co-creation-culture/sources/slides-2023-06/",
+      "seriesSlug": "co-creation-culture",
+      "seriesLabel": "04 · Co-Creation Culture",
+      "seriesTitle": "코-크리에이션 문화",
+      "displayTitle": "웹3의 다음 흐름을 주도할 코-크리에이션 문화"
+    },
+    {
+      "id": "slides-2023-11",
+      "title": "현실과 가상을 연결하는 블록체인 기반의 스토리텔링",
+      "description": "2023.11.09 · 슬라이드 71장을 그날의 순서대로",
+      "label": "SOURCE · 발표 자료",
+      "published": "2023-11-09",
+      "sourceYears": [
+        2023
+      ],
+      "href": "series/onchain-storytelling/sources/slides-2023-11/",
+      "seriesSlug": "onchain-storytelling",
+      "seriesLabel": "05 · On-chain Storytelling",
+      "seriesTitle": "온체인 스토리텔링",
+      "displayTitle": "현실과 가상을 연결하는 블록체인 기반의 스토리텔링"
+    },
+    {
+      "id": "proposal-strategy-diagrams",
+      "title": "MIXtown 전략 기획 도식집",
+      "description": "2023.12.08 · 장표 16장. 다섯 단계 컨버전스 모델과 TBA 구조, 온체인 히스토리",
+      "label": "SOURCE · 전략 기획",
+      "published": "2023-12-08",
+      "sourceYears": [
+        2023
+      ],
+      "href": "series/onchain-storytelling/sources/proposal-strategy-diagrams/",
+      "seriesSlug": "onchain-storytelling",
+      "seriesLabel": "05 · On-chain Storytelling",
+      "seriesTitle": "온체인 스토리텔링",
+      "displayTitle": "MIXtown 전략 기획 도식집"
+    },
+    {
+      "id": "proposal-mxtwn-x",
+      "title": "MXTWN X 아이디어 기획안",
+      "description": "2023.12.08 · 장표 19장 · 영상 2편. 캐릭터를 화자로 세운 의류 프로젝트의 제안 전문",
+      "label": "SOURCE · 제안 기획",
+      "published": "2023-12-08",
+      "sourceYears": [
+        2023
+      ],
+      "href": "series/onchain-storytelling/sources/proposal-mxtwn-x/",
+      "seriesSlug": "onchain-storytelling",
+      "seriesLabel": "05 · On-chain Storytelling",
+      "seriesTitle": "온체인 스토리텔링",
+      "displayTitle": "MXTWN X 아이디어 기획안"
+    },
+    {
+      "id": "proposal-sapienz-town",
+      "title": "SAPIENZ Town 아이디어 기획안",
+      "description": "2024.01.02 · 장표 15장. 80명의 운영자가 굴리는 호텔, 다섯 축의 전체 구조도",
+      "label": "SOURCE · 제안 기획",
+      "published": "2024-01-02",
+      "sourceYears": [
+        2024
+      ],
+      "href": "series/onchain-storytelling/sources/proposal-sapienz-town/",
+      "seriesSlug": "onchain-storytelling",
+      "seriesLabel": "05 · On-chain Storytelling",
+      "seriesTitle": "온체인 스토리텔링",
+      "displayTitle": "SAPIENZ Town 아이디어 기획안"
+    },
+    {
+      "id": "proposal-idea-notes",
+      "title": "MIXtown 확장 아이디어 노트",
+      "description": "2023.12.08 · 장표 2장. 음악 유통 구조와 포탈 세계관을 세운 미술 기획",
+      "label": "SOURCE · 기획 노트",
+      "published": "2023-12-08",
+      "sourceYears": [
+        2023
+      ],
+      "href": "series/onchain-storytelling/sources/proposal-idea-notes/",
+      "seriesSlug": "onchain-storytelling",
+      "seriesLabel": "05 · On-chain Storytelling",
+      "seriesTitle": "온체인 스토리텔링",
+      "displayTitle": "MIXtown 확장 아이디어 노트"
+    }
+  ],
   "availability": {
     "publicLinks": "links-open-the-current-public-surface",
     "localVault": "originals-and-unregistered-source-pages-are-not-counted-here"
