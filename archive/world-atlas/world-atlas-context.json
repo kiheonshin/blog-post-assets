@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
-  "surface": "world-atlas-public-reference-context",
+  "surface": "outside-public-reference-context",
   "locale": "ko-KR",
-  "visibility": "public-indexable-reference-surface",
+  "visibility": "public-safe-noindex-candidate",
   "counts": {
     "zones": 5,
     "objects": 6,
@@ -13,9 +13,21 @@
     "futureExperienceLinks": 0
   },
   "labels": {
-    "observed": "화면에서 확인한 요소",
-    "reading": "읽기 제안",
+    "observed": "관찰 사실",
+    "reading": "해석 후보",
     "notConfirmed": "확정 전"
+  },
+  "sharedSeam": {
+    "outside": {
+      "name": "Outside",
+      "role": "기록을 펼쳐 읽는 면"
+    },
+    "inside": {
+      "name": "Inside",
+      "role": "기록 안으로 들어가는 면",
+      "accessLabel": "보호됨 · 링크 없음"
+    },
+    "boundaryCopy": "같은 기록을 공유하지만 같은 권한을 갖지 않습니다."
   },
   "semantics": {
     "displayOrderOnly": true,
@@ -27,6 +39,8 @@
   "zones": [
     {
       "id": "zone-01",
+      "assetPairId": "outside-inside-zone-01",
+      "sourceRef": "site:series/aigc-creative-paradigm",
       "number": "01",
       "shortLabel": "AIGC",
       "publicLabel": "창작의 조건",
@@ -47,6 +61,8 @@
     },
     {
       "id": "zone-02",
+      "assetPairId": "outside-inside-zone-02",
+      "sourceRef": "site:series/newtype-ip-dialogue",
       "number": "02",
       "shortLabel": "NEWTYPE",
       "publicLabel": "열어 두는 판단",
@@ -67,6 +83,8 @@
     },
     {
       "id": "zone-03",
+      "assetPairId": "outside-inside-zone-03",
+      "sourceRef": "site:series/autonomous-worlds",
       "number": "03",
       "shortLabel": "AUTONOMOUS",
       "publicLabel": "스스로 움직이는 세계",
@@ -87,6 +105,8 @@
     },
     {
       "id": "zone-04",
+      "assetPairId": "outside-inside-zone-04",
+      "sourceRef": "site:series/co-creation-culture",
       "number": "04",
       "shortLabel": "CO-CREATION",
       "publicLabel": "함께 만드는 자리",
@@ -99,7 +119,7 @@
       "purpose": "서로 다른 사람이 만드는 자리에 들어와 역할과 크기가 다른 참여를 함께 만들고 남기는 조건을 살펴봅니다.",
       "question": "누가 만드는 자리에 들어올 수 있고, 서로 다른 참여가 무엇으로 남는지 묻습니다.",
       "observed": "문과 작업대, 도면과 계단이 수평으로 이어지고 여러 익명의 인물이 서로 다른 자리에서 작업합니다.",
-      "readingProposal": "누가 만드는 자리에 들어올 수 있고, 서로 다른 참여가 무엇으로 남는지 살펴봅니다.",
+      "readingProposal": "공동 작업대와 문턱, 서로 다른 역할의 배치를 참여 조건과 결과가 남는 방식으로 나누어 읽습니다.",
       "publicSource": {
         "label": "공개 시리즈 읽기",
         "url": "https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/"
@@ -107,6 +127,8 @@
     },
     {
       "id": "zone-05",
+      "assetPairId": "outside-inside-zone-05",
+      "sourceRef": "site:series/onchain-storytelling",
       "number": "05",
       "shortLabel": "ONCHAIN",
       "publicLabel": "기록이 생활이 되는 방",
@@ -320,10 +342,10 @@
     },
     {
       "id": "boundary-future-experience",
-      "state": "future-experience-not-active",
+      "state": "protected-experience-not-linked",
       "title": "Inside",
-      "description": "공간, 소리, 이동과 대화를 결합하는 경험은 별도의 설계와 확인 뒤에 다룹니다.",
-      "pathText": "/universe/world/",
+      "description": "공간, 소리, 이동과 대화를 결합하는 경험은 별도 보호 경계와 승인 뒤에 다룹니다. 이 공개 번들에는 후보 장면과 개인 상태를 넣지 않습니다.",
+      "pathText": "kiheon.app/inside/ · protected",
       "linkable": false
     }
   ]
