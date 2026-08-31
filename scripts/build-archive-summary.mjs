@@ -5,6 +5,7 @@ import { fileURLToPath } from "node:url";
 import { contentLibrary } from "../assets/content-manifest.js";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+const cleanText = (value) => String(value ?? "").replaceAll("\u2014", "·");
 
 const series = contentLibrary.series;
 const posts = series.flatMap((entry) => entry.posts ?? []);
@@ -12,15 +13,15 @@ const sources = series.flatMap((entry) => entry.sources ?? []);
 const registeredSources = series.flatMap((entry) =>
   (entry.sources ?? []).map((source) => ({
     id: source.id,
-    title: source.title,
-    description: source.description,
-    label: source.label,
+    title: cleanText(source.title),
+    description: cleanText(source.description),
+    label: cleanText(source.label),
     published: source.published,
     sourceYears: source.sourceYears ?? [],
     href: source.href,
     seriesSlug: entry.slug,
-    seriesLabel: entry.label,
-    seriesTitle: entry.title,
+    seriesLabel: cleanText(entry.label),
+    seriesTitle: cleanText(entry.title),
   })),
 );
 const sourceTitleCounts = new Map();
@@ -30,7 +31,7 @@ for (const source of registeredSources) {
 for (const source of registeredSources) {
   const sourceLabel = source.label.replace(/^SOURCE ·\s*/, "");
   source.displayTitle = sourceTitleCounts.get(source.title) > 1
-    ? `${source.title} — ${sourceLabel}`
+    ? `${source.title} · ${sourceLabel}`
     : source.title;
 }
 
@@ -77,8 +78,8 @@ const payload = {
   sourceYears,
   registeredSeries: series.map((entry) => ({
     slug: entry.slug,
-    label: entry.label,
-    title: entry.title,
+    label: cleanText(entry.label),
+    title: cleanText(entry.title),
     href: entry.href,
     posts: (entry.posts ?? []).length,
     sources: (entry.sources ?? []).length,
@@ -145,10 +146,10 @@ const sourceRows = registeredSources.map((source) => {
     .filter(Boolean)
     .join(" · ");
   const sourceKey = `${source.seriesSlug}:${source.id}`;
-  return `      <div data-access="open" data-source-key="${escapeHtml(sourceKey)}"><dt><a href="../${escapeHtml(source.href)}">${escapeHtml(source.displayTitle)}</a><span class="arc-stock__status">열람 가능</span></dt><dd><b>${escapeHtml(meta)}</b>${escapeHtml(description)}</dd></div>`;
+  return `        <div class="arc-stock__row" data-access="open" data-source-key="${escapeHtml(sourceKey)}" data-title="${escapeHtml(source.displayTitle)}" data-meta="${escapeHtml(meta)}" data-description="${escapeHtml(description)}"><dt><span class="arc-stock__status">열람 가능</span><a class="arc-stock__link" href="../${escapeHtml(source.href)}"><span class="arc-stock__title">${escapeHtml(source.displayTitle)}</span><span class="arc-stock__action">자료 보기</span></a></dt><dd><span class="arc-stock__meta">${escapeHtml(meta)}</span><span class="arc-stock__description">${escapeHtml(description)}</span></dd></div>`;
 }).join("\n");
-const sourceStart = "      <!-- ARCHIVE_REGISTERED_SOURCES:START -->";
-const sourceEnd = "      <!-- ARCHIVE_REGISTERED_SOURCES:END -->";
+const sourceStart = "        <!-- ARCHIVE_REGISTERED_SOURCES:START -->";
+const sourceEnd = "        <!-- ARCHIVE_REGISTERED_SOURCES:END -->";
 const sourcePattern = new RegExp(
   `${sourceStart}[\\s\\S]*?${sourceEnd}`,
 );
