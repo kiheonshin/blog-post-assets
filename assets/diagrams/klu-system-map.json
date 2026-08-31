@@ -1,12 +1,12 @@
 {
   "version": 1,
-  "purpose": "KIHEON LIFE UNIVERSE가 여섯 개의 1급 시스템으로 구성되고 제품 표면이 그 구조를 상속한다는 것을 보여 준다",
+  "purpose": "KIHEON LIFE UNIVERSE가 여섯 개의 1급 시스템으로 구성되고 공개 제품 표면이 그 구조를 상속한다는 것을 보여 준다",
   "relationship": "hierarchy",
   "form": "hierarchy",
   "density": "medium",
   "source_ref": "owner:2026-08-31/klu-home-system-map-v2",
-  "title": "KIHEON LIFE UNIVERSE 시스템 맵",
-  "description": "격리 보존, 시간·공간·관계, 브랜드, 공개 제품, 에이전트와 도구, 검증과 발행의 여섯 체계를 구분한다.",
+  "title": "KIHEON LIFE UNIVERSE 공개 표면 맵",
+  "description": "격리 보존, 시간과 공간의 관계, 브랜드 시스템, 공개 제품, 에이전트와 도구, 검증과 발행의 여섯 체계를 구분한다.",
   "nodes": [
     {
       "id": "klu",
@@ -26,8 +26,8 @@
     },
     {
       "id": "brand",
-      "label": "BRAND SYSTEM",
-      "detail": "브랜드 표현 · 디자인",
+      "label": "BRAND · DESIGN",
+      "detail": "브랜드 정체성 · 자산",
       "parent": "klu"
     },
     {
@@ -56,7 +56,7 @@
     },
     {
       "id": "archive",
-      "label": "ARCHIVE",
+      "label": "PUBLIC ARCHIVE",
       "detail": "공개 근거·자료",
       "parent": "products"
     },

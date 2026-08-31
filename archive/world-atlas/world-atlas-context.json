@@ -313,7 +313,7 @@
     {
       "id": "boundary-reference",
       "state": "public-reference-surface",
-      "title": "World Atlas",
+      "title": "Outside",
       "description": "구역, 시각 요소, 색과 표면, 관계 제안을 읽는 공개 참고면입니다.",
       "pathText": "/archive/world-atlas/",
       "linkable": false
@@ -321,7 +321,7 @@
     {
       "id": "boundary-future-experience",
       "state": "future-experience-not-active",
-      "title": "Inner World Experience",
+      "title": "Inside",
       "description": "공간, 소리, 이동과 대화를 결합하는 경험은 별도의 설계와 확인 뒤에 다룹니다.",
       "pathText": "/universe/world/",
       "linkable": false

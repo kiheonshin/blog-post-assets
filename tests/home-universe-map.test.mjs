@@ -48,11 +48,11 @@ test("the Universe project lineup appears once after Explore", async () => {
   assert.ok(html.indexOf('<section id="archive"') < html.indexOf('<section class="universe-map"'));
   assert.doesNotMatch(html, /class="world-atlas-entry"/);
   assert.match(map, /<section class="universe-map" aria-labelledby="home-universe-title">/);
-  assert.match(map, /<p class="universe-map__eyebrow">KIHEON LIFE UNIVERSE · ECOSYSTEM MAP<\/p>/);
-  assert.match(map, /<h2 id="home-universe-title">기록에서 제품까지 이어지는 전체 구조<\/h2>/);
+  assert.match(map, /<p class="universe-map__eyebrow">PRODUCT LINEUP · KIHEON LIFE UNIVERSE<\/p>/);
+  assert.match(map, /<h2 id="home-universe-title">프로젝트 소개와 공개 표면<\/h2>/);
   assert.doesNotMatch(map, /<h2[^>]*>KIHEON LIFE UNIVERSE<\/h2>/);
-  assert.match(map, /assets\/diagrams\/klu-system-map\.svg\?v=20260831b/);
-  assert.match(html, /assets\/world-atlas-entry\.css\?v=20260831a/);
+  assert.match(map, /assets\/diagrams\/klu-system-map\.svg\?v=20260831c/);
+  assert.match(html, /assets\/world-atlas-entry\.css\?v=20260831b/);
 });
 
 test("four public surfaces are links and two unopened products are not", async () => {
@@ -96,11 +96,11 @@ test("the verified system diagram and product order stay fixed", async () => {
   assert.match(svg, /data-node-id="vault"[\s\S]*data-node-id="relations"[\s\S]*data-node-id="brand"[\s\S]*data-node-id="actors"[\s\S]*data-node-id="operations"[\s\S]*data-node-id="products"/);
   assert.match(svg, /data-node-id="outside"[\s\S]*data-node-id="inside"/);
   assert.match(svg, /class="km-membrane" x="72" y="180" width="896" height="80"/);
-  assert.match(svg, /data-node-id="products"><rect x="302" y="300" width="436" height="164"/);
+  assert.match(svg, /data-node-id="products"><rect x="302" y="300" width="436" height="172"/);
   assert.match(svg, /data-node-id="inside"[\s\S]*y="436"/);
   assert.doesNotMatch(svg, /세계 모델|World Atlas|Life World|marker-end|<marker\b/i);
   assert.doesNotMatch(svg, /<script\b|<foreignObject\b|<image\b|<use\b|https?:\/\/(?!www\.w3\.org\/2000\/svg)/i);
-  assert.match(map, /BLOG[\s\S]*ARCHIVE[\s\S]*UNIVERSE MAP[\s\S]*OUTSIDE[\s\S]*INSIDE[\s\S]*SLIDES/);
+  assert.match(map, /BLOG[\s\S]*PUBLIC ARCHIVE[\s\S]*UNIVERSE[\s\S]*OUTSIDE[\s\S]*INSIDE[\s\S]*SLIDES/);
 });
 
 test("the Universe map does not repeat below individual posts", async () => {

@@ -1,6 +1,6 @@
 {
   "schema": "klu.instrument-map.receipt.v1",
-  "spec_sha256": "15f9f65f441554cf4484fd41b9a999b7c042884bbd0db3654f3b3b5cba19929f",
+  "spec_sha256": "f29bf66457518059ece1c8fc2b91c6fcbf9b7b96fae86c6040987cb02c4ba7db",
   "semantic_form": "hierarchy",
   "renderer": "instrument-grid-v1",
   "relationship": "hierarchy",
@@ -11,6 +11,6 @@
   "source_ref": "owner:2026-08-31/klu-home-system-map-v2",
   "forbidden_display_terms": 0,
   "warnings": [],
-  "svg_sha256": "fc78ba312c013be73e41b78ddc8518aa2cef6bfdace77b6eeb6fac4ed936c30e",
+  "svg_sha256": "789f52b814e90d4b8de03b1888a461f8c6791f888882dbd993dbc5ca7295dc8c",
   "output": "assets/diagrams/klu-system-map.svg"
 }
