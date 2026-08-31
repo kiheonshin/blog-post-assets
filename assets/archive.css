@@ -386,9 +386,13 @@
 
 .arc-stock__link {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto;
-  align-items: center;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto auto;
+  align-content: center;
+  align-items: start;
+  justify-items: start;
   gap: var(--space-3);
+  min-height: 0;
   color: var(--ink);
   text-decoration: none;
 }
@@ -420,7 +424,6 @@
   place-items: center;
   inline-size: 2rem;
   block-size: 2rem;
-  margin-inline-end: var(--space-2);
   border: 1px solid var(--rule);
   color: var(--accent);
   line-height: 1;
@@ -542,8 +545,9 @@
   }
 
   .arc-stock__link {
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: center;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    align-items: start;
     gap: var(--space-2);
   }
 }

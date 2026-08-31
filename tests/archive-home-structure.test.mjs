@@ -56,6 +56,8 @@ test("the material inventory distinguishes public links from Local Vault origina
     assert.match(row, /<a class="arc-stock__link" href=/);
     assert.match(row, /열람 가능/);
     assert.match(row, /자료 보기/);
+    assert.match(row, /<dt><a class="arc-stock__link"/);
+    assert.match(row, /<\/dt><dd><span class="arc-stock__status">열람 가능<\/span>/);
   }
   const registeredRows = html.match(/data-source-key="[^"]+"/g) ?? [];
   assert.equal(registeredRows.length, summary.registeredSources.length);
@@ -68,6 +70,7 @@ test("the material inventory distinguishes public links from Local Vault origina
   for (const row of closedRows) {
     assert.doesNotMatch(row, /<a\b|href=/);
     assert.match(row, /Local Vault/);
+    assert.match(row, /<\/dt><dd><span class="arc-stock__status">Local Vault<\/span>/);
   }
 });
 
@@ -87,7 +90,8 @@ test("Archive inventory styles retain visible availability text", async () => {
   assert.match(css, /-webkit-line-clamp: 2/);
   assert.match(css, /-webkit-line-clamp: 3/);
   assert.match(css, /\.arc-stock__action \.klu-icon/);
-  assert.match(css, /margin-inline-end: var\(--space-2\)/);
+  assert.match(css, /grid-template-rows: auto auto/);
+  assert.match(css, /justify-items: start/);
   assert.match(css, /\.arc-stock \[data-access="open"\] \.arc-stock__status/);
   assert.doesNotMatch(css, /\.archive-inner-layer|\.archive-inner-card/);
 });
@@ -104,8 +108,15 @@ test("Archive inventory script filters by status and search text", async () => {
 test("Archive actions use the shared KLU interface icon asset", async () => {
   const html = inventory(await read("archive/index.html"));
   const icons = await read("assets/icons/klu-interface-icons.svg");
-  const iconUses = html.match(/klu-interface-icons\.svg#arrow-right/g) ?? [];
-  assert.equal(iconUses.length, 17);
+  const inlineIcons = html.match(
+    /<svg class="klu-icon" data-icon="arrow-right"[\s\S]*?<\/svg>/g,
+  ) ?? [];
+  assert.equal(inlineIcons.length, 17);
+  for (const icon of inlineIcons) {
+    assert.match(icon, /<path d="M5 12h14"><\/path>/);
+    assert.match(icon, /<path d="m13 6 6 6-6 6"><\/path>/);
+  }
+  assert.doesNotMatch(html, /<use\b|klu-interface-icons\.svg#/);
   for (const id of ["arrow-right", "external-link", "search", "lock"]) {
     assert.match(icons, new RegExp('<symbol id="' + id + '"'));
   }
