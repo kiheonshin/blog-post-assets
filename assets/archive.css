@@ -420,18 +420,31 @@
   place-items: center;
   inline-size: 2rem;
   block-size: 2rem;
+  margin-inline-end: var(--space-2);
   border: 1px solid var(--rule);
   color: var(--accent);
-  font-family: var(--font-mono);
-  font-size: 0;
-  font-weight: 600;
   line-height: 1;
   white-space: nowrap;
 }
 
-.arc-stock__action::before {
-  font-size: 0.875rem;
-  content: "→";
+.arc-stock__action .klu-icon {
+  display: block;
+  inline-size: 1rem;
+  block-size: 1rem;
+  overflow: visible;
+  color: currentColor;
+}
+
+.arc-stock__action-label {
+  position: absolute;
+  inline-size: 1px;
+  block-size: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .arc-stock__row[data-access="open"]:hover .arc-stock__action {

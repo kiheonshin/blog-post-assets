@@ -86,7 +86,8 @@ test("Archive inventory styles retain visible availability text", async () => {
   assert.match(css, /block-size: 15rem/);
   assert.match(css, /-webkit-line-clamp: 2/);
   assert.match(css, /-webkit-line-clamp: 3/);
-  assert.match(css, /\.arc-stock__action::before[\s\S]*content: "→"/);
+  assert.match(css, /\.arc-stock__action \.klu-icon/);
+  assert.match(css, /margin-inline-end: var\(--space-2\)/);
   assert.match(css, /\.arc-stock \[data-access="open"\] \.arc-stock__status/);
   assert.doesNotMatch(css, /\.archive-inner-layer|\.archive-inner-card/);
 });
@@ -98,6 +99,22 @@ test("Archive inventory script filters by status and search text", async () => {
   assert.match(script, /data-archive-inventory-filter-count/);
   assert.match(script, /toLocaleLowerCase\("ko-KR"\)/);
   assert.match(script, /row\.hidden = !isVisible/);
+});
+
+test("Archive actions use the shared KLU interface icon asset", async () => {
+  const html = inventory(await read("archive/index.html"));
+  const icons = await read("assets/icons/klu-interface-icons.svg");
+  const iconUses = html.match(/klu-interface-icons\.svg#arrow-right/g) ?? [];
+  assert.equal(iconUses.length, 17);
+  for (const id of ["arrow-right", "external-link", "search", "lock"]) {
+    assert.match(icons, new RegExp('<symbol id="' + id + '"'));
+  }
+  assert.match(icons, /viewBox="0 0 24 24"/);
+  assert.match(icons, /stroke="currentColor"/);
+  assert.doesNotMatch(
+    icons,
+    /<script\b|<foreignObject\b|<image\b|https?:\/\/(?!www\.w3\.org\/2000\/svg)/i,
+  );
 });
 
 test("Archive candidate surfaces avoid the long dash glyph", async () => {

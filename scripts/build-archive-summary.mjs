@@ -146,7 +146,7 @@ const sourceRows = registeredSources.map((source) => {
     .filter(Boolean)
     .join(" · ");
   const sourceKey = `${source.seriesSlug}:${source.id}`;
-  return `        <div class="arc-stock__row" data-access="open" data-source-key="${escapeHtml(sourceKey)}" data-title="${escapeHtml(source.displayTitle)}" data-meta="${escapeHtml(meta)}" data-description="${escapeHtml(description)}"><dt><span class="arc-stock__status">열람 가능</span><a class="arc-stock__link" href="../${escapeHtml(source.href)}"><span class="arc-stock__title">${escapeHtml(source.displayTitle)}</span><span class="arc-stock__action">자료 보기</span></a></dt><dd><span class="arc-stock__meta">${escapeHtml(meta)}</span><span class="arc-stock__description">${escapeHtml(description)}</span></dd></div>`;
+  return `        <div class="arc-stock__row" data-access="open" data-source-key="${escapeHtml(sourceKey)}" data-title="${escapeHtml(source.displayTitle)}" data-meta="${escapeHtml(meta)}" data-description="${escapeHtml(description)}"><dt><span class="arc-stock__status">열람 가능</span><a class="arc-stock__link" href="../${escapeHtml(source.href)}"><span class="arc-stock__title">${escapeHtml(source.displayTitle)}</span><span class="arc-stock__action"><svg class="klu-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="../assets/icons/klu-interface-icons.svg#arrow-right"></use></svg><span class="arc-stock__action-label">자료 보기</span></span></a></dt><dd><span class="arc-stock__meta">${escapeHtml(meta)}</span><span class="arc-stock__description">${escapeHtml(description)}</span></dd></div>`;
 }).join("\n");
 const sourceStart = "        <!-- ARCHIVE_REGISTERED_SOURCES:START -->";
 const sourceEnd = "        <!-- ARCHIVE_REGISTERED_SOURCES:END -->";
