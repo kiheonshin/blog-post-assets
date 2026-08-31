@@ -81,6 +81,12 @@ test("Archive inventory styles retain visible availability text", async () => {
   assert.match(css, /\.arc-stock__title/);
   assert.match(css, /max-height: min\(70svh, 52rem\)/);
   assert.match(css, /grid-template-columns: minmax\(22rem, 1\.05fr\)/);
+  assert.match(css, /block-size: 9\.5rem/);
+  assert.match(css, /block-size: 13\.5rem/);
+  assert.match(css, /block-size: 15rem/);
+  assert.match(css, /-webkit-line-clamp: 2/);
+  assert.match(css, /-webkit-line-clamp: 3/);
+  assert.match(css, /\.arc-stock__action::before[\s\S]*content: "→"/);
   assert.match(css, /\.arc-stock \[data-access="open"\] \.arc-stock__status/);
   assert.doesNotMatch(css, /\.archive-inner-layer|\.archive-inner-card/);
 });
