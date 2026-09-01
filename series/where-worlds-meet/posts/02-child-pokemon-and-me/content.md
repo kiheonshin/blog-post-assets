@@ -1,8 +1,8 @@
-# 덕질의 상속 (2) - 아이와 포켓몬과 나
+# 두 세계가 만나는 자리 (2) - 아이와 포켓몬과 나
 
-- **시리즈** 덕질의 상속 · 2편
-- **원문** https://kiheon.com/series/handed-down/posts/02-child-pokemon-and-me/
-- **마크다운** https://kiheon.com/series/handed-down/posts/02-child-pokemon-and-me/content.md
+- **시리즈** 두 세계가 만나는 자리 · 2편
+- **원문** https://kiheonshin.github.io/blog-post-assets/series/where-worlds-meet/posts/02-child-pokemon-and-me/
+- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/where-worlds-meet/posts/02-child-pokemon-and-me/content.md
 - **상태** 로컬 검수본 · 미발행
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 
@@ -10,7 +10,7 @@
 
 포켓몬을 좋아하는 아이가 있어서 내가 포켓몬을 알게 된 것이 아니다. 순서가 반대다. 내가 먼저 좋아했다. 왜 좋아하기 시작했는지를 따라가 보면, 언젠가 태어날 아이가 좋아할 것이기 때문에 미리 좋아해야지 하고 좋아하기 시작한 것이다. 노력을 해서 좋아했고, 어느 순간 진짜로 좋아지게 됐다. 이 글은 그 순서에 관한 것이다.
 
-시리즈 안내 : 이 글은 「덕질의 상속」 세 편 가운데 두 번째다. (1) 세계를 배우러 먼저 다닌 시간 (2) 아이와 포켓몬과 나 (3) 저장하고 건네고 함께 자라는 법.
+시리즈 안내 : 이 글은 「두 세계가 만나는 자리」 세 편 가운데 두 번째다. (1) 세계를 배우러 먼저 다닌 시간 (2) 아이와 포켓몬과 나 (3) 저장하고 건네고 함께 자라는 법.
 
 ---
 

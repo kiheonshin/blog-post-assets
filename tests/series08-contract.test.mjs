@@ -5,7 +5,7 @@ import test from "node:test";
 import { fileURLToPath } from "node:url";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const seriesRoot = path.join(repoRoot, "series/handed-down");
+const seriesRoot = path.join(repoRoot, "series/where-worlds-meet");
 const read = (relative) => readFile(path.join(seriesRoot, relative), "utf8");
 const readRepo = (relative) => readFile(path.join(repoRoot, relative), "utf8");
 
@@ -34,8 +34,8 @@ test("Series 08 stays unpublished on every registry the site reads", async () =>
     assert.doesNotMatch(html, /property="og:/, page);
     assert.doesNotMatch(html, /googletagmanager/, page);
   }
-  assert.doesNotMatch(await readRepo("assets/content-manifest.js"), /handed-down/);
-  assert.doesNotMatch(await readRepo("llms.txt"), /handed-down/);
+  assert.doesNotMatch(await readRepo("assets/content-manifest.js"), /where-worlds-meet/);
+  assert.doesNotMatch(await readRepo("llms.txt"), /where-worlds-meet/);
 });
 
 test("Series 08 keeps working material off the public surface", async () => {
