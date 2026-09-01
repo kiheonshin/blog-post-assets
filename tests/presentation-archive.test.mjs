@@ -40,7 +40,11 @@ const allSlugs = [...slugs, ...lineageSlugs];
 test("the archive builds one index and eight human-readable detail pages", async () => {
   const index = await read(`${archiveRoot}/index.html`);
   assert.match(index, /<h1>공개 발표와 자료의 연결<\/h1>/);
-  assert.match(index, /<meta name="robots" content="noindex, nofollow">/);
+  // 본인 승인 2026-09-01(G3)으로 공개됐다. 이전에는 후보라 noindex 를 잠갔는데,
+  // 이제는 그 반대를 잠근다 — 아홉 면 어디에도 noindex 가 되살아나면 안 되고,
+  // 발견 경로(content-manifest)에 등재돼 있어야 한다. 적격성 근거는
+  // 아틀라스 판정 `2026-09-01-0640`(2022 원 덱 2벌 스윕 청정).
+  assert.doesNotMatch(index, /noindex/);
   assert.match(index, /영상 5편 · 자료 계보 3편/);
   assert.equal([...index.matchAll(/<li id="[^"]+">/g)].length, 8);
 
@@ -207,4 +211,12 @@ test("every local href, image and in-page anchor resolves", async () => {
       assert.match(html, new RegExp(`id="${anchor}"`), `${relative}#${anchor}`);
     }
   }
+});
+
+test("the presentation archive is registered where the site finds its own pages", async () => {
+  // 검색에 열어 두고 사이트 내부 색인에는 안 넣으면, 사람은 검색으로만 닿고
+  // 사이트 안에서는 길이 없다. 두 쪽을 함께 잠근다.
+  const manifest = await read("assets/content-manifest.js");
+  assert.match(manifest, /series\/metaverse-era\/sources\/presentations\//);
+  assert.match(manifest, /공개 발표와 자료의 연결/);
 });
