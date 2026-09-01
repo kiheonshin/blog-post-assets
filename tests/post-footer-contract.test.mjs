@@ -27,7 +27,10 @@ test("every normal series post shares one canonical footer and tool layer", asyn
     .filter((file) => !file.includes(`${path.sep}full${path.sep}`))
     .sort();
 
-  assert.equal(pages.length, 24);
+  // 24 → 25 [2026-09-01] 시리즈 08 「덕질의 상속」 2편이 로컬 후보로 섰다.
+  // 이 수는 **말미 계약을 지키는 면의 수**이지 발행 면의 수가 아니다 —
+  // went-in-first 3면과 handed-down 1면은 noindex·매니페스트 미등재의 미발행 면이다.
+  assert.equal(pages.length, 25);
   for (const file of pages) {
     const html = await readFile(file, "utf8");
     const relative = path.relative(repoRoot, file);

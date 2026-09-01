@@ -1,0 +1,25 @@
+/* series/handed-down/review.css — 시리즈 08 로컬 후보 전용 [2026-09-01]
+ *
+ * 이 시트는 **결핍을 메우는 자리**다. 커버가 없고 세 편 중 한 편만 서 있어서
+ * 공유 시트가 전제하는 두 가지(배너 이미지 · 모든 편의 주소)가 아직 없다.
+ * 커버가 들어오고 1·3편이 서면 이 파일은 지운다. 공유 시트는 손대지 않았다.
+ */
+
+/* 미발행 표시. went-in-first 가 쓰는 것과 같은 규칙이다. */
+.review-state{pointer-events:none;border-color:var(--rule);color:var(--ink-muted)}
+
+/* 커버가 없을 때의 배너. assets/post.css 의 .banner__cards 는 배너 이미지 위에
+   얹히도록 position:absolute 이라, 이미지가 없으면 높이 0 위에서 카드가 겹친다.
+   좁은 화면 규칙(post.css @max-width:47.99rem)과 같은 값으로 정적 배치만 되돌린다.
+   카드 마크업은 정본 그대로다 — 커버가 들어오면 이 수식어만 뗀다. */
+.banner--nocover{position:static;margin:0}
+.banner--nocover .banner__cards{position:static;padding:0;gap:.5rem}
+.banner--nocover .banner__cards a,
+.banner--nocover .banner__cards .card{background:none;border-color:var(--rule)}
+@media(max-width:47.99rem){.banner--nocover .banner__cards{grid-template-columns:1fr}}
+
+/* 아직 서지 않은 편. 없는 주소를 링크로 걸지 않고, 목록에서 빼지도 않는다.
+   세 편짜리 시리즈라는 사실은 남기고 누를 수 없다는 것만 보이게 한다. */
+.banner__cards .card--pending{border-color:var(--rule);color:var(--ink-muted)}
+.banner__cards .card--pending .n{color:var(--ink-faint)}
+.serieslinks .pending{color:var(--ink-faint);cursor:default}
