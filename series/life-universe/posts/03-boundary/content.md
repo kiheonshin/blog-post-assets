@@ -1,14 +1,14 @@
 # Life Universe · Making of (3) 먼저 다 닫아두고, 지킨 만큼만 한 칸씩 열었다
 
 - **시리즈** Life Universe · Making of · 3편
-- **원문** https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/03-boundary/
-- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/03-boundary/content.md
+- **원문** https://kiheon.com/series/life-universe/posts/03-boundary/
+- **마크다운** https://kiheon.com/series/life-universe/posts/03-boundary/content.md
 - **발행일** 2026-08-08
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 
 ***
 
-![Life Universe · Making of (3) 먼저 다 닫아두고, 지킨 만큼만 한 칸씩 열었다 키 비주얼](https://kiheonshin.github.io/blog-post-assets/series/life-universe/assets/hero-3.jpg)
+![Life Universe · Making of (3) 먼저 다 닫아두고, 지킨 만큼만 한 칸씩 열었다 키 비주얼](https://kiheon.com/series/life-universe/assets/hero-3.jpg)
 
 접근 범위는 설정 화면에서 정해지지 않았다. 경계를 먼저 문서로 못 박고, 가장 좁은 권한에서 실제로 어떻게 행동하는지 본 다음, 지킨 만큼만 한 칸씩 열었다. 이 편은 열지 않기로 한 자리와, 트윈에게 남겨 둔 다음 칸에 대한 기록이다.
 

@@ -1,14 +1,14 @@
 # 낯선 세계 — 아이보다 먼저 들어가 봤다 (2) - 포켓몬 아저씨, 홀로 하던 것이 함께가 되기까지
 
 - **시리즈** 낯선 세계 — 아이보다 먼저 들어가 봤다 · 2편
-- **원문** https://kiheonshin.github.io/blog-post-assets/series/went-in-first/posts/02-pokemon-uncle/
-- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/went-in-first/posts/02-pokemon-uncle/content.md
+- **원문** https://kiheon.com/series/went-in-first/posts/02-pokemon-uncle/
+- **마크다운** https://kiheon.com/series/went-in-first/posts/02-pokemon-uncle/content.md
 - **상태** 로컬 검수본 · 미발행
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 
 ***
 
-![다양한 수집 표식 사이로 먹색 발판이 이어지고 산호색 선두 발판이 빈자리를 가리키는 장면](https://kiheonshin.github.io/blog-post-assets/series/went-in-first/assets/hero-2.jpg)
+![다양한 수집 표식 사이로 먹색 발판이 이어지고 산호색 선두 발판이 빈자리를 가리키는 장면](https://kiheon.com/series/went-in-first/assets/hero-2.jpg)
 
 2023년 10월, 소수의 사람들이 모인 비공개 자리에서 두 시간 가까운 발표를 했다. 세 파트 가운데 두 번째가 포켓몬이었다. 그날 발표에서 나는 이렇게 말했다. 포켓몬을 좋아하는 아이가 있는 것이 아니라 내가 포켓몬을 좋아한다고. 왜 좋아하게 됐는지를 보면 미래에 태어날 우리 아이가 좋아할 것이기 때문에 나는 미리 좋아해야지 하고 좋아하기 시작한 것이라고. 노력을 해서 좋아했고, 어느 순간 진짜로 좋아지게 됐다고. 이 글은 그 순서에 관한 것이다.
 

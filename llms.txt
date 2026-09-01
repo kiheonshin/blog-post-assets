@@ -7,57 +7,57 @@
 
 ## AI 시대, 창작의 정의를 다시 묻다
 
-- [AI 시대, 창작의 정의를 다시 묻다](https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/): 2025년 11월 발표 'AIGC 시장 트렌드 및 창작자 패러다임의 변화'를 중심으로, 그 바탕 자료와 다시 쓴 포스팅 세 개를 한자리에 모았다.
-- [AI 시대, 창작의 정의를 다시 묻다 Part 1. 실력과 노력의 가치는 어디로 가는가](https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/posts/01-skill-and-effort/): 발표자료는 시간이 지나면 낡는다.
-- [AI 시대, 창작의 정의를 다시 묻다 Part 2. 프롬프트를 넘어, 작업의 흐름을 설계하는 일](https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/posts/02-workflow-design/): 프롬프트를 잘 쓰는 사람이 되어야 한다는 말을 자주 듣는다.
-- [AI 시대, 창작의 정의를 다시 묻다 Part 3. 현실과 가상의 경계면에서](https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/): 가상현실이라는 말에는 순서가 들어 있다.
-- [AI 시대의 예술, 인간 고유의 창의성이란 무엇인가 · 바탕 자료](https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/sources/research/): 2025년 9월에 정리한 연구 노트. AI 시대의 예술과 창작을 재정의하는 일곱 개의 물음과 다섯 갈래의 제언.
-- [AIGC 시장 트렌드 및 창작자 패러다임의 변화 · 발표 자료](https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/sources/slides/): 2025년 11월 21일 발표 자료 전문. 슬라이드 162장을 그날의 순서대로 넘겨 보고, 영상 59편은 발표 때 놓였던 자리 그대로 재생한다.
+- [AI 시대, 창작의 정의를 다시 묻다](https://kiheon.com/series/aigc-creative-paradigm/): 2025년 11월 발표 'AIGC 시장 트렌드 및 창작자 패러다임의 변화'를 중심으로, 그 바탕 자료와 다시 쓴 포스팅 세 개를 한자리에 모았다.
+- [AI 시대, 창작의 정의를 다시 묻다 Part 1. 실력과 노력의 가치는 어디로 가는가](https://kiheon.com/series/aigc-creative-paradigm/posts/01-skill-and-effort/): 발표자료는 시간이 지나면 낡는다.
+- [AI 시대, 창작의 정의를 다시 묻다 Part 2. 프롬프트를 넘어, 작업의 흐름을 설계하는 일](https://kiheon.com/series/aigc-creative-paradigm/posts/02-workflow-design/): 프롬프트를 잘 쓰는 사람이 되어야 한다는 말을 자주 듣는다.
+- [AI 시대, 창작의 정의를 다시 묻다 Part 3. 현실과 가상의 경계면에서](https://kiheon.com/series/aigc-creative-paradigm/posts/03-reality-virtual-boundary/): 가상현실이라는 말에는 순서가 들어 있다.
+- [AI 시대의 예술, 인간 고유의 창의성이란 무엇인가 · 바탕 자료](https://kiheon.com/series/aigc-creative-paradigm/sources/research/): 2025년 9월에 정리한 연구 노트. AI 시대의 예술과 창작을 재정의하는 일곱 개의 물음과 다섯 갈래의 제언.
+- [AIGC 시장 트렌드 및 창작자 패러다임의 변화 · 발표 자료](https://kiheon.com/series/aigc-creative-paradigm/sources/slides/): 2025년 11월 21일 발표 자료 전문. 슬라이드 162장을 그날의 순서대로 넘겨 보고, 영상 59편은 발표 때 놓였던 자리 그대로 재생한다.
 
 ## 자율 세계, 스스로 규칙을 만드는 세계의 등장
 
-- [자율 세계, 스스로 규칙을 만드는 세계의 등장](https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/): 2024년 7월 부천국제판타스틱영화제 BIFAN+ 컨퍼런스 발표를 2년 뒤에 다시 정리한 포스팅 세 개와 그 바탕 자료. 자율 세계, 뒤집힌 가상과 현실, 그리고 창작의 주체.
-- [자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 1. 게임 엔진의 도시에서 자율 세계까지](https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/): 스스로 규칙을 만들고, 그 안의 존재들이 알아서 살아가는 세계가 생겨나고 있다.
-- [자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 2. 가상 세계는 더 이상 현실의 보조 수단이 아니다](https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/posts/02-more-than-a-mirror/): 가상 세계는 오랫동안 현실을 흉내 내는 공간이었고, 현실에서 남는 시간을 소비하는 공간이었다.
-- [자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 3. 무엇을 창조하는 존재이고 싶은가](https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/posts/03-what-we-want-to-create/): 생성 AI는 창작의 도구를 넘어 창작의 주체 자리를 넘보기 시작했다.
-- [자율 세계의 등장과 새로운 창작 환경 · 발표 자료](https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/sources/slides/): 2024년 7월 7일 부천국제판타스틱영화제 BIFAN+ 컨퍼런스 발표 자료 전문. 슬라이드 130장을 그날의 순서대로 넘겨 보고, 영상 36편은 발표 때 놓였던 자리 그대로 재생한다.
-- [자율 세계의 등장과 새로운 창작 환경 · 2024년 기록](https://kiheonshin.github.io/blog-post-assets/series/autonomous-worlds/sources/talk/): 2024년 7월 7일 부천국제판타스틱영화제 BIFAN+ 컨퍼런스 발표 '자율 세계의 등장과 새로운 창작 환경'을 발표 직후 정리해 발행한 원문. 2년 뒤의 재정리와 비교해 읽도록 고치지 않고 남겨 둔 1차 기록이다.
+- [자율 세계, 스스로 규칙을 만드는 세계의 등장](https://kiheon.com/series/autonomous-worlds/): 2024년 7월 부천국제판타스틱영화제 BIFAN+ 컨퍼런스 발표를 2년 뒤에 다시 정리한 포스팅 세 개와 그 바탕 자료. 자율 세계, 뒤집힌 가상과 현실, 그리고 창작의 주체.
+- [자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 1. 게임 엔진의 도시에서 자율 세계까지](https://kiheon.com/series/autonomous-worlds/posts/01-engine-city-to-autonomous-world/): 스스로 규칙을 만들고, 그 안의 존재들이 알아서 살아가는 세계가 생겨나고 있다.
+- [자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 2. 가상 세계는 더 이상 현실의 보조 수단이 아니다](https://kiheon.com/series/autonomous-worlds/posts/02-more-than-a-mirror/): 가상 세계는 오랫동안 현실을 흉내 내는 공간이었고, 현실에서 남는 시간을 소비하는 공간이었다.
+- [자율 세계, 스스로 규칙을 만드는 세계의 등장 Part 3. 무엇을 창조하는 존재이고 싶은가](https://kiheon.com/series/autonomous-worlds/posts/03-what-we-want-to-create/): 생성 AI는 창작의 도구를 넘어 창작의 주체 자리를 넘보기 시작했다.
+- [자율 세계의 등장과 새로운 창작 환경 · 발표 자료](https://kiheon.com/series/autonomous-worlds/sources/slides/): 2024년 7월 7일 부천국제판타스틱영화제 BIFAN+ 컨퍼런스 발표 자료 전문. 슬라이드 130장을 그날의 순서대로 넘겨 보고, 영상 36편은 발표 때 놓였던 자리 그대로 재생한다.
+- [자율 세계의 등장과 새로운 창작 환경 · 2024년 기록](https://kiheon.com/series/autonomous-worlds/sources/talk/): 2024년 7월 7일 부천국제판타스틱영화제 BIFAN+ 컨퍼런스 발표 '자율 세계의 등장과 새로운 창작 환경'을 발표 직후 정리해 발행한 원문. 2년 뒤의 재정리와 비교해 읽도록 고치지 않고 남겨 둔 1차 기록이다.
 
 ## 코-크리에이션 문화
 
-- [코-크리에이션 문화](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/): 2023년 두 차례의 발표를 3년 뒤에 다시 쓴 포스팅 세 개. 창작의 주체가 어디로 옮겨가는가.
-- [코-크리에이션 문화 (1) 창의성은 누구의 것인가](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/01-whose-creativity/): 2023년 6월 말, 나는 무대에서 코-크리에이션이라는 단어 하나를 들고 서 있었다.
-- [코-크리에이션 문화 (2) 경계면에서](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/02-at-the-boundary/): 2023년 11월, 나는 파리 루브르의 유리 피라미드 사진으로 발표를 열었다.
-- [코-크리에이션 문화 (3) 기록이 이야기가 될 때](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/03-when-records-become-stories/): 2023년 11월 9일 부산이었다.
-- [웹3의 다음 흐름을 주도할 코-크리에이션 문화 · 발표 자료](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/sources/slides-2023-06/): 2023년 6월 말, 웹3의 다음 흐름을 코-크리에이션이라는 한 단어로 놓고 정리한 발표 자료다. 개념을 앞세우는 대신 레고에서 시작해 스테이플버스, CloneX, 나이키 닷스우시, 트리플에스까지 실제 사례를 순서대로 쌓아 올린다. 스스로 번호를 매긴 일곱 개의 절이 창의성의 출발에서 수익 분배와 거버넌스까지 이어진다.
-- [현실과 가상을 연결하는 블록체인 기반의 스토리텔링 · 발표 자료](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/sources/slides-2023-11/): 2023년 11월의 발표 자료다. 루브르 피라미드를 덮은 사진에서 출발해 도시를 하나의 테마파크로 다시 보고, 스토리텔링과 매직서클이라는 비기술적 요소를 거쳐 블록체인이라는 기술적 요소로 내려간다. 마지막 절은 온체인 스토리텔링을 다섯 가지 도구로 나누어 실제 캐릭터와 작업물로 보여준다.
+- [코-크리에이션 문화](https://kiheon.com/series/co-creation-culture/): 2023년 두 차례의 발표를 3년 뒤에 다시 쓴 포스팅 세 개. 창작의 주체가 어디로 옮겨가는가.
+- [코-크리에이션 문화 (1) 창의성은 누구의 것인가](https://kiheon.com/series/co-creation-culture/posts/01-whose-creativity/): 2023년 6월 말, 나는 무대에서 코-크리에이션이라는 단어 하나를 들고 서 있었다.
+- [코-크리에이션 문화 (2) 경계면에서](https://kiheon.com/series/co-creation-culture/posts/02-at-the-boundary/): 2023년 11월, 나는 파리 루브르의 유리 피라미드 사진으로 발표를 열었다.
+- [코-크리에이션 문화 (3) 기록이 이야기가 될 때](https://kiheon.com/series/co-creation-culture/posts/03-when-records-become-stories/): 2023년 11월 9일 부산이었다.
+- [웹3의 다음 흐름을 주도할 코-크리에이션 문화 · 발표 자료](https://kiheon.com/series/co-creation-culture/sources/slides-2023-06/): 2023년 6월 말, 웹3의 다음 흐름을 코-크리에이션이라는 한 단어로 놓고 정리한 발표 자료다. 개념을 앞세우는 대신 레고에서 시작해 스테이플버스, CloneX, 나이키 닷스우시, 트리플에스까지 실제 사례를 순서대로 쌓아 올린다. 스스로 번호를 매긴 일곱 개의 절이 창의성의 출발에서 수익 분배와 거버넌스까지 이어진다.
+- [현실과 가상을 연결하는 블록체인 기반의 스토리텔링 · 발표 자료](https://kiheon.com/series/co-creation-culture/sources/slides-2023-11/): 2023년 11월의 발표 자료다. 루브르 피라미드를 덮은 사진에서 출발해 도시를 하나의 테마파크로 다시 보고, 스토리텔링과 매직서클이라는 비기술적 요소를 거쳐 블록체인이라는 기술적 요소로 내려간다. 마지막 절은 온체인 스토리텔링을 다섯 가지 도구로 나누어 실제 캐릭터와 작업물로 보여준다.
 
 ## Life Universe · Making of
 
-- [Life Universe · Making of](https://kiheonshin.github.io/blog-post-assets/series/life-universe/): 앞선 다섯 시리즈 열다섯 편 말미에 붙은 한 줄이 실제로 무엇이었는지, 처음 50일 동안 무엇을 했는지의 중간 보고 세 편.
-- [Life Universe · Making of (1) 앞선 다섯 시리즈에 나는 같은 한 줄을 붙였다](https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/01-result/): 앞선 다섯 시리즈 열다섯 편의 맨 아래에 나는 같은 문장을 하나씩 붙였다.
-- [Life Universe · Making of (2) 디지털 트윈은 프롬프트가 아니라 구조다](https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/02-structure/): 나를 아는 AI를 만드는 일은 내 자료를 전부 읽히는 일이 아니었다.
-- [Life Universe · Making of (3) 먼저 다 닫아두고, 지킨 만큼만 한 칸씩 열었다](https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/03-boundary/): 접근 범위는 설정 화면에서 정해지지 않았다.
-- [KIHEON LIFE UNIVERSE 소개 덱](https://kiheonshin.github.io/blog-post-assets/series/life-universe/sources/universe-intro/): KIHEON LIFE UNIVERSE를 소개하는 27장. 신기헌 본인이 만든 것이 아니라, 본인을 학습한 에이전트가 본인의 발표 자료와 아카이브를 재료로 다시 만들었다. 본인이 읽고 승인한 뒤 시리즈 00의 원자료로 공개됐다.
+- [Life Universe · Making of](https://kiheon.com/series/life-universe/): 앞선 다섯 시리즈 열다섯 편 말미에 붙은 한 줄이 실제로 무엇이었는지, 처음 50일 동안 무엇을 했는지의 중간 보고 세 편.
+- [Life Universe · Making of (1) 앞선 다섯 시리즈에 나는 같은 한 줄을 붙였다](https://kiheon.com/series/life-universe/posts/01-result/): 앞선 다섯 시리즈 열다섯 편의 맨 아래에 나는 같은 문장을 하나씩 붙였다.
+- [Life Universe · Making of (2) 디지털 트윈은 프롬프트가 아니라 구조다](https://kiheon.com/series/life-universe/posts/02-structure/): 나를 아는 AI를 만드는 일은 내 자료를 전부 읽히는 일이 아니었다.
+- [Life Universe · Making of (3) 먼저 다 닫아두고, 지킨 만큼만 한 칸씩 열었다](https://kiheon.com/series/life-universe/posts/03-boundary/): 접근 범위는 설정 화면에서 정해지지 않았다.
+- [KIHEON LIFE UNIVERSE 소개 덱](https://kiheon.com/series/life-universe/sources/universe-intro/): KIHEON LIFE UNIVERSE를 소개하는 27장. 신기헌 본인이 만든 것이 아니라, 본인을 학습한 에이전트가 본인의 발표 자료와 아카이브를 재료로 다시 만들었다. 본인이 읽고 승인한 뒤 시리즈 00의 원자료로 공개됐다.
 
 ## AI를 열어둘수록 선명해지는 창작자의 자리
 
-- [AI를 열어둘수록 선명해지는 창작자의 자리](https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/): 2026 뉴타입 엔터 서밋 공개 대담을 바탕으로, AI의 잠재력과 엔진 IP, 창작자의 판단 능력을 세 편으로 정리했다.
-- [AI를 열어둘수록 선명해지는 창작자의 자리 (1) - 잠재력을 믿는 데서 협업이 시작된다](https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/01-not-blocking-potential/): AI를 더 세밀하게 통제하기보다 잠재력을 열어둘 때 협업이 어떻게 달라지는지, 긴 작업 루프와 가상 시부야 사례로 살펴본다.
-- [AI를 열어둘수록 선명해지는 창작자의 자리 (2) - 남는 IP는 취향을 재현하는 엔진이다](https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/02-engine-as-ip/): 콘텐츠가 한 번 쓰고 버려지는 시대, 결과물이 아니라 취향을 반복해 만들어내는 엔진이 어떻게 IP로 남는지 이야기한다.
-- [AI를 열어둘수록 선명해지는 창작자의 자리 (3) - 다르게 보는 눈은 창작자가 가진 능력이다](https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/03-already-have-the-eye/): 다마고치 에이전트들과 의도적으로 모자란 AI 실험을 통해, AI를 다르게 보는 창작자의 판단 능력을 돌아본다.
+- [AI를 열어둘수록 선명해지는 창작자의 자리](https://kiheon.com/series/newtype-ip-dialogue/): 2026 뉴타입 엔터 서밋 공개 대담을 바탕으로, AI의 잠재력과 엔진 IP, 창작자의 판단 능력을 세 편으로 정리했다.
+- [AI를 열어둘수록 선명해지는 창작자의 자리 (1) - 잠재력을 믿는 데서 협업이 시작된다](https://kiheon.com/series/newtype-ip-dialogue/posts/01-not-blocking-potential/): AI를 더 세밀하게 통제하기보다 잠재력을 열어둘 때 협업이 어떻게 달라지는지, 긴 작업 루프와 가상 시부야 사례로 살펴본다.
+- [AI를 열어둘수록 선명해지는 창작자의 자리 (2) - 남는 IP는 취향을 재현하는 엔진이다](https://kiheon.com/series/newtype-ip-dialogue/posts/02-engine-as-ip/): 콘텐츠가 한 번 쓰고 버려지는 시대, 결과물이 아니라 취향을 반복해 만들어내는 엔진이 어떻게 IP로 남는지 이야기한다.
+- [AI를 열어둘수록 선명해지는 창작자의 자리 (3) - 다르게 보는 눈은 창작자가 가진 능력이다](https://kiheon.com/series/newtype-ip-dialogue/posts/03-already-have-the-eye/): 다마고치 에이전트들과 의도적으로 모자란 AI 실험을 통해, AI를 다르게 보는 창작자의 판단 능력을 돌아본다.
 
 ## 온체인 스토리텔링
 
-- [온체인 스토리텔링](https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/): 2023년에 진행하던 웹3 기반 코크리에이션 프로젝트의 세계관·방법론·산출물을 3년 뒤에 세 편으로 정리했다.
-- [온체인 스토리텔링 (1) 이야기를 담으려면 세계부터 지어야 했다](https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/posts/01-worldview/): 2023년 가을에 글 한 편을 발행했다.
-- [온체인 스토리텔링 (2) 캐릭터는 정의되기 전에 먼저 살았다](https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/posts/02-methodology/): 세계관을 소개하는 글보다 캐릭터가 먼저 있었다.
-- [온체인 스토리텔링 (3) 세계는 옷과 공간과 음악으로 새어 나갔다](https://kiheonshin.github.io/blog-post-assets/series/onchain-storytelling/posts/03-expansion/): 세계관이 있었고 캐릭터가 살았다.
+- [온체인 스토리텔링](https://kiheon.com/series/onchain-storytelling/): 2023년에 진행하던 웹3 기반 코크리에이션 프로젝트의 세계관·방법론·산출물을 3년 뒤에 세 편으로 정리했다.
+- [온체인 스토리텔링 (1) 이야기를 담으려면 세계부터 지어야 했다](https://kiheon.com/series/onchain-storytelling/posts/01-worldview/): 2023년 가을에 글 한 편을 발행했다.
+- [온체인 스토리텔링 (2) 캐릭터는 정의되기 전에 먼저 살았다](https://kiheon.com/series/onchain-storytelling/posts/02-methodology/): 세계관을 소개하는 글보다 캐릭터가 먼저 있었다.
+- [온체인 스토리텔링 (3) 세계는 옷과 공간과 음악으로 새어 나갔다](https://kiheon.com/series/onchain-storytelling/posts/03-expansion/): 세계관이 있었고 캐릭터가 살았다.
 
 ## 이 아카이브를 다룰 때
 
-읽는 법을 담은 스킬 문서가 있다 : [https://kiheonshin.github.io/blog-post-assets/kiheon-blog.SKILL.md](https://kiheonshin.github.io/blog-post-assets/kiheon-blog.SKILL.md)
-기계가 읽는 계약이 있다 : [https://kiheonshin.github.io/blog-post-assets/agent/citation-contract.json](https://kiheonshin.github.io/blog-post-assets/agent/citation-contract.json)
+읽는 법을 담은 스킬 문서가 있다 : [https://kiheon.com/kiheon-blog.SKILL.md](https://kiheon.com/kiheon-blog.SKILL.md)
+기계가 읽는 계약이 있다 : [https://kiheon.com/agent/citation-contract.json](https://kiheon.com/agent/citation-contract.json)
 
 - 본문은 출처(canonical URL)를 밝히면 인용할 수 있다.
 - 없는 사실을 신기헌의 말로 만들지 않는다. 근거를 댈 수 없으면 쓰지 않는다.

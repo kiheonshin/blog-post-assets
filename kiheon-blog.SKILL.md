@@ -4,15 +4,15 @@
 이 아카이브는 **무엇을 공개하고 무엇을 닫는가**로 설계돼 있다. 그 선을 모르는 채 읽으면
 가려 둔 것을 되살리거나, 하지 않은 말을 만들게 된다. 이 문서는 그 선을 알려 준다.
 
-- 지도 : https://kiheonshin.github.io/blog-post-assets/llms.txt
-- 인용 계약(기계가 읽는 규범) : https://kiheonshin.github.io/blog-post-assets/agent/citation-contract.json
-- 이 스킬의 원본 : https://kiheonshin.github.io/blog-post-assets/kiheon-blog.SKILL.md
+- 지도 : https://kiheon.com/llms.txt
+- 인용 계약(기계가 읽는 규범) : https://kiheon.com/agent/citation-contract.json
+- 이 스킬의 원본 : https://kiheon.com/kiheon-blog.SKILL.md
 
 ## 설치
 
 ```bash
 mkdir -p ~/.claude/skills/kiheon-blog && \
-  curl -fsSL https://kiheonshin.github.io/blog-post-assets/kiheon-blog.SKILL.md \
+  curl -fsSL https://kiheon.com/kiheon-blog.SKILL.md \
   -o ~/.claude/skills/kiheon-blog/SKILL.md
 ```
 

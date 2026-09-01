@@ -8,7 +8,7 @@ const { BUILT_IN_VOICES, rateLimitWindows } = handler._internals;
 
 function request({
   method = "POST",
-  origin = "https://kiheonshin.github.io",
+  origin = "https://kiheon.com",
   address = "203.0.113.10",
 } = {}) {
   return {
@@ -78,7 +78,7 @@ test("answers an allowed preflight without minting a token", async () => {
   assert.equal(res.ended, true);
   assert.equal(
     res.headers.get("access-control-allow-origin"),
-    "https://kiheonshin.github.io",
+    "https://kiheon.com",
   );
 });
 

@@ -52,7 +52,7 @@ async function loadAssistant() {
     }
   }
   const documentStub = {
-    baseURI: "https://kiheonshin.github.io/blog-post-assets/series/aigc-creative-paradigm/",
+    baseURI: "https://kiheon.com/series/aigc-creative-paradigm/",
     activeElement: null,
     addEventListener() {},
     removeEventListener() {},
@@ -83,8 +83,8 @@ async function loadAssistant() {
     innerHeight: 800,
     location: {
       hash: "",
-      hostname: "kiheonshin.github.io",
-      origin: "https://kiheonshin.github.io",
+      hostname: "kiheon.com",
+      origin: "https://kiheon.com",
       pathname: "/blog-post-assets/series/aigc-creative-paradigm/",
     },
     navigator: {},

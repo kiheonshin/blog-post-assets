@@ -1,14 +1,14 @@
 # 06 · Metaverse Era (3) 오늘도 나는 메타버스로 출근합니다, 라고 말한 뒤에
 
 - **시리즈** 메타버스 시대 · 3편
-- **원문** https://kiheonshin.github.io/blog-post-assets/series/metaverse-era/posts/03-clocking-in/
-- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/metaverse-era/posts/03-clocking-in/content.md
+- **원문** https://kiheon.com/series/metaverse-era/posts/03-clocking-in/
+- **마크다운** https://kiheon.com/series/metaverse-era/posts/03-clocking-in/content.md
 - **발행일** 2026-08-15
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 
 ***
 
-![메타버스 시대 (3) 오늘도 나는 메타버스로 출근합니다, 라고 말한 뒤에 키 비주얼](https://kiheonshin.github.io/blog-post-assets/series/metaverse-era/assets/hero-3.jpg)
+![메타버스 시대 (3) 오늘도 나는 메타버스로 출근합니다, 라고 말한 뒤에 키 비주얼](https://kiheon.com/series/metaverse-era/assets/hero-3.jpg)
 
 2021년 여름과 가을에 나는 세 번 더 무대에 올랐다. 세 파일을 합치면 255장이다. 앞의 둘에서 나는 게임 안에서 여섯 달을 보내며 만든 것을 팔았고, 그 수익을 화면 위에서 계산해 보였다. 석 달 뒤 세 번째 파일에서는 그 이야기를 한 장도 넣지 않았다. 145장 어디에도 그 게임의 이름이 없고 나를 가리키는 1인칭도 없다. 이 글은 내가 당사자로 선 두 번과 그것을 지운 한 번을 나란히 읽은 것이다.
 

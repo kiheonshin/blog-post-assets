@@ -1,14 +1,14 @@
 # 낯선 세계 — 아이보다 먼저 들어가 봤다 (1) - 낯선 세계, 부모가 먼저 들어간다
 
 - **시리즈** 낯선 세계 — 아이보다 먼저 들어가 봤다 · 1편
-- **원문** https://kiheonshin.github.io/blog-post-assets/series/went-in-first/posts/01-parent-enters-first/
-- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/went-in-first/posts/01-parent-enters-first/content.md
+- **원문** https://kiheon.com/series/went-in-first/posts/01-parent-enters-first/
+- **마크다운** https://kiheon.com/series/went-in-first/posts/01-parent-enters-first/content.md
 - **상태** 로컬 검수본 · 미발행
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 
 ***
 
-![서로 다른 세 개의 종이 구역을 먹색 발판이 연결하고 산호색 선두 발판이 먼저 건넌 장면](https://kiheonshin.github.io/blog-post-assets/series/went-in-first/assets/hero-1.jpg)
+![서로 다른 세 개의 종이 구역을 먹색 발판이 연결하고 산호색 선두 발판이 먼저 건넌 장면](https://kiheon.com/series/went-in-first/assets/hero-1.jpg)
 
 나는 2012년부터 동물의 숲을 꾸준히 살펴봤다. 2014년부터 2015년 사이에는 프로젝트 조사용으로 게임을 산 기록도 있다. 2020년에는 그 관심 옆에 새 프로젝트 준비와 아이와의 놀이가 함께 놓였다. 무엇이 먼저였는지를 하나로 정하면 실제 순서가 사라진다.
 

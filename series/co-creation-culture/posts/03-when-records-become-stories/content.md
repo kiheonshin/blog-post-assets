@@ -1,14 +1,14 @@
 # 코-크리에이션 문화 (3) 기록이 이야기가 될 때
 
 - **시리즈** 코-크리에이션 문화 · 3편
-- **원문** https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/03-when-records-become-stories/
-- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/03-when-records-become-stories/content.md
+- **원문** https://kiheon.com/series/co-creation-culture/posts/03-when-records-become-stories/
+- **마크다운** https://kiheon.com/series/co-creation-culture/posts/03-when-records-become-stories/content.md
 - **발행일** 2026-07-28
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 
 ***
 
-![코-크리에이션 문화 (3) 기록이 이야기가 될 때 키 비주얼](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/hero-3.jpg)
+![코-크리에이션 문화 (3) 기록이 이야기가 될 때 키 비주얼](https://kiheon.com/series/co-creation-culture/assets/hero-3.jpg)
 
 2023년 11월 9일 부산이었다. 블록체인 기반의 스토리텔링을 주제로 무대에 섰는데, 첫 대목은 블록체인이 아니라 포켓몬 한 마리였다. 그 포켓몬은 나와 476킬로미터를 걸었고, 나는 그걸 물려주려다 물려줄 수 없다는 사실을 알게 됐다. 이 글은 그날의 이야기를 3년 뒤에 다시 정리한 것이다. 넉 달 남짓 전의 무대에서 나는 누가 만드는가를 물었고, 이 발표에서는 그렇게 만든 것이 무엇으로 남는가를 물었다.
 
@@ -60,7 +60,7 @@
 
 같은 게임의 현장 이벤트가 홍콩과 런던과 파리와 상하이로 이어진 목록도 나란히 놓았다. 도시가 바뀌어도 내가 데리고 다니는 것은 같다는 구조를 한눈에 보여주는 목록이다. 도시를 옮겨도 계정 하나가 따라온다는 감각은 앞 절의 476킬로미터가 이미 설명한 것이고, 그 회사는 그 감각을 27년째 관리하고 있었다.
 
-![2023년 11월 발표. 포탈을 통해 전 세대 게임 타이틀 사이로 데이터가 오간다. 블록체인 없이 성립하는 상속의 사례로 놓았다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-035.jpg)
+![2023년 11월 발표. 포탈을 통해 전 세대 게임 타이틀 사이로 데이터가 오간다. 블록체인 없이 성립하는 상속의 사례로 놓았다.](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-035.jpg)
 *2023년 11월 발표. 포탈을 통해 전 세대 게임 타이틀 사이로 데이터가 오간다. 블록체인 없이 성립하는 상속의 사례로 놓았다.*
 
 ## 그럼에도 할 수 없는 일
@@ -77,7 +77,7 @@
 
 3년 뒤에 이 그림을 다시 보면 답보다 축이 오래 간다. 가장 잘하는 회사조차 할 수 없는 일이 무엇인가를 먼저 묻고, 그 답을 두 축 위에 올려놓고, 평면 안에서 답이 안 나오면 축을 하나 더 세워보는 방식. 그 세 번째 축 자리에 무엇을 넣느냐는 시기마다 달라질 수 있는 것 같다.
 
-![2023년 11월 발표. 상호작용성과 동기성의 평면 바깥으로 나가는 세 번째 이동. 새 축의 이름은 영속성과 불변성이다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-040.jpg)
+![2023년 11월 발표. 상호작용성과 동기성의 평면 바깥으로 나가는 세 번째 이동. 새 축의 이름은 영속성과 불변성이다.](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-040.jpg)
 *2023년 11월 발표. 상호작용성과 동기성의 평면 바깥으로 나가는 세 번째 이동. 새 축의 이름은 영속성과 불변성이다.*
 
 ## 무엇이 아닌지부터 적었다
@@ -96,7 +96,7 @@
 
 이 작업을 진행하던 프로젝트의 이름도 그 자리에서 한 번 말했다. 믹스타운이다. 이 글에서는 이름만 적고 지나간다. 세계관과 실제로 만든 것들은 다음 시리즈에서 따로 다룬다.
 
-![2023년 11월 발표. 정의의 앞 절반이 배제로 채워져 있다. 마지막 줄은 발표 제목과 같은 문장이다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-042.jpg)
+![2023년 11월 발표. 정의의 앞 절반이 배제로 채워져 있다. 마지막 줄은 발표 제목과 같은 문장이다.](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-042.jpg)
 *2023년 11월 발표. 정의의 앞 절반이 배제로 채워져 있다. 마지막 줄은 발표 제목과 같은 문장이다.*
 
 ## 7단계에서 다섯 도구로
@@ -129,10 +129,10 @@
 
 그 사이에 두 쪽이 실제로 이어졌고, 아이디어를 주고받으며 함께 시험해본 것들이 있었다. 6월에 스테이플버스는 참고 사례였다. 11월 지도에서 SAPIENZ Town은 포탈로 이어지는 이웃이었다. 사례는 인용하면 끝나지만 이웃은 오가는 것을 계속 관리해야 한다.
 
-![2023년 6월 발표. 코-크리에이션 프로세스 5단계. 배움과 참여와 투표로 코-크리에이션에 들어가는 칸이다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-028.jpg)
+![2023년 6월 발표. 코-크리에이션 프로세스 5단계. 배움과 참여와 투표로 코-크리에이션에 들어가는 칸이다.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-028.jpg)
 *2023년 6월 발표. 코-크리에이션 프로세스 5단계. 배움과 참여와 투표로 코-크리에이션에 들어가는 칸이다.*
 
-![2023년 6월 발표. 이때 ERC-6551은 개념도였다. 넉 달 남짓 뒤 같은 기술은 캐릭터의 소지품 목록이 된다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-036.jpg)
+![2023년 6월 발표. 이때 ERC-6551은 개념도였다. 넉 달 남짓 뒤 같은 기술은 캐릭터의 소지품 목록이 된다.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-036.jpg)
 *2023년 6월 발표. 이때 ERC-6551은 개념도였다. 넉 달 남짓 뒤 같은 기술은 캐릭터의 소지품 목록이 된다.*
 
 ## 키이라의 하루, 그리고 그 하루의 주소들
@@ -151,7 +151,7 @@
 
 그렇게 되면 이야기의 소품이 곧 기록의 단위가 된다. 보통은 소설 속 재킷과 장부 위의 자산이 따로 논다. 이 구조에서는 재킷이 곧 항목이어서, 캐릭터가 재킷을 벗어 다른 사람에게 주면 이야기가 바뀌는 동시에 장부도 바뀐다.
 
-![2023년 11월 발표. 단편에 나온 소품들이 목록이 되고, 목록의 각 줄에 실제 주소가 붙어 있다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-046.jpg)
+![2023년 11월 발표. 단편에 나온 소품들이 목록이 되고, 목록의 각 줄에 실제 주소가 붙어 있다.](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-046.jpg)
 *2023년 11월 발표. 단편에 나온 소품들이 목록이 되고, 목록의 각 줄에 실제 주소가 붙어 있다.*
 
 그다음에 이 관계를 트리로 그린 계층도를 놓았다. 여기서 처음 보이는 것이 하나 있다. 소유하는 쪽에 캐릭터만 있는 게 아니다. 키이라의 방이 그 자체로 하나의 계정이고, 그 방이 방의 부분들과 은색 발할라 목걸이와 신비한 포탈을 소유하고 있다. 방이 물건을 갖는다는 표현이 어색하게 들리지만, 실제로 우리가 방을 그렇게 쓴다. 물건을 방에 두면 그건 그 방의 물건이 된다. 계층도는 그 습관을 그대로 옮겨 적은 것이다.
@@ -168,7 +168,7 @@
 
 이 구조 위에는 더 큰 지도가 있었다. 캐릭터 위에 타운이 있고 타운 위에 월드가 있고 그 위에 유니버스가 있는 3단 위계, 그리고 각 노드를 잇는 포탈. 그 지도는 다음 시리즈의 몫이다.
 
-![2023년 11월 발표. 키이라의 방이 하나의 계정이 되고, 그 방의 소유 목록에 크립토펑크 쪽에서 넘어온 맥주캔이 들어 있다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-048.jpg)
+![2023년 11월 발표. 키이라의 방이 하나의 계정이 되고, 그 방의 소유 목록에 크립토펑크 쪽에서 넘어온 맥주캔이 들어 있다.](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-048.jpg)
 *2023년 11월 발표. 키이라의 방이 하나의 계정이 되고, 그 방의 소유 목록에 크립토펑크 쪽에서 넘어온 맥주캔이 들어 있다.*
 
 ## 100 곱하기 100
@@ -197,10 +197,10 @@
 
 무대에서 나는 이 캐릭터가 왜 그렇게 됐는지에 대한 사연이 따로 있다고만 말하고 영상을 틀었다. 트레이트 확률을 근거로 성격을 도출했다는 설명은 하지 않았다. 그건 제작자의 노트이지 관객이 들어야 할 이야기가 아니라고 봤던 것 같다.
 
-![2023년 11월 발표. 2,400픽셀 사방의 이미지 하나. 셀 하나가 24픽셀이고 가로세로 100개씩 1만 개가 들어 있다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-051.jpg)
+![2023년 11월 발표. 2,400픽셀 사방의 이미지 하나. 셀 하나가 24픽셀이고 가로세로 100개씩 1만 개가 들어 있다.](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-051.jpg)
 *2023년 11월 발표. 2,400픽셀 사방의 이미지 하나. 셀 하나가 24픽셀이고 가로세로 100개씩 1만 개가 들어 있다.*
 
-![2023년 11월 발표. 4퍼센트짜리 트레이트 하나에서 낮과 밤이 다른 인물이 나왔다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-058.jpg)
+![2023년 11월 발표. 4퍼센트짜리 트레이트 하나에서 낮과 밤이 다른 인물이 나왔다.](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-058.jpg)
 *2023년 11월 발표. 4퍼센트짜리 트레이트 하나에서 낮과 밤이 다른 인물이 나왔다.*
 
 ## 같은 기타가 두 가지로 보이는 이유
@@ -219,7 +219,7 @@
 
 무대에서 나는 이 대목에 한 가지를 덧붙였다. 캐릭터가 스스로 애플리케이션을 쓸 수 있게 되면, 음악을 만들어 올리고 들려주고 파는 일까지를 캐릭터의 이름으로 할 수 있다는 것이다. 2023년에 그 말은 지갑의 기능에 관한 설명이었다. 3년이 지나 같은 문장을 다시 읽으면 다른 층이 하나 더 보이는 것 같다.
 
-![2023년 11월 발표. 같은 기타가 어느 주소에 있느냐에 따라 복셀로도 실사로도 보인다. 자리가 표현을 바꾼다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-062.jpg)
+![2023년 11월 발표. 같은 기타가 어느 주소에 있느냐에 따라 복셀로도 실사로도 보인다. 자리가 표현을 바꾼다.](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-062.jpg)
 *2023년 11월 발표. 같은 기타가 어느 주소에 있느냐에 따라 복셀로도 실사로도 보인다. 자리가 표현을 바꾼다.*
 
 ## 다시 현실로
@@ -256,7 +256,7 @@ Avant Arte가 제작한 CryptoPunks 10,000 On-Chain도 그 자리에 넣었다. 
 
 지금 그 표를 다시 보면 어느 칸이 채워졌고 어느 칸이 그대로인지가 눈에 들어온다. 그 얘기는 이 글에서 하지 않는다. 다만 빈칸을 그려서 띄웠다는 사실 자체는 지금 봐도 잘한 선택이었던 것 같다.
 
-![2023년 11월 발표. 두 캐릭터가 채운 포맷 옆에 빈 슬롯과 새 포맷 칸이 비워진 채로 놓여 있다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-069.jpg)
+![2023년 11월 발표. 두 캐릭터가 채운 포맷 옆에 빈 슬롯과 새 포맷 칸이 비워진 채로 놓여 있다.](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-069.jpg)
 *2023년 11월 발표. 두 캐릭터가 채운 포맷 옆에 빈 슬롯과 새 포맷 칸이 비워진 채로 놓여 있다.*
 
 ## 스토리텔링에서 히스토리로
@@ -277,5 +277,5 @@ Avant Arte가 제작한 CryptoPunks 10,000 On-Chain도 그 자리에 넣었다. 
 
 이 발표가 소개한 세계관과 캐릭터 설계, 그리고 실제로 만든 것들은 다음 시리즈에서 따로 다룬다.
 
-![2023년 11월 발표. 그날 한 이야기 전부를 한 줄로 접는 마지막 문장.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-070.jpg)
+![2023년 11월 발표. 그날 한 이야기 전부를 한 줄로 접는 마지막 문장.](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-070.jpg)
 *2023년 11월 발표. 그날 한 이야기 전부를 한 줄로 접는 마지막 문장.*

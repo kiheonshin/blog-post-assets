@@ -1,15 +1,15 @@
 # AI를 열어둘수록 선명해지는 창작자의 자리 (1) - 잠재력을 믿는 데서 협업이 시작된다
 
 - **시리즈** AI를 열어둘수록 선명해지는 창작자의 자리 · 1편
-- **원문** https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/01-not-blocking-potential/
-- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/01-not-blocking-potential/content.md
+- **원문** https://kiheon.com/series/newtype-ip-dialogue/posts/01-not-blocking-potential/
+- **마크다운** https://kiheon.com/series/newtype-ip-dialogue/posts/01-not-blocking-potential/content.md
 - **발행일** 2026-07-25
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 - **근거 노드** node:207, node:206, node:200, node:204, owner:2026-06-12/뉴타입-대담
 
 ***
 
-![잠재력을 통제하기보다 지나갈 자리를 열어두는 협업을 상징한 시리즈 키 비주얼.](https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/assets/hero-1.jpg)
+![잠재력을 통제하기보다 지나갈 자리를 열어두는 협업을 상징한 시리즈 키 비주얼.](https://kiheon.com/series/newtype-ip-dialogue/assets/hero-1.jpg)
 *잠재력을 통제하기보다 지나갈 자리를 열어두는 협업을 상징한 시리즈 키 비주얼.*
 
 나는 AI에게서 효율성이나 자동화를 크게 기대한 적이 없다. 내가 지켜보고 있는 것은 다른 쪽이다. 이전에는 할 수 없던 일이 가능해지는 쪽. 그런 일은 내가 더 똑똑하게 지시할 때가 아니라, 내가 AI의 잠재력을 덜 가로막을 때 일어났다. 지난 6월 한남동에서 열린 한 대담에서 나는 이 이야기를 했고, 한 달 반쯤 지난 지금 그때 무대에서 한 말을 내 언어로 다시 정리한다.

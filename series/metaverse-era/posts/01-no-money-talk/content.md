@@ -1,14 +1,14 @@
 # 06 · Metaverse Era (1) 현실과 가상 사이에서 돈 이야기를 하지 않던 해
 
 - **시리즈** 메타버스 시대 · 1편
-- **원문** https://kiheonshin.github.io/blog-post-assets/series/metaverse-era/posts/01-no-money-talk/
-- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/metaverse-era/posts/01-no-money-talk/content.md
+- **원문** https://kiheon.com/series/metaverse-era/posts/01-no-money-talk/
+- **마크다운** https://kiheon.com/series/metaverse-era/posts/01-no-money-talk/content.md
 - **발행일** 2026-08-15
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 
 ***
 
-![메타버스 시대 (1) 현실과 가상 사이에서 돈 이야기를 하지 않던 해 키 비주얼](https://kiheonshin.github.io/blog-post-assets/series/metaverse-era/assets/hero-1.jpg)
+![메타버스 시대 (1) 현실과 가상 사이에서 돈 이야기를 하지 않던 해 키 비주얼](https://kiheon.com/series/metaverse-era/assets/hero-1.jpg)
 
 2020년 11월에 나는 두 번 무대에 올랐다. 두 발표의 슬라이드를 합치면 244장인데, 그중 값을 다루는 자리는 일곱 장이고 값이 어떻게 매겨지는지를 묻는 장은 한 장도 없다. 소유, 시장, 화폐, 지갑, 자산, 토큰, 코인, 가격, 거래. 두 벌을 합쳐 찾아보면 전부 0회다. 여섯 해 뒤에 그 파일들을 다시 열어 보니 두 발표는 한 벌의 파일에서 갈라져 나온 것이었다. 이 글은 값 이야기가 화제가 되기 전의 그 해에 내가 무대에서 무슨 말을 하고 다녔는지를 다시 읽은 것이다.
 

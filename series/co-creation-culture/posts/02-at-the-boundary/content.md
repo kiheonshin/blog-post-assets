@@ -1,14 +1,14 @@
 # 코-크리에이션 문화 (2) 경계면에서
 
 - **시리즈** 코-크리에이션 문화 · 2편
-- **원문** https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/02-at-the-boundary/
-- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/02-at-the-boundary/content.md
+- **원문** https://kiheon.com/series/co-creation-culture/posts/02-at-the-boundary/
+- **마크다운** https://kiheon.com/series/co-creation-culture/posts/02-at-the-boundary/content.md
 - **발행일** 2026-07-28
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 
 ***
 
-![코-크리에이션 문화 (2) 경계면에서 키 비주얼](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/hero-2.jpg)
+![코-크리에이션 문화 (2) 경계면에서 키 비주얼](https://kiheon.com/series/co-creation-culture/assets/hero-2.jpg)
 
 2023년 11월, 나는 파리 루브르의 유리 피라미드 사진으로 발표를 열었다. 유리 피라미드 위에 커다란 흑백 이미지가 덮여 있고, 어느 각도에서는 그 이미지가 건물과 정확히 맞아떨어지고 어느 각도에서는 어긋나 있다. 나는 그 사진 위에 라벨을 여섯 개 붙였다. 3년이 지나 다시 보니 내가 그때 붙들고 있던 것은 기술이 아니라 경계면 그 자체였다. 이 글은 그 경계면을 양쪽에서 밀어 본 기록이다.
 
@@ -26,7 +26,7 @@
 
 가상의 이미지가 시작되는 지점. 가상의 이미지가 벗겨져 현실의 표면이 드러난 지점. 가상의 이미지가 심하게 왜곡되어 보이는 지점. 현실의 조형물과 여러 각도에서 만나는 지점. 조형물의 내부에서 밖으로 나오면서 바라보는 시점. 그리고 마지막 하나, 투명한 가상의 경계면에 서 있는 사람들의 감정.
 
-![루브르 피라미드 사진 위에 붙인 여섯 개의 라벨. 다섯은 위치와 시점이고 마지막 하나만 감정이다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-005.jpg)
+![루브르 피라미드 사진 위에 붙인 여섯 개의 라벨. 다섯은 위치와 시점이고 마지막 하나만 감정이다.](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-005.jpg)
 *루브르 피라미드 사진 위에 붙인 여섯 개의 라벨. 다섯은 위치와 시점이고 마지막 하나만 감정이다.*
 
 앞의 다섯은 좌표에 관한 것이다. 어디서 시작하고, 어디서 벗겨지고, 어디서 일그러지고, 어디서 겹치고, 어디서 보는가. 마지막 하나만 좌표가 아니다. 감정에는 위치를 찍을 수 없는데도 나는 그 라벨을 지우지 않고 남겨 두었다.
@@ -43,7 +43,7 @@
 
 둘 다 물리적인 공간과 장소를 갖는다. 둘 다 안과 밖을 가르는 경계를 갖는다. 그 안에는 수많은 콘텐츠와 체험 요소, 서비스와 편의, 보상이 배치되어 있다. 방문객은 지도를 받고 동선을 고르고 줄을 서고 무언가를 먹고 기념품을 산다. 그리고 그것을 최종적으로 전달하는 것은 사람이다. 무대에서 나는 사람이 주는 느낌이 굉장히 중요하게 작동한다고 말했다. 안내하는 사람, 마주치는 사람, 같이 줄을 선 사람이 그 공간의 인상 위에 얹힌다.
 
-![도시가 하나의 거대한 테마파크라면?](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-006.jpg)
+![도시가 하나의 거대한 테마파크라면?](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-006.jpg)
 *도시가 하나의 거대한 테마파크라면?*
 
 런던에서 워너브라더스 스튜디오를 봤다. 해리포터 세계관을 그대로 옮겨 놓은 곳이다. 세트와 소품이 실물로 남아 있고, 관람 동선 중간중간에 관람객이 직접 참여하는 코너가 끼어 있다.
@@ -66,7 +66,7 @@
 
 내가 그 도시를 다시 찾아갔을 때, 그들은 나를 얼마나 기억해 주는가. 나를 얼마나 알아봐 주는가.
 
-![위아래에 놓인 두 문장이 그날 발표 전체의 축이었다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-012.jpg)
+![위아래에 놓인 두 문장이 그날 발표 전체의 축이었다.](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-012.jpg)
 *위아래에 놓인 두 문장이 그날 발표 전체의 축이었다.*
 
 두 가지를 위아래로 놓고 비교했다. 우리가 방문한 도시를 경험하고 기억하는 것. 그리고 도시가 우리에 대해 기억하고 응대해주는 것.
@@ -91,7 +91,7 @@
 
 무대에서는 이 세 가지를 설명한 뒤에 장면 하나를 들었다. 파크 안에서 미키마우스가 나에게 다가와 오늘 생일 아니냐고 묻고 축하 인사를 건네는 상황이다. 저 캐릭터가 그걸 어떻게 알았을까. 뒤에서는 당연히 디지털 레이어가 작동하고 있다. 앱에 등록된 정보가 있고, 그것을 현장의 캐릭터에게 전달하는 경로가 있다.
 
-![기술은 철저하게 숨기고 스토리만 노출한다는 원칙.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-016.jpg)
+![기술은 철저하게 숨기고 스토리만 노출한다는 원칙.](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-016.jpg)
 *기술은 철저하게 숨기고 스토리만 노출한다는 원칙.*
 
 그런데 그 기술은 방문객 쪽으로 한 번도 나오지 않는다. 알림도 없고, 확인 화면도 없고, 잘 작동했다는 표시도 없다. 그날 이 원칙을 이렇게 정리했다. 방문객 개개인을 알아봐주고 맞춤으로 응대해주는 경험, 이 과정에서 기술은 철저하게 숨겨지고 스토리만 노출됨.
@@ -110,7 +110,7 @@
 
 무대에서 한 말은 이랬다. 커머스라는 영역에 커머스만 있는 것이 아니다. 커머스 옆에 어트랙션이 있고 서비스가 있고 이벤트가 있다. 그런데 이것들은 흩어져 있고 분절되어 있다. 그 사이를 조금씩 건너다닐 수 있게 하는 무언가가 필요하다는 이야기였다. 시간 축을 하나 더 그은 것도 같은 이유다. 방문객이 그 장소에 머무르는 시간만이 아니라 그 이전의 경험과 그 이후의 경험까지 같이 놓고 봐야 한다고 나는 말했다.
 
-![Current Area에서 Extended Area로, 다시 Bridging Area로 확장된 최종 도식.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-019.jpg)
+![Current Area에서 Extended Area로, 다시 Bridging Area로 확장된 최종 도식.](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-019.jpg)
 *Current Area에서 Extended Area로, 다시 Bridging Area로 확장된 최종 도식.*
 
 그래서 도식을 세 단계로 확장했다. 지금 작동하고 있는 영역(Current Area), 그 바깥으로 넓어지는 영역(Extended Area), 그리고 영역과 영역 사이에 끼어드는 다리(Bridging Area). 마지막에는 영역 사이사이에 'Bridge'라고 이름 붙인 작은 조각들을 촘촘하게 넣었다. 그림이 복잡해 보이는 이유는 새 시설을 그려 넣어서가 아니라 사이를 전부 채웠기 때문이다. 브릿지 자체는 방문객이 찾아가는 목적지가 아니다. 이미 있는 목적지들 사이를 건너다닐 수 있게 하는 것이 그 역할의 전부다.
@@ -131,7 +131,7 @@
 
 스토리텔링 쪽 사례는 나이앤틱 라이트십이었다. 포켓몬 고를 만든 회사가 공개한 리얼 월드 플랫폼이다. 현실 세계의 특정 위치를 POI(Point Of Interest, 관심 지점)로 정의해 두고, 그 좌표 위에서 위치 기반 게임이 진행된다. 개발자는 지도를 처음부터 만들 필요가 없다. 이미 정의된 좌표 위에 자기 규칙만 얹으면 된다.
 
-![한 번 정의된 POI가 여러 IP의 게임으로 재사용되는 구조.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-023.jpg)
+![한 번 정의된 POI가 여러 IP의 게임으로 재사용되는 구조.](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-023.jpg)
 *한 번 정의된 POI가 여러 IP의 게임으로 재사용되는 구조.*
 
 내 관심은 게임이 아니라 재사용에 있었다. 동일한 POI를 활용해 다양한 IP의 게임으로 확장한다. 한 번 만들어진 좌표가 다른 IP의 게임으로 계속 넘어가고, 우리가 잘 아는 IP들이 같은 엔진 위에서 동시에 돌아간다.
@@ -152,7 +152,7 @@
 
 그림을 두 개 나란히 놓았다. 왼쪽은 디지털 경험이 확산되기 이전의 지점, 오른쪽은 확산된 이후의 지점이다. 각각 아래쪽에 현실세계가 있고 위쪽에 가상세계가 있다. 그 사이에 '매직서클의 영역'이라고 이름 붙인 띠를 놓고, 그 띠 안에 '인식의 지점'을 표시했다. 두 그림의 차이는 하나다. 오른쪽에서 매직서클의 영역이 훨씬 넓다.
 
-![디지털 경험이 확산되기 전과 후, 매직서클 영역의 폭이 달라진다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t2-slide-026.jpg)
+![디지털 경험이 확산되기 전과 후, 매직서클 영역의 폭이 달라진다.](https://kiheon.com/series/co-creation-culture/assets/deck/t2-slide-026.jpg)
 *디지털 경험이 확산되기 전과 후, 매직서클 영역의 폭이 달라진다.*
 
 매직서클(magic circle, 놀이가 성립하기 위해 참가자들이 함께 인정하는 경계)은 놀이 연구에서 온 말이다. 어떤 선을 넘어 들어가면 그 안의 규칙이 잠시 진짜가 되는 영역을 가리킨다. 운동장에 그은 흰 선이나 보드게임의 판이 그 선이다. 규칙이 진짜가 되는 데에는 기술이 필요하지 않다. 필요한 것은 참가자들이 함께 그 선을 인정하는 일뿐이다.
@@ -177,7 +177,7 @@
 
 11월 발표가 첫 번째 방향을 다뤘다면 6월 발표의 이 구간은 두 번째 방향을 다뤘다. 두 발표 사이에 넉 달 남짓이 있었지만 다루는 면은 하나였다.
 
-![2023년 6월. 가상세계 안에서 쓰는 개방형 아바타 시스템으로 소개한 CloneX.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-040.jpg)
+![2023년 6월. 가상세계 안에서 쓰는 개방형 아바타 시스템으로 소개한 CloneX.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-040.jpg)
 *2023년 6월. 가상세계 안에서 쓰는 개방형 아바타 시스템으로 소개한 CloneX.*
 
 사례는 RTFKT와 CloneX였다. RTFKT는 가상 세계 브랜드로 시작해 나이키에 인수된 팀이고, CloneX는 그 팀이 만든 전신 아바타 컬렉션이다. 이 구간은 RTFKT의 당시 태그라인에서 시작한다. 메타버스를 위한 다음 세대의 스니커즈와 수집품. 신발을 만드는 팀이 아니라 신발의 다음 형태를 만드는 팀이라고 스스로를 소개한 셈이다.
@@ -190,14 +190,14 @@ CloneX는 가상세계 안에서 활용 가능한 개방형 아바타 시스템�
 
 Forging SZN 1은 에어포스원 같은 실제 나이키 제품을 CloneX가 입을 수 있는 디지털 웨어러블로 다시 만든 프로그램이다. DNA 테마가 10가지 있고, 후디, 긴팔티, 반팔티, 자켓, 바지, 양말, 모자, 신발 등 8가지 품목의 조합이 걸린다. 무대에서는 총 10개 테마의 10개 컬렉션으로 주어진다고 말하면서 이걸 게임 인벤토리에 비유했다. 머리부터 발끝까지 한 세트를 갖추는 감각이다. 그리고 여기에 세계관과 상상력이 얹힌다고 했다. 신발이라는 물건을 놓고 지금까지 상상할 수 있던 영역 밖, 가상 세계에서만 가능한 설정을 붙여 나가고 있다는 이야기였다. 에어포스원이라는 실물이 먼저 있고, 그 위에 열 갈래의 이야기가 덧씌워진 셈이다.
 
-![왼쪽은 10가지 DNA 테마의 아바타, 오른쪽은 같은 테마의 신발이다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-044.jpg)
+![왼쪽은 10가지 DNA 테마의 아바타, 오른쪽은 같은 테마의 신발이다.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-044.jpg)
 *왼쪽은 10가지 DNA 테마의 아바타, 오른쪽은 같은 테마의 신발이다.*
 
 여기까지는 아직 가상 쪽 이야기다. 재해석된 것은 나이키 제품의 형태이고, 그것을 입는 것은 아바타다. 방향이 뒤집히는 것은 그다음부터다.
 
 RTFKT World Merging Chip. 실물 웨어러블 안에 NFC 태그가 들어 있다. 스마트폰 앱으로 태깅하면 그 제품의 정보를 불러오고, 지갑을 연동하면 그 안에 물려 있던 NFT를 리딤해 내 지갑으로 가져올 수 있다. 실물 신발이 디지털 자산의 열쇠 역할을 하는 구조다.
 
-![실물 웨어러블에 내장된 NFC 태그를 스마트폰으로 인식한다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-046.jpg)
+![실물 웨어러블에 내장된 NFC 태그를 스마트폰으로 인식한다.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-046.jpg)
 *실물 웨어러블에 내장된 NFC 태그를 스마트폰으로 인식한다.*
 
 이름이 정확하다. 월드 머징 칩. 세계를 합치는 칩이라는 뜻이다. 앞의 계보도가 가상 안에서 이어지는 자격의 연쇄였다면, 이 칩은 그 연쇄를 현실 쪽으로 끌고 나온다. 실물 신발을 손에 넣는 일이 화면 안에서 쓸 자격을 얻는 일이 된다.
@@ -216,7 +216,7 @@ RTFKT World Merging Chip. 실물 웨어러블 안에 NFC 태그가 들어 있다
 
 둘째 단계는 크리에이터 툴이다. CloneX 3D 모델을 무료로 내려받아 2차 창작에 자유롭게 쓸 수 있게 했다. 툴 자체도 특별한 것을 새로 만들지 않았다. 블렌더는 오픈소스 3D 툴이고, 여기에 붙는 플러그인을 받아 내가 보유한 NFT의 3D 파일을 넣으면 전문적인 기술 없이도 상당 부분을 제어하고 편집해 결과물을 낼 수 있다. 스타일, 포즈, 환경, 카메라, 렌더링이 각각 버튼 몇 개로 정리되어 있었다.
 
-![블렌더 플러그인으로 이어지는 도구 흐름. 설계도 자체를 밖에 공개했다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-052.jpg)
+![블렌더 플러그인으로 이어지는 도구 흐름. 설계도 자체를 밖에 공개했다.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-052.jpg)
 *블렌더 플러그인으로 이어지는 도구 흐름. 설계도 자체를 밖에 공개했다.*
 
 셋째 단계에서 한 칸을 더 열었다. 그 도구의 흐름도를 피그마 파일로 공개해 둔 것이다. 사용자가 어디서 무엇을 누르면 시스템이 어떻게 반응하는지가 도식으로 다 그려져 있고, 그 파일에 누구나 들어갈 수 있다. 결과물이나 에셋이 아니라 도구의 설계 자체를 밖에서 볼 수 있게 열었다.
@@ -229,7 +229,7 @@ RTFKT World Merging Chip. 실물 웨어러블 안에 NFC 태그가 들어 있다
 
 일곱째가 그 위에서 실제로 나온 결과다. 나이키 에어포리아(Airphoria)는 UEFN으로 만든 에어포스원 테마의 게임이다. 하늘에서 섬으로 뛰어내려 돌아다니며 미션을 수행하고, 나이키 계정을 연동하면 게임 안의 경험이 바깥 생태계의 보상으로 이어진다. 아일랜드 코드는 2118-5342-7190이었다. 발표 며칠 전에 막 끝난 캠페인이라 무대에서는 방금 닫힌 문 이야기를 하듯 소개했다.
 
-![나이키가 자기 플랫폼을 짓지 않고 포트나이트 에디터 위에 세운 게임.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-059.jpg)
+![나이키가 자기 플랫폼을 짓지 않고 포트나이트 에디터 위에 세운 게임.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-059.jpg)
 *나이키가 자기 플랫폼을 짓지 않고 포트나이트 에디터 위에 세운 게임.*
 
 여기서 눈여겨본 것은 게임의 완성도가 아니다. 브랜드가 자기 메타버스를 짓지 않고 남의 엔진 위에 올라탔다는 사실이다. 신발 상자와 스니커즈 같은 자기 헤리티지 에셋을 들고 남의 세계로 들어가서, 거기서 사람들을 만난다. 개인이 만든 섬과 전문 에이전시가 만든 섬과 브랜드가 만든 섬이 하나의 플랫폼에서 나란히 놓인다. 나는 이 생태계가 어떻게 커 나갈지 기대한다고 말하며 그 대목을 닫았다.

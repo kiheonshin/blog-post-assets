@@ -1,15 +1,15 @@
 # AI를 열어둘수록 선명해지는 창작자의 자리 (3) - 다르게 보는 눈은 창작자가 가진 능력이다
 
 - **시리즈** AI를 열어둘수록 선명해지는 창작자의 자리 · 3편
-- **원문** https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/03-already-have-the-eye/
-- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/03-already-have-the-eye/content.md
+- **원문** https://kiheon.com/series/newtype-ip-dialogue/posts/03-already-have-the-eye/
+- **마크다운** https://kiheon.com/series/newtype-ip-dialogue/posts/03-already-have-the-eye/content.md
 - **발행일** 2026-07-25
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 - **근거 노드** node:202, node:209, node:200, owner:2026-06-12/뉴타입-대담
 
 ***
 
-![일부러 모자란 에이전트들과 그들을 바라보는 창작자의 시선을 상징한 시리즈 키 비주얼.](https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/assets/hero-3.jpg)
+![일부러 모자란 에이전트들과 그들을 바라보는 창작자의 시선을 상징한 시리즈 키 비주얼.](https://kiheon.com/series/newtype-ip-dialogue/assets/hero-3.jpg)
 *일부러 모자란 에이전트들과 그들을 바라보는 창작자의 시선을 상징한 시리즈 키 비주얼.*
 
 나는 성능 좋은 AI를 일부러 모자라게 만드는 실험을 이어왔다. 처음부터 그렇게 하겠다고 설계한 것은 아니다. 새로운 발상이 떠오르고, 호기심이 일고, 그저 재미가 있어 이것저것 좇다 보니 자연스럽게 그런 실험에 다다랐다. 효율을 버리고 무한한 잠재력을 깎아내는 이 비효율이 이상하게 보일 수 있다. 그런데 관점을 바꿔 기술을 바라보는 이 일은 새로운 재주가 아니라, 창작자들이 오래전부터 해온 일이고 이미 가진 능력이라고 나는 생각한다. 지난 6월 대담의 마지막 이야기이자, 이 시리즈를 닫는 이야기다.

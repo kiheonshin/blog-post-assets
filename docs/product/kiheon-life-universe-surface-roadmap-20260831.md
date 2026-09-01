@@ -6,9 +6,9 @@
 
 | Product | Current URL | State | Next work |
 |---|---|---|---|
-| Blog | `https://kiheonshin.github.io/blog-post-assets/` | open | Series and Explore remain the entry flow. Product lineup sits below Explore. |
-| Public Archive | `https://kiheonshin.github.io/blog-post-assets/archive/` | open, noindex | Refresh labels and keep source availability explicit. |
-| Outside | `https://kiheonshin.github.io/blog-post-assets/archive/world-atlas/` | open | Rebuild as a visual comparison surface, not a generic atlas. |
+| Blog | `https://kiheon.com/` | open | Series and Explore remain the entry flow. Product lineup sits below Explore. |
+| Public Archive | `https://kiheon.com/archive/` | open, noindex | Refresh labels and keep source availability explicit. |
+| Outside | `https://kiheon.com/archive/world-atlas/` | open | Rebuild as a visual comparison surface, not a generic atlas. |
 | Universe | `https://kiheon-life-universe-observatory.vercel.app/map` | open public projection | Refresh copy and product map without exposing private bodies or real relations. |
 | Inside | Vercel preview only | candidate | Rebuild as gated spatial experience. Do not make a public homepage link until gate is defined. |
 | Slides | planned | no public route | Define after source packaging and brand asset rules are stable. |

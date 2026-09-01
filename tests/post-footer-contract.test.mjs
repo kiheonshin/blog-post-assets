@@ -51,7 +51,7 @@ test("every normal series post shares one canonical footer and tool layer", asyn
     assert.match(html, /assets\/site\.css/);
     assert.equal(html.split(korean).length - 1, 1, relative);
     assert.equal(html.split(english).length - 1, 1, relative);
-    assert.doesNotMatch(html, /Originally published at https:\/\/kiheonshin\.github\.io/);
+    assert.doesNotMatch(html, /Originally published at https:\/\/kiheon\.com/);
     assert.doesNotMatch(html, /local-state|local\.css/);
 
     const markdown = path.join(path.dirname(file), "content.md");

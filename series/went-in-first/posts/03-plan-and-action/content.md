@@ -1,14 +1,14 @@
 # 낯선 세계 — 아이보다 먼저 들어가 봤다 (3) - 계획과 실행 사이
 
 - **시리즈** 낯선 세계 — 아이보다 먼저 들어가 봤다 · 3편
-- **원문** https://kiheonshin.github.io/blog-post-assets/series/went-in-first/posts/03-plan-and-action/
-- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/went-in-first/posts/03-plan-and-action/content.md
+- **원문** https://kiheon.com/series/went-in-first/posts/03-plan-and-action/
+- **마크다운** https://kiheon.com/series/went-in-first/posts/03-plan-and-action/content.md
 - **상태** 로컬 검수본 · 미발행
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 
 ***
 
-![서로 어긋난 두 지도선 위에서 먹색 발판이 다른 궤적을 만들고 산호색 선두 발판에 닿는 장면](https://kiheonshin.github.io/blog-post-assets/series/went-in-first/assets/hero-3.jpg)
+![서로 어긋난 두 지도선 위에서 먹색 발판이 다른 궤적을 만들고 산호색 선두 발판에 닿는 장면](https://kiheon.com/series/went-in-first/assets/hero-3.jpg)
 
 2023년 10월의 발표를 다시 읽으면서 원고와 실제 발화 사이의 거리를 보게 됐다. 원고에서 뺀 말이 질문을 받은 뒤 다시 나왔고, 영상이 없다고 기록한 날에는 같은 날 저녁 그 영상이 다시 들어왔다. 아이의 직접 발화와 내가 적은 비율 메모도 함께 다시 확인했다.
 

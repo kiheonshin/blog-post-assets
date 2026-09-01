@@ -1,14 +1,14 @@
 # 코-크리에이션 문화 (1) 창의성은 누구의 것인가
 
 - **시리즈** 코-크리에이션 문화 · 1편
-- **원문** https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/01-whose-creativity/
-- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/posts/01-whose-creativity/content.md
+- **원문** https://kiheon.com/series/co-creation-culture/posts/01-whose-creativity/
+- **마크다운** https://kiheon.com/series/co-creation-culture/posts/01-whose-creativity/content.md
 - **발행일** 2026-07-28
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 
 ***
 
-![코-크리에이션 문화 (1) 창의성은 누구의 것인가 키 비주얼](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/hero-1.jpg)
+![코-크리에이션 문화 (1) 창의성은 누구의 것인가 키 비주얼](https://kiheon.com/series/co-creation-culture/assets/hero-1.jpg)
 
 2023년 6월 말, 나는 무대에서 코-크리에이션이라는 단어 하나를 들고 서 있었다. 하려던 말은 하나였다. 창의성은 원래 모두에게 주어져 있는데, 무언가를 만드는 자리에는 왜 늘 몇 사람만 앉게 되는가. 그 자리를 넓히려는 시도들이 그 무렵 여기저기서 벌어지고 있었고, 나는 그것들을 한자리에 모아놓고 보여주고 싶었다. 3년이 지나 그날의 기록을 다시 꺼냈다. 그때의 내가 무엇을 보고 있었고, 무엇을 이미 알고 있었고, 무엇을 아직 몰랐는지 한 번은 정리해두고 싶었다. 이 글은 그 정리의 첫 편이다.
 
@@ -30,7 +30,7 @@
 
 그때 내가 첫 챕터에 붙인 제목은 "모두에게 주어진 창의성"이었다. 지금 다시 읽으면 그 문장은 선언이라기보다 전제에 가깝다. 우리는 모두 무한한 창의성을 가지고 태어났고, 레고라는 장난감은 그 전제를 물건으로 만든 것이다. 그런데 그 전제 위에서 무슨 일이 벌어지는가. 그게 그날 내가 하고 싶었던 질문이었다.
 
-![레고무비의 마스터빌더. 설명서 없이 눈앞에 있는 브릭만으로 필요한 것을 즉석에서 지어내는 사람이다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-003.jpg)
+![레고무비의 마스터빌더. 설명서 없이 눈앞에 있는 브릭만으로 필요한 것을 즉석에서 지어내는 사람이다.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-003.jpg)
 *레고무비의 마스터빌더. 설명서 없이 눈앞에 있는 브릭만으로 필요한 것을 즉석에서 지어내는 사람이다.*
 
 ## 한 회사 안에 두 개의 전략이 있었다
@@ -41,7 +41,7 @@
 
 그래서 이 문제를 한 줄로 정리했다. 레고의 핵심 철학인 창의성과 협업 IP의 완결성이 충돌한다. 준비하면서 이 문장을 쓸 때는 사례를 하나 요약하는 기분이었는데, 3년이 지나 다시 보니 이 한 줄이 발표 전체의 축이었다. 뒤에 나오는 모든 사례가 결국 이 충돌을 어떻게 다루느냐의 변주였기 때문이다.
 
-![레고의 외부 IP 확장 전략. 창의성과 협업 IP의 완결성이 충돌하는 지점을 여기서 짚었다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-006.jpg)
+![레고의 외부 IP 확장 전략. 창의성과 협업 IP의 완결성이 충돌하는 지점을 여기서 짚었다.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-006.jpg)
 *레고의 외부 IP 확장 전략. 창의성과 협업 IP의 완결성이 충돌하는 지점을 여기서 짚었다.*
 
 같은 회사가 반대편에서 하는 일이 레고 아이디어스다. 과거에는 이걸 크라우드 소싱이라고 불렀다. 아이디어를 가진 사람이면 누구나 자기가 생각하는 레고 컬렉션을 플랫폼에 제안할 수 있다. 자기가 보유한 다른 IP를 결합한 형태로 제안하는 것도 가능하다. 그 제안이 커뮤니티 안에서 1만 명의 서포터를 설득하는 데 성공하면 채택 심사로 넘어가고, 상품이 되어 판매될 가능성이 열린다.
@@ -50,7 +50,7 @@
 
 그때 내가 짚은 지점은 이랬다. 브릭 시스템 안에서만이 아니라 상품 기획과 디자인 단계에서 창의성을 발휘할 기회가 주어진다는 것. 이게 중요하다고 봤다. 브릭을 조립하는 창의성은 원래부터 사용자의 것이었다. 아이디어스가 옮긴 건 그다음 층, 그러니까 무엇을 만들 것인지를 정하는 자리다.
 
-![레고 아이디어스. 1만 명의 서포터를 설득하면 채택 심사로 넘어간다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-007.jpg)
+![레고 아이디어스. 1만 명의 서포터를 설득하면 채택 심사로 넘어간다.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-007.jpg)
 *레고 아이디어스. 1만 명의 서포터를 설득하면 채택 심사로 넘어간다.*
 
 두 전략이 한 회사 안에 나란히 있다. 한쪽은 완결된 세계를 사와서 정확하게 재현하게 하고, 다른 한쪽은 사용자가 세계를 제안하게 한다. 나는 이걸 모순이라고 부르는 대신 긴장이라고 불러보고 싶다.
@@ -89,7 +89,7 @@
 
 지금 보면 셋 중에서 마지막 것만 시대를 탔다. 앞의 둘에는 기술 이름을 하나도 넣지 않았다. 여러 사람의 창의성을 합쳐서 쓴다는 것과, 각자가 기여한 만큼 정직하게 나눈다는 것. 이 두 문장은 블록체인이 있든 없든, 생성형 모델이 있든 없든 그대로 남는 문제다. 오히려 지금이 더 어려워졌다. 무엇이 누구의 기여인지 구분하기가 그때보다 훨씬 힘들어졌기 때문이다.
 
-![코-크리에이션은 인간 중심으로 회귀하는 문화. 그날 붙인 정의다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-010.jpg)
+![코-크리에이션은 인간 중심으로 회귀하는 문화. 그날 붙인 정의다.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-010.jpg)
 *코-크리에이션은 인간 중심으로 회귀하는 문화. 그날 붙인 정의다.*
 
 이 정의를 왜 그 자리에 놓았는지는 발표 서두에 이미 밝혀두었다. 나는 발표를 열면서, 그 이틀 동안 여러 세션을 들으신 분들이라면 코-크리에이션이라는 단어가 반복해서 등장하는 것을 들으셨을 거라고 말했다. 그만큼 시의성 있는 키워드였다는 뜻이다. 그래서 다른 발표자들과 조금 다르게 가기로 했다고 덧붙였다. 개념적으로도 기술적으로도 가지 않고, 사례를 최대한 많이 보여주는 쪽을 택했다.
@@ -104,7 +104,7 @@
 
 그 사이에 신발의 지위가 바뀌었다. 신는 물건이었다가, 수집품이 됐다가, 일상적으로 지불할 수 있는 범위를 훨씬 넘어서는 가격표가 붙는 물건이 됐다. 스니커즈가 예술품과 비슷한 자리에 올라간 것이다. 한 사람이 만든 하나의 상징이 그 변화의 한복판에 있었다.
 
-![제프 스테이플과 스테이플 피존. 그 줄에서 벌어진 일을 신문은 "SNEAKER RIOT"이라고 불렀다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-013.jpg)
+![제프 스테이플과 스테이플 피존. 그 줄에서 벌어진 일을 신문은 "SNEAKER RIOT"이라고 불렀다.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-013.jpg)
 *제프 스테이플과 스테이플 피존. 그 줄에서 벌어진 일을 신문은 "SNEAKER RIOT"이라고 불렀다.*
 
 2021년에 그는 RTFKT라는 팀과 함께 메타 피존을 만들었다. 비둘기를 모티브로 한 가상의 스니커즈다. 무대에서 나는 이걸 두고 당시 NFT 시장에서 조상 같은 존재라고 표현했다. 메타 피존을 가지고 있던 사람들이 나중에 CloneX를 에어드랍으로 받았고, 그것이 또 다른 컬렉션들로 이어졌기 때문이다. 이 신발은 실물로도 제작돼서 리셀 플랫폼에서 높은 가격에 거래됐다.
@@ -119,7 +119,7 @@
 
 26년이다. 한 사람이 만든 브랜드가 26년에 걸쳐 매체를 갈아탄 궤적을 네 칸으로 압축한 표였다. 나는 이 표를 만들면서 웹3 이야기를 하고 있다고 생각했는데, 지금 다시 보면 웹3라는 단어를 다 지워도 이 표는 그대로 읽힌다. 브랜드가 자기 상징 하나를 오래 붙들고 있으면 매체가 바뀌어도 옮겨 탈 것이 남는다는 이야기다.
 
-![1997년의 스테이플 피존에서 2023년의 스테이플버스까지. 네 칸으로 압축된 26년.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-021.jpg)
+![1997년의 스테이플 피존에서 2023년의 스테이플버스까지. 네 칸으로 압축된 26년.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-021.jpg)
 *1997년의 스테이플 피존에서 2023년의 스테이플버스까지. 네 칸으로 압축된 26년.*
 
 ## 편을 나누면 참여는 고르지 않다
@@ -136,7 +136,7 @@ Empire Staple Pigeonz는 참여자를 세 개의 클랜으로 나눴다. HOOD SQ
 
 물론 여기까지가 이 숫자로 알 수 있는 전부다. 클랜은 셋인데 비율은 둘뿐이고, 모이를 맡은 FEED CLAN에는 진행률이 붙어 있지 않다. 언제의 스냅샷인지도 알 수 없다. 그래도 커뮤니티를 설계할 때 편을 나누는 일이 어떤 결과를 만드는지에 대해서는, 이 두 숫자가 그날 내가 준비한 어떤 도식보다 구체적이었다.
 
-![세 클랜과 두 개의 비율. 65퍼센트와 35퍼센트로 갈린 참여.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-018.jpg)
+![세 클랜과 두 개의 비율. 65퍼센트와 35퍼센트로 갈린 참여.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-018.jpg)
 *세 클랜과 두 개의 비율. 65퍼센트와 35퍼센트로 갈린 참여.*
 
 ## 100년 뒤의 뉴욕에 사는 사람들
@@ -149,7 +149,7 @@ Empire Staple Pigeonz는 참여자를 세 개의 클랜으로 나눴다. HOOD SQ
 
 지금 생각하면 이 대목이 발표의 실질적인 전환점이었다. 그전까지는 브랜드가 가상 세계로 확장하는 이야기였고, 여기서부터는 소유가 참여의 입구가 되는 이야기가 시작된다.
 
-![100년 뒤의 뉴욕을 그린 스테이플버스의 세계관 이미지.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-022.jpg)
+![100년 뒤의 뉴욕을 그린 스테이플버스의 세계관 이미지.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-022.jpg)
 *100년 뒤의 뉴욕을 그린 스테이플버스의 세계관 이미지.*
 
 ## 일곱 단계
@@ -158,7 +158,7 @@ Empire Staple Pigeonz는 참여자를 세 개의 클랜으로 나눴다. HOOD SQ
 
 1단계는 프로필 NFT를 통한 계정 소유다. 아바타 하나와 아이템들을 갖는 데서 시작한다. 이 [아바타 + 아이템] 시스템을 통해 패션, 푸드, 아트, 뮤직, 디자인, 토이로 경험이 확장된다고 봤다. 그리고 그 바탕에 이더리움 ERC-6551 표준인 Token Bound Accounts를 두었다.
 
-![코-크리에이션 프로세스 1단계. 아바타와 아이템의 소유에서 시작한다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-024.jpg)
+![코-크리에이션 프로세스 1단계. 아바타와 아이템의 소유에서 시작한다.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-024.jpg)
 *코-크리에이션 프로세스 1단계. 아바타와 아이템의 소유에서 시작한다.*
 
 2단계는 그 소유가 워크샵 참여 자격이 되는 단계다. 3단계는 워크샵 안에서 실습과 멘토링을 받는 단계다. 무대에서 나는 여기서 말하는 워크샵이 온라인과 오프라인을 넘나들면서 사람들과 함께 무언가를 만들고 배우는 형태라고 설명했다. 실제로 돌아가던 프로그램도 함께 보여줬다. 어패럴 디자인은 진행 중이었고, 비트 프로덕션과 그래픽 디자인은 이미 끝나 있었다. 어패럴 디자인에는 수강 30명, 브랜드 파트너 2곳을 적었고, 셋 모두 홀더 전용이라는 조건을 함께 적었다. 이 단계표에서 실제 규모를 짐작하게 해주는 몇 안 되는 숫자다.
@@ -169,7 +169,7 @@ Empire Staple Pigeonz는 참여자를 세 개의 클랜으로 나눴다. HOOD SQ
 
 7단계는 브랜드와 상품의 성장에 함께 기여하는 단계다. 무대에서 나는 이 단계를 이렇게 정리했다. 이제 이 브랜드는 특정한 누군가에 의해 만들어진 것이 아니라, 처음의 홀더들이 포함된 여러 주체가 함께 만들어가는 브랜드가 되어 함께 성장한다고.
 
-![7단계. 브랜드가 특정한 한 사람의 것이 아니라 여러 주체가 함께 키우는 것이 되는 지점.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-031.jpg)
+![7단계. 브랜드가 특정한 한 사람의 것이 아니라 여러 주체가 함께 키우는 것이 되는 지점.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-031.jpg)
 *7단계. 브랜드가 특정한 한 사람의 것이 아니라 여러 주체가 함께 키우는 것이 되는 지점.*
 
 일곱 단계 전부에 같은 원칙 셋을 깔아두었다. [아바타 + 아이템]의 소유로부터 시작되는 온·오프라인 경험. 자신의 아이디어를 커뮤니티 및 브랜드 파트너와 함께 현실화. 코-크리에이션의 전체 과정은 블록체인을 통해 투명하게 공개.
@@ -190,7 +190,7 @@ Empire Staple Pigeonz는 참여자를 세 개의 클랜으로 나눴다. HOOD SQ
 
 2021년 뉴욕에서 열린 자리에서는 여섯 장의 캔버스가 번호를 달고 나란히 놓였다. 한 도시에서 한 장이 아니라 여섯 장이 동시에 채워진 것이다. 물감을 항목으로 쪼개 팔았기 때문에 그 여섯 장에 붓을 댈 자격도 그만큼 쪼개져 있었다.
 
-![FewoWorld의 페인트 파티. 물감을 가진 사람들이 도시를 옮겨 다니며 함께 캔버스를 채웠다.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-033.jpg)
+![FewoWorld의 페인트 파티. 물감을 가진 사람들이 도시를 옮겨 다니며 함께 캔버스를 채웠다.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-033.jpg)
 *FewoWorld의 페인트 파티. 물감을 가진 사람들이 도시를 옮겨 다니며 함께 캔버스를 채웠다.*
 
 그 뒤에 아디다스와의 협업으로 실제 스니커즈 컬렉션이 나왔다. 발표하던 무렵 막 판매가 시작된 물건이었다. 가상에서 만들어진 캐릭터가 현실의 상품이 되어 매대에 올라간 것이다. 발표에서는 이 흐름을 붙여놓고 빠르게 지나갔는데, 지금 보면 그 사이의 거리가 이 발표의 절반쯤을 설명한다. 물감이라는 재료에서 출발한 것이 신발이라는 물건까지 왔고, 그 사이의 어느 지점에서 참여자와 구매자를 나누던 선이 이미 지워져 있었다.
@@ -223,7 +223,7 @@ Empire Staple Pigeonz는 참여자를 세 개의 클랜으로 나눴다. HOOD SQ
 
 그래서 이전까지는 계정 따로, 지갑 따로, 소유한 자산 따로였다면 이제는 내 아바타가 곧 지갑이 되고 계정이 된다고 설명했다. 그 안에 다른 것들을 담을 수 있다. 웹2에서 우리가 이미 익숙한 직관적인 개념으로 경험이 바뀐다고. 그리고 앞으로 코-크리에이션을 만들어갈 때 온체인 아이덴티티가 점점 중요해질 것이라고 말했다. 2023년 6월의 나는 그렇게 봤다.
 
-![ERC-6551 / Token Bound Accounts. 아바타 하나가 계정이자 지갑이 되는 구조.](https://kiheonshin.github.io/blog-post-assets/series/co-creation-culture/assets/deck/t1-slide-035.jpg)
+![ERC-6551 / Token Bound Accounts. 아바타 하나가 계정이자 지갑이 되는 구조.](https://kiheon.com/series/co-creation-culture/assets/deck/t1-slide-035.jpg)
 *ERC-6551 / Token Bound Accounts. 아바타 하나가 계정이자 지갑이 되는 구조.*
 
 3년이 지난 지금, 그 표준이 대중이 쓰는 계정의 개념이 되었다고 말하기는 어려울 것 같다. 그렇다고 이 대목을 통째로 지우고 싶지는 않다. 여기서 내가 붙들고 있던 것은 표준의 번호가 아니라, 아바타 하나에 소지품과 이력이 계속 달라붙는다는 그림이었다.

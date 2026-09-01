@@ -71,7 +71,7 @@ function publicTarget(rawUrl) {
   }
 
   const isCurrentOrigin = target.origin === location.origin;
-  const isCanonical = target.origin === "https://kiheonshin.github.io" &&
+  const isCanonical = target.origin === "https://kiheon.com" &&
     target.pathname.startsWith("/blog-post-assets/");
   return ["http:", "https:"].includes(target.protocol) && (isCurrentOrigin || isCanonical)
     ? target.href

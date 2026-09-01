@@ -1,14 +1,14 @@
 # 06 · Metaverse Era (2) 세계의 크기를 재고, 무대에서 지갑을 열었다
 
 - **시리즈** 메타버스 시대 · 2편
-- **원문** https://kiheonshin.github.io/blog-post-assets/series/metaverse-era/posts/02-size-and-price/
-- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/metaverse-era/posts/02-size-and-price/content.md
+- **원문** https://kiheon.com/series/metaverse-era/posts/02-size-and-price/
+- **마크다운** https://kiheon.com/series/metaverse-era/posts/02-size-and-price/content.md
 - **발행일** 2026-08-15
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 
 ***
 
-![메타버스 시대 (2) 세계의 크기를 재고, 무대에서 지갑을 열었다 키 비주얼](https://kiheonshin.github.io/blog-post-assets/series/metaverse-era/assets/hero-2.jpg)
+![메타버스 시대 (2) 세계의 크기를 재고, 무대에서 지갑을 열었다 키 비주얼](https://kiheon.com/series/metaverse-era/assets/hero-2.jpg)
 
 2021년에 나는 3월과 4월과 12월에 무대에 올랐다. 세 발표의 슬라이드를 합치면 351장이다. 앞 편에서 읽은 2020년 두 벌에는 소유와 시장과 화폐와 지갑이 한 번도 나오지 않았는데, 이 셋은 첫 절부터 세상의 크기를 숫자로 재고 그 위에 값을 얹는다. 4월 발표는 슬라이드를 접고 브라우저를 열어 무대에서 지갑을 여는 것으로 끝난다. 그런데 세 파일을 나란히 놓고 링크를 세어 보면 3월 파일과 4월 파일에 같은 링크를 붙인 장이 스물여섯이다. 이 글은 값이 화제가 된 해에 내가 무대에서 무슨 말을 했는지와, 그 말을 무엇으로 다시 지었는지를 함께 읽은 것이다.
 

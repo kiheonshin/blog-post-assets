@@ -1,8 +1,8 @@
 # 덕질의 상속 (2) - 아이와 포켓몬과 나
 
 - **시리즈** 덕질의 상속 · 2편
-- **원문** https://kiheonshin.github.io/blog-post-assets/series/handed-down/posts/02-child-pokemon-and-me/
-- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/handed-down/posts/02-child-pokemon-and-me/content.md
+- **원문** https://kiheon.com/series/handed-down/posts/02-child-pokemon-and-me/
+- **마크다운** https://kiheon.com/series/handed-down/posts/02-child-pokemon-and-me/content.md
 - **상태** 로컬 검수본 · 미발행
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 

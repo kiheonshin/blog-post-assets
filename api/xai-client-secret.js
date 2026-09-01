@@ -10,7 +10,7 @@ const RATE_LIMIT_WINDOW_MS = 60_000;
 const RATE_LIMIT_MAX_REQUESTS = 4;
 
 const ALLOWED_ORIGINS = new Set([
-  "https://kiheonshin.github.io",
+  "https://kiheon.com",
   "https://blog-post-assets.vercel.app",
   "https://blog-post-assets-kiheonshins-projects.vercel.app",
 ]);

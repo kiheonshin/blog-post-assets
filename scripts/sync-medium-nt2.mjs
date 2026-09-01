@@ -1,6 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
 
-const origin = "https://kiheonshin.github.io/blog-post-assets";
+const origin = "https://kiheon.com";
 const postPath = "/series/newtype-ip-dialogue/posts/02-engine-as-ip/";
 const sourcePath = "series/newtype-ip-dialogue/posts/02-engine-as-ip/index.html";
 const outputPath = "import-nt2.html";

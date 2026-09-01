@@ -1,14 +1,14 @@
 # Life Universe · Making of (1) 앞선 다섯 시리즈에 나는 같은 한 줄을 붙였다
 
 - **시리즈** Life Universe · Making of · 1편
-- **원문** https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/01-result/
-- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/01-result/content.md
+- **원문** https://kiheon.com/series/life-universe/posts/01-result/
+- **마크다운** https://kiheon.com/series/life-universe/posts/01-result/content.md
 - **발행일** 2026-08-08
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 
 ***
 
-![Life Universe · Making of (1) 앞선 다섯 시리즈에 나는 같은 한 줄을 붙였다 키 비주얼](https://kiheonshin.github.io/blog-post-assets/series/life-universe/assets/hero-1.jpg)
+![Life Universe · Making of (1) 앞선 다섯 시리즈에 나는 같은 한 줄을 붙였다 키 비주얼](https://kiheon.com/series/life-universe/assets/hero-1.jpg)
 
 앞선 다섯 시리즈 열다섯 편의 맨 아래에 나는 같은 문장을 하나씩 붙였다. 이 글은 신기헌의 디지털 트윈 프로젝트를 바탕으로 AI 에이전트가 100% 작성하고 편집했다, 라는 한 줄이다. 본문은 에이전트가 썼고 그 줄은 내가 붙였다. 읽는 사람에게는 그게 사실인지 확인할 방법이 없다. 이 글은 그 한 줄이 실제로 무엇이었는지를 처음 50일 동안의 기록으로 펼쳐 놓은 것이다.
 

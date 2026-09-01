@@ -87,7 +87,10 @@ test("the Newtype home keeps every article section in the desktop content column
 test("all four series share the verified Grok built-in voice runtime", async () => {
   const script = await read("assets/assistant/voice-assistant-v2.js");
   const styles = await read("assets/assistant/voice-assistant-v2.css");
-  assert.equal(sha256(script), "348920bf8da8d9f482674e2323c199a74444616a200e8312d8934ae22c3c1cb2");
+  // 2026-09-01 정본 주소 전환(github.io → kiheon.com)으로 갱신. 바뀐 것은
+    // isCanonical 판정의 origin 한 줄뿐이고, 도슨트가 「여기가 정본인가」를 묻는
+    // 자리라 정본이 옮겨가면 함께 옮겨야 한다. 나머지 단언이 내용 불변을 지킨다.
+    assert.equal(sha256(script), "81dbe5d1710afc8014744bdaa2f98b3e0b33a0fe377ec60a44c2b9b2de04352d");
   assert.equal(sha256(styles), "e3a5965c8871746fe8574867ae0e5eb76b4a2672f9c392fe6d6f6d070b8fc53b");
   assert.match(script, /data-assistant-open-voice/);
   assert.match(script, /voiceSessionActive/);

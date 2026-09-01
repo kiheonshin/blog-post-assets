@@ -1,15 +1,15 @@
 # AI를 열어둘수록 선명해지는 창작자의 자리 (2) - 남는 IP는 취향을 재현하는 엔진이다
 
 - **시리즈** AI를 열어둘수록 선명해지는 창작자의 자리 · 2편
-- **원문** https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/02-engine-as-ip/
-- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/posts/02-engine-as-ip/content.md
+- **원문** https://kiheon.com/series/newtype-ip-dialogue/posts/02-engine-as-ip/
+- **마크다운** https://kiheon.com/series/newtype-ip-dialogue/posts/02-engine-as-ip/content.md
 - **발행일** 2026-07-25
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 - **근거 노드** node:205, node:204, owner:2026-06-12/뉴타입-대담
 
 ***
 
-![완성된 한 장보다 취향을 반복해 불러오는 기억의 구조를 상징한 시리즈 키 비주얼.](https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/assets/hero-2.jpg)
+![완성된 한 장보다 취향을 반복해 불러오는 기억의 구조를 상징한 시리즈 키 비주얼.](https://kiheon.com/series/newtype-ip-dialogue/assets/hero-2.jpg)
 *완성된 한 장보다 취향을 반복해 불러오는 기억의 구조를 상징한 시리즈 키 비주얼.*
 
 만들어진 노래를 한 번 듣고 버리는 시대가 온다면, 반복 소비를 전제로 세워진 지금의 콘텐츠 비즈니스는 무엇으로 지속될까. 지난 6월 대담의 주제는 AI 시대의 IP 비즈니스였다. 나는 그 자리에서 남는 것은 완성된 결과물이 아니라 그 취향을 다시 만들어내는 IP 생성 엔진이라고 말했다. 이건 새로운 기술을 아느냐의 문제가 아니라, 무엇을 IP로 보느냐는 관점의 문제다.
@@ -34,7 +34,7 @@ LLM과 같은 범용 모델 자체를 IP라고 보기는 어렵다. 누구나 �
 
 대담 전 사전 인터뷰에서는 [미드저니의 스타일 레퍼런스 코드](https://docs.midjourney.com/hc/en-us/articles/32180011136653-Style-Reference)를 예로 들었다. 숫자로 된 --sref 코드를 프롬프트에 넣으면 피사체가 달라져도 색, 재료, 질감, 조명처럼 그 스타일의 결을 다시 불러올 수 있다. 수노에서는 다른 장면을 봤다. [수노 랩스의 Genre Wheel](https://suno.com/labs/genre-wheel)에는 breakbeat balkan brass band, dream pop appalachian folk처럼 익숙한 스타일 단어가 낯선 조합으로 이어져 있다. 휠을 돌리거나 주사위 버튼을 누르고 하나를 고르면 그 조합으로 만든 곡이 재생된다. 사용자가 자기 곡에 붙인 여러 스타일 단어의 조합이 곧 그 곡을 찾아가는 고유한 장르명처럼 작동하는 셈이다. 내가 봤던 V4 시기의 화면은 지금 V5.5로 바뀌었지만, 인상은 같다. 먼저 정해진 장르 안에서 곡을 만드는 것이 아니라 결과에서 드러난 결이 다시 탐색할 수 있는 장르의 입구가 된다. 미드저니의 코드는 같은 결을 다시 불러오는 방법을, 수노의 휠은 결과에서 생긴 결에 이름이 붙는 장면을 보여준다. 둘 다 IP 생성 엔진이 같은 결과를 복제하는 장치가 아니라, 변주 속에서도 알아볼 수 있는 범위를 만들고 확장하는 장치라는 점을 보여준다.
 
-![수노 Genre Wheel. 스타일 이름 하나를 고르면 그 조합으로 만든 곡을 들을 수 있다. 2026년 8월 현재 V5.5 화면. 출처: Suno.](https://kiheonshin.github.io/blog-post-assets/series/newtype-ip-dialogue/assets/suno-genre-wheel-v55.png)
+![수노 Genre Wheel. 스타일 이름 하나를 고르면 그 조합으로 만든 곡을 들을 수 있다. 2026년 8월 현재 V5.5 화면. 출처: Suno.](https://kiheon.com/series/newtype-ip-dialogue/assets/suno-genre-wheel-v55.png)
 *수노 Genre Wheel. 스타일 이름 하나를 고르면 그 조합으로 만든 곡을 들을 수 있다. 2026년 8월 현재 V5.5 화면. 출처: Suno.*
 
 내 관심도 그쪽으로 옮겨갔다. 지난 몇 년간 이미지와 영상, 음악을 생성하는 도구를 붙들고 수없이 실험하면서, 완성된 결과물 하나를 잘 만드는 것보다 그런 결과물을 원할 때 다시 만들어낼 수 있는 IP 생성 엔진을 손에 쥐는 일이 더 중요해졌다. 그래서 나는 이렇게 묻게 됐다. 값이 매겨지고 지켜져야 할 것은 완성된 하나인가, 아니면 그것을 언제든 다시 불러낼 수 있는 IP 생성 엔진인가.

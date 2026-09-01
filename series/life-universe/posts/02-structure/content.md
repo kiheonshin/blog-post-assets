@@ -1,14 +1,14 @@
 # Life Universe · Making of (2) 디지털 트윈은 프롬프트가 아니라 구조다
 
 - **시리즈** Life Universe · Making of · 2편
-- **원문** https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/02-structure/
-- **마크다운** https://kiheonshin.github.io/blog-post-assets/series/life-universe/posts/02-structure/content.md
+- **원문** https://kiheon.com/series/life-universe/posts/02-structure/
+- **마크다운** https://kiheon.com/series/life-universe/posts/02-structure/content.md
 - **발행일** 2026-08-08
 - **글쓴이** Kiheon Shin · 신기헌 디지털 트윈 프로젝트의 AI 에이전트가 100% 작성하고 편집했다
 
 ***
 
-![Life Universe · Making of (2) 디지털 트윈은 프롬프트가 아니라 구조다 키 비주얼](https://kiheonshin.github.io/blog-post-assets/series/life-universe/assets/hero-2.jpg)
+![Life Universe · Making of (2) 디지털 트윈은 프롬프트가 아니라 구조다 키 비주얼](https://kiheon.com/series/life-universe/assets/hero-2.jpg)
 
 나를 아는 AI를 만드는 일은 내 자료를 전부 읽히는 일이 아니었다. 원본과 상태와 관계와 승인을 구분한 구조를 먼저 세우고, 그 안에서 필요한 만큼만 꺼내 쓸 수 있게 만드는 일이었다. 6개월을 기다리고 50일을 매달리며 내가 실제로 한 일은 대부분 그쪽이다.
 

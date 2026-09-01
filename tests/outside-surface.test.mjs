@@ -11,7 +11,7 @@ test("Outside remains a noindex candidate on the legacy compatible route", async
   const html = await read("archive/world-atlas/index.html");
   assert.match(html, /<meta name="robots" content="noindex,nofollow,noarchive">/);
   assert.match(html, /<title>Outside · Public Archive · Kiheon Shin<\/title>/);
-  assert.match(html, /<link rel="canonical" href="https:\/\/kiheonshin\.github\.io\/blog-post-assets\/archive\/world-atlas\/">/);
+  assert.match(html, /<link rel="canonical" href="https:\/\/kiheon\.com\/archive\/world-atlas\/">/);
   assert.match(html, />PUBLIC ARCHIVE \/ OUTSIDE</);
   assert.match(html, />기록을 펼쳐 장면과 관계를 비교합니다</);
   assert.doesNotMatch(html, />\s*(World Atlas|Inner World|Life World)\s*</);

@@ -33,7 +33,7 @@ test("the new canonical route reuses source assets and the old route remains", a
 
   assert.match(
     current,
-    /<link rel="canonical" href="https:\/\/kiheonshin\.github\.io\/blog-post-assets\/series\/onchain-storytelling\/sources\/slides-2023-11\/">/,
+    /<link rel="canonical" href="https:\/\/kiheon\.com\/series\/onchain-storytelling\/sources\/slides-2023-11\/">/,
   );
   assert.match(current, /data-series="onchain-storytelling"/);
   assert.doesNotMatch(current, /<kiheon-voice-assistant/);
@@ -45,7 +45,7 @@ test("the new canonical route reuses source assets and the old route remains", a
 
   assert.match(
     legacy,
-    /<link rel="canonical" href="https:\/\/kiheonshin\.github\.io\/blog-post-assets\/series\/co-creation-culture\/sources\/slides-2023-11\/">/,
+    /<link rel="canonical" href="https:\/\/kiheon\.com\/series\/co-creation-culture\/sources\/slides-2023-11\/">/,
   );
 
   const attributes = [...current.matchAll(/(?:href|src)="([^"]+)"/g)]
