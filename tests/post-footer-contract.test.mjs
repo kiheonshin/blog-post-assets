@@ -21,15 +21,28 @@ async function walk(directory) {
 }
 
 test("every normal series post shares one canonical footer and tool layer", async () => {
-  const pages = (await walk(seriesRoot))
+  const candidates = (await walk(seriesRoot))
     .filter((file) => file.endsWith(`${path.sep}index.html`))
     .filter((file) => file.includes(`${path.sep}posts${path.sep}`))
     .filter((file) => !file.includes(`${path.sep}full${path.sep}`))
     .sort();
 
+  // 되돌림 페이지는 글이 아니라 옛 주소를 새 주소로 넘기는 껍데기다 — 본문이 없으니
+  // 말미 계약을 지킬 수 없다. 세지 않고 빼되 **몇 장인지 함께 못 박는다.** 조용히
+  // 거르면, 진짜 글이 껍데기로 오인돼 빠져도 이 검사가 말해 주지 않는다.
+  const pages = [];
+  const redirects = [];
+  for (const file of candidates) {
+    const html = await readFile(file, "utf8");
+    (/<meta http-equiv="refresh"/.test(html) ? redirects : pages).push(file);
+  }
+  // 1 [2026-09-05] handed-down/posts/02 — df6c611 이 개명하며 안 남긴 옛 주소를 되살렸다.
+  assert.equal(redirects.length, 1);
+
   // 24 → 25 [2026-09-01] 시리즈 08 「덕질의 상속」 2편이 로컬 후보로 섰다.
   // 이 수는 **말미 계약을 지키는 면의 수**이지 발행 면의 수가 아니다 —
-  // went-in-first 3면과 handed-down 1면은 noindex·매니페스트 미등재의 미발행 면이다.
+  // went-in-first 3면과 where-worlds-meet(옛 handed-down) 1면은 noindex·매니페스트
+  // 미등재의 미발행 면이다.
   assert.equal(pages.length, 25);
   for (const file of pages) {
     const html = await readFile(file, "utf8");

@@ -24,7 +24,10 @@ async function postFiles() {
     for (const post of posts.filter((entry) => entry.isDirectory())) {
       const file = path.join(postsRoot, post.name, "index.html");
       try {
-        await readFile(file);
+        // 되돌림 페이지는 글이 아니라 옛 주소를 새 주소로 넘기는 껍데기다. 본문이 없어서
+        // post.css 도 유니버스 지도도 걸 자리가 없다 — 글의 수에 넣지 않는다.
+        const html = await readFile(file, "utf8");
+        if (/<meta http-equiv="refresh"/.test(html)) continue;
         files.push(file);
       } catch {}
     }
