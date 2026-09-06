@@ -144,33 +144,47 @@ test("the manifest publishes all four docent contexts and their 22 surfaces", as
   }
 });
 
-// 왜 있나 : `series/life-universe/assistant/context.json` 이 만들어져 있는데 그 시리즈
-// 색인은 `voice-assistant-v2` 를 싣지 않는다. 파일은 있고 아무도 쓰지 않는 상태다.
-// 위의 해시 계약은 `seriesSurfaces` 에 적힌 넷만 도니 이 파일은 검사 밖에 있었고,
-// 페이지가 바뀌어도 아무 데서도 붉어지지 않는다(2026-09-06 발행 레인 실측).
+// 색인에 아직 안 실린 채 준비만 되어 있는 도슨트 팩. `seriesSurfaces` 와 달리
+// **해시 대조만 하고 색인 탑재는 요구하지 않는다**(아틀라스 판정 2026-09-06 · C27).
 //
-// 지우지 않는다 — 배포 대기물이라는 판정이다(아틀라스 2026-09-06). 대신 **몇 개인지**를
-// 여기 고정한다. 하나가 배포되어 줄거나, 새 고아가 늘면 이 줄이 붉어진다.
-test("orphan docent contexts stay at the one known deferred series", async () => {
-  const dirs = (await readdir(path.join(repoRoot, "series"), { withFileTypes: true }))
-    .filter((entry) => entry.isDirectory())
-    .map((entry) => entry.name)
-    .sort();
+// 왜 갈라 두나 : `series/life-universe/assistant/context.json` 은 08-13 에 만들어져 09-01
+// 까지 갱신됐는데 그 시리즈 색인은 `voice-assistant-v2` 를 한 번도 싣지 않았다. 위의 해시
+// 계약은 `seriesSurfaces` 넷만 돌아 이 파일이 검사 밖에 있었고, 페이지가 바뀌어도 아무
+// 데서도 붉어지지 않았다. 지우지 않고 계약 안에 넣어 조용히 썩는 것을 막는다.
+// 켜는 것(색인에 도슨트 탑재)은 공개면 변화라 본인 게이트다.
+const preparedPacks = {
+  "life-universe": [
+    "series/life-universe/posts/01-result",
+    "series/life-universe/posts/02-structure",
+    "series/life-universe/posts/03-boundary",
+    "series/life-universe/sources/universe-intro",
+  ],
+};
 
-  const orphans = [];
-  for (const seriesId of dirs) {
-    let context;
-    try {
-      context = await read(`series/${seriesId}/assistant/context.json`);
-    } catch {
-      continue;                       // 컨텍스트가 없으면 고아일 수 없다
+test("prepared docent packs keep their page hashes current", async () => {
+  for (const [seriesId, surfaces] of Object.entries(preparedPacks)) {
+    const context = JSON.parse(await read(`series/${seriesId}/assistant/context.json`));
+    assert.deepEqual(context.entries.map((entry) => entry.url.replace(/\/$/, "")), surfaces, seriesId);
+    for (const entry of context.entries) {
+      const html = await read(`${entry.url}/index.html`);
+      assert.equal(entry.contentHash, `sha256:${sha256(html)}`, entry.contentId);
     }
-    JSON.parse(context);              // 깨진 JSON 은 고아 판정 이전에 실패시킨다
-    const index = await read(`series/${seriesId}/index.html`);
-    // 참조 = 그 시리즈 색인이 실제로 v2 도슨트를 싣는가. 매니페스트 등재나 테스트 상수가
-    // 아니라 **서빙되는 면**을 기준으로 삼는다 — 파일이 쓰이는지는 그것만이 말해 준다.
-    if (!index.includes("voice-assistant-v2")) orphans.push(seriesId);
   }
+});
 
-  assert.deepEqual(orphans, ["life-universe"]);
+// 도슨트 컨텍스트는 둘 중 하나여야 한다 — 살아 있는 팩(`seriesSurfaces`)이거나 준비된
+// 팩(`preparedPacks`)이거나. 어느 목록에도 없는 컨텍스트는 아무도 안 보는 파일이 된다.
+test("every docent context is either live or a declared prepared pack", async () => {
+  const declared = new Set([...Object.keys(seriesSurfaces), ...Object.keys(preparedPacks)]);
+  const undeclared = [];
+  for (const entry of await readdir(path.join(repoRoot, "series"), { withFileTypes: true })) {
+    if (!entry.isDirectory() || declared.has(entry.name)) continue;
+    try {
+      await read(`series/${entry.name}/assistant/context.json`);
+    } catch {
+      continue;                       // 컨텍스트가 없으면 선언할 것도 없다
+    }
+    undeclared.push(entry.name);
+  }
+  assert.deepEqual(undeclared, []);
 });
