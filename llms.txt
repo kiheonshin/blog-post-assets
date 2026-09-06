@@ -40,6 +40,14 @@
 - [Life Universe · Making of (3) 먼저 다 닫아두고, 지킨 만큼만 한 칸씩 열었다](https://kiheon.com/series/life-universe/posts/03-boundary/): 접근 범위는 설정 화면에서 정해지지 않았다.
 - [KIHEON LIFE UNIVERSE 소개 덱](https://kiheon.com/series/life-universe/sources/universe-intro/): KIHEON LIFE UNIVERSE를 소개하는 27장. 신기헌 본인이 만든 것이 아니라, 본인을 학습한 에이전트가 본인의 발표 자료와 아카이브를 재료로 다시 만들었다. 본인이 읽고 승인한 뒤 시리즈 00의 원자료로 공개됐다.
 
+## 메타버스 시대 — 한 파일로 2년을 말했다
+
+- [메타버스 시대 — 한 파일로 2년을 말했다](https://kiheon.com/series/metaverse-era/): 2020년 겨울부터 2021년 말까지 강연으로 한 말을, 그 말을 담고 다닌 파일 한 벌과 나란히 놓고 다시 읽은 세 편.
+- [06 · Metaverse Era (1) 현실과 가상 사이에서 돈 이야기를 하지 않던 해](https://kiheon.com/series/metaverse-era/posts/01-no-money-talk/): 2020년 11월에 나는 두 번 무대에 올랐다.
+- [06 · Metaverse Era (2) 세계의 크기를 재고, 무대에서 지갑을 열었다](https://kiheon.com/series/metaverse-era/posts/02-size-and-price/): 2021년에 나는 3월과 4월과 12월에 무대에 올랐다.
+- [06 · Metaverse Era (3) 오늘도 나는 메타버스로 출근합니다, 라고 말한 뒤에](https://kiheon.com/series/metaverse-era/posts/03-clocking-in/): 2021년 여름과 가을에 나는 세 번 더 무대에 올랐다.
+- [공개 발표와 자료의 연결](https://kiheon.com/series/metaverse-era/sources/presentations/): 공개 영상 다섯 편은 실제 발표 자료와 연결하고, 2024년 발표 자료 세 편은 원본을 옮기지 않은 채 판본 차이와 자료 계보를 설명합니다.
+
 ## AI를 열어둘수록 선명해지는 창작자의 자리
 
 - [AI를 열어둘수록 선명해지는 창작자의 자리](https://kiheon.com/series/newtype-ip-dialogue/): 2026 뉴타입 엔터 서밋 공개 대담을 바탕으로, AI의 잠재력과 엔진 IP, 창작자의 판단 능력을 세 편으로 정리했다.

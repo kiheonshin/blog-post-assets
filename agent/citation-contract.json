@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "contract": "kiheon-speech-contract-v1",
-  "updated": "2026-08-13",
+  "updated": "2026-09-06",
   "about": "신기헌(Kiheon Shin) 발행 아카이브를 읽고 인용하는 에이전트를 위한 계약이다. 세 단이다. 인용 가능(quotable) · 복원 금지(masked) · 생성 금지(noGenerate).",
   "map": "https://kiheon.com/llms.txt",
   "quotable": {
@@ -30,6 +30,11 @@
       "https://kiheon.com/series/life-universe/posts/02-structure/",
       "https://kiheon.com/series/life-universe/posts/03-boundary/",
       "https://kiheon.com/series/life-universe/sources/universe-intro/",
+      "https://kiheon.com/series/metaverse-era/",
+      "https://kiheon.com/series/metaverse-era/posts/01-no-money-talk/",
+      "https://kiheon.com/series/metaverse-era/posts/02-size-and-price/",
+      "https://kiheon.com/series/metaverse-era/posts/03-clocking-in/",
+      "https://kiheon.com/series/metaverse-era/sources/presentations/",
       "https://kiheon.com/series/newtype-ip-dialogue/",
       "https://kiheon.com/series/newtype-ip-dialogue/posts/01-not-blocking-potential/",
       "https://kiheon.com/series/newtype-ip-dialogue/posts/02-engine-as-ip/",
