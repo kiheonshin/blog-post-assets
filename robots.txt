@@ -1,0 +1,14 @@
+# kiheon.com — 신기헌 발행 아카이브
+#
+# 크롤러를 막지 않는다. 미발행 면은 페이지 자체의 <meta name="robots" content="noindex">
+# 로 막는데, robots.txt 로 크롤을 막으면 그 noindex 를 읽지 못해 오히려 색인에 남는다.
+
+User-agent: *
+Allow: /
+
+# 이 아카이브를 읽는 에이전트에게 :
+#   목록   https://kiheon.com/llms.txt
+#   계약   https://kiheon.com/agent/citation-contract.json
+#   읽는 법 https://kiheon.com/kiheon-blog.SKILL.md
+#
+# 목록에 없는 페이지는 공개 대상이 아니다. 접근이 되더라도 다루지 않는다.
