@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
-import { readFile } from "node:fs/promises";
+import { readFile, readdir } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
@@ -142,4 +142,35 @@ test("the manifest publishes all four docent contexts and their 22 surfaces", as
     assert.match(block, /status:\s*"ready"/, seriesId);
     assert.equal((block.match(new RegExp(`${seriesId}:(?:series|post|source):`, "g")) ?? []).length, surfaces.length, seriesId);
   }
+});
+
+// 왜 있나 : `series/life-universe/assistant/context.json` 이 만들어져 있는데 그 시리즈
+// 색인은 `voice-assistant-v2` 를 싣지 않는다. 파일은 있고 아무도 쓰지 않는 상태다.
+// 위의 해시 계약은 `seriesSurfaces` 에 적힌 넷만 도니 이 파일은 검사 밖에 있었고,
+// 페이지가 바뀌어도 아무 데서도 붉어지지 않는다(2026-09-06 발행 레인 실측).
+//
+// 지우지 않는다 — 배포 대기물이라는 판정이다(아틀라스 2026-09-06). 대신 **몇 개인지**를
+// 여기 고정한다. 하나가 배포되어 줄거나, 새 고아가 늘면 이 줄이 붉어진다.
+test("orphan docent contexts stay at the one known deferred series", async () => {
+  const dirs = (await readdir(path.join(repoRoot, "series"), { withFileTypes: true }))
+    .filter((entry) => entry.isDirectory())
+    .map((entry) => entry.name)
+    .sort();
+
+  const orphans = [];
+  for (const seriesId of dirs) {
+    let context;
+    try {
+      context = await read(`series/${seriesId}/assistant/context.json`);
+    } catch {
+      continue;                       // 컨텍스트가 없으면 고아일 수 없다
+    }
+    JSON.parse(context);              // 깨진 JSON 은 고아 판정 이전에 실패시킨다
+    const index = await read(`series/${seriesId}/index.html`);
+    // 참조 = 그 시리즈 색인이 실제로 v2 도슨트를 싣는가. 매니페스트 등재나 테스트 상수가
+    // 아니라 **서빙되는 면**을 기준으로 삼는다 — 파일이 쓰이는지는 그것만이 말해 준다.
+    if (!index.includes("voice-assistant-v2")) orphans.push(seriesId);
+  }
+
+  assert.deepEqual(orphans, ["life-universe"]);
 });
