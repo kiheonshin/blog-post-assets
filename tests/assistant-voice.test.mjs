@@ -488,7 +488,15 @@ test("follow-up questions carry recent dialogue without storing it outside the s
   const { Assistant } = await loadAssistant();
   const assistant = new Assistant();
   assistant.dataset.scope = "series";
-  assistant.context = { series: { title: "공개 시리즈" }, allowedTargets: [], entries: [] };
+  // 근거 한 건을 둔다. 이 검사가 보려는 것은 「대화 이력이 실려 가고 밖에 남지 않는가」인데,
+  // 원래 픽스처는 공개 자료가 0 이었다. 2026-09-06(C31)부터 공개 자료 0 은 근거 없음으로
+  // 판정해 빈 문맥을 돌려주므로(대화 이력은 도슨트 자기 출력이라 ⓐ 원천이 아니다) 이력만
+  // 남은 상태로는 이 검사의 의도를 잴 수 없다. 0 인 경우는 아래 C31 검사들이 따로 못박는다.
+  assistant.context = {
+    series: { title: "공개 시리즈" },
+    allowedTargets: [{ contentType: "post", contentId: "post-1" }],
+    entries: [{ type: "post", contentId: "post-1", title: "첫 번째 글", url: "series/aigc/posts/post-1/" }],
+  };
   assistant.dialogueHistory = [
     { role: "사용자", text: "첫 글은 무엇을 다루나요?" },
     { role: "도슨트", text: "실력과 노력의 가치를 다룹니다." },
@@ -1048,7 +1056,7 @@ test("every published docent surface installs one assistant in the required read
 
   for (const { type, file, html } of pages) {
     assert.equal((html.match(/<kiheon-voice-assistant\b/g) ?? []).length, 1);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260825docent1/);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260906grounded1/);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20260803simple1/);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:js|css)/);
     assert.doesNotMatch(html, /assets\/voice-agent\.js/);
@@ -1160,4 +1168,54 @@ test("every prepared explanation in the four ready series has inspectable source
   for (const anchor of ["p1s1", "p1s2", "p2s1", "p2s2", "p2s3", "p2s4"]) {
     assert.ok(researchAnchors.has(anchor), `research-flow must cite ${anchor}`);
   }
+});
+
+// C31 · 웹 런타임 쪽 절반. 근거가 없을 때 질문을 그대로 돌려주면 안내문만 붙은 채
+// 질문이 모델로 간다. 그 경로가 「미접지 구멍 1건」이었다.
+test("a screen with no allowed entries yields no grounded input at all", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  assistant.dataset.scope = "series";
+  assistant.context = { series: { title: "공개 시리즈" }, allowedTargets: [], entries: [] };
+
+  assert.equal(assistant.groundedEntries().length, 0);
+  // 예전에는 질문이 그대로 돌아왔다.
+  assert.equal(assistant.groundedInput("이 시리즈는 무엇을 말하나요?"), "");
+});
+
+test("a content screen outside the allowed list yields no grounded input", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  assistant.dataset.scope = "content";
+  assistant.dataset.contentId = "없는-글";
+  assistant.context = {
+    series: { title: "공개 시리즈" },
+    allowedTargets: [{ contentType: "post", contentId: "post-1" }],
+    entries: [{ type: "post", contentId: "post-1", title: "첫 번째 글", url: "series/aigc/posts/post-1/" }],
+  };
+
+  assert.equal(assistant.groundedEntries().length, 0);
+  assert.equal(assistant.groundedInput("이 글의 요지는?"), "");
+});
+
+// 문맥 도구가 관문 2 에 넘기는 신고. 이것이 없으면 관문 2 는 아무것도 판정할 수 없다.
+test("the grounding tool declares whether it found public material", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  assistant.dataset.scope = "series";
+  assistant.context = { series: { title: "공개 시리즈" }, allowedTargets: [], entries: [] };
+  // 실제로 배선된 그대로를 잡는다. 도구는 에이전트의 레지스트리 안에 있다.
+  const tool = assistant.createAgent().registry.tools.get("ground_public_context");
+  const empty = await tool.execute({ input: "질문" }, { memory: { recent: () => [] } });
+  assert.equal(empty.grounded, false);
+  assert.equal(empty.prompt, "");
+
+  assistant.context = {
+    series: { title: "공개 시리즈" },
+    allowedTargets: [{ contentType: "post", contentId: "post-1" }],
+    entries: [{ type: "post", contentId: "post-1", title: "첫 번째 글", url: "series/aigc/posts/post-1/" }],
+  };
+  const filled = await tool.execute({ input: "질문" }, { memory: { recent: () => [] } });
+  assert.equal(filled.grounded, true);
+  assert.match(filled.prompt, /첫 번째 글/);
 });

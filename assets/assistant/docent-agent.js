@@ -233,21 +233,24 @@ export class DocentAgent {
             trace.route = "generated";
             const grounding = await this.useTool("ground_public_context", { input: question }, trace, context);
             const prompt = cleanText(grounding?.prompt);
-            if (!prompt) throw agentError("context_unavailable");
-            this.emit("model_started", { traceId: trace.id });
-            const answer = await this.transport.ask(prompt, { signal });
-            this.emit("model_completed", { traceId: trace.id });
-            const suggested = await this.useTool("suggest_content", { input: question, answer }, trace, context);
-            result = {
-              answer,
-              targets: suggested?.targets,
-              source: "model",
-              // 문맥 도구가 `grounded: false` 를 선언하면 관문 2 가 R-1 로 바꾼다.
-              // ⚠ 현재 웹 런타임의 `ground_public_context` 는 이 값을 내보내지 않는다 —
-              //   공개 문맥이 없어도 질문만 모델에 넘어가고 그 답이 그대로 나간다.
-              //   그 구멍은 배포 산출물(voice-assistant-v2.js) 수정이 필요해 별도 회차다.
-              grounded: grounding?.grounded !== false,
-            };
+            // 문맥 도구가 `grounded: false` 를 선언하면 **모델을 부르지 않는다.** 관문 2 가
+            // 이 결과를 R-1 로 바꾼다. 답을 짓게 한 뒤 버리는 것이 아니라 짓지 않는 것이다.
+            if (grounding?.grounded === false) {
+              result = { answer: "", targets: [], source: "model", grounded: false };
+            } else {
+              // 선언이 없는데 prompt 도 비었으면 도구가 제 일을 못 한 것이다 - 닫고 멈춘다.
+              if (!prompt) throw agentError("context_unavailable");
+              this.emit("model_started", { traceId: trace.id });
+              const answer = await this.transport.ask(prompt, { signal });
+              this.emit("model_completed", { traceId: trace.id });
+              const suggested = await this.useTool("suggest_content", { input: question, answer }, trace, context);
+              result = {
+                answer,
+                targets: suggested?.targets,
+                source: "model",
+                grounded: true,
+              };
+            }
           }
           // ★ 관문 2 — 발화 직전. 판정이 ⓑ/ⓒ면 생성된 답을 버린다.
           refusal = contractResultVerdict(result);

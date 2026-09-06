@@ -281,9 +281,11 @@ export class KiheonVoiceAssistant extends HTMLElement {
         {
           name: "ground_public_context",
           description: "허용된 공개 콘텐츠와 최근 세션 대화만으로 질문 문맥을 만듭니다.",
-          execute: ({ input }, { memory }) => ({
-            prompt: this.groundedInput(input, memory.recent()),
-          }),
+          execute: ({ input }, { memory }) => {
+            const prompt = this.groundedInput(input, memory.recent());
+            // 관문 2 가 읽는 값. 선언이 있어야 근거 없는 답이 R-1 로 바뀐다.
+            return { prompt, grounded: Boolean(prompt) };
+          },
         },
         {
           name: "suggest_content",
@@ -1186,18 +1188,27 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.previewButton.textContent = active ? "미리 듣기 멈추기" : "현재 설정 미리 듣기";
   }
 
-  groundedContext(dialogueHistory = this.dialogueHistory) {
-    if (!this.context) return "";
+  // 이 화면에서 근거로 쓸 수 있는 공개 자료. 문맥 문자열과 `grounded` 신고가 **같은 것**을
+  // 보도록 한 곳에 모았다. 빈 배열이면 이 화면에는 댈 근거가 없다는 뜻이다.
+  groundedEntries() {
+    if (!this.context) return [];
     const allowed = new Set((this.context.allowedTargets ?? []).map((target) =>
       `${target?.contentType}:${target?.contentId}`,
     ));
     const publicEntries = (this.context.entries ?? []).filter((item) =>
       allowed.has(`${item?.type}:${item?.contentId}`),
     );
+    if (this.scope === "series") return publicEntries;
     const entry = publicEntries.find((item) => item.contentId === this.dataset.contentId);
+    return entry ? [entry] : [];
+  }
+
+  groundedContext(dialogueHistory = this.dialogueHistory) {
+    if (!this.context) return "";
+    const entries = this.groundedEntries();
+    const entry = entries.find((item) => item.contentId === this.dataset.contentId);
     const heading = currentHeading();
     const outline = entry && this.resolveOutlineSection(entry.outline ?? [], heading);
-    const entries = this.scope === "series" ? publicEntries : entry ? [entry] : [];
     const mode = this.scope === "series"
       ? "현재 화면: 시리즈 메인. 전체 구성과 콘텐츠 사이의 관계를 개론적으로 설명하고 다음 읽을 곳을 안내합니다."
       : "현재 화면: 세부 콘텐츠. 이 페이지의 흐름과 현재 읽는 대목을 중심으로 설명합니다.";
@@ -1221,9 +1232,13 @@ export class KiheonVoiceAssistant extends HTMLElement {
     return publicContext.join("\n\n").slice(0, MAX_GROUNDED_INPUT_LENGTH);
   }
 
+  // ⚠ 근거가 없을 때 **질문을 그대로 돌려주면 안 된다.** 그러면 안내문만 붙은 채 질문이
+  // 모델로 가서 근거 없이 답하고 그 답이 나간다(명세 「미접지 구멍 1건」). 빈 문자열을
+  // 돌려주고, 도구가 `grounded: false` 를 함께 신고해 관문 2 가 R-1 로 바꾸게 한다.
   groundedInput(question, dialogueHistory = this.dialogueHistory) {
+    if (!this.groundedEntries().length) return "";
     const context = this.groundedContext(dialogueHistory);
-    if (!context) return question;
+    if (!context) return "";
     const suffix = `\n\n질문\n${question}`;
     const availableContextLength = Math.max(0, MAX_GROUNDED_INPUT_LENGTH - suffix.length);
     return `${context.slice(0, availableContextLength)}${suffix}`;

@@ -268,3 +268,46 @@ test("reset removes conversational and procedural session memory", async () => {
   agent.reset();
   assert.deepEqual(agent.snapshot().memory, { turns: [], traces: [] });
 });
+
+// C31 · 미접지 구멍. 명세 `_도슨트-계약상속-명세-20260803.md:8` 의 「미접지 구멍 1건」은
+// **문맥이 비어도 질문이 그대로 모델에 가서 근거 없이 답하고 그 답이 나가는 경로**였다.
+// 08-03 에 「별도 회차·우선순위 높음」으로 열려 09-06 까지 닫히지 않았다.
+//
+// 웹 런타임의 `groundedInput()` 은 근거가 없으면 질문을 그대로 돌려줬고(`if (!context) return question`),
+// 236 행 가드는 **빈 prompt 만** 봐서 질문이 비어 있지 않으니 걸리지 않았다.
+// 이제 문맥 도구가 `grounded: false` 를 신고하면 모델을 아예 부르지 않고 관문 2 가 R-1 로 바꾼다.
+test("a screen with no public grounding refuses instead of generating", async () => {
+  const { DocentAgent, SPEECH_CONTRACT_REFUSALS } = await loadAgentModule();
+  let modelCalls = 0;
+  const agent = new DocentAgent({
+    transport: { ask: async () => { modelCalls += 1; return "지어낸 답"; } },
+    tools: standardTools({
+      ground_public_context: async () => ({ prompt: "", grounded: false }),
+    }),
+  });
+
+  const result = await agent.runTurn("이 시리즈는 무엇을 말하나요?");
+  assert.equal(result.answer, SPEECH_CONTRACT_REFUSALS["R-1"]);
+  assert.equal(result.source, "contract");
+  // 답을 짓게 한 뒤 버리는 것이 아니라 짓지 않는다.
+  assert.equal(modelCalls, 0);
+});
+
+// 신고가 없는 채 prompt 만 빈 것은 도구 고장이다. 그때는 R-1 을 말하지 않고 닫고 멈춘다 ·
+// 두 상태를 같은 것으로 다루면 고장이 계약 문면 뒤에 숨는다.
+test("an empty prompt without a grounded declaration still fails closed", async () => {
+  const { DocentAgent } = await loadAgentModule();
+  let modelCalls = 0;
+  const agent = new DocentAgent({
+    transport: { ask: async () => { modelCalls += 1; } },
+    tools: standardTools({
+      ground_public_context: async () => ({ prompt: "" }),
+    }),
+  });
+
+  await assert.rejects(
+    agent.runTurn("이 글을 설명해 주세요"),
+    (error) => error.code === "context_unavailable",
+  );
+  assert.equal(modelCalls, 0);
+});

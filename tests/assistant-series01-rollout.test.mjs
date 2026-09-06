@@ -46,7 +46,7 @@ test("all four series use the same xAI Realtime v2 interface", async () => {
   for (const file of Object.values(seriesSurfaces).flat()) {
     const html = await read(file);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20260803simple1/, file);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260825docent1/, file);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260906grounded1/, file);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:css|js)/, file);
   }
 });
@@ -90,7 +90,10 @@ test("all four series share the verified Grok built-in voice runtime", async () 
   // 2026-09-01 정본 주소 전환(github.io → kiheon.com)으로 갱신. 바뀐 것은
     // isCanonical 판정의 origin 한 줄뿐이고, 도슨트가 「여기가 정본인가」를 묻는
     // 자리라 정본이 옮겨가면 함께 옮겨야 한다. 나머지 단언이 내용 불변을 지킨다.
-    assert.equal(sha256(script), "81dbe5d1710afc8014744bdaa2f98b3e0b33a0fe377ec60a44c2b9b2de04352d");
+    // 2026-09-06 C31(미접지 구멍) 배선으로 갱신. groundedEntries() 를 갈라내고,
+    // 근거가 없으면 groundedInput 이 빈 문자열을 돌려주며, 문맥 도구가 grounded 를
+    // 신고한다. 아래 단언과 assistant-voice.test.mjs 의 C31 검사가 내용을 지킨다.
+    assert.equal(sha256(script), "8669afbbea069cf6456d461389400157acd7abe18fb86253f1c18cebb7b215de");
   assert.equal(sha256(styles), "e3a5965c8871746fe8574867ae0e5eb76b4a2672f9c392fe6d6f6d070b8fc53b");
   assert.match(script, /data-assistant-open-voice/);
   assert.match(script, /voiceSessionActive/);
