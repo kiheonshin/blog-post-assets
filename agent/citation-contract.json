@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "contract": "kiheon-speech-contract-v1",
-  "updated": "2026-09-06",
+  "updated": "2026-09-15",
   "about": "신기헌(Kiheon Shin) 발행 아카이브를 읽고 인용하는 에이전트를 위한 계약이다. 세 단이다. 인용 가능(quotable) · 복원 금지(masked) · 생성 금지(noGenerate).",
   "map": "https://kiheon.com/llms.txt",
   "quotable": {
@@ -62,6 +62,10 @@
       {
         "kind": "job-title",
         "label": "본인이 맡았던 직함"
+      },
+      {
+        "kind": "family-name",
+        "label": "배우자·가족의 실명"
       },
       {
         "kind": "contact",
