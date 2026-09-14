@@ -1,0 +1,305 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-09-15",
+  "about": "시리즈 색인의 입력이다. public 이 false 인 시리즈는 llms.txt · 인용 계약 · 루트 도메인에 올리지 않는다. 글의 sourceIds 는 그 글 면의 source-ids 메타가 된다(node · deck 만).",
+  "series": [
+    {
+      "slug": "aigc-creative-paradigm",
+      "public": true,
+      "state": "published",
+      "docent": true,
+      "posts": [
+        {
+          "slug": "01-skill-and-effort",
+          "state": "published",
+          "sourceIds": []
+        },
+        {
+          "slug": "02-workflow-design",
+          "state": "published",
+          "sourceIds": []
+        },
+        {
+          "slug": "03-reality-virtual-boundary",
+          "state": "published",
+          "sourceIds": []
+        }
+      ]
+    },
+    {
+      "slug": "autonomous-worlds",
+      "public": true,
+      "state": "published",
+      "docent": true,
+      "posts": [
+        {
+          "slug": "01-engine-city-to-autonomous-world",
+          "state": "published",
+          "sourceIds": []
+        },
+        {
+          "slug": "02-more-than-a-mirror",
+          "state": "published",
+          "sourceIds": []
+        },
+        {
+          "slug": "03-what-we-want-to-create",
+          "state": "published",
+          "sourceIds": []
+        }
+      ]
+    },
+    {
+      "slug": "co-creation-culture",
+      "public": true,
+      "state": "published",
+      "docent": true,
+      "posts": [
+        {
+          "slug": "01-whose-creativity",
+          "state": "published",
+          "sourceIds": []
+        },
+        {
+          "slug": "02-at-the-boundary",
+          "state": "published",
+          "sourceIds": []
+        },
+        {
+          "slug": "03-when-records-become-stories",
+          "state": "published",
+          "sourceIds": []
+        }
+      ]
+    },
+    {
+      "slug": "handed-down",
+      "public": false,
+      "state": "moved",
+      "docent": false,
+      "posts": [
+        {
+          "slug": "02-child-pokemon-and-me",
+          "state": "moved",
+          "sourceIds": []
+        }
+      ]
+    },
+    {
+      "slug": "life-universe",
+      "public": true,
+      "state": "published",
+      "docent": false,
+      "posts": [
+        {
+          "slug": "01-result",
+          "state": "published",
+          "sourceIds": [
+            "node:04",
+            "node:74",
+            "node:75",
+            "node:77",
+            "node:143",
+            "node:145",
+            "node:152",
+            "node:157",
+            "node:158",
+            "node:165",
+            "node:225"
+          ]
+        },
+        {
+          "slug": "02-structure",
+          "state": "published",
+          "sourceIds": [
+            "node:00",
+            "node:01",
+            "node:04",
+            "node:44",
+            "node:86",
+            "node:97a",
+            "node:113",
+            "node:144"
+          ]
+        },
+        {
+          "slug": "03-boundary",
+          "state": "published",
+          "sourceIds": [
+            "node:01",
+            "node:19",
+            "node:33",
+            "node:95",
+            "node:102",
+            "node:143",
+            "node:164",
+            "node:192",
+            "node:194",
+            "node:196",
+            "node:210"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "metaverse-era",
+      "public": true,
+      "state": "published",
+      "docent": false,
+      "sources": [
+        "presentations"
+      ],
+      "posts": [
+        {
+          "slug": "01-no-money-talk",
+          "state": "published",
+          "sourceIds": [
+            "node:230",
+            "node:185",
+            "node:186",
+            "node:188",
+            "node:189",
+            "node:192",
+            "deck:2020-11-12",
+            "deck:2020-11-26"
+          ]
+        },
+        {
+          "slug": "02-size-and-price",
+          "state": "published",
+          "sourceIds": [
+            "node:185",
+            "node:186",
+            "node:192",
+            "deck:2021-03-27",
+            "deck:2021-04-20",
+            "deck:2021-05-28",
+            "deck:2021-12-22"
+          ]
+        },
+        {
+          "slug": "03-clocking-in",
+          "state": "published",
+          "sourceIds": [
+            "node:185",
+            "node:186",
+            "node:192",
+            "deck:2021-06-18",
+            "deck:2021-07-21",
+            "deck:2021-10-27",
+            "deck:2021-03-27"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "newtype-ip-dialogue",
+      "public": true,
+      "state": "published",
+      "docent": true,
+      "posts": [
+        {
+          "slug": "01-not-blocking-potential",
+          "state": "published",
+          "sourceIds": [
+            "node:207",
+            "node:206",
+            "node:200",
+            "node:204"
+          ]
+        },
+        {
+          "slug": "02-engine-as-ip",
+          "state": "published",
+          "sourceIds": [
+            "node:205",
+            "node:204"
+          ]
+        },
+        {
+          "slug": "03-already-have-the-eye",
+          "state": "published",
+          "sourceIds": [
+            "node:202",
+            "node:209",
+            "node:200"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "onchain-storytelling",
+      "public": true,
+      "state": "published",
+      "docent": false,
+      "posts": [
+        {
+          "slug": "01-worldview",
+          "state": "published",
+          "sourceIds": [
+            "node:205",
+            "node:183",
+            "node:221",
+            "deck:2023-11-09"
+          ]
+        },
+        {
+          "slug": "02-methodology",
+          "state": "published",
+          "sourceIds": [
+            "node:205",
+            "node:221",
+            "node:183",
+            "deck:2023-11-09"
+          ]
+        },
+        {
+          "slug": "03-expansion",
+          "state": "published",
+          "sourceIds": [
+            "node:205",
+            "node:221",
+            "node:183",
+            "deck:2023-11-09"
+          ]
+        }
+      ]
+    },
+    {
+      "slug": "went-in-first",
+      "public": false,
+      "state": "unfinished",
+      "docent": false,
+      "posts": [
+        {
+          "slug": "01-parent-enters-first",
+          "state": "unfinished",
+          "sourceIds": []
+        },
+        {
+          "slug": "02-pokemon-uncle",
+          "state": "unfinished",
+          "sourceIds": []
+        },
+        {
+          "slug": "03-plan-and-action",
+          "state": "unfinished",
+          "sourceIds": []
+        }
+      ]
+    },
+    {
+      "slug": "where-worlds-meet",
+      "public": false,
+      "state": "unfinished",
+      "docent": false,
+      "posts": [
+        {
+          "slug": "02-child-pokemon-and-me",
+          "state": "unfinished",
+          "sourceIds": []
+        }
+      ]
+    }
+  ]
+}

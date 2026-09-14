@@ -1,5 +1,27 @@
 {
   "trailingSlash": true,
+  "redirects": [
+    {
+      "source": "/series/went-in-first/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/series/where-worlds-meet/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/series/handed-down/:path*",
+      "destination": "/",
+      "permanent": false
+    },
+    {
+      "source": "/previews/:path*",
+      "destination": "/",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/universe/:view(ontology|graph|identity|map)/:file+",
