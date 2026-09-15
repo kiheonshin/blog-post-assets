@@ -33,19 +33,26 @@ test("the manifest declares every series folder and every post folder once", asy
 test("series kept off the list stay off every registry and off the root domain", async () => {
   const llms = await read("llms.txt");
   const library = await read("assets/content-manifest.js");
-  const redirects = JSON.parse(await read("vercel.json")).redirects ?? [];
+  const vercel = JSON.parse(await read("vercel.json"));
+  const redirects = vercel.redirects ?? [];
   // 빈 목록을 초록으로 읽지 않는다 : 지금 셋이다(게이트 46 ② · 27 ①).
   assert.equal(hiddenSeries.length, 3);
+  // trailingSlash true 면 정식 주소가 모두 빗금으로 끝난다. Vercel 은 source 를 strict 하게 맞추므로
+  // 「/:path*」 꼴은 그 주소에 걸리지 않는다(C52 · 게이트 30 push 뒤 실측 200). 끝을 「/(.*)」 로 쓴다.
+  // 주소마다 실제로 걸리는지는 이 스위트가 아니라 push 전 넘김 흉내가 잰다.
+  if (vercel.trailingSlash === true) {
+    assert.ok(!redirects.some((r) => r.source.endsWith("/:path*")), "끝 빗금 주소에 걸리지 않는 source 꼴이 있다");
+  }
   for (const s of hiddenSeries) {
     assert.doesNotMatch(llms, new RegExp(`/series/${s.slug}/`), s.slug);
     assert.doesNotMatch(library, new RegExp(`series/${s.slug}/`), s.slug);
-    const rule = redirects.find((r) => r.source === `/series/${s.slug}/:path*`);
+    const rule = redirects.find((r) => r.source === `/series/${s.slug}/(.*)`);
     assert.ok(rule, `${s.slug} : 루트 도메인에서 내리는 되돌림이 없다`);
     assert.equal(rule.permanent, false, s.slug);
     for (const p of s.posts) assert.deepEqual(p.sourceIds, [], `${s.slug}/${p.slug}`);
   }
   // 미완성 시리즈를 모아 보이던 미리보기 면도 루트 도메인에서는 내린다.
-  assert.ok(redirects.some((r) => r.source === "/previews/:path*" && r.permanent === false));
+  assert.ok(redirects.some((r) => r.source === "/previews/(.*)" && r.permanent === false));
   for (const s of publicSeries) {
     assert.match(llms, new RegExp(`/series/${s.slug}/`), s.slug);
     assert.ok(!redirects.some((r) => r.source.startsWith(`/series/${s.slug}/`)), s.slug);

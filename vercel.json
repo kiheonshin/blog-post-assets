@@ -2,22 +2,22 @@
   "trailingSlash": true,
   "redirects": [
     {
-      "source": "/series/went-in-first/:path*",
+      "source": "/series/went-in-first/(.*)",
       "destination": "/",
       "permanent": false
     },
     {
-      "source": "/series/where-worlds-meet/:path*",
+      "source": "/series/where-worlds-meet/(.*)",
       "destination": "/",
       "permanent": false
     },
     {
-      "source": "/series/handed-down/:path*",
+      "source": "/series/handed-down/(.*)",
       "destination": "/",
       "permanent": false
     },
     {
-      "source": "/previews/:path*",
+      "source": "/previews/(.*)",
       "destination": "/",
       "permanent": false
     }
