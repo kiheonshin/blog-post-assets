@@ -36,8 +36,9 @@ test("public posts carry the manifest's source ids as invisible page meta", asyn
       withIds += 1;
     }
   }
-  // 초고 머리말에 근거가 적힌 발행 글이 이만큼이다(2026-09-15). 줄면 어디서 빠졌는지 본다.
-  assert.equal(withIds, 12);
+  // 근거가 붙은 발행 글 수 : 초고 머리말에 근거가 적힌 12편(2026-09-15)에 본인 승인으로 넷을 더했다
+  // (C53 · 2026-09-17). 줄면 어디서 빠졌는지 본다.
+  assert.equal(withIds, 16);
 });
 
 test("public posts close with the lineage line right after the authorship notice", async () => {

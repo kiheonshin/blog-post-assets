@@ -35,17 +35,23 @@
         {
           "slug": "01-engine-city-to-autonomous-world",
           "state": "published",
-          "sourceIds": []
+          "sourceIds": [
+            "node:246"
+          ]
         },
         {
           "slug": "02-more-than-a-mirror",
           "state": "published",
-          "sourceIds": []
+          "sourceIds": [
+            "node:246"
+          ]
         },
         {
           "slug": "03-what-we-want-to-create",
           "state": "published",
-          "sourceIds": []
+          "sourceIds": [
+            "node:246"
+          ]
         }
       ]
     },
@@ -68,7 +74,9 @@
         {
           "slug": "03-when-records-become-stories",
           "state": "published",
-          "sourceIds": []
+          "sourceIds": [
+            "node:183"
+          ]
         }
       ]
     },
