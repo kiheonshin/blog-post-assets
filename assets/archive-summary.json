@@ -4,11 +4,14 @@
     "assets/content-manifest.js",
     "series/metaverse-era/sources/presentations/index.html"
   ],
-  "asOf": "2026-08-31",
+  "inputSha256": {
+    "assets/content-manifest.js": "79c5e47fbda4fe8c4148b858a770f163722b99b54623a8a978b53fcd9d24ca1f",
+    "series/metaverse-era/sources/presentations/index.html": "537951c3c787621148f9fcb70629fb44bcfbe3d69eedd08a6b5f10080a4250cf"
+  },
   "counts": {
     "publicSeries": 7,
     "publishedPosts": 21,
-    "manifestSources": 11,
+    "manifestSources": 12,
     "presentationArchiveItems": 8,
     "presentationVideos": 5,
     "presentationLineages": 3
@@ -84,7 +87,7 @@
       "title": "메타버스 시대 · 한 파일로 2년을 말했다",
       "href": "series/metaverse-era/",
       "posts": 3,
-      "sources": 0,
+      "sources": 1,
       "hasCover": true
     }
   ],
@@ -253,6 +256,24 @@
       "seriesLabel": "05 · On-chain Storytelling",
       "seriesTitle": "온체인 스토리텔링",
       "displayTitle": "MIXtown 확장 아이디어 노트"
+    },
+    {
+      "id": "presentations",
+      "title": "공개 발표와 자료의 연결",
+      "description": "공개된 발표 영상 다섯 편과 2017~2024년 발표 자료를 사람이 읽는 발표명·영상 시각·원자료 페이지로 이어 붙인 색인. 어느 장표가 어느 발화에 놓였는지, 어디가 재편집 구간인지 구분해 적었다.",
+      "label": "공개 발표와 자료의 연결",
+      "published": "2026-08-28",
+      "sourceYears": [
+        2017,
+        2021,
+        2022,
+        2024
+      ],
+      "href": "series/metaverse-era/sources/presentations/",
+      "seriesSlug": "metaverse-era",
+      "seriesLabel": "06 · Metaverse Era",
+      "seriesTitle": "메타버스 시대 · 한 파일로 2년을 말했다",
+      "displayTitle": "공개 발표와 자료의 연결"
     }
   ],
   "availability": {
