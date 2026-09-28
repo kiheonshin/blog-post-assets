@@ -578,12 +578,12 @@ export const contentLibrary = {
           href: "series/metaverse-era/posts/03-clocking-in/",
         },
       ],
-      // sources 는 **일부러 비워 둔다** — 원자료 모듈 비공개 정책(브리지 §8) :
-      // 매니페스트 미등록 + noindex. 아홉 모듈은 지어 두고 목록에는 걸지 않는다.
+      // 승인된 발표 자료 색인만 등록한다. 나머지 원자료 모듈은 목록에 걸지 않는다.
       sources: [
         {
           // 본인 승인 2026-09-01(G3). 공개 적격성은 아틀라스 판정
           // `2026-09-01-0640` — 2022 원 덱 2벌 스윕 청정, 이메일은 기왕 공개 판정.
+          id: "presentations",
           label: "공개 발표와 자료의 연결",
           title: "공개 발표와 자료의 연결",
           description:
