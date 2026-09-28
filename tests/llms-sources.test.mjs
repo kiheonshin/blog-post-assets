@@ -1,5 +1,6 @@
 import assert from "node:assert/strict";
-import { readFile, stat } from "node:fs/promises";
+import { readFile, stat, mkdtemp, mkdir, writeFile, rm } from "node:fs/promises";
+import { tmpdir } from "node:os";
 import { spawnSync } from "node:child_process";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -79,6 +80,78 @@ test("malformed context, duplicate URLs and identity/path disagreements fail as 
     if (mode === "external") input.contract.quotable.surfaces[0] = "https://elsewhere.invalid/";
     assert.throws(() => inspectLlmsSources(input), undefined, mode);
   }
+});
+
+test("an existing null context cannot fall back to registry permission", () => {
+  const input = fixture();
+  for (const context of [null, false, 0, "", []]) {
+    input.contexts.sample = context;
+    assert.throws(() => inspectLlmsSources(input), /existing assistant context/);
+  }
+  delete input.contexts.sample;
+  assert.equal(inspectLlmsSources(input).status, "aligned");
+});
+
+test("loader distinguishes a missing context file from a file containing null", async (t) => {
+  const directory = await mkdtemp(path.join(tmpdir(), "llms-context-canary-"));
+  t.after(() => rm(directory, { recursive: true, force: true }));
+  const input = fixture();
+  await mkdir(path.join(directory, "series/sample/sources/one"), { recursive: true });
+  await mkdir(path.join(directory, "agent"));
+  await writeFile(path.join(directory, "series/manifest.json"), JSON.stringify(input.registry));
+  await writeFile(path.join(directory, "agent/citation-contract.json"), JSON.stringify(input.contract));
+  await writeFile(path.join(directory, "llms.txt"), input.llms);
+  await writeFile(path.join(directory, "series/sample/sources/one/index.html"), "synthetic");
+  assert.equal((await checkLlmsSources({ root: directory, library: input.library })).status, "aligned");
+  await mkdir(path.join(directory, "series/sample/assistant"));
+  const contextPath = path.join(directory, "series/sample/assistant/context.json");
+  await writeFile(contextPath, "null\n");
+  await assert.rejects(checkLlmsSources({ root: directory, library: input.library }), /existing assistant context/);
+  assert.equal(await readFile(contextPath, "utf8"), "null\n");
+});
+
+test("malformed surface entries are rejected instead of silently skipped", () => {
+  for (const suffix of [
+    `- [Two](${url("two")}\n`,
+    `- [Two] ${url("two")}\n`,
+    `  - [Two](${url("two")}): indented\n`,
+    `* [Two](${url("two")}): different prefix\n`,
+  ]) {
+    const input = fixture();
+    input.llms += suffix;
+    assert.throws(() => inspectLlmsSources(input), /Malformed LLM surface entry/);
+  }
+});
+
+test("map and surface URL credentials never enter an aligned result", () => {
+  const mapInput = fixture();
+  mapInput.contract.map = "https://synthetic:canary@example.invalid/llms.txt";
+  assert.throws(() => inspectLlmsSources(mapInput), /without credentials/);
+  const input = fixture(), credentialUrl = "https://synthetic:canary@example.invalid/series/sample/";
+  input.contract.quotable.surfaces.push(credentialUrl);
+  input.llms += `- [Series](${credentialUrl}): credential canary\n`;
+  assert.throws(() => inspectLlmsSources(input), /Noncanonical or external surface URL/);
+});
+
+test("source-like paths cannot bypass source checks by encoding or dropping the slash", () => {
+  for (const pathname of [
+    "/series/sample/sources/two",
+    "/series/sample/sources/%6fne/",
+    "/series/sample/%73ources/one/",
+    "/series/sample/sources/",
+  ]) {
+    const input = fixture(), malformedUrl = `https://example.invalid${pathname}`;
+    input.contract.quotable.surfaces.push(malformedUrl);
+    input.llms += `- [Source](${malformedUrl}): path canary\n`;
+    assert.throws(() => inspectLlmsSources(input), /Noncanonical source surface path/);
+  }
+});
+
+test("other canonical non-source surfaces keep the existing contract boundary", () => {
+  const input = fixture(), anotherSurface = "https://example.invalid/series/sample/posts/one/";
+  input.contract.quotable.surfaces.push(anotherSurface);
+  input.llms += `- [Post](${anotherSurface}): already declared\n`;
+  assert.equal(inspectLlmsSources(input).status, "aligned");
 });
 
 test("hidden series cannot acquire source authority or enter the display registry", () => {

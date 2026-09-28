@@ -29,12 +29,18 @@ const slug = (value) => {
 
 export function inspectLlmsSources({ library, registry, contract, llms, contexts = {}, existingSources }) {
   const map = new URL(contract.map);
-  if (map.protocol !== "https:") throw new Error("The map must use HTTPS");
+  if (map.protocol !== "https:" || map.username || map.password || map.search || map.hash
+      || map.href !== contract.map) throw new Error("The map must be a canonical HTTPS URL without credentials");
   const base = map.origin;
   const canonicalUrl = (value) => {
     const url = new URL(value);
-    if (url.origin !== base || url.search || url.hash || url.href !== value) {
+    if (url.origin !== base || url.username || url.password || url.search || url.hash || url.href !== value) {
       throw new Error("Noncanonical or external surface URL");
+    }
+    const decodedPath = decodeURIComponent(url.pathname);
+    if (/\/sources(?:\/|$)/.test(decodedPath)
+        && (!sourcePattern.test(url.pathname) || decodedPath !== url.pathname)) {
+      throw new Error("Noncanonical source surface path");
     }
     return value;
   };
@@ -46,7 +52,10 @@ export function inspectLlmsSources({ library, registry, contract, llms, contexts
   const authority = [];
   for (const entry of series.filter((item) => item.public === true)) {
     const context = contexts[entry.slug];
-    const ids = context == null
+    if (context !== undefined && (context === null || typeof context !== "object" || Array.isArray(context))) {
+      throw new Error("An existing assistant context must be an object");
+    }
+    const ids = context === undefined
       ? requireArray(entry.sources ?? [], "registry.sources")
       : requireArray(context.allowedTargets, "allowedTargets")
         .filter((target) => target.contentType === "source").map((target) => target.contentId);
@@ -63,8 +72,14 @@ export function inspectLlmsSources({ library, registry, contract, llms, contexts
     }
   }
   const display = uniqueSet(displayed, "Displayed sources");
-  const listed = uniqueSet([...llms.matchAll(/^- \[[^\n]+?\]\(([^)]+)\)/gm)]
-    .map((match) => canonicalUrl(match[1])), "LLM map");
+  const mapUrls = [];
+  for (const line of llms.split(/\r?\n/)) {
+    if (!/^\s*[-*+]\s+\[/.test(line)) continue;
+    const match = line.match(/^- \[[^\n]+?\]\(([^)]+)\)(?::(?:\s|$)|\s*$)/);
+    if (!match) throw new Error("Malformed LLM surface entry");
+    mapUrls.push(canonicalUrl(match[1]));
+  }
+  const listed = uniqueSet(mapUrls, "LLM map");
   const cited = uniqueSet(requireArray(contract.quotable?.surfaces, "quotable.surfaces")
     .map(canonicalUrl), "Citation surfaces");
   if (!listed.size || !cited.size) throw new Error("Surface lists must not be empty");
@@ -104,7 +119,7 @@ export async function checkLlmsSources({ root = repoRoot, library = contentLibra
   for (const series of requireArray(registry.series, "registry.series").filter((entry) => entry.public === true)) {
     slug(series.slug);
     try { contexts[series.slug] = await json(`series/${series.slug}/assistant/context.json`); }
-    catch (error) { if (error.code !== "ENOENT") throw error; contexts[series.slug] = null; }
+    catch (error) { if (error.code !== "ENOENT") throw error; contexts[series.slug] = undefined; }
   }
   const input = { library, registry, contract, llms, contexts };
   const result = inspectLlmsSources(input);
