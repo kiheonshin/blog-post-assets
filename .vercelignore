@@ -5,3 +5,9 @@
 DESIGN.md
 README.md
 tests
+
+# Keep review-only source trees in the GitHub mirror, not the Vercel domain.
+series/went-in-first/
+series/where-worlds-meet/
+series/handed-down/
+previews/
