@@ -4,12 +4,46 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>개인정보 안내 · Kiheon Shin</title>
-<meta name="description" content="신기헌이 자기 기기에서 쓰는 도구(백업·업로드)가 구글 계정에 접근할 때 보여 주는 개인정보 안내.">
+<meta name="description" content="Kiheon Life Universe가 기록과 방문자, 구글 계정 연결에서 사람의 정보를 어떻게 다루는지 적은 안내.">
 <meta name="author" content="Kiheon Shin">
 <meta name="robots" content="noindex, nofollow">
 <link rel="canonical" href="https://kiheon.com/privacy/">
 <link rel="stylesheet" href="../assets/site.css?v=20260831a">
 <link rel="stylesheet" href="../assets/tokens.css?v=20260807a">
+<style>
+.privacy {
+  max-width: var(--measure);
+  margin: 0 0 var(--space-20);
+  border-block-start: 1px solid var(--rule);
+}
+.privacy > div {
+  display: grid;
+  grid-template-columns: 8.5rem minmax(0, 1fr);
+  gap: var(--space-4);
+  padding-block: var(--space-4);
+  border-block-end: 1px solid var(--rule);
+}
+.privacy dt {
+  padding-block-start: 0.4em;
+  color: var(--ink-muted);
+  font-family: var(--font-mono);
+  font-size: var(--meta);
+  font-weight: 500;
+  letter-spacing: 0.09em;
+}
+.privacy dd {
+  margin: 0;
+}
+@media (max-width: 40rem) {
+  .privacy > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-1);
+  }
+  .privacy dt {
+    padding-block-start: 0;
+  }
+}
+</style>
 </head>
 <body class="library-page">
 <a class="skip" href="#main">본문으로 건너뛰기</a>
@@ -17,11 +51,41 @@
   <a class="brand" href="../">KIHEON SHIN</a>
 </div></header>
 <main id="main" class="library-main">
-  <section class="library-head">
-    <p class="meta-label">PRIVACY · 2026.09.30</p>
+  <header class="library-head">
+    <p class="meta-label">PRIVACY · KIHEON LIFE UNIVERSE · 2026.09.30</p>
     <h1>개인정보 안내</h1>
-    <p>이 페이지는 신기헌이 자기 기기에서 쓰는 도구(백업&#8288;·&#8288;업로드)가 구글 계정에 접근할 때 보여 주는 개인정보 안내입니다. 이 도구들은 신기헌 본인만 쓰며, 본인의 구글 드라이브와 유튜브에 본인 자료를 올리고 읽는 데만 씁니다. 다른 사람의 정보를 모으거나, 제3자와 나누거나, 광고에 쓰지 않습니다.</p>
-  </section>
+    <p class="lead">Kiheon Life Universe는 신기헌 한 사람의 기록을 보존하고, 공개할 수 있는 것만 kiheon.com의 공개 표면에 여는 체계입니다. 이 페이지는 그 안에서 사람의 정보를 어떻게 다루는지 적습니다.</p>
+  </header>
+  <dl class="privacy">
+    <div>
+      <dt>기록</dt>
+      <dd>원본은 Local Vault에 닫아 두고, 공개 승인된 글과 바탕 자료만 공개 표면에 놓습니다. 기록에 함께 나오는 다른 사람의 사적인 정보는 싣지 않습니다.</dd>
+    </div>
+    <div>
+      <dt>방문</dt>
+      <dd>kiheon.com에는 가입도 로그인도 없습니다. 어떤 글이 읽히는지 보려고 구글 애널리틱스로 방문 통계를 보며, 이때 브라우저에 쿠키가 놓입니다.</dd>
+    </div>
+    <div>
+      <dt>도슨트</dt>
+      <dd>시리즈의 음성 도슨트는 방문자가 시작할 때만 연결됩니다. 음성 대화 중 마이크 소리, 질문, 공개된 시리즈 문맥이 xAI로 전송되고, 이 사이트는 대화를 저장하지 않습니다.</dd>
+    </div>
+    <div>
+      <dt>영상</dt>
+      <dd>발표 영상은 유튜브에서 불러옵니다. 재생하면 유튜브의 정책이 적용됩니다.</dd>
+    </div>
+    <div>
+      <dt>구글 계정</dt>
+      <dd>Kiheon Life Universe가 구글 계정에 연결하는 사람은 신기헌 본인뿐입니다. 에이전트가 기록의 보존 사본을 본인 드라이브에 올리고, 발표 영상을 본인 유튜브 채널에 올리는 데 씁니다. 방문자의 구글 계정은 연결하지 않습니다.</dd>
+    </div>
+    <div>
+      <dt>연결로 받은 정보</dt>
+      <dd>연결 열쇠는 신기헌의 기기에만 둡니다. 받은 정보를 팔지 않고, 광고에 쓰지 않고, 다른 사람에게 넘기지 않습니다. 에이전트는 AI 서비스 위에서 일하므로, 일에 필요한 내용(파일 이름, 영상 제목 같은 것)은 그 서비스를 거칩니다.</dd>
+    </div>
+    <div>
+      <dt>바뀔 때</dt>
+      <dd>다루는 범위가 바뀌면 이 페이지에 먼저 적습니다. 구글 계정 연결은 구글 계정의 「연결된 앱」에서 언제든 끊을 수 있습니다.</dd>
+    </div>
+  </dl>
 </main>
 </body>
 </html>
