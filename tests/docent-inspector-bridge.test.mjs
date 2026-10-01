@@ -17,6 +17,15 @@ test("only the owner origin or a local test parent may connect", async () => {
   assert.equal(inspectorParentAllowed("http://localhost:47851", "127.0.0.1"), false);
 });
 
+test("only public series paths become owner-visible page identities", async () => {
+  const { inspectorPagePath } = await load();
+  assert.equal(inspectorPagePath("/series/aigc-creative-paradigm/"), "/series/aigc-creative-paradigm/");
+  assert.equal(inspectorPagePath("/series/aigc-creative-paradigm/posts/01-skill-and-effort/"),
+    "/series/aigc-creative-paradigm/posts/01-skill-and-effort/");
+  for (const bad of ["/archive/private/", "/series/foo/../../secret/", "/series/foo/?token=secret"])
+    assert.equal(inspectorPagePath(bad), "");
+});
+
 test("a trace sends only allowlisted structure, never question or transcript bytes", async () => {
   const { sanitizeInspectorEvent } = await load();
   const canary = "PRIVATE_QUESTION_CANARY";
@@ -39,13 +48,31 @@ test("a trace sends only allowlisted structure, never question or transcript byt
   assert.equal(sanitizeInspectorEvent({ type: "unknown", answer: canary }), null);
 });
 
-test("only an opted-in iframe accepts a parent handshake and sends safe events", async () => {
+test("ordinary top-level visits and non-series frames never install an inspector listener", async () => {
+  let count = 0;
+  const topLevel = { location: { hostname: "kiheon.com", pathname: "/series/aigc-creative-paradigm/" },
+    addEventListener: () => { count += 1; } };
+  topLevel.parent = topLevel;
+  globalThis.window = topLevel;
+  try { await load(); } finally { delete globalThis.window; }
+  globalThis.window = { parent: {}, location: { hostname: "kiheon.com", pathname: "/privacy/" },
+    addEventListener: () => { count += 1; } };
+  try { await load(); } finally { delete globalThis.window; }
+  assert.equal(count, 0);
+});
+
+test("the inspector bridge contains no network or persistent logging path", () => {
+  for (const forbidden of ["fetch(", "sendBeacon", "localStorage", "sessionStorage", "indexedDB", "WebSocket"])
+    assert.equal(source.includes(forbidden), false, forbidden);
+});
+
+test("a trusted owner iframe reconnects after navigation without the query marker", async () => {
   const parent = {};
   const messages = [];
   let listener;
   globalThis.window = {
     parent,
-    location: { search: "?inspector=1", hostname: "kiheon.com" },
+    location: { search: "", hostname: "kiheon.com", pathname: "/series/aigc-creative-paradigm/posts/01-skill-and-effort/" },
     addEventListener: (name, fn) => { if (name === "message") listener = fn; },
   };
   try {
@@ -59,6 +86,7 @@ test("only an opted-in iframe accepts a parent handshake and sends safe events",
     listener({ origin: "https://kiheon.app", source: parent, data, ports: [port] });
     emitInspectorEvent({ type: "turn_completed", traceId: 1, route: "generated", answer: "PRIVATE_ANSWER_CANARY" });
     assert.equal(messages[0].kind, "ready");
+    assert.equal(messages[0].pagePath, "/series/aigc-creative-paradigm/posts/01-skill-and-effort/");
     assert.equal(messages[1].kind, "event");
     assert.equal(messages[1].event.route, "generated");
     assert.equal(JSON.stringify(messages).includes("PRIVATE_ANSWER_CANARY"), false);

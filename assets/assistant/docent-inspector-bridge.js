@@ -22,6 +22,12 @@ function safeId(value) {
   return typeof value === "string" && /^[a-z0-9-]{1,80}$/i.test(value) ? value : "";
 }
 
+export function inspectorPagePath(value) {
+  return typeof value === "string" &&
+    /^\/series\/[a-z0-9]+(?:-[a-z0-9]+)*(?:\/(?:posts|sources)\/[a-z0-9]+(?:-[a-z0-9]+)*)?\/$/.test(value)
+    ? value : "";
+}
+
 export function inspectorParentAllowed(origin, childHostname) {
   if (origin === OWNER_ORIGIN) return true;
   return childHostname === "127.0.0.1" && /^http:\/\/127\.0\.0\.1:\d+$/.test(origin);
@@ -60,8 +66,10 @@ export function sanitizeInspectorEvent(event, metadata = {}) {
   return output;
 }
 
+// The trusted parent handshake is the opt-in. It continues to work when an
+// owner follows an ordinary public link that does not carry a query marker.
 if (typeof window !== "undefined" && window.parent !== window &&
-    new URLSearchParams(window.location.search).get("inspector") === "1") {
+    inspectorPagePath(window.location.pathname)) {
   window.addEventListener("message", (message) => {
     const data = message.data;
     if (message.source !== window.parent ||
@@ -72,7 +80,10 @@ if (typeof window !== "undefined" && window.parent !== window &&
     port?.close?.();
     port = message.ports[0];
     nonce = data.nonce;
-    port.postMessage({ schema: SCHEMA, kind: "ready", nonce, mode: "owner-test" });
+    port.postMessage({
+      schema: SCHEMA, kind: "ready", nonce, mode: "owner-test",
+      pagePath: inspectorPagePath(window.location.pathname),
+    });
   });
 }
 
