@@ -4,6 +4,7 @@ import {
   VOICE_OFFLINE_MESSAGE,
 } from "./xai-voice-transport.js?v=20260803grok1";
 import { DocentAgent } from "./docent-agent.js?v=20260803contract1";
+import { emitInspectorEvent } from "./docent-inspector-bridge.js?v=20261001candidate1";
 
 const DEFAULT_PROMPTS = {
   series: [
@@ -297,6 +298,11 @@ export class KiheonVoiceAssistant extends HTMLElement {
   }
 
   handleAgentEvent(event) {
+    emitInspectorEvent(event, {
+      scope: this.scope,
+      instanceId: this.instanceId,
+      contentId: this.dataset.contentId,
+    });
     if (event.type === "turn_started") {
       this.setState("thinking", "질문을 살펴보고 있어요");
     } else if (event.type === "tool_started" && event.tool === "ground_public_context") {
@@ -1088,6 +1094,13 @@ export class KiheonVoiceAssistant extends HTMLElement {
 
   handleRealtimeEvent(event) {
     if (!this.voiceSessionActive && event.type !== "error") return;
+    if (event.type !== "input_level") {
+      emitInspectorEvent(event, {
+        scope: this.scope,
+        instanceId: this.instanceId,
+        contentId: this.dataset.contentId,
+      });
+    }
     if (event.type === "input_level") {
       if (this.dataset.state === "listening") this.updateVoiceLevel(event.level);
       return;

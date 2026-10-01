@@ -70,6 +70,7 @@ async function loadAssistant() {
     AbortController,
     CustomEvent: CustomEventStub,
     DocentAgent,
+    emitInspectorEvent() {},
     GROK_BUILT_IN_VOICES: Object.freeze(["ara", "eve", "rex", "sal", "leo"]),
     HTMLElement: ElementStub,
     URL,
@@ -1056,7 +1057,7 @@ test("every published docent surface installs one assistant in the required read
 
   for (const { type, file, html } of pages) {
     assert.equal((html.match(/<kiheon-voice-assistant\b/g) ?? []).length, 1);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260906grounded1/);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20261001inspector1/);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20260803simple1/);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:js|css)/);
     assert.doesNotMatch(html, /assets\/voice-agent\.js/);
