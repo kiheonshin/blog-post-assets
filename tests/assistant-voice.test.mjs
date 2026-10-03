@@ -21,7 +21,7 @@ async function importAgent() {
 }
 
 async function loadAssistant() {
-  const { DocentAgent } = await importAgent();
+  const { DocentAgent, needsSourceChoiceClarification } = await importAgent();
   let transportInstances = 0;
   class TransportStub {
     constructor() {
@@ -70,6 +70,7 @@ async function loadAssistant() {
     AbortController,
     CustomEvent: CustomEventStub,
     DocentAgent,
+    needsSourceChoiceClarification,
     emitInspectorEvent() {},
     GROK_BUILT_IN_VOICES: Object.freeze(["ara", "eve", "rex", "sal", "leo"]),
     HTMLElement: ElementStub,
@@ -1024,6 +1025,21 @@ test("docent copy keeps implementation jargon out of every surface except the pr
   assert.doesNotMatch(markup, /<select\b/i);
 });
 
+test("two-source clarification asks for a preference before offering public targets", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  assistant.dataset.scope = "series";
+  const clarify = assistant.createAgent().registry.tools.get("clarify_intent");
+  const choice = await clarify.execute({
+    input: "연구 노트와 발표 자료 중 무엇을 먼저 봐야 할지 모르겠어요.",
+  });
+  assert.match(choice.answer, /연구 노트의 질문과 근거인가요/);
+  assert.match(choice.answer, /발표 자료의 구성과 장면인가요/);
+  assert.equal(choice.targets.length, 0);
+  const ordinary = await clarify.execute({ input: "음." });
+  assert.match(ordinary.answer, /조금만 더 말씀해 주세요/);
+});
+
 test("every published docent surface installs one assistant in the required reading order", async () => {
   const pageSpecs = [
     ["series", "series/aigc-creative-paradigm/index.html"],
@@ -1057,7 +1073,7 @@ test("every published docent surface installs one assistant in the required read
 
   for (const { type, file, html } of pages) {
     assert.equal((html.match(/<kiheon-voice-assistant\b/g) ?? []).length, 1);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20261001inspector1/);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20261003requestgate1/);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20260803simple1/);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:js|css)/);
     assert.doesNotMatch(html, /assets\/voice-agent\.js/);

@@ -3,7 +3,7 @@ import {
   VoiceTransport,
   VOICE_OFFLINE_MESSAGE,
 } from "./xai-voice-transport.js?v=20260803grok1";
-import { DocentAgent } from "./docent-agent.js?v=20260803contract1";
+import { DocentAgent, needsSourceChoiceClarification } from "./docent-agent.js?v=20261003requestgate1";
 import { emitInspectorEvent } from "./docent-inspector-bridge.js?v=20261001candidate1";
 
 const DEFAULT_PROMPTS = {
@@ -262,10 +262,12 @@ export class KiheonVoiceAssistant extends HTMLElement {
         {
           name: "clarify_intent",
           description: "불완전한 발화를 확인하고 한 문장으로 의도를 되묻습니다.",
-          execute: () => ({
-            answer: this.scope === "series"
-              ? "네, 듣고 있어요. 읽는 순서, 세 편의 관계, 바탕 자료 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요."
-              : "네, 듣고 있어요. 이 페이지의 흐름, 지금 읽는 대목, 핵심 질문 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요.",
+          execute: ({ input }) => ({
+            answer: needsSourceChoiceClarification(input)
+              ? "먼저 확인하고 싶은 건 연구 노트의 질문과 근거인가요, 발표 자료의 구성과 장면인가요?"
+              : this.scope === "series"
+                ? "네, 듣고 있어요. 읽는 순서, 세 편의 관계, 바탕 자료 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요."
+                : "네, 듣고 있어요. 이 페이지의 흐름, 지금 읽는 대목, 핵심 질문 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요.",
             targets: [],
           }),
         },

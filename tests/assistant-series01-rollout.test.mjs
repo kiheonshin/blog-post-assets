@@ -46,7 +46,7 @@ test("all four series use the same xAI Realtime v2 interface", async () => {
   for (const file of Object.values(seriesSurfaces).flat()) {
     const html = await read(file);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20260803simple1/, file);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20261001inspector1/, file);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20261003requestgate1/, file);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:css|js)/, file);
   }
 });
@@ -93,7 +93,7 @@ test("all four series share the verified Grok built-in voice runtime", async () 
     // 2026-09-06 C31(미접지 구멍) 배선으로 갱신. groundedEntries() 를 갈라내고,
     // 근거가 없으면 groundedInput 이 빈 문자열을 돌려주며, 문맥 도구가 grounded 를
     // 신고한다. 아래 단언과 assistant-voice.test.mjs 의 C31 검사가 내용을 지킨다.
-    assert.equal(sha256(script), "180d2bd59138282b0b2c1e7454954c6c72db785e73296b7ec3710e188fdd365b");
+    assert.equal(sha256(script), "17cdfac454427628f548148b6cd14ba4f0b2d780c4d2bf5f7a32db0777ee6e05");
   assert.equal(sha256(styles), "e3a5965c8871746fe8574867ae0e5eb76b4a2672f9c392fe6d6f6d070b8fc53b");
   assert.match(script, /data-assistant-open-voice/);
   assert.match(script, /voiceSessionActive/);

@@ -46,11 +46,38 @@ const IDENTITY_REQUEST = /직함|직책|직위|소속|직업|어느\s*회사|무
 // 사람을 가리키는 말이 함께 있을 때만 건다("이 시리즈 소개해 주세요"는 정상 질의다).
 const SELF_INTRO_REQUEST =
   /(본인|자기|신기헌|글쓴이|작가|저자|필자)\s*(에\s*대해|를|을|은|는)?\s*소개|누구(세요|신가요|십니까|인가요)|어떤\s*분(이세요|인가요|입니까)/u;
+const PROTECTED_MATERIAL = /비공개|미공개|공개되지\s*않은|봉인된|보호된|보호면|닫힌\s*등급|로컬\s*(?:볼트|보관)|local\s*vault|private\s*vault|sealed/iu;
+const MATERIAL_NOUN = /보관\s*공간|원본|파일|문서|자료|기록|내용/u;
+const MATERIAL_ACCESS_DIRECTIVE = /(?:열어|열람해|보여|읽어|꺼내|가져|찾아|검색해|설명해|알려|요약해|공유해|보내|참고해|사용해)\s*(?:줘요?|주세|주세요)/u;
+const MATERIAL_ACCESS_QUESTION = /볼\s*수\s*있|열\s*수\s*있|읽을\s*수\s*있|접근할\s*수\s*있|열람\s*가능/u;
+const MISSING_FACT = /(?:없는|없어도|없이|확인되지\s*않은|가짜|허위)\s*(?:사실|정보|이력|연도|기록|근거)/u;
+const FACT_NOUN = /사실|정보|이력|연도|기록/u;
+const FACT_MAKING_DIRECTIVE = /(?:만들어|지어내|꾸며|날조해|상상해서)[^.!?\n]{0,30}(?:줘요?|주세|주세요|말해|설명해|알려|대답해)/u;
+
+// Narrow request patterns stop explicit closed-material and fabrication asks
+// before tool or model work. They are not a general semantic classifier.
+function protectedMaterialRequest(text) {
+  return PROTECTED_MATERIAL.test(text) && MATERIAL_NOUN.test(text) &&
+    (MATERIAL_ACCESS_DIRECTIVE.test(text) || MATERIAL_ACCESS_QUESTION.test(text));
+}
+
+function fabricatedFactRequest(text) {
+  return (MISSING_FACT.test(text) || FACT_NOUN.test(text)) && FACT_MAKING_DIRECTIVE.test(text);
+}
+
+export function needsSourceChoiceClarification(value) {
+  const question = cleanText(value);
+  return /(연구\s*노트|연구\s*자료|조사\s*자료)/u.test(question) &&
+    /(발표\s*자료|발표\s*슬라이드|장표)/u.test(question) &&
+    /(둘\s*중|중\s*(?:무엇|뭘|뭐|어느|어떤)|어느\s*쪽|무엇부터|모르겠|고민|선택)/u.test(question);
+}
 
 /** 질의 분류 — 도구 호출 전에 판정한다. 통과면 빈 문자열. */
 function contractRequestVerdict(text) {
   const question = cleanText(text);
   if (!question) return "";
+  if (protectedMaterialRequest(question)) return "R-2";
+  if (fabricatedFactRequest(question)) return "R-3";
   if (OPINION_REQUEST.test(question)) return "R-3";
   if (FUTURE_REQUEST.test(question)) return "R-3";
   if (THIRD_PARTY_REQUEST.test(question)) return "R-3";
@@ -224,7 +251,10 @@ export class DocentAgent {
       } else {
         // ★ 관문 1 — 도구를 부르기 전에 판정한다. ⓒ 는 근거 탐색 흔적조차 남기지 않는다.
         refusal = contractRequestVerdict(question);
-        if (!refusal) {
+        if (!refusal && needsSourceChoiceClarification(question)) {
+          trace.route = "clarify";
+          result = await this.useTool("clarify_intent", { input: question }, trace, context);
+        } else if (!refusal) {
           const prepared = await this.useTool("prepared_guide", { input: question }, trace, context);
           if (prepared?.handled) {
             trace.route = "prepared";
@@ -321,4 +351,4 @@ export class DocentAgent {
   }
 }
 
-export const docentAgentVersion = "1.1.0";
+export const docentAgentVersion = "1.2.0";
