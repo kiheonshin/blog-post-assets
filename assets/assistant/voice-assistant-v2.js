@@ -3,7 +3,7 @@ import {
   VoiceTransport,
   VOICE_OFFLINE_MESSAGE,
 } from "./xai-voice-transport.js?v=20260803grok1";
-import { DocentAgent, needsSourceChoiceClarification } from "./docent-agent.js?v=20261003requestgate1";
+import { DocentAgent, mentionsProtectedMaterial, mentionsFactFabrication, needsSourceChoiceClarification } from "./docent-agent.js?v=20261004requestgate2";
 import { emitInspectorEvent } from "./docent-inspector-bridge.js?v=20261001candidate1";
 
 const DEFAULT_PROMPTS = {
@@ -263,11 +263,15 @@ export class KiheonVoiceAssistant extends HTMLElement {
           name: "clarify_intent",
           description: "불완전한 발화를 확인하고 한 문장으로 의도를 되묻습니다.",
           execute: ({ input }) => ({
-            answer: needsSourceChoiceClarification(input)
-              ? "먼저 확인하고 싶은 건 연구 노트의 질문과 근거인가요, 발표 자료의 구성과 장면인가요?"
-              : this.scope === "series"
-                ? "네, 듣고 있어요. 읽는 순서, 세 편의 관계, 바탕 자료 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요."
-                : "네, 듣고 있어요. 이 페이지의 흐름, 지금 읽는 대목, 핵심 질문 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요.",
+            answer: mentionsProtectedMaterial(input)
+              ? "비공개 자료는 이 화면에서 열 수 없습니다. 공개된 자료 가운데 무엇을 확인하고 싶으신가요?"
+              : mentionsFactFabrication(input)
+                ? "공개 근거에 없는 내용은 사실처럼 만들 수 없습니다. 어떤 공개 내용을 확인하고 싶으신가요?"
+                : needsSourceChoiceClarification(input)
+                  ? "말씀하신 연구 노트와 발표 자료 중 무엇을 먼저 확인하고 싶으신가요? 공개된 면을 확인해 안내하겠습니다."
+                  : this.scope === "series"
+                    ? "네, 듣고 있어요. 읽는 순서, 세 편의 관계, 바탕 자료 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요."
+                    : "네, 듣고 있어요. 이 페이지의 흐름, 지금 읽는 대목, 핵심 질문 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요.",
             targets: [],
           }),
         },
@@ -455,6 +459,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
           </div>
           <button type="submit">보내기</button>
         </form>
+        <p class="voice-assistant__text-disclosure">글로 보낸 질문, 최근 대화와 공개 문맥은 xAI에서 처리됩니다. 개인정보는 적지 마세요.</p>
       </div>
       <div class="voice-assistant__controls">
         <details class="voice-assistant__settings" open>
@@ -493,10 +498,10 @@ export class KiheonVoiceAssistant extends HTMLElement {
           <details class="voice-assistant__disclosure">
             <summary>
               <span class="voice-assistant__disclosure-title">개인정보</span>
-              <span class="voice-assistant__disclosure-short">이 화면에는 대화 기록을 남기지 않습니다.</span>
+              <span class="voice-assistant__disclosure-short">글과 음성 질문은 xAI에서 처리됩니다. 이 화면에는 대화 기록을 남기지 않습니다.</span>
               <span class="voice-assistant__info" aria-hidden="true">i</span>
             </summary>
-            <p>이 화면은 대화를 저장하지 않습니다. 음성 대화 중 마이크 소리, 질문, 공개된 시리즈 문맥이 xAI로 전송되며, 서비스의 처리와 보관은 xAI 정책을 따릅니다.</p>
+            <p>글로 질문하면 입력한 질문, 같은 세션의 최근 대화와 공개된 시리즈 문맥이 xAI로 전송됩니다. 음성 대화를 시작하면 마이크 소리와 질문도 xAI로 전송됩니다. 이 화면은 대화를 저장하지 않으며, xAI에서의 처리와 보관은 xAI 정책을 따릅니다.</p>
           </details>
         </div>
       </div>`;

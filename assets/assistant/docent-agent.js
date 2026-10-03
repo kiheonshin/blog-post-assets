@@ -46,30 +46,72 @@ const IDENTITY_REQUEST = /직함|직책|직위|소속|직업|어느\s*회사|무
 // 사람을 가리키는 말이 함께 있을 때만 건다("이 시리즈 소개해 주세요"는 정상 질의다).
 const SELF_INTRO_REQUEST =
   /(본인|자기|신기헌|글쓴이|작가|저자|필자)\s*(에\s*대해|를|을|은|는)?\s*소개|누구(세요|신가요|십니까|인가요)|어떤\s*분(이세요|인가요|입니까)/u;
-const PROTECTED_MATERIAL = /비공개|미공개|공개되지\s*않은|봉인된|보호된|보호면|닫힌\s*등급|로컬\s*(?:볼트|보관)|local\s*vault|private\s*vault|sealed/iu;
+const PROTECTED_MATERIAL = /비공개|미공개|(?:비밀|기밀|내부)\s*(?:파일|문서|자료|기록|보관|원본)|공개되지\s*않은|봉인된|보호된|보호면|닫힌\s*(?:등급|자료|기록|문서|파일|보관)|로컬\s*(?:볼트|보관)|local\s*vault|private\s*vault|sealed/iu;
 const MATERIAL_NOUN = /보관\s*공간|원본|파일|문서|자료|기록|내용/u;
-const MATERIAL_ACCESS_DIRECTIVE = /(?:열어|열람해|보여|읽어|꺼내|가져|찾아|검색해|설명해|알려|요약해|공유해|보내|참고해|사용해)\s*(?:줘요?|주세|주세요)/u;
+const PROTECTED_PUBLIC_ONLY = /비공개(?:가|는|를)?\s*아닌\s*공개|(?:비공개|미공개|봉인된|보호된|닫힌\s*(?:자료|기록|문서|파일))[^.!?\n]{0,30}(?:말고|제외하고|아니라)\s*(?:공개|열린)/giu;
+const MATERIAL_ACCESS_DIRECTIVE = /(?:열어|열람해|보여|읽어|꺼내|가져|찾아|검색해|설명해|알려|요약해|공유해|보내|참고해|사용해|확인해)\s*(?:줘요?|주세|주세요|주시겠(?:어요|습니까)|줄래요?|줄\s*수\s*있|주실\s*수\s*있)/u;
 const MATERIAL_ACCESS_QUESTION = /볼\s*수\s*있|열\s*수\s*있|읽을\s*수\s*있|접근할\s*수\s*있|열람\s*가능/u;
-const MISSING_FACT = /(?:없는|없어도|없이|확인되지\s*않은|가짜|허위)\s*(?:사실|정보|이력|연도|기록|근거)/u;
-const FACT_NOUN = /사실|정보|이력|연도|기록/u;
-const FACT_MAKING_DIRECTIVE = /(?:만들어|지어내|꾸며|날조해|상상해서)[^.!?\n]{0,30}(?:줘요?|주세|주세요|말해|설명해|알려|대답해)/u;
+const PROTECTED_POLICY_QUESTION = /(?:왜|이유|정책|규칙|기준)/u;
+const PROTECTED_NEGATED_ACCESS = /보여주지|열\s*수\s*없|볼\s*수\s*없|읽을\s*수\s*없|접근할\s*수\s*없|열리지\s*않/u;
+const MISSING_EVIDENCE = /(?:근거|출처)(?:가)?\s*(?:없|없이)|(?:자료|문서|기록|발표|글)(?:에|에는|에서)\s*(?:없|빠진)|(?:없는|확인되지\s*않은|가짜|허위)\s*(?:사실|내용|정보|사건|기록|이력|연도|수치|학력|전공|경력|근거|출처)/u;
+const FACT_MAKING_VERB = /만들|지어내|꾸며|날조|상상/u;
+const FACT_CLAIM_NOUN = /사실|정보|이력|연도|수치|학력|전공|경력/u;
+const FACT_RECORD_NOUN = /기록|내용|사건/u;
+const FACT_FALSIFY_VERB = /지어내|꾸며|날조|상상/u;
+const DIRECT_FACT_MAKE = /(?:사실|정보|이력|연도|수치|학력|전공|경력)(?:을|를|도)?\s*(?:하나|한\s*개|새로)?\s*만들/u;
+const FACT_REQUEST_DIRECTIVE = /줘요?|주세|주세요|주시겠(?:어요|습니까)|줄래요?|주실\s*수|답해|알려|설명해|말해|써\s*줘/u;
+const FACT_META_QUESTION = /만들면|지어내면|꾸미면|만들어서는|지어내서는|꾸며서는|만들지\s*말/u;
+const FICTION_EXAMPLE_TARGET = /(?:가상(?:의)?|허구(?:의)?|소설|픽션)[^.!?\n]{0,20}(?:예시|이야기|장면)[^.!?\n]{0,20}(?:만들|써)/u;
+const FACT_DISGUISED_AS_FICTION = /(?:사실|정보|기록|이력|연도)(?:을|를)[^.!?\n]{0,20}(?:가상|허구|예시)/u;
 
 // Narrow request patterns stop explicit closed-material and fabrication asks
-// before tool or model work. They are not a general semantic classifier.
+// before tool or model work. Ambiguous mentions take a local clarification
+// route, never the model. These rules are not a general semantic classifier.
+export function mentionsProtectedMaterial(value) {
+  const text = cleanText(value);
+  return PROTECTED_MATERIAL.test(text) && MATERIAL_NOUN.test(text);
+}
+
 function protectedMaterialRequest(text) {
-  return PROTECTED_MATERIAL.test(text) && MATERIAL_NOUN.test(text) &&
-    (MATERIAL_ACCESS_DIRECTIVE.test(text) || MATERIAL_ACCESS_QUESTION.test(text));
+  if (!mentionsProtectedMaterial(text)) return false;
+  const effective = text.replace(PROTECTED_PUBLIC_ONLY, "공개");
+  if (!mentionsProtectedMaterial(effective)) return false;
+  let protectedSeen = false;
+  for (const clause of effective.split(/[.!?\n]+/u)) {
+    if (mentionsProtectedMaterial(clause)) protectedSeen = true;
+    if (!protectedSeen || !MATERIAL_NOUN.test(clause)) continue;
+    if (PROTECTED_POLICY_QUESTION.test(clause) && PROTECTED_NEGATED_ACCESS.test(clause)) continue;
+    if (/(?:공개|열린)\s*(?:파일|문서|자료|기록)/u.test(clause) &&
+        !/(?:그|해당)\s*(?:파일|문서|자료|기록)/u.test(clause) &&
+        !mentionsProtectedMaterial(clause)) continue;
+    if (MATERIAL_ACCESS_DIRECTIVE.test(clause) || MATERIAL_ACCESS_QUESTION.test(clause)) return true;
+  }
+  return false;
+}
+
+export function mentionsFactFabrication(value) {
+  const text = cleanText(value);
+  return (MISSING_EVIDENCE.test(text) && FACT_MAKING_VERB.test(text)) ||
+    (FACT_CLAIM_NOUN.test(text) && FACT_FALSIFY_VERB.test(text)) ||
+    (FACT_RECORD_NOUN.test(text) && FACT_FALSIFY_VERB.test(text)) ||
+    DIRECT_FACT_MAKE.test(text) || FACT_DISGUISED_AS_FICTION.test(text);
 }
 
 function fabricatedFactRequest(text) {
-  return (MISSING_FACT.test(text) || FACT_NOUN.test(text)) && FACT_MAKING_DIRECTIVE.test(text);
+  if (!mentionsFactFabrication(text)) return false;
+  if (FICTION_EXAMPLE_TARGET.test(text) && !MISSING_EVIDENCE.test(text) &&
+      !FACT_DISGUISED_AS_FICTION.test(text)) return false;
+  if (FACT_META_QUESTION.test(text)) return false;
+  return FACT_REQUEST_DIRECTIVE.test(text);
 }
 
 export function needsSourceChoiceClarification(value) {
   const question = cleanText(value);
   return /(연구\s*노트|연구\s*자료|조사\s*자료)/u.test(question) &&
     /(발표\s*자료|발표\s*슬라이드|장표)/u.test(question) &&
-    /(둘\s*중|중\s*(?:무엇|뭘|뭐|어느|어떤)|어느\s*쪽|무엇부터|모르겠|고민|선택)/u.test(question);
+    !/(정했|결정했|골랐|선택했)/u.test(question) &&
+    (!/(차이|다른가|비교|목차)/u.test(question) || /(모르겠|고민)/u.test(question)) &&
+    /(뭐\s*부터|무엇\s*부터|뭘\s*먼저|무엇(?:을)?\s*먼저|어느\s*(?:쪽|걸|것|자료)[^.!?\n]{0,15}먼저|모르겠|고민)/u.test(question);
 }
 
 /** 질의 분류 — 도구 호출 전에 판정한다. 통과면 빈 문자열. */
@@ -251,7 +293,8 @@ export class DocentAgent {
       } else {
         // ★ 관문 1 — 도구를 부르기 전에 판정한다. ⓒ 는 근거 탐색 흔적조차 남기지 않는다.
         refusal = contractRequestVerdict(question);
-        if (!refusal && needsSourceChoiceClarification(question)) {
+        if (!refusal && (mentionsProtectedMaterial(question) ||
+            mentionsFactFabrication(question) || needsSourceChoiceClarification(question))) {
           trace.route = "clarify";
           result = await this.useTool("clarify_intent", { input: question }, trace, context);
         } else if (!refusal) {
