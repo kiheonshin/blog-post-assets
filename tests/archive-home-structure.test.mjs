@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import { contentLibrary } from "../assets/content-manifest.js";
 
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const read = (file) => readFile(path.join(repoRoot, file), "utf8");
@@ -10,6 +11,24 @@ const read = (file) => readFile(path.join(repoRoot, file), "utf8");
 function inventory(html) {
   return html.match(/<section class="arc-stock"[\s\S]*?<\/section>/)?.[0] ?? "";
 }
+
+test("Archive summary covers exactly the current public manifest sources", async () => {
+  const summary = JSON.parse(await read("assets/archive-summary.json"));
+  const expected = contentLibrary.series.flatMap((series) =>
+    series.sources.map((source) => `${series.slug}:${source.id}`));
+  assert.equal(summary.counts.manifestSources, expected.length);
+  assert.deepEqual(summary.registeredSources.map((s) => `${s.seriesSlug}:${s.id}`).sort(), expected.sort());
+});
+
+test("every registered source has one keyed Archive row, with no duplicate manual row", async () => {
+  const html = inventory(await read("archive/index.html"));
+  const rows = html.match(/<div class="arc-stock__row"[^>]*>[\s\S]*?<\/div>/g) ?? [];
+  for (const series of contentLibrary.series) for (const source of series.sources) {
+    const matching = rows.filter((row) => row.includes(`href="../${source.href}"`));
+    assert.equal(matching.length, 1, source.href);
+    assert.ok(matching[0].includes(`data-source-key="${series.slug}:${source.id}"`), source.href);
+  }
+});
 
 test("Archive keeps product navigation on the homepage only", async () => {
   const html = await read("archive/index.html");

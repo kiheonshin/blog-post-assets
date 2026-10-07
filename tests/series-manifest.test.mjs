@@ -2,7 +2,9 @@ import assert from "node:assert/strict";
 import { readFile, readdir, stat } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
+import vm from "node:vm";
 import { fileURLToPath } from "node:url";
+import { contentLibrary, getSeries } from "../assets/content-manifest.js";
 
 // 왜 있나 (C48 ⑤ ⑥) : 시리즈를 목록에 올리는 일이 사람 손에 있었다. 폴더를 새로 만들고
 // 목록 둘에 손으로 적어야 했고, 그 등재가 늦어 시리즈 하나가 빠진 채 나갔다(H1). 반대로 폴더를
@@ -17,6 +19,39 @@ const hiddenSeries = manifest.series.filter((s) => !s.public);
 
 const dirsOf = async (relative) => (await readdir(path.join(repoRoot, relative), { withFileTypes: true })
   .catch(() => [])).filter((d) => d.isDirectory()).map((d) => d.name).sort();
+
+test("public source entries have unique stable ids in each series", () => {
+  for (const series of contentLibrary.series) {
+    const ids = (series.sources ?? []).map((source) => source.id);
+    for (const id of ids) assert.equal(typeof id, "string", series.slug);
+    assert.ok(ids.every((id) => id.trim().length > 0), series.slug);
+    assert.equal(new Set(ids).size, ids.length, series.slug);
+  }
+});
+
+test("series home renders its approved source and only explicit current source is excluded", async () => {
+  const code = await read("assets/series-nav.js");
+  const sourceClass = code.slice(code.indexOf("class SeriesSources extends"), code.indexOf("class SourceModuleLinks extends"));
+  class Element {
+    dataset = { series: "metaverse-era" };
+    children = [];
+    hasAttribute() { return false; }
+    replaceChildren(...children) { this.children = children; }
+  }
+  const Component = vm.runInNewContext(`${sourceClass}\nSeriesSources`, {
+    HTMLElement: Element, getSeries,
+    makeElement: () => ({ children: [], append(child) { this.children.push(child); } }),
+    makeSourceCard: (source) => ({ id: source.id, href: source.href }),
+  });
+  const home = new Component();
+  home.connectedCallback();
+  assert.equal(home.children[0].children.length, 1);
+  assert.equal(home.children[0].children[0].href, "series/metaverse-era/sources/presentations/");
+  const detail = new Component();
+  detail.dataset.current = "presentations";
+  detail.connectedCallback();
+  assert.equal(detail.children[0].children.length, 0);
+});
 
 test("the manifest declares every series folder and every post folder once", async () => {
   const slugs = manifest.series.map((s) => s.slug);
