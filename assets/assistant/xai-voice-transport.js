@@ -4,7 +4,7 @@ const PRODUCTION_TOKEN_ENDPOINT =
   "https://blog-post-assets.vercel.app/api/xai-client-secret/";
 const XAI_REALTIME_ORIGIN = "wss://api.x.ai/v1/realtime";
 const REQUEST_TIMEOUT_MS = 45_000;
-const MAX_EARLY_AUDIO_FRAMES = 10;
+const MAX_EARLY_AUDIO_FRAMES = 50;
 
 export const GROK_BUILT_IN_VOICES = Object.freeze(["ara", "eve", "rex", "sal", "leo"]);
 
@@ -85,6 +85,7 @@ export class VoiceTransport {
     this.sessionReady = false;
     this.active = false;
     this.starting = false;
+    this.inputSpeechStopped = false;
     this.assistantTranscript = "";
     this.onEvent = () => {};
     this.completion = null;
@@ -242,7 +243,10 @@ export class VoiceTransport {
       input.transcription = {
         model: "grok-transcribe",
         language_hint: "ko",
-        keyterms: keyterms.slice(0, 100),
+        keyterms: keyterms
+          .map((term) => String(term ?? "").trim())
+          .filter((term) => term && [...term].length <= 20)
+          .slice(0, 100),
       };
     }
     return {
@@ -492,17 +496,22 @@ export class VoiceTransport {
         this.emit("ready");
         break;
       case "input_audio_buffer.speech_started":
+        this.inputSpeechStopped = false;
         this.stopPlayback();
         this.emit("speech_started");
         break;
       case "input_audio_buffer.speech_stopped":
+        this.inputSpeechStopped = true;
         this.emit("speech_stopped");
         break;
       case "conversation.item.input_audio_transcription.updated":
         this.emit("user_transcript", { transcript: transcriptValue(message), final: false });
         break;
       case "conversation.item.input_audio_transcription.completed":
-        this.emit("user_transcript", { transcript: transcriptValue(message), final: true });
+        this.emit("user_transcript", {
+          transcript: transcriptValue(message),
+          final: this.inputSpeechStopped,
+        });
         break;
       case "response.created":
         this.assistantTranscript = "";
@@ -623,6 +632,7 @@ export class VoiceTransport {
     this.active = false;
     this.starting = false;
     this.sessionReady = false;
+    this.inputSpeechStopped = false;
     this.earlyAudioFrames.length = 0;
     this.rejectCompletion("cancelled");
     this.stopPlayback();

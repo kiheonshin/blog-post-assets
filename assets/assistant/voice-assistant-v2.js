@@ -2,9 +2,11 @@ import {
   GROK_BUILT_IN_VOICES,
   VoiceTransport,
   VOICE_OFFLINE_MESSAGE,
-} from "./xai-voice-transport.js?v=20261013slash1";
+} from "./xai-voice-transport.js?v=20261013voice1";
 import { DocentAgent, mentionsProtectedMaterial, mentionsFactFabrication, needsSourceChoiceClarification } from "./docent-agent.js?v=20261004requestgate2";
 import { emitInspectorEvent } from "./docent-inspector-bridge.js?v=20261001candidate1";
+
+const LISTENING_PLACEHOLDER = "말씀을 듣고 있어요";
 
 const DEFAULT_PROMPTS = {
   series: [
@@ -124,6 +126,38 @@ function compactText(value) {
   return allowedKeys.map((key) => compactText(value[key])).filter(Boolean).join(" · ");
 }
 
+function keytermChunks(value) {
+  const words = compactText(value).replace(/\s+/g, " ").split(" ").filter(Boolean);
+  const chunks = [];
+  let current = "";
+  for (const word of words) {
+    const characters = [...word];
+    const parts = characters.length <= 20
+      ? [word]
+      : Array.from({ length: Math.ceil(characters.length / 20) }, (_, index) =>
+        characters.slice(index * 20, (index + 1) * 20).join(""));
+    for (const part of parts) {
+      const next = current ? `${current} ${part}` : part;
+      if ([...next].length <= 20) {
+        current = next;
+      } else {
+        if (current) chunks.push(current);
+        current = part;
+      }
+    }
+  }
+  if (current) chunks.push(current);
+  const tail = chunks.at(-1);
+  if (chunks.length > 1 && [...tail].length < 4) {
+    const previousWords = chunks.at(-2).split(" ");
+    if (previousWords.length > 1) {
+      const moved = previousWords.pop();
+      chunks.splice(-2, 2, previousWords.join(" "), `${moved} ${tail}`);
+    }
+  }
+  return chunks;
+}
+
 function entryGrounding(entry) {
   const fields = [
     ["제목", entry?.title],
@@ -151,13 +185,16 @@ function entryKind(entry) {
 function currentHeading() {
   const tocCurrent = document.querySelector('.toc a[aria-current="true"][href^="#"]');
   const tocTarget = tocCurrent && document.getElementById(tocCurrent.hash.slice(1));
-  if (tocTarget) return tocTarget;
+  if (tocTarget && !tocTarget.closest?.("kiheon-voice-assistant")) return tocTarget;
 
   const hashTarget = location.hash && document.getElementById(location.hash.slice(1));
-  if (hashTarget?.matches?.("h2[id],h3[id],section[id]")) return hashTarget;
+  if (
+    hashTarget?.matches?.("h2[id],h3[id],section[id]") &&
+    !hashTarget.closest?.("kiheon-voice-assistant")
+  ) return hashTarget;
 
   const focused = document.activeElement?.closest?.("h2[id],h3[id],section[id]");
-  if (focused) return focused;
+  if (focused && !focused.closest?.("kiheon-voice-assistant")) return focused;
 
   const headings = [...document.querySelectorAll("main h2[id],main h3[id],main section[id]")]
     .filter((heading) => !heading.closest("kiheon-voice-assistant"));
@@ -196,6 +233,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.requestController = null;
     this.returnFocus = null;
     this.listeningTurn = null;
+    this.voiceQuestionTurn = null;
     this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleKeydown = this.handleKeydown.bind(this);
@@ -432,7 +470,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
         </div>
         <div class="voice-assistant__voice-stage-copy">
           <p class="voice-assistant__voice-stage-title" data-assistant-voice-stage-title>도슨트와 음성으로 대화하기</p>
-          <p data-assistant-voice-stage-copy>버튼을 누르고 말하세요. 말을 마치면 질문이 자동으로 전달되고, 답변을 소리로 들려드려요.</p>
+          <p data-assistant-voice-stage-copy>마이크를 누른 뒤 ‘말씀해 주세요’가 보이면 평소처럼 말하세요.</p>
         </div>
       </div>
       <details class="voice-assistant__transcript-details" data-assistant-transcript-details>
@@ -938,9 +976,9 @@ export class KiheonVoiceAssistant extends HTMLElement {
     const statusCopy = this.statusCopy ?? this.status;
     if (statusCopy) statusCopy.textContent = message;
     const stageCopy = {
-      idle: ["도슨트와 음성으로 대화하기", "버튼을 누르고 말하세요. 말을 마치면 질문이 자동으로 전달되고, 답변을 소리로 들려드려요."],
-      connecting: ["음성 대화를 연결하고 있어요", "연결되면 곧바로 듣기 시작합니다. 버튼을 누르면 음성 대화를 끝냅니다."],
-      listening: ["듣고 있어요", "말을 마치면 질문이 자동으로 전달됩니다. 버튼을 누르면 음성 대화를 끝냅니다."],
+      idle: ["도슨트와 음성으로 대화하기", "마이크를 누른 뒤 ‘말씀해 주세요’가 보이면 평소처럼 말하세요."],
+      connecting: ["마이크를 켜고 연결하고 있어요", "잠시 기다려 주세요. ‘말씀해 주세요’가 보이면 시작하세요."],
+      listening: ["말씀해 주세요", "평소처럼 말씀하시면 말이 끝난 뒤 질문이 자동으로 전달됩니다. 마이크를 다시 누르면 음성 대화를 끝냅니다."],
       thinking: ["답변을 준비하고 있어요", "잠시 기다려 주세요. 버튼을 누르면 요청을 취소하고 음성 대화를 끝냅니다."],
       speaking: ["도슨트가 답하고 있어요", "버튼을 누르면 답변을 멈추고 바로 다시 듣습니다."],
       error: ["음성 대화를 시작하지 못했어요", "잠시 후 다시 시도하거나 아래에서 글로 질문해 주세요."],
@@ -985,7 +1023,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
       this.transcriptSpeaker = speakerNode;
       this.transcript = copyNode;
       this.transcriptLog.scrollTop = this.transcriptLog.scrollHeight;
-      return;
+      return listeningTurn;
     }
     let assistantTurn = this.assistantTurn;
     if (assistantTurn?.isConnected === false) assistantTurn = null;
@@ -999,11 +1037,11 @@ export class KiheonVoiceAssistant extends HTMLElement {
       this.transcript = copyNode;
       this.updateTargets(targets);
       this.transcriptLog.scrollTop = this.transcriptLog.scrollHeight;
-      return;
+      return assistantTurn;
     }
     const lastTurn = this.transcriptLog.querySelector(".voice-assistant__turn:last-of-type");
     const lastText = lastTurn?.querySelector?.("[data-assistant-transcript]")?.textContent;
-    if (lastTurn?.dataset?.assistantRole === role && lastText === text) return;
+    if (lastTurn?.dataset?.assistantRole === role && lastText === text) return lastTurn;
     const turn = document.createElement("div");
     turn.className = "voice-assistant__turn";
     turn.dataset.assistantRole = role;
@@ -1025,6 +1063,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.transcript = copyNode;
     this.updateTargets(targets);
     this.transcriptLog.scrollTop = this.transcriptLog.scrollHeight;
+    return turn;
   }
 
   updateTargets(targets = []) {
@@ -1059,7 +1098,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     }
     this.voiceSessionActive = true;
     this.claimAudio();
-    this.setState("connecting", "음성 안내를 준비하고 있어요");
+    this.setState("connecting", "마이크를 켜고 연결하고 있어요");
     this.setVoiceButtonState(true);
     this.requestController?.abort();
     this.requestController = new AbortController();
@@ -1069,13 +1108,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
         voiceId: this.selectedVoiceValue(),
         instructions: this.groundedContext(),
         speed: this.selectedRateValue(),
-        keyterms: [
-          "신기헌",
-          "AIGC",
-          "프롬프트",
-          "창작자",
-          compactText(this.context.series?.title),
-        ].filter(Boolean),
+        keyterms: this.voiceKeyterms(),
         signal: this.requestController.signal,
         onEvent: (event) => this.handleRealtimeEvent(event),
       });
@@ -1099,6 +1132,23 @@ export class KiheonVoiceAssistant extends HTMLElement {
     }
   }
 
+  voiceKeyterms() {
+    const entries = this.allowedEntries();
+    const scopedEntries = this.scope === "series"
+      ? entries
+      : entries.filter((entry) => entry.contentId === this.dataset.contentId);
+    const candidates = [
+      "신기헌",
+      this.context?.series?.title,
+      ...scopedEntries.flatMap((entry) => [
+        entry.title,
+        ...(entry.outline ?? []).map((section) => section?.title),
+      ]),
+    ];
+    return [...new Set(candidates.flatMap(keytermChunks))]
+      .slice(0, 100);
+  }
+
   handleRealtimeEvent(event) {
     if (!this.voiceSessionActive && event.type !== "error") return;
     if (event.type !== "input_level") {
@@ -1118,8 +1168,10 @@ export class KiheonVoiceAssistant extends HTMLElement {
     }
     if (event.type === "speech_started") {
       this.assistantTurn = null;
+      this.voiceQuestionTurn = null;
+      this.keepHeardQuestion();
       this.discardListeningTurn();
-      this.showAnswer("듣는 중", "말씀을 듣고 있어요");
+      this.showAnswer("듣는 중", LISTENING_PLACEHOLDER);
       this.setState("listening", "말씀해 주세요");
       return;
     }
@@ -1128,8 +1180,20 @@ export class KiheonVoiceAssistant extends HTMLElement {
       return;
     }
     if (event.type === "user_transcript" && event.transcript) {
-      this.showAnswer(event.final ? "질문" : "듣는 중", event.transcript);
-      if (event.final) this.latestVoiceQuestion = event.transcript;
+      // 같은 발화의 뒤늦은 최종 전사는 새 말풍선을 세우지 않고 글자만 고친다(띄어쓰기만 달라도 · 답 조각 뒤에 와도).
+      if (this.voiceQuestionTurn) {
+        if (event.final) {
+          const copyNode = this.voiceQuestionTurn.querySelector?.("[data-assistant-transcript]");
+          if (copyNode) copyNode.textContent = event.transcript;
+          this.latestVoiceQuestion = event.transcript;
+        }
+        return;
+      }
+      const turn = this.showAnswer(event.final ? "질문" : "듣는 중", event.transcript);
+      if (event.final) {
+        this.latestVoiceQuestion = event.transcript;
+        this.voiceQuestionTurn = turn ?? null;
+      }
       return;
     }
     if (event.type === "response_started") {
@@ -1292,6 +1356,20 @@ export class KiheonVoiceAssistant extends HTMLElement {
     }
   }
 
+  // 정지 뒤 완료 전사 없이 다음 발화가 시작되면, 들은 글자가 있는 말풍선은 질문으로 남긴다.
+  // 지우면 이미 답한 질문이 기록에서 사라진다(2026-10-13 검수 모의 재생). 자리표시 글자뿐이면 아래에서 지운다.
+  keepHeardQuestion() {
+    const listeningTurn = this.listeningTurn
+      ?? this.transcriptLog?.querySelector?.("[data-assistant-listening]");
+    const heard = listeningTurn?.querySelector?.("[data-assistant-transcript]")?.textContent?.trim?.() ?? "";
+    if (!listeningTurn || !heard || heard === LISTENING_PLACEHOLDER) return;
+    const speakerNode = listeningTurn.querySelector?.(".voice-assistant__speaker");
+    if (speakerNode) speakerNode.textContent = "나";
+    delete listeningTurn.dataset.assistantListening;
+    this.listeningTurn = null;
+    this.latestVoiceQuestion = heard;
+  }
+
   discardListeningTurn() {
     const listeningTurn = this.listeningTurn
       ?? this.transcriptLog?.querySelector?.("[data-assistant-listening]");
@@ -1329,6 +1407,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.requestController = null;
     this.discardListeningTurn();
     this.assistantTurn = null;
+    this.voiceQuestionTurn = null;
     this.latestVoiceQuestion = "";
     this.transport.stopVoiceSession({ quiet: true });
     this.resetVoiceButton();

@@ -46,7 +46,7 @@ test("all four series use the same xAI Realtime v2 interface", async () => {
   for (const file of Object.values(seriesSurfaces).flat()) {
     const html = await read(file);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20261004docent2/, file);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20261013slash1/, file);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20261013voice1/, file);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:css|js)/, file);
   }
 });
@@ -95,12 +95,16 @@ test("all four series share the verified Grok built-in voice runtime", async () 
     // 신고한다. 아래 단언과 assistant-voice.test.mjs 의 C31 검사가 내용을 지킨다.
     // 2026-10-13 토큰 주소 끝 빗금 고침으로 갱신. 바뀐 것은 전송 모듈의 캐시 판 한 줄뿐이다
     // (주소는 xai-voice-transport.js 에서 고치고 xai-token-endpoint-slash.test.mjs 가 지킨다).
-    assert.equal(sha256(script), "c8c43fca3d79ed3c13a6c76ae16e7a5d855ebc3d790489ba31485c7dca7cc9ad");
+    // 같은 날 2b01e7d(08-05 음성 인식 다듬기) 옮겨 심기로 다시 갱신 : keyterm 묶음 · 현재 위치 오염 막기 ·
+    // 상태 문구 · 전송 모듈 캐시 판. assistant-voice.test.mjs 의 두 시험이 내용을 지킨다.
+    // 같은 날 독립 검수 반영으로 다시 갱신 : 한 발화의 최종 말풍선을 기억(뒤늦은 최종은 글자만 고침 · 정지 뒤 최종이
+    // 없으면 들은 글자를 질문으로 남김) · 연결 중 · 듣는 중 문구. voice-utterance-bubbles.test.mjs 가 지킨다.
+    assert.equal(sha256(script), "4e1d59812380ea2ceb1a0cea5d56d329c91870f66489d244bdef66d665e29547");
   assert.equal(sha256(styles), "44e17c8443b0a0993b486f51d72726371403a808fa1f6e6e73931fabcf6b32d4");
   assert.match(script, /data-assistant-open-voice/);
   assert.match(script, /voiceSessionActive/);
   assert.match(script, /data-assistant-transcript-details/);
-  assert.match(script, /xai-voice-transport\.js\?v=20261013slash1/);
+  assert.match(script, /xai-voice-transport\.js\?v=20261013voice1/);
   assert.match(script, /GROK_BUILT_IN_VOICES/);
   // 2026-08-25 본인 확정 명칭 — 「도슨트 에이전트」. 원자료면도 같은 라벨을 쓰고
   // 대상 구분은 부제가 한다. 이 단언은 배포되는 v2 위에 걸린다.

@@ -123,6 +123,67 @@ async function loadAssistant() {
   };
 }
 
+test("realtime content sessions send the current page vocabulary as transcription keyterms", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  assistant.dataset.scope = "content";
+  assistant.dataset.contentId = "post-1";
+  assistant.context = {
+    series: { title: "AI를 열어둘수록 선명해지는 창작자의 자리" },
+    allowedTargets: [
+      { contentType: "post", contentId: "post-1" },
+      { contentType: "post", contentId: "post-2" },
+    ],
+    entries: [
+      {
+        contentId: "post-1",
+        type: "post",
+        url: "series/newtype-ip-dialogue/posts/post-1/",
+        title: "잠재력을 믿는 데서 협업이 시작된다",
+        outline: [
+          { title: "가드레일을 조금씩 푸는 사람들" },
+          { title: "순서를 뒤집으면 벌어지는 일" },
+        ],
+      },
+      {
+        contentId: "post-2",
+        type: "post",
+        url: "series/newtype-ip-dialogue/posts/post-2/",
+        title: "취향을 재현하는 엔진",
+        outline: [{ title: "다른 글의 대목" }],
+      },
+    ],
+  };
+
+  assert.deepEqual(Array.from(assistant.voiceKeyterms()), [
+    "신기헌",
+    "AI를 열어둘수록 선명해지는",
+    "창작자의 자리",
+    "잠재력을 믿는 데서 협업이 시작된다",
+    "가드레일을 조금씩 푸는 사람들",
+    "순서를 뒤집으면 벌어지는 일",
+  ]);
+  assert.equal(assistant.voiceKeyterms().every((term) => [...term].length <= 20), true);
+});
+
+test("realtime content location ignores the focused docent and keeps the nearby article section", async () => {
+  const { context, currentHeading } = await loadAssistant();
+  const assistantDialog = {
+    id: "kiheon-voice-assistant-dialog",
+    closest(selector) { return selector === "kiheon-voice-assistant" ? {} : null; },
+  };
+  const articleHeading = {
+    id: "loosening-guardrails",
+    closest() { return null; },
+    getBoundingClientRect() { return { top: 100 }; },
+  };
+  context.document.activeElement = { closest: () => assistantDialog };
+  context.document.querySelector = () => null;
+  context.document.querySelectorAll = () => [articleHeading];
+
+  assert.equal(currentHeading(), articleHeading);
+});
+
 test("transport construction never probes the loopback service", async () => {
   const { VoiceTransport } = await importTransport();
   const calls = [];
@@ -1091,7 +1152,7 @@ test("every published docent surface installs one assistant in the required read
 
   for (const { type, file, html } of pages) {
     assert.equal((html.match(/<kiheon-voice-assistant\b/g) ?? []).length, 1);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20261013slash1/);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20261013voice1/);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20261004docent2/);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:js|css)/);
     assert.doesNotMatch(html, /assets\/voice-agent\.js/);
