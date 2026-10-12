@@ -2,7 +2,7 @@ import {
   GROK_BUILT_IN_VOICES,
   VoiceTransport,
   VOICE_OFFLINE_MESSAGE,
-} from "./xai-voice-transport.js?v=20260803grok1";
+} from "./xai-voice-transport.js?v=20261013slash1";
 import { DocentAgent, mentionsProtectedMaterial, mentionsFactFabrication, needsSourceChoiceClarification } from "./docent-agent.js?v=20261004requestgate2";
 import { emitInspectorEvent } from "./docent-inspector-bridge.js?v=20261001candidate1";
 

@@ -1,5 +1,7 @@
+// 끝 빗금을 지우면 안 된다 : vercel.json trailingSlash 가 빗금 없는 주소를 308 로 돌려보내고,
+// 브라우저는 교차 출처 사전 요청에서 돌려보내기를 따라가지 않아 도슨트가 시작하지 못한다(설정 2026-08-19 · 결함 실측 2026-10-13).
 const PRODUCTION_TOKEN_ENDPOINT =
-  "https://blog-post-assets.vercel.app/api/xai-client-secret";
+  "https://blog-post-assets.vercel.app/api/xai-client-secret/";
 const XAI_REALTIME_ORIGIN = "wss://api.x.ai/v1/realtime";
 const REQUEST_TIMEOUT_MS = 45_000;
 const MAX_EARLY_AUDIO_FRAMES = 10;
@@ -29,10 +31,10 @@ function tokenEndpoint() {
   const currentLocation = globalThis.location;
   const hostname = currentLocation?.hostname ?? "";
   if (hostname.endsWith(".vercel.app")) {
-    return `${currentLocation.origin}/api/xai-client-secret`;
+    return `${currentLocation.origin}/api/xai-client-secret/`;
   }
   if (hostname === "localhost" || hostname === "127.0.0.1") {
-    return "http://127.0.0.1:3000/api/xai-client-secret";
+    return "http://127.0.0.1:3000/api/xai-client-secret/";
   }
   return PRODUCTION_TOKEN_ENDPOINT;
 }

@@ -46,7 +46,7 @@ test("all four series use the same xAI Realtime v2 interface", async () => {
   for (const file of Object.values(seriesSurfaces).flat()) {
     const html = await read(file);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20261004docent2/, file);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20261004docent3/, file);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20261013slash1/, file);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:css|js)/, file);
   }
 });
@@ -93,12 +93,14 @@ test("all four series share the verified Grok built-in voice runtime", async () 
     // 2026-09-06 C31(미접지 구멍) 배선으로 갱신. groundedEntries() 를 갈라내고,
     // 근거가 없으면 groundedInput 이 빈 문자열을 돌려주며, 문맥 도구가 grounded 를
     // 신고한다. 아래 단언과 assistant-voice.test.mjs 의 C31 검사가 내용을 지킨다.
-    assert.equal(sha256(script), "398e312cbdef28fb944e7ca6e731c84d4dc77d4f699e8003be6da3671cbae33c");
+    // 2026-10-13 토큰 주소 끝 빗금 고침으로 갱신. 바뀐 것은 전송 모듈의 캐시 판 한 줄뿐이다
+    // (주소는 xai-voice-transport.js 에서 고치고 xai-token-endpoint-slash.test.mjs 가 지킨다).
+    assert.equal(sha256(script), "c8c43fca3d79ed3c13a6c76ae16e7a5d855ebc3d790489ba31485c7dca7cc9ad");
   assert.equal(sha256(styles), "44e17c8443b0a0993b486f51d72726371403a808fa1f6e6e73931fabcf6b32d4");
   assert.match(script, /data-assistant-open-voice/);
   assert.match(script, /voiceSessionActive/);
   assert.match(script, /data-assistant-transcript-details/);
-  assert.match(script, /xai-voice-transport\.js\?v=20260803grok1/);
+  assert.match(script, /xai-voice-transport\.js\?v=20261013slash1/);
   assert.match(script, /GROK_BUILT_IN_VOICES/);
   // 2026-08-25 본인 확정 명칭 — 「도슨트 에이전트」. 원자료면도 같은 라벨을 쓰고
   // 대상 구분은 부제가 한다. 이 단언은 배포되는 v2 위에 걸린다.
