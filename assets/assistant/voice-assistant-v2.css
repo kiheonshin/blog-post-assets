@@ -258,6 +258,13 @@ kiheon-voice-assistant[hidden],
   background: var(--canvas, #f3f3ef);
 }
 
+.voice-assistant__text-disclosure {
+  margin: var(--space-2, .5rem) 0 0;
+  color: var(--muted, #666);
+  font-size: var(--meta, .75rem);
+  line-height: 1.45;
+}
+
 .voice-assistant__composer,
 .voice-assistant__form label {
   position: relative;

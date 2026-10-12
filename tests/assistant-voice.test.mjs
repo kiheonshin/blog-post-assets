@@ -21,7 +21,8 @@ async function importAgent() {
 }
 
 async function loadAssistant() {
-  const { DocentAgent } = await importAgent();
+  const { DocentAgent, mentionsProtectedMaterial, mentionsFactFabrication,
+    needsSourceChoiceClarification } = await importAgent();
   let transportInstances = 0;
   class TransportStub {
     constructor() {
@@ -70,6 +71,10 @@ async function loadAssistant() {
     AbortController,
     CustomEvent: CustomEventStub,
     DocentAgent,
+    mentionsProtectedMaterial,
+    mentionsFactFabrication,
+    needsSourceChoiceClarification,
+    emitInspectorEvent() {},
     GROK_BUILT_IN_VOICES: Object.freeze(["ara", "eve", "rex", "sal", "leo"]),
     HTMLElement: ElementStub,
     URL,
@@ -1000,8 +1005,10 @@ test("docent copy keeps implementation jargon out of every surface except the pr
   // 그래서 고지 블록만 떼어내고, 그 **밖에서** 구현 용어가 0건인지 본다.
   const disclosures = markup.match(/<details class="voice-assistant__disclosure">[\s\S]*?<\/details>/g) ?? [];
   assert.ok(disclosures.length >= 1, "고지 블록이 있어야 예외 범위가 성립한다");
+  const textNotices = markup.match(/<p class="voice-assistant__text-disclosure">[\s\S]*?<\/p>/g) ?? [];
+  assert.equal(textNotices.length, 2, "두 도슨트 표면 모두 입력창 옆 고지가 있어야 한다");
   const outside = [
-    disclosures.reduce((rest, block) => rest.replace(block, ""), markup),
+    [...disclosures, ...textNotices].reduce((rest, block) => rest.replace(block, ""), markup),
     "이 기기에서 개인 연결을 켜고, 브라우저의 기기 연결 요청을 허용한 뒤 다시 시도해 주세요.",
   ].join("\n");
   assert.doesNotMatch(outside, /OAuth|API|WebSocket|로컬 브리지|provider|xAI|OpenAI/iu);
@@ -1011,6 +1018,8 @@ test("docent copy keeps implementation jargon out of every surface except the pr
   const privacy = disclosures.find((block) => block.includes(">개인정보<"));
   assert.ok(privacy, "개인정보 고지 블록이 있어야 한다");
   assert.match(privacy, /xAI/);
+  assert.match(privacy, /글로 질문하면 입력한 질문/);
+  for (const textNotice of textNotices) assert.match(textNotice, /최근 대화와 공개 문맥은 xAI에서 처리/);
 
   assert.match(markup, /목소리·속도/);
   assert.match(markup, />연결</);
@@ -1021,6 +1030,32 @@ test("docent copy keeps implementation jargon out of every surface except the pr
   assert.match(markup, /<fieldset/);
   assert.match(markup, /type="radio"/);
   assert.doesNotMatch(markup, /<select\b/i);
+});
+
+test("two-source clarification asks for a preference before offering public targets", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  assistant.dataset.scope = "series";
+  const clarify = assistant.createAgent().registry.tools.get("clarify_intent");
+  const choice = await clarify.execute({
+    input: "연구 노트와 발표 자료 중 무엇을 먼저 봐야 할지 모르겠어요.",
+  });
+  assert.match(choice.answer, /연구 노트와 발표 자료 중 무엇을 먼저 확인하고 싶으신가요/);
+  assert.match(choice.answer, /공개된 면을 확인해 안내하겠습니다/);
+  assert.equal(choice.targets.length, 0);
+  const ordinary = await clarify.execute({ input: "음." });
+  assert.match(ordinary.answer, /조금만 더 말씀해 주세요/);
+  const protectedQuestion = await clarify.execute({ input: "비공개 자료는 왜 열 수 없나요?" });
+  assert.match(protectedQuestion.answer, /비공개 자료는 이 화면에서 열 수 없습니다/);
+  const fabricatedQuestion = await clarify.execute({ input: "없는 사실을 만들어 설명하면 왜 위험한가요?" });
+  assert.match(fabricatedQuestion.answer, /공개 근거에 없는 내용은 사실처럼 만들 수 없습니다/);
+});
+
+test("public privacy page names typed-question and voice transmission separately", async () => {
+  const privacy = await readFile(path.join(repoRoot, "privacy/index.html"), "utf8");
+  assert.match(privacy, /글로 질문하면 입력한 질문, 같은 세션의 최근 대화/);
+  assert.match(privacy, /음성 도슨트는 방문자가 시작할 때만 연결/);
+  assert.match(privacy, /xAI로 전송/);
 });
 
 test("every published docent surface installs one assistant in the required reading order", async () => {
@@ -1056,8 +1091,8 @@ test("every published docent surface installs one assistant in the required read
 
   for (const { type, file, html } of pages) {
     assert.equal((html.match(/<kiheon-voice-assistant\b/g) ?? []).length, 1);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20260906grounded1/);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20260803simple1/);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20261004docent3/);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20261004docent2/);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:js|css)/);
     assert.doesNotMatch(html, /assets\/voice-agent\.js/);
     if (type === "series") {
