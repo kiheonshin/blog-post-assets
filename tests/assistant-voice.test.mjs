@@ -1142,7 +1142,8 @@ test("every published docent surface installs one assistant in the required read
     ["post", "series/co-creation-culture/posts/02-at-the-boundary/index.html"],
     ["post", "series/co-creation-culture/posts/03-when-records-become-stories/index.html"],
     ["source", "series/co-creation-culture/sources/slides-2023-06/index.html"],
-    ["source", "series/co-creation-culture/sources/slides-2023-11/index.html"],
+    // 2026-10-13 본인 결정(4-나 ① · 6-나 ①) : 2023-11 덱의 도슨트를 옛 주소 면에서 onchain 정본 덱 면으로 옮겼다.
+    ["source", "series/onchain-storytelling/sources/slides-2023-11/index.html"],
   ];
   const pages = await Promise.all(pageSpecs.map(async ([type, file]) => ({
     type,

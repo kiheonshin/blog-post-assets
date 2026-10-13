@@ -30,7 +30,6 @@
 - [코-크리에이션 문화 (2) 경계면에서](https://kiheon.com/series/co-creation-culture/posts/02-at-the-boundary/): 2023년 11월, 나는 파리 루브르의 유리 피라미드 사진으로 발표를 열었다.
 - [코-크리에이션 문화 (3) 기록이 이야기가 될 때](https://kiheon.com/series/co-creation-culture/posts/03-when-records-become-stories/): 2023년 11월 9일 부산이었다.
 - [웹3의 다음 흐름을 주도할 코-크리에이션 문화 · 발표 자료](https://kiheon.com/series/co-creation-culture/sources/slides-2023-06/): 2023년 6월 말, 웹3의 다음 흐름을 코-크리에이션이라는 한 단어로 놓고 정리한 발표 자료다. 개념을 앞세우는 대신 레고에서 시작해 스테이플버스, CloneX, 나이키 닷스우시, 트리플에스까지 실제 사례를 순서대로 쌓아 올린다. 스스로 번호를 매긴 일곱 개의 절이 창의성의 출발에서 수익 분배와 거버넌스까지 이어진다.
-- [현실과 가상을 연결하는 블록체인 기반의 스토리텔링 · 발표 자료](https://kiheon.com/series/co-creation-culture/sources/slides-2023-11/): 2023년 11월의 발표 자료다. 루브르 피라미드를 덮은 사진에서 출발해 도시를 하나의 테마파크로 다시 보고, 스토리텔링과 매직서클이라는 비기술적 요소를 거쳐 블록체인이라는 기술적 요소로 내려간다. 마지막 절은 온체인 스토리텔링을 다섯 가지 도구로 나누어 실제 캐릭터와 작업물로 보여준다.
 
 ## Life Universe · Making of
 
@@ -61,6 +60,11 @@
 - [온체인 스토리텔링 (1) 이야기를 담으려면 세계부터 지어야 했다](https://kiheon.com/series/onchain-storytelling/posts/01-worldview/): 2023년 가을에 글 한 편을 발행했다.
 - [온체인 스토리텔링 (2) 캐릭터는 정의되기 전에 먼저 살았다](https://kiheon.com/series/onchain-storytelling/posts/02-methodology/): 세계관을 소개하는 글보다 캐릭터가 먼저 있었다.
 - [온체인 스토리텔링 (3) 세계는 옷과 공간과 음악으로 새어 나갔다](https://kiheon.com/series/onchain-storytelling/posts/03-expansion/): 세계관이 있었고 캐릭터가 살았다.
+- [기획 노트 · MIXtown 확장 아이디어](https://kiheon.com/series/onchain-storytelling/sources/proposal-idea-notes/): 음악과 미술을 MIXtown의 세계관에 붙이려던 확장안이다. 아티스트와 큐레이터와 리스너의 삼각으로 짠 음악 유통 구조, 그리고 익명의 창조자와 그를 추적하는 새 캐릭터를 세운 미술 기획.
+- [제안 기획 · MXTWN X](https://kiheon.com/series/onchain-storytelling/sources/proposal-mxtwn-x/): 2023년 12월, 캐릭터 노박을 화자로 세운 의류 프로젝트 MXTWN X의 아이디어 기획안 전문이다. 프리스테이지의 현실 행보에서 파일럿 드롭의 재단 도면까지, 장표를 원본 순서대로 실었고, 문서에 들어 있던 영상 두 편도 그 자리에서 재생된다.
+- [제안 기획 · SAPIENZ Town](https://kiheon.com/series/onchain-storytelling/sources/proposal-sapienz-town/): 2024년 1월, 스테이플버스의 사피언즈 팀과 논의하던 공간 아이디어 SAPIENZ Town의 기획안 전문이다. 80명의 운영자가 굴리는 호텔이라는 전제에서 다섯 축의 전체 구조도까지, 장표 열다섯 장을 원본 순서대로 실었다.
+- [전략 기획 · MIXtown 도식집](https://kiheon.com/series/onchain-storytelling/sources/proposal-strategy-diagrams/): 2023년 12월, 프로젝트 전체를 도식으로 설득하기 위해 정리한 전략 기획 문서다. 다섯 단계 컨버전스 모델에서 캐릭터를 계정으로 세우는 TBA 구조와 온체인 히스토리 도식까지, 핵심 장표 열여섯 장을 실었다.
+- [현실과 가상을 연결하는 블록체인 기반의 스토리텔링 · 발표 자료](https://kiheon.com/series/onchain-storytelling/sources/slides-2023-11/): 2023년 11월의 발표 자료다. 루브르 피라미드를 덮은 사진에서 출발해 도시를 하나의 테마파크로 다시 보고, 스토리텔링과 매직서클이라는 비기술적 요소를 거쳐 블록체인이라는 기술적 요소로 내려간다. 마지막 절은 온체인 스토리텔링을 다섯 가지 도구로 나누어 실제 캐릭터와 작업물로 보여준다.
 
 ## 이 아카이브를 다룰 때
 

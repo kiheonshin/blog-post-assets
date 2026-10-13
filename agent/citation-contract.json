@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "contract": "kiheon-speech-contract-v1",
-  "updated": "2026-09-15",
+  "updated": "2026-10-13",
   "about": "신기헌(Kiheon Shin) 발행 아카이브를 읽고 인용하는 에이전트를 위한 계약이다. 세 단이다. 인용 가능(quotable) · 복원 금지(masked) · 생성 금지(noGenerate).",
   "map": "https://kiheon.com/llms.txt",
   "quotable": {
@@ -24,7 +24,6 @@
       "https://kiheon.com/series/co-creation-culture/posts/02-at-the-boundary/",
       "https://kiheon.com/series/co-creation-culture/posts/03-when-records-become-stories/",
       "https://kiheon.com/series/co-creation-culture/sources/slides-2023-06/",
-      "https://kiheon.com/series/co-creation-culture/sources/slides-2023-11/",
       "https://kiheon.com/series/life-universe/",
       "https://kiheon.com/series/life-universe/posts/01-result/",
       "https://kiheon.com/series/life-universe/posts/02-structure/",
@@ -42,7 +41,12 @@
       "https://kiheon.com/series/onchain-storytelling/",
       "https://kiheon.com/series/onchain-storytelling/posts/01-worldview/",
       "https://kiheon.com/series/onchain-storytelling/posts/02-methodology/",
-      "https://kiheon.com/series/onchain-storytelling/posts/03-expansion/"
+      "https://kiheon.com/series/onchain-storytelling/posts/03-expansion/",
+      "https://kiheon.com/series/onchain-storytelling/sources/proposal-idea-notes/",
+      "https://kiheon.com/series/onchain-storytelling/sources/proposal-mxtwn-x/",
+      "https://kiheon.com/series/onchain-storytelling/sources/proposal-sapienz-town/",
+      "https://kiheon.com/series/onchain-storytelling/sources/proposal-strategy-diagrams/",
+      "https://kiheon.com/series/onchain-storytelling/sources/slides-2023-11/"
     ],
     "markdown": "각 포스팅 주소에 `content.md` 를 함께 둔다. 본문만 담은 미러다.",
     "note": "출처를 밝히면 본문을 인용할 수 있다. 여기 없는 주소는 공개 대상이 아니다. 접근이 되더라도 다루지 않는다."

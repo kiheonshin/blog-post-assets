@@ -38,11 +38,19 @@ const seriesSurfaces = {
     "series/co-creation-culture/posts/02-at-the-boundary/index.html",
     "series/co-creation-culture/posts/03-when-records-become-stories/index.html",
     "series/co-creation-culture/sources/slides-2023-06/index.html",
-    "series/co-creation-culture/sources/slides-2023-11/index.html",
+  ],
+  // 2026-10-13 본인 결정(4-나 ① · 6-나 ①) : 2023-11 덱은 08-31 부터 onchain 시리즈 원자료다.
+  // 도슨트를 옛 주소 면에서 이 정본 덱 면 하나로 옮겼다(도슨트 실린 면 합 22 그대로).
+  // 이 시리즈는 홈에 도슨트를 싣지 않는다 : 홈 단언과 안내 질문 셋 단언은 홈이 실린 시리즈에만 건다.
+  "onchain-storytelling": [
+    "series/onchain-storytelling/sources/slides-2023-11/index.html",
   ],
 };
 
-test("all four series use the same xAI Realtime v2 interface", async () => {
+const homeMounted = (seriesId) =>
+  seriesSurfaces[seriesId].includes(`series/${seriesId}/index.html`);
+
+test("every docent surface uses the same xAI Realtime v2 interface", async () => {
   for (const file of Object.values(seriesSurfaces).flat()) {
     const html = await read(file);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20261004docent2/, file);
@@ -52,7 +60,7 @@ test("all four series use the same xAI Realtime v2 interface", async () => {
 });
 
 test("all docent series homes keep the wide desktop rail shell", async () => {
-  for (const seriesId of Object.keys(seriesSurfaces)) {
+  for (const seriesId of Object.keys(seriesSurfaces).filter(homeMounted)) {
     const html = await read(`series/${seriesId}/index.html`);
     assert.match(
       html,
@@ -84,7 +92,7 @@ test("the Newtype home keeps every article section in the desktop content column
   );
 });
 
-test("all four series share the verified Grok built-in voice runtime", async () => {
+test("every docent series shares the verified Grok built-in voice runtime", async () => {
   const script = await read("assets/assistant/voice-assistant-v2.js");
   const styles = await read("assets/assistant/voice-assistant-v2.css");
   // 2026-09-01 정본 주소 전환(github.io → kiheon.com)으로 갱신. 바뀐 것은
@@ -128,10 +136,10 @@ test("all four series share the verified Grok built-in voice runtime", async () 
   assert.match(styles, /voice-assistant-ring-speak/);
 });
 
-test("all four series contexts stay bound to their exact public surfaces", async () => {
+test("every docent context stays bound to its exact public surfaces", async () => {
   for (const seriesId of Object.keys(seriesSurfaces)) {
     const context = JSON.parse(await read(`series/${seriesId}/assistant/context.json`));
-    assert.equal(context.docent.quickPrompts.length, 3, seriesId);
+    if (homeMounted(seriesId)) assert.equal(context.docent.quickPrompts.length, 3, seriesId);
     for (const entry of context.entries) {
       const html = await read(`${entry.url}/index.html`);
       assert.equal(entry.contentHash, `sha256:${sha256(html)}`, entry.contentId);
@@ -139,10 +147,11 @@ test("all four series contexts stay bound to their exact public surfaces", async
   }
 });
 
-// 22 = 이 파일이 세는 네 시리즈의 표면 수. 자율 세계의 「발표 원고」는 발표 자료와
+// 22 = 이 파일이 세는 도슨트 시리즈의 표면 수(2026-10-13 부터 다섯 시리즈 · 2023-11 덱 면이
+// co-creation 에서 onchain 으로 옮겨 가 합은 그대로다). 자율 세계의 「발표 원고」는 발표 자료와
 // 내용이 겹쳐 2026-08-07 에 내렸다(본인 지시) — 그때 매니페스트·도슨트 팩·표면 상수는
 // 고쳤는데 이 파일을 빠뜨려 네 건이 계속 붉었다.
-test("the manifest publishes all four docent contexts and their 22 surfaces", async () => {
+test("the manifest publishes every docent context and their 22 surfaces", async () => {
   const manifest = await read("assets/content-manifest.js");
   for (const [seriesId, surfaces] of Object.entries(seriesSurfaces)) {
     const start = manifest.indexOf(`slug: "${seriesId}"`);

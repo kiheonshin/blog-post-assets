@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "series": {
+    "id": "onchain-storytelling",
+    "title": "온체인 스토리텔링",
+    "synopsis": "2023년에 진행하던 웹3 기반 코크리에이션 프로젝트의 세계관·방법론·산출물을 3년 뒤에 세 편으로 정리했다."
+  },
+  "docent": {
+    "intro": "글과 발표 · 기획 자료를 오가며 2023년 웹3 기반 코크리에이션 프로젝트의 세계관·방법론·산출물을 안내합니다. 아래 질문을 누르면 대화창에 문장만 미리 담깁니다. 자동으로 보내거나 소리를 재생하지 않으며, 내용을 확인한 뒤 보내면 답변이 시작됩니다. 직접 묻고 싶다면 ‘도슨트와 대화하기’로 빈 대화창을 여세요.",
+    "quickPrompts": [],
+    "contentPrompts": {
+      "slides-2023-11": [
+        {
+          "id": "slides-2023-11-flow",
+          "label": "이 콘텐츠의 흐름을 알려주세요",
+          "answer": "현실 위의 이미지와 방문객의 여정, 매직서클, 블록체인과 경험의 상속, 온체인 스토리텔링 도구와 캐릭터의 현실 진출을 다룬 2023년 11월 발표 자료다. 주요 대목은 현실 위에 덧입혀진 이미지와 도시 → 스토리텔링과 매직서클 → 블록체인과 경험의 상속 → 온체인 스토리텔링의 정의와 첫 두 도구 → 현실로 나온 캐릭터와 온체인 히스토리 순서로 살펴볼 수 있습니다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch1"
+            },
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch3"
+            },
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch4"
+            },
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch5"
+            },
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch7"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/onchain-storytelling/sources/slides-2023-11/#ch1"
+            }
+          ]
+        },
+        {
+          "id": "slides-2023-11-insight",
+          "label": "핵심 인사이트는 무엇인가요?",
+          "answer": "현실과 가상이 겹치는 경험은 기술을 과시하기보다 방문자의 여정과 이야기 안에서 자연스럽게 작동할 때 힘을 얻는다. 온체인 스토리텔링은 캐릭터와 소유자, 사건의 기록을 연결해 고정된 설정을 살아 있는 히스토리로 바꾼다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch2"
+            },
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch5"
+            }
+          ],
+          "targets": [
+            {
+              "label": "해당 대목 보기",
+              "url": "series/onchain-storytelling/sources/slides-2023-11/#ch2"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "entries": [
+    {
+      "contentId": "01-worldview",
+      "type": "post",
+      "url": "series/onchain-storytelling/posts/01-worldview/",
+      "title": "이야기를 담으려면 세계부터 지어야 했다",
+      "synopsis": "온체인 스토리텔링의 정의, 타운과 포탈, 문서가 아니라 장부가 정본이 되는 세계.",
+      "contentHash": "sha256:092a8ef45311ebe956549e5eb43be08cec65b5c6bb1264fdf6e4db29f485f380",
+      "keyInsights": [],
+      "outline": [],
+      "relations": []
+    },
+    {
+      "contentId": "02-methodology",
+      "type": "post",
+      "url": "series/onchain-storytelling/posts/02-methodology/",
+      "title": "캐릭터는 정의되기 전에 먼저 살았다",
+      "synopsis": "정의보다 생활을 먼저 내보내는 순서, 인벤토리로 성격을 만드는 설계, 빈 자리를 상품으로 세우는 방법.",
+      "contentHash": "sha256:20ba130ec1ac9e11ddfa11756c314e6fb556ba972baaa9044c6a1ee2c7491617",
+      "keyInsights": [],
+      "outline": [],
+      "relations": []
+    },
+    {
+      "contentId": "03-expansion",
+      "type": "post",
+      "url": "series/onchain-storytelling/posts/03-expansion/",
+      "title": "세계는 옷과 공간과 음악으로 새어 나갔다",
+      "synopsis": "영상 연작과 패션 캠페인, 호텔 형태의 공간 기획, 캐릭터 명의의 음원까지. 확장의 갈래들.",
+      "contentHash": "sha256:1badc606eda152cf744977f0eccdb692f74e205c803931eb548459275f849dc4",
+      "keyInsights": [],
+      "outline": [],
+      "relations": []
+    },
+    {
+      "contentId": "slides-2023-11",
+      "type": "source",
+      "url": "series/onchain-storytelling/sources/slides-2023-11/",
+      "title": "온체인 스토리텔링과 현실·가상의 경계",
+      "synopsis": "현실 위의 이미지와 방문객의 여정, 매직서클, 블록체인과 경험의 상속, 온체인 스토리텔링 도구와 캐릭터의 현실 진출을 다룬 2023년 11월 발표 자료다.",
+      "contentHash": "sha256:595fe3eca6a066a611cf18e8d7b6836b40467835a18b861012e073342aded5df",
+      "keyInsights": [
+        {
+          "text": "현실과 가상이 겹치는 경험은 기술을 과시하기보다 방문자의 여정과 이야기 안에서 자연스럽게 작동할 때 힘을 얻는다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch2"
+            }
+          ]
+        },
+        {
+          "text": "온체인 스토리텔링은 캐릭터와 소유자, 사건의 기록을 연결해 고정된 설정을 살아 있는 히스토리로 바꾼다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch5"
+            }
+          ]
+        }
+      ],
+      "outline": [
+        {
+          "sectionId": "ch1",
+          "title": "현실 위에 덧입혀진 이미지와 도시",
+          "summary": "도시라는 현실 공간 위에 이미지와 서사가 겹쳐지는 장면을 본다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch1"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch3",
+          "title": "스토리텔링과 매직서클",
+          "summary": "이야기의 규칙이 일상의 공간을 다른 경험의 장으로 바꾸는 방식을 다룬다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch3"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch4",
+          "title": "블록체인과 경험의 상속",
+          "summary": "기록과 소유를 경험과 맥락의 전달 문제로 확장한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch4"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch5",
+          "title": "온체인 스토리텔링의 정의와 첫 두 도구",
+          "summary": "온체인 기록을 이야기의 재료로 쓰는 방법을 정리한다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch5"
+            }
+          ]
+        },
+        {
+          "sectionId": "ch7",
+          "title": "현실로 나온 캐릭터와 온체인 히스토리",
+          "summary": "가상 캐릭터의 사건이 현실과 만나 축적된 역사로 이어지는 결론을 본다.",
+          "kind": "source",
+          "provenance": [
+            {
+              "sourceId": "slides-2023-11",
+              "anchor": "ch7"
+            }
+          ]
+        }
+      ],
+      "relations": []
+    },
+    {
+      "contentId": "proposal-strategy-diagrams",
+      "type": "source",
+      "url": "series/onchain-storytelling/sources/proposal-strategy-diagrams/",
+      "title": "MIXtown 전략 기획 도식집",
+      "synopsis": "2023.12.08 · 장표 16장. 다섯 단계 컨버전스 모델과 TBA 구조, 온체인 히스토리",
+      "contentHash": "sha256:858f9c04fbff2f5dc09d5b04b2baa587bbb04893aa53b4bec5388b0a7144c8fb",
+      "keyInsights": [],
+      "outline": [],
+      "relations": []
+    },
+    {
+      "contentId": "proposal-mxtwn-x",
+      "type": "source",
+      "url": "series/onchain-storytelling/sources/proposal-mxtwn-x/",
+      "title": "MXTWN X 아이디어 기획안",
+      "synopsis": "2023.12.08 · 장표 19장 · 영상 2편. 캐릭터를 화자로 세운 의류 프로젝트의 제안 전문",
+      "contentHash": "sha256:3a1f4765e6f687fa39e61f2716eb36e71c6c9c36249a9584c9fbaee77ca03891",
+      "keyInsights": [],
+      "outline": [],
+      "relations": []
+    },
+    {
+      "contentId": "proposal-sapienz-town",
+      "type": "source",
+      "url": "series/onchain-storytelling/sources/proposal-sapienz-town/",
+      "title": "SAPIENZ Town 아이디어 기획안",
+      "synopsis": "2024.01.02 · 장표 15장. 80명의 운영자가 굴리는 호텔, 다섯 축의 전체 구조도",
+      "contentHash": "sha256:40084681edc8ab94cf1da3c89971b41a258bda453b40e05dca437c82f8beac29",
+      "keyInsights": [],
+      "outline": [],
+      "relations": []
+    },
+    {
+      "contentId": "proposal-idea-notes",
+      "type": "source",
+      "url": "series/onchain-storytelling/sources/proposal-idea-notes/",
+      "title": "MIXtown 확장 아이디어 노트",
+      "synopsis": "2023.12.08 · 장표 2장. 음악 유통 구조와 포탈 세계관을 세운 미술 기획",
+      "contentHash": "sha256:d6484f03616b852d4618aa339046d4a858d351acce5150a3aef402f31c97c943",
+      "keyInsights": [],
+      "outline": [],
+      "relations": []
+    }
+  ],
+  "allowedTargets": [
+    {
+      "contentType": "series",
+      "contentId": "onchain-storytelling",
+      "url": "series/onchain-storytelling/"
+    },
+    {
+      "contentType": "post",
+      "contentId": "01-worldview",
+      "url": "series/onchain-storytelling/posts/01-worldview/"
+    },
+    {
+      "contentType": "post",
+      "contentId": "02-methodology",
+      "url": "series/onchain-storytelling/posts/02-methodology/"
+    },
+    {
+      "contentType": "post",
+      "contentId": "03-expansion",
+      "url": "series/onchain-storytelling/posts/03-expansion/"
+    },
+    {
+      "contentType": "source",
+      "contentId": "slides-2023-11",
+      "url": "series/onchain-storytelling/sources/slides-2023-11/"
+    },
+    {
+      "contentType": "source",
+      "contentId": "proposal-strategy-diagrams",
+      "url": "series/onchain-storytelling/sources/proposal-strategy-diagrams/"
+    },
+    {
+      "contentType": "source",
+      "contentId": "proposal-mxtwn-x",
+      "url": "series/onchain-storytelling/sources/proposal-mxtwn-x/"
+    },
+    {
+      "contentType": "source",
+      "contentId": "proposal-sapienz-town",
+      "url": "series/onchain-storytelling/sources/proposal-sapienz-town/"
+    },
+    {
+      "contentType": "source",
+      "contentId": "proposal-idea-notes",
+      "url": "series/onchain-storytelling/sources/proposal-idea-notes/"
+    }
+  ],
+  "generatedAt": "2026-10-13T17:48:29+09:00"
+}

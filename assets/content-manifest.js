@@ -341,7 +341,6 @@ export const contentLibrary = {
           "co-creation-culture:post:02-at-the-boundary",
           "co-creation-culture:post:03-when-records-become-stories",
           "co-creation-culture:source:slides-2023-06",
-          "co-creation-culture:source:slides-2023-11",
         ],
       },
       posts: [
@@ -420,11 +419,11 @@ export const contentLibrary = {
       coverAlt:
         "밝은 보라색 면이 종이 기록 지형과 생활 공간을 지나 거대한 레코드로 이어지는 온체인 스토리텔링 파노라마",
       published: "2026-08-06",
-      // 도슨트 미장착 — 음성 레인이 결속하면 status 를 올린다.
+      // 도슨트 결속(2026-10-13 · 본인 4-나 ①) : 2023-11 덱 면 하나에 싣고 아홉 면 전부를 허가한다.
       assistantContext: {
         path: "series/onchain-storytelling/assistant/context.json",
-        status: "planned",
-        pilotSurfaceIds: [],
+        status: "ready",
+        pilotSurfaceIds: ["onchain-storytelling:source:slides-2023-11"],
       },
       posts: [
         {

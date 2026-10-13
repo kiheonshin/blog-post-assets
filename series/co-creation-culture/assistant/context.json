@@ -6,12 +6,12 @@
     "synopsis": "2023년 두 차례 발표 자료와 3년 뒤 다시 쓴 세 편의 글을 통해 창의성의 주체, 현실과 가상의 경계, 기록과 소유가 공동 창작의 문화로 이어지는 과정을 살핀다."
   },
   "docent": {
-    "intro": "세 편의 글과 두 발표 자료를 오가며 창의성·경계·기록이 공동의 이야기로 이어지는 흐름을 안내합니다. 아래 질문을 누르면 대화창에 문장만 미리 담깁니다. 자동으로 보내거나 소리를 재생하지 않으며, 내용을 확인한 뒤 보내면 답변이 시작됩니다. 직접 묻고 싶다면 ‘도슨트와 대화하기’로 빈 대화창을 여세요.",
+    "intro": "세 편의 글과 발표 자료를 오가며 창의성·경계·기록이 공동의 이야기로 이어지는 흐름을 안내합니다. 아래 질문을 누르면 대화창에 문장만 미리 담깁니다. 자동으로 보내거나 소리를 재생하지 않으며, 내용을 확인한 뒤 보내면 답변이 시작됩니다. 직접 묻고 싶다면 ‘도슨트와 대화하기’로 빈 대화창을 여세요.",
     "quickPrompts": [
       {
         "id": "where-to-start",
         "label": "어디서부터 읽을까요?",
-        "answer": "시리즈의 논리를 따라가려면 1편에서 창의성의 주체가 넓어지는 과정을 보고, 2편에서 현실과 가상의 경계면을 거쳐, 3편에서 기록과 소유가 이야기가 되는 조건으로 이동하세요. 당시 사례의 밀도와 시각적 흐름부터 확인하려면 2023년 6월 또는 11월 발표 자료를 먼저 볼 수 있습니다.",
+        "answer": "시리즈의 논리를 따라가려면 1편에서 창의성의 주체가 넓어지는 과정을 보고, 2편에서 현실과 가상의 경계면을 거쳐, 3편에서 기록과 소유가 이야기가 되는 조건으로 이동하세요. 당시 사례의 밀도와 시각적 흐름부터 확인하려면 2023년 6월 발표 자료를 먼저 볼 수 있습니다.",
         "targets": [
           {
             "label": "1편부터 읽기",
@@ -20,10 +20,6 @@
           {
             "label": "2023년 6월 발표",
             "url": "series/co-creation-culture/sources/slides-2023-06/"
-          },
-          {
-            "label": "2023년 11월 발표",
-            "url": "series/co-creation-culture/sources/slides-2023-11/"
           }
         ],
         "provenance": [
@@ -33,10 +29,6 @@
           },
           {
             "sourceId": "slides-2023-06",
-            "anchor": "ch1"
-          },
-          {
-            "sourceId": "slides-2023-11",
             "anchor": "ch1"
           }
         ]
@@ -76,16 +68,12 @@
       },
       {
         "id": "source-relationship",
-        "label": "두 발표 자료는 어떻게 다른가요?",
-        "answer": "2023년 6월 발표는 코-크리에이션의 정의, 참여와 보상, 플랫폼과 거버넌스를 넓게 다룹니다. 11월 발표는 현실 위에 덧입혀진 이미지, 매직서클, 블록체인과 경험의 상속, 온체인 스토리텔링 도구로 초점을 좁힙니다. 세 편의 글은 두 발표의 질문을 창의성·경계면·기록이라는 세 갈래로 다시 읽은 결과입니다.",
+        "label": "발표 자료와 세 편의 글은 어떻게 이어지나요?",
+        "answer": "2023년 6월 발표는 코-크리에이션의 정의, 참여와 보상, 플랫폼과 거버넌스를 넓게 다룹니다. 세 편의 글은 그 질문을 창의성·경계면·기록이라는 세 갈래로 다시 읽은 결과입니다.",
         "targets": [
           {
             "label": "6월 발표 자료",
             "url": "series/co-creation-culture/sources/slides-2023-06/"
-          },
-          {
-            "label": "11월 발표 자료",
-            "url": "series/co-creation-culture/sources/slides-2023-11/"
           }
         ],
         "provenance": [
@@ -96,14 +84,6 @@
           {
             "sourceId": "slides-2023-06",
             "anchor": "ch7"
-          },
-          {
-            "sourceId": "slides-2023-11",
-            "anchor": "ch3"
-          },
-          {
-            "sourceId": "slides-2023-11",
-            "anchor": "ch5"
           }
         ]
       }
@@ -337,64 +317,6 @@
             {
               "label": "해당 대목 보기",
               "url": "series/co-creation-culture/sources/slides-2023-06/#ch2"
-            }
-          ]
-        }
-      ],
-      "slides-2023-11": [
-        {
-          "id": "slides-2023-11-flow",
-          "label": "이 콘텐츠의 흐름을 알려주세요",
-          "answer": "현실 위의 이미지와 방문객의 여정, 매직서클, 블록체인과 경험의 상속, 온체인 스토리텔링 도구와 캐릭터의 현실 진출을 다룬 2023년 11월 발표 자료다. 주요 대목은 현실 위에 덧입혀진 이미지와 도시 → 스토리텔링과 매직서클 → 블록체인과 경험의 상속 → 온체인 스토리텔링의 정의와 첫 두 도구 → 현실로 나온 캐릭터와 온체인 히스토리 순서로 살펴볼 수 있습니다.",
-          "kind": "source",
-          "provenance": [
-            {
-              "sourceId": "slides-2023-11",
-              "anchor": "ch1"
-            },
-            {
-              "sourceId": "slides-2023-11",
-              "anchor": "ch3"
-            },
-            {
-              "sourceId": "slides-2023-11",
-              "anchor": "ch4"
-            },
-            {
-              "sourceId": "slides-2023-11",
-              "anchor": "ch5"
-            },
-            {
-              "sourceId": "slides-2023-11",
-              "anchor": "ch7"
-            }
-          ],
-          "targets": [
-            {
-              "label": "해당 대목 보기",
-              "url": "series/co-creation-culture/sources/slides-2023-11/#ch1"
-            }
-          ]
-        },
-        {
-          "id": "slides-2023-11-insight",
-          "label": "핵심 인사이트는 무엇인가요?",
-          "answer": "현실과 가상이 겹치는 경험은 기술을 과시하기보다 방문자의 여정과 이야기 안에서 자연스럽게 작동할 때 힘을 얻는다. 온체인 스토리텔링은 캐릭터와 소유자, 사건의 기록을 연결해 고정된 설정을 살아 있는 히스토리로 바꾼다.",
-          "kind": "source",
-          "provenance": [
-            {
-              "sourceId": "slides-2023-11",
-              "anchor": "ch2"
-            },
-            {
-              "sourceId": "slides-2023-11",
-              "anchor": "ch5"
-            }
-          ],
-          "targets": [
-            {
-              "label": "해당 대목 보기",
-              "url": "series/co-creation-culture/sources/slides-2023-11/#ch2"
             }
           ]
         }
@@ -773,99 +695,6 @@
         }
       ],
       "relations": []
-    },
-    {
-      "contentId": "slides-2023-11",
-      "type": "source",
-      "url": "series/co-creation-culture/sources/slides-2023-11/",
-      "title": "온체인 스토리텔링과 현실·가상의 경계",
-      "synopsis": "현실 위의 이미지와 방문객의 여정, 매직서클, 블록체인과 경험의 상속, 온체인 스토리텔링 도구와 캐릭터의 현실 진출을 다룬 2023년 11월 발표 자료다.",
-      "contentHash": "sha256:85f9312e456582fc5095c9cbf328e072be7462ef3c97a4a8bfee5234d9a10597",
-      "keyInsights": [
-        {
-          "text": "현실과 가상이 겹치는 경험은 기술을 과시하기보다 방문자의 여정과 이야기 안에서 자연스럽게 작동할 때 힘을 얻는다.",
-          "kind": "source",
-          "provenance": [
-            {
-              "sourceId": "slides-2023-11",
-              "anchor": "ch2"
-            }
-          ]
-        },
-        {
-          "text": "온체인 스토리텔링은 캐릭터와 소유자, 사건의 기록을 연결해 고정된 설정을 살아 있는 히스토리로 바꾼다.",
-          "kind": "source",
-          "provenance": [
-            {
-              "sourceId": "slides-2023-11",
-              "anchor": "ch5"
-            }
-          ]
-        }
-      ],
-      "outline": [
-        {
-          "sectionId": "ch1",
-          "title": "현실 위에 덧입혀진 이미지와 도시",
-          "summary": "도시라는 현실 공간 위에 이미지와 서사가 겹쳐지는 장면을 본다.",
-          "kind": "source",
-          "provenance": [
-            {
-              "sourceId": "slides-2023-11",
-              "anchor": "ch1"
-            }
-          ]
-        },
-        {
-          "sectionId": "ch3",
-          "title": "스토리텔링과 매직서클",
-          "summary": "이야기의 규칙이 일상의 공간을 다른 경험의 장으로 바꾸는 방식을 다룬다.",
-          "kind": "source",
-          "provenance": [
-            {
-              "sourceId": "slides-2023-11",
-              "anchor": "ch3"
-            }
-          ]
-        },
-        {
-          "sectionId": "ch4",
-          "title": "블록체인과 경험의 상속",
-          "summary": "기록과 소유를 경험과 맥락의 전달 문제로 확장한다.",
-          "kind": "source",
-          "provenance": [
-            {
-              "sourceId": "slides-2023-11",
-              "anchor": "ch4"
-            }
-          ]
-        },
-        {
-          "sectionId": "ch5",
-          "title": "온체인 스토리텔링의 정의와 첫 두 도구",
-          "summary": "온체인 기록을 이야기의 재료로 쓰는 방법을 정리한다.",
-          "kind": "source",
-          "provenance": [
-            {
-              "sourceId": "slides-2023-11",
-              "anchor": "ch5"
-            }
-          ]
-        },
-        {
-          "sectionId": "ch7",
-          "title": "현실로 나온 캐릭터와 온체인 히스토리",
-          "summary": "가상 캐릭터의 사건이 현실과 만나 축적된 역사로 이어지는 결론을 본다.",
-          "kind": "source",
-          "provenance": [
-            {
-              "sourceId": "slides-2023-11",
-              "anchor": "ch7"
-            }
-          ]
-        }
-      ],
-      "relations": []
     }
   ],
   "allowedTargets": [
@@ -893,12 +722,7 @@
       "contentType": "source",
       "contentId": "slides-2023-06",
       "url": "series/co-creation-culture/sources/slides-2023-06/"
-    },
-    {
-      "contentType": "source",
-      "contentId": "slides-2023-11",
-      "url": "series/co-creation-culture/sources/slides-2023-11/"
     }
   ],
-  "generatedAt": "2026-08-01T15:00:00+09:00"
+  "generatedAt": "2026-10-13T17:48:29+09:00"
 }
