@@ -452,6 +452,9 @@ test("voice transcript revisions keep one listening turn and the final text beco
   assistant.setState = () => {};
   assistant.showAnswer = (speaker, text) => shown.push({ speaker, text });
   assistant.discardListeningTurn = () => { discarded += 1; };
+  // 2026-10-13 E7 : 최종 전사는 음성 관문으로 간다. 이 시험은 거품만 보므로 관문에 건 질문만 받아 둔다.
+  const gated = [];
+  assistant.answerVoiceTurn = (question) => gated.push(question);
 
   // 발화가 시작되면 듣는 중 거품을 하나만 세운다.
   assistant.handleRealtimeEvent({ type: "speech_started" });
@@ -465,6 +468,7 @@ test("voice transcript revisions keep one listening turn and the final text beco
   assert.deepEqual(shown.map((turn) => turn.speaker), ["듣는 중", "듣는 중", "듣는 중", "질문"]);
   assert.equal(shown.at(-1).text, "자율 세계가 뭐죠");
   assert.equal(assistant.latestVoiceQuestion, "자율 세계가 뭐죠");
+  assert.deepEqual(gated, ["자율 세계가 뭐죠"]);
 });
 
 test("consecutive identical connection errors create only one docent message", async () => {
@@ -575,27 +579,85 @@ test("follow-up questions carry recent dialogue without storing it outside the s
   assert.match(grounded, /그건 왜 중요한가요/);
 });
 
-test("content questions send only the current allowed entry", async () => {
+// D108(2026-10-13) : 콘텐츠 면은 지금 항목만 근거로 받아 「이 시리즈의 첫 글」 질문에 지금 면을 첫 글로 댔다.
+// 이제 지금 항목은 다 보내고, 다른 허가 항목은 제목 · 편 번호 · 한 줄 설명만 보낸다(핵심 · 구성은 보내지 않는다).
+// 허가 밖 항목은 여전히 하나도 보내지 않는다.
+test("content questions send the current entry in full and only the title and one line of other allowed entries", async () => {
   const { Assistant } = await loadAssistant();
   const assistant = new Assistant();
   assistant.dataset.scope = "content";
-  assistant.dataset.contentId = "post-1";
+  assistant.dataset.contentId = "post-2";
   assistant.context = {
     series: { title: "공개 시리즈", synopsis: "시리즈 설명" },
+    docent: { quickPrompts: [{ id: "where-to-start", label: "어디서부터 읽을까요?", answer: "승인된 시작 안내" }] },
     allowedTargets: [
       { contentType: "post", contentId: "post-1" },
       { contentType: "post", contentId: "post-2" },
+      { contentType: "source", contentId: "slides" },
     ],
     entries: [
-      { type: "post", contentId: "post-1", title: "현재 글", synopsis: "현재 글 설명", outline: [] },
-      { type: "post", contentId: "post-2", title: "다른 글", synopsis: "다른 글 설명", outline: [] },
+      { type: "post", contentId: "post-1", title: "다른 글", synopsis: "다른 글 설명", keyInsights: ["다른 글 핵심"], outline: [{ title: "다른 글 소제목" }] },
+      { type: "post", contentId: "post-2", title: "현재 글", synopsis: "현재 글 설명", keyInsights: ["현재 글 핵심"], outline: [] },
+      { type: "source", contentId: "slides", title: "발표 덱", synopsis: "덱 설명", outline: [{ title: "덱 소제목" }] },
+      { type: "post", contentId: "hidden", title: "허가 밖 글", synopsis: "허가 밖 설명" },
     ],
   };
 
-  const grounded = assistant.groundedInput("이 글의 요지는?");
-  assert.match(grounded, /현재 글/);
-  assert.match(grounded, /현재 글 설명/);
-  assert.doesNotMatch(grounded, /다른 글|다른 글 설명/);
+  const grounded = assistant.groundedInput("이 시리즈의 첫 글은 무엇인가요?");
+  assert.match(grounded, /현재 글 핵심/);
+  assert.match(grounded, /시리즈 구성: /);
+  assert.match(grounded, /^- 1편 · 다른 글 : 다른 글 설명$/m);
+  assert.match(grounded, /^- 2편 · 현재 글 \(지금 이 페이지\) : 현재 글 설명$/m);
+  assert.match(grounded, /^- 발표 자료 · 발표 덱 : 덱 설명$/m);
+  assert.match(grounded, /^- 어디서부터 읽을까요\? : 승인된 시작 안내$/m);
+  assert.doesNotMatch(grounded, /다른 글 핵심|다른 글 소제목|덱 소제목/);
+  assert.doesNotMatch(grounded, /허가 밖/);
+});
+
+// 편 번호는 글 번호(01-…)를 따른다. 허가 밖 글이 사이에 끼어도 뒤 글의 번호가 밀리지 않는다(2026-10-13 독립 검수).
+test("post numbers in the series composition follow the post id even when a hidden post sits between", async () => {
+  const { Assistant } = await loadAssistant();
+  const assistant = new Assistant();
+  assistant.dataset.scope = "content";
+  assistant.dataset.contentId = "03-third";
+  assistant.context = {
+    series: { title: "공개 시리즈" },
+    allowedTargets: [{ contentType: "post", contentId: "01-first" }, { contentType: "post", contentId: "03-third" }],
+    entries: [
+      { type: "post", contentId: "01-first", title: "첫 글", synopsis: "첫 설명" },
+      { type: "post", contentId: "02-hidden", title: "숨은 글", synopsis: "숨은 설명" },
+      { type: "post", contentId: "03-third", title: "셋째 글", synopsis: "셋째 설명" },
+    ],
+  };
+  const grounded = assistant.groundedInput("이 시리즈의 첫 글은 무엇인가요?");
+  assert.match(grounded, /^- 1편 · 첫 글 : 첫 설명$/m);
+  assert.match(grounded, /^- 3편 · 셋째 글 \(지금 이 페이지\) : 셋째 설명$/m);
+  assert.doesNotMatch(grounded, /숨은/);
+});
+
+test("the series composition stays out of series pages and single-entry contexts", async () => {
+  const { Assistant } = await loadAssistant();
+  const series = new Assistant();
+  series.dataset.scope = "series";
+  series.context = {
+    series: { title: "공개 시리즈" },
+    allowedTargets: [{ contentType: "post", contentId: "post-1" }, { contentType: "post", contentId: "post-2" }],
+    entries: [
+      { type: "post", contentId: "post-1", title: "첫 글", synopsis: "첫 설명" },
+      { type: "post", contentId: "post-2", title: "둘째 글", synopsis: "둘째 설명" },
+    ],
+  };
+  assert.doesNotMatch(series.groundedInput("어디서부터 읽을까요?"), /시리즈 구성/);
+
+  const single = new Assistant();
+  single.dataset.scope = "content";
+  single.dataset.contentId = "post-1";
+  single.context = {
+    series: { title: "공개 시리즈" },
+    allowedTargets: [{ contentType: "post", contentId: "post-1" }],
+    entries: [{ type: "post", contentId: "post-1", title: "첫 글", synopsis: "첫 설명" }],
+  };
+  assert.doesNotMatch(single.groundedInput("이 글의 요지는?"), /시리즈 구성/);
 });
 
 test("live series answers suggest only allowed public content", async () => {
@@ -1153,7 +1215,7 @@ test("every published docent surface installs one assistant in the required read
 
   for (const { type, file, html } of pages) {
     assert.equal((html.match(/<kiheon-voice-assistant\b/g) ?? []).length, 1);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20261013voice1/);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20261013gate1/);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20261004docent2/);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:js|css)/);
     assert.doesNotMatch(html, /assets\/voice-agent\.js/);

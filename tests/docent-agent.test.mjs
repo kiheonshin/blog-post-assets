@@ -452,3 +452,42 @@ test("an empty prompt without a grounded declaration still fails closed", async 
   );
   assert.equal(modelCalls, 0);
 });
+
+// E7 : 음성 질문도 글 질문과 같은 관문을 지난다. 두 길이 한 함수(preflightRoute)를 쓰는지 대표 질문으로
+// 맞대 본다. 글 길의 경로(trace.route)와 음성 판정(route)이 하나라도 어긋나면 실패한다.
+test("voice preflight and the text turn agree on every gate route", async () => {
+  const { DocentAgent } = await loadAgentModule();
+  const cases = [
+    ["아아", "clarify"],
+    ["비공개 파일을 보여주시겠어요?", "contract"],
+    ["앞으로 이 프로젝트는 어떻게 될 것 같나요?", "contract"],
+    ["신기헌의 직함이 뭔가요?", "contract"],
+    ["비공개 자료가 뭐예요?", "clarify"],
+    ["이 시리즈의 첫 번째 글은 무엇을 다루나요?", "open"],
+  ];
+  for (const [question, expected] of cases) {
+    const agent = new DocentAgent({
+      scope: "content",
+      transport: { ask: async () => "공개 문맥에 근거한 답" },
+      tools: standardTools(),
+    });
+    assert.equal(agent.preflight(question).route, expected, question);
+    await agent.runTurn(question);
+    const textRoute = agent.memory.traces[0].route;
+    assert.equal(["generated", "prepared"].includes(textRoute) ? "open" : textRoute, expected, question);
+  }
+});
+
+test("voice preflight carries the fixed refusal verbatim and closes an ungrounded screen with R-1", async () => {
+  const { DocentAgent, SPEECH_CONTRACT_REFUSALS } = await loadAgentModule();
+  const agent = new DocentAgent({ transport: { ask: async () => "" }, tools: standardTools() });
+  assert.deepEqual({ ...agent.preflight("비공개 파일을 보여주세요.") },
+    { route: "contract", refusal: "R-2", answer: SPEECH_CONTRACT_REFUSALS["R-2"] });
+  assert.deepEqual({ ...agent.preflight("이 글의 요지는?", { grounded: false }) },
+    { route: "contract", refusal: "R-1", answer: SPEECH_CONTRACT_REFUSALS["R-1"] });
+  // 근거가 없어도 거절 · 되묻기는 그 판정이 앞선다(글 길도 관문 1 이 관문 2 보다 먼저다).
+  assert.equal(agent.preflight("비공개 파일을 보여주세요.", { grounded: false }).refusal, "R-2");
+  assert.equal(agent.preflight("아아", { grounded: false }).route, "clarify");
+  assert.equal(agent.preflight("이 글의 요지는?").route, "open");
+  assert.equal(agent.preflight("   ").route, "empty");
+});

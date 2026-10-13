@@ -98,7 +98,13 @@ async function session() {
   const assistant = new Assistant();
   const turns = [];
   assistant.dataset.scope = "series";
-  assistant.context = { series: { id: "s", title: "시험" }, allowedTargets: [], entries: [] };
+  // 2026-10-13 E7 : 음성 질문이 관문을 지난다. 근거가 없는 문맥은 R-1 로 닫히므로, 모델 답의 말풍선을 세는
+  // 이 시험들에는 근거 항목 하나와 열린 소켓을 준다(관문은 voice-question-gate.test.mjs 가 잰다).
+  assistant.context = {
+    series: { id: "s", title: "시험" },
+    allowedTargets: [{ contentType: "post", contentId: "p1" }],
+    entries: [{ type: "post", contentId: "p1", title: "첫 글", url: "series/s/posts/p1/" }],
+  };
   assistant.targets = { childElementCount: 0, hidden: true, replaceChildren() {}, append() {} };
   assistant.transcriptLog = {
     scrollHeight: 0,
@@ -123,6 +129,8 @@ async function session() {
   assistant.voiceSessionActive = true;
   const transport = new VoiceTransport();
   transport.active = true;
+  transport.sessionReady = true;
+  transport.socket = { readyState: 1, send() {} };
   transport.onEvent = (event) => assistant.handleRealtimeEvent(event);
   assistant.transport = transport;
   const play = (messages) => {

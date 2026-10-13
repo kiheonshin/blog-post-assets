@@ -128,6 +128,21 @@ function contractRequestVerdict(text) {
   return "";
 }
 
+/**
+ * 모델 앞 판정 하나 - 글 질문과 음성 질문이 같은 함수를 지난다(E7).
+ * route : empty(들은 말 없음) · clarify(되묻기) · contract(고정 거절) · open(근거 문맥으로 답할 질문).
+ */
+export function preflightRoute(value) {
+  const question = cleanText(value);
+  if (!question) return Object.freeze({ route: "empty" });
+  if (lowSignalUtterance(question)) return Object.freeze({ route: "clarify" });
+  const refusal = contractRequestVerdict(question);
+  if (refusal) return Object.freeze({ route: "contract", refusal });
+  if (mentionsProtectedMaterial(question) || mentionsFactFabrication(question) ||
+      needsSourceChoiceClarification(question)) return Object.freeze({ route: "clarify" });
+  return Object.freeze({ route: "open" });
+}
+
 /** 발화 직전 판정 — 모델이 잘 답했는지와 무관하게 계약이 최종 결정권을 갖는다. */
 function contractResultVerdict(result) {
   if (result?.withheld || result?.tier === "ⓑ") return "R-2";
@@ -292,9 +307,10 @@ export class DocentAgent {
         result = await this.useTool("clarify_intent", { input: question }, trace, context);
       } else {
         // ★ 관문 1 — 도구를 부르기 전에 판정한다. ⓒ 는 근거 탐색 흔적조차 남기지 않는다.
-        refusal = contractRequestVerdict(question);
-        if (!refusal && (mentionsProtectedMaterial(question) ||
-            mentionsFactFabrication(question) || needsSourceChoiceClarification(question))) {
+        // 음성 질문도 preflight() 로 같은 판정을 지난다(E7).
+        const gate = preflightRoute(question);
+        refusal = gate.refusal ?? "";
+        if (gate.route === "clarify") {
           trace.route = "clarify";
           result = await this.useTool("clarify_intent", { input: question }, trace, context);
         } else if (!refusal) {
@@ -378,6 +394,16 @@ export class DocentAgent {
       });
       throw error;
     }
+  }
+
+  // 음성 질문의 관문(E7). 도구와 모델을 부르지 않고 판정만 돌려준다. 거절이면 고정 문장을 함께 준다.
+  // grounded 가 false 면 열린 질문도 R-1 이다 - 글 질문의 관문 2(근거 없는 답)와 같은 자리다.
+  preflight(input, { grounded = true } = {}) {
+    const gate = preflightRoute(input);
+    const refusal = gate.route === "open" && grounded === false ? "R-1" : gate.refusal;
+    if (!refusal) return gate;
+    this.emit("contract_refused", { traceId: 0, refusal, channel: "voice" });
+    return Object.freeze({ route: "contract", refusal, answer: SPEECH_CONTRACT_REFUSALS[refusal] });
   }
 
   reset() {

@@ -439,6 +439,25 @@ export class VoiceTransport {
     });
   }
 
+  // 정해진 문장을 그대로 읽는다(xAI force_message). 모델이 짓지 않으므로 거절 문장의 자구가 지켜진다.
+  // force_message 가 곧 턴이라 response.create 를 함께 보내지 않는다. xAI 는 turn_detection.create_response:false 를
+  // 따르지 않아 서버가 말이 끝나면 늘 자동 응답을 만든다(2026-10-13 실측). 최종 전사 직후(음성 확정 전)에 이 문장을
+  // 보내면 그 자동 응답은 확정 시점에 소리 · 글 없이 끊기고(response.done cancelled), 이 문장이 다음 응답으로 나온다.
+  say(text, { interruptible = true } = {}) {
+    const value = String(text ?? "").trim();
+    if (!value || !this.active || !this.sessionReady || !socketOpen(this.socket)) return false;
+    this.socket.send(JSON.stringify({
+      type: "conversation.item.create",
+      item: {
+        type: "force_message",
+        role: "assistant",
+        interruptible,
+        content: [{ type: "output_text", text: value }],
+      },
+    }));
+    return true;
+  }
+
   waitForSessionReady({ socket, signal } = {}) {
     if (socket === this.socket && this.sessionReady) return Promise.resolve();
     return new Promise((resolve, reject) => {

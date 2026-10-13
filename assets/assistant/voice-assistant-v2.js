@@ -2,8 +2,8 @@ import {
   GROK_BUILT_IN_VOICES,
   VoiceTransport,
   VOICE_OFFLINE_MESSAGE,
-} from "./xai-voice-transport.js?v=20261013voice1";
-import { DocentAgent, mentionsProtectedMaterial, mentionsFactFabrication, needsSourceChoiceClarification } from "./docent-agent.js?v=20261004requestgate2";
+} from "./xai-voice-transport.js?v=20261013gate1";
+import { DocentAgent, mentionsProtectedMaterial, mentionsFactFabrication, needsSourceChoiceClarification } from "./docent-agent.js?v=20261013gate1";
 import { emitInspectorEvent } from "./docent-inspector-bridge.js?v=20261001candidate1";
 
 const LISTENING_PLACEHOLDER = "말씀을 듣고 있어요";
@@ -300,18 +300,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
         {
           name: "clarify_intent",
           description: "불완전한 발화를 확인하고 한 문장으로 의도를 되묻습니다.",
-          execute: ({ input }) => ({
-            answer: mentionsProtectedMaterial(input)
-              ? "비공개 자료는 이 화면에서 열 수 없습니다. 공개된 자료 가운데 무엇을 확인하고 싶으신가요?"
-              : mentionsFactFabrication(input)
-                ? "공개 근거에 없는 내용은 사실처럼 만들 수 없습니다. 어떤 공개 내용을 확인하고 싶으신가요?"
-                : needsSourceChoiceClarification(input)
-                  ? "말씀하신 연구 노트와 발표 자료 중 무엇을 먼저 확인하고 싶으신가요? 공개된 면을 확인해 안내하겠습니다."
-                  : this.scope === "series"
-                    ? "네, 듣고 있어요. 읽는 순서, 세 편의 관계, 바탕 자료 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요."
-                    : "네, 듣고 있어요. 이 페이지의 흐름, 지금 읽는 대목, 핵심 질문 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요.",
-            targets: [],
-          }),
+          execute: ({ input }) => ({ answer: this.clarifyAnswer(input), targets: [] }),
         },
         {
           name: "prepared_guide",
@@ -339,6 +328,22 @@ export class KiheonVoiceAssistant extends HTMLElement {
         },
       ],
     });
+  }
+
+  // 되묻는 문장. 글 질문의 clarify_intent 도구와 음성 질문의 관문이 같은 문장을 쓴다.
+  clarifyAnswer(input) {
+    if (mentionsProtectedMaterial(input)) {
+      return "비공개 자료는 이 화면에서 열 수 없습니다. 공개된 자료 가운데 무엇을 확인하고 싶으신가요?";
+    }
+    if (mentionsFactFabrication(input)) {
+      return "공개 근거에 없는 내용은 사실처럼 만들 수 없습니다. 어떤 공개 내용을 확인하고 싶으신가요?";
+    }
+    if (needsSourceChoiceClarification(input)) {
+      return "말씀하신 연구 노트와 발표 자료 중 무엇을 먼저 확인하고 싶으신가요? 공개된 면을 확인해 안내하겠습니다.";
+    }
+    return this.scope === "series"
+      ? "네, 듣고 있어요. 읽는 순서, 세 편의 관계, 바탕 자료 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요."
+      : "네, 듣고 있어요. 이 페이지의 흐름, 지금 읽는 대목, 핵심 질문 가운데 무엇이 궁금한지 조금만 더 말씀해 주세요.";
   }
 
   handleAgentEvent(event) {
@@ -862,7 +867,9 @@ export class KiheonVoiceAssistant extends HTMLElement {
     );
   }
 
-  preparedPromptFor(question) {
+  // exactOnly : 질문 버튼 라벨과 맞을 때만 준비된 답을 고른다. 음성은 이것만 쓴다 - 아래 낱말 규칙은 넓어서
+  // 「이 발표는 어디서 했나요?」 같은 질문도 「어디서부터 읽을까요」 답으로 보낸다(2026-10-13 독립 검수).
+  preparedPromptFor(question, { exactOnly = false } = {}) {
     if (this.scope === "content" && this.context) this.updateSectionPrompt(currentHeading());
     const prompts = this.prompts ?? [];
     const intent = intentText(question);
@@ -872,7 +879,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
       const label = intentText(prompt.label);
       return label && (intent === label || (intent.length >= 4 && label.includes(intent)));
     });
-    if (exact) return exact;
+    if (exact || exactOnly) return exact ?? null;
 
     if (this.scope === "series") {
       if (/(연구|발표|바탕|근거|자료)/u.test(question) && /(관계|이어|연결)/u.test(question)) {
@@ -1167,6 +1174,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
       return;
     }
     if (event.type === "speech_started") {
+      this.fixedVoiceAnswer = "";
       this.assistantTurn = null;
       this.voiceQuestionTurn = null;
       this.keepHeardQuestion();
@@ -1193,6 +1201,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
       if (event.final) {
         this.latestVoiceQuestion = event.transcript;
         this.voiceQuestionTurn = turn ?? null;
+        this.answerVoiceTurn(event.transcript);
       }
       return;
     }
@@ -1201,6 +1210,8 @@ export class KiheonVoiceAssistant extends HTMLElement {
       return;
     }
     if (event.type === "assistant_transcript" && event.transcript) {
+      // 정해진 문장을 읽는 턴은 말풍선에 이미 그 문장이 있다. 전사로 다시 쓰지 않는다.
+      if (this.fixedVoiceAnswer) return;
       const targets = event.final ? this.answerTargets(this.latestVoiceQuestion ?? "") : [];
       this.showAnswer(event.final ? "안내" : "답변 중", event.transcript, targets);
       return;
@@ -1213,17 +1224,52 @@ export class KiheonVoiceAssistant extends HTMLElement {
       if (this.voiceSessionActive) this.setState("listening", "다시 말씀해 주세요");
       return;
     }
+    // 정해진 문장 표시(fixedVoiceAnswer)는 여기서 풀지 않는다. 그 턴에는 응답이 둘이다 : 서버의 자동 응답이 먼저 생겼다가
+    // 소리 · 글 없이 끊기고(cancelled) 정해진 문장이 다음 응답으로 나온다(2026-10-13 실측). 다음 발화가 시작될 때 푼다.
     if (event.type === "response_done" && this.dataset.state !== "speaking") {
       if (this.voiceSessionActive) this.setState("listening", "다시 말씀해 주세요");
       return;
     }
     if (event.type === "error") {
+      this.fixedVoiceAnswer = "";
       this.voiceSessionActive = false;
       this.transport.reset();
       this.resetVoiceButton();
       this.setState("error", "음성 연결이 중단됐어요");
       this.showAnswer("안내", VOICE_OFFLINE_MESSAGE);
     }
+  }
+
+  // ★ 음성 질문의 관문(E7). 최종 전사를 글 질문과 같은 판정(DocentAgent.preflight)에 건다.
+  // 거절 · 되묻기 · 준비된 답은 정해진 문장을 그대로 읽는다(say · force_message). 열린 질문은 서버의 자동 응답이
+  // 세션 지시문(공개 문맥)으로 답한다. xAI 는 자동 응답을 끄는 설정을 따르지 않으므로(2026-10-13 실측) 끄지 않고,
+  // 정해진 문장이 최종 전사 직후 끼어들어 자동 응답을 소리 없이 끊는다. 최종 전사는 정지 뒤 약 0.1초에 오고
+  // 자동 응답의 첫 소리는 약 0.5초 뒤라(실측) 끊기가 앞선다.
+  answerVoiceTurn(question) {
+    const gate = this.agent.preflight(question, { grounded: this.groundedEntries().length > 0 });
+    if (gate.route === "contract") {
+      this.speakFixed(gate.answer);
+      return gate;
+    }
+    if (gate.route === "clarify") {
+      this.speakFixed(this.clarifyAnswer(question));
+      return gate;
+    }
+    if (gate.route === "open") {
+      const prepared = this.preparedPromptFor(question, { exactOnly: true });
+      if (prepared) {
+        this.speakFixed(prepared.answer, prepared.targets);
+        return Object.freeze({ route: "prepared", promptId: prepared.id });
+      }
+    }
+    return gate;
+  }
+
+  speakFixed(text, targets = []) {
+    this.fixedVoiceAnswer = text;
+    this.assistantTurn = null;
+    this.showAnswer("안내", text, targets);
+    if (!this.transport.say?.(text)) this.fixedVoiceAnswer = "";
   }
 
   async previewVoice() {
@@ -1275,16 +1321,51 @@ export class KiheonVoiceAssistant extends HTMLElement {
   // 이 화면에서 근거로 쓸 수 있는 공개 자료. 문맥 문자열과 `grounded` 신고가 **같은 것**을
   // 보도록 한 곳에 모았다. 빈 배열이면 이 화면에는 댈 근거가 없다는 뜻이다.
   groundedEntries() {
+    const publicEntries = this.publicEntries();
+    if (this.scope === "series") return publicEntries;
+    const entry = publicEntries.find((item) => item.contentId === this.dataset.contentId);
+    return entry ? [entry] : [];
+  }
+
+  publicEntries() {
     if (!this.context) return [];
     const allowed = new Set((this.context.allowedTargets ?? []).map((target) =>
       `${target?.contentType}:${target?.contentId}`,
     ));
-    const publicEntries = (this.context.entries ?? []).filter((item) =>
+    return (this.context.entries ?? []).filter((item) =>
       allowed.has(`${item?.type}:${item?.contentId}`),
     );
-    if (this.scope === "series") return publicEntries;
-    const entry = publicEntries.find((item) => item.contentId === this.dataset.contentId);
-    return entry ? [entry] : [];
+  }
+
+  // 콘텐츠 면도 시리즈의 다른 면을 제목 · 편 번호 · 한 줄 설명만큼은 안다(D108).
+  // 근거가 지금 면 하나뿐이면 「이 시리즈의 첫 글」 질문에 지금 면을 첫 글로 댄다(2026-10-13 실측).
+  // 허가된 항목의 공개 제목 · 설명과 시리즈 첫 화면의 승인된 안내만 옮긴다. 새 문장을 짓지 않고,
+  // 읽는 순서를 따로 단정하지 않는다(시리즈마다 승인된 시작점이 다르다 · co-creation 은 6월 발표 자료).
+  seriesMap() {
+    if (this.scope === "series") return "";
+    const entries = this.publicEntries();
+    if (entries.length < 2) return "";
+    // 편 번호는 글 번호(01-…)를 따른다. 허가 밖 글이 사이에 있어도 번호가 밀리지 않는다. 번호가 없는 글이 섞이면 차례로 센다.
+    const posts = entries.filter((item) => item.type === "post");
+    const numbered = posts.every((item) => /^\d{1,3}-/.test(String(item.contentId ?? "")));
+    let postNumber = 0;
+    const lines = entries.map((item) => {
+      const kind = item.type === "post"
+        ? `${numbered ? Number(String(item.contentId).split("-")[0]) : ++postNumber}편`
+        : entryKind(item);
+      const here = item.contentId === this.dataset.contentId ? " (지금 이 페이지)" : "";
+      const synopsis = compactText(item.synopsis);
+      return `- ${kind} · ${compactText(item.title)}${here}${synopsis ? ` : ${synopsis}` : ""}`;
+    });
+    const guide = (Array.isArray(this.context?.docent?.quickPrompts) ? this.context.docent.quickPrompts : [])
+      .map(normalisePrompt)
+      .filter(Boolean)
+      .map((prompt) => `- ${prompt.label} : ${prompt.answer}`);
+    return [
+      "시리즈 구성: 이 시리즈를 이루는 글과 자료입니다. 다른 페이지는 제목과 한 줄 설명까지만 압니다. 그 이상은 추측하지 말고 그 페이지에서 확인하도록 안내합니다.",
+      ...lines,
+      ...(guide.length ? ["시리즈 첫 화면의 안내:", ...guide] : []),
+    ].join("\n");
   }
 
   groundedContext(dialogueHistory = this.dialogueHistory) {
@@ -1306,6 +1387,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
       this.context.series?.title && `시리즈: ${compactText(this.context.series.title)}`,
       this.context.series?.synopsis && `시리즈 설명: ${compactText(this.context.series.synopsis)}`,
       ...entries.map((item) => `[${entryKind(item)}]\n${entryGrounding(item)}`),
+      this.seriesMap(),
       headingText(heading) && `현재 읽는 곳: ${headingText(heading)}`,
       outline?.summary && `현재 대목 설명: ${compactText(outline.summary)}`,
       dialogueHistory.length && `이전 대화:\n${dialogueHistory
@@ -1406,6 +1488,7 @@ export class KiheonVoiceAssistant extends HTMLElement {
     this.requestController?.abort();
     this.requestController = null;
     this.discardListeningTurn();
+    this.fixedVoiceAnswer = "";
     this.assistantTurn = null;
     this.voiceQuestionTurn = null;
     this.latestVoiceQuestion = "";
