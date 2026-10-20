@@ -89,10 +89,10 @@ test("deployed scripts keep em dashes only inside comments", async () => {
   assert.deepEqual(found, []);
 });
 
-test("published text files carry no em dash", async () => {
+test("published text files and public docs carry no em dash", async () => {
   const found = [];
   for (const file of await deployedFiles()) {
-    if (!/(\.txt|\.xml|content\.md)$/.test(file)) continue;
+    if (!/(\.txt|\.xml|content\.md)$/.test(file) && !(file.startsWith("docs/") && file.endsWith(".md"))) continue;
     if ((await read(file)).includes(DASH)) found.push(file);
   }
   assert.deepEqual(found, []);
@@ -120,4 +120,16 @@ test("the signature sits inside the page footer, after the footer's own labels",
     if (footer < 0 || close < 0 || html.indexOf("</footer>", footer) !== close) wrong.push(file);
   }
   assert.deepEqual(wrong, []);
+});
+
+test("the public brand docs follow contract v1.1: one sans set, two-layer names, no /map route", async () => {
+  const brand = await read("docs/brand/kiheon-life-universe-brand-system-v1.md");
+  assert.match(brand, /^# Kiheon Life Universe Brand System v1\.1$/m);
+  assert.doesNotMatch(brand.replace(/산세리프/g, ""), /세리프/);
+  assert.match(brand, /\| 정문 \(누구의 사이트인가\) \| 신기헌 · Kiheon Shin \|/);
+  assert.match(brand, /\| 체계 \(무엇이 이 사이트를 굴리는가\) \| Kiheon Life Universe \|/);
+  assert.match(brand, /\| Slides \| 발표 서사와 화면 \| kiheon\.app 보호면 \| 공개 전 \|/);
+  const roadmap = await read("docs/product/kiheon-life-universe-surface-roadmap-20260831.md");
+  assert.doesNotMatch(roadmap, /observatory\.vercel\.app\/map/);
+  assert.match(roadmap, /\| Universe \| `https:\/\/kiheon\.com\/universe\/`/);
 });
