@@ -11,6 +11,6 @@
   "source_ref": "owner:2026-08-31/klu-home-system-map-v2",
   "forbidden_display_terms": 0,
   "warnings": [],
-  "svg_sha256": "e1c2f459ebae2ff54c631bf62cab644fa0305c62dbe1184f7faa7475a9d28b8e",
+  "svg_sha256": "0742254ad5d81efc72b993436dc08cda9a3b1948ec297c8ef2fae1b082a6aee3",
   "output": "assets/diagrams/klu-system-map.svg"
 }
