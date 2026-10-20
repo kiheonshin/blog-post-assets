@@ -1,4 +1,4 @@
-# kiheon.com — 신기헌 발행 아카이브
+# kiheon.com · 신기헌 발행 아카이브
 #
 # 크롤러를 막지 않는다. 미발행 면은 페이지 자체의 <meta name="robots" content="noindex">
 # 로 막는데, robots.txt 로 크롤을 막으면 그 noindex 를 읽지 못해 오히려 색인에 남는다.

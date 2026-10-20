@@ -330,7 +330,7 @@
       "url": "series/co-creation-culture/posts/01-whose-creativity/",
       "title": "창의성은 누구의 것인가",
       "synopsis": "레고의 완결성과 참여 전략, 제프 스테이플과 사피엔즈의 공동 창작, 온체인 초상과 일곱 단계의 참여 구조를 통해 창의성의 주체가 한 명의 저자에서 공동체로 이동하는 과정을 살핀다.",
-      "contentHash": "sha256:b36e4d42ca7e6ac3bd11df9d3c1c302b1bedf4469f2e886b7c413414f4bdcdb0",
+      "contentHash": "sha256:b881552ec48cacc6b076d51c850626d0fdc93ddebe43cf3f31d415150a05bc1f",
       "keyInsights": [
         {
           "text": "코-크리에이션은 사람을 결과물의 소비자가 아니라 기획과 선택, 확산에 참여하는 창작 주체로 초대하는 구조다.",
@@ -423,7 +423,7 @@
       "url": "series/co-creation-culture/posts/02-at-the-boundary/",
       "title": "경계면에서",
       "synopsis": "도시 위에 덧입혀진 이미지와 방문객의 여정, 스토리텔링과 매직서클을 따라가며 현실과 가상이 겹치는 경계면에서 경험을 설계하는 조건을 살핀다.",
-      "contentHash": "sha256:94989c9f039afde635ec890d363c6853cfbb07f7f6a1ff1ec336ed5e360cffc2",
+      "contentHash": "sha256:77d00cacbf6a4c7412538b1706788d8b3480ec46ddf89cf24358fb595b6be117",
       "keyInsights": [
         {
           "text": "기술이 전면에 드러나기보다 이야기와 행동 안에 숨을 때 방문자는 현실과 가상을 하나의 경험으로 받아들인다.",
@@ -516,7 +516,7 @@
       "url": "series/co-creation-culture/posts/03-when-records-become-stories/",
       "title": "기록이 이야기가 될 때",
       "synopsis": "블록체인을 공부한 이유와 경험의 상속, 온체인 스토리텔링의 다섯 도구, 가상과 현실을 오가는 캐릭터 사례를 통해 기록이 소유를 넘어 이야기가 되는 조건을 묻는다.",
-      "contentHash": "sha256:317bc79f2ffeaa22fdf6a5272e90c672a17a433461e7507ea0337dadbf868091",
+      "contentHash": "sha256:4a25abd002f54c9367a5c190b831d0323e04e3b270a01e1842b9d669bcccfa06",
       "keyInsights": [
         {
           "text": "블록체인의 의미는 기록을 남긴다는 기능 자체보다 누가 어떤 경험과 관계를 이어받을 수 있는지 설계하는 데 있다.",
@@ -609,7 +609,7 @@
       "url": "series/co-creation-culture/sources/slides-2023-06/",
       "title": "코-크리에이션 시대의 새로운 창작 문화",
       "synopsis": "레고와 스테이플버스에서 출발해 참여와 보상, 현실·가상의 경계, 플랫폼과 수익, 생성 AI, 웹3 거버넌스로 이어지는 코-크리에이션의 전체 구조를 다룬 2023년 6월 발표 자료다.",
-      "contentHash": "sha256:fc9c73840c82cc0147e65f2714b0dd1364b75130f43096f3fee711c71a05c7da",
+      "contentHash": "sha256:c6beef125d0ec50d57d990590cef990a4f2f09743e559d69db137ad3ce5df92b",
       "keyInsights": [
         {
           "text": "코-크리에이션은 다수의 창의성을 모으는 것과 각자의 기여를 기록하고 보상하는 일을 하나의 문화적 구조로 묶는다.",
