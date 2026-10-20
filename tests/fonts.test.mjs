@@ -110,7 +110,7 @@ test("every public page reaches the font definitions through site.css or fonts/f
   const missing = [];
   for (const file of await publicPages()) {
     const html = await read(file);
-    if (/<link[^>]+href="[^"]*assets\/site\.css\?v=20261020font1"/.test(html)) continue;
+    if (/<link[^>]+href="[^"]*assets\/site\.css\?v=20261020brand1"/.test(html)) continue;
     const link = html.match(/<link[^>]+href="[^"]*assets\/fonts\/fonts\.css\?v=([0-9a-f]{10})"/);
     if (!link) { missing.push(file); continue; }
     assert.equal(link[1], fontsCssVersion, file);

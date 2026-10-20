@@ -11,7 +11,7 @@ test("the filter surface is named Explore rather than Archive", async () => {
   const html = await read("index.html");
   assert.match(html, /<h2 id="archive-title" class="library-section__marker" aria-label="기록 탐색">Explore<\/h2>/);
   assert.doesNotMatch(html, /aria-label="아카이브로 찾기">Archive<\/h2>/);
-  assert.match(html, /assets\/site\.css\?v=20261020font1/);
+  assert.match(html, /assets\/site\.css\?v=20261020brand1/);
   assert.match(html, /assets\/series-nav\.js\?v=20261020brand1/);
 });
 

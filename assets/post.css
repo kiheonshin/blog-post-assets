@@ -201,4 +201,6 @@ h1{display:grid;gap:.55rem;margin-block-start:.5rem}
   display:flex;flex-wrap:wrap;gap:.75rem 2rem;justify-content:space-between;
   font-family:var(--font-mono);font-size:var(--micro);letter-spacing:.09em}
 .site-footer a{color:var(--inverse-ink)}
+.site-footer__sign{flex-basis:100%;margin:0}
+.site-footer__system{text-transform:uppercase}
 @media(prefers-reduced-motion:reduce){*{transition:none!important}}

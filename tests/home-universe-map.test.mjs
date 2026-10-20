@@ -112,7 +112,7 @@ test("the Universe map does not repeat below individual posts", async () => {
   for (const file of files) {
     const html = await readFile(file, "utf8");
     assert.doesNotMatch(html, /class="universe-map"/, file);
-    assert.match(html, /assets\/post\.css\?v=20261020font1/, file);
+    assert.match(html, /assets\/post\.css\?v=20261020brand1/, file);
   }
 });
 

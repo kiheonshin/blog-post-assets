@@ -97,3 +97,27 @@ test("published text files carry no em dash", async () => {
   }
   assert.deepEqual(found, []);
 });
+
+// 바닥 서명 : 체계 이름은 공개 글 귀속과 함께 한 줄로, 면마다 한 번(계약 v1.1 §1 · 2026-10-20).
+const SIGN = '<p class="site-footer__sign"><span class="site-footer__system">Kiheon Life Universe</span> · 신기헌의 디지털 트윈 프로젝트</p>';
+
+test("every public page carries the system signature exactly once, in the same words", async () => {
+  const wrong = [];
+  for (const { file, html } of await publicPages()) {
+    const exact = html.split(SIGN).length - 1;
+    const any = html.split('class="site-footer__sign"').length - 1;
+    if (exact !== 1 || any !== 1) wrong.push(`${file} ${exact}/${any}`);
+  }
+  assert.deepEqual(wrong, []);
+});
+
+test("the signature sits inside the page footer, after the footer's own labels", async () => {
+  const wrong = [];
+  for (const { file, html } of await publicPages()) {
+    const at = html.indexOf(SIGN);
+    const footer = html.lastIndexOf("<footer", at);
+    const close = html.indexOf("</footer>", at);
+    if (footer < 0 || close < 0 || html.indexOf("</footer>", footer) !== close) wrong.push(file);
+  }
+  assert.deepEqual(wrong, []);
+});

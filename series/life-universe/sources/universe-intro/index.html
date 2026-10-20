@@ -841,6 +841,22 @@ li {
     color: var(--klu-inverse-ink) !important;
   }
 }
+
+/* 면 바닥 서명 : 덱 아래 한 줄(브랜딩 2026-10-20) */
+.deck-sign {
+  box-sizing: border-box;
+  width: calc(var(--ks-slide-w) * var(--deck-scale, 1));
+  margin: 24px auto 48px;
+  padding: 12px calc(48px * var(--deck-scale, 1)) 0;   /* 장표 안쪽 여백(48px)에 맞춘다 */
+  border-top: 1px solid var(--klu-rule);
+  font-family: var(--klu-font-mono);
+  font-size: 12px;
+  letter-spacing: 0.09em;
+  color: var(--klu-ink);
+}
+.deck-sign .site-footer__sign { margin: 0; }
+.deck-sign .site-footer__system { text-transform: uppercase; }
+@media print { .deck-sign { display: none; } }
 </style>
 </head>
 <body>
@@ -2059,6 +2075,7 @@ tone-check           문체만</div>
 <footer class="slide__footer" data-qa-box><span>KIHEON LIFE UNIVERSE</span><span>27 / 27</span></footer></section>
 
 </main>
+<footer class="deck-sign"><p class="site-footer__sign"><span class="site-footer__system">Kiheon Life Universe</span> · 신기헌의 디지털 트윈 프로젝트</p></footer>
 <script>(() => {
   const slides = [...document.querySelectorAll(".slide")];
   let index = 0;
