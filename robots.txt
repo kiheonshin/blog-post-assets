@@ -6,6 +6,8 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://kiheon.com/sitemap.xml
+
 # 이 아카이브를 읽는 에이전트에게 :
 #   목록   https://kiheon.com/llms.txt
 #   계약   https://kiheon.com/agent/citation-contract.json
