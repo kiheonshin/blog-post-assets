@@ -42,11 +42,11 @@
   ],
   "headers": [
     {
-      "source": "/(.*)",
+      "source": "/((?!universe/).*)",
       "headers": [
         {
-          "key": "Content-Security-Policy-Report-Only",
-          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com; font-src 'self'; media-src 'self'; connect-src 'self' https://blog-post-assets.vercel.app wss://api.x.ai https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube-nocookie.com; object-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self' https://kiheon.app"
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.googletagmanager.com https://www.google-analytics.com; font-src 'self'; media-src 'self'; connect-src 'self' https://blog-post-assets.vercel.app wss://api.x.ai https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.google.com https://www.googletagmanager.com; frame-src 'self' https://www.youtube-nocookie.com; object-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self' https://kiheon.app; upgrade-insecure-requests"
         }
       ]
     }

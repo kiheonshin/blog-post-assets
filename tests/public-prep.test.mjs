@@ -53,18 +53,21 @@ test("the Medium import originals at the repository root stay out of search", as
   assert.equal(originals.length, 7, originals.join(" "));
 });
 
-// 보안 규칙(CSP)은 Report-Only 로 먼저 건다(본인 2026-10-20 「Report-Only 먼저」). 정식 적용은 본인 결정 뒤.
-// 2026-10-20 초안 검증 : 공개 69 + 404 + 관측소 5, 폭 셋 225 칸 위반 0(대조 실행 둘로 탐침 확인).
-test("vercel.json carries the CSP as Report-Only for every path, with the sources the site needs", async () => {
+// 보안 규칙(CSP)은 정식으로 건다(본인 2026-10-21 「바로 적용」 · 메인 세션 창과 이 창 같은 답).
+// 2026-10-20 초안 검증 : 공개 69 + 404 + 관측소 5, 폭 셋 225 칸 막힘 0(대조 실행으로 탐침 확인).
+// 관측소(/universe/)는 자기 배포의 CSP 를 따로 보낸다 : 우리 규칙은 그 경로를 빼서 겹치지 않게 한다.
+test("vercel.json enforces the CSP on every path except the observatory, with the sources the site needs", async () => {
   const config = JSON.parse(await read("vercel.json"));
-  const rule = (config.headers ?? []).find((entry) => entry.source === "/(.*)");
-  assert.ok(rule, "모든 경로 머리글 규칙");
+  const rules = config.headers ?? [];
+  assert.equal(rules.length, 1);
+  const [rule] = rules;
+  assert.equal(rule.source, "/((?!universe/).*)", "관측소는 자기 CSP 를 쓴다");
   const keys = rule.headers.map((header) => header.key);
-  assert.ok(keys.includes("Content-Security-Policy-Report-Only"));
-  assert.ok(!keys.includes("Content-Security-Policy"), "정식 적용은 본인 결정 뒤");
-  const policy = rule.headers.find((header) => header.key === "Content-Security-Policy-Report-Only").value;
+  assert.deepEqual(keys, ["Content-Security-Policy"]);
+  const policy = rule.headers[0].value;
   const directives = Object.fromEntries(policy.split(";").map((part) => part.trim()).filter(Boolean)
     .map((part) => { const [name, ...values] = part.split(/\s+/); return [name, values]; }));
+  assert.deepEqual(directives["default-src"], ["'self'"]);
   // 본인 점검기(kiheon.app)가 공개 면을 iframe 으로 품는다.
   assert.deepEqual(directives["frame-ancestors"], ["'self'", "https://kiheon.app"]);
   // 첫 화면 시스템 지도는 <object> 로 들어가고 크롬은 그 문서를 frame-src 로도 본다.
@@ -75,6 +78,5 @@ test("vercel.json carries the CSP as Report-Only for every path, with the source
   const token = new URL(transport.match(/PRODUCTION_TOKEN_ENDPOINT =\s*"([^"]+)"/)[1]).origin;
   assert.ok(directives["connect-src"].includes(token), token);
   assert.ok(directives["connect-src"].includes("wss://api.x.ai"));
-  // Report-Only 에서는 무시되고 경고만 남는 지시는 넣지 않는다.
-  assert.ok(!("upgrade-insecure-requests" in directives));
+  assert.ok(directives["script-src"].includes("https://www.googletagmanager.com"));
 });
