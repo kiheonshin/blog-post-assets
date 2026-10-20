@@ -5,8 +5,8 @@
     "series/metaverse-era/sources/presentations/index.html"
   ],
   "inputSha256": {
-    "assets/content-manifest.js": "1beadc0381491800fa041067e85427bb0fac3843f1ef1ab6393c15887271e073",
-    "series/metaverse-era/sources/presentations/index.html": "bfeba6e684904e37c924c9a3ed1125951d63fd79214c4e4b897273c684f0059b"
+    "assets/content-manifest.js": "f6640a22b3f8f0009dee87f5f627b996be26185b50f7c711a63e161cda55f598",
+    "series/metaverse-era/sources/presentations/index.html": "0e16cac126a5d17a64627d89970f187c35dc1417ff1c9386aad4ccfaa3e42327"
   },
   "counts": {
     "publicSeries": 7,
@@ -84,7 +84,7 @@
     {
       "slug": "metaverse-era",
       "label": "06 · Metaverse Era",
-      "title": "메타버스 시대 · 한 파일로 2년을 말했다",
+      "title": "메타버스 시대 : 한 파일로 2년을 말했다",
       "href": "series/metaverse-era/",
       "posts": 3,
       "sources": 1,
@@ -272,7 +272,7 @@
       "href": "series/metaverse-era/sources/presentations/",
       "seriesSlug": "metaverse-era",
       "seriesLabel": "06 · Metaverse Era",
-      "seriesTitle": "메타버스 시대 · 한 파일로 2년을 말했다",
+      "seriesTitle": "메타버스 시대 : 한 파일로 2년을 말했다",
       "displayTitle": "공개 발표와 자료의 연결"
     }
   ],

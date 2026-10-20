@@ -47,7 +47,7 @@
 
     var ch = C[s.c] || C[0];
     document.getElementById('pvch').textContent =
-      (ch.n ? ch.n + '. ' : '') + ch.t + (s.s ? '  —  ' + s.s : '');
+      (ch.n ? ch.n + '. ' : '') + ch.t + (s.s ? ' · ' + s.s : '');
     document.getElementById('pvno').textContent = s.n;
     document.getElementById('pvprev').disabled = at === 0;
     document.getElementById('pvnext').disabled = at === S.length - 1;

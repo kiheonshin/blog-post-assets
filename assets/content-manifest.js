@@ -521,7 +521,7 @@ export const contentLibrary = {
     {
       slug: "metaverse-era",
       label: "06 · Metaverse Era",
-      title: "메타버스 시대 — 한 파일로 2년을 말했다",
+      title: "메타버스 시대 : 한 파일로 2년을 말했다",
       description:
         "2020년 겨울부터 2021년 말까지 강연으로 한 말을, 그 말을 담고 다닌 파일 한 벌과 나란히 놓고 다시 읽은 세 편.",
       period: "2020–2026",

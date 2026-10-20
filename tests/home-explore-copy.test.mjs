@@ -19,5 +19,5 @@ test("the Explore controls omit redundant discovery status copy", async () => {
   assert.doesNotMatch(navigation, /전체 공개 기록/);
   assert.doesNotMatch(navigation, /`기록 \$\{items\.length\}건`/);
   assert.doesNotMatch(navigation, /archive-status/);
-  assert.match(home, /series-nav\.js\?v=20260831b/);
+  assert.match(home, /series-nav\.js\?v=20261020brand1/);
 });
