@@ -53,7 +53,7 @@ const homeMounted = (seriesId) =>
 test("every docent surface uses the same xAI Realtime v2 interface", async () => {
   for (const file of Object.values(seriesSurfaces).flat()) {
     const html = await read(file);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20261004docent2/, file);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20261020font1/, file);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20261013gate1/, file);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:css|js)/, file);
   }
@@ -112,7 +112,9 @@ test("every docent series shares the verified Grok built-in voice runtime", asyn
     // 콘텐츠 면 근거에 시리즈 구성(허가 항목의 제목 · 편 번호 · 한 줄 설명과 시리즈 첫 화면 안내)을 더함 · 전송 · 판정 모듈 캐시 판.
     // voice-question-gate.test.mjs · docent-agent.test.mjs · assistant-voice.test.mjs 의 D108 두 시험이 내용을 지킨다.
     assert.equal(sha256(script), "e73ef1aa8b908ac6db83ee6ba4d7c03d8fe645a39bb2a745ef5059e327e56a72");
-  assert.equal(sha256(styles), "44e17c8443b0a0993b486f51d72726371403a808fa1f6e6e73931fabcf6b32d4");
+  // 2026-10-20 글꼴 한 벌(본인 10-18)로 갱신 : var() 기본값의 옛 꼴(Iowan · SFMono · -apple-system)을 Life Universe Sans · Mono 로.
+  // 바뀐 것은 기본값 셋뿐이고 tests/fonts.test.mjs 가 옛 꼴 0 을 지킨다.
+  assert.equal(sha256(styles), "db44da1089190bc31ac2eee73acfa2b311635c9b86a5aa00c9f4e16801b689d5");
   assert.match(script, /data-assistant-open-voice/);
   assert.match(script, /voiceSessionActive/);
   assert.match(script, /data-assistant-transcript-details/);

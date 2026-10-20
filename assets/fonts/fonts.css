@@ -1,0 +1,41 @@
+/* Life Universe 글꼴 한 벌 (2026-10-18 · 본인 결정) : 영문 · 숫자 Geist + 한글 Pretendard · 고정폭 Geist Mono.
+   제목과 본문 모두 산세리프다. site.css 를 부르지 않는 면(원자료 면)이 이 파일을 부르고, site.css 에도 같은 세 정의가 있다.
+   묶음은 build_life_universe_fonts.py 가 짓고 두 파일의 주소에 ?v= 판을 찍는다. */
+@font-face {
+  font-family: "Life Universe Sans";
+  src: url("./life-universe-sans.woff2?v=9ce2d97863") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Life Universe Mono";
+  src: url("./life-universe-mono.woff2?v=119f3e159f") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Life Universe Hangul";
+  src: url("./life-universe-hangul.woff2?v=7faa9ebe87") format("woff2");
+  font-style: normal;
+  font-weight: 45 930;
+  font-display: swap;
+}
+
+/* 단추 · 입력 · 코드가 브라우저 기본 글꼴(Arial · Courier)로 떨어지지 않게 (2026-10-15 글꼴 점검 F2 · F3) */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-mono, "Life Universe Mono", "Life Universe Hangul", ui-monospace, Menlo, Consolas, monospace);
+}

@@ -13,6 +13,7 @@
 <meta property="og:image" content="https://kiheon.com/series/life-universe/assets/series-banner.jpg?v=20260810a">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-SQYBGPJFJ4"></script>
 <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-SQYBGPJFJ4');</script>
+<link rel="stylesheet" href="../../../../assets/fonts/fonts.css?v=509ed5fd12">
 <style>:root {
   --ks-bg: #f7f8f9;
   --ks-surface: #ffffff;
@@ -27,7 +28,7 @@
   --ks-accent-3: #d8573c;
   --ks-warning: #f4b740;
   --ks-on-accent: #ffffff;
-  --ks-font: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", sans-serif;
+  --ks-font: "Life Universe Sans", "Life Universe Hangul", BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
   --ks-slide-w: 1280px;
   --ks-slide-h: 720px;
 }
@@ -342,14 +343,11 @@ li {
   --klu-mk-dead:        #6a6964;   /* 바탕 없음 · line-through */
 
   /* ── 서체 ────────────────────────────────────────────────────────
-     제목=명조, 본문=고딕, 라벨·수치=모노. 세 표면에서 문자열까지 동일했다.
-     한 제목 안에서 라틴(Iowan)과 한글(명조)이 섞이는 것이 이 시스템의 지문이다. */
-  --klu-font-display: "Iowan Old Style", "Noto Serif CJK KR", "AppleMyungjo",
-                      "Nanum Myeongjo", serif;
-  --klu-font-body:    -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
-                      "Noto Sans KR", "Malgun Gothic", sans-serif;
-  --klu-font-mono:    "SFMono-Regular", "Roboto Mono", "Noto Sans Mono CJK KR",
-                      monospace;
+     2026-10-18 부터 제목과 본문이 같은 산세리프 한 벌이다 : 영문 · 숫자 Geist + 한글 Pretendard,
+     라벨 · 수치는 Geist Mono(그 안의 한글도 Pretendard). 글꼴 정의는 assets/fonts/fonts.css 가 준다. */
+  --klu-font-display: "Life Universe Sans", "Life Universe Hangul", BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --klu-font-body:    "Life Universe Sans", "Life Universe Hangul", BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --klu-font-mono:    "Life Universe Mono", "Life Universe Hangul", ui-monospace, Menlo, Consolas, monospace;
 
   /* ── 자간 ────────────────────────────────────────────────────────
      모노 대문자 + 넓은 자간이 「라벨」의 신호다. 0.09em이 기본값. */

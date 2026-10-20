@@ -1,3 +1,30 @@
+/* Life Universe 글꼴 한 벌 (2026-10-18 · 본인 결정) : 영문 · 숫자 Geist + 한글 Pretendard · 고정폭 Geist Mono.
+   제목과 본문 모두 산세리프다. 원자료 면처럼 이 파일을 부르지 않는 면은 fonts/fonts.css 로 같은 정의를 받는다.
+   묶음은 build_life_universe_fonts.py 가 짓고 주소에 ?v= 판을 찍는다. */
+@font-face {
+  font-family: "Life Universe Sans";
+  src: url("./fonts/life-universe-sans.woff2?v=9ce2d97863") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Life Universe Mono";
+  src: url("./fonts/life-universe-mono.woff2?v=119f3e159f") format("woff2");
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Life Universe Hangul";
+  src: url("./fonts/life-universe-hangul.woff2?v=7faa9ebe87") format("woff2");
+  font-style: normal;
+  font-weight: 45 930;
+  font-display: swap;
+}
+
 :root {
   --canvas: #f3f3ef;
   --surface: #fbfbf8;
@@ -12,12 +39,13 @@
   --accent-hover: #163da7;
   --inverse: #17181a;
   --inverse-ink: #f7f7f2;
-  --font-display: "Iowan Old Style", "Noto Serif CJK KR", "AppleMyungjo",
-    "Nanum Myeongjo", serif;
-  --font-body: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo",
-    "Noto Sans KR", "Malgun Gothic", sans-serif;
-  --font-mono: "SFMono-Regular", "Roboto Mono", "Noto Sans Mono CJK KR",
-    monospace;
+  /* 제목도 본문과 같은 산세리프 한 벌이다(2026-10-18). --font-display 는 제목 자리의 이름만 남았다. */
+  --font-display: "Life Universe Sans", "Life Universe Hangul", BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-body: "Life Universe Sans", "Life Universe Hangul", BlinkMacSystemFont,
+    "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  --font-mono: "Life Universe Mono", "Life Universe Hangul", ui-monospace, Menlo,
+    Consolas, monospace;
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -44,6 +72,21 @@
   :root {
     --gutter: var(--space-12);
   }
+}
+
+/* 단추 · 입력 · 코드가 브라우저 기본 글꼴(Arial · Courier)로 떨어지지 않게 (2026-10-15 글꼴 점검 F2 · F3) */
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+code,
+kbd,
+samp,
+pre {
+  font-family: var(--font-mono);
 }
 
 series-nav,

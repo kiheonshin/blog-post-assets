@@ -1216,7 +1216,7 @@ test("every published docent surface installs one assistant in the required read
   for (const { type, file, html } of pages) {
     assert.equal((html.match(/<kiheon-voice-assistant\b/g) ?? []).length, 1);
     assert.match(html, /assets\/assistant\/voice-assistant-v2\.js\?v=20261013gate1/);
-    assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20261004docent2/);
+    assert.match(html, /assets\/assistant\/voice-assistant-v2\.css\?v=20261020font1/);
     assert.doesNotMatch(html, /assets\/assistant\/voice-assistant\.(?:js|css)/);
     assert.doesNotMatch(html, /assets\/voice-agent\.js/);
     if (type === "series") {

@@ -4,7 +4,7 @@ kiheon-voice-assistant {
   --voice-assistant-action-height: calc(var(--space-10, 2.5rem) + var(--space-1, .25rem));
   --voice-assistant-action-min-width: calc(var(--space-16, 4rem) + var(--space-3, .75rem));
   color: var(--ink, #17181a);
-  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif);
+  font-family: var(--font-body, "Life Universe Sans", "Life Universe Hangul", BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif);
   word-break: keep-all;
 }
 
@@ -36,7 +36,7 @@ kiheon-voice-assistant[hidden],
 .voice-assistant__speaker,
 .voice-assistant__status,
 .voice-assistant__form label > span {
-  font-family: var(--font-mono, "SFMono-Regular", monospace);
+  font-family: var(--font-mono, "Life Universe Mono", "Life Universe Hangul", ui-monospace, Menlo, Consolas, monospace);
   font-size: var(--micro, .6875rem);
   letter-spacing: .06em;
 }
@@ -49,7 +49,7 @@ kiheon-voice-assistant[hidden],
 
 .voice-assistant__title {
   margin: 0;
-  font-family: var(--font-display, "Iowan Old Style", serif);
+  font-family: var(--font-display, "Life Universe Sans", "Life Universe Hangul", BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif);
   font-size: calc(var(--small, .875rem) + var(--space-1, .25rem));
   font-weight: 400;
   line-height: 1.35;
@@ -329,7 +329,7 @@ kiheon-voice-assistant[hidden],
   border: 1px solid var(--rule-strong, #17181a);
   background: var(--inverse, #17181a);
   color: var(--inverse-ink, #f7f7f2);
-  font-family: var(--font-mono, "SFMono-Regular", monospace);
+  font-family: var(--font-mono, "Life Universe Mono", "Life Universe Hangul", ui-monospace, Menlo, Consolas, monospace);
   font-size: var(--micro, .6875rem);
   font-weight: 600;
   letter-spacing: .04em;
@@ -417,7 +417,7 @@ kiheon-voice-assistant[hidden],
 .voice-assistant__voice-stage-copy .voice-assistant__voice-stage-title {
   margin-block-end: var(--space-1, .25rem);
   color: var(--ink, #17181a);
-  font-family: var(--font-display, "Iowan Old Style", serif);
+  font-family: var(--font-display, "Life Universe Sans", "Life Universe Hangul", BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif);
   font-size: calc(var(--small, .875rem) + var(--space-1, .25rem));
   line-height: 1.4;
 }
@@ -498,7 +498,7 @@ kiheon-voice-assistant[hidden],
 .voice-assistant__disclosure summary,
 .voice-assistant__transcript-details > summary {
   cursor: pointer;
-  font-family: var(--font-mono, "SFMono-Regular", monospace);
+  font-family: var(--font-mono, "Life Universe Mono", "Life Universe Hangul", ui-monospace, Menlo, Consolas, monospace);
   font-size: var(--micro, .6875rem);
   letter-spacing: .04em;
 }
@@ -576,7 +576,7 @@ kiheon-voice-assistant[hidden],
   min-width: 0;
   margin-inline-start: auto;
   color: var(--ink-muted, #5e6065);
-  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif);
+  font-family: var(--font-body, "Life Universe Sans", "Life Universe Hangul", BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif);
   letter-spacing: 0;
   line-height: 1.35;
 }
@@ -594,7 +594,7 @@ kiheon-voice-assistant[hidden],
   border: 1px solid var(--rule-strong, #17181a);
   background: transparent;
   color: var(--ink, #17181a);
-  font-family: var(--font-mono, "SFMono-Regular", monospace);
+  font-family: var(--font-mono, "Life Universe Mono", "Life Universe Hangul", ui-monospace, Menlo, Consolas, monospace);
   font-size: var(--micro, .6875rem);
   font-weight: 600;
   letter-spacing: .04em;
@@ -612,7 +612,7 @@ kiheon-voice-assistant[hidden],
   margin-inline-start: calc(var(--space-1, .25rem) * -1);
   padding-inline: var(--space-1, .25rem);
   background: var(--canvas, #f3f3ef);
-  font-family: var(--font-mono, "SFMono-Regular", monospace);
+  font-family: var(--font-mono, "Life Universe Mono", "Life Universe Hangul", ui-monospace, Menlo, Consolas, monospace);
   font-size: var(--micro, .6875rem);
   letter-spacing: .04em;
 }
@@ -736,7 +736,7 @@ kiheon-voice-assistant[hidden],
 .voice-assistant__disclosure-short {
   grid-column: 1;
   color: var(--ink-muted, #5e6065);
-  font-family: var(--font-body, -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", sans-serif);
+  font-family: var(--font-body, "Life Universe Sans", "Life Universe Hangul", BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif);
   line-height: 1.45;
 }
 
@@ -833,7 +833,7 @@ kiheon-voice-assistant[hidden],
   border: 0;
   background: transparent;
   color: var(--ink-muted, #5e6065);
-  font-family: var(--font-mono, "SFMono-Regular", monospace);
+  font-family: var(--font-mono, "Life Universe Mono", "Life Universe Hangul", ui-monospace, Menlo, Consolas, monospace);
   font-size: var(--micro, .6875rem);
   font-weight: 400;
   letter-spacing: .02em;

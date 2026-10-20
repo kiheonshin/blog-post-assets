@@ -54,7 +54,7 @@ test("the Universe project lineup appears once after Explore", async () => {
   assert.match(map, /<p class="universe-map__eyebrow">PRODUCT LINEUP · KIHEON LIFE UNIVERSE<\/p>/);
   assert.match(map, /<h2 id="home-universe-title">프로젝트 소개와 공개 표면<\/h2>/);
   assert.doesNotMatch(map, /<h2[^>]*>KIHEON LIFE UNIVERSE<\/h2>/);
-  assert.match(map, /assets\/diagrams\/klu-system-map\.svg\?v=20260831c/);
+  assert.match(map, /assets\/diagrams\/klu-system-map\.svg\?v=20261020font1/);
   assert.match(html, /assets\/world-atlas-entry\.css\?v=20260831b/);
 });
 
@@ -112,7 +112,7 @@ test("the Universe map does not repeat below individual posts", async () => {
   for (const file of files) {
     const html = await readFile(file, "utf8");
     assert.doesNotMatch(html, /class="universe-map"/, file);
-    assert.match(html, /assets\/post\.css\?v=20260809a/, file);
+    assert.match(html, /assets\/post\.css\?v=20261020font1/, file);
   }
 });
 

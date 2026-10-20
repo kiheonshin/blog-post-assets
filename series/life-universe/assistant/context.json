@@ -12,7 +12,7 @@
       "url": "series/life-universe/posts/01-result/",
       "title": "앞선 다섯 시리즈에 나는 같은 한 줄을 붙였다",
       "synopsis": "같은 도구를 쓰고도 무엇이 완성도를 갈랐는가. 끝내 오지 않은 말투 하나와, 자료로는 채워지지 않던 칸.",
-      "contentHash": "sha256:b242dc96db0efb89479943fa2e4206f851d8e743bd59902ef260e124e36d42f8",
+      "contentHash": "sha256:5466b4b6ec33c062a799df80d59811235fc3caabb3db9aeb7c8fbcb5586dd7d2",
       "keyInsights": [],
       "outline": [],
       "relations": []
@@ -23,7 +23,7 @@
       "url": "series/life-universe/posts/02-structure/",
       "title": "디지털 트윈은 프롬프트가 아니라 구조다",
       "synopsis": "자료를 전부 읽히는 일이 아니었다. 읽히기 전에 세고, 원본만 잠그고, 연결 수를 버린 자리까지.",
-      "contentHash": "sha256:d17029aa76570435369cb0482f8ca02b71c33139c21969aec9a6a23afc63dc82",
+      "contentHash": "sha256:c826766a0a0f90841dddac72487ecb2279b3bcd123abc4278dfafa86320e4282",
       "keyInsights": [],
       "outline": [],
       "relations": []
@@ -34,7 +34,7 @@
       "url": "series/life-universe/posts/03-boundary/",
       "title": "먼저 다 닫아두고, 지킨 만큼만 한 칸씩 열었다",
       "synopsis": "접근 범위는 설정 화면에서 정해지지 않았다. 경계가 새던 자리와, 끝까지 열지 않은 자리.",
-      "contentHash": "sha256:08d198243c9b0881a5ebf6d509e482e163c2ddd04413cf3e51743751f831803f",
+      "contentHash": "sha256:0747cb86f68f8ddc3bc44294d1b07945fddc05f3642053fc44c7bda65e53bd31",
       "keyInsights": [],
       "outline": [],
       "relations": []
@@ -45,7 +45,7 @@
       "url": "series/life-universe/sources/universe-intro/",
       "title": "Kiheon life universe 소개",
       "synopsis": "27장. 본인을 학습한 에이전트가 본인의 발표 자료와 아카이브를 재료로 다시 만든 소개 자료다. 본인이 읽고 승인한 뒤 공개됐다.",
-      "contentHash": "sha256:8e50bbe93b75c42c72f75264f97f0fbd09a22425ac7a15d6682c63d7bf46fcc7",
+      "contentHash": "sha256:3c2d345f7d96535e9e35fa6a28a16371646c396d7904f1b1019ec0edbd9d527e",
       "keyInsights": [],
       "outline": [],
       "relations": []

@@ -29,7 +29,7 @@
 .agv {
   --agv-rule: var(--rule, #cfcfc8);
   --agv-lab: #05585f;                 /* 라벨 전용 색. 도판 규격과 같은 값 */
-  --agv-mono: var(--font-mono, monospace);
+  --agv-mono: var(--font-mono, "Life Universe Mono", "Life Universe Hangul", ui-monospace, Menlo, Consolas, monospace);
 }
 
 /* ══════════════ 주석 하나 ══════════════
