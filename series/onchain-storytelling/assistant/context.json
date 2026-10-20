@@ -76,7 +76,7 @@
       "url": "series/onchain-storytelling/posts/01-worldview/",
       "title": "이야기를 담으려면 세계부터 지어야 했다",
       "synopsis": "온체인 스토리텔링의 정의, 타운과 포탈, 문서가 아니라 장부가 정본이 되는 세계.",
-      "contentHash": "sha256:b6b5b3557ab653718c2d16e5c06329d5277d5682aaa35fea22c48d062861f88d",
+      "contentHash": "sha256:c85722baf2295ac13247c137612fcc49ac4c33b36b51db1aae4df1a224f57c98",
       "keyInsights": [],
       "outline": [],
       "relations": []
@@ -87,7 +87,7 @@
       "url": "series/onchain-storytelling/posts/02-methodology/",
       "title": "캐릭터는 정의되기 전에 먼저 살았다",
       "synopsis": "정의보다 생활을 먼저 내보내는 순서, 인벤토리로 성격을 만드는 설계, 빈 자리를 상품으로 세우는 방법.",
-      "contentHash": "sha256:a0fa40054c0bd5d4085da0c532eda15a7fdec592c7d76344e871193818af99b5",
+      "contentHash": "sha256:93bd4980c3cd2a956f244d9e26d2711cc583005715236db59b517582fdfbfc6d",
       "keyInsights": [],
       "outline": [],
       "relations": []
@@ -98,7 +98,7 @@
       "url": "series/onchain-storytelling/posts/03-expansion/",
       "title": "세계는 옷과 공간과 음악으로 새어 나갔다",
       "synopsis": "영상 연작과 패션 캠페인, 호텔 형태의 공간 기획, 캐릭터 명의의 음원까지. 확장의 갈래들.",
-      "contentHash": "sha256:51dce60cd8e7a9f16a94906e9b077637bc6e18f9fc5d117047a24921c98bcb4b",
+      "contentHash": "sha256:44116372a37773e7a01a125e612a3a5745d93631021eb06263f5acadb0bcbfc3",
       "keyInsights": [],
       "outline": [],
       "relations": []
@@ -109,7 +109,7 @@
       "url": "series/onchain-storytelling/sources/slides-2023-11/",
       "title": "온체인 스토리텔링과 현실·가상의 경계",
       "synopsis": "현실 위의 이미지와 방문객의 여정, 매직서클, 블록체인과 경험의 상속, 온체인 스토리텔링 도구와 캐릭터의 현실 진출을 다룬 2023년 11월 발표 자료다.",
-      "contentHash": "sha256:4ab8b566bde01679fdacf3fc30ed5110dd37d051192b853e74d3e3a86cec5f6c",
+      "contentHash": "sha256:6639b3e491e62b5fde7716a6d54cc029f92fe4e4a71cfd52934f39e0141c146c",
       "keyInsights": [
         {
           "text": "현실과 가상이 겹치는 경험은 기술을 과시하기보다 방문자의 여정과 이야기 안에서 자연스럽게 작동할 때 힘을 얻는다.",
@@ -202,7 +202,7 @@
       "url": "series/onchain-storytelling/sources/proposal-strategy-diagrams/",
       "title": "MIXtown 전략 기획 도식집",
       "synopsis": "2023.12.08 · 장표 16장. 다섯 단계 컨버전스 모델과 TBA 구조, 온체인 히스토리",
-      "contentHash": "sha256:84d23564385f218d9c644f97987efdc9527478b6f64b4776807ce1b42ac18b14",
+      "contentHash": "sha256:2b16149ef7047e729e00d8eea4cba5a044728283c2fd95539e0fb3fcc617d92b",
       "keyInsights": [],
       "outline": [],
       "relations": []
@@ -213,7 +213,7 @@
       "url": "series/onchain-storytelling/sources/proposal-mxtwn-x/",
       "title": "MXTWN X 아이디어 기획안",
       "synopsis": "2023.12.08 · 장표 19장 · 영상 2편. 캐릭터를 화자로 세운 의류 프로젝트의 제안 전문",
-      "contentHash": "sha256:17b3c2d725b0938ab414d4351179ebd045573d4f2685037aac11cc9a12b66f9a",
+      "contentHash": "sha256:37bd4885ec0f2bc6b4f69408f96264535b5c3e26d1f3c06c4d6ca9c3d4a2f730",
       "keyInsights": [],
       "outline": [],
       "relations": []
@@ -224,7 +224,7 @@
       "url": "series/onchain-storytelling/sources/proposal-sapienz-town/",
       "title": "SAPIENZ Town 아이디어 기획안",
       "synopsis": "2024.01.02 · 장표 15장. 80명의 운영자가 굴리는 호텔, 다섯 축의 전체 구조도",
-      "contentHash": "sha256:d8a4e259f672d7dea6611702a5150a9e0c313706a9cb3de24046a2e475be3e71",
+      "contentHash": "sha256:e7a08b010fef5e9cac5f43ea3b82f2ce55b0e78d8ef319e75458eb43b0c6e6ca",
       "keyInsights": [],
       "outline": [],
       "relations": []
@@ -235,7 +235,7 @@
       "url": "series/onchain-storytelling/sources/proposal-idea-notes/",
       "title": "MIXtown 확장 아이디어 노트",
       "synopsis": "2023.12.08 · 장표 2장. 음악 유통 구조와 포탈 세계관을 세운 미술 기획",
-      "contentHash": "sha256:a178283af6395196dcb492a14c2d26d0ff99fb69b251626fd623c952333383b8",
+      "contentHash": "sha256:d8ff5a2e7e0e1a031a88bf321ae0a05a7f02f827a85c6d5ed0365fd0216a2bdf",
       "keyInsights": [],
       "outline": [],
       "relations": []

@@ -98,8 +98,8 @@ test("published text files and public docs carry no em dash", async () => {
   assert.deepEqual(found, []);
 });
 
-// 바닥 서명 : 체계 이름은 공개 글 귀속과 함께 한 줄로, 면마다 한 번(계약 v1.1 §1 · 2026-10-20).
-const SIGN = '<p class="site-footer__sign"><span class="site-footer__system">Kiheon Life Universe</span> · 신기헌의 디지털 트윈 프로젝트</p>';
+// 바닥 서명 : 체계 이름 뒤에 「신기헌의 기록 아카이브」 를 붙여 면마다 한 번(본인 2026-10-21 「가장 짧게」 · 「아카이브의 의미로」).
+const SIGN = '<p class="site-footer__sign"><span class="site-footer__system">Kiheon Life Universe</span> · 신기헌의 기록 아카이브</p>';
 
 test("every public page carries the system signature exactly once, in the same words", async () => {
   const wrong = [];
@@ -129,6 +129,7 @@ test("the public brand docs follow contract v1.1: one sans set, two-layer names,
   assert.match(brand, /\| 정문 \(누구의 사이트인가\) \| 신기헌 · Kiheon Shin \|/);
   assert.match(brand, /\| 체계 \(무엇이 이 사이트를 굴리는가\) \| Kiheon Life Universe \|/);
   assert.match(brand, /\| Slides \| 발표 서사와 화면 \| kiheon\.app 보호면 \| 공개 전 \|/);
+  assert.ok(brand.includes("「Kiheon Life Universe · 신기헌의 기록 아카이브」"), "문서의 서명 문구가 면과 같다");
   const roadmap = await read("docs/product/kiheon-life-universe-surface-roadmap-20260831.md");
   assert.doesNotMatch(roadmap, /observatory\.vercel\.app\/map/);
   assert.match(roadmap, /\| Universe \| `https:\/\/kiheon\.com\/universe\/`/);

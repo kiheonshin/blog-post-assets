@@ -1340,7 +1340,7 @@ archive-library {
   color: var(--inverse-ink);
 }
 
-/* 바닥 서명 : 체계 이름은 공개 글 귀속과 함께 한 줄로(계약 v1.1 §1 · 2026-10-20) */
+/* 바닥 서명 : 체계 이름과 「신기헌의 기록 아카이브」 를 한 줄로(2026-10-21) */
 .site-footer__sign {
   flex-basis: 100%;
   margin: 0;

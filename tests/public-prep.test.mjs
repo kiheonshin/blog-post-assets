@@ -30,7 +30,7 @@ test("the 404 page keeps the shared header and footer and offers one way home", 
   assert.match(html, /<title>[^<]+ · Kiheon Shin<\/title>/);
   assert.match(html, /<header class="site-header"><div class="site-header__in">\s*<a class="brand" href="https:\/\/kiheon\.com\/">KIHEON SHIN<\/a>/);
   assert.equal(html.split('class="site-footer__sign"').length - 1, 1);
-  assert.match(html, /<span class="site-footer__system">Kiheon Life Universe<\/span> · 신기헌의 디지털 트윈 프로젝트/);
+  assert.match(html, /<span class="site-footer__system">Kiheon Life Universe<\/span> · 신기헌의 기록 아카이브/);
   const targets = [...html.matchAll(/<a\s[^>]*href="([^"]+)"/g)].map((match) => match[1]).filter((href) => !href.startsWith("#"));
   assert.ok(targets.length > 0);
   assert.deepEqual([...new Set(targets)], ["https://kiheon.com/"]);
@@ -79,4 +79,28 @@ test("vercel.json enforces the CSP on every path except the observatory, with th
   assert.ok(directives["connect-src"].includes(token), token);
   assert.ok(directives["connect-src"].includes("wss://api.x.ai"));
   assert.ok(directives["script-src"].includes("https://www.googletagmanager.com"));
+});
+
+// 사이트 대표 공유 그림(본인 2026-10-21 「후보 1」) : 사이트 단위 면은 Life Universe 시리즈 배너, 시리즈 · 글은 자기 그림.
+// 「커버 비주얼 준비 중」 자리표시는 공개 면 어디에도 공유 그림으로 남기지 않는다.
+const SITE_OG = "https://kiheon.com/series/life-universe/assets/series-banner.jpg?v=20260810a";
+test("site-level pages share the representative banner and no public page shares the placeholder", async () => {
+  for (const file of ["index.html", "archive/index.html", "privacy/index.html", "archive/codex/index.html", "archive/screening/index.html", "archive/transcript/index.html"]) {
+    const html = await read(file);
+    assert.match(html, new RegExp(`<meta property="og:image" content="${SITE_OG.replace(/[.?]/g, "\\$&")}">`), file);
+    assert.match(html, /<meta property="og:image:width" content="1600">\s*<meta property="og:image:height" content="800">/, file);
+    assert.match(html, new RegExp(`<meta name="twitter:image" content="${SITE_OG.replace(/[.?]/g, "\\$&")}">`), file);
+  }
+  const placeholders = [];
+  const walkHtml = async (dir) => {
+    for (const entry of await readdir(path.join(repoRoot, dir), { withFileTypes: true })) {
+      if ([".git", "node_modules", ".vercel", "tests", "previews"].includes(entry.name)) continue;
+      const rel = dir ? `${dir}/${entry.name}` : entry.name;
+      if (/^series\/(went-in-first|where-worlds-meet|handed-down)$/.test(rel)) continue;
+      if (entry.isDirectory()) await walkHtml(rel);
+      else if (rel.endsWith(".html") && (await read(rel)).includes("cover-placeholder")) placeholders.push(rel);
+    }
+  };
+  await walkHtml("");
+  assert.deepEqual(placeholders, []);
 });
