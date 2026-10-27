@@ -44,6 +44,10 @@
       "destination": "https://kiheon-life-universe-notes.vercel.app/"
     },
     {
+      "source": "/notes/:path+/",
+      "destination": "https://kiheon-life-universe-notes.vercel.app/:path+/"
+    },
+    {
       "source": "/notes/:path*",
       "destination": "https://kiheon-life-universe-notes.vercel.app/:path*"
     }
