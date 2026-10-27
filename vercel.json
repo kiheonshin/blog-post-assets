@@ -38,6 +38,14 @@
     {
       "source": "/universe/:path*",
       "destination": "https://kiheon-life-universe-observatory.vercel.app/:path*"
+    },
+    {
+      "source": "/notes/",
+      "destination": "https://kiheon-life-universe-notes.vercel.app/"
+    },
+    {
+      "source": "/notes/:path*",
+      "destination": "https://kiheon-life-universe-notes.vercel.app/:path*"
     }
   ],
   "headers": [
